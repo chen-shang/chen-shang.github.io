@@ -1,0 +1,1331 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="这么些年的技术总结-Java篇, IT,技术,总结">
+    <meta name="description" content="涓涓细流,辟阖汪洋">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>这么些年的技术总结-Java篇 | 这么些年的技术总结</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><script src="/js/prism.js"></script></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">这么些年的技术总结</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>时光轴</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>收藏</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">这么些年的技术总结</div>
+        <div class="logo-desc">
+            
+            涓涓细流,辟阖汪洋
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			时光轴
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			收藏
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/chen-shang" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>GitHub
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+	color: #F062A7;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/chen-shang" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="GitHub" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">这么些年的技术总结-Java篇</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+<!--
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/原创/">
+                                <span class="chip bg-color">原创</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/未完待续/">
+                                <span class="chip bg-color">未完待续</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/技术总结/" class="post-category">
+                                技术总结
+                            </a>
+                        
+                            <a href="/categories/技术总结/Java/" class="post-category">
+                                Java
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+-->
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-05-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2020-05-14
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    5,384
+                </div>
+                
+
+                <div class="info-break-policy">
+                    
+                        <i class="fa fa-pencil"></i> 作者: 陈尚
+                     
+                </div>
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>先要理解一门编程语言的特点,然后才去学习它的语法,最后再去熟悉它的工具,这里我们会对比多种编程语言展开叙述。</p>
+<p>Java 语言的是一门面向对象的编程语言，既然有面向对象的编程语言，那肯定有面向其他的编程语言：面向过程的编程语言、面向函数的编程语言。其实计算机世界目前就分这三种类型，我们有一个专有名词叫编程范式来定义一门编程语言所属的阵营。</p>
+<p>C语言 是面向过程阵营的老大，还有很多元老级别的编程语言例如 Frotran、Basic；Java语言 是面向对象阵营的翘楚，此外还有C++、C#、Object-c、swift；函数式编程中最古老的例子莫过于1958年被创造出来的Lisp了；</p>
+<p>其实编程范式的根本区别在于编程思想不同，就跟你走社会主义和资本主义一样，都有一个思想来指导，比如马克思主义毛泽东思想。一门语言不是说他是面向过程的就写不出面向对象形式的代码了，你完全可以用c语言写出继承、封装、多态的代码，只不过相当麻烦罢了。另外，你以为你用Java写的就是面向对象形式的代码了吗？肯定不是，看看你方法里面充斥着的各种if else,各种while,各种for循环吧吧，你其实写的还是面向过程的代码，只不过就是把这些方法写到了一个类里面，和我用c语言把函数写到一个头文件中有什么区别呢？</p>
+<p>所以，一些后现代的编程语言致力于将这几种编程范式杂糅到一起，例如 Scala. Scala的目的就是想整合面向对象和函数式编程于一身，包括后来的Java8+都是在这么玩儿，另外 Java8+ 也抄袭了不少 Scala和Guava的特性。</p>
+<h1 id="面向对象编程的特性"><a href="#面向对象编程的特性" class="headerlink" title="面向对象编程的特性"></a>面向对象编程的特性</h1><p>继承、封装、多态。背的已经不能再熟了。如果非要在说一个，那就是抽象，其实抽象是所有编程语言的共同特性。例如 汇编是对机器语言的抽象，C语言是对过程的抽象，Java是对对象的抽象。对于Java来说，抽象抽象抽出来之后就封装成了对象。</p>
+<p>封装是抽象的手段,把相关的属性和方法封装到一个类里面，把处理问题的过程封装到一个方法里面，都是在进行抽象的过程，越抽象越难理解，因为越抽象越简单，简单到只有一两行代码，到时候你只能看到局部，而看不到整体，所以才越难理解。</p>
+<p>封装的好处就是高内聚，相关功能都在一处，阅读和查找代码的时候一目了然，例如HashMap的实现里面,你肯定知道 put、get方法都在一处，不会跑到其他类里面去找。试想一下如果没有封装，你找代码估计只能靠全局搜索了</p>
+<p>继承也是一种手段，是人们为了少些代码而发明的一种手段。试想一下，如果没有继承，针对每一类对象都要定义一个类，然后这些类里面相同的字段你要copy好几次，相同的方法你也要定义好几遍，何其麻烦！</p>
+<p>继承的好处就是为了少写代码，保护键盘。同时也带来了一些其他意想不到的好，例如 继承是实现多态的手段之一。</p>
+<p>多态就是一种事物的多种表现形态。多态的目的一样是为了少些代码，保护键盘。多态主要体现在调用对象方法的时候，是想如果没有多态，那么同样针对每一个对象都要写一个函数来处理，这是面向过程的语言解不了的痛。</p>
+<p>多态是由继承+重写实现的，其实实现也很简单，所谓继承就是继承了父类的非私有属性和非私有方法，注意是非私有的，你可以想象成，子类对象创建的时候，先开辟出一段空间用于存放父类对象的属性和方法，然后在开辟一块空间，存放自己的属性和方法。如果子类和父类有相同的方法，就把自己的方法覆盖到父类里面，等找方法的时候，现在自己的空间中寻找，如果找不到再去父类的空间中寻找，找不到就报错，找到了就执行，一旦把子类赋值给父类对象的引用，则子类对象自己空间的东西就找不到了。其实根本原因在于 子类的方法表中会先复制一份父类的方法，然后子类的方法直接指向自己的实现，在调用函数的时候，肯定找具体的那个对象所在空间的方法区的方发表中的方法引用，然后在根据方法引用的指向，直接找到自己的方法区中的方法，然后压栈、出栈 执行该方法。</p>
+<p>注意，子类是继承不了父类私有的属性和方法的。而且注意，我们没必要给子类定义和父类一样的属性。</p>
+<h1 id="面向对象编程的6大基本原则"><a href="#面向对象编程的6大基本原则" class="headerlink" title="面向对象编程的6大基本原则"></a>面向对象编程的6大基本原则</h1><ol>
+<li><p>依赖倒转原则</p>
+</li>
+<li><p>最少知道原则(迪米特来法则)</p>
+</li>
+<li><p>单一职责原则</p>
+</li>
+<li><p>开闭原则</p>
+</li>
+<li><p>里氏代换原则</p>
+</li>
+<li><p>接口隔离原则</p>
+<p>未完待续,下面是笔记</p>
+</li>
+</ol>
+<p>DI IS SR OC LS LD<br>建议在同样可行的情况下，优先使用组合而不是继承。</p>
+<p>因为组合更安全，更简单，更灵活，更高效。</p>
+<p>继承要慎用，其使用场合仅限于你确信使用该技术有效的情况。一个判断方法是，问一问自己是否需要从新类向基类进行向上转型。如果是必须的，则继承是必要的。反之则应该好好考虑是否需要继承。《Java编程思想》</p>
+<p>只有当子类真正是超类的子类型时，才适合用继承。换句话说，对于两个类A和B，只有当两者之间确实存在is-a关系的时候，类B才应该继承类A。《Effective Java》</p>
+<table>
+<thead>
+<tr>
+<th>组 合 关 系</th>
+<th>继 承 关 系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点：不破坏封装，整体类与局部类之间松耦合，彼此相对独立</td>
+<td>缺点：破坏封装，子类与父类之间紧密耦合，子类依赖于父类的实现，子类缺乏独立性</td>
+</tr>
+<tr>
+<td>优点：具有较好的可扩展性</td>
+<td>缺点：支持扩展，但是往往以增加系统结构的复杂度为代价</td>
+</tr>
+<tr>
+<td>优点：支持动态组合。在运行时，整体对象可以选择不同类型的局部对象</td>
+<td>缺点：不支持动态继承。在运行时，子类无法选择不同的父类</td>
+</tr>
+<tr>
+<td>优点：整体类可以对局部类进行包装，封装局部类的接口，提供新的接口</td>
+<td>缺点：子类不能改变父类的接口</td>
+</tr>
+<tr>
+<td>缺点：整体类不能自动获得和局部类同样的接口</td>
+<td>优点：子类能自动继承父类的接口</td>
+</tr>
+<tr>
+<td>缺点：创建整体类的对象时，需要创建所有局部类的对象</td>
+<td>优点：创建子类的对象时，无须创建父类的对象</td>
+</tr>
+</tbody></table>
+<h1 id="值传递vs引用传递"><a href="#值传递vs引用传递" class="headerlink" title="值传递vs引用传递"></a>值传递vs引用传递</h1><p>因为java只有值传递，要想弄明白这个问题，还得了解一门有这两种传参方式的语言才行，不然光研究java你是想不明白的。<br>一般人是不去了解这方面的知识，要想理解这个问题，须得了解三种编程范式语言才好理解，<br>值传递<br>引用传递<br>共享变量传递</p>
+<p>c语言<br>值传递<br>指针传递<br>引用传递</p>
+<p>函数编程<br>直接求值<br>惰性求值</p>
+<p>Jvm是基于栈的还是基于寄存器的呢<br>这个要看Jvm的具体实现，一般Jvm是基于栈的例如 HotSpot ，此外还有jvm是基于寄存器的，例如Dalvik，也就是android的虚拟机就是基于寄存器的。所以不能说jvm就一定是基于栈的。<br>基于栈的你会看到class 文件中有很多入栈、出栈的操作，遇到操作数就压栈，遇到指令去出栈，cpu计算完成后继续压栈。一个指令往往比较短，但是篇幅比较长。<br>基于寄存器的你会看到class文件中有很多常常的指令，因为jvm总是来回倒腾那几个寄存器(其实也是内存)的值，一个指令往往入参比较多，所以篇幅就比较短。<br>但最总都要吧操作数送到cpu，而cpu铁定是基于寄存器实现的，而且寄存器就那么几个。</p>
+<p>Java虚拟机栈的特征</p>
+<p>线程私有</p>
+<p>后进先出（LIFO）栈</p>
+<p>存储栈帧，支持Java方法的调用、执行和退出</p>
+<p>可能出现OutOfMemoryError异常和StackOverflowError异常</p>
+<p>Java本地方法栈的特征</p>
+<p>线程私有</p>
+<p>后进先出（LIFO）栈</p>
+<p>作用是支撑Native方法的调用、执行和退出</p>
+<p>可能出现OutOfMemoryError异常和StackOverflowError异常</p>
+<p>有一些虚拟机（如HotSpot）将Java虚拟机栈和本地方法栈合并实现</p>
+<p>在java虚拟机规范中，虚拟机栈和本地方法栈都会出现StackOverflowError和OutofMemoryError，程序计数器是java虚拟机中唯一一块不会产生error的内存区域。</p>
+<p>百度百科<br>内存溢出(Out Of Memory，简称OOM)是指应用系统中存在无法回收的内存或使用的内存过多，最终使得程序运行要用到的内存大于能提供的最大内存。</p>
+<p>内存溢出 out of memory ，其实应该叫做内存不足，对于栈的内存溢出分两种，一种是普通的内存溢出，一种叫栈溢出。 普通的内存溢出指的是，内存空间没有足够的空间给你申请了，这时候要么发生GC要么直接告诉你 out of memory. 当然栈和堆都是内存，所有都会在申请空间的时候发生内存溢出，也就是 out of memory error. 但是对于 栈来说，如果压栈的太多导致的内存空间不足我们叫做 stack over flow 也就是栈溢出。所以说栈溢出是内存溢出的一种特例吧。<br>老实说，在栈中出现异常(StackOverFlowError)的概率小到和去苹果专卖店买手机，买回来后发现是Android系统的概率是一样的。因为作者确实没有在生产环境中遇到过，除了自己作死写样例代码测试。先说一下异常出现的情况，前面讲到过，方法调用的过程就是方法帧进虚拟机栈和出虚拟机栈的过程，那么有两种情况可以导致StackOverFlowError,当一个方法帧(比如需要2M内存)进入到虚拟机栈(比如还剩下1M内存)的时候，就会报出StackOverFlow.这里先说一个概念，栈深度:指目前虚拟机栈中没有出栈的方法帧。虚拟机栈容量通过参数-Xss来控制,下面通过一段代码，把栈容量人为的调小一点，然后通过递归调用触发异常。</p>
+<p>内存溢出肯定是因为没有空间分配了，空间分配不出来是因为，大多数空间都被占用着。如果有很多内存被占用着，但其实有一些占用着的空间其实可以被用来分配空间，那么我们就叫做发生了内存泄漏，内存泄漏如果发生，随着时间的推移，内存会被吃的越来越多，最后导致没有空间分配，而发生out of memory 或者 statck over flow. 也就是说内存泄漏会导致内存溢出。如果是堆里面的溢出就叫 out of memory 如果是栈里面的内存溢出，就要看具体是因为什么原因到值的栈空间不够，如果是栈空间被不停的压栈压栈而导致的我们起了一个特殊的名字叫栈溢出 statck over flow,否则就叫普通的out of memory.</p>
+<p>StackOverflowError 都明确说了是Stack的error所以只会跟栈有关系，而jvm一般有两个栈，一个叫虚拟机栈用来执行你程序中的方法的，一个叫本地方法栈，是当你调用了一个native方法之后才会用到的栈，当然也可能有的jvm实现只有一个栈，不区分本地方法栈。over flow 叫溢出嘛，顾名思义就是我不停的往里放，直到再也放不了了，就好像一个杯子，我不停的在里面加水，一段时间后水流出来了，就叫溢出。</p>
+<p>out of memory 叫内存不足，也很明确就是跟 memory有关的都会发生内存不足，那栈是内存么，当然是，所以栈也会发生 内存不足。都说了是不足了，就是我管你要，你没有了叫不足。也就是我申请空间，你告诉我空间不够了，你异常吧。如果空间不足了，说明其他东西占据了空间，那么大概率是内存泄漏了，内存泄漏就是有些内存占着茅坑不拉屎了，你还释放不掉他。或者你申请的空间太大了，超过了内存的限制，例如你申请一个1万个元素的数组</p>
+<p>-Xss 指的是每一个线程分配的栈空间大小，如果设置的太小，就容易发生 stack over flow ,但是 线程就可以创建的越多，如果设置的太大，就栈能存的栈帧就越多，也就是越能调用更多的方法。但是能同时运行的线程数就越少，因为栈空间总是有限的，不会分配给jvm太多的。</p>
+<p>内存溢出(o)和内存不足(OutOfMemoryError)<br>java.lang.OutOfMemoryError: Java heap space<br>java.lang.OutOfMemoryError: unable to create new native thread  从来没有试验出来过<br>java.lang.OutOfMemoryError: Metaspace<br>java.lang.OutOfMemoryError: Direct buffer memory<br>java.lang.OutOfMemoryError: GC overhead limit exceeded</p>
+<p>Exception in thread “main” java.lang.OutOfMemoryError: Java heap space<br>要想使堆溢出，只需要不停的new对象或者创建大数组就好<br>Exception in thread “main” java.lang.StackOverflowError<br>只要不停的压栈就好了，写个没有终止条件的递归就好<br>public class Main {<br>    public static void main(String[] args) {<br>        A a = new A();<br>    }<br>}</p>
+<p>class A {<br>    private A a = new A();<br>}</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ol>
+<li>浮点数<br>在计算机系统的发展过程中，曾经提出过多种方法表达实数。典型的比如相对于浮点数的定点数（Fixed Point Number）。在这种表达方式中，小数点固定的位于实数所有数字中间的某个位置。<br>还有一种提议的表达方式为有理数表达方式，即用两个整数的比值来表达实数。 定点数表达法的缺点在于其形式过于僵硬，固定的小数点位置决定了固定位数的整数部分和小数部分，不利于同时表达特别大的数或者特别小的数最终，绝大多数现代的计算机系统采纳了所谓的浮点数表达方式。这种表达方式利用科学计数法来表达实数，即用一个尾数（Mantissa，尾数有时也称为有效数字——Significand；尾数实际上是有效数字的非正式说法）一个基数（Base），一个指数（Exponent）以及一个表示正负的符号来表达实数。比如 123.45 用十进制科学计数法可以表达为 1.2345 × 102<br>，其中 1.2345 为尾数，10 为基数，2 为指数。浮点数利用指数达到了浮动小数点的效果，从而可以灵活地表达更大范围的实数<br>实际上，位数一致的情况下，表示的数字的个数肯定是一样的。比如32位的数，考虑有一位数字不同就是不同的数字，那么能表示的数字个数就是  个，不管浮点定点都是一样多的。但是表示的数字范围和精度上就有差异了。定点数的小数点靠左，显然精度就高（小数点后的数字多），但能表示的范围就小（整数部分少）。同理，小数点靠右，精度就低，但表示的数字范围大。对浮点数来说，平衡了精度和表示范围的问题。<br>同样的数值可以有多种浮点数表达方式，比如上面例子中的 123.45 可以表达为 12.345 × 101，0.12345 × 103 或者 1.2345 × 102。因为这种多样性，有必要对其加以规范化以达到统一表达的目标。在 IEEE 标准中，浮点数是将特定长度的连续字节的所有二进制位分割为特定宽度的符号域，指数域和尾数域三个域，其中保存的值分别用于表示给定二进制浮点数中的符号，指数和尾数。这样，通过尾数和可以调节的指数（所以称为”浮点”）就可以表达给定的数值了。</li>
+</ol>
+<p>表示方法<br>定点法<br>111.234<br>分成两部分 一部分 111(一百一十一)和 234(二百三十四)，然后分别在计算机中存储成二进制<br>111使用除2取余倒序排的方式计算出二进制： 1101111<br>234使用除2取余倒序排的方式计算出二进制： 11101010</p>
+<p>分成两部分 一部分 111(一百一十一)和 0.234(零点二三四),然后分别在计算机中存储成二进制<br>111使用除2取余倒叙排的方式计算出二进制：1101111<br>0.234使用乘2取整顺序排的方法算出二进制：0.0011101111100111011011001000101101000011100101011000001…</p>
+<p>这里要注意一点，小数的二进制表示除了<br>0.5也就是2^-1也就是0.1<br>0.25也就是2^-2也就是0.01<br>0.125也就是2^-3也就是0.001<br>0.0625也就是2^-4也就是0.0001<br>…<br>0.009765625也就是 0.000000101<br>外都会变成无限循环的二进制表示，无穷无尽了，但是一个数据类型给你规定的bit位数是一定了，要么8为要么32位要么64为等等，对于你无穷无尽的0和1是必然存储不下的，于是乎只能尽可能的保存了，也就是说对于小数部分就会截取指定的位数了，超过指定位数后面的0和1就不要了，这就是所谓的丢失精度。丢失的是啥？就是后面无尽的的0或者1。那自然而然的存储在计算中的这个数已经不是你原来认识的那个数了，是一个近似值了，是一个不精确的值了。也就是说对于一些数除了上面提到的那些，用十进制很容易很精确的写在纸上却不能很容易很精确地的写到计算机器上</p>
+<p>浮点表示法<br>能表示的个数是一样多的，但是精度不同</p>
+<p>dd</p>
+<p>取值范围为[-128 -  127]     </p>
+<p>解析：</p>
+<p>byte占一个字节空间，最高位是符号位，剩余7位能表示0-127，加上符号位的正负，就是-127至+127，但负0没必要，为充分利用，就用负零表示-128（即原码1000，0000）。（计算机转补码后存储）</p>
+<p>JDK 6和JDK 7中substring的原理及区别<br>String是Java中一个比较基础的类，每一个开发人员都会经常接触到。而且，String也是面试中经常会考的知识点。String有很多方法，有些方法比较常用，有些方法不太常用。今天要介绍的subString就是一个比较常用的方法，而且围绕subString也有很多面试题。</p>
+<p>substring(int beginIndex, int endIndex)方法在不同版本的JDK中的实现是不同的。了解他们的区别可以帮助你更好的使用他。为简单起见，后文中用substring()代表substring(int beginIndex, int endIndex)方法。</p>
+<p>substring() 的作用<br>substring(int beginIndex, int endIndex)方法截取字符串并返回其[beginIndex,endIndex-1]范围内的内容。</p>
+<p>用instanceof不但匹配指定类型，还匹配指定类型的子类。</p>
+<p>注意到数组（例如String[]）也是一种Class，而且不同于String.class，它的类名是[Ljava.lang.String。此外，JVM为每一种基本类型如int也创建了Class，通过int.class访问。</p>
+<p>如果获取到了一个Class实例，我们就</p>
+<p>上述代码相当于new String()。通过Class.newInstance()可以创建类实例，它的局限是：只能调用public的无参数构造方法。带参数的构造方法，或者非public的构造方法都无法通过Class.newInstance()被调用。</p>
+<p>这就是为什么我们只需要把Log4j的jar包放到classpath中，Commons Logging就会自动使用Log4j的原因。</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">陈尚</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://chen-shang.github.io/2020/05/07/ji-zhu-zong-jie/java/zhe-me-xie-nian-de-ji-zhu-zong-jie-java-pian/">https://chen-shang.github.io/2020/05/07/ji-zhu-zong-jie/java/zhe-me-xie-nian-de-ji-zhu-zong-jie-java-pian/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">陈尚</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/原创/">
+                                    <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/未完待续/">
+                                    <span class="chip bg-color">未完待续</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赞赏是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zpykYxqrLC4qVar5tL3t0MAL-gzGzoHsz',
+        appKey: '3LhmIMSf9HYX5VXhD21hiPPG',
+        notify: 'true' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '5',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/05/27/ji-zhu-zong-jie/linux/shen-ru-fen-xi-io-mo-xing/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="深入分析I/O模型">
+                        
+                        <span class="card-title">深入分析I/O模型</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            我们要讲IO模型,我不像网上的一些文章,上来就讲 阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO等的原理，也不讲 同步、异步、阻塞、非阻塞 的区别和联系,更不想讲 多路复用IO中 select、poll、epoll 的三种实现。虽然后面都会讲到。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-05-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/技术总结/" class="post-category">
+                                    技术总结
+                                </a>
+                            
+                            <a href="/categories/技术总结/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/原创/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/未完待续/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/04/22/ji-zhu-zong-jie/java/threadlocal-jiu-jing-wei-shi-me-dan-sheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="ThreadLocal究竟为什么诞生">
+                        
+                        <span class="card-title">ThreadLocal究竟为什么诞生</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            我们都知道Java中有一个ThreadLocal类,但是你知道它为什么会被设计出来么,那它究竟解决了什么问题,在什么场景下使用呢?
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/技术总结/" class="post-category">
+                                    技术总结
+                                </a>
+                            
+                            <a href="/categories/技术总结/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/原创/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            &nbsp;&copy;<span id="year">2019 </span>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">77.6k</span>&nbsp;字
+            
+            
+                        
+                <br>
+                
+                <span id="container_site_pv">
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
+                </span>
+                
+                
+                <span id="container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
+                </span>
+                
+             
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chen-shang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.jianshu.com/u/00aa811e8e05" class="tooltipped" target="_blank" data-tooltip="简书" data-position="top" data-delay="50">
+        <i class="fa fa-book"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2414973330" class="tooltipped" data-tooltip="QQ联系我: 2414973330" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+<a href="https://tongji.baidu.com/web/10000032310/homepage/index" class="tooltipped" target="_blank" data-tooltip="百度统计" data-position="top" data-delay="50">
+     <i class="fa fa-cloud"></i>
+</a>
+
+<a href="https://leancloud.cn/dashboard/applist.html#/apps" class="tooltipped" target="_blank" data-tooltip="百度统计" data-position="top" data-delay="50">
+     <i class="fa fa-coffee"></i>
+</a>
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f34c6ca18e751cd090a8864b66dda7fd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","hOffset":0,"vOffset":20,"width":100,"height":115},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.2}});</script></body>
+
+</html>
