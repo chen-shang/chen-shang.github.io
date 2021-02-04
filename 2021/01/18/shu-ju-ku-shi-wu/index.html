@@ -421,14 +421,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-01-19
+                    2021-01-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    88
+                    288
                 </div>
                 
 
@@ -470,6 +470,18 @@
 <li>脏读、不可重复读、幻读</li>
 <li>读未提交、读已提交、可重复度、串行化</li>
 <li>锁机制</li>
+</ol>
+<p>数据库单表查询</p>
+<ol>
+<li>主键ID列等值查询  const(唯一)</li>
+<li>唯一索引列等值查询 const(唯一)+回表</li>
+<li>唯一索引列等值查询+空值查询 ref_or_null</li>
+<li>普通二级索引列等值查询 ref(会查出多个)</li>
+<li>普通二级索引列等值查询+空值查询  ref_or_null</li>
+<li>索引列的范围查询(主键id列|唯一索引列|普通二级索引列)  rang (非等值匹配，搜索一个区间或区间+断点)<br>范围条件+like</li>
+<li>整个索引的查询 index (查询的是某个二级索引而不是全表)</li>
+<li>全表查询 all</li>
+<li>索引合并(查询索引,然后取交集|并集|排序后再 交并)<br>从上到下条件越来越苛刻，速度越来越慢。</li>
 </ol>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -721,7 +733,7 @@
 
     #vcomments textarea {
         box-sizing: border-box;
-        background: url("/") 100% 100% no-repeat;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
     }
 
     #vcomments p {
@@ -972,6 +984,9 @@
     });
 </script>
 
+<!--酷Q推送-->
+
+
     
 
     
@@ -1200,7 +1215,7 @@
             &nbsp;&copy;<span id="year">2019 </span>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">77.6k</span>&nbsp;字
+                class="white-color">77.8k</span>&nbsp;字
             
             
                         
