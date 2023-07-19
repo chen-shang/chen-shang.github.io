@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-07-18T13:58:31.800Z</updated>
+  <updated>2023-07-18T17:46:16.017Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -21,14 +21,15 @@
     <link href="https://chen-shang.github.io/2023/07/18/shu-ju-ku/mysql-zhong-not-null-he-default-de-shi-yong/"/>
     <id>https://chen-shang.github.io/2023/07/18/shu-ju-ku/mysql-zhong-not-null-he-default-de-shi-yong/</id>
     <published>2023-07-18T06:08:33.000Z</published>
-    <updated>2023-07-18T13:58:31.800Z</updated>
+    <updated>2023-07-18T17:46:16.017Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;我们在进行数据库表设计的时候，往往针对一个字段会有一些约束，其中 &lt;code&gt;not null&lt;/code&gt; 和  &lt;code&gt;default&lt;/code&gt; 两个约束的时候，我就会产生一种恍惚。感觉这俩连用有点重复约束的感觉，例如 我们规定一个 字段 &lt;code&gt;not</summary>
+    <summary type="html">&lt;p&gt;我们在进行数据库表设计的时候，往往针对一个字段会有一些约束，其中在使用 &lt;code&gt;not null&lt;/code&gt; 和  &lt;code&gt;default&lt;/code&gt; 这两个约束的时候，我就会产生一种恍惚：感觉这俩连用有点重复定义的感觉。&lt;/p&gt;
+&lt;p&gt;例如 我们规定一个</summary>
         
       
     
