@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="volatile 探秘, IT,技术,总结">
-    <meta name="description" content="不整那些虚头巴脑的名词，什么 内存可见性啊、缓存行啊、嗅探啊、读屏障、写屏障啊、lock指令啊, 我先不讲">
+    <meta name="keywords" content="Java针对会抛出异常的方法的单元测试, IT,技术,总结">
+    <meta name="description" content="我们写了可能会抛出异常的方法,怎么写单元测试呢？直接 `try catch` 么?">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>volatile 探秘 | 涓涓细流</title>
+    <title>Java针对会抛出异常的方法的单元测试 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -337,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">volatile 探秘</h1>
+                    <h1 class="description center-align post-title">Java针对会抛出异常的方法的单元测试</h1>
                 </div>
             </div>
         </div>
@@ -370,8 +370,12 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E5%B9%B6%E5%8F%91/">
-                                <span class="chip bg-color">并发</span>
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">单元测试</span>
                             </a>
                         
                     </div>
@@ -386,8 +390,8 @@
                                 Java
                             </a>
                         
-                            <a href="/categories/Java/Java%E9%AB%98%E7%BA%A7/" class="post-category">
-                                Java高级
+                            <a href="/categories/Java/Java%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="post-category">
+                                Java单元测试
                             </a>
                         
                     </div>
@@ -399,28 +403,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-04-09
+                    2023-07-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-09
+                    2023-07-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    599
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 
@@ -443,28 +447,63 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>volatile 这个单词一定要能够拼写正确 v-o-l-a-t-i-l-e ，因为我相信你在写代码的时候肯定没有经常用到它。还有一个最长的关键字叫 synchronized 。</p>
-<p>volatile 的中文翻译</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"translation"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-    <span class="token string">"挥发性"</span>
-  <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"basic"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"us-phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɑːlətl"</span><span class="token punctuation">,</span>
-    <span class="token property">"phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɒlətaɪl"</span><span class="token punctuation">,</span>
-    <span class="token property">"uk-phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɒlətaɪl"</span><span class="token punctuation">,</span>
-    <span class="token property">"explains"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-      <span class="token string">"n. 挥发物；有翅的动物"</span><span class="token punctuation">,</span>
-      <span class="token string">"adj. [化学] 挥发性的；不稳定的；爆炸性的；反复无常的"</span><span class="token punctuation">,</span>
-      <span class="token string">"n. (Volatile)人名；(意)沃拉蒂莱"</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>可以看到是挥发性，也可以理解为易失性。容易失去它，为什么这么说呢?因为被volatile修饰的变量在多线程或者多核cpu中，只要一个线程或cpu修改了它的值，那在其他线程或cpu里面就失去了它，如果还想获取到它，就不得不去指定的内存地址里面在去找它。<br>所以这个字段修饰的变量一定要被多线程访问才行，否则修饰它就没有意义了。编译器在编译的时候就有可能帮你吧这个修饰符自动给去掉。所以单线程里面我们一般不用volatile关键字修饰变量，因为你修饰了也没用。由此建议写代码的时候审视一下是不是该用volatile关键字修饰，关键在于这个变量是不是多线程共享的，另外就算是多线程共享的也不一定要被volatile修饰，例如引用变量，只要引用变量的初始化不是在多个线程里面都写一份就不需要修饰了。</p>
-<h1 id="怎么实现"><a href="#怎么实现" class="headerlink" title="怎么实现"></a>怎么实现</h1><p>不整那些虚头巴脑的名词，什么 内存可见性啊、缓存行啊、嗅探啊、读屏障、写屏障啊、lock指令啊。我直接说过程。<br>首先被 volatile 修饰的关键字在cpu里面或者某个线程里面被修改之前，先发送一个命令给其他cpu，大喊一声我要修改xxx内存地址的值了，你们谁有不要在动这个地址了，这一声大喊，其实就是在一个电子电路上加了一个高电平，这个电平加的及其快，快到几乎是所有cpu同时收到，然后其他cpu就会把这个内存对应的cpu里面的缓存设置为失效状态，当然如果在设置失效之前，你读取了这个缓存值去处理我们就没有办法了，因为我们没有办法让时光倒流嘛。但是只要刚刚那个cpu说了我要修改，其他cpu再想读写这个内存里面的值就读不出来了，就会阻塞，但是阻塞的机器很短，因此cpu会选用自旋的方式，哎呀所谓自旋就是不停的看我能不能不了，我能不能读了，如果不能就继续疯狂的询问，为的是减少上下文的切换的开销。<br>然后大吼一声的cpu开始计算修改缓存里面的值，完事之后有一个最重要的一步那就是把这个内存里面的值，立马写回到共享内存中。这之后，在大吼一声，你们可以操作该内存地址啦。</p>
-<p>这个开始大吼一声的操作总要有一个指令来处理吗，对应的就是lock指令。lock指令就是加了读写屏障嘛，就是让你不能读也不能写码<br>这个让其他cpu缓存失效的其实就是设置的缓存行的状态嘛<br>这个设置缓存行失效的方式我么就叫做嗅探技术嘛。</p>
-<p>这里唠叨一下嗅探技术，网上没有搜到任何关于嗅探技术的文章，都是一笔带过，这里我谈谈我的理解，但不保证是对的啊。<br>这个理cpu的嗅探并不是，其中一个cpu大喊我要修改xx内存的东西了，之后 ，所有的cpu就设置自己对应的缓存失效的。而是真真正正cpu修改了内存的值之后才生效的，怎么做的呢，你可以理解为cpu 在 内存和缓存之间画了一条连接线，这个连接线要么都是高电平，要么都是低电平，我们知道一条电线只要中间没有电阻，两端电压其实是一样的，只要修改了内存的值，那么就加高电平，cpu先检测这个连线是不是高电平。如果是就重新读内存值。由此可见，嗅探一定是自己去嗅探，主动发现。这就是我的理解，不服来战。</p>
+                <p>我们写了一个方法,这个方法可能会抛出异常。针对这类方法,我们该怎么写单元测试呢？我们先思考一个问题，我们的测试用例是啥样的？</p>
+<ol>
+<li>用例一: 当满足某条件的时候应该抛出异常,如果没有异常,那么大概率是我们的目标测试方法内部的实现有问题。</li>
+<li>用例二: 当满足某条件的时候应该正常执行拿到结果,不应该抛出异常,如果抛出了异常,那么大概率是我们的目标测试方法内部没有 <code>try catch</code> 住异常<br>所以，我们得从正反两方面来考虑写单元测试。一面是应该抛异常，一面是不应该抛异常。</li>
+</ol>
+<p>例如</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TargetCode</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">divide</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArithmeticException</span><span class="token punctuation">(</span><span class="token string">"除数不能为0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> a <span class="token operator">/</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>对应的单元测试</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token import static"><span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+ <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TargetCodeTest</span> <span class="token punctuation">{</span>
+    <span class="token comment">//我们要测试一个会抛出异常的。如果没有抛出异常这个单元测试是通过不了的</span>
+    <span class="token annotation punctuation">@Test</span><span class="token punctuation">(</span>expected <span class="token operator">=</span> <span class="token class-name">ArithmeticException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDivideByZero</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token class-name">TargetCode</span><span class="token punctuation">.</span><span class="token function">divide</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//还要测试一个正常场景下不会抛出异常的。如果抛出异常，这个单元测试是通过不了</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDivide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token class-name">TargetCode</span><span class="token punctuation">.</span><span class="token function">divide</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们该try catch么？有人说我直接<code>try catch</code>不行么。不行，try catch 住了之后，只能校验抛出了异常的情况，但是针对可能因为代码出错而导致没有抛异常这样的场景无法测试到。如果只是想测试这个方法在特定场景下会抛出异常，直接用 <code>@Test(expected=XXXExcepting.class)</code>就好了。但是有的时候我们需要测试抛出的异常的报文是什么，这时候有两种手段，第一种是使用 <code>@Rule</code> 第二种是使用 <code>Assert.assertThrows</code>。不过 <code>@Rule</code>已经在新版本的junit中标记为废弃了，进而推荐使用 <code>Assert.assertThrows</code> 这种形式。 </p>
+<h3 id="方式一-Rule-示例"><a href="#方式一-Rule-示例" class="headerlink" title="方式一: @Rule 示例"></a>方式一: <code>@Rule</code> 示例</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Rule</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ExpectedException</span> exception <span class="token operator">=</span> <span class="token class-name">ExpectedException</span><span class="token punctuation">.</span><span class="token function">none</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testLoginWhenAccountPassIsBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    exception<span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token class-name">IllegalArgumentException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    exception<span class="token punctuation">.</span><span class="token function">expectMessage</span><span class="token punctuation">(</span><span class="token string">"accountPass can not be blank"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
+    <span class="token class-name">AccountLoginRequest</span> accountLoginRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AccountLoginRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    accountLoginRequest<span class="token punctuation">.</span><span class="token function">setAccountName</span><span class="token punctuation">(</span><span class="token string">"mock"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    loginService<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>accountLoginRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="方式二-Assert-assertThrows-示例"><a href="#方式二-Assert-assertThrows-示例" class="headerlink" title="方式二: Assert.assertThrows 示例"></a>方式二: <code>Assert.assertThrows</code> 示例</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testLoginWhenAccountNameIsBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">IllegalArgumentException</span> illegalArgumentException <span class="token operator">=</span> <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">assertThrows</span><span class="token punctuation">(</span><span class="token class-name">IllegalArgumentException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            <span class="token class-name">AccountLoginRequest</span> accountLoginRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AccountLoginRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            loginService<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>accountLoginRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token class-name">String</span> message <span class="token operator">=</span> illegalArgumentException<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"accountName can not be blank"</span><span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -490,7 +529,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chen-shang.github.io/2020/04/09/java/java-gao-ji/volatile-tan-mi/">https://chen-shang.github.io/2020/04/09/java/java-gao-ji/volatile-tan-mi/</a>
+                    <a href="https://chen-shang.github.io/2023/07/19/java/java-dan-yuan-ce-shi/java-zhen-dui-hui-pao-chu-yi-chang-de-fang-fa-de-dan-yuan-ce-shi/">https://chen-shang.github.io/2023/07/19/java/java-dan-yuan-ce-shi/java-zhen-dui-hui-pao-chu-yi-chang-de-fang-fa-de-dan-yuan-ce-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -532,8 +571,12 @@
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E5%B9%B6%E5%8F%91/">
-                                    <span class="chip bg-color">并发</span>
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">单元测试</span>
                                 </a>
                             
                         </div>
@@ -612,29 +655,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/04/09/java/java-nei-bu-lei/">
+                <a href="/2023/07/19/java/java-dan-yuan-ce-shi/java-zhen-dui-hui-pao-chu-yi-chang-de-fang-fa-de-dan-yuan-ce-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Java内部类">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Java针对会抛出异常的方法的单元测试">
                         
-                        <span class="card-title">Java内部类</span>
+                        <span class="card-title">Java针对会抛出异常的方法的单元测试</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            内部类就是类里面的类
+                            我们写了可能会抛出异常的方法,怎么写单元测试呢？直接 `try catch` 么?
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -643,10 +687,15 @@
                                     Java
                                 </a>
                             
+                            <a href="/categories/Java/Java%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    Java单元测试
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -656,6 +705,10 @@
                     
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">单元测试</span>
                     </a>
                     
                 </div>
@@ -669,31 +722,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/04/07/linux/she-zhi-ssh-yun-xu-root-deng-lu/">
+                <a href="/2023/07/18/shu-ju-ku/mysql-zhong-not-null-he-default-de-shi-yong/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="设置ssh允许root登陆">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="mysql 中 not null 和 default 的使用">
                         
-                        <span class="card-title">设置ssh允许root登陆</span>
+                        <span class="card-title">mysql 中 not null 和 default 的使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            设置ssh允许以root账号密码登陆
+                            字段都default了,那再不复值的时候不就默认填写了一个默认值了么那一定能不为not null啊,为什么这俩约束总是连用呢?
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-18
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -705,10 +758,6 @@
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -850,7 +899,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">104.8k</span>
+                        class="white-color">105.5k</span>
             
             
             

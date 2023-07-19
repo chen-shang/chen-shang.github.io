@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Shell 如何实现统计列数, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="keywords" content="重写设计模式-用λ实现代理模式, IT,技术,总结">
+    <meta name="description" content="使用代理模式的目的，往往是因为已经存在某个类和该类的对象，想在该类的部分或全部方法执行前后在执行某些代码。
+代理模式分为静态代理和动态代理，动态代理的实现方式又有两种：JDK自带的动态代理，利用了反射的原理，还有一种是 cglib方式实现的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Shell 如何实现统计列数 | 涓涓细流</title>
+    <title>重写设计模式-用λ实现代理模式 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -335,12 +336,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Shell 如何实现统计列数</h1>
+                    <h1 class="description center-align post-title">重写设计模式-用λ实现代理模式</h1>
                 </div>
             </div>
         </div>
@@ -366,6 +367,10 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -374,8 +379,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/Java/" class="post-category">
+                                Java
+                            </a>
+                        
+                            <a href="/categories/Java/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                Java设计模式
                             </a>
                         
                     </div>
@@ -387,21 +396,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-04
+                    2020-08-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-05
+                    2023-07-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    431
+                    396
                 </div>
                 
 
@@ -431,25 +440,101 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>如果一个文件中的内容如下</p>
-<pre class="line-numbers language-none"><code class="language-none">客户姓名|证件类型|证件号码|信息报告日期|性别|生日|户籍地址|电话号码|国籍|学位|学历|教育信息更新日期|单位名称|单位地址|单位号码|职业信息更新日期|客户地址|家庭电话|地址更新日期|通讯地址|通讯地址更新日期|创建时间|更新时间<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>你如何知道一共有多少字段呢。<br>我问了一下我的同事，他们说吧这些内容放到一个文本编辑器里头打开，比如 vscode 或者 sublimText 或者 vim 然后搜索 <code>|</code> , 一般都会显示出来 <code>|</code> 的个数，然后+1就是字段的数量。这个方法也很好用,但感觉还是麻烦。</p>
-<center>
-  <img src="/.io//image.png">
-</center>
+                <p>使用代理模式的目的，往往是因为已经存在某个类和该类的对象，想在该类的部分或全部方法执行前后在执行某些代码。</p>
+<p>代理模式分为静态代理和动态代理，动态代理的实现方式又有两种：JDK自带的动态代理，利用了反射的原理，还有一种是 cglib方式实现的代理，利用了ASM字节码织入技术。</p>
+<p>静态代理可以利用组合或者继承的方式实现，其目的就是为了持有被代理对象的引用，进而调用被代理对象的方法。</p>
+<p>这里我们说一下JDK的动态代理</p>
+<div width="100%">
+<div style="float:left; width:50%;"><h1>JDK动态代理普通写法</h1>
 
-<p>我们如何用程序干这事儿呢。目前还没有发现直接统计列的工具，但是我知道一个统计行数的工具叫 wc 还有一个工具可以显示文本行数的工具叫 nl .还有 vim 也可以实现展示行数。那么如果我们能快速把这一行转换成列，直接数列数就知道有多少字段了吧。</p>
-<p>那么我们的问题就转变成了行专列的问题。但是现在的分隔符是 <code>|</code> ,我们只需要把他替换成回车就好了。如果用vim 我们输入替换指令 <code>%s/|/\r/g</code> 就可以吧指定的字符转换成回车换行。</p>
-<center>
-  <img src="/.io//image2.png">
-</center>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">interface</span> <span class="token class-name">IUser</span> <span class="token punctuation">{</span>
 
-<p>然后输入指令 <code>set no</code> 可以显示行号</p>
-<p>另外我们也可以通过 <code>sed</code> 指令替换的新式 <code>cat xxx.txt|sed 's/|/\n/g'|wc -l</code> 或者 <code>cat xxx.txt|sed 's/|/\n/g'|nl</code></p>
-<center>
-  <img src="/.io//image3.png">
-</center>
+  <span class="token keyword">void</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 
+<span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">implements</span> <span class="token class-name">IUser</span> <span class="token punctuation">{</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"user say:"</span> <span class="token operator">+</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">UserProxy</span> <span class="token keyword">implements</span> <span class="token class-name">InvocationHandler</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">private</span> <span class="token class-name">IUser</span> user<span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token class-name">UserProxy</span><span class="token punctuation">(</span><span class="token class-name">IUser</span> user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>user <span class="token operator">=</span> user<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">getUserProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token class-name">Proxy</span><span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> user<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">invoke</span><span class="token punctuation">(</span><span class="token class-name">Object</span> proxy<span class="token punctuation">,</span> <span class="token class-name">Method</span> method<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Throwable</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法执行之前"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Object</span> invoke <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法执行之后"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> invoke<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">IUser</span> userProxy <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">IUser</span><span class="token punctuation">)</span> <span class="token keyword">new</span> <span class="token class-name">UserProxy</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getUserProxy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    userProxy<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token string">"执行中"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</div>
+<div style="float:left;height:200px; width:0px;border-left:solid white;border-right:1px solid white"></div>
+<div style="float:left; width:49%;"><h1>JDK动态代理尝试λ写法</h1>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">interface</span> <span class="token class-name">IUser</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">void</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token keyword">implements</span> <span class="token class-name">IUser</span> <span class="token punctuation">{</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"user say:"</span> <span class="token operator">+</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+
+
+
+
+
+
+
+
+
+<span class="token keyword">class</span> <span class="token class-name">UserProxyFactory</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">IUser</span> <span class="token function">getUserProxy</span><span class="token punctuation">(</span><span class="token class-name">IUser</span> user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token class-name">IUser</span><span class="token punctuation">)</span> <span class="token class-name">Proxy</span><span class="token punctuation">.</span><span class="token function">newProxyInstance</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getClassLoader</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> user<span class="token punctuation">.</span><span class="token function">getClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getInterfaces</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>proxy<span class="token punctuation">,</span> method<span class="token punctuation">,</span> args<span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法执行之前"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">Object</span> invoke <span class="token operator">=</span> method<span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>user<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"方法执行之后"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> invoke<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">IUser</span> userProxy <span class="token operator">=</span> <span class="token class-name">UserProxyFactory</span><span class="token punctuation">.</span><span class="token function">getUserProxy</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    userProxy<span class="token punctuation">.</span><span class="token function">say</span><span class="token punctuation">(</span><span class="token string">"执行中"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</div>
+</div>
                 
             </div>
             <hr/>
@@ -475,7 +560,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chen-shang.github.io/2023/07/04/linux/shell-ru-he-shi-xian-tong-ji-lie-shu/">https://chen-shang.github.io/2023/07/04/linux/shell-ru-he-shi-xian-tong-ji-lie-shu/</a>
+                    <a href="https://chen-shang.github.io/2020/08/13/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dai-li-mo-shi/">https://chen-shang.github.io/2020/08/13/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dai-li-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -515,6 +600,10 @@
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -597,31 +686,35 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/07/06/jing-ji-xue/ji-zi-shi-me-yi-si/">
+                <a href="/2020/08/17/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-xun-zhao-jdk-zhong-de-she-ji-mo-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="&lt;暨&gt;字什么意思">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="重写设计模式-寻找JDK中的设计模式">
                         
-                        <span class="card-title">&lt;暨&gt;字什么意思</span>
+                        <span class="card-title">重写设计模式-寻找JDK中的设计模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            暨字用于会议标题的意思与“和”、“及”相近。通常用于比较庄重、严肃的场合。
+                            摘要
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="post-category">
-                                    经济学
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            <a href="/categories/Java/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    Java设计模式
                                 </a>
                             
                             
@@ -635,6 +728,14 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -646,31 +747,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/01/qian-duan/shi-me-shi-biao-ji-yu-yan/">
+                <a href="/2020/08/11/ji-suan-ji-ji-chu/uml-lei-tu-yu-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="什么是标记语言">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="UML类图语法">
                         
-                        <span class="card-title">什么是标记语言</span>
+                        <span class="card-title">UML类图语法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            标记语言是一种用于描述文本结构和格式的计算机语言
+                            摘要
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    计算机基础
                                 </a>
                             
                             
@@ -742,7 +843,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">104.8k</span>
+                        class="white-color">105.5k</span>
             
             
             

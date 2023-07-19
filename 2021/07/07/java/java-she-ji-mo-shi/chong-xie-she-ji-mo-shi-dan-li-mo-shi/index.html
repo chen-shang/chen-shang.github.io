@@ -4,14 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="重写设计模式-用λ实现单例模式, IT,技术,总结">
-    <meta name="description" content="DCL 单例 用λ表达式来实现
-import java.util.Optional;
-
-public class Singleton{
-  //1. 构造方法私有化
-  //2. 持有自身的静态引用
-  //3. 提供获取自身静态引用的公有">
+    <meta name="keywords" content="重写设计模式-单例模式, IT,技术,总结">
+    <meta name="description" content="教你三步写出单例模式">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +17,7 @@ public class Singleton{
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>重写设计模式-用λ实现单例模式 | 涓涓细流</title>
+    <title>重写设计模式-单例模式 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -341,12 +335,12 @@ public class Singleton{
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">重写设计模式-用λ实现单例模式</h1>
+                    <h1 class="description center-align post-title">重写设计模式-单例模式</h1>
                 </div>
             </div>
         </div>
@@ -372,6 +366,10 @@ public class Singleton{
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -384,8 +382,8 @@ public class Singleton{
                                 Java
                             </a>
                         
-                            <a href="/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                设计模式
+                            <a href="/categories/Java/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                Java设计模式
                             </a>
                         
                     </div>
@@ -397,28 +395,28 @@ public class Singleton{
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-10
+                    2021-07-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-09
+                    2023-07-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    81
+                    768
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -441,24 +439,52 @@ public class Singleton{
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>DCL 单例 用λ表达式来实现</p>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">import java.util.Optional;
+                <p>写单例模式,有五六种写法,但总结下来就三步</p>
+<ol>
+<li>构造方法私有化</li>
+<li>持有自身的静态引用</li>
+<li>提供获取自身引用的静态方法<br>对于构造方法私有化,目的就是为了防止在这个类的外部,被人显示的使用new关键字来进行对象的实例化,一个方法如果变成思私有的,那在这个类外部就没办法调用了。<br>持有自身的静态引用,那就是为了有朝一日我们能够创造一个唯一一个实例,然后把这个实例的唯一一个引用提供出来,这里非得用静态的原因,是因为我们提供获取这个引用的方法必须是静态的也就是第三点,而静态的方法里面用的东西必须是静态的所以我们持有的自身引用也必须是静态的。<br>而提供获取自身引用的静态方法,是因为我们没法显示的new一个实例出来了,那总得有获取这个唯一实例的方法嘛,不然怎么提供给第三方使用呢？</li>
+</ol>
+<p>第一种写法</p>
+<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">public class Singleton01 {
+    //1. 构造方法私有化
+    private Singleton01() {
+    }
 
-public class Singleton{
-  //1. 构造方法私有化
-  //2. 持有自身的静态引用
-  //3. 提供获取自身静态引用的公有静态方法
+    //2. 持有自身的静态引用，饿汉式初始化
+    // 这个地用静态的原因,是因为提供获取实例的方法是静态的，静态方法中用到的方法和变量必须是静态的
+    // 利用JVM的类加载机制,确保类中的静态变量只在类加载到内存中的时候执行一次的特性
+    private static final Singleton01 SINGLETON = new Singleton01();
 
-  private Singleton(){}
-  private static volatile Singleton singleton;
-  public static Singleton getInstance(){
-     return Optional.ofNullable(singleton).orElseGet(()-&gt;{
-       synchronized(Singleton.class){
-         return Optional.ofNullable(singleton).orElse(new Singleton());
-       }
-     });
-  }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    //3. 提供获取的静态方法
+    public static Singleton01 getInstance() {
+        return SINGLETON;
+    }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面这种写法叫做饿汉式,因为不是懒加载的,而是在类加载的过程中就实例化了,而不是在用的时候也即是getInstance的时候才实例化的。有些人就觉得这样一点都不优雅,因为他们觉得对象如果我不使用,你就不应该初始化去占用空间,而是要等到我实际使用的时候才初始化才叫完美。于是有了下面的懒汉式加载写法</p>
+<p>第二种写法</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton02</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 1. 构造方法私有化</span>
+    <span class="token keyword">private</span> <span class="token class-name">Singleton02</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 2. 持有自身的静态引用,懒加载</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton02</span> <span class="token constant">SINGLETON</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 3. 提供获取实例的静态方法</span>
+    <span class="token comment">// 但是这种是按方式有瑕疵，在并发场景下可能会有问题</span>
+    <span class="token comment">// 并发的时候，两个线程同时判断SINGLETON为null,同时最后那个赋值线程赋给的值</span>
+    <span class="token comment">// 如何证明只要用多线程初始化实例打印获取到的单例对象的hashcode不一样就行</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton02</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">SINGLETON</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token constant">SINGLETON</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token constant">SINGLETON</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>可是这种写法其实是错的,因为在并发情况下根本没办法保证返回的单例对象是同一个。于是我们很自然而然的想到加锁的方式</p>
 
                 
             </div>
@@ -485,7 +511,7 @@ public class Singleton{
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://chen-shang.github.io/2020/08/10/java/she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/">https://chen-shang.github.io/2020/08/10/java/she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/</a>
+                    <a href="https://chen-shang.github.io/2021/07/07/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-dan-li-mo-shi/">https://chen-shang.github.io/2021/07/07/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-dan-li-mo-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -525,6 +551,10 @@ public class Singleton{
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
                                 </a>
                             
                         </div>
@@ -607,31 +637,31 @@ public class Singleton{
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/08/11/ji-suan-ji-ji-chu/uml-lei-tu-yu-fa/">
+                <a href="/2021/07/12/si-kao/zhe-ci-zhu-r-kua-tuan-dui-xiang-mu-zhong-fan-de-cuo-wu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="UML类图语法">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="这次主R跨团队项目中犯得错误">
                         
-                        <span class="card-title">UML类图语法</span>
+                        <span class="card-title">这次主R跨团队项目中犯得错误</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            第一次当跨团队的主R，涉及3个团队，十三个系统，没什么经验
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-11
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-12
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-category">
-                                    计算机基础
+                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
+                                    思考
                                 </a>
                             
                             
@@ -656,35 +686,31 @@ public class Singleton{
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/10/java/she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/">
+                <a href="/2021/06/03/baseshell/shell-gao-ji-bian-cheng-ji-qiao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="重写设计模式-用λ实现工厂模式">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Shell高级编程技巧">
                         
-                        <span class="card-title">重写设计模式-用λ实现工厂模式</span>
+                        <span class="card-title">Shell高级编程技巧</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            工厂方法的目的就是生产对象，也就是封装new的过程。只要你把某个对象的new过程封装到某个类或者某个方法中广义上我们都可以叫工厂方法
+                            涵盖重定向、进程通信、并发控制、锁、单元测试、调试技巧等高级编程技巧
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-03
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
-                                </a>
-                            
-                            <a href="/categories/Java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
-                                    设计模式
+                            <a href="/categories/BaseShell/" class="post-category">
+                                    BaseShell
                                 </a>
                             
                             
@@ -696,6 +722,14 @@ public class Singleton{
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -756,7 +790,7 @@ public class Singleton{
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">104.8k</span>
+                        class="white-color">105.5k</span>
             
             
             

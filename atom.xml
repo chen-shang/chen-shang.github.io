@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-07-18T17:46:16.017Z</updated>
+  <updated>2023-07-19T16:21:14.538Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java针对会抛出异常的方法的单元测试</title>
+    <link href="https://chen-shang.github.io/2023/07/19/java/java-dan-yuan-ce-shi/java-zhen-dui-hui-pao-chu-yi-chang-de-fang-fa-de-dan-yuan-ce-shi/"/>
+    <id>https://chen-shang.github.io/2023/07/19/java/java-dan-yuan-ce-shi/java-zhen-dui-hui-pao-chu-yi-chang-de-fang-fa-de-dan-yuan-ce-shi/</id>
+    <published>2023-07-19T07:32:54.000Z</published>
+    <updated>2023-07-19T16:21:14.538Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我们写了一个方法,这个方法可能会抛出异常。针对这类方法,我们该怎么写单元测试呢？我们先思考一个问题，我们的测试用例是啥样的？&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用例一:</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://chen-shang.github.io/categories/Java/"/>
+    
+    <category term="Java单元测试" scheme="https://chen-shang.github.io/categories/Java/Java%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
+    
+    <category term="单元测试" scheme="https://chen-shang.github.io/tags/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql 中 not null 和 default 的使用</title>
@@ -47,7 +80,7 @@
     <link href="https://chen-shang.github.io/2023/07/14/linux/zhong-duan-sheng-cun-zhi-dao/zhong-duan-zhi-xing-bian-ma-zhuan-huan/"/>
     <id>https://chen-shang.github.io/2023/07/14/linux/zhong-duan-sheng-cun-zhi-dao/zhong-duan-zhi-xing-bian-ma-zhuan-huan/</id>
     <published>2023-07-14T02:58:18.000Z</published>
-    <updated>2023-07-15T15:53:06.008Z</updated>
+    <updated>2023-07-19T16:23:13.664Z</updated>
     
     
       
@@ -78,14 +111,16 @@
     <link href="https://chen-shang.github.io/2023/07/09/gong-ju-kong/hexo/hexo-zhi-chi-plantuml/"/>
     <id>https://chen-shang.github.io/2023/07/09/gong-ju-kong/hexo/hexo-zhi-chi-plantuml/</id>
     <published>2023-07-08T17:24:21.000Z</published>
-    <updated>2023-07-08T17:25:35.721Z</updated>
+    <updated>2023-07-19T16:25:02.313Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;pre class=&quot;line-numbers language-plant-uml&quot; data-language=&quot;plant-uml&quot;&gt;&lt;code class=&quot;language-plant-uml&quot;&gt;&lt;span class=&quot;token</summary>
+    <summary type="html">
+&lt;h1&gt;Forbidden&lt;/h1&gt;
+&lt;p&gt;You don&#39;t have permission to access</summary>
         
       
     
@@ -160,10 +195,10 @@
   
   <entry>
     <title>Shell 如何实现统计列数</title>
-    <link href="https://chen-shang.github.io/2023/07/04/linux/shell-ru-he-shi-xian-tong-ji-lie-shu/"/>
-    <id>https://chen-shang.github.io/2023/07/04/linux/shell-ru-he-shi-xian-tong-ji-lie-shu/</id>
+    <link href="https://chen-shang.github.io/2023/07/04/linux/shell/shell-ru-he-shi-xian-tong-ji-lie-shu/"/>
+    <id>https://chen-shang.github.io/2023/07/04/linux/shell/shell-ru-he-shi-xian-tong-ji-lie-shu/</id>
     <published>2023-07-04T09:07:40.000Z</published>
-    <updated>2023-07-05T01:51:14.630Z</updated>
+    <updated>2023-07-19T16:29:18.719Z</updated>
     
     
       
@@ -178,6 +213,8 @@
     
     
     <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -537,35 +574,6 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JDK动态代理 VS Cglib动态代理</title>
-    <link href="https://chen-shang.github.io/2022/03/28/java/jdk-dong-tai-dai-li-vs-cglib-dong-tai-dai-li/"/>
-    <id>https://chen-shang.github.io/2022/03/28/java/jdk-dong-tai-dai-li-vs-cglib-dong-tai-dai-li/</id>
-    <published>2022-03-28T09:14:34.000Z</published>
-    <updated>2022-04-09T02:28:30.194Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Cglib不是更强么，为什么有了Cglib还要有JDK动态代理存在的必要?&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;final Class 不支持, 因为CGLIB是生成子类来实现 AOP,所以final</summary>
-        
-      
-    
-    
-    
-    <category term="Java" scheme="https://chen-shang.github.io/categories/Java/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
     
   </entry>
   
