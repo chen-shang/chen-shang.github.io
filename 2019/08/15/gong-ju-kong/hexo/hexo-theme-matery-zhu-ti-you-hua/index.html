@@ -445,27 +445,27 @@
             <div id="articleContent">
                 <p>基于hexo-theme-matery做的个性化美化,仅代表个人审美,我们先来看几个效果截图</p>
 <center>
-  <img src="/hexo-theme-matery主题优化/1.jpg" width="100%">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/1.jpg" width="100%">
 </center>
 
 <center>
-  <img src="/hexo-theme-matery主题优化/2.jpeg" width="20%" align="left">
-  <img src="/hexo-theme-matery主题优化/3.jpeg" width="20%" align="left">
-  <img src="/hexo-theme-matery主题优化/4.jpeg" width="20%" align="left">
-  <img src="/hexo-theme-matery主题优化/5.jpeg" width="20%" align="left">
-  <img src="/hexo-theme-matery主题优化/6.jpeg" width="20%">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/2.jpeg" width="20%" align="left">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/3.jpeg" width="20%" align="left">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/4.jpeg" width="20%" align="left">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/5.jpeg" width="20%" align="left">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/6.jpeg" width="20%">
 </center>
 
 <h2 id="页面配色"><a href="#页面配色" class="headerlink" title="页面配色"></a>页面配色</h2><p>修改顶部导航栏颜色,底部状态栏颜色,顶部导航栏右上角github图标颜色<br>hexo-theme-matery原来主题Banner头图都是偏紫色系,因此个人觉得原来主题顶部和底部的绿色状态来显示的很突兀.对比如下:</p>
 <center>
-  <img src="/hexo-theme-matery主题优化/Jietu20191116-141343.jpg" width="49%" align="left">
-  <img src="/hexo-theme-matery主题优化/Jietu20191116-141733.jpg" width="49%">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-141343.jpg" width="49%" align="left">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-141733.jpg" width="49%">
 </center>
 
 
 <p>查找方法基本就是打开chrome浏览器的检查,选择想要查看的页面元素,然后看他的Style文件,找到关键词之后去hexo-theme-matery主题的css文件中查找后修改即可,这个基本没什么难度。</p>
 <center>
-  <img src="/hexo-theme-matery主题优化/css.jpg" width="80%">
+  <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/css.jpg" width="80%">
 </center>
 
 <p>打开 <code>matery/source/css/matery.css</code> 文件 搜索 <code>.bg-color</code> 大概在198行<br>修改<code>background-image</code>属性中<code>linear-gradient</code>内的值即可改成你自己想要的颜色</p>
@@ -517,7 +517,7 @@ index 8b051a7..1630d35 100755
              &amp;nbsp;&lt;i class="fas fa-chart-area"&gt;&lt;/i&gt;&amp;nbsp;站点总字数:&amp;nbsp;&lt;span
                  class="white-color"&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;&amp;nbsp;字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的"><a href="#背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的" class="headerlink" title="背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的"></a>背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的</h2><p>这个在<code>themes/matery/source/medias</code>目录下面,找到图标替换成同名的即可。<br>轮播图的位置在 <code>themes/matery/source/medias/banner</code> 只用放七张就好,代码逻辑是每天换一</p>
-<h2 id="去掉wordcloud功能"><a href="#去掉wordcloud功能" class="headerlink" title="去掉wordcloud功能"></a>去掉wordcloud功能</h2><img src="/hexo-theme-matery主题优化/Jietu20191116-144050.jpg" width="100%">
+<h2 id="去掉wordcloud功能"><a href="#去掉wordcloud功能" class="headerlink" title="去掉wordcloud功能"></a>去掉wordcloud功能</h2><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-144050.jpg" width="100%">
 
 <p>修改 layout/tags.ejs 内容为如下代码</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_partial/bg-cover'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
@@ -539,9 +539,9 @@ index 8b051a7..1630d35 100755
 
     <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_widget/post-charts'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
 <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>其目的是把标签、分类两个页面合二唯一,将所有关于文件分类统计的内容都放到标签页面，这样可以省出一个标签的位置来，顶部导航栏也不会太拥挤,效果如下<br><img src="/hexo-theme-matery主题优化/Jietu20191116-152930.jpg" width="100%"></p>
-<h2 id="添加百度统计"><a href="#添加百度统计" class="headerlink" title="添加百度统计"></a>添加百度统计</h2><p>添加百度统计可以看到自己网站的访问情况等等<br><img src="/hexo-theme-matery主题优化/Jietu20191116-144425.jpg" width="100%"><br>先去注册个百度统计账号，然后管理-代码管理里面可以看到安装方法<br><img src="/hexo-theme-matery主题优化/Jietu20191116-144711.jpg" width="100%"><br>同时在底部添加一个超链接可以直接连接到百度云统计,这样很方便的可以查看自己网站的访问情况<br><img src="/hexo-theme-matery主题优化/Jietu20191116-151007.jpg" width="100%"></p>
-<h2 id="自适应屏幕的时候字体大小"><a href="#自适应屏幕的时候字体大小" class="headerlink" title="自适应屏幕的时候字体大小"></a>自适应屏幕的时候字体大小</h2><p>修改<code>matery/source/css/matery.css</code>,这样在手机等小屏幕上显示的字体大小就正常了,否则会因为标题字太长导致换行<br><img src="/hexo-theme-matery主题优化/wron.jpg" width="100%"></p>
+<p>其目的是把标签、分类两个页面合二唯一,将所有关于文件分类统计的内容都放到标签页面，这样可以省出一个标签的位置来，顶部导航栏也不会太拥挤,效果如下<br><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-152930.jpg" width="100%"></p>
+<h2 id="添加百度统计"><a href="#添加百度统计" class="headerlink" title="添加百度统计"></a>添加百度统计</h2><p>添加百度统计可以看到自己网站的访问情况等等<br><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-144425.jpg" width="100%"><br>先去注册个百度统计账号，然后管理-代码管理里面可以看到安装方法<br><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-144711.jpg" width="100%"><br>同时在底部添加一个超链接可以直接连接到百度云统计,这样很方便的可以查看自己网站的访问情况<br><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-151007.jpg" width="100%"></p>
+<h2 id="自适应屏幕的时候字体大小"><a href="#自适应屏幕的时候字体大小" class="headerlink" title="自适应屏幕的时候字体大小"></a>自适应屏幕的时候字体大小</h2><p>修改<code>matery/source/css/matery.css</code>,这样在手机等小屏幕上显示的字体大小就正常了,否则会因为标题字太长导致换行<br><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/wron.jpg" width="100%"></p>
 <pre class="line-numbers language-css" data-language="css"><code class="language-css">---------------------------- source/css/matery.css ----------------------------
 
 <span class="token comment">/*全局基础样式*/</span>
@@ -603,7 +603,7 @@ index 8b051a7..1630d35 100755
         <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="每一一言"><a href="#每一一言" class="headerlink" title="每一一言"></a>每一一言</h2><img src="/hexo-theme-matery主题优化/Jietu20191116-151408.jpg" width="100%">
+<h2 id="每一一言"><a href="#每一一言" class="headerlink" title="每一一言"></a>每一一言</h2><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-151408.jpg" width="100%">
 上面 嗷呜 下的内容是动态生成的，增加网站的趣味性
 
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">--------------------------- layout/_widget/dream.ejs ---------------------------
@@ -614,7 +614,7 @@ index 8b051a7..1630d35 100755
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto<span class="token punctuation">"</span></span> <span class="token attr-name">defer</span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="每日诗词"><a href="#每日诗词" class="headerlink" title="每日诗词"></a>每日诗词</h2><img src="/hexo-theme-matery主题优化/Jietu20191116-151909.jpg" width="100%">
+<h2 id="每日诗词"><a href="#每日诗词" class="headerlink" title="每日诗词"></a>每日诗词</h2><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-151909.jpg" width="100%">
 
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">--------------------- layout/_partial/bg-cover-content.ejs ---------------------
 index c7d1b7f..121716f 100755
@@ -639,7 +639,7 @@ index c7d1b7f..121716f 100755
                  &lt;% } else { %&gt;
                  &lt;%= config.description %&gt;
                  &lt;% } %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="添加文章显示作者名字"><a href="#添加文章显示作者名字" class="headerlink" title="添加文章显示作者名字"></a>添加文章显示作者名字</h2><img src="/hexo-theme-matery主题优化/Jietu20191116-152321.jpg" width="100%">
+<h2 id="添加文章显示作者名字"><a href="#添加文章显示作者名字" class="headerlink" title="添加文章显示作者名字"></a>添加文章显示作者名字</h2><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-152321.jpg" width="100%">
 
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">---------------------- layout/_partial/post-detail.ejs -----------------------
 
@@ -1033,7 +1033,7 @@ index c7d1b7f..121716f 100755
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">105.7k</span>
+                        class="white-color">105.8k</span>
             
             
             

@@ -446,7 +446,7 @@
                 <p>这篇文章是我在学习并发相关知识的时候做的笔记,现重新整理记录以备不时之需。</p>
 <h1 id="计算机的发展"><a href="#计算机的发展" class="headerlink" title="计算机的发展"></a>计算机的发展</h1><p>软件技术的发展源于硬件性能的提升，从继电器到真空管到电子管到晶体管再到集成电路，我们的计算机也越来越小，我们的外设也越来越多越来越精巧。但终归逃脱不了冯诺依曼结构：计算机由 输入设备，控制器、运算器、存储器、输出设备 5部分组成，5大部分之间通过总线通信(交换信息)，彼此之间协调工作共同完成计算任务。我们把 运算器和控制器 合起来叫中央处理单元，也就是CPU。我们把寄存器、内存、硬盘等具备存储功能的设备统称为存储器。不要以为通用计算机模型只有 冯诺依曼结构，计算机发展的历程中还出现过一种被称之为 哈佛结构的通用计算机模型，它与 冯诺依曼结构的不同之处仅仅在于是不是把数据和指令存储在一起，如果存储器分成数据存储器和指令存储器，那就是哈佛结构，否则就是冯诺依曼结构。哈佛结构的好处就是可以实现指令和数据处理的并行，提高计算机的处理速度，但是也更消耗空间，同时计算机的设计复杂度也会有所提高，因此哈佛结构一般用在一些高精尖的计算机设计领域，而冯诺依曼计算机结构则以其设计简单而著称，一直沿用至今。</p>
 <center>
-  <img src="/并发学习笔记/计算机结构.jpg">
+  <img src="/2022/03/15/java/java-bing-fa-bian-cheng/bing-fa-xue-xi-bi-ji/计算机结构.jpg">
 </center>
 硬件技术发展的同时，软件技术开始发展，出现了程序员，程序员为了方便的控制计算机的各个硬件，开发出了操作系统，至此才能谈及并发相关的概念。先说一下我的理解，并发的概念是在有了操作系统之后才有的概念，为了实现计算任务的并发，提高系统的资源利用率才有了进程的概念，由于进程分配资源实在太宽泛了，操作系统在进程维度分配资源还是不够精细，因此才衍生出了线程，由于多线程之间会有频繁的上下文切换，不停的保存一个线程的现场然后加载另一个线程的现场，才发明了协程也叫纤程。一切都是为了并发，而并发又是为了提高系统的资源利用率(每时每刻我的设备都没有闲着)进而提高任务的执行速度。
 
@@ -696,7 +696,7 @@ public enum State {
 <p>主要应用是kill. kill的时候给进程发送一个信号，下一次cpu再次调度到进程的时候都是先查询信号列表，如果有，则优先响应信号中断。这是软中断的一种，因此是有延迟的。只有等到下一个cpu调度到的时候才会执行。</p>
 <h1 id="线程通信-1"><a href="#线程通信-1" class="headerlink" title="线程通信"></a>线程通信</h1><h2 id="通知机制"><a href="#通知机制" class="headerlink" title="通知机制"></a>通知机制</h2><p>Object.wait 你可以理解为在哪个线程中调用某个对象的wait方法，其实就是把这个线程挂到该对象的等待区中。一旦其他线程里面调用了该对象的notify或notifyAll方法就会到该对象的等待区里面唤醒一个或全部的线程。那这个对象肯定得是共享对象，由于要调用某个对象的wait一定要先锁定该对象，因此可以理解为先获取该对象的锁，然后才能wait和notify。如果没有获取到锁就调用wait或notify就会抛出 <code>java.lang.IllegalMonitorStateException: current thread is not owner</code>异常。</p>
 <center>
-  <img src="/并发学习笔记/wait.jpg">
+  <img src="/2022/03/15/java/java-bing-fa-bian-cheng/bing-fa-xue-xi-bi-ji/wait.jpg">
 </center>
 线程join的原理
 线程join的原理底层也是用的wait\notify机制。当在A线程里面调用B线程join方法的时候,调用了B线程对象的wait方法，按照刚才的理论，就会吧A线程挂到B线程对象的等待区中，当B线程执行完成的时候，操作系统会先看在线程对象的等待区里面有没有等待的线程，如果有那就先唤醒在退出。
@@ -791,7 +791,7 @@ public class Main {
 }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面这段代码可以验证指令重排序的存在</p>
 <center>
-  <img src="/并发学习笔记/重排序.jpg">
+  <img src="/2022/03/15/java/java-bing-fa-bian-cheng/bing-fa-xue-xi-bi-ji/重排序.jpg">
 </center>
 上面只是说有这样情况，但实际是不是这么执行的都是不确定的，那这样做不是会对程序执行有影响么，你想多了。无论编译器和cpu怎么优化，都必须保证一个语义和一个原则
 
@@ -1248,7 +1248,7 @@ public final native boolean compareAndSetInt(Object o, long offset,int expected,
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">105.7k</span>
+                        class="white-color">105.8k</span>
             
             
             

@@ -439,19 +439,19 @@
 <pre class="line-numbers language-none"><code class="language-none">客户姓名|证件类型|证件号码|信息报告日期|性别|生日|户籍地址|电话号码|国籍|学位|学历|教育信息更新日期|单位名称|单位地址|单位号码|职业信息更新日期|客户地址|家庭电话|地址更新日期|通讯地址|通讯地址更新日期|创建时间|更新时间<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>你如何知道一共有多少字段呢。<br>我问了一下我的同事，他们说吧这些内容放到一个文本编辑器里头打开，比如 vscode 或者 sublimText 或者 vim 然后搜索 <code>|</code> , 一般都会显示出来 <code>|</code> 的个数，然后+1就是字段的数量。这个方法也很好用,但感觉还是麻烦。</p>
 <center>
-  <img src="/Shell-如何实现统计列数/image.png">
+  <img src="/2023/07/04/linux/shell/shell-ru-he-shi-xian-tong-ji-lie-shu/image.png">
 </center>
 
 <p>我们如何用程序干这事儿呢。目前还没有发现直接统计列的工具，但是我知道一个统计行数的工具叫 wc 还有一个工具可以显示文本行数的工具叫 nl .还有 vim 也可以实现展示行数。那么如果我们能快速把这一行转换成列，直接数列数就知道有多少字段了吧。</p>
 <p>那么我们的问题就转变成了行专列的问题。但是现在的分隔符是 <code>|</code> ,我们只需要把他替换成回车就好了。如果用vim 我们输入替换指令 <code>%s/|/\r/g</code> 就可以吧指定的字符转换成回车换行。</p>
 <center>
-  <img src="/Shell-如何实现统计列数/image2.png">
+  <img src="/2023/07/04/linux/shell/shell-ru-he-shi-xian-tong-ji-lie-shu/image2.png">
 </center>
 
 <p>然后输入指令 <code>set no</code> 可以显示行号</p>
 <p>另外我们也可以通过 <code>sed</code> 指令替换的新式 <code>cat xxx.txt|sed 's/|/\n/g'|wc -l</code> 或者 <code>cat xxx.txt|sed 's/|/\n/g'|nl</code></p>
 <center>
-  <img src="/Shell-如何实现统计列数/image3.png">
+  <img src="/2023/07/04/linux/shell/shell-ru-he-shi-xian-tong-ji-lie-shu/image3.png">
 </center>
 
                 
@@ -746,7 +746,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">105.7k</span>
+                        class="white-color">105.8k</span>
             
             
             
