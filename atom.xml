@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>涓涓细流</title>
   
-  <subtitle>🐬无限可能</subtitle>
+  <subtitle>涓涓细流,辟阖汪洋</subtitle>
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-07-20T16:48:24.960Z</updated>
+  <updated>2023-07-20T16:56:48.644Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -21,15 +21,17 @@
     <link href="https://chen-shang.github.io/2023/07/21/gong-ju-kong/hexo/hexo-tu-pian-xian-shi/"/>
     <id>https://chen-shang.github.io/2023/07/21/gong-ju-kong/hexo/hexo-tu-pian-xian-shi/</id>
     <published>2023-07-20T16:44:07.000Z</published>
-    <updated>2023-07-20T16:48:24.960Z</updated>
+    <updated>2023-07-20T16:56:48.644Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;!!! 按照下面的指令安装可行,其他网上搜索的解决方案都不太靠谱。&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span</summary>
+    <summary type="html">&lt;div class=&quot;admonition note&quot;&gt;&lt;p class=&quot;admonition-title&quot;&gt;按照下面的指令安装可行,其他网上搜索的解决方案都不太靠谱。
+&lt;/p&gt;&lt;/div&gt;
+
+&lt;pre class=&quot;line-numbers language-bash&quot;</summary>
         
       
     

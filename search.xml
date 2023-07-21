@@ -8,7 +8,7 @@
       <link href="/2023/07/21/gong-ju-kong/hexo/hexo-tu-pian-xian-shi/"/>
       <url>/2023/07/21/gong-ju-kong/hexo/hexo-tu-pian-xian-shi/</url>
       
-        <content type="html"><![CDATA[<p>!!! 按照下面的指令安装可行,其他网上搜索的解决方案都不太靠谱。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-asset-image<span class="token function">npm</span> <span class="token function">install</span> https://github.com/7ym0n/hexo-asset-image <span class="token parameter variable">--save</span>hexo clean <span class="token operator">&amp;&amp;</span> hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<div class="admonition note"><p class="admonition-title">按照下面的指令安装可行,其他网上搜索的解决方案都不太靠谱。</p></div><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-asset-image<span class="token function">npm</span> <span class="token function">install</span> https://github.com/7ym0n/hexo-asset-image <span class="token parameter variable">--save</span>hexo clean <span class="token operator">&amp;&amp;</span> hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -815,9 +815,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
