@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Git万能后悔药, IT,技术,总结">
-    <meta name="description" content="可以通过`reflog`来进行恢复，前提是丢失的分支或commit信息没有被git gc清除">
+    <meta name="keywords" content="如何使用github搭建自己的maven私服, IT,技术,总结">
+    <meta name="description" content="github也可以当maven私服使用关键它是免费的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Git万能后悔药 | 涓涓细流</title>
+    <title>如何使用github搭建自己的maven私服 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -130,17 +130,6 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/contact" class="waves-effect waves-light">
-      
-      <i class="fas fa-comments" style="zoom: 0.6;"></i>
-      
-      <span>留言板</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
     <a href="/friends" class="waves-effect waves-light">
       
       <i class="fas fa-address-book" style="zoom: 0.6;"></i>
@@ -236,17 +225,6 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/contact" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-comments"></i>
-			
-			留言板
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
 		<a href="/friends" class="waves-effect waves-light">
 			
 			    <i class="fa-fw fas fa-address-book"></i>
@@ -332,15 +310,28 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Git万能后悔药</h1>
+                    <h1 class="description center-align post-title">如何使用github搭建自己的maven私服</h1>
                 </div>
             </div>
         </div>
@@ -366,6 +357,10 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
+                            <a href="/tags/Git/">
+                                <span class="chip bg-color">Git</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -374,7 +369,11 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Git/" class="post-category">
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
+                                工具控
+                            </a>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/" class="post-category">
                                 Git
                             </a>
                         
@@ -387,21 +386,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2016-09-11
+                    2021-08-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-09
+                    2023-07-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    428
+                    630
                 </div>
                 
 
@@ -431,95 +430,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><code>git reset --hard</code>往往用来移动 HEAD 指针,但这样会导致 commit 的内容被删除,往往后悔不已。</p>
-<p>可以通过reflog来进行恢复，前提是丢失的分支或commit信息没有被git gc清除,一般情况下gc对那些无用的object会保留很长时间后才清除的</p>
-<p>可以使用<code>git reflog</code>或<code>git log -g</code>命令来看到所有的操作日志。你执行的每一条git指令都有迹可循，而且可以回退到任意一步。可谓回滚操作中的万能钥匙了。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@bogon:~/learn/gitk <span class="token punctuation">[</span>master<span class="token punctuation">]</span>$ <span class="token function">git</span> reflog
-baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span>: reset: moving to baf1722
-add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>: reset: moving to HEAD^
-f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span>: reset: moving to HEAD^^
-baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">}</span>: reset: moving to baf1722
-f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span>: reset: moving to HEAD^^
-baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.
-0f02b7a HEAD@<span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>: merge feture/f1: Merge made by the <span class="token string">'recursive'</span> strategy.
-f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master
-3e54d52 HEAD@<span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">}</span>: commit: <span class="token number">5</span>
-<span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to feture/f2
-0f4153e HEAD@<span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>: commit: <span class="token number">4</span>
-add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">11</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f1
-f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">12</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.
-add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">}</span>: merge feture/f1: Fast-forward
-1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">14</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master
-<span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">15</span><span class="token punctuation">}</span>: commit: <span class="token number">3</span>
-1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">16</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f2
-1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">17</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to master
-add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">18</span><span class="token punctuation">}</span>: commit: <span class="token number">2</span>
-1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">19</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f1
-1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span>: commit: <span class="token number">1</span>
-9cb291d HEAD@<span class="token punctuation">{</span><span class="token number">21</span><span class="token punctuation">}</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>恢复的过程很简单</p>
-<ol>
-<li>通过<code>git log -g</code>或<code>git reflog</code> 命令来找到需要恢复的信息对应的 commitid，可以通过提交的时间和日期来辨别,</li>
-<li>找到对应的commitid</li>
-<li>通过 <code>git branch recover_branch commitid</code> 来建立一个新的分支</li>
-</ol>
-<p>这样，就把到commitid为止的代码、各种提交记录等信息都恢复到了recover_branch分支上了。</p>
+                <h1 id="maven如何拉取jar包"><a href="#maven如何拉取jar包" class="headerlink" title="maven如何拉取jar包"></a>maven如何拉取jar包</h1><p>当我们再 pom 文件中依赖了某个包后，如果在没有做特殊配置（也就是使用 maven 的默认配置）的情况下，Maven 会首先到本地仓库去搜索，如果本地仓库没有此依赖包，会到中央仓库获取，默认的中央仓库地址是 <a target="_blank" rel="noopener" href="http://repo1.maven.org/maven2%EF%BC%8C%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%9C%A8%E5%9B%BD%E5%A4%96%EF%BC%8C%E5%8F%AF%E6%83%B3%E8%80%8C%E7%9F%A5%EF%BC%8C%E9%80%9F%E5%BA%A6%E6%98%AF%E6%B2%A1%E5%8A%9E%E6%B3%95%E4%BF%9D%E8%AF%81%E7%9A%84%E3%80%82%E6%9C%89%E6%97%B6%E5%80%99%E8%BF%90%E6%B0%94%E4%B8%8D%E5%A5%BD%EF%BC%8C%E6%99%9A%E4%B8%8A%E6%8B%89%E4%B8%8B%E6%9D%A5%E4%B8%80%E4%B8%AA%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE%EF%BC%8C%E6%89%A7%E8%A1%8C">http://repo1.maven.org/maven2，服务器在国外，可想而知，速度是没办法保证的。有时候运气不好，晚上拉下来一个开源项目，执行</a> Maven 包安装，早上睡醒了一看，还没下载完，你说来气不。</p>
+<p>当然国内也有相应的仓库，比如阿里的，速度还是很好的，就相当于阿里帮你把常用的jar包下载下来缓存到了中国,方便我们国内的程序员使用。阿里的仓库就好比一个代理,你想要下载某个jar的时候只需要向阿里的仓库发起请求,如果阿里的仓库里面没有,他会负责去中央仓库 <a target="_blank" rel="noopener" href="http://repo1.maven.org/maven2">http://repo1.maven.org/maven2</a> 下载并缓存在阿里的仓库里面。使用教程在这里 <a target="_blank" rel="noopener" href="https://developer.aliyun.com/mvn/guide%EF%BC%8C%E5%A4%A7%E6%A6%82%E9%95%BF%E8%BF%99%E4%B8%AA%E6%A0%B7%E5%AD%90%E3%80%82">https://developer.aliyun.com/mvn/guide，大概长这个样子。</a></p>
+<center>
+  <img src="/2021/08/21/gong-ju-kong/git/ru-he-shi-yong-github-da-jian-zi-ji-de-maven-si-fu/aliyun1.jpg">
+</center>
+# 我们如何上传自己的jar包给其他人使用
+## 方式一
+我们如果要上传自己的jar,只需要把jar上传到国外的maven中央仓库就行了,使用的人只需要把对应的坐标写到pom文件中,然后从中央仓库去下载就好了嘛。但是如何把自己的jar上传到maven的中央仓库呢? 使用教程在这里 https://issues.sonatype.org/secure/Dashboard.jspa 还是比较麻烦的。考虑到后续的下载速度，我不是很想用这样的方式。
+## 方式二
+自己搭建maven私服,这个只有大公司可以搞搞,如果是散户个人或者创业初期的小团队还是算了吧。因为花钱买服务器不说，你自己还得搭建nexus等，搭建好后还有权限、账号、密码等一大坨需要配置的。
+## 方式三
+天下没有没费的午餐,只是你还没有发现罢了。
+这里我自己使用过 阿里的私服 以及 使用github的管理包的功能。阿里的私服使用教程。需要先申请阿里云的账号。
+
+<p>github也可以充当maven服务器,用来存储自己的jar包</p>
+<h3 id="Access-Token"><a href="#Access-Token" class="headerlink" title="Access Token"></a>Access Token</h3><p><a target="_blank" rel="noopener" href="https://docs.github.com/cn/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">官方文档</a></p>
+<h3 id="setting-xml-配置"><a href="#setting-xml-配置" class="headerlink" title="setting.xml 配置"></a>setting.xml 配置</h3><p><a target="_blank" rel="noopener" href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-apache-maven-registry">官方文档</a></p>
 
                 
             </div>
             <hr/>
 
             
-
-    <div class="reprint" id="reprint-statement">
-        
-            <div class="reprint__author">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-user">
-                        文章作者:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="/about" rel="external nofollow noreferrer">陈尚</a>
-                </span>
-            </div>
-            <div class="reprint__type">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-link">
-                        文章链接:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    <a href="https://chen-shang.github.io/2016/09/11/git/git-wan-neng-hou-hui-yao/">https://chen-shang.github.io/2016/09/11/git/git-wan-neng-hou-hui-yao/</a>
-                </span>
-            </div>
-            <div class="reprint__notice">
-                <span class="reprint-meta" style="font-weight: bold;">
-                    <i class="fas fa-copyright">
-                        版权声明:
-                    </i>
-                </span>
-                <span class="reprint-info">
-                    本博客所有文章除特別声明外，均采用
-                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
-                    许可协议。转载请注明来源
-                    <a href="/about" target="_blank">陈尚</a>
-                    !
-                </span>
-            </div>
-        
-    </div>
-
-    <script async defer>
-      document.addEventListener("copy", function (e) {
-        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
-        M.toast({html: toastHTML})
-      });
-
-      function navToReprintStatement() {
-        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
-      }
-    </script>
 
 
 
@@ -532,6 +465,10 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
+                                <a href="/tags/Git/">
+                                    <span class="chip bg-color">Git</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -540,7 +477,7 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
 <div id="article-share">
 
     
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
     <script src="/libs/share/js/social-share.min.js"></script>
     
 
@@ -596,6 +533,273 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
     
 
     
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zpykYxqrLC4qVar5tL3t0MAL-gzGzoHsz',
+        appKey: '3LhmIMSf9HYX5VXhD21hiPPG',
+        serverURLs: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
 
     
 
@@ -612,31 +816,35 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2016/09/15/wo-de-shi-ci/shuo-shu-ren/">
+                <a href="/2022/03/15/java/java-bing-fa-bian-cheng/bing-fa-xue-xi-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="说书人">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="并发学习笔记">
                         
-                        <span class="card-title">说书人</span>
+                        <span class="card-title">并发学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            街头巷角一桌一人侃侃而谈,书生意气却孙山名落又经年
+                            这篇文章是我在学习并发相关知识的时候做的笔记,现重新整理记录以备不时之需。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2016-09-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-15
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/" class="post-category">
-                                    我的诗词
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            <a href="/categories/Java/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="post-category">
+                                    Java并发编程
                                 </a>
                             
                             
@@ -648,6 +856,10 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -661,31 +873,35 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2016/09/11/git/git-hu-lue-yi-jing-commit-de-wen-jian/">
+                <a href="/2021/08/15/gong-ju-kong/hexo/hexo-cha-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Git忽略已经commit的文件">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="hexo插件">
                         
-                        <span class="card-title">Git忽略已经commit的文件</span>
+                        <span class="card-title">hexo插件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            .gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。
+                            hexo插件
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2016-09-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
+                                    工具控
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Hexo/" class="post-category">
+                                    Hexo
                                 </a>
                             
                             
@@ -699,6 +915,14 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
                         <span class="chip bg-color">原创</span>
                     </a>
                     
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -709,6 +933,43 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
 
 </div>
 
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('300')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 涓涓细流<br />'
+            + '文章作者: 陈尚<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
 
 
 <!-- 代码块功能依赖 -->
@@ -757,7 +1018,7 @@ add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">105.8k</span>
+                        class="white-color">106.2k</span>
             
             
             
@@ -984,6 +1245,16 @@ $(function () {
     
 
     <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f34c6ca18e751cd090a8864b66dda7fd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
     <!-- Baidu Push -->
 

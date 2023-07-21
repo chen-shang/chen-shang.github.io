@@ -499,6 +499,35 @@
   </entry>
   
   <entry>
+    <title>Java一些技术题目</title>
+    <link href="https://chen-shang.github.io/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/"/>
+    <id>https://chen-shang.github.io/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/</id>
+    <published>2022-07-21T16:52:54.000Z</published>
+    <updated>2023-07-21T17:08:20.168Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;1.spring需要哪些配置完成类的初始化，对象初始化流程的是怎样的，稍微阐述下resource有什么用&lt;br&gt;2.json格式的http请求需要如何设置header，400是什么原因&lt;br&gt;3.是否使用过事务，哪些情况使编程式事务不生效&lt;br&gt;4.hashmap是否线程安</summary>
+        
+      
+    
+    
+    
+    <category term="Java" scheme="https://chen-shang.github.io/categories/Java/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>用shell教你搞定各种查找算法-二分查找</title>
     <link href="https://chen-shang.github.io/2022/04/19/baseshell/shu-ju-jie-gou-suan-fa/shell-er-fen-cha-zhao/"/>
     <id>https://chen-shang.github.io/2022/04/19/baseshell/shu-ju-jie-gou-suan-fa/shell-er-fen-cha-zhao/</id>
@@ -552,36 +581,6 @@
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用shell教你搞定各种排序算法-归并排序</title>
-    <link href="https://chen-shang.github.io/2022/04/05/baseshell/shu-ju-jie-gou-suan-fa/shell-gui-bing-pai-xu/"/>
-    <id>https://chen-shang.github.io/2022/04/05/baseshell/shu-ju-jie-gou-suan-fa/shell-gui-bing-pai-xu/</id>
-    <published>2022-04-05T15:15:03.000Z</published>
-    <updated>2022-04-09T02:28:30.152Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;归并排序采用的是分治的思想。归就是归纳,并就是合并。&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="BaseShell" scheme="https://chen-shang.github.io/categories/BaseShell/"/>
-    
-    <category term="数据结构算法" scheme="https://chen-shang.github.io/categories/BaseShell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
   </entry>
   
