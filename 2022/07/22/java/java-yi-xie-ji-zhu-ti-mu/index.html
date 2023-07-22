@@ -357,12 +357,12 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                             <a href="/tags/Java/">
                                 <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
                             </a>
                         
                     </div>
@@ -400,14 +400,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    711
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    9 分
                 </div>
                 
 
@@ -437,6 +437,40 @@
 <p>java8 中有哪些函数特性<br>hashmap 中java8之后有哪些变化<br>redies有哪些新的数据类型<br>缓存雪崩、缓存击穿、缓存穿透<br>数据库的分库分表</p>
 <p>数据库索引的分类<br>服务治理框架的原理</p>
 <p>如何排查oom<br>spring spring mvc springboot<br>git flow</p>
+<h4 id="Java-中的final关键字有哪些用法？"><a href="#Java-中的final关键字有哪些用法？" class="headerlink" title="Java 中的final关键字有哪些用法？"></a>Java 中的final关键字有哪些用法？</h4><p>(1)修饰类：表示该类不能被继承；<br>(2)修饰方法：表示方法不能被重写；<br>(3)修饰变量：表示变量只能一次赋值以后值不能被修改（常量）。</p>
+<h4 id="阐述final、finally、finalize的区别。"><a href="#阐述final、finally、finalize的区别。" class="headerlink" title="阐述final、finally、finalize的区别。"></a>阐述final、finally、finalize的区别。</h4><p>答：</p>
+<ul>
+<li>final：修饰符（关键字）有三种用法：如果一个类被声明为final，意味着它不能再派生出新的子类，即不能被继承，因此它和abstract是反义词。将变量声明为final，可以保证它们在使用中不被改变，被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取不可修改。被声明为final的方法也同样只能使用，不能在子类中被重写。</li>
+<li>finally：通常放在try…catch…的后面构造总是执行代码块，这就意味着程序无论正常执行还是发生异常，这里的代码只要JVM不关闭都能执行，可以将释放外部资源的代码写在finally块中。</li>
+<li>finalize：Object类中定义的方法，Java中允许使用finalize()方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在销毁对象时调用的，通过重写finalize()方法可以整理系统资源或者执行其他清理工作。</li>
+</ul>
+<h3 id="常识"><a href="#常识" class="headerlink" title="常识"></a>常识</h3><h4 id="int-和-Integer-有什么区别"><a href="#int-和-Integer-有什么区别" class="headerlink" title="int 和 Integer 有什么区别?"></a>int 和 Integer 有什么区别?</h4><p>分析:这个题目问的其实是基本数据类型和对应包装类相关问题。不一定单单说区别,可以把自己联想到的都说出来。<br>首先先回答这个问题,<br>int 是 Java 中的基本数据类型,Integer 是引用数据类型。<br>Integer 是 int 类型的包装类,在编译器中实现了自动拆装箱操作,<br>int 类型的数据不能有方法,但 Integer 类型的数据可以有自己的方法, 也就是可以变量名.XX() 方法出来。<br>这也反映出 Java 并不是纯粹的面向对象的语言,一门纯粹的面向对象的语言是不会有基本数据类型之说的,所有的类型都应该是对象,Java 之所以这样设计是考虑到这些基本设计类型是比较常用的,单独出来有利于优化代码的性能,比如他的存储位置啊,基本数据类型就是直接存储在栈中或方法区中的,而引用数据类型的实例则是存储在堆中的。包装类是对 Java 基本类型面向对象特性的补充,是为了弥补基本数据类型不是对象这一缺陷来的。而由于有自动拆装箱的操作,Java 还在方法区的静态存储区中设计了缓存,如 int 类型的-127-&gt;+127的数,这使得在拆装箱的过程中会出现一些诡异的问题,不建议使用。</p>
+<h4 id="什么是函数式编程？"><a href="#什么是函数式编程？" class="headerlink" title="什么是函数式编程？"></a>什么是函数式编程？</h4><p>用函数式思想来编程就是函数式编程,用面向对象的思想来编程就是面向对象编程,要想理解什么是函数式编程,要先知道什么是函数.函数式数学中的概念,从一个状态与另一个状态的对应关系,或者从一个状态到另一个状态的映射就是函数,y=f(x) 这个 f 就是函数。就像谈什么是面向对象一样,继承、封装、多态、抽象一样,谈什么函数式编程就要说函数式编程的特点,函数编程的特点有很多:函数式第一公民、高阶函数、模式匹配、无副作用、不变性<br>。</p>
+<h4 id="创建对象时构造器的调用顺序是"><a href="#创建对象时构造器的调用顺序是" class="headerlink" title="创建对象时构造器的调用顺序是"></a>创建对象时构造器的调用顺序是</h4><p>先初始化静态成员，然后调用父类构造器，再初始化非静态成员，最后调用自身构造器。</p>
+<h3 id="冷门"><a href="#冷门" class="headerlink" title="冷门"></a>冷门</h3><h4 id="比较一下Java和JavaSciprt。"><a href="#比较一下Java和JavaSciprt。" class="headerlink" title="比较一下Java和JavaSciprt。"></a>比较一下Java和JavaSciprt。</h4><p>JavaScript 与Java是两个公司开发的不同的两个产品。Java 是原Sun Microsystems公司推出的面向对象的程序设计语言，特别适合于互联网应用程序开发；而JavaScript是Netscape公司的产品，为了扩展Netscape浏览器的功能而开发的一种可以嵌入Web页面中运行的基于对象和事件驱动的解释性语言。JavaScript的前身是LiveScript；而Java的前身是Oak语言。<br>下面对两种语言间的异同作如下比较：</p>
+<ul>
+<li>基于对象和面向对象：Java是一种真正的面向对象的语言，即使是开发简单的程序，必须设计对象；JavaScript是种脚本语言，它可以用来制作与网络无关的，与用户交互作用的复杂软件。它是一种基于对象（Object-Based）和事件驱动（Event-Driven）的编程语言，因而它本身提供了非常丰富的内部对象供设计人员使用。</li>
+<li>解释和编译：Java的源代码在执行之前，必须经过编译。JavaScript是一种解释性编程语言，其源代码不需经过编译，由浏览器解释执行。（目前的浏览器几乎都使用了JIT（即时编译）技术来提升JavaScript的运行效率）</li>
+<li>强类型变量和类型弱变量：Java采用强类型变量检查，即所有变量在编译之前必须作声明；JavaScript中变量是弱类型的，甚至在使用变量前可以不作声明，JavaScript的解释器在运行时检查推断其数据类型。</li>
+<li>代码格式不一样。</li>
+</ul>
+<p>补充：上面列出的四点是网上流传的所谓的标准答案。其实Java和JavaScript最重要的区别是一个是静态语言，一个是动态语言。目前的编程语言的发展趋势是函数式语言和动态语言。在Java中类（class）是一等公民，而JavaScript中函数（function）是一等公民，因此JavaScript支持函数式编程，可以使用Lambda函数和闭包（closure），当然Java 8也开始支持函数式编程，提供了对Lambda表达式以及函数式接口的支持。对于这类问题，在面试的时候最好还是用自己的语言回答会更加靠谱，不要背网上所谓的标准答案。</p>
+<p>理解面向对象编程思想，理解代码复用和接口的可扩展，有良好熟悉Java Core和开源框架，如SpringMVC, MyBatis, JUnit等的编码风格和文档能力<br>熟悉Web Service，Restful， TCP/UDP, 多线程等知识<br>熟悉JVM的内存机制，了解Java性能优化<br>熟悉数据库基本原理，熟悉MySQL或Oracle数据库，了解SQL的性能优化<br> 熟练使用Linux操作系统，能熟练编写Shell脚本<br> 具有扎实的java基础，熟悉分布式、<br> 熟悉使用Tomcat、Nginx等应用服务器软件；</p>
+<p>良好的故障分析以及快速解决能力<br>了解网络基本技术，熟悉TCP/IP协议工作原理<br>熟练使用linux下各种常用命令，能独立编写Shell/Perl/Python等脚本更好<br>熟悉UML及建模工具；<br>了解redis，memcached，mongodb等NoSQL数据库的使用；<br>熟悉HTTP、TCP/IP、面向对象及MVC、 ORM和对象缓存技术等相关知识；<br>精通spring/mybatis等框架，能够脱离IDE手写代码<br>精通nio、多线程</p>
+<p>熟悉Java Core和开源框架，如SpringMVC, MyBatis, JUnit等</p>
+<ol>
+<li>ArrayList和LinkedList区别？</li>
+<li>Spring实现注解方式？</li>
+<li>解释下Spring中AOP和IOC？</li>
+<li>Struts和Ibatis的区别？</li>
+<li>Springmvc的xml配置文件中有哪些常见标签？</li>
+<li>Bean标签实例化的方式？</li>
+<li>怎样实现外部接口？</li>
+<li>解释一下递归。使用递归需要注意什么？</li>
+<li>数据库中什么叫事物？索引有什么用？</li>
+</ol>
+<p>StringBuffer 与 StringBuilder 的区别? 与 String 互转?<br>StringBuffer 复写了 Object 的 toString 方法, 一个 StringBuffer 类型的对象直接调用 toString()方法即可转换为 String 类型的数据,记住 toString 是一个 Override 的一个方法,小括号<code>()</code>不能少。</p>
+<p>ConcurrentHashMap为何不支持null键和null值</p>
 
                 
             </div>
@@ -455,12 +489,12 @@
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                         </div>
@@ -1000,7 +1034,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">106.3k</span>
+                        class="white-color">108.3k</span>
             
             
             
