@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-07-21T18:04:30.133Z</updated>
+  <updated>2023-07-22T21:43:00.939Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chen-shang.github.io/2023/07/21/gong-ju-kong/hexo/hexo-tu-pian-xian-shi/"/>
     <id>https://chen-shang.github.io/2023/07/21/gong-ju-kong/hexo/hexo-tu-pian-xian-shi/</id>
     <published>2023-07-20T16:44:07.000Z</published>
-    <updated>2023-07-21T18:04:30.133Z</updated>
+    <updated>2023-07-22T21:43:00.939Z</updated>
     
     
       
@@ -58,7 +58,8 @@
       
         
         
-    <summary type="html">&lt;p&gt;生成字符画,我最常用的两个命令就是 &lt;code&gt;figlet&lt;/code&gt; 和 &lt;code&gt;toilet&lt;/code&gt;。具体使用可以通过ChatGPT进行学习。&lt;br&gt;下面是最最最基本的用法。&lt;/p&gt;
+    <summary type="html">&lt;p&gt;生成字符画,我最常用的两个命令就是 &lt;code&gt;figlet&lt;/code&gt; 和 &lt;code&gt;toilet&lt;/code&gt;。具体使用可以通过ChatGPT进行学习。&lt;br&gt;
+下面是最最最基本的用法。&lt;/p&gt;
 &lt;pre class=&quot;line-numbers</summary>
         
       
@@ -147,9 +148,11 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;如何查看文件编码&quot;&gt;&lt;a href=&quot;#如何查看文件编码&quot; class=&quot;headerlink&quot; title=&quot;如何查看文件编码&quot;&gt;&lt;/a&gt;如何查看文件编码&lt;/h1&gt;&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;通过vim查看&lt;/p&gt;
-&lt;pre class=&quot;line-numbers</summary>
+    <summary type="html">&lt;h1&gt;如何查看文件编码&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;通过vim查看&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;:set fileencoding&lt;span</summary>
         
       
     
@@ -458,7 +461,8 @@
       
         
         
-    <summary type="html">&lt;p&gt;接下来说说财富积累的思考。&lt;br&gt;经济基础决定上层建筑，经济基础就是积累的财富+财富积累的速度，上层建筑就是你的生活。积累的财富最重要的就是你的积蓄，财富积累的速度就是你挣钱的速度。你要想要你的生活更好，所谓更好其实就是相对于别人你有优越感(你可以轻易的买一辆车，轻易的买一</summary>
+    <summary type="html">&lt;p&gt;接下来说说财富积累的思考。&lt;br&gt;
+经济基础决定上层建筑，经济基础就是积累的财富+财富积累的速度，上层建筑就是你的生活。积累的财富最重要的就是你的积蓄，财富积累的速度就是你挣钱的速度。你要想要你的生活更好，所谓更好其实就是相对于别人你有优越感(你可以轻易的买一辆车，轻易的买</summary>
         
       
     
@@ -483,7 +487,8 @@
       
         
         
-    <summary type="html">&lt;h1 id=&quot;准备好一个自我介绍&quot;&gt;&lt;a href=&quot;#准备好一个自我介绍&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1&gt;准备好一个自我介绍&lt;/h1&gt;
+&lt;p&gt;大家好，我叫xxx，希望大家以后多多关照。这样的自我介绍个人觉得太过中规中矩。新人入职的自我介绍的目的其实就是让大家记住你，知道你是干啥的，所以我更愿意在名字和做的事情上来强调，以期加深同事对自己的印象，表达好了就能有一个好印象。&lt;/p</summary>
         
       
     
@@ -508,7 +513,10 @@
       
         
         
-    <summary type="html">&lt;p&gt;1.spring需要哪些配置完成类的初始化，对象初始化流程的是怎样的，稍微阐述下resource有什么用&lt;br&gt;2.json格式的http请求需要如何设置header，400是什么原因&lt;br&gt;3.是否使用过事务，哪些情况使编程式事务不生效&lt;br&gt;4.hashmap是否线程安</summary>
+    <summary type="html">&lt;p&gt;1.spring需要哪些配置完成类的初始化，对象初始化流程的是怎样的，稍微阐述下resource有什么用&lt;br&gt;
+2.json格式的http请求需要如何设置header，400是什么原因&lt;br&gt;
+3.是否使用过事务，哪些情况使编程式事务不生效&lt;br&gt;
+4.hashmap是否</summary>
         
       
     

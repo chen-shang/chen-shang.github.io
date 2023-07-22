@@ -235,75 +235,12 @@
         </li>
         
         
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
     </ul>
 </div>
 
 
         </div>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
         
     </nav>
 
@@ -435,12 +372,14 @@
 <blockquote>
 <p>已修改为跟踪-&gt;已跟踪为提交-&gt;已提交未发布</p>
 </blockquote>
-<h2 id="查看分支的状态"><a href="#查看分支的状态" class="headerlink" title="查看分支的状态"></a>查看分支的状态</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#是否有已修改未暂存的文件，有的话用 git add 命令暂存。是否有已暂存未提交的文件，有的话用git commit -m " " 命令提交。</span>
+<h2 id="查看分支的状态">查看分支的状态</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#是否有已修改未暂存的文件，有的话用 git add 命令暂存。是否有已暂存未提交的文件，有的话用git commit -m " " 命令提交。</span>
 $ <span class="token function">git</span> status
 
 <span class="token comment">#也许能提高速度</span>
 $ <span class="token function">git</span> status <span class="token parameter variable">-uno</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="查看分支情况"><a href="#查看分支情况" class="headerlink" title="查看分支情况"></a>查看分支情况</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#总共有那些分支，当前处于那个分支</span>
+<h2 id="查看分支情况">查看分支情况</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#总共有那些分支，当前处于那个分支</span>
 $ <span class="token function">git</span> branch
 <span class="token comment"># 查看远程分支</span>
 $ <span class="token function">git</span> branch <span class="token parameter variable">-r</span>
@@ -450,19 +389,22 @@ $ <span class="token function">git</span> branch <span class="token parameter va
 $ <span class="token function">git</span> branch <span class="token parameter variable">-d</span> +分支名
 <span class="token comment"># 重命名分支</span>
 $ <span class="token function">git</span> branch <span class="token parameter variable">-m</span> 原名 新名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-add-操作"><a href="#git-add-操作" class="headerlink" title="git add 操作"></a>git add 操作</h2><p>使用 “git add <file>…” 以包含要提交的内容</file></p>
+<h2 id="git-add-操作">git add 操作</h2>
+<p>使用 “git add <file>…” 以包含要提交的内容</file></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#添加已修改未暂存的所有文件，也就是跟踪所有文件。未跟踪的文件标记为红色，已跟踪的文件标记为绿色。</span>
 <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
 <span class="token comment">#添加指定的已修改未暂存的文件到暂存区。</span>
 <span class="token function">git</span> <span class="token function">add</span> + 文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="git-rm-操作"><a href="#git-rm-操作" class="headerlink" title="git rm 操作"></a>git rm 操作</h2><p>使用 “git rm –cached <file>…” 撤出暂存区</file></p>
-<h2 id="git-commit-操作"><a href="#git-commit-操作" class="headerlink" title="git commit 操作"></a>git commit 操作</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#提交代码到本地仓库，-m 中的m是message的意思，就是添加一个标记信息，方便查看提交历史，git log 可以查看代码提交日志。</span>
+<h2 id="git-rm-操作">git rm 操作</h2>
+<p>使用 “git rm --cached <file>…” 撤出暂存区</file></p>
+<h2 id="git-commit-操作">git commit 操作</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#提交代码到本地仓库，-m 中的m是message的意思，就是添加一个标记信息，方便查看提交历史，git log 可以查看代码提交日志。</span>
 <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"xxx"</span>
 
 <span class="token comment">#可以修改最后一次提交的信息</span>
 <span class="token function">git</span> commit <span class="token parameter variable">--amend</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-查看提交历史记录"><a href="#git-查看提交历史记录" class="headerlink" title="git 查看提交历史记录"></a>git 查看提交历史记录</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 如果不带任何参数，它会列出所有历史记录，最近的排在最上方，显示提交对象的哈希值，作者、提交日期、和提交说明。</span>
+<h2 id="git-查看提交历史记录">git 查看提交历史记录</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 如果不带任何参数，它会列出所有历史记录，最近的排在最上方，显示提交对象的哈希值，作者、提交日期、和提交说明。</span>
 $ <span class="token function">git</span> log <span class="token comment">#按q退出历史记录列表。</span>
 <span class="token comment"># 以选择显示前n条。</span>
 $ <span class="token function">git</span> log <span class="token parameter variable">-n</span>
@@ -480,7 +422,8 @@ $ <span class="token function">git</span> log <span class="token parameter varia
 注意作者与提交者的关系：作者是程序的修改者，提交者是代码提交人。
 如指定2天前，作者为“BeginMan”的提交含有关键字<span class="token string">'init'</span>的前2条记录：$ <span class="token function">git</span> log <span class="token parameter variable">--since</span><span class="token operator">=</span><span class="token number">2</span>.days <span class="token parameter variable">--author</span><span class="token operator">=</span>BeginMan <span class="token parameter variable">--grep</span><span class="token operator">=</span>init <span class="token parameter variable">-2</span>
 注意：上面选项后面的参数可以带单双引号，如--author<span class="token operator">=</span><span class="token string">"BeginMan"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-checkout-操作"><a href="#git-checkout-操作" class="headerlink" title="git checkout 操作"></a>git checkout 操作</h2><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># 切换到指定的分支
+<h2 id="git-checkout-操作">git checkout 操作</h2>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># 切换到指定的分支
 $ git checkout +分支名
 # 新建一个分支并切换到该分支，-b就是分支的意思，切换分支，没有的话就新建一个分支出来并切换到新分支，删除分支用 git branch -d +分支名。
 $ git checkout -b + 分支名
@@ -488,7 +431,8 @@ $ git checkout -b + 分支名
 $ git checkout -b + 分支名 远程分支
 # 放弃对文件的修改，回到上次提交之后本次修改之前的原始状态。
 $ git checkout + 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-暂存操作"><a href="#git-暂存操作" class="headerlink" title="git 暂存操作"></a>git 暂存操作</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># git栈，在切换分支的时候，当前分支有未完成提交的代码，但又不想提交，一方面是因为代码没有完成，一方面是因为这样会在log中打印许多无用的日志信息。但是不提交就无法切换分支，于是git便开辟出来一个临时的仓库，这个仓库可以暂时存放最新修改过的代码。</span>
+<h2 id="git-暂存操作">git 暂存操作</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># git栈，在切换分支的时候，当前分支有未完成提交的代码，但又不想提交，一方面是因为代码没有完成，一方面是因为这样会在log中打印许多无用的日志信息。但是不提交就无法切换分支，于是git便开辟出来一个临时的仓库，这个仓库可以暂时存放最新修改过的代码。</span>
 <span class="token comment"># git栈，可以存放多次修改，切换分支后这些存放的修改还在。</span>
 $ <span class="token function">git</span> stash <span class="token comment">#保存当前的工作进度,会分别对暂存区和工作区的状态进行保存。保存后工作区恢复到之前最后一次提交的状态</span>
 显示进度列表。此命令显然显示了git stash 可以多次保存工作进度，并在恢复时候选择。
@@ -504,7 +448,8 @@ $ <span class="token function">git</span> stash drop <span class="token punctuat
 $ <span class="token function">git</span> stash <span class="token function">clear</span>
 <span class="token comment"># 查看git栈中相对与当前分支的修改</span>
 $ <span class="token function">git</span> stash show <span class="token parameter variable">-p</span> stash<span class="token punctuation">{</span>?<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-标签操作"><a href="#git-标签操作" class="headerlink" title="git 标签操作"></a>git 标签操作</h2><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># 列显已有的标签
+<h2 id="git-标签操作">git 标签操作</h2>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># 列显已有的标签
 $ git tag = git tag -l
 # git标签分为两种类型：轻量标签和附注标签。轻量标签是指向提交对象的引用，附注标签则是仓库中的一个独立对象。建议使用附注标签。
 # 创建轻量标签,创建轻量标签不需要传递参数，直接指定标签名称即可。
@@ -522,12 +467,14 @@ $ git tag -a "标签名" 哈希码
 # 通常的git push不会将标签对象提交到git服务器，我们需要进行显式的操作：
 $ git push origin 标签名 # 将v0.1.2标签提交到git服务器
 $ git push origin –tags # 将本地所有标签一次性提交到git服务器<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-clean-操作"><a href="#git-clean-操作" class="headerlink" title="git clean 操作"></a>git clean 操作</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clean<span class="token punctuation">(</span>只是删除未跟踪的文件<span class="token punctuation">)</span>
+<h2 id="git-clean-操作">git clean 操作</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clean<span class="token punctuation">(</span>只是删除未跟踪的文件<span class="token punctuation">)</span>
 
 <span class="token parameter variable">-n</span>  显示将要删除的文件和目录
 <span class="token parameter variable">-f</span>  删除文件
 <span class="token parameter variable">-df</span> 删除文件和目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-reset-操作"><a href="#git-reset-操作" class="headerlink" title="git reset 操作"></a>git reset 操作</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 回到上次提交前的状态，本地的修改和暂存区的跟踪都在。这是最柔软的退回。</span>
+<h2 id="git-reset-操作">git reset 操作</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 回到上次提交前的状态，本地的修改和暂存区的跟踪都在。这是最柔软的退回。</span>
 $ <span class="token function">git</span> reset <span class="token parameter variable">--soft</span> HEAD^<span class="token punctuation">(</span>或SHA码<span class="token punctuation">)</span>:
 <span class="token comment"># 下面两个命令是一样的，回到上次暂存时的状态，本地的修改还在，但是暂存区中的跟踪已经不再，提交也不在了。</span>
 <span class="token comment"># HEAD^代表本次提交的父提交，可以换成任意次提交的sha码</span>
@@ -537,14 +484,17 @@ $ <span class="token function">git</span> reset <span class="token parameter var
 $ <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> HEAD^
 <span class="token comment"># add错了，从暂存区中删除，但保留更改,如果不加参数，代表删除所有暂存。</span>
 $ <span class="token function">git</span> reset HEAD +文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-revert"><a href="#git-revert" class="headerlink" title="git revert"></a>git revert</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 撤销某次的提交内容(Revert a commit by providing a new commit with contrary changes)</span>
+<h2 id="git-revert">git revert</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 撤销某次的提交内容(Revert a commit by providing a new commit with contrary changes)</span>
 $ <span class="token function">git</span> revert  <span class="token operator">&lt;</span>commit<span class="token operator">&gt;</span>              
 <span class="token comment"># 撤销某次提交的某个文件的内容(Revert a specific file from a previous commit)</span>
 $ <span class="token function">git</span> checkout <span class="token operator">&lt;</span>commit<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>file<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-pull"><a href="#git-pull" class="headerlink" title="git pull"></a>git pull</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> pull <span class="token parameter variable">-p</span> <span class="token comment"># 等同于下面的命令</span>
+<h2 id="git-pull">git pull</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> pull <span class="token parameter variable">-p</span> <span class="token comment"># 等同于下面的命令</span>
 $ <span class="token function">git</span> fetch <span class="token parameter variable">--prune</span> origin
 $ <span class="token function">git</span> fetch <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-分支对比"><a href="#git-分支对比" class="headerlink" title="git 分支对比"></a>git 分支对比</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看 dev 有，而 master 中没有的：</span>
+<h2 id="git-分支对比">git 分支对比</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看 dev 有，而 master 中没有的：</span>
 $ <span class="token function">git</span> log dev ^master
 <span class="token comment"># 查看 dev 中比 master 中多提交了哪些内容：</span>
 $ <span class="token function">git</span> log master<span class="token punctuation">..</span>dev
@@ -917,19 +867,19 @@ $ <span class="token function">git</span> log master<span class="token punctuati
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/">
+                <a href="/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Git万能后悔药">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Git忽略已经commit的文件">
                         
-                        <span class="card-title">Git万能后悔药</span>
+                        <span class="card-title">Git忽略已经commit的文件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            可以通过`reflog`来进行恢复，前提是丢失的分支或commit信息没有被git gc清除
+                            .gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。
                         
                     </div>
                     <div class="publish-info">
@@ -970,24 +920,24 @@ $ <span class="token function">git</span> log master<span class="token punctuati
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/">
+                <a href="/2016/04/28/gong-ju-kong/intellij-idea/idea-mei-ri-tip-9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Git忽略已经commit的文件">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Idea-Tips-9">
                         
-                        <span class="card-title">Git忽略已经commit的文件</span>
+                        <span class="card-title">Idea-Tips-9</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            .gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。
+                            在查找和替换两个功能之间切换是很容易的
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2016-09-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2016-04-28
                             </span>
                         <span class="publish-author">
                             
@@ -997,8 +947,8 @@ $ <span class="token function">git</span> log master<span class="token punctuati
                                     工具控
                                 </a>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/" class="post-category">
+                                    Intellij IDEA
                                 </a>
                             
                             
@@ -1010,6 +960,10 @@ $ <span class="token function">git</span> log master<span class="token punctuati
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Idea-Tips/">
+                        <span class="chip bg-color">Idea-Tips</span>
                     </a>
                     
                 </div>
@@ -1107,7 +1061,7 @@ $ <span class="token function">git</span> log master<span class="token punctuati
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">108.3k</span>
+                        class="white-color">108.4k</span>
             
             
             
@@ -1316,6 +1270,14 @@ $(function () {
     <script src="/js/matery.js"></script>
 
     
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    
 
     
     
@@ -1361,8 +1323,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

@@ -237,75 +237,12 @@
         </li>
         
         
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
     </ul>
 </div>
 
 
         </div>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
         
     </nav>
 
@@ -435,9 +372,11 @@
 |  _ \ / _` / __|/ _ \/ __| '_ \ / _ \ | |
 | |_) | (_| \__ \  __/\__ \ | | |  __/ | |
 |____/ \__,_|___/\___||___/_| |_|\___|_|_|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="首条规约"><a href="#首条规约" class="headerlink" title="首条规约"></a>首条规约</h1><p>本Shell规约规定</p>
+<h1>首条规约</h1>
+<p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】Linux 工具的使用不必死记硬背,不必死记硬背,不必死记硬背,即查即用即可。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="运行方式"><a href="#运行方式" class="headerlink" title="运行方式"></a>运行方式</h1><p>本Shell规约规定</p>
+<h1>运行方式</h1>
+<p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】脚本均以`.sh`结尾
 正例:BaseLog.sh、init.sh
 说明:以`.sh`结尾,使人可以一目了然知道该文件是脚本文件,而且用的解析器是sh或bash
@@ -447,7 +386,8 @@
 说明: 参考首行规约,这样可以不用每个文件都单独赋予可执行权限
 
 【强制】脚本执行要到脚本所在目录下执行<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h1><p>本Shell规约规定</p>
+<h1>命名风格</h1>
+<p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】脚本中变量、函数、文件的命名均不能以数字、下划线、$开头,也不能以下划线或者$结尾
 反例: _name / __name / $name / name_ / name$ / 5name
 说明: $作为Shell语言的取值符号,其他命名约束参考Java规约。
@@ -479,11 +419,12 @@ log_info "xxx" 在调用的时候类比于Java 的 log.info("xxx")
 【强制】文件名以 .sh 结尾
 【强制】使用两个空格进行缩进,不适用tab缩进
 【推荐】不在一行的时候使用 `\` 进行换行,使用 `\` 换行的原则是整齐美观<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="关于首行"><a href="#关于首行" class="headerlink" title="关于首行"></a>关于首行</h1><p>本Shell规约规定</p>
+<h1>关于首行</h1>
+<p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】推荐使用 `#!/usr/bin/env bash` 作为 shebang
 说明: 提高脚本的可以执性<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1 id="关于数组"><a href="#关于数组" class="headerlink" title="关于数组"></a>关于数组</h1><p>本Shell规约规定</p>
+<h1>关于数组</h1>
+<p>本Shell规约规定</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">【强制】传递数组使用 <span class="token string">"<span class="token variable">${list<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span> 形式
 【强制】接收数组使用 <span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">$*</span><span class="token punctuation">)</span> 形式
 正例:
@@ -494,7 +435,8 @@ log_info "xxx" 在调用的时候类比于Java 的 log.info("xxx")
 <span class="token punctuation">}</span>
 <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>list_size <span class="token string">"<span class="token variable">${list<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span><span class="token variable">)</span></span>
 assertEquals <span class="token string">"<span class="token variable">${size}</span>"</span> <span class="token string">"2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="关于变量"><a href="#关于变量" class="headerlink" title="关于变量"></a>关于变量</h1><p>本shell规约规定</p>
+<h1>关于变量</h1>
+<p>本shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】不要定义与环境变量重名的局部变量,会改变环境变量的值,进而影响后续脚本的执行。
 【推荐】如果要打破上一个推荐,修改后及时修改回来。例如 IFS 代表分隔符的情况。
 【强制】变量名和等号之间不能有空格,这可能和你熟悉的所有编程语言都不一样。
@@ -504,7 +446,8 @@ assertEquals <span class="token string">"<span class="token variable">${size}</s
 【推荐】能缩小变量作用域的就缩小变量的作用域,也就是能用local的就用local修饰
 【强制】认定为常量的必须用readonly修饰,相当于 Java 中的final
 【推荐】删除变量能不用就不用,一般没什么应用场景<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="关于函数"><a href="#关于函数" class="headerlink" title="关于函数"></a>关于函数</h1><p>本Shell规约规定</p>
+<h1>关于函数</h1>
+<p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】函数需有注释标识该函数的用途、入参变量、函数的返回值类型
 【强制】函数的注释 `#` 顶格写, 井号后面紧跟一个空格,对于该格式的要求是为了最后生成函数的帮助文档是用的(markdown语法),然后是注释的内容,注释尽量简短且在一行,最后跟的是函数的类型。
 【强制】函数内注释 `#` 与缩进格式对整齐
@@ -512,14 +455,16 @@ assertEquals <span class="token string">"<span class="token variable">${size}</s
 【强制】在函数内部首先使用有意义的变量名接受参数,然后在使用这些变量进行操作,禁止直接操作$1,$2等,除非这些变量只用一次
 【推荐】不推荐使用return方式返回,推荐使用echo方式返回结果
 【推荐】返回结果类型是Boolean类型,也就是说函数的功能是起判断作用,返回结果是真或者假的时候使用才显示 return 返回结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="关于注释"><a href="#关于注释" class="headerlink" title="关于注释"></a>关于注释</h1><p>本Shell规约规定</p>
+<h1>关于注释</h1>
+<p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】认定为常函数的必须用readonly修饰,相当于 Java 中的final。
 【推荐】使用关键字 `function` 显示定义的函数为 public 的函数,可以供 外部脚本以 `sh 脚本 函数 函数入参` 的形式调用,可以认为成Java当中的public的方法
 【推荐】未使用关键字 `function` 显示定义的函数为 private 的函数, 仅供本脚本内部调用,可以认为成Java中的私有方法,注意这种private是人为规定的,并不是Shell的语法,不推荐以 `sh 脚本 函数 函数入参` 的形式调用,注意是不推荐而不是不能。
 【强制】将函数分门别类保存在不同的脚本中
 【推荐】使用source的方式引入另一个脚本中的函数,不推荐使用`脚本 函数名 函数参数`的形式调用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>说明:本Shell规约这样做的目的就在于使脚本具有一定的封装性,看到 <code>function</code> 修饰的就知道这个函数能被外部调用, 没有被修饰的函数就仅供内部调用。你就知道如果你修改的函数的影响范围. 如果是 被function 修饰的函数,修改后可能影响到外部调用他的脚本, 而修改未被function修饰的函数的时候,仅仅影响本文件中其他函数。</p>
-<h1 id="关于分支"><a href="#关于分支" class="headerlink" title="关于分支"></a>关于分支</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HEAD_KEYWORD parameters<span class="token punctuation">;</span> BODY_BEGIN
+<h1>关于分支</h1>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HEAD_KEYWORD parameters<span class="token punctuation">;</span> BODY_BEGIN
   BODY_COMMANDS
 BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
@@ -530,14 +475,14 @@ BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 【推荐】parameters部分test表达式变量取值都用""包裹；
 【推荐】parameters部分test表达式统一使用=等符号, 在明确是数字的时候可以使用 -eq等参数；
 【强制】if\while\until 后面的判断 使用 双中括号`[[]]`<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="关于数学计算"><a href="#关于数学计算" class="headerlink" title="关于数学计算"></a>关于数学计算</h1><p>本Shell规约规定</p>
+<h1>关于数学计算</h1>
+<p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】明确知道变量是整数,计算使用$(())包裹计算,(())内对变量的操作不用$取值
 正确 a=$((1+1))
 反例 a=$(($a++))
 【推荐】复杂计算使用bc计算器,前提是得安装bc计算器命令<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】建议写单元测试<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<h1>单元测试</h1>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】建议写单元测试<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>未完待续,明天再写</p>
 
                 
@@ -1171,7 +1116,7 @@ BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">108.3k</span>
+                        class="white-color">108.4k</span>
             
             
             
@@ -1380,6 +1325,14 @@ $(function () {
     <script src="/js/matery.js"></script>
 
     
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    
 
     
     
@@ -1425,8 +1378,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>

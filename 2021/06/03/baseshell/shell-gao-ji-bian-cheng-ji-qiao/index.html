@@ -237,75 +237,12 @@
         </li>
         
         
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
     </ul>
 </div>
 
 
         </div>
 
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
         
     </nav>
 
@@ -434,8 +371,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、Shell重定向"><a href="#一、Shell重定向" class="headerlink" title="一、Shell重定向"></a>一、Shell重定向</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>就像我们平时写的程序一样，一段程序会处理外部的输入，然后将运算结果输出到指定的位置。在交互式的程序中，输入来自用户的键盘和鼠标，结果输出到用户的屏幕，甚至播放设备中。shell脚本也一样，但是我们一般在使用shell命令的时候，更多地还是通过键盘输入，然后在屏幕上查看命令的执行结果。如果某些情况下，我们需要将shell命令的执行结果存储到文件中，那么我们就需要使用输入输出的重定向功能。</p>
-<h2 id="文件描述符"><a href="#文件描述符" class="headerlink" title="文件描述符"></a>文件描述符</h2><p>当执行shell命令时，会默认打开3个文件，每个打开文件都有对应的文件描述符来方便我们使用：</p>
+                <h1>一、Shell重定向</h1>
+<h2 id="介绍">介绍</h2>
+<p>就像我们平时写的程序一样，一段程序会处理外部的输入，然后将运算结果输出到指定的位置。在交互式的程序中，输入来自用户的键盘和鼠标，结果输出到用户的屏幕，甚至播放设备中。shell脚本也一样，但是我们一般在使用shell命令的时候，更多地还是通过键盘输入，然后在屏幕上查看命令的执行结果。如果某些情况下，我们需要将shell命令的执行结果存储到文件中，那么我们就需要使用输入输出的重定向功能。</p>
+<h2 id="文件描述符">文件描述符</h2>
+<p>当执行shell命令时，会默认打开3个文件，每个打开文件都有对应的文件描述符来方便我们使用：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangdeMacBook-Pro:~$ <span class="token function">lsof</span> <span class="token parameter variable">-p</span> <span class="token variable">$$</span>
 COMMAND   PID      <span class="token environment constant">USER</span>   FD   TYPE DEVICE SIZE/OFF                NODE NAME
 <span class="token function">bash</span>    <span class="token number">25660</span> chenshang  cwd    DIR    <span class="token number">1,4</span>     <span class="token number">1504</span>         <span class="token number">12884930381</span> /Users/chenshang
@@ -453,7 +393,8 @@ COMMAND   PID      <span class="token environment constant">USER</span>   FD   T
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>cwd</td>
 <td>表示 current  work dirctory,即：应用程序的当前工作目录，这是该应用程序启动的目录，除非它本身对这个目录进行更改</td>
 </tr>
@@ -521,7 +462,8 @@ COMMAND   PID      <span class="token environment constant">USER</span>   FD   T
 <td>2</td>
 <td>表示标准错误</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>我们现在先关心 0、1、2 这三个文件描述符</p>
 <table>
 <thead>
@@ -532,7 +474,8 @@ COMMAND   PID      <span class="token environment constant">USER</span>   FD   T
 <th>对应文件句柄位置</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>标准输入（standard input）</td>
 <td>0</td>
 <td>从键盘获得输入</td>
@@ -550,23 +493,34 @@ COMMAND   PID      <span class="token environment constant">USER</span>   FD   T
 <td>输出到屏幕（即控制台）</td>
 <td>/proc/self/fd/2</td>
 </tr>
-</tbody></table>
-<h2 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h2><p>我们使用&gt;或者&gt;&gt;对输出进行重定向。符号的左边表示文件描述符，如果没有的话表示1，也就是标准输出，符号的右边可以是一个文件，也可以是一个输出设备。当使用&gt;时，会判断右边的文件存不存在，如果存在的话就先删除，然后创建一个新的文件，不存在的话则直接创建。但是当使用&gt;&gt;进行追加时，则不会删除原来已经存在的文件。语法如下所示:</p>
+</tbody>
+</table>
+<h2 id="输出重定向">输出重定向</h2>
+<p>我们使用&gt;或者&gt;&gt;对输出进行重定向。符号的左边表示文件描述符，如果没有的话表示1，也就是标准输出，符号的右边可以是一个文件，也可以是一个输出设备。当使用&gt;时，会判断右边的文件存不存在，如果存在的话就先删除，然后创建一个新的文件，不存在的话则直接创建。但是当使用&gt;&gt;进行追加时，则不会删除原来已经存在的文件。语法如下所示:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">command1 <span class="token operator">&gt;</span> file1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h2><p>我们使用&lt;对输入做重定向，如果符号左边没有写值，那么默认就是0。和输出重定向一样，Unix 命令也可以从文件获取输入，语法为：</p>
+<h2 id="输入重定向">输入重定向</h2>
+<p>我们使用&lt;对输入做重定向，如果符号左边没有写值，那么默认就是0。和输出重定向一样，Unix 命令也可以从文件获取输入，语法为：</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">command1 &lt; file1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="Here-Document"><a href="#Here-Document" class="headerlink" title="Here Document"></a>Here Document</h2><p>Here Document 是 Shell 中的一种特殊的重定向方式，用来将输入重定向到一个交互式 Shell 脚本或程序。<br>它的基本的形式如下：</p>
+<h2 id="Here-Document">Here Document</h2>
+<p>Here Document 是 Shell 中的一种特殊的重定向方式，用来将输入重定向到一个交互式 Shell 脚本或程序。<br>
+它的基本的形式如下：</p>
 <pre class="line-numbers language-Bash" data-language="Bash"><code class="language-Bash">command &lt;&lt; delimiter
     document
 delimiter<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>它的作用是将两个 delimiter 之间的内容(document) 作为输入传递给 command。</p>
-<p>注意：<br>结尾的delimiter 一定要顶格写，前面不能有任何字符，后面也不能有任何字符，包括空格和 tab 缩进。<br>开始的delimiter前后的空格会被忽略掉。</p>
-<h2 id="重定向绑定"><a href="#重定向绑定" class="headerlink" title="重定向绑定"></a>重定向绑定</h2><p>好了，在有了以上知识的基础上，我们经常见到这样的写法 <code>&gt;/dev/null 2&gt;&amp;1</code>。这条命令其实分为两命令，一个是<code>&gt;/dev/null</code>，另一个是<code>2&gt;&amp;1</code>。</p>
-<h4 id="dev-null"><a href="#dev-null" class="headerlink" title=">/dev/null"></a><code>&gt;/dev/null</code></h4><p>这条命令的作用是将标准输出1重定向到<code>/dev/null</code>中。<code>/dev/null</code>代表linux的空设备文件，所有往这个文件里面写入的内容都会丢失，俗称“黑洞”。那么执行了<code>&gt;/dev/null</code>之后，标准输出就会不再存在，没有任何地方能够找到输出的内容。</p>
-<h4 id="2-1"><a href="#2-1" class="headerlink" title="2>&amp;1"></a><code>2&gt;&amp;1</code></h4><p>这条命令用到了重定向绑定，采用&amp;可以将两个输出绑定在一起。这条命令的作用是错误输出将和标准输出同用一个文件描述符，说人话就是错误输出将会和标准输出输出到同一个地方。</p>
+<p>注意：<br>
+结尾的delimiter 一定要顶格写，前面不能有任何字符，后面也不能有任何字符，包括空格和 tab 缩进。<br>
+开始的delimiter前后的空格会被忽略掉。</p>
+<h2 id="重定向绑定">重定向绑定</h2>
+<p>好了，在有了以上知识的基础上，我们经常见到这样的写法 <code>&gt;/dev/null 2&gt;&amp;1</code>。这条命令其实分为两命令，一个是<code>&gt;/dev/null</code>，另一个是<code>2&gt;&amp;1</code>。</p>
+<h4 id="dev-null"><code>&gt;/dev/null</code></h4>
+<p>这条命令的作用是将标准输出1重定向到<code>/dev/null</code>中。<code>/dev/null</code>代表linux的空设备文件，所有往这个文件里面写入的内容都会丢失，俗称“黑洞”。那么执行了<code>&gt;/dev/null</code>之后，标准输出就会不再存在，没有任何地方能够找到输出的内容。</p>
+<h4 id="2-1"><code>2&gt;&amp;1</code></h4>
+<p>这条命令用到了重定向绑定，采用&amp;可以将两个输出绑定在一起。这条命令的作用是错误输出将和标准输出同用一个文件描述符，说人话就是错误输出将会和标准输出输出到同一个地方。</p>
 <p>linux在执行shell命令之前，就会确定好所有的输入输出位置，并且从左到右依次执行重定向的命令，所以<code>&gt;/dev/null 2&gt;&amp;1</code>的作用就是让标准输出重定向到<code>/dev/null</code>中（丢弃标准输出），然后错误输出由于重用了标准输出的描述符，所以错误输出也被定向到了<code>/dev/null</code>中，错误输出同样也被丢弃了。执行了这条命令之后，该条shell命令将不会输出任何信息到控制台，也不会有任何信息输出到文件中。</p>
 <p>这样的用法主要使用在我们想执行某条指令，而且也知道这条指令不会产生错误或者我们就根本不关心这条这令的执行结果的时候使用，例如我们先清空一下内存，然后在执行某某操作，我们清理内存的目的只是让程序执行的空间多一点，执行的速度快一点，至于是否真的释放了多少空间，我们是不关心，这时候就可以用这个命令。</p>
-<p>在BaseShell中的实战应用<br>在函数中既想打印日志,有不想影响函数的返回值,因为我么知道一个函数中的标准输出都将作为函数的返回值输出,即使是中间的日志结果。为此我们可以用到重定向来解决此问题.</p>
+<p>在BaseShell中的实战应用<br>
+在函数中既想打印日志,有不想影响函数的返回值,因为我么知道一个函数中的标准输出都将作为函数的返回值输出,即使是中间的日志结果。为此我们可以用到重定向来解决此问题.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">log_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${log_level}</span> <span class="token parameter variable">-ge</span> <span class="token number">2</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
     <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\\">\\</span>033[37m[<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y-%m-%dT%H:%M:%S<span class="token variable">)</span></span>][<span class="token variable">$$</span> <span class="token variable">$BASHPID</span>] [INFO] [<span class="token variable">${FUNCNAME<span class="token punctuation">[</span>1<span class="token punctuation">]</span>}</span>]:    <span class="token variable">$*</span><span class="token entity" title="\\">\\</span>033[0m"</span><span class="token operator">|</span>trim <span class="token operator"><span class="token file-descriptor important">1</span>&gt;</span><span class="token file-descriptor important">&amp;2</span>
@@ -574,13 +528,15 @@ delimiter<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
     <span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"[<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y-%m-%dT%H:%M:%S<span class="token variable">)</span></span>][<span class="token variable">$$</span> <span class="token variable">$BASHPID</span>] [INFO] [<span class="token variable">${FUNCNAME<span class="token punctuation">[</span>1<span class="token punctuation">]</span>}</span>]:    <span class="token variable">$*</span>"</span><span class="token operator">|</span>trim <span class="token operator">&gt;&gt;</span> <span class="token string">"<span class="token variable">${LOG_DIR}</span>/<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y-%m-%d<span class="token variable">)</span></span>.log"</span>  <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
   <span class="token keyword">fi</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
 <p>上面的 2&gt;&amp;1 会把所有的标准输出当成标准错误输出,标准错误是不会被认为函数的返回值的。</p>
-<h1 id="二、进程间通信"><a href="#二、进程间通信" class="headerlink" title="二、进程间通信"></a>二、进程间通信</h1><p>进程间通信，无外乎 管道、有名管道、共享存储、信号、信号量、消息队列、套接字 这几种，进程间通信从来都不能直接通信，必须找一个中间媒介。中间媒介就是上面说的几种，他们都要一个特点就是：一个进程的信息先存起来，然后另一个进程在读出来，这样就达到了进程间通信的目的。线程间通信也一样，我们学Java的多线程的时候简单很多，只有两种，想想线程间是怎么通信的：什么共享内存啊（就是搞个votail的共享变量，类似进程通信的共享存储）、什么wait、notify啊，Java叫通知机制（就是搞个信号，类似进程通信的信号）</p>
-<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>管道是进程间通信的主要手段之一。一个管道实际上就是个只存在于内存中的文件，对这个文件的操作要通过两个已经打开文件进行，它们分别代表管道的两端。管道是一种特殊的文件，它不属于某一种文件系统，而是一种独立的文件系统，有其自己的数据结构。根据管道的适用范围将其分为：无名管道和命名管道。</p>
-<h3 id="无名管道"><a href="#无名管道" class="headerlink" title="无名管道"></a>无名管道</h3><p>主要用于父进程与子进程之间，或者两个兄弟进程之间。在linux系统中可以通过系统调用建立起一个单向的通信管道，且这种关系只能由父进程来建立。管道是将前一个命令的输出作为后一个命令的输入 <code>命令1 | 命令2 | 命令3 | ...</code></p>
-<p>在BaseShell中的实战应用<br>如何写一个命令,让他支持使用管道的形式接受参数呢。例如 我想计算某个字符串的 hashCode. 我期望的形式是 <code>echo " 123 "|hashCode</code> 然后就能得到结果。 而在计算 hashCode 之前，我还期望先trim一下。所以我更希望的写法是 <code>echo " 123 "|trim|hashCode</code>。我的BaseShell是如下实现的</p>
+<h1>二、进程间通信</h1>
+<p>进程间通信，无外乎 管道、有名管道、共享存储、信号、信号量、消息队列、套接字 这几种，进程间通信从来都不能直接通信，必须找一个中间媒介。中间媒介就是上面说的几种，他们都要一个特点就是：一个进程的信息先存起来，然后另一个进程在读出来，这样就达到了进程间通信的目的。线程间通信也一样，我们学Java的多线程的时候简单很多，只有两种，想想线程间是怎么通信的：什么共享内存啊（就是搞个votail的共享变量，类似进程通信的共享存储）、什么wait、notify啊，Java叫通知机制（就是搞个信号，类似进程通信的信号）</p>
+<h2 id="管道">管道</h2>
+<p>管道是进程间通信的主要手段之一。一个管道实际上就是个只存在于内存中的文件，对这个文件的操作要通过两个已经打开文件进行，它们分别代表管道的两端。管道是一种特殊的文件，它不属于某一种文件系统，而是一种独立的文件系统，有其自己的数据结构。根据管道的适用范围将其分为：无名管道和命名管道。</p>
+<h3 id="无名管道">无名管道</h3>
+<p>主要用于父进程与子进程之间，或者两个兄弟进程之间。在linux系统中可以通过系统调用建立起一个单向的通信管道，且这种关系只能由父进程来建立。管道是将前一个命令的输出作为后一个命令的输入 <code>命令1 | 命令2 | 命令3 | ...</code></p>
+<p>在BaseShell中的实战应用<br>
+如何写一个命令,让他支持使用管道的形式接受参数呢。例如 我想计算某个字符串的 hashCode. 我期望的形式是 <code>echo " 123 "|hashCode</code> 然后就能得到结果。 而在计算 hashCode 之前，我还期望先trim一下。所以我更希望的写法是 <code>echo " 123 "|trim|hashCode</code>。我的BaseShell是如下实现的</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 这是一个辅助函数,意思是被其他函数调用的函数,以扩展原来函数的功能</span>
 <span class="token comment"># 1. 有参数的时候直接走 _action 否则执行2</span>
 <span class="token comment"># 2. 从标准输出中获取参数,并执行 _action</span>
@@ -630,11 +586,15 @@ delimiter<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
   pip <span class="token string">"<span class="token variable">${param}</span>"</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我么可以看到 pip 函数，此外 BaseShell中还有实现 pip2 和 pip3 等既可以接收管道入参也可以接收直接入参</p>
-<h3 id="有名管道"><a href="#有名管道" class="headerlink" title="有名管道"></a>有名管道</h3><p>命名管道是建立在实际的磁盘介质或文件系统（而不是只存在于内存中）上有自己名字的文件，任何进程可以在任何时间通过文件名或路径名与该文件建立联系。为了实现命名管道，引入了一种新的文件类型——FIFO文件（遵循先进先出的原则）。实现一个命名管道实际上就是实现一个FIFO文件。命名管道一旦建立，之后它的读、写以及关闭操作都与普通管道完全相同。虽然FIFO文件的inode节点在磁盘上，但是仅是一个节点而已，文件的数据还是存在于内存缓冲页面中，和普通管道相同。管道可以想象成一个一端进入一端读取的队列,可以理解成一个先进先出的数据结构，通过 mkfifo 可以创建一个有名管道</p>
+<h3 id="有名管道">有名管道</h3>
+<p>命名管道是建立在实际的磁盘介质或文件系统（而不是只存在于内存中）上有自己名字的文件，任何进程可以在任何时间通过文件名或路径名与该文件建立联系。为了实现命名管道，引入了一种新的文件类型——FIFO文件（遵循先进先出的原则）。实现一个命名管道实际上就是实现一个FIFO文件。命名管道一旦建立，之后它的读、写以及关闭操作都与普通管道完全相同。虽然FIFO文件的inode节点在磁盘上，但是仅是一个节点而已，文件的数据还是存在于内存缓冲页面中，和普通管道相同。管道可以想象成一个一端进入一端读取的队列,可以理解成一个先进先出的数据结构，通过 mkfifo 可以创建一个有名管道</p>
 <p>我们执行 <code>mkfifo queue</code> 就可以创建一个有名管道,这个有名管道和上面的匿名管道一样,只不过匿名管道,么有名字,有名管道有名字而已。匿名管道主要应用与父子进程之间,而有名管道除了用在父子进程上之外,还可以用在兄弟进程之间。有名管道的特点就是,一端写入,如果另一端么有人读取的话,那么写入端阻塞。同理，如果一段读取，另一端写入，如果没有写入，那么读取端就会阻塞。利用这个特性我们可以用于控制进程并行的数量，模拟多线程控制。</p>
-<p>在BaseShell中的实战应用<br>并发工具包 Concurrent 中的实现</p>
-<h3 id="管道实现机制"><a href="#管道实现机制" class="headerlink" title="管道实现机制"></a>管道实现机制</h3><p>管道是由内核管理的一个缓冲区，相当于我们放入内存中的一个纸条。管道的一端连接一个进程的输出。这个进程会向管道中放入信息。管道的另一端连接一个进程的输入，这个进程取出被放入管道的信息。一个缓冲区不需要很大一般为4K大小，它被设计成为环形的数据结构，以便管道可以被循环利用。当管道中没有信息的话，从管道中读取的进程会等待，直到另一端的进程放入信息。当管道被放满信息的时候，尝试放入信息的进程会等待，直到另一端的进程取出信息。当两个进程都终结的时候，管道也自动消失。</p>
-<h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><p>信号是另一种进程间通信机制，它给应用程序提供一种异步的软件中断，使应用程序有机会接受其他程序活终端发送的命令(即信号)。应用程序收到信号后，有三种处理方式：忽略，默认，或捕捉。进程收到一个信号后，会检查对该信号的处理机制。如果是SIG_IGN，就忽略该信号；如果是SIG_DFT，则会采用系统默认的处理动作，通常是终止进程或忽略该信号；如果给该信号指定了一个处理函数(捕捉)，则会中断当前进程正在执行的任务，转而去执行该信号的处理函数，返回后再继续执行被中断的任务。</p>
+<p>在BaseShell中的实战应用<br>
+并发工具包 Concurrent 中的实现</p>
+<h3 id="管道实现机制">管道实现机制</h3>
+<p>管道是由内核管理的一个缓冲区，相当于我们放入内存中的一个纸条。管道的一端连接一个进程的输出。这个进程会向管道中放入信息。管道的另一端连接一个进程的输入，这个进程取出被放入管道的信息。一个缓冲区不需要很大一般为4K大小，它被设计成为环形的数据结构，以便管道可以被循环利用。当管道中没有信息的话，从管道中读取的进程会等待，直到另一端的进程放入信息。当管道被放满信息的时候，尝试放入信息的进程会等待，直到另一端的进程取出信息。当两个进程都终结的时候，管道也自动消失。</p>
+<h2 id="信号">信号</h2>
+<p>信号是另一种进程间通信机制，它给应用程序提供一种异步的软件中断，使应用程序有机会接受其他程序活终端发送的命令(即信号)。应用程序收到信号后，有三种处理方式：忽略，默认，或捕捉。进程收到一个信号后，会检查对该信号的处理机制。如果是SIG_IGN，就忽略该信号；如果是SIG_DFT，则会采用系统默认的处理动作，通常是终止进程或忽略该信号；如果给该信号指定了一个处理函数(捕捉)，则会中断当前进程正在执行的任务，转而去执行该信号的处理函数，返回后再继续执行被中断的任务。</p>
 <p>在有些情况下，我们不希望自己的shell脚本在运行时刻被中断，比如说我们写得shell脚本设为某一用户的默认shell，使这一用户进入系统后只能作某一项工作，如数据库备份， 我们可不希望用户使用 Ctrl+C 等方法进入到shell状态做我们不希望做的事情。这便用到了信号处理。</p>
 <p>以下是一些你可能会遇到的常见信号：</p>
 <table>
@@ -645,7 +605,8 @@ delimiter<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>SIGHUP</td>
 <td>1</td>
 <td>本信号在用户终端连接（正常或非正常）结束时发出，通常是在终端的控制进程结束时，通知同一session内的各个作业，这时它们与控制终端不再关联。登录Linux时，系统会分配给登录用户一个终端(Session)。在这个终端运行的所有程序，包括前台进程组和后台进程组，一般都属于这个Session。当用户退出Linux登录时，前台进程组和后台有对终端输出的进程将会收到SIGHUP信号。这个信号的默认操作为终止进程，因此前台进程组和后台有终端输出的进程就会中止。对于与终端脱离关系的守护进程，这个信号用于通知它重新读取配置文件。</td>
@@ -680,13 +641,15 @@ delimiter<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
 <td>15</td>
 <td>程序结束(terminate)信号, 与SIGKILL不同的是该信号可以被阻塞和处理. 通常用来要求程序自己正常退出；kill 命令缺省产生这个信号。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <p>那怎么用呢? 我们如何实现我们脚本在行过程当中，当我们主动按下 <code>Ctrl+C</code>的时候主动终止呢？</p>
 <p>加入下面一行就可以了</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">trap</span> <span class="token string">"echo 'exit...';exit"</span> <span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>意思就是说 捕捉信号2 然后执行 <code>echo 'exit...';exit</code>。</p>
 <p>我们可以学习一下trap这个指令。等我出教程。</p>
-<h1 id="三、copy-on-write"><a href="#三、copy-on-write" class="headerlink" title="三、copy on write"></a>三、copy on write</h1><p>大家都知道 redis 的写时复制技术，我们看看Linux是怎么做的。在Linux程序中，fork（）会产生一个和父进程完全相同的子进程，但子进程在此后多会exec系统调用，出于效率考虑，linux中引入了“写时复制“技术，也就是只有进程空间的各段的内容要发生变化时，才会将父进程的内容复制一份给子进程。当我在父进程中开启一个子进程的时候，同样会复制一份父进程的文件描述符，只有当子进程改变文件描述符的内容时候，这个文件描述符才会分裂，所以redis的写时复制技术其实就是依赖的Linux本身就自带的机制。这跟我们多线程中的理解是不同的，因此也会造成一些误会，Java中多线程对共享变量的修改是可见的，但是在Shell的多进程里面则是相反的,你在子进程对父进程变量所做的修改是无论如何也不可的。我们来证明一下</p>
+<h1>三、copy on write</h1>
+<p>大家都知道 redis 的写时复制技术，我们看看Linux是怎么做的。在Linux程序中，fork（）会产生一个和父进程完全相同的子进程，但子进程在此后多会exec系统调用，出于效率考虑，linux中引入了“写时复制“技术，也就是只有进程空间的各段的内容要发生变化时，才会将父进程的内容复制一份给子进程。当我在父进程中开启一个子进程的时候，同样会复制一份父进程的文件描述符，只有当子进程改变文件描述符的内容时候，这个文件描述符才会分裂，所以redis的写时复制技术其实就是依赖的Linux本身就自带的机制。这跟我们多线程中的理解是不同的，因此也会造成一些误会，Java中多线程对共享变量的修改是可见的，但是在Shell的多进程里面则是相反的,你在子进程对父进程变量所做的修改是无论如何也不可的。我们来证明一下</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 <span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">10</span> <span class="token comment"># 先定义一个变量</span>
 <span class="token function-name function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -704,7 +667,9 @@ delimiter<span aria-hidden="true" class="line-numbers-rows"><span></span><span><
   <span class="token function">wait</span>
 <span class="token punctuation">}</span>
 f1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="四、并发控制"><a href="#四、并发控制" class="headerlink" title="四、并发控制"></a>四、并发控制</h1><h2 id="令牌控制"><a href="#令牌控制" class="headerlink" title="令牌控制"></a>令牌控制</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 注意这个方法是阻塞方法</span>
+<h1>四、并发控制</h1>
+<h2 id="令牌控制">令牌控制</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 注意这个方法是阻塞方法</span>
 <span class="token comment"># 提交一个任务 []&lt;-(task:Function)</span>
 <span class="token keyword">function</span> <span class="token function-name function">threadPool_submit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> _NotBlank <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token string">"thread pool can not be null"</span>
   <span class="token builtin class-name">local</span> <span class="token assign-left variable">fd</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token punctuation">;</span><span class="token builtin class-name">shift</span> <span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">task</span><span class="token operator">=</span><span class="token variable">$*</span>
@@ -715,7 +680,8 @@ f1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
     <span class="token builtin class-name">eval</span> <span class="token string">"echo <span class="token variable">${token}</span> &gt;&amp; <span class="token variable">${fd}</span>"</span> <span class="token comment">#归还令牌</span>
   <span class="token punctuation">}</span> <span class="token operator">&amp;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="队列控制"><a href="#队列控制" class="headerlink" title="队列控制"></a>队列控制</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># coreSize:核心线程数</span>
+<h2 id="队列控制">队列控制</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># coreSize:核心线程数</span>
 <span class="token comment"># keepAliveTime:线程的存活时间</span>
 <span class="token comment"># 任务队列使用的是无限的任务队列</span>
 <span class="token comment"># eg: new_ThreadPoolExecutor &amp;&amp; local pool=$?</span>
@@ -745,19 +711,23 @@ f1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 
   <span class="token builtin class-name">return</span> <span class="token string">"<span class="token variable">${fd}</span>"</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="五、调试技巧"><a href="#五、调试技巧" class="headerlink" title="五、调试技巧"></a>五、调试技巧</h1><ol>
+<h1>五、调试技巧</h1>
+<ol>
 <li>使用 set -x 可以打印出脚本执行的中间结果</li>
 <li>使用 bashdb 工具可以控制脚本一步一步执行</li>
 <li>使用 Idea 的bashsuport插件【推荐】</li>
 </ol>
-<h1 id="六、锁"><a href="#六、锁" class="headerlink" title="六、锁"></a>六、锁</h1><p>在 Linux 中的两条进程同时编辑文件产生并发冲突时, 我们第一反应就会想到使用 锁 来解决这个问题, 这里就介绍 flock。</p>
-<h2 id="flock"><a href="#flock" class="headerlink" title="flock"></a>flock</h2><p>flock 有三种写法 :</p>
+<h1>六、锁</h1>
+<p>在 Linux 中的两条进程同时编辑文件产生并发冲突时, 我们第一反应就会想到使用 锁 来解决这个问题, 这里就介绍 flock。</p>
+<h2 id="flock">flock</h2>
+<p>flock 有三种写法 :</p>
 <ol>
 <li>flock [options] | […]</li>
 <li>flock [options] | -c</li>
 <li>flock [options] &lt;file descriptor number(fd)&gt;</li>
 </ol>
-<h3 id="将锁加在文件上以防止冲突"><a href="#将锁加在文件上以防止冲突" class="headerlink" title="将锁加在文件上以防止冲突"></a>将锁加在文件上以防止冲突</h3><p>flock 可以将锁加在某个文件上 (以及文件夹), 来防止并发冲突, 其中一个用途就是用在定时任务中。例如每分钟执行一次检查任务，如果agent没有启动则启动agent.如果第一个任务还没有结束，然后又启动了一个检查任务，最后可能启动多个agent实例。所以我们需要再检查的时候如果agent没有启动才启动，如果检查任务还没有结束我们就不开启下一个检查任务。当然我们的实现方式有很多中。如下使用flock是一种，flock可以保证一个进程在启动的时候在某个文件上加上一把锁，可以是排它锁，其他进程如果先要获取这个锁必须等上一个进程结束才行。</p>
+<h3 id="将锁加在文件上以防止冲突">将锁加在文件上以防止冲突</h3>
+<p>flock 可以将锁加在某个文件上 (以及文件夹), 来防止并发冲突, 其中一个用途就是用在定时任务中。例如每分钟执行一次检查任务，如果agent没有启动则启动agent.如果第一个任务还没有结束，然后又启动了一个检查任务，最后可能启动多个agent实例。所以我们需要再检查的时候如果agent没有启动才启动，如果检查任务还没有结束我们就不开启下一个检查任务。当然我们的实现方式有很多中。如下使用flock是一种，flock可以保证一个进程在启动的时候在某个文件上加上一把锁，可以是排它锁，其他进程如果先要获取这个锁必须等上一个进程结束才行。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">echo</span> <span class="token string">"* * * * * cd <span class="token variable">${coreDir}</span>; /usr/bin/flock -xn /tmp/checkAndFixAgent.lock -c '/bin/bash core.sh checkAndFixAgent &gt; /dev/null 2&gt;&amp;1'"</span>
 
 <span class="token comment">#检查并修复agent</span>
@@ -769,7 +739,8 @@ f1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当然flock也有他的弊端，这个我们很少遇到，我目前还没有理解，等我真实遇到在补充。</p>
-<h3 id="将锁加在-文件描述符-fd-上"><a href="#将锁加在-文件描述符-fd-上" class="headerlink" title="将锁加在 文件描述符 (fd) 上"></a>将锁加在 文件描述符 (fd) 上</h3><p>flock 也可以对某个 fd 加锁, 这种通常用于一个进程的子进程中. 关于 fd, 由于 Linux 一切皆文件的哲学, 所以我们常用的 stdout 就是 fd 1, stderr 就是 fd 2, 我们也可以自定义 fd</p>
+<h3 id="将锁加在-文件描述符-fd-上">将锁加在 文件描述符 (fd) 上</h3>
+<p>flock 也可以对某个 fd 加锁, 这种通常用于一个进程的子进程中. 关于 fd, 由于 Linux 一切皆文件的哲学, 所以我们常用的 stdout 就是 fd 1, stderr 就是 fd 2, 我们也可以自定义 fd</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 获取一个可用的文件描述符号</span>
 <span class="token keyword">function</span> <span class="token function-name function">new_fd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
   <span class="token punctuation">{</span>
@@ -784,7 +755,8 @@ f1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
   <span class="token punctuation">}</span> <span class="token operator"><span class="token file-descriptor important">3</span>&lt;&gt;</span>/tmp/base_shell.lock
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这样我们就可以避免两个进程同时对一个文件的读写而产生错误了.</p>
-<h3 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h3><table>
+<h3 id="附录">附录</h3>
+<table>
 <thead>
 <tr>
 <th>Options</th>
@@ -792,7 +764,8 @@ f1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <th>-</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>-s</td>
 <td>–shared</td>
 <td>共享锁</td>
@@ -837,9 +810,12 @@ f1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <td>–command</td>
 <td>运行的命令</td>
 </tr>
-</tbody></table>
-<h2 id="自定义锁"><a href="#自定义锁" class="headerlink" title="自定义锁"></a>自定义锁</h2><p>参考 BaseShell 框架 BaseLock 部分</p>
-<h1 id="七、函数编程"><a href="#七、函数编程" class="headerlink" title="七、函数编程"></a>七、函数编程</h1><p>Shell 可以像 函数语言一样，将函数作为参数进行传递的。</p>
+</tbody>
+</table>
+<h2 id="自定义锁">自定义锁</h2>
+<p>参考 BaseShell 框架 BaseLock 部分</p>
+<h1>七、函数编程</h1>
+<p>Shell 可以像 函数语言一样，将函数作为参数进行传递的。</p>
 <p>我们现在想要在执行函数前打印一个时间,执行函数后打印一个时间,然后统计这个函数的执行时长。类似于切面，我们看看用Shell可以怎么实现</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
 <span class="token function-name function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -871,28 +847,34 @@ f1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <span class="token punctuation">}</span>
 
 main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="八、import-其他脚本"><a href="#八、import-其他脚本" class="headerlink" title="八、import 其他脚本"></a>八、import 其他脚本</h1><p>使用 <code>source</code> 或 <code>.</code><br>例如: <code>source ./../../BaseShell/Starter/BaseHeader.sh</code> 就可以引入 BaseHeader.sh 中定义的各种函数和变量<br>如何解决 A.sh-&gt;B.sh 然后 B.sh-&gt;A.sh 这样循环引用的尴尬境地的,因为这样就死循环了,会撑爆进程栈的。编译行语言Java是很好解决这个问题的,因为他是编译型,编译的过程是不执行程序的,用的方法叫双亲委派原则。单Shell不一样，我用的是下面这样的方法，基本解决思路是，在脚本执行实现先检查一下当前脚本是否已经加载过，加载过就直接return.</p>
+<h1>八、import 其他脚本</h1>
+<p>使用 <code>source</code> 或 <code>.</code><br>
+例如: <code>source ./../../BaseShell/Starter/BaseHeader.sh</code> 就可以引入 <a target="_blank" rel="noopener" href="http://BaseHeader.sh">BaseHeader.sh</a> 中定义的各种函数和变量<br>
+如何解决 A.sh-&gt;<a target="_blank" rel="noopener" href="http://B.sh">B.sh</a> 然后 B.sh-&gt;<a target="_blank" rel="noopener" href="http://A.sh">A.sh</a> 这样循环引用的尴尬境地的,因为这样就死循环了,会撑爆进程栈的。编译行语言Java是很好解决这个问题的,因为他是编译型,编译的过程是不执行程序的,用的方法叫双亲委派原则。单Shell不一样，我用的是下面这样的方法，基本解决思路是，在脚本执行实现先检查一下当前脚本是否已经加载过，加载过就直接return.</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#===============================================================</span>
 <span class="token assign-left variable">import</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span> .sh<span class="token variable">)</span></span>_<span class="token variable">$$</span>"</span>
 <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">eval</span> <span class="token builtin class-name">echo</span> <span class="token string">'$'</span><span class="token string">"<span class="token variable">${import}</span>"</span><span class="token variable">)</span></span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">return</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
 <span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable">${import}</span>=0"</span>
 <span class="token comment">#===============================================================</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在脚本的开头只要加上上面的代码，就可以解决循环引用的问题。这是目前我想到的比较简单的方式,不排除以后还有新的方式,敬请期待,例如可以多线程并行检查等优化手段,先卖个关子,目前还没有想好。</p>
-<h1 id="九、单元测试"><a href="#九、单元测试" class="headerlink" title="九、单元测试"></a>九、单元测试</h1><p>有人认为单元测试什么的不重要，这你就大错特错了，如果只是自己写几个脚本用，那没关系，因为不会影响别人。但如果要是像我一样提供一些脚本给大家用，那就需要单元测试了。因为脚本的移植性本来就很差，稍稍改动一点就坑很多，如果没有单元测试保障，回头改动某个函数过后导致大家使用出现问题，那就是不负责任了。</p>
+<h1>九、单元测试</h1>
+<p>有人认为单元测试什么的不重要，这你就大错特错了，如果只是自己写几个脚本用，那没关系，因为不会影响别人。但如果要是像我一样提供一些脚本给大家用，那就需要单元测试了。因为脚本的移植性本来就很差，稍稍改动一点就坑很多，如果没有单元测试保障，回头改动某个函数过后导致大家使用出现问题，那就是不负责任了。</p>
 <p>参考 <a target="_blank" rel="noopener" href="http://localhost:4000/2019/08/28/ji-zhu-zong-jie/baseshell/baseshell-shi-yong-jiao-cheng/">BaseShell使用教程</a> 中的 测试【Utils】章节</p>
-<h1 id="十、动态创建函数"><a href="#十、动态创建函数" class="headerlink" title="十、动态创建函数"></a>十、动态创建函数</h1><p>我们可以动态的创建函数。应用如下面的例子我们可以替换一个函数的名字为另一函数，这样做我们可以实现类似的面向对象编程</p>
+<h1>十、动态创建函数</h1>
+<p>我们可以动态的创建函数。应用如下面的例子我们可以替换一个函数的名字为另一函数，这样做我们可以实现类似的面向对象编程</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 重命名函数</span>
 <span class="token keyword">function</span> <span class="token function-name function">new_function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> _NotBlank <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token string">"source function name can not be null"</span> <span class="token operator">&amp;&amp;</span> _NotBlank <span class="token string">"<span class="token variable">$2</span>"</span> <span class="token string">"target function name can not be null"</span>
   <span class="token builtin class-name">test</span> <span class="token parameter variable">-n</span> <span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">declare</span> <span class="token parameter variable">-f</span> $1<span class="token variable">)</span></span>"</span> <span class="token operator">||</span> <span class="token builtin class-name">return</span>
   <span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable">${_<span class="token operator">/</span>$1<span class="token operator">/</span>$2}</span>"</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>例如 BaseArrayList.sh 中的实现</p>
+<p>例如 <a target="_blank" rel="noopener" href="http://BaseArrayList.sh">BaseArrayList.sh</a> 中的实现</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 这里会新建一个List,建议用在多线程模式下</span>
   new_arrayList number <span class="token comment">#创建一个名为number的List</span>
   number_add <span class="token number">1</span>         <span class="token comment">#向个number中添加一个元素</span>
   number_add <span class="token number">2</span>         <span class="token comment">#向个number中添加一个元素</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h1 id="十一、递归"><a href="#十一、递归" class="headerlink" title="十一、递归"></a>十一、递归</h1><h1 id="十二、设计模式"><a href="#十二、设计模式" class="headerlink" title="十二、设计模式"></a>十二、设计模式</h1>
+<h1>十一、递归</h1>
+<h1>十二、设计模式</h1>
+
                 
             </div>
             <hr/>
@@ -1540,7 +1522,7 @@ main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">108.3k</span>
+                        class="white-color">108.4k</span>
             
             
             
@@ -1749,6 +1731,14 @@ $(function () {
     <script src="/js/matery.js"></script>
 
     
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    
 
     
     
@@ -1794,8 +1784,6 @@ $(function () {
     })();
 </script>
 
-    
-    <script src="/libs/others/clicklove.js" async="async"></script>
     
     
     <script async src="/libs/others/busuanzi.pure.mini.js"></script>
