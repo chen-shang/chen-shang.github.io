@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-07-22T21:43:00.939Z</updated>
+  <updated>2023-07-29T18:08:28.719Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot 多数据源配置</title>
+    <link href="https://chen-shang.github.io/2023/07/26/shu-ju-ku/springboot-duo-shu-ju-yuan-pei-zhi/"/>
+    <id>https://chen-shang.github.io/2023/07/26/shu-ju-ku/springboot-duo-shu-ju-yuan-pei-zhi/</id>
+    <published>2023-07-26T14:52:53.000Z</published>
+    <updated>2023-07-29T18:08:28.719Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;首先 mybatis generator 是支持多数据源生成 dao 层的代码的(也就是那些 mapper.xml文件、实体类文件等等)，我们需要针对我们不同数据源里面的表，分别进行配置，才能生成对应库表的 dao 层代码。要知道 mybatis generator</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo-图片显示</title>
@@ -205,7 +230,7 @@
     <link href="https://chen-shang.github.io/2023/07/08/gong-ju-kong/intellij-idea/idea-cha-jian-plantuml-integration-wu-fa-xian-shi-lei-tu/"/>
     <id>https://chen-shang.github.io/2023/07/08/gong-ju-kong/intellij-idea/idea-cha-jian-plantuml-integration-wu-fa-xian-shi-lei-tu/</id>
     <published>2023-07-08T14:14:42.000Z</published>
-    <updated>2023-07-11T09:39:16.356Z</updated>
+    <updated>2023-07-28T22:52:35.191Z</updated>
     
     
       
@@ -289,7 +314,7 @@
     <link href="https://chen-shang.github.io/2023/07/01/qian-duan/shi-me-shi-biao-ji-yu-yan/"/>
     <id>https://chen-shang.github.io/2023/07/01/qian-duan/shi-me-shi-biao-ji-yu-yan/</id>
     <published>2023-07-01T00:54:46.000Z</published>
-    <updated>2023-07-06T07:49:33.493Z</updated>
+    <updated>2023-07-29T16:08:50.216Z</updated>
     
     
       
@@ -315,7 +340,7 @@
     <link href="https://chen-shang.github.io/2023/07/01/qian-duan/typescript-he-ecmascript-you-shi-me-guan-xi/"/>
     <id>https://chen-shang.github.io/2023/07/01/qian-duan/typescript-he-ecmascript-you-shi-me-guan-xi/</id>
     <published>2023-06-30T16:51:31.000Z</published>
-    <updated>2023-07-01T00:57:36.024Z</updated>
+    <updated>2023-07-29T16:08:38.195Z</updated>
     
     
       
@@ -341,7 +366,7 @@
     <link href="https://chen-shang.github.io/2023/07/01/qian-duan/liu-lan-qi-zhi-chi-es-mo-kuai-zhong-de-es-mo-kuai-shi-shi-me/"/>
     <id>https://chen-shang.github.io/2023/07/01/qian-duan/liu-lan-qi-zhi-chi-es-mo-kuai-zhong-de-es-mo-kuai-shi-shi-me/</id>
     <published>2023-06-30T16:45:13.000Z</published>
-    <updated>2023-06-30T16:57:37.106Z</updated>
+    <updated>2023-07-29T16:08:45.288Z</updated>
     
     
       
@@ -366,7 +391,7 @@
     <link href="https://chen-shang.github.io/2023/06/29/jing-ji-xue/bu-liang-zi-chan-bao-zai-fen-xi-de-guo-cheng-zhong-guan-zhu-de-wei-du/"/>
     <id>https://chen-shang.github.io/2023/06/29/jing-ji-xue/bu-liang-zi-chan-bao-zai-fen-xi-de-guo-cheng-zhong-guan-zhu-de-wei-du/</id>
     <published>2023-06-29T08:49:05.000Z</published>
-    <updated>2023-07-06T14:08:30.694Z</updated>
+    <updated>2023-07-29T16:08:00.192Z</updated>
     
     
       
@@ -393,7 +418,7 @@
     <link href="https://chen-shang.github.io/2023/06/27/gong-ju-kong/vscode/vscode-tui-jian-cha-jian/"/>
     <id>https://chen-shang.github.io/2023/06/27/gong-ju-kong/vscode/vscode-tui-jian-cha-jian/</id>
     <published>2023-06-27T01:03:37.000Z</published>
-    <updated>2023-07-08T13:52:11.484Z</updated>
+    <updated>2023-07-29T16:08:22.276Z</updated>
     
     
       
@@ -480,7 +505,7 @@
     <link href="https://chen-shang.github.io/2023/05/07/si-kao/ru-he-kuai-su-rong-ru-xin-gong-si-xin-tuan-dui/"/>
     <id>https://chen-shang.github.io/2023/05/07/si-kao/ru-he-kuai-su-rong-ru-xin-gong-si-xin-tuan-dui/</id>
     <published>2023-05-07T15:59:27.000Z</published>
-    <updated>2023-05-08T15:12:23.846Z</updated>
+    <updated>2023-07-29T15:53:33.769Z</updated>
     
     
       
@@ -506,7 +531,7 @@
     <link href="https://chen-shang.github.io/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/"/>
     <id>https://chen-shang.github.io/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/</id>
     <published>2022-07-21T16:52:54.000Z</published>
-    <updated>2023-07-22T02:58:07.844Z</updated>
+    <updated>2023-07-29T15:53:50.858Z</updated>
     
     
       
@@ -527,9 +552,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
-    
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
     
   </entry>
   
@@ -559,34 +584,6 @@
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>怎么写好Shell脚本</title>
-    <link href="https://chen-shang.github.io/2022/04/09/baseshell/zen-me-xie-hao-shell-jiao-ben/"/>
-    <id>https://chen-shang.github.io/2022/04/09/baseshell/zen-me-xie-hao-shell-jiao-ben/</id>
-    <published>2022-04-09T02:28:30.151Z</published>
-    <updated>2022-04-09T02:28:30.151Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;pre class=&quot;line-numbers language-text&quot; data-language=&quot;text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt; ____                      _          _ _
-| __ ) </summary>
-        
-      
-    
-    
-    
-    <category term="BaseShell" scheme="https://chen-shang.github.io/categories/BaseShell/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
