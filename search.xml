@@ -490,6 +490,35 @@
     
     
     <entry>
+      <title>Linux终端生存之道-grep</title>
+      <link href="/2023/01/30/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-grep/"/>
+      <url>/2023/01/30/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-grep/</url>
+      
+        <content type="html"><![CDATA[<p>查看一个文件夹下包含某个字符串的文件都有哪些 <code>grep -r "xxxxx"</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 终端生存之道 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Java一些技术题目</title>
       <link href="/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/"/>
       <url>/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/</url>
