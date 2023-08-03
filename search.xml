@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>HTML 中 src vs href</title>
+      <link href="/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/"/>
+      <url>/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/</url>
+      
+        <content type="html"><![CDATA[<p>在html页面中，同样是引入外部文件，为什么引入<code>javascript</code>就用<code>src</code>, 为什么引入 <code>css</code> 就用 <code>href</code> 呢? 为什么就没人统一一下呢?</p><p><code>src</code>  属性通常用于指定要加载的资源的路径，如脚本文件、图像文件等。而  <code>href</code>  属性通常用于指定链接的目标资源的 URL，如超链接的目标页面、外部样式表等。 如  <code>&lt;script&gt;</code>  和  <code>&lt;img&gt;</code>  标签中使用的是  <code>src</code>  属性，而  <code>&lt;link&gt;</code>  和  <code>&lt;a&gt;</code>  标签中使用的是  <code>href</code>  属性，但这只是由于历史原因和标签的设计规范。</p><p>在 HTML 中，有多个标签可以使用  <code>href</code>  属性来指定链接的目标资源的 URL。以下是一些常见的具有  <code>href</code>  属性的标签：</p><ul><li><code>&lt;a&gt;</code>  标签：用于创建超链接，指定链接的目标页面或资源的 URL。</li><li><code>&lt;link&gt;</code> 标签：用于引入外部资源，如样式表、图标等， href  属性指定资源的路径。</li><li><code>&lt;area&gt;</code>  标签：用于定义图像映射区域， href  属性指定与区域关联的链接。</li><li><code>&lt;base&gt;</code>  标签：用于指定页面中所有相对链接的基本 URL， href  属性指定基本 URL。</li></ul><p>在 HTML 中，有多个标签可以使用  <code>src</code>  属性来指定要加载的外部资源的 URL。以下是一些常见的具有  <code>src</code>  属性的标签：</p><ul><li><code>&lt;script&gt;</code>  标签：用于引入外部 JavaScript 文件， src  属性指定 JavaScript 文件的路径。</li><li><code>&lt;img&gt;</code>  标签：用于嵌入图像， <code>src</code>  属性指定图像文件的路径。</li><li><code>&lt;iframe&gt;</code>  标签：用于嵌入另一个 HTML 文档， <code>src</code>  属性指定嵌入文档的路径。</li><li><code>&lt;audio&gt;</code>  标签：用于嵌入音频文件，<code>src</code>  属性指定音频文件的路径。</li><li><code>&lt;video&gt;</code>  标签：用于嵌入视频文件， <code>src</code>  属性指定视频文件的路径。</li><li><code>&lt;source&gt;</code>  标签：用于为  <code>&lt;audio&gt;</code>  和  <code>&lt;video&gt;</code>  标签指定多个媒体源，每个源都使用  <code>src</code> 属性指定路径。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> VS系列 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> HTML </tag>
+            
+            <tag> CSS </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot 多数据源配置</title>
       <link href="/2023/07/26/shu-ju-ku/springboot-duo-shu-ju-yuan-pei-zhi/"/>
       <url>/2023/07/26/shu-ju-ku/springboot-duo-shu-ju-yuan-pei-zhi/</url>
@@ -537,9 +568,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -730,11 +761,11 @@
             
             <tag> 原创 </tag>
             
+            <tag> 未完待续 </tag>
+            
             <tag> Linux </tag>
             
             <tag> Java </tag>
-            
-            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -900,9 +931,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -985,9 +1016,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1097,9 +1128,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1184,9 +1215,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1412,9 +1443,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2050,9 +2081,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -2110,9 +2141,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       

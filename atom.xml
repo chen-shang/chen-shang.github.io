@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-07-29T18:36:01.171Z</updated>
+  <updated>2023-08-03T15:35:02.351Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HTML 中 src vs href</title>
+    <link href="https://chen-shang.github.io/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/"/>
+    <id>https://chen-shang.github.io/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/</id>
+    <published>2023-08-03T15:21:49.000Z</published>
+    <updated>2023-08-03T15:35:02.351Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在html页面中，同样是引入外部文件，为什么引入&lt;code&gt;javascript&lt;/code&gt;就用&lt;code&gt;src&lt;/code&gt;, 为什么引入 &lt;code&gt;css&lt;/code&gt; 就用 &lt;code&gt;href&lt;/code&gt; 呢?</summary>
+        
+      
+    
+    
+    
+    <category term="VS系列" scheme="https://chen-shang.github.io/categories/VS%E7%B3%BB%E5%88%97/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="HTML" scheme="https://chen-shang.github.io/tags/HTML/"/>
+    
+    <category term="CSS" scheme="https://chen-shang.github.io/tags/CSS/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot 多数据源配置</title>
@@ -552,38 +583,6 @@
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java一些技术题目</title>
-    <link href="https://chen-shang.github.io/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/"/>
-    <id>https://chen-shang.github.io/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/</id>
-    <published>2022-07-21T16:52:54.000Z</published>
-    <updated>2023-07-29T15:53:50.858Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;1.spring需要哪些配置完成类的初始化，对象初始化流程的是怎样的，稍微阐述下resource有什么用&lt;br&gt;
-2.json格式的http请求需要如何设置header，400是什么原因&lt;br&gt;
-3.是否使用过事务，哪些情况使编程式事务不生效&lt;br&gt;
-4.hashmap是否</summary>
-        
-      
-    
-    
-    
-    <category term="Java" scheme="https://chen-shang.github.io/categories/Java/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
