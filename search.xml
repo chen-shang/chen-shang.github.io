@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<p>“gpt-3.5-turbo-16k-0613” 和 “gpt-3.5-turbo-0613” 是 OpenAI 的两个不同的语言模型版本。</p><p>区别在于模型的大小。 “gpt-3.5-turbo-16k-0613” 使用了更大的模型，具有大约16,000个标记，而 “gpt-3.5-turbo-0613” 使用了较小的模型，具有大约3550个标记。这意味着 “gpt-3.5-turbo-16k-0613” 拥有更多的参数和更高的容量，可以生成更长、更具上下文的回答。</p><p>因此，如果您需要处理更复杂的任务或需要更详细的回答，您可能会选择使用"gpt-3.5-turbo-16k-0613"。但请注意，使用更大的模型可能需要更多的时间和计算资源。如果您只需要对简单问题进行回答，那么"gpt-3.5-turbo-0613" 可能已经足够满足您的需求了。</p>]]></content>
       
       
+      <categories>
+          
+          <category> AI </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -27,7 +33,7 @@
       <link href="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/"/>
       <url>/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/</url>
       
-        <content type="html"><![CDATA[<p>今天公司在部署服务器的时候，一直在倒腾 DNS 服务器。自己部署 DNS 服务器而不是在 使用外网的 DNS 服务器，是因为我们没有暴露公网的打算，而且我们的服务是警容服务，就更不能轻易暴露了。所以通过自己的DNS服务器把域名给隐藏掉。但是不暴露也意味着外网访问受限，不过后面会用VPN的方式接入。这里我们用到 nslookup 小工具，这里以前自己没有用过，特此学习一下，继而引出了其他几个工具的使用，在这里也一并记录一下原理和常用的手段</p><h1>ping</h1><p>ping 用的最多的就是看网络通不通。例如我们可以通过 ping <a href="http://www.baidu.com">www.baidu.com</a> 然后根据终端输出的结果来判断网络是不是通的。</p><center>  <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-08-09_01.23.04.jpg"></center><p>Ping是一种网络工具，用于测试主机之间的网络连接。它发送一个小的网络数据包（ICMP Echo Request）到目标主机，并等待接收到相应的回复（ICMP Echo Reply）。通过测量往返时间（Round-Trip Time，RTT）和丢包率，可以评估网络的可达性和性能。<br>以下是一张简单的图示，展示了Ping请求和响应的过程：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">+-----------------+                   +-----------------+<span class="token operator">|</span>   Your Computer <span class="token operator">|</span>                   <span class="token operator">|</span> Target Computer <span class="token operator">|</span>+-----------------+                   +-----------------+         <span class="token operator">|</span>                                    <span class="token operator">|</span>  ICMP Echo请求                           ICMP Echo响应         <span class="token operator">|</span>                                    <span class="token operator">|</span>         +------------<span class="token operator">&gt;</span> Network --------------<span class="token operator">&gt;</span>+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>要注意一点，ping 访问目标服务器的时候，是不用指定端口的，也没有默认端口一说。因为ping命令是一种工具，用于测试和检查网络连接。它使用的是ICMP协议（互联网控制报文协议），而不是传输层协议（如TCP或UDP）。CMP（Internet Control Message Protocol）是一个用于在IP网络中传输控制消息的协议。ICMP消息不使用端口号的原因是因为它们不是用于在不同主机之间直接进行通信，而是用于发送网络控制信息、错误报告和诊断信息。端口号通常用于标识目标主机上的特定应用程序或服务。但是，ICMP消息不是直接发送给特定的应用程序或服务，而是发送给目标主机的网络协议栈（通常是操作系统内核），然后由它们处理。</p><h1>dig</h1><p>dig命令是一种常用的网络工具，用于查询DNS（Domain Name System）服务器，获取域名的IP地址、主机名、MX（Mail Exchange）记录等信息。我们最常用的就是看</p><center>  <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/image.png"></center><pre class="line-numbers language-none"><code class="language-none">chenshang@192.168.18.9:~/Documents/Blog [master]$ dig www.baidu.com; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; www.baidu.com;; global options: +cmd;; Got answer:;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 38883;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 0;; QUESTION SECTION:;www.baidu.com.INA;; ANSWER SECTION:www.baidu.com.857INCNAMEwww.a.shifen.com.www.a.shifen.com.64INA110.242.68.3www.a.shifen.com.64INA110.242.68.4;; Query time: 51 msec;; SERVER: fe80::1%5#53(fe80::1%5);; WHEN: Wed Aug 09 01:31:08 CST 2023;; MSG SIZE  rcvd: 90chenshang@192.168.18.9:~/Documents/Blog [master]$ ping www.baidu.comPING www.baidu.com (110.242.68.3): 56 data bytes64 bytes from 110.242.68.3: icmp_seq=0 ttl=54 time=9.848 ms64 bytes from 110.242.68.3: icmp_seq=1 ttl=54 time=11.423 ms64 bytes from 110.242.68.3: icmp_seq=2 ttl=54 time=11.298 ms^C--- www.baidu.com ping statistics ---3 packets transmitted, 3 packets received, 0.0% packet lossround-trip min/avg/max/stddev = 9.848/10.856/11.423/0.715 ms<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们可以看到，百度的两台服务器分别分别是 110.242.68.3 和 110.242.68.4。我们通过网站 <a href="http://ip.bczs.net/110.242.68.3">http://ip.bczs.net/110.242.68.3</a> 查看</p><center>  <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-08-09_01.35.59.jpg"></center>- 未完待续# nslookup# dig]]></content>
+        <content type="html"><![CDATA[<p>今天公司在部署服务器的时候，一直在倒腾 DNS 服务器。公司自己部署 DNS 服务器而不是 使用外网的 DNS 服务器，是因为我们没有暴露公网的打算，而且我们的服务是金融服务，就更不能轻易暴露到外网了。所以通过自己的DNS服务器把域名给隐藏掉。但是不暴露也意味着外网访问受限，不过后面会用VPN的方式接入。这里用到了 nslookup 小工具，以前自己没有用过，特此学习一下，继而引出了其他几个工具的使用，在这里也一并记录一下原理和常用的手段</p><h1>ping</h1><p>ping 用的最多的就是看网络通不通。例如我们可以通过 ping <a href="http://www.baidu.com">www.baidu.com</a> 然后根据终端输出的结果来判断网络是不是通的。</p><center>  <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-08-09_01.23.04.jpg"></center><p>Ping是一种网络工具，用于测试主机之间的网络连接。它发送一个小的网络数据包（ICMP Echo Request）到目标主机，并等待接收到相应的回复（ICMP Echo Reply）。通过测量往返时间（Round-Trip Time，RTT）和丢包率，可以评估网络的可达性和性能。<br>以下是一张简单的图示，展示了Ping请求和响应的过程：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">+-----------------+                   +-----------------+<span class="token operator">|</span>   Your Computer <span class="token operator">|</span>                   <span class="token operator">|</span> Target Computer <span class="token operator">|</span>+-----------------+                   +-----------------+         <span class="token operator">|</span>                                    <span class="token operator">|</span>  ICMP Echo请求                           ICMP Echo响应         <span class="token operator">|</span>                                    <span class="token operator">|</span>         +------------<span class="token operator">&gt;</span> Network --------------<span class="token operator">&gt;</span>+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>要注意一点，ping 访问目标服务器的时候，是不用指定端口的，也没有默认端口一说。因为ping命令是一种工具，用于测试和检查网络连接。它使用的是ICMP协议（互联网控制报文协议），而不是传输层协议（如TCP或UDP）。CMP（Internet Control Message Protocol）是一个用于在IP网络中传输控制消息的协议。ICMP消息不使用端口号的原因是因为它们不是用于在不同主机之间直接进行通信，而是用于发送网络控制信息、错误报告和诊断信息。端口号通常用于标识目标主机上的特定应用程序或服务。但是，ICMP消息不是直接发送给特定的应用程序或服务，而是发送给目标主机的网络协议栈（通常是操作系统内核），然后由它们处理。</p><h1>dig</h1><p>dig命令是一种常用的网络工具，用于查询DNS（Domain Name System）服务器，获取域名的IP地址、主机名、MX（Mail Exchange）记录等信息。我们最常用的就是看</p><center>  <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/image.png"></center><pre class="line-numbers language-none"><code class="language-none">chenshang@192.168.18.9:~/Documents/Blog [master]$ dig www.baidu.com; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; www.baidu.com;; global options: +cmd;; Got answer:;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 38883;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 0;; QUESTION SECTION:;www.baidu.com.INA;; ANSWER SECTION:www.baidu.com.857INCNAMEwww.a.shifen.com.www.a.shifen.com.64INA110.242.68.3www.a.shifen.com.64INA110.242.68.4;; Query time: 51 msec;; SERVER: fe80::1%5#53(fe80::1%5);; WHEN: Wed Aug 09 01:31:08 CST 2023;; MSG SIZE  rcvd: 90chenshang@192.168.18.9:~/Documents/Blog [master]$ ping www.baidu.comPING www.baidu.com (110.242.68.3): 56 data bytes64 bytes from 110.242.68.3: icmp_seq=0 ttl=54 time=9.848 ms64 bytes from 110.242.68.3: icmp_seq=1 ttl=54 time=11.423 ms64 bytes from 110.242.68.3: icmp_seq=2 ttl=54 time=11.298 ms^C--- www.baidu.com ping statistics ---3 packets transmitted, 3 packets received, 0.0% packet lossround-trip min/avg/max/stddev = 9.848/10.856/11.423/0.715 ms<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们可以看到，百度的两台服务器分别分别是 110.242.68.3 和 110.242.68.4。我们通过网站 <a href="http://ip.bczs.net/110.242.68.3">http://ip.bczs.net/110.242.68.3</a> 查看</p><center>  <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-08-09_01.35.59.jpg"></center><h1>DNS 是什么</h1><h2 id="DNS-的记录类型">DNS 的记录类型</h2><p>1.主机[A]记录<br>描述: 主机地址记录。在 DNS 域名与 IP 地址之间建立映射关系语法: owner class ttl A IP_v4_address 例子: <a href="http://host1.example.microsoft.com">host1.example.microsoft.com</a>. IN A 127.0.0.1</p><p>2.别名[CNAME]</p><p>描述: 用来表示用在该区域中的其它资源记录类型中已指定名称的替补或别名 DNS 域名。语法: owner ttl class AFSDB subtype server_host_name 例子: <a href="http://aliasname.example.microsoft.com">aliasname.example.microsoft.com</a>. AFSDB 1 <a href="http://truename.example.microsoft.com">truename.example.microsoft.com</a>.</p><p>3.主机信息[HINFO]</p><p>描述: 用来说明映射到特定 DNS 主机名的 CPU 类型和操作系统类型的 RFC-1700 保留字符串类型，这个信息可以被应用程序通信协议使用。语法: owner ttl class HINFO cpu_type os_type 例子: <a href="http://my-computer-name.example.microsoft.com">my-computer-name.example.microsoft.com</a>. HINFO INTEL-386 WIN32</p><p>4.邮箱[MB]</p><p>描述: 用来将指定的域邮箱名映射到这个邮箱的主机的当前区域中的主机地址记录语法: owner ttl class MB mailbox_hostname 例子: <a href="http://mailbox.example.microsoft.com">mailbox.example.microsoft.com</a>. MB <a href="http://mailhost1.example.microsoft.com">mailhost1.example.microsoft.com</a></p><p>5.邮箱或通信信息 MINFO</p><p>描述: 用来指定负责维护该记录中特定通信名单或邮箱的联系域邮箱名称。同时，还被用来指定接收与该记录中特定通信名单或邮箱有关的错误信息的邮箱语法: owner ttl class MINFO responsible_mailbox error_mailbox 例子: <a href="http://administrator.example.microsoft.com">administrator.example.microsoft.com</a>. MINFO <a href="http://resp-mbox.example.microsoft.com">resp-mbox.example.microsoft.com</a> <a href="http://err-mbox.example.microsoft.com">err-mbox.example.microsoft.com</a></p><p>6.邮件交换器 [MX]</p><p>描述: 用来向特定邮件交换器提供消息路由，该主机作为指定 DNS 域名的邮件交换器。MX 记录需要一个16-位整数来表示消息路由中的主机优先级，多个邮件交换在消息一中被指定。对于这个记录类型中的每个邮件交换主机，需要一个相应的主机地址类型记录。语法: owner ttl class MX preference mail_exchanger_host 例子: <a href="http://example.microsoft.com">example.microsoft.com</a>. MX 10 <a href="http://mailserver1.example.microsoft.com">mailserver1.example.microsoft.com</a></p><p>7.指针记录 [PTR]</p><p>描述: 用来指向域名空间中的某个位置。PTR记录通常在特殊域中来执行地址到名称镜像的反向搜索。每个记录提供要指向域名称空间的某个其它位置的简单数据。 Syntax: owner ttl class PTR targeted_domain_name 例子: 1.0.0.10.in-addr.arpa. PTR <a href="http://host.example.microsoft.com">host.example.microsoft.com</a>.</p><p>8.服务记录 [SRV]</p><p>描述: SRV 资源记录允许管理员使用单一 DNS 域的多个服务器，容易的用管理功能将 TCP/IP 服务从一个主机移到另一个主机，并且将服务提供的程序主机分派为服务的主服务器，将其它的分派为辅助的语法: <a href="http://service.protocol.name">service.protocol.name</a> ttl class SRV preference weight port target 例子: ldap.tcp.ms-dcs SRV 0 0 389 <a href="http://dc1.example.microsoft.com">dc1.example.microsoft.com</a> SRV 10 0 389 <a href="http://dc2.example.microsoft.com">dc2.example.microsoft.com</a></p><p>9.已知服务记录 [WKS]</p><p>描述: 用来描述一个特定 IP 地址上特定通讯协议支持的 TCP/IP 服务，它提供 TCP 和 UDP 可使用性信息。如果服务器同时支持 TCP 和 UDP 的已知服务，或者有多个支持服务的 IP 地址，多个 WKS 记录会被使用语法: owner ttl class WKS address protocol service_list 例子: <a href="http://example.microsoft.com">example.microsoft.com</a>. WKS 10.0.0.1 TCP ( telnet smtp ftp ) 在"起始颁发机构" SOA 中，记录了这个 Zone 中 DNS 服务器是那一台主机，也记录着负责本 zone 的管理员的邮件地址，如果以后在安装邮件服务器需要修改该信息时，注意将邮件地址中的 “@” 符改为句点 “.” ，因为 “@” 是保留字，代表 zone；另外，要使用域完整名称 FQDN，不要漏掉最后的句点。可以通过 "zone→属性→起始颁发机构"对管理员邮件地址进行修改。</p><h1>nslookup</h1><h1>dig</h1>]]></content>
       
       
       <categories>
@@ -43,9 +49,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -676,9 +682,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -869,11 +875,11 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
             
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1039,9 +1045,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1124,9 +1130,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1236,9 +1242,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1323,9 +1329,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1551,9 +1557,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2189,9 +2195,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2249,9 +2255,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2678,35 +2684,6 @@
     
     
     <entry>
-      <title>Linux终端生存之道-Git补全</title>
-      <link href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bu-quan/"/>
-      <url>/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bu-quan/</url>
-      
-        <content type="html"><![CDATA[<p>在Linux平台上,很多命令在我们按下<code>tab</code>键之后会自动补全该命令,在多次连续按下<code>tab</code>键之后会一次补全并切换匹配的命令。我们在使用git的过程中,也希望能够自动补全一些指令,比如 我想执行 <code>git status</code> 命令的时候,我只用输入 <code>git st </code> 然后按下<code>tab</code>键,就能输出 <code>git status</code>了。</p><p>在mac平台,使用HomeBrew安装Git <code>brew install git</code><br>我们会得到如下的输出(可以使用 <code>brew info git</code> 命令查看安装git时候的输出信息),我截取了最后几行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.Bash completion has been installed to:  /usr/local/etc/bash_completion.d<span class="token function">zsh</span> completions and functions have been installed to:  /usr/local/share/zsh/site-functionsEmacs Lisp files have been installed to:  /usr/local/share/emacs/site-lisp/git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>Bash completion has been installed to:</code> 这句话告诉我们git的自动补全脚本已经添加到了 <code>/usr/local/etc/</code> 目录下面的 <code>bash_completion.d</code>文件</p><p>我们所要做的就是,把它加到linux的补全功能中<br>我们首先进入 <code>/etc</code> 目录 ,使用管理员权限修改 <code>bashrc</code> 文件,在文件的最后一行加入下面一句话<br><code>[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] &amp;&amp; . /usr/local/etc/bash_completion.d/git-completion.bash</code><br>保存,重启终端即可</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-          <category> 终端生存之道 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> Git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Git万能后悔药</title>
       <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
       <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
@@ -2780,6 +2757,35 @@
         <tags>
             
             <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux终端生存之道-Git补全</title>
+      <link href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bu-quan/"/>
+      <url>/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bu-quan/</url>
+      
+        <content type="html"><![CDATA[<p>在Linux平台上,很多命令在我们按下<code>tab</code>键之后会自动补全该命令,在多次连续按下<code>tab</code>键之后会一次补全并切换匹配的命令。我们在使用git的过程中,也希望能够自动补全一些指令,比如 我想执行 <code>git status</code> 命令的时候,我只用输入 <code>git st </code> 然后按下<code>tab</code>键,就能输出 <code>git status</code>了。</p><p>在mac平台,使用HomeBrew安装Git <code>brew install git</code><br>我们会得到如下的输出(可以使用 <code>brew info git</code> 命令查看安装git时候的输出信息),我截取了最后几行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.Bash completion has been installed to:  /usr/local/etc/bash_completion.d<span class="token function">zsh</span> completions and functions have been installed to:  /usr/local/share/zsh/site-functionsEmacs Lisp files have been installed to:  /usr/local/share/emacs/site-lisp/git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>Bash completion has been installed to:</code> 这句话告诉我们git的自动补全脚本已经添加到了 <code>/usr/local/etc/</code> 目录下面的 <code>bash_completion.d</code>文件</p><p>我们所要做的就是,把它加到linux的补全功能中<br>我们首先进入 <code>/etc</code> 目录 ,使用管理员权限修改 <code>bashrc</code> 文件,在文件的最后一行加入下面一句话<br><code>[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] &amp;&amp; . /usr/local/etc/bash_completion.d/git-completion.bash</code><br>保存,重启终端即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 终端生存之道 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
