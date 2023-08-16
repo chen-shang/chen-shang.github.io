@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-08-14T22:23:05.787Z</updated>
+  <updated>2023-08-16T03:09:52.148Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux 压缩加密文件</title>
+    <link href="https://chen-shang.github.io/2023/08/16/linux-ya-suo-jia-mi-wen-jian/"/>
+    <id>https://chen-shang.github.io/2023/08/16/linux-ya-suo-jia-mi-wen-jian/</id>
+    <published>2023-08-16T02:28:24.000Z</published>
+    <updated>2023-08-16T03:09:52.148Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;压缩文件&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在Vite项目中配置ip:port访问</title>
+    <link href="https://chen-shang.github.io/2023/08/16/qian-duan/ru-he-zai-vite-xiang-mu-zhong-pei-zhi-ip-port-deng-lu/"/>
+    <id>https://chen-shang.github.io/2023/08/16/qian-duan/ru-he-zai-vite-xiang-mu-zhong-pei-zhi-ip-port-deng-lu/</id>
+    <published>2023-08-15T16:06:02.000Z</published>
+    <updated>2023-08-16T03:03:26.101Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;要在Vite项目中配置IP:PORT访问，你可以按照以下步骤进行操作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;打开你的Vite项目，并确保你的项目已经正确安装和运行。&lt;/li&gt;
+&lt;li&gt;寻找项目中的配置文件，通常是一个名为vite.config.js的文件，位于项目的根目录下。如果你找</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>gpt-3.5-turbo-16k-0613 跟 gpt-3.5-turbo-0613 有什么区别</title>
@@ -530,63 +584,6 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>不良资产包在分析的过程中关注的维度</title>
-    <link href="https://chen-shang.github.io/2023/06/29/jing-ji-xue/bu-liang-zi-chan-bao-zai-fen-xi-de-guo-cheng-zhong-guan-zhu-de-wei-du/"/>
-    <id>https://chen-shang.github.io/2023/06/29/jing-ji-xue/bu-liang-zi-chan-bao-zai-fen-xi-de-guo-cheng-zhong-guan-zhu-de-wei-du/</id>
-    <published>2023-06-29T08:49:05.000Z</published>
-    <updated>2023-07-29T16:08:00.192Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近参加了一场公司组织的项目立项、投决会议。这个会议主要针对市场拓展部发掘的不良资产包的情况进行汇报。汇报的目的是决定是否要对这个资产包进行投资。从与会的人员来看均是各个部门的领导，我作为新入公司的一员有幸进行了旁听。对于我一个刚刚入行不良资产领域的人来讲，要学的东西真的还</summary>
-        
-      
-    
-    
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="不良资产" scheme="https://chen-shang.github.io/tags/%E4%B8%8D%E8%89%AF%E8%B5%84%E4%BA%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vscode推荐插件</title>
-    <link href="https://chen-shang.github.io/2023/06/27/gong-ju-kong/vscode/vscode-tui-jian-cha-jian/"/>
-    <id>https://chen-shang.github.io/2023/06/27/gong-ju-kong/vscode/vscode-tui-jian-cha-jian/</id>
-    <published>2023-06-27T01:03:37.000Z</published>
-    <updated>2023-07-29T16:08:22.276Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="VsCode" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/VsCode/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
