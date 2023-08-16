@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-08-16T03:09:52.148Z</updated>
+  <updated>2023-08-16T04:11:24.924Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,9 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>mac 刷新DNS缓存</title>
+    <link href="https://chen-shang.github.io/2023/08/16/linux/mac-shua-xin-dns-huan-cun/"/>
+    <id>https://chen-shang.github.io/2023/08/16/linux/mac-shua-xin-dns-huan-cun/</id>
+    <published>2023-08-16T04:10:25.000Z</published>
+    <updated>2023-08-16T04:11:24.924Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>linux 压缩加密文件</title>
-    <link href="https://chen-shang.github.io/2023/08/16/linux-ya-suo-jia-mi-wen-jian/"/>
-    <id>https://chen-shang.github.io/2023/08/16/linux-ya-suo-jia-mi-wen-jian/</id>
+    <link href="https://chen-shang.github.io/2023/08/16/linux/linux-ya-suo-jia-mi-wen-jian/"/>
+    <id>https://chen-shang.github.io/2023/08/16/linux/linux-ya-suo-jia-mi-wen-jian/</id>
     <published>2023-08-16T02:28:24.000Z</published>
     <updated>2023-08-16T03:09:52.148Z</updated>
     
@@ -550,31 +573,6 @@
         
     <summary type="html">&lt;p&gt;TypeScript 和 ECMAScript 是两种不同的编程语言。&lt;/p&gt;
 &lt;p&gt;ECMAScript 是一种标准化的脚本语言，它定义了一套用于编写脚本的规范。JavaScript 是 ECMAScript 的一种实现，也是最常见的一种实现。ECMAScript</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>浏览器支持 ES 模块 中的 ES 模块是什么</title>
-    <link href="https://chen-shang.github.io/2023/07/01/qian-duan/liu-lan-qi-zhi-chi-es-mo-kuai-zhong-de-es-mo-kuai-shi-shi-me/"/>
-    <id>https://chen-shang.github.io/2023/07/01/qian-duan/liu-lan-qi-zhi-chi-es-mo-kuai-zhong-de-es-mo-kuai-shi-shi-me/</id>
-    <published>2023-06-30T16:45:13.000Z</published>
-    <updated>2023-07-29T16:08:45.288Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;ES 模块是指 ECMAScript 模块，它是 JavaScript 的一种模块化规范。在过去，JavaScript 并没有原生支持模块化，开发者通常使用第三方库或者自己实现模块化的方式来组织代码。但是，随着 ECMAScript</summary>
         
       
     

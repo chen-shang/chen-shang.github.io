@@ -4,9 +4,28 @@
   
     
     <entry>
+      <title>mac 刷新DNS缓存</title>
+      <link href="/2023/08/16/linux/mac-shua-xin-dns-huan-cun/"/>
+      <url>/2023/08/16/linux/mac-shua-xin-dns-huan-cun/</url>
+      
+        <content type="html"><![CDATA[<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> dscacheutil <span class="token parameter variable">-flushcache</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这是一个用于刷新 DNS 缓存的命令。在计算机上访问网站时，DNS（域名系统）被用于将网站域名转换为相应的 IP 地址。为了加快访问速度，计算机会将最近访问的 DNS 查询结果缓存在本地。然而，有时 DNS 缓存可能过期或者出现问题，导致无法正确解析域名。</p><p>这个命令可以强制刷新计算机的 DNS 缓存。通过执行该命令，计算机将清除存储在缓存中的 DNS 查询结果，并尝试重新解析所有域名。这样一来，它会从新的源（如 DNS 服务器）获取最新的 IP 地址，从而解决一些与 DNS 相关的访问问题。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux 压缩加密文件</title>
-      <link href="/2023/08/16/linux-ya-suo-jia-mi-wen-jian/"/>
-      <url>/2023/08/16/linux-ya-suo-jia-mi-wen-jian/</url>
+      <link href="/2023/08/16/linux/linux-ya-suo-jia-mi-wen-jian/"/>
+      <url>/2023/08/16/linux/linux-ya-suo-jia-mi-wen-jian/</url>
       
         <content type="html"><![CDATA[<p>压缩文件</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token operator">&lt;</span>压缩文件名<span class="token operator">&gt;</span>.zip <span class="token operator">&lt;</span>要压缩的文件<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>压缩文件夹 用 <code>-r</code> 参数，代表递归文件夹里面的内容</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>压缩文件名<span class="token operator">&gt;</span>.zip <span class="token operator">&lt;</span>要压缩的文件夹<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>加密压缩 用 <code>-e</code> 参数，如果要加密压缩文件夹 则连用 <code>-re</code> 就行</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token parameter variable">-re</span> <span class="token operator">&lt;</span>压缩文件名<span class="token operator">&gt;</span>.zip <span class="token operator">&lt;</span>要压缩的文件夹<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>解压使用 unzip 到当前目录</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> <span class="token operator">&lt;</span>压缩文件名<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>解压使用 unzip 到指定目录</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> archive.zip <span class="token parameter variable">-d</span> mydir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><div width="100%" style="overflow:hidden">    <div style="float:left; width:49%;"><h1>zip 常用的参数以及含义</h1>-r: 递归地压缩目录和其子目录中的文件。 <br>-q: 静默模式，不显示压缩进度。 <br>-m: 压缩后将源文件移动到垃圾桶（删除源文件）。 <br>-j: 仅压缩文件，不包含目录信息。这样可以在解压缩时将所有文件提取到当前目录，而不是具有原始目录的结构。 <br>-9: 最高压缩级别。这会导致更小的压缩文件，但会花费更长的时间。 <br>-o: 将压缩文件写入指定的输出文件而不是默认的zip文件。 <br>-d: 从压缩文件中删除指定的文件。 <br>-u: 只压缩新添加或修改的文件。 <br>-x: 排除指定的文件或目录，不进行压缩。 <br>    </div>    <div style="float:right; width:50%;"><h1>unzip 常用的参数以及含义</h1>-l or --list：用于列出压缩文件中的内容列表。这个选项不会解压缩文件，只是显示文件列表和其他相关信息。<br>-d &lt;目标目录&gt; or --directory &lt;目标目录&gt;：指定解压缩后的文件将要被放置的目标目录。可以使用绝对路径或相对路径。<br>-o or --overwrite：如果目标目录下已存在同名文件，则覆盖已存在的文件。<br>-x or --exclude &lt;文件 目录&gt;：用于排除指定的文件或目录，不进行解压缩。可以使用通配符来匹配多个文件或目录。<br>-j or --junk-paths：在解压缩时丢弃目录路径，将所有文件提取到当前目录下。这意味着解压缩后的文件将不包含原始的目录结构。<br>-q or --quiet：静默模式，不显示解压缩过程中的任何信息。<br>-f or --freshen：只解压缩那些压缩包中包含的新文件，或者其内容已更新的文件。<br>-v or --verbose：详细模式，显示解压缩过程中的详细信息。<br>   <!--文件--><!--目标目录--><!--目标目录--></div></div>]]></content>
       
@@ -1091,9 +1110,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
