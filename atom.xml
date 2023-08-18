@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-08-16T04:11:24.924Z</updated>
+  <updated>2023-08-18T15:54:50.770Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,80 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Afred和Spotlight无法搜索问题解决</title>
+    <link href="https://chen-shang.github.io/2023/08/18/gong-ju-kong/mac/afred-he-spotlight-wu-fa-sou-suo-wen-ti-jie-jue/"/>
+    <id>https://chen-shang.github.io/2023/08/18/gong-ju-kong/mac/afred-he-spotlight-wu-fa-sou-suo-wen-ti-jie-jue/</id>
+    <published>2023-08-18T15:38:36.000Z</published>
+    <updated>2023-08-18T15:54:50.770Z</updated>
+    
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac &amp; windows 键鼠共享</title>
+    <link href="https://chen-shang.github.io/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/"/>
+    <id>https://chen-shang.github.io/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/</id>
+    <published>2023-08-18T04:01:59.000Z</published>
+    <updated>2023-08-18T15:53:07.686Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;当使用多台计算机时，使用一个键盘和鼠标来控制所有计算机可能会非常方便。&lt;/p&gt;
+&lt;p&gt;ShareMouse 是一个可以实现 Mac 和 Windows 之间键盘和鼠标共享的软件。以下是使用 ShareMouse 实现键盘和鼠标共享的简单教程：&lt;/p&gt;
+&lt;p&gt;步骤</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="ShareMouse" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/ShareMouse/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>html5语意标签</title>
+    <link href="https://chen-shang.github.io/2023/08/16/qian-duan/html5-yu-yi-biao-qian/"/>
+    <id>https://chen-shang.github.io/2023/08/16/qian-duan/html5-yu-yi-biao-qian/</id>
+    <published>2023-08-16T12:53:42.000Z</published>
+    <updated>2023-08-18T15:50:36.425Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;HTML5引入了一些语义标签，HTML5语义化标签是一种在HTML文档中使用特定标记来描述页面结构和内容的方法。尽管使用这些标签并不会直接影响页面的外观或功能，但它可以提供更清晰和易于理解的代码结构,有助于更好地描述网页的结构和内容，也有助于搜索引擎优化（SEO）。&lt;/p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>mac 刷新DNS缓存</title>
     <link href="https://chen-shang.github.io/2023/08/16/linux/mac-shua-xin-dns-huan-cun/"/>
     <id>https://chen-shang.github.io/2023/08/16/linux/mac-shua-xin-dns-huan-cun/</id>
     <published>2023-08-16T04:10:25.000Z</published>
-    <updated>2023-08-16T04:11:24.924Z</updated>
+    <updated>2023-08-16T04:12:33.180Z</updated>
     
     
       
@@ -34,6 +103,8 @@
     
     
     
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
@@ -44,7 +115,7 @@
     <link href="https://chen-shang.github.io/2023/08/16/linux/linux-ya-suo-jia-mi-wen-jian/"/>
     <id>https://chen-shang.github.io/2023/08/16/linux/linux-ya-suo-jia-mi-wen-jian/</id>
     <published>2023-08-16T02:28:24.000Z</published>
-    <updated>2023-08-16T03:09:52.148Z</updated>
+    <updated>2023-08-16T04:12:33.180Z</updated>
     
     
       
@@ -57,6 +128,8 @@
       
     
     
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -499,86 +572,6 @@
     
     
     <category term="经济学" scheme="https://chen-shang.github.io/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shell 如何实现统计列数</title>
-    <link href="https://chen-shang.github.io/2023/07/04/linux/shell/shell-ru-he-shi-xian-tong-ji-lie-shu/"/>
-    <id>https://chen-shang.github.io/2023/07/04/linux/shell/shell-ru-he-shi-xian-tong-ji-lie-shu/</id>
-    <published>2023-07-04T09:07:40.000Z</published>
-    <updated>2023-08-03T14:11:41.152Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如果一个文件中的内容如下&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>什么是标记语言</title>
-    <link href="https://chen-shang.github.io/2023/07/01/qian-duan/shi-me-shi-biao-ji-yu-yan/"/>
-    <id>https://chen-shang.github.io/2023/07/01/qian-duan/shi-me-shi-biao-ji-yu-yan/</id>
-    <published>2023-07-01T00:54:46.000Z</published>
-    <updated>2023-07-29T16:08:50.216Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;标记语言是一种用于描述文本结构和格式的计算机语言。它通过在文本中插入特定的标记或标签来指示文本的结构和样式。标记语言可以用于创建和格式化各种类型的文档，如网页、电子书、电子邮件等。&lt;/p&gt;
-&lt;p&gt;最常见的标记语言是HTML（超文本标记语言），它用于创建网页。HTML使用一系</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TypeScript 和 ECMAScript 有什么关系</title>
-    <link href="https://chen-shang.github.io/2023/07/01/qian-duan/typescript-he-ecmascript-you-shi-me-guan-xi/"/>
-    <id>https://chen-shang.github.io/2023/07/01/qian-duan/typescript-he-ecmascript-you-shi-me-guan-xi/</id>
-    <published>2023-06-30T16:51:31.000Z</published>
-    <updated>2023-07-29T16:08:38.195Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;TypeScript 和 ECMAScript 是两种不同的编程语言。&lt;/p&gt;
-&lt;p&gt;ECMAScript 是一种标准化的脚本语言，它定义了一套用于编写脚本的规范。JavaScript 是 ECMAScript 的一种实现，也是最常见的一种实现。ECMAScript</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
