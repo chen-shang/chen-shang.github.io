@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="进程vs线程, IT,技术,总结">
+    <meta name="keywords" content="Java字符串拼接VS, IT,技术,总结">
     <meta name="description" content="摘要">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>进程vs线程 | 涓涓细流</title>
+    <title>Java字符串拼接VS | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">进程vs线程</h1>
+                    <h1 class="description center-align post-title">Java字符串拼接VS</h1>
                 </div>
             </div>
         </div>
@@ -306,21 +306,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-09
+                    2023-07-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    801
+                    520
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -343,20 +343,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>进程</h1>
-<blockquote>
-<p>维基百科</p>
-</blockquote>
-<p>进程（英语：process），是指计算机中已运行的程序。进程为曾经是分时系统的基本运作单位。在面向进程设计的系统（如早期的UNIX，Linux 2.4及更早的版本）中，进程是程序的基本执行实体；在面向线程设计的系统（如当代多数操作系统、Linux 2.6及更新的版本）中，进程本身不是基本运行单位，而是线程的容器。程序本身只是指令、数据及其组织形式的描述，进程才是程序（那些指令和数据）的真正运行实例。若干进程有可能与同一个程序相关系，且每个进程皆可以同步（循序）或异步（平行）的方式独立运行。现代计算机系统可在同一段时间内以进程的形式将多个程序加载到存储器中，并借由时间共享（或称时分复用），以在一个处理器上表现出同时（平行性）运行的感觉。同样的，使用多线程技术（多线程即每一个线程都代表一个进程内的一个独立执行上下文）的操作系统或计算机体系结构，同样程序的平行线程，可在多CPU主机或网络上真正同时运行（在不同的CPU上）。</p>
-<h1>线程</h1>
-<blockquote>
-<p>维基百科</p>
-</blockquote>
-<p>线程（英语：thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。在Unix System V及SunOS中也被称为轻量进程（lightweight processes），但轻量进程更多指内核线程（kernel thread），而把用户线程（user thread）称为线程。</p>
-<p>线程是独立调度和分派的基本单位。线程可以为操作系统内核调度的内核线程，如Win32线程；由用户进程自行调度的用户线程，如Linux平台的POSIX Thread；或者由内核与用户进程，如Windows 7的线程，进行混合调度。</p>
-<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
-<p>一个进程可以有很多线程，每条线程并行执行不同的任务。</p>
-<p>在多核或多CPU，或支持Hyper-threading的CPU上使用多线程程序设计的好处是显而易见的，即提高了程序的执行吞吐率。在单CPU单核的计算机上，使用多线程技术，也可以把进程中负责I/O处理、人机交互而常被阻塞的部分与密集计算的部分分开来执行，编写专门的workhorse线程执行密集计算，从而提高了程序的执行效率。</p>
+                <p><img src="https://github.com/chen-shang/Picture/raw/master/java/String.jpg" alt=""><br>
+看到上面的提示时是不是有点疑问,对于初学Java的人来说，在学习String的时候，肯定有无数个人和我们讲过，“尽量不要使用+拼接字符串，效率不好，应该使用append，你自己循环拼接个十万次自己瞧瞧就知道了” 为什么这里连IDEA都提醒我们可以用+来代替append呢。</p>
+<p>结论:<br>
+Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们口中所说的效率低下指的是在循环中的+拼接，只是不知道从哪天开始完全变了味。如果你能保证在一条语句中把字符串或者字符串变量全部拼接完而不断开，那+拼接根本没有任何缺点，编译器还会有一些优化，如果拼接的全是字符串字面量，那效果更好，它们直接就变成了一个完整的字符串。并且+书写简洁方便，可读性强。直接用StringBuilder的append也没有问题，只是不要append()和+混合使用。</p>
+<p>如果用+拼接字符串中间不断,那么用+拼接的效率与StringBuffer或StringBuilder使用append的效率相当,甚至在编译器的优化下效率反而会更高。因为第一次遇到+拼接的时候,编译器会自动创new 一个 StringBuilder 然后只要+不断就会一路append下去。</p>
+<p>String采用连接运算符(+)效率低下，都是上述循环、大批量数据情况造成的，每做一次"+"就产生个StringBuilder对象，然后append后就扔掉。下次循环再到达时重新产生个StringBuilder对象，然后append字符串，如此循环直至结束。如果我们直接采用StringBuilder对象进行append的话，我们可以节省创建和销毁对象的时间。如果只是简单的字面量拼接或者很少的字符串拼接，性能都是差不多的。</p>
+<p>参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37589327/article/details/78605268">Java中对于+和append拼接字符串效率的误解</a></p>
 
                 
             </div>
@@ -726,13 +719,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/19/vs-xi-lie/java-zi-fu-chuan-pin-jie-vs/">
+                <a href="/2019/09/19/linux/shell/shell-dang-xin-for-xun-huan-zhong-de-bian-liang-zuo-yong-yu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Java字符串拼接VS">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Shell当心for循环中的变量作用域">
                         
-                        <span class="card-title">Java字符串拼接VS</span>
+                        <span class="card-title">Shell当心for循环中的变量作用域</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -745,6 +738,63 @@
                         <span class="publish-date">
                             <i class="far fa-clock fa-fw icon-date"></i>2019-09-19
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            <a href="/categories/Linux/Shell/" class="post-category">
+                                    Shell
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Shell/">
+                        <span class="chip bg-color">Shell</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/09/19/qian-duan/vue/vs-xi-lie/jin-cheng-vs-xian-cheng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="进程vs线程">
+                        
+                        <span class="card-title">进程vs线程</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            摘要
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -766,59 +816,6 @@
                     
                     <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
                         <span class="chip bg-color">未完待续</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2019/09/17/java/java-de-zhi-chuan-di-he-yin-yong-chuan-di/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVA的值传递和引用传递">
-                        
-                        <span class="card-title">JAVA的值传递和引用传递</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            值传递:传递的是值的拷贝 vs 引用传递:传递的是引用的传递
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-17
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                        <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -916,7 +913,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">116.8k</span>
+                        class="white-color">118.3k</span>
             
             
             

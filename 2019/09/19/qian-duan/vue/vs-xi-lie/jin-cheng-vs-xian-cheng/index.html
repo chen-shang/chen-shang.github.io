@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="HTML 中 src vs href, IT,技术,总结">
-    <meta name="description" content="为什么引入`javascript`就用`src`, 为什么引入 `css` 就用 `href` 呢">
+    <meta name="keywords" content="进程vs线程, IT,技术,总结">
+    <meta name="description" content="摘要">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>HTML 中 src vs href | 涓涓细流</title>
+    <title>进程vs线程 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">HTML 中 src vs href</h1>
+                    <h1 class="description center-align post-title">进程vs线程</h1>
                 </div>
             </div>
         </div>
@@ -274,16 +274,8 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/HTML/">
-                                <span class="chip bg-color">HTML</span>
-                            </a>
-                        
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
-                            </a>
-                        
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
                             </a>
                         
                     </div>
@@ -307,28 +299,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-03
+                    2019-09-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-03
+                    2022-04-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    522
+                    801
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -351,24 +343,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>在html页面中，同样是引入外部文件，为什么引入<code>javascript</code>就用<code>src</code>, 为什么引入 <code>css</code> 就用 <code>href</code> 呢? 为什么就没人统一一下呢?</p>
-<p><code>src</code>  属性通常用于指定要加载的资源的路径，如脚本文件、图像文件等。而  <code>href</code>  属性通常用于指定链接的目标资源的 URL，如超链接的目标页面、外部样式表等。 如  <code>&lt;script&gt;</code>  和  <code>&lt;img&gt;</code>  标签中使用的是  <code>src</code>  属性，而  <code>&lt;link&gt;</code>  和  <code>&lt;a&gt;</code>  标签中使用的是  <code>href</code>  属性，但这只是由于历史原因和标签的设计规范。</p>
-<p>在 HTML 中，有多个标签可以使用  <code>href</code>  属性来指定链接的目标资源的 URL。以下是一些常见的具有  <code>href</code>  属性的标签：</p>
-<ul>
-<li><code>&lt;a&gt;</code>  标签：用于创建超链接，指定链接的目标页面或资源的 URL。</li>
-<li><code>&lt;link&gt;</code> 标签：用于引入外部资源，如样式表、图标等， href  属性指定资源的路径。</li>
-<li><code>&lt;area&gt;</code>  标签：用于定义图像映射区域， href  属性指定与区域关联的链接。</li>
-<li><code>&lt;base&gt;</code>  标签：用于指定页面中所有相对链接的基本 URL， href  属性指定基本 URL。</li>
-</ul>
-<p>在 HTML 中，有多个标签可以使用  <code>src</code>  属性来指定要加载的外部资源的 URL。以下是一些常见的具有  <code>src</code>  属性的标签：</p>
-<ul>
-<li><code>&lt;script&gt;</code>  标签：用于引入外部 JavaScript 文件， src  属性指定 JavaScript 文件的路径。</li>
-<li><code>&lt;img&gt;</code>  标签：用于嵌入图像， <code>src</code>  属性指定图像文件的路径。</li>
-<li><code>&lt;iframe&gt;</code>  标签：用于嵌入另一个 HTML 文档， <code>src</code>  属性指定嵌入文档的路径。</li>
-<li><code>&lt;audio&gt;</code>  标签：用于嵌入音频文件，<code>src</code>  属性指定音频文件的路径。</li>
-<li><code>&lt;video&gt;</code>  标签：用于嵌入视频文件， <code>src</code>  属性指定视频文件的路径。</li>
-<li><code>&lt;source&gt;</code>  标签：用于为  <code>&lt;audio&gt;</code>  和  <code>&lt;video&gt;</code>  标签指定多个媒体源，每个源都使用  <code>src</code> 属性指定路径。</li>
-</ul>
+                <h1>进程</h1>
+<blockquote>
+<p>维基百科</p>
+</blockquote>
+<p>进程（英语：process），是指计算机中已运行的程序。进程为曾经是分时系统的基本运作单位。在面向进程设计的系统（如早期的UNIX，Linux 2.4及更早的版本）中，进程是程序的基本执行实体；在面向线程设计的系统（如当代多数操作系统、Linux 2.6及更新的版本）中，进程本身不是基本运行单位，而是线程的容器。程序本身只是指令、数据及其组织形式的描述，进程才是程序（那些指令和数据）的真正运行实例。若干进程有可能与同一个程序相关系，且每个进程皆可以同步（循序）或异步（平行）的方式独立运行。现代计算机系统可在同一段时间内以进程的形式将多个程序加载到存储器中，并借由时间共享（或称时分复用），以在一个处理器上表现出同时（平行性）运行的感觉。同样的，使用多线程技术（多线程即每一个线程都代表一个进程内的一个独立执行上下文）的操作系统或计算机体系结构，同样程序的平行线程，可在多CPU主机或网络上真正同时运行（在不同的CPU上）。</p>
+<h1>线程</h1>
+<blockquote>
+<p>维基百科</p>
+</blockquote>
+<p>线程（英语：thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。在Unix System V及SunOS中也被称为轻量进程（lightweight processes），但轻量进程更多指内核线程（kernel thread），而把用户线程（user thread）称为线程。</p>
+<p>线程是独立调度和分派的基本单位。线程可以为操作系统内核调度的内核线程，如Win32线程；由用户进程自行调度的用户线程，如Linux平台的POSIX Thread；或者由内核与用户进程，如Windows 7的线程，进行混合调度。</p>
+<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
+<p>一个进程可以有很多线程，每条线程并行执行不同的任务。</p>
+<p>在多核或多CPU，或支持Hyper-threading的CPU上使用多线程程序设计的好处是显而易见的，即提高了程序的执行吞吐率。在单CPU单核的计算机上，使用多线程技术，也可以把进程中负责I/O处理、人机交互而常被阻塞的部分与密集计算的部分分开来执行，编写专门的workhorse线程执行密集计算，从而提高了程序的执行效率。</p>
 
                 
             </div>
@@ -387,16 +375,8 @@
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/HTML/">
-                                    <span class="chip bg-color">HTML</span>
-                                </a>
-                            
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
-                                </a>
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                         </div>
@@ -746,35 +726,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/08/07/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-md5/">
+                <a href="/2019/09/19/qian-duan/vue/vs-xi-lie/java-zi-fu-chuan-pin-jie-vs/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Linux终端生存之道-md5">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Java字符串拼接VS">
                         
-                        <span class="card-title">Linux终端生存之道-md5</span>
+                        <span class="card-title">Java字符串拼接VS</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            echo -n "字符串"|md5 千万别忘记了 -n 参数
+                            摘要
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-09-19
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            <a href="/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/" class="post-category">
-                                    终端生存之道
+                            <a href="/categories/VS%E7%B3%BB%E5%88%97/" class="post-category">
+                                    VS系列
                                 </a>
                             
                             
@@ -788,8 +764,8 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -803,31 +779,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/07/26/shu-ju-ku/springboot-duo-shu-ju-yuan-pei-zhi/">
+                <a href="/2019/09/17/java/java-de-zhi-chuan-di-he-yin-yong-chuan-di/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="SpringBoot 多数据源配置">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVA的值传递和引用传递">
                         
-                        <span class="card-title">SpringBoot 多数据源配置</span>
+                        <span class="card-title">JAVA的值传递和引用传递</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            SpringBoot+Mybatis+多数据源配置
+                            值传递:传递的是值的拷贝 vs 引用传递:传递的是引用的传递
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -839,6 +815,10 @@
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -936,7 +916,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">116.8k</span>
+                        class="white-color">118.3k</span>
             
             
             

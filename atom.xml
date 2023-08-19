@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-08-19T08:59:13.427Z</updated>
+  <updated>2023-08-19T15:15:28.711Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,21 +17,28 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>JavaScript中声明变量</title>
-    <link href="https://chen-shang.github.io/2023/08/19/qian-duan/javascript/javascript-zhong-sheng-ming-bian-liang/"/>
-    <id>https://chen-shang.github.io/2023/08/19/qian-duan/javascript/javascript-zhong-sheng-ming-bian-liang/</id>
-    <published>2023-08-19T08:45:12.000Z</published>
-    <updated>2023-08-19T08:59:13.427Z</updated>
+    <title>JavaScript不支持方法的重载</title>
+    <link href="https://chen-shang.github.io/2023/08/19/qian-duan/javascript/javascript-bu-zhi-chi-fang-fa-de-chong-zai/"/>
+    <id>https://chen-shang.github.io/2023/08/19/qian-duan/javascript/javascript-bu-zhi-chi-fang-fa-de-chong-zai/</id>
+    <published>2023-08-19T14:45:30.000Z</published>
+    <updated>2023-08-19T15:15:28.711Z</updated>
     
     
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我们先看一下下面的html页面&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-markup&quot; data-language=&quot;markup&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&lt;span class=&quot;token</summary>
+        
+      
     
     
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
@@ -45,9 +52,37 @@
     
     <category term="CSS" scheme="https://chen-shang.github.io/tags/CSS/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
     <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript中声明变量</title>
+    <link href="https://chen-shang.github.io/2023/08/19/qian-duan/javascript/javascript-zhong-sheng-ming-bian-liang/"/>
+    <id>https://chen-shang.github.io/2023/08/19/qian-duan/javascript/javascript-zhong-sheng-ming-bian-liang/</id>
+    <published>2023-08-19T08:45:12.000Z</published>
+    <updated>2023-08-19T09:45:24.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;在JavaScript中声明变量的三种方式&lt;/h1&gt;
+&lt;p&gt;在JavaScript中，可以使用关键字var、let或const来声明变量。&lt;br&gt;
+使用var关键字声明变量：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
   </entry>
   
@@ -271,9 +306,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
   </entry>
   
@@ -338,8 +373,8 @@
   
   <entry>
     <title>HTML 中 src vs href</title>
-    <link href="https://chen-shang.github.io/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/"/>
-    <id>https://chen-shang.github.io/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/</id>
+    <link href="https://chen-shang.github.io/2023/08/03/qian-duan/vue/vs-xi-lie/html-zhong-src-vs-href/"/>
+    <id>https://chen-shang.github.io/2023/08/03/qian-duan/vue/vs-xi-lie/html-zhong-src-vs-href/</id>
     <published>2023-08-03T15:21:49.000Z</published>
     <updated>2023-08-03T15:35:02.351Z</updated>
     
@@ -573,35 +608,6 @@
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="Hexo" scheme="https://chen-shang.github.io/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>idea 插件 PlantUML Integration 无法显示 类图</title>
-    <link href="https://chen-shang.github.io/2023/07/08/gong-ju-kong/intellij-idea/idea-cha-jian-plantuml-integration-wu-fa-xian-shi-lei-tu/"/>
-    <id>https://chen-shang.github.io/2023/07/08/gong-ju-kong/intellij-idea/idea-cha-jian-plantuml-integration-wu-fa-xian-shi-lei-tu/</id>
-    <published>2023-07-08T14:14:42.000Z</published>
-    <updated>2023-07-28T22:52:35.191Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;问题: 打开idea到设置中查找插件，搜索plantuml ，直接安装即可，安装后重启，随便打开一个项目，点击新建文件发现类型多了plantuml file的类型，打开该类型文件发现有问题，无法正常显示图形&lt;/p&gt;
-&lt;p&gt;执行：&lt;/p&gt;
-&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
   </entry>
   

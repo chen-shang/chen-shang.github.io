@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java字符串拼接VS, IT,技术,总结">
+    <meta name="keywords" content="JavaScript不支持方法的重载, IT,技术,总结">
     <meta name="description" content="摘要">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java字符串拼接VS | 涓涓细流</title>
+    <title>JavaScript不支持方法的重载 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -230,7 +230,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java字符串拼接VS</h1>
+                    <h1 class="description center-align post-title">JavaScript不支持方法的重载</h1>
                 </div>
             </div>
         </div>
@@ -278,19 +278,38 @@
                                 <span class="chip bg-color">未完待续</span>
                             </a>
                         
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/Git/">
+                                <span class="chip bg-color">Git</span>
+                            </a>
+                        
+                            <a href="/tags/Java/">
+                                <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                            <a href="/tags/HTML/">
+                                <span class="chip bg-color">HTML</span>
+                            </a>
+                        
+                            <a href="/tags/CSS/">
+                                <span class="chip bg-color">CSS</span>
+                            </a>
+                        
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/VS%E7%B3%BB%E5%88%97/" class="post-category">
-                                VS系列
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -299,28 +318,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-19
+                    2023-08-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-30
+                    2023-08-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    520
+                    716
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -343,13 +362,69 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="https://github.com/chen-shang/Picture/raw/master/java/String.jpg" alt=""><br>
-看到上面的提示时是不是有点疑问,对于初学Java的人来说，在学习String的时候，肯定有无数个人和我们讲过，“尽量不要使用+拼接字符串，效率不好，应该使用append，你自己循环拼接个十万次自己瞧瞧就知道了” 为什么这里连IDEA都提醒我们可以用+来代替append呢。</p>
-<p>结论:<br>
-Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们口中所说的效率低下指的是在循环中的+拼接，只是不知道从哪天开始完全变了味。如果你能保证在一条语句中把字符串或者字符串变量全部拼接完而不断开，那+拼接根本没有任何缺点，编译器还会有一些优化，如果拼接的全是字符串字面量，那效果更好，它们直接就变成了一个完整的字符串。并且+书写简洁方便，可读性强。直接用StringBuilder的append也没有问题，只是不要append()和+混合使用。</p>
-<p>如果用+拼接字符串中间不断,那么用+拼接的效率与StringBuffer或StringBuilder使用append的效率相当,甚至在编译器的优化下效率反而会更高。因为第一次遇到+拼接的时候,编译器会自动创new 一个 StringBuilder 然后只要+不断就会一路append下去。</p>
-<p>String采用连接运算符(+)效率低下，都是上述循环、大批量数据情况造成的，每做一次"+"就产生个StringBuilder对象，然后append后就扔掉。下次循环再到达时重新产生个StringBuilder对象，然后append字符串，如此循环直至结束。如果我们直接采用StringBuilder对象进行append的话，我们可以节省创建和销毁对象的时间。如果只是简单的字面量拼接或者很少的字符串拼接，性能都是差不多的。</p>
-<p>参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37589327/article/details/78605268">Java中对于+和append拼接字符串效率的误解</a></p>
+                <p>我们先看一下下面的html页面</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">&gt;</span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>echo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">echo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>echo(1)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token special-attr"><span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value javascript language-javascript"><span class="token function">echo</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>echo(1,2)<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+    <span class="token keyword">function</span> <span class="token function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我执行了echo()"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">echo</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我执行了echo(a)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们再看一下其中的javascript代码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+    <span class="token keyword">function</span> <span class="token function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我执行了echo()"</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">echo</span><span class="token punctuation">(</span><span class="token parameter">a</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"我执行了echo(a)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我们点击按钮最终调用的都是</p>
+<pre class="line-numbers language-none"><code class="language-none">function echo(a) {
+        alert("我执行了echo(a)");
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这就跟我们的常识有点出入了,要知道像Java、Scala、Python这样的语言都是支持方法重载的,也就是在一个类中(你可以理解为文件中)是可以定义同名但是入参不同的函数的，这就叫方法的重载<br>
+比如</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">echo</span><span class="token punctuation">(</span><span class="token class-name">String</span> a<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">echo</span><span class="token punctuation">(</span><span class="token class-name">String</span> a <span class="token punctuation">,</span><span class="token class-name">String</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面定义的三个函数，在调用的时候，编译器会尽最大努力进行精确匹配 ，如果你写<br>
+<code>echo()</code> 那么调用的就是第一个 <code>echo()</code> 函数;如果你写<br>
+<code>echo("1")</code> 那么调用的就是 第二个 <code>echo(String a)</code>; 如果你写<br>
+<code>echo("1","2")</code> 那么调用的就是 第三个 <code>echo(String a ,String b)</code>;</p>
+<p>这似乎更符合人类的感官。但是 JavaScript 语言这类语言却反其道而行之，JavaScript 遇到重名的函数，走的是覆盖的逻辑，也就是最后定义的函数会覆盖前面的函数，这样，第二个 echo(a) 函数就是最终的名叫 echo 的函数，而 javsscript 中之前的两个函数就相当于没有定义一样。</p>
+<p>这类语言一般都是面向过程的语言，javascript 最开始的时候确实就是面向过程的，后来随着 EMAC 标准的制定，逐渐变得有点多范式的感觉了。</p>
+<p>这里javascrip 语言真是特别灵活 ，对于  echo(1,2) 这个调用，他居然也能正常的调用到 echo(a) ,按照我们的理解，echo(1,2) 需要两个入参，但是我们并没有定义有两个入参的 echo(a,b) 这样的函数要，理论上应该报错才对啊, 这你就想错。 如果你这样瞎传参数，无论括号里面有多少个 参数，也只有第一个参数有作用，会调用到 echo(a) ,然后把第一个参数赋值给a,剩下的参数就不能显示的获取了。 这种特性有点类似于结构，一些函数编程语言会提供这种高级的用法，期待Java也能慢慢支持这种语法糖吧。</p>
 
                 
             </div>
@@ -370,6 +445,34 @@ Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们
                             
                                 <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
                                     <span class="chip bg-color">未完待续</span>
+                                </a>
+                            
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/Git/">
+                                    <span class="chip bg-color">Git</span>
+                                </a>
+                            
+                                <a href="/tags/Java/">
+                                    <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
+                                </a>
+                            
+                                <a href="/tags/HTML/">
+                                    <span class="chip bg-color">HTML</span>
+                                </a>
+                            
+                                <a href="/tags/CSS/">
+                                    <span class="chip bg-color">CSS</span>
+                                </a>
+                            
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>
@@ -715,17 +818,18 @@ Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/09/19/linux/shell/shell-dang-xin-for-xun-huan-zhong-de-bian-liang-zuo-yong-yu/">
+                <a href="/2023/08/19/qian-duan/javascript/javascript-bu-zhi-chi-fang-fa-de-chong-zai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Shell当心for循环中的变量作用域">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JavaScript不支持方法的重载">
                         
-                        <span class="card-title">Shell当心for循环中的变量作用域</span>
+                        <span class="card-title">JavaScript不支持方法的重载</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -735,25 +839,18 @@ Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-09-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-19
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            <a href="/categories/Linux/Shell/" class="post-category">
-                                    Shell
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            陈尚
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -761,8 +858,36 @@ Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Shell/">
-                        <span class="chip bg-color">Shell</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/HTML/">
+                        <span class="chip bg-color">HTML</span>
+                    </a>
+                    
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
@@ -776,31 +901,35 @@ Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/19/vs-xi-lie/jin-cheng-vs-xian-cheng/">
+                <a href="/2023/08/19/qian-duan/javascript/javascript-zhong-sheng-ming-bian-liang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="进程vs线程">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="JavaScript中声明变量">
                         
-                        <span class="card-title">进程vs线程</span>
+                        <span class="card-title">JavaScript中声明变量</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            var|let|const 的区别
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/VS%E7%B3%BB%E5%88%97/" class="post-category">
-                                    VS系列
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" class="post-category">
+                                    JavaScript
                                 </a>
                             
                             
@@ -812,10 +941,6 @@ Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -913,7 +1038,7 @@ Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">116.8k</span>
+                        class="white-color">118.3k</span>
             
             
             

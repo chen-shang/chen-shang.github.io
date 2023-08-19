@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="JavaScript中声明变量, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="description" content="var|let|const 的区别">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -230,7 +230,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -274,38 +274,6 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                            <a href="/tags/Git/">
-                                <span class="chip bg-color">Git</span>
-                            </a>
-                        
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
-                            </a>
-                        
-                            <a href="/tags/HTML/">
-                                <span class="chip bg-color">HTML</span>
-                            </a>
-                        
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -345,14 +313,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    790
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -375,7 +343,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1>在JavaScript中声明变量的三种方式</h1>
+<p>在JavaScript中，可以使用关键字var、let或const来声明变量。<br>
+使用var关键字声明变量：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> myVariable <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这将创建一个名为myVariable的变量并将其初始化为10。使用var声明的变量是函数作用域的，意味着它们只在声明它们的函数内部可见。</p>
+<p>使用let关键字声明变量：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> myVariable <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>与var不同，使用let声明的变量是块级作用域的，意味着它们只在声明它们的块（例如，if语句或循环）内部可见。</p>
+<p>使用const关键字声明常量：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> myConstant <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>使用const声明的变量是常量，不可以重新赋值。一旦初始化，它们的值将保持不变。</p>
+<p>注意：在ECMAScript 6（ES6）中引入了let和const关键字。如果您的项目是基于ES6或更高版本的JavaScript，建议使用let和const来声明变量，因为它们提供了更好的作用域规则和不可变性。</p>
+<h1>var | let | const 的区别</h1>
+<p>在JavaScript中，我们有三种声明变量的方式：<code>var</code>、<code>let</code>和<code>const</code>。它们之间有一些区别，让我们来逐个解释它们：</p>
+<p><code>var</code>：在ES5及更早版本的JavaScript中，var是声明变量的主要方式。使用var声明的变量是函数作用域，这意味着它们在它们被声明的函数内部可见。如果在函数外或在其他代码块中使用var声明变量，它们将成为全局变量。</p>
+<p><code>let</code>：ES6引入了let关键字。let声明的变量是块级作用域，这意味着它们在声明的代码块内部可见。与var不同，let不会在外部块中创建全局变量。如果在同一个作用域中使用let声明同名变量，会引起一个错误。</p>
+<p><code>const</code>：同样是在ES6中引入的，const用于声明常量，这意味着一旦值被赋值后就不能再改变。const声明的变量也是块级作用域。与let一样，如果在同一个作用域中使用const声明同名变量，会引起一个错误。</p>
+<p>总结一下：</p>
+<p>使用<code>var</code>声明的变量是函数作用域，而使用<code>let</code>和<code>const</code>声明的变量是块级作用域。<br>
+使用<code>var</code>声明的变量可以被重新赋值和重新声明，而使用<code>let</code>声明的变量可以被重新赋值但不能被重新声明，使用<code>const</code>声明的变量既不能被重新赋值也不能被重新声明。<br>
+在同一个作用域中，使用<code>var</code>可以重复声明同名变量，而使用<code>let</code>和<code>const</code>会引起一个错误。<br>
+根据实际需求，选择合适的声明变量的方式是很重要的。如果需要一个可以重新赋值的变量，可以使用<code>let</code>关键字；如果需要一个不可改变的常量，可以使用<code>const</code>关键字。在ES6之前，var是唯一的选择；但是在ES6之后，推荐使用<code>let</code>和<code>const</code>来声明变量，因为它们更加灵活、安全和可读性更高。</p>
+
                 
             </div>
             <hr/>
@@ -391,38 +381,6 @@
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
-                                </a>
-                            
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
-                                </a>
-                            
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
-                                </a>
-                            
-                                <a href="/tags/HTML/">
-                                    <span class="chip bg-color">HTML</span>
-                                </a>
-                            
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>
@@ -768,18 +726,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/08/19/qian-duan/javascript/javascript-zhong-sheng-ming-bian-liang/">
+                <a href="/2023/08/19/qian-duan/javascript/javascript-bu-zhi-chi-fang-fa-de-chong-zai/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="JavaScript中声明变量">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="JavaScript不支持方法的重载">
                         
-                        <span class="card-title">JavaScript中声明变量</span>
+                        <span class="card-title">JavaScript不支持方法的重载</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -789,31 +746,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-19
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-19
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
-                                </a>
-                            
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" class="post-category">
-                                    JavaScript
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            陈尚
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                     <a href="/tags/Linux/">
@@ -838,10 +790,6 @@
                     
                     <a href="/tags/CSS/">
                         <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                     <a href="/tags/JavaScript/">
@@ -996,7 +944,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">116.8k</span>
+                        class="white-color">118.3k</span>
             
             
             
