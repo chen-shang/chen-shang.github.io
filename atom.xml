@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-08-19T05:06:06.882Z</updated>
+  <updated>2023-08-19T08:59:13.427Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript中声明变量</title>
+    <link href="https://chen-shang.github.io/2023/08/19/qian-duan/javascript/javascript-zhong-sheng-ming-bian-liang/"/>
+    <id>https://chen-shang.github.io/2023/08/19/qian-duan/javascript/javascript-zhong-sheng-ming-bian-liang/</id>
+    <published>2023-08-19T08:45:12.000Z</published>
+    <updated>2023-08-19T08:59:13.427Z</updated>
+    
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="Git" scheme="https://chen-shang.github.io/tags/Git/"/>
+    
+    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
+    
+    <category term="Hexo" scheme="https://chen-shang.github.io/tags/Hexo/"/>
+    
+    <category term="HTML" scheme="https://chen-shang.github.io/tags/HTML/"/>
+    
+    <category term="CSS" scheme="https://chen-shang.github.io/tags/CSS/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Afred和Spotlight无法搜索问题解决</title>
@@ -49,7 +84,7 @@
     <link href="https://chen-shang.github.io/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/"/>
     <id>https://chen-shang.github.io/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/</id>
     <published>2023-08-18T04:01:59.000Z</published>
-    <updated>2023-08-19T05:07:21.510Z</updated>
+    <updated>2023-08-19T08:45:49.519Z</updated>
     
     
       
@@ -75,10 +110,10 @@
   
   <entry>
     <title>html5语意标签</title>
-    <link href="https://chen-shang.github.io/2023/08/16/qian-duan/html5-yu-yi-biao-qian/"/>
-    <id>https://chen-shang.github.io/2023/08/16/qian-duan/html5-yu-yi-biao-qian/</id>
+    <link href="https://chen-shang.github.io/2023/08/16/qian-duan/html/html5-yu-yi-biao-qian/"/>
+    <id>https://chen-shang.github.io/2023/08/16/qian-duan/html/html5-yu-yi-biao-qian/</id>
     <published>2023-08-16T12:53:42.000Z</published>
-    <updated>2023-08-19T05:08:15.015Z</updated>
+    <updated>2023-08-19T09:20:39.078Z</updated>
     
     
       
@@ -92,6 +127,8 @@
     
     
     <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Html" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/Html/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -153,10 +190,10 @@
   
   <entry>
     <title>如何在Vite项目中配置ip:port访问</title>
-    <link href="https://chen-shang.github.io/2023/08/16/qian-duan/ru-he-zai-vite-xiang-mu-zhong-pei-zhi-ip-port-deng-lu/"/>
-    <id>https://chen-shang.github.io/2023/08/16/qian-duan/ru-he-zai-vite-xiang-mu-zhong-pei-zhi-ip-port-deng-lu/</id>
+    <link href="https://chen-shang.github.io/2023/08/16/qian-duan/vue/ru-he-zai-vite-xiang-mu-zhong-pei-zhi-ip-port-deng-lu/"/>
+    <id>https://chen-shang.github.io/2023/08/16/qian-duan/vue/ru-he-zai-vite-xiang-mu-zhong-pei-zhi-ip-port-deng-lu/</id>
     <published>2023-08-15T16:06:02.000Z</published>
-    <updated>2023-08-16T03:03:26.101Z</updated>
+    <updated>2023-08-19T08:59:13.427Z</updated>
     
     
       
@@ -174,6 +211,8 @@
     
     <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
+    <category term="Vue" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
+    
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
@@ -181,10 +220,10 @@
   
   <entry>
     <title>gpt-3.5-turbo-16k-0613 跟 gpt-3.5-turbo-0613 有什么区别</title>
-    <link href="https://chen-shang.github.io/2023/08/10/ai/gpt-3-5-turbo-16k-0613-gen-gpt-3-5-turbo-0613-you-shi-me-qu-bie/"/>
-    <id>https://chen-shang.github.io/2023/08/10/ai/gpt-3-5-turbo-16k-0613-gen-gpt-3-5-turbo-0613-you-shi-me-qu-bie/</id>
+    <link href="https://chen-shang.github.io/2023/08/10/gong-ju-kong/ai/gpt-3-5-turbo-16k-0613-gen-gpt-3-5-turbo-0613-you-shi-me-qu-bie/"/>
+    <id>https://chen-shang.github.io/2023/08/10/gong-ju-kong/ai/gpt-3-5-turbo-16k-0613-gen-gpt-3-5-turbo-0613-you-shi-me-qu-bie/</id>
     <published>2023-08-10T09:04:09.000Z</published>
-    <updated>2023-08-14T22:23:05.787Z</updated>
+    <updated>2023-08-19T08:59:13.427Z</updated>
     
     
       
@@ -198,7 +237,9 @@
     
     
     
-    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/AI/"/>
     
     
     <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
@@ -230,9 +271,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
@@ -558,33 +599,6 @@
     <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
     
     <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>&lt;暨&gt;字什么意思</title>
-    <link href="https://chen-shang.github.io/2023/07/06/jing-ji-xue/ji-zi-shi-me-yi-si/"/>
-    <id>https://chen-shang.github.io/2023/07/06/jing-ji-xue/ji-zi-shi-me-yi-si/</id>
-    <published>2023-07-06T07:01:59.000Z</published>
-    <updated>2023-07-06T07:07:24.835Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天看到&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;/2023/07/06/jing-ji-xue/ji-zi-shi-me-yi-si/image.png&quot;&gt; &lt;/center&gt;
-不知道 &#39;暨&#39;</summary>
-        
-      
-    
-    
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
