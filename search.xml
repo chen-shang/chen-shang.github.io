@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JavaScript中方法的参数传递</title>
+      <link href="/2023/08/20/qian-duan/javascript/javascript-zhong-fang-fa-de-can-shu-chuan-di/"/>
+      <url>/2023/08/20/qian-duan/javascript/javascript-zhong-fang-fa-de-can-shu-chuan-di/</url>
+      
+        <content type="html"><![CDATA[<p>JavaScript 中 如果定义了一个无参的函数 ，我们仍然可以调用这个函数并传递参数给这个函数，在JavaScript 中这是允许的，而且不会报错。但是这在Java中确实不允许的，这一点可以对比一下。</p><p>例如</p><pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">function echo(){    console.log("我执行了echo()")}// 你仍然可以调用而不用担心报错echo(1,2,3,4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这么是因为 你传递的参数其实是 放到了 函数 内部一个名叫 arguments 的方法 里面。我们可以在函数内部，使用 arguments 变量 依次取出 传递给 函数的 参数</p><pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">function echo(){    console.log("我执行了echo() 第一个参数是:",arguments[0])}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>上面的函数是可以打印出传递的参数的，即使 函数没有显示的定义一个变量来接受参数</p><p>这一点 和 shell 很像. 在 shell 里面, 定义一个函数，你可以传参也可以不传参，传参的话，一个参数就用 $1 取值，第二个参数就用 $2 取值，依次类推</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">param1</span><span class="token operator">=</span><span class="token variable">$1</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">param2</span><span class="token operator">=</span><span class="token variable">$2</span>  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${param1}</span> and <span class="token variable">${param2}</span>"</span><span class="token punctuation">}</span><span class="token builtin class-name">echo</span> <span class="token string">"1"</span> <span class="token string">"2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>不过要注意一下 JavaScript 中对于箭头函数中，是没有办法 获取到 arguments 这个特殊变量的 ,因为 箭头函数这种写法其实是没有绑定一个实体的，他连this 都没有。不过可以使用 剩余参数的形式来间接实现</p><pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">const echo=(...arg)=&gt;{}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>不过，JavaScript 语法实在是太多而且太灵活了，一种形式可以有多种写法，而且还有原生和EMACScript等多种标准，学习每一种写法，不亚于重新学习了一门新的语言。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript模块的导入和导出</title>
       <link href="/2023/08/20/qian-duan/javascript/javascript-mo-kuai-de-dao-ru-he-dao-chu/"/>
       <url>/2023/08/20/qian-duan/javascript/javascript-mo-kuai-de-dao-ru-he-dao-chu/</url>
@@ -292,9 +319,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1126,11 +1153,11 @@
             
             <tag> 原创 </tag>
             
+            <tag> Linux </tag>
+            
             <tag> Java </tag>
             
             <tag> 未完待续 </tag>
-            
-            <tag> Linux </tag>
             
         </tags>
       
@@ -1296,9 +1323,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1381,9 +1408,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1495,9 +1522,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1956,31 +1983,6 @@
     
     
     <entry>
-      <title>秒懂 QPS、TPS、PV、UV、GMV、IP、RPS！</title>
-      <link href="/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/"/>
-      <url>/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/</url>
-      
-        <content type="html"><![CDATA[<p>QPS、TPS、PV、UV、GMV、IP、RPS等各种名词，外行看起来很牛X，实际上对程序员来说都是必懂知识点。下面我来一一解释一下。</p><p>QPS</p><blockquote><p>Queries Per Second，每秒查询数。每秒能够响应的查询次数。QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。每秒的响应请求数，也即是最大吞吐能力。</p></blockquote><p>TPS</p><blockquote><p>Transactions Per Second 的缩写，每秒处理的事务数目。一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机在发送请求时开始计时，收到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数，最终利用这些信息作出的评估分。<br>TPS 的过程包括：客户端请求服务端、服务端内部处理、服务端返回客户端。例如，访问一个 Index 页面会请求服务器 3 次，包括一次 html，一次 css，一次 js，那么访问这一个页面就会产生一个“T”，产生三个“Q”。</p></blockquote><p>PV（page view）</p><blockquote><p>即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。PV 即 page view，页面浏览量。用户每一次对网站中的每个页面访问均被记录 1 次。用户对同一页面的多次刷新，访问量累计。<br>根据这个特性，刷网站的 PV 就很好刷了。</p></blockquote><p>与 PV 相关的还有 RV，即重复访问者数量（repeat visitors）。</p><blockquote><p>UV 访问数（Unique Visitor）<br>指独立访客访问数，统计1天内访问某站点的用户数(以 cookie 为依据)，一台电脑终端为一个访客。</p></blockquote><p>IP（Internet Protocol）</p><blockquote><p>独立 IP 数，是指 1 天内多少个独立的 IP 浏览了页面，即统计不同的 IP 浏览用户数量。同一 IP 不管访问了几个页面，独立 IP 数均为 1；不同的 IP 浏览页面，计数会加 1。IP 是基于用户广域网 IP 地址来区分不同的访问者的，所以，多个用户（多个局域网 IP）在同一个路由器（同一个广域网 IP）内上网，可能被记录为一个独立 IP 访问者。如果用户不断更换 IP，则有可能被多次统计。</p></blockquote><p>GMV，是 Gross Merchandise Volume 的简称。</p><blockquote><p>只要是订单，不管消费者是否付款、卖家是否发货、是否退货，都可放进 GMV 。</p></blockquote><p>RPS 代表吞吐率，即 Requests Per Second 的缩写。</p><blockquote><p>吞吐率是服务器并发处理能力的量化描述，单位是 reqs/s，指的是某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大的请求数，称之为最大吞吐率。<br>有人把 RPS 说等效于 QPS。其实可以看作同一个统计方式，只是叫法不同而已。</p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 计算机基础 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 引用 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>专有名词缩写</title>
       <link href="/2020/03/18/ji-suan-ji-ji-chu/zhuan-you-ming-ci-suo-xie/"/>
       <url>/2020/03/18/ji-suan-ji-ji-chu/zhuan-you-ming-ci-suo-xie/</url>
@@ -2000,6 +2002,31 @@
             <tag> 原创 </tag>
             
             <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>秒懂 QPS、TPS、PV、UV、GMV、IP、RPS！</title>
+      <link href="/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/"/>
+      <url>/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/</url>
+      
+        <content type="html"><![CDATA[<p>QPS、TPS、PV、UV、GMV、IP、RPS等各种名词，外行看起来很牛X，实际上对程序员来说都是必懂知识点。下面我来一一解释一下。</p><p>QPS</p><blockquote><p>Queries Per Second，每秒查询数。每秒能够响应的查询次数。QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。每秒的响应请求数，也即是最大吞吐能力。</p></blockquote><p>TPS</p><blockquote><p>Transactions Per Second 的缩写，每秒处理的事务数目。一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机在发送请求时开始计时，收到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数，最终利用这些信息作出的评估分。<br>TPS 的过程包括：客户端请求服务端、服务端内部处理、服务端返回客户端。例如，访问一个 Index 页面会请求服务器 3 次，包括一次 html，一次 css，一次 js，那么访问这一个页面就会产生一个“T”，产生三个“Q”。</p></blockquote><p>PV（page view）</p><blockquote><p>即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。PV 即 page view，页面浏览量。用户每一次对网站中的每个页面访问均被记录 1 次。用户对同一页面的多次刷新，访问量累计。<br>根据这个特性，刷网站的 PV 就很好刷了。</p></blockquote><p>与 PV 相关的还有 RV，即重复访问者数量（repeat visitors）。</p><blockquote><p>UV 访问数（Unique Visitor）<br>指独立访客访问数，统计1天内访问某站点的用户数(以 cookie 为依据)，一台电脑终端为一个访客。</p></blockquote><p>IP（Internet Protocol）</p><blockquote><p>独立 IP 数，是指 1 天内多少个独立的 IP 浏览了页面，即统计不同的 IP 浏览用户数量。同一 IP 不管访问了几个页面，独立 IP 数均为 1；不同的 IP 浏览页面，计数会加 1。IP 是基于用户广域网 IP 地址来区分不同的访问者的，所以，多个用户（多个局域网 IP）在同一个路由器（同一个广域网 IP）内上网，可能被记录为一个独立 IP 访问者。如果用户不断更换 IP，则有可能被多次统计。</p></blockquote><p>GMV，是 Gross Merchandise Volume 的简称。</p><blockquote><p>只要是订单，不管消费者是否付款、卖家是否发货、是否退货，都可放进 GMV 。</p></blockquote><p>RPS 代表吞吐率，即 Requests Per Second 的缩写。</p><blockquote><p>吞吐率是服务器并发处理能力的量化描述，单位是 reqs/s，指的是某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大的请求数，称之为最大吞吐率。<br>有人把 RPS 说等效于 QPS。其实可以看作同一个统计方式，只是叫法不同而已。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 引用 </tag>
             
         </tags>
       
@@ -2452,9 +2479,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2512,9 +2539,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
