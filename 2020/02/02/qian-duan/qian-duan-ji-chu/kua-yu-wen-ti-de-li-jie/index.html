@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="进程vs线程, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="keywords" content="跨域问题的理解, IT,技术,总结">
+    <meta name="description" content="跨域问题指的是,在一个域名下向另一个域名发起请求试图获取数据或者页面DOM元素,浏览器是不允许的,因为你跨了不同的域名">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>进程vs线程 | 涓涓细流</title>
+    <title>跨域问题的理解 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">进程vs线程</h1>
+                    <h1 class="description center-align post-title">跨域问题的理解</h1>
                 </div>
             </div>
         </div>
@@ -274,10 +274,6 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -286,8 +282,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/VS%E7%B3%BB%E5%88%97/" class="post-category">
-                                VS系列
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E5%9F%BA%E7%A1%80/" class="post-category">
+                                前端基础
                             </a>
                         
                     </div>
@@ -299,28 +299,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-09-19
+                    2020-02-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-09
+                    2023-08-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    801
+                    995
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 
@@ -343,20 +343,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>进程</h1>
-<blockquote>
-<p>维基百科</p>
-</blockquote>
-<p>进程（英语：process），是指计算机中已运行的程序。进程为曾经是分时系统的基本运作单位。在面向进程设计的系统（如早期的UNIX，Linux 2.4及更早的版本）中，进程是程序的基本执行实体；在面向线程设计的系统（如当代多数操作系统、Linux 2.6及更新的版本）中，进程本身不是基本运行单位，而是线程的容器。程序本身只是指令、数据及其组织形式的描述，进程才是程序（那些指令和数据）的真正运行实例。若干进程有可能与同一个程序相关系，且每个进程皆可以同步（循序）或异步（平行）的方式独立运行。现代计算机系统可在同一段时间内以进程的形式将多个程序加载到存储器中，并借由时间共享（或称时分复用），以在一个处理器上表现出同时（平行性）运行的感觉。同样的，使用多线程技术（多线程即每一个线程都代表一个进程内的一个独立执行上下文）的操作系统或计算机体系结构，同样程序的平行线程，可在多CPU主机或网络上真正同时运行（在不同的CPU上）。</p>
-<h1>线程</h1>
-<blockquote>
-<p>维基百科</p>
-</blockquote>
-<p>线程（英语：thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。在Unix System V及SunOS中也被称为轻量进程（lightweight processes），但轻量进程更多指内核线程（kernel thread），而把用户线程（user thread）称为线程。</p>
-<p>线程是独立调度和分派的基本单位。线程可以为操作系统内核调度的内核线程，如Win32线程；由用户进程自行调度的用户线程，如Linux平台的POSIX Thread；或者由内核与用户进程，如Windows 7的线程，进行混合调度。</p>
-<p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p>
-<p>一个进程可以有很多线程，每条线程并行执行不同的任务。</p>
-<p>在多核或多CPU，或支持Hyper-threading的CPU上使用多线程程序设计的好处是显而易见的，即提高了程序的执行吞吐率。在单CPU单核的计算机上，使用多线程技术，也可以把进程中负责I/O处理、人机交互而常被阻塞的部分与密集计算的部分分开来执行，编写专门的workhorse线程执行密集计算，从而提高了程序的执行效率。</p>
+                <h1>什么是跨域问题?</h1>
+<p>跨域问题指的是,在一个域名下向另一个域名发起请求试图获取数据或者页面DOM元素,浏览器是不允许的,因为你跨了不同的域名。但确确实实我们又想要向另一个域名发送请求获取数据,这时候我们就遇到了所谓的跨域问题。</p>
+<h1>为什么会有跨域问题?</h1>
+<p>跨域问题的出现是因为浏览器的同源策略,同源策略限制了不同域名之间是不允许访问的。注意这个限制是浏览器限制的,或者说是浏览器的内核限制的,脱离的这个限定是不会出现跨域问题的，因为不受同源策略的限制。这也就是为什么后端服务可以使用Http工具发起http请求而不会遇到所谓的跨域问题的原因。</p>
+<h1>为什么会有同源策略?</h1>
+<p>浏览器一开始并没有对不用域名之间的相会调用有任何限制,直到有人利用这个漏洞发明了跨站请求伪造获取了大量的用户信息。各大浏览器厂商才开始关注,所以 Netspace公司最先提出并应用了同源策略到浏览器上，至此之后所有的浏览器都不允许不同域名之间的相互调用了。</p>
+<h1>什么是跨站请求伪造?</h1>
+<p>在没有同源策略限制的时代,在一个域名下想另一个域名发送请求的时候会带上目标域名的cookie并返回结果,这样在当前域名下就可以获取到另一个域名请求的所有数据，包括该域名下的cookie,返回结果,页面DOM等等。你会说这样不是挺好的么，但是试想一下如果别有用心之人利用这个漏洞获取了你登录银行的cookie,你就该后悔了。</p>
+<h1>跨站请求伪造是怎么做的?</h1>
+<p>我们知道一般浏览器会保留一个叫做cookie的东西，cookie的发明是源于http协议无状态的特性发明的。cookie这个东西有一个特点,就是存储在浏览器当前所在电脑本地，并且每次访问当前cookie对应的域名的时候都会携带过去。因此当你在一个域名下向另一个域名发送请求的时候,浏览器会自动携带上另一个域名的cookie然后发送到对应的服务器。这样当你登陆你的银行页面之后然后还没有登出,当你在访问另一个页面的时候,它就可以在后台偷偷访问你的银行页面,然后干一些不为人知的事情。</p>
+<h1>http为什么是无状态的?</h1>
+<p>因为当时发明http的时候需求没有那么复杂，只是需要简单的浏览文本即可，根本没有什么长连接啊之类的需求，因此当时就为了简单起见所以http就设计成了无状态的了。</p>
+<h1>跨域问题如何解决?</h1>
+<p>同源策略其实是限制不同域名之间的访问，它是出于安全的目的。但安全和方便本就是对立的，安全了使用起来就麻烦。尤其是在现在前后端分离的场景下、在现在微服务大行其道的今天，一个服务一个域名或服务器也是很常见的。最常见的解决方法就是jsonp的方式，最正统的解决方案就是 cros</p>
+<h1>cros 跨站资源共享</h1>
+<p>跨站资源共享是解决跨域问题的首选，需要前后端配合。其本质上就是后端限制什么样的域名允许跨站访问我而已。用到了http的header中设置一些默认的参数。</p>
 
                 
             </div>
@@ -373,10 +375,6 @@
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                         </div>
@@ -726,31 +724,31 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/09/19/qian-duan/vue/vs-xi-lie/java-zi-fu-chuan-pin-jie-vs/">
+                <a href="/2020/02/05/java/chong-zai-yu-chong-xie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Java字符串拼接VS">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="重载与重写">
                         
-                        <span class="card-title">Java字符串拼接VS</span>
+                        <span class="card-title">重载与重写</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            记住重载是同一个类中的行为，重写是父子类继承中的行为。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-09-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/VS%E7%B3%BB%E5%88%97/" class="post-category">
-                                    VS系列
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
                                 </a>
                             
                             
@@ -764,8 +762,8 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
                 </div>
@@ -779,24 +777,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/17/java/java-de-zhi-chuan-di-he-yin-yong-chuan-di/">
+                <a href="/2019/12/09/java/java-xian-cheng-zhuang-tai-zhuan-huan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="JAVA的值传递和引用传递">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Java 线程状态转换">
                         
-                        <span class="card-title">JAVA的值传递和引用传递</span>
+                        <span class="card-title">Java 线程状态转换</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            值传递:传递的是值的拷贝 vs 引用传递:传递的是引用的传递
+                            摘要
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-09
                             </span>
                         <span class="publish-author">
                             
@@ -916,7 +914,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">118.3k</span>
+                        class="white-color">119.2k</span>
             
             
             

@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="跨域问题的理解, IT,技术,总结">
-    <meta name="description" content="跨域问题指的是,在一个域名下向另一个域名发起请求试图获取数据或者页面DOM元素,浏览器是不允许的,因为你跨了不同的域名">
+    <meta name="keywords" content="Java字符串拼接VS, IT,技术,总结">
+    <meta name="description" content="摘要">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>跨域问题的理解 | 涓涓细流</title>
+    <title>Java字符串拼接VS | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">跨域问题的理解</h1>
+                    <h1 class="description center-align post-title">Java字符串拼接VS</h1>
                 </div>
             </div>
         </div>
@@ -274,6 +274,10 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -282,8 +286,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                前端
+                            <a href="/categories/VS%E7%B3%BB%E5%88%97/" class="post-category">
+                                VS系列
                             </a>
                         
                     </div>
@@ -295,28 +299,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-02
+                    2019-09-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-04-09
+                    2023-08-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    995
+                    520
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -339,22 +343,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>什么是跨域问题?</h1>
-<p>跨域问题指的是,在一个域名下向另一个域名发起请求试图获取数据或者页面DOM元素,浏览器是不允许的,因为你跨了不同的域名。但确确实实我们又想要向另一个域名发送请求获取数据,这时候我们就遇到了所谓的跨域问题。</p>
-<h1>为什么会有跨域问题?</h1>
-<p>跨域问题的出现是因为浏览器的同源策略,同源策略限制了不同域名之间是不允许访问的。注意这个限制是浏览器限制的,或者说是浏览器的内核限制的,脱离的这个限定是不会出现跨域问题的，因为不受同源策略的限制。这也就是为什么后端服务可以使用Http工具发起http请求而不会遇到所谓的跨域问题的原因。</p>
-<h1>为什么会有同源策略?</h1>
-<p>浏览器一开始并没有对不用域名之间的相会调用有任何限制,直到有人利用这个漏洞发明了跨站请求伪造获取了大量的用户信息。各大浏览器厂商才开始关注,所以 Netspace公司最先提出并应用了同源策略到浏览器上，至此之后所有的浏览器都不允许不同域名之间的相互调用了。</p>
-<h1>什么是跨站请求伪造?</h1>
-<p>在没有同源策略限制的时代,在一个域名下想另一个域名发送请求的时候会带上目标域名的cookie并返回结果,这样在当前域名下就可以获取到另一个域名请求的所有数据，包括该域名下的cookie,返回结果,页面DOM等等。你会说这样不是挺好的么，但是试想一下如果别有用心之人利用这个漏洞获取了你登录银行的cookie,你就该后悔了。</p>
-<h1>跨站请求伪造是怎么做的?</h1>
-<p>我们知道一般浏览器会保留一个叫做cookie的东西，cookie的发明是源于http协议无状态的特性发明的。cookie这个东西有一个特点,就是存储在浏览器当前所在电脑本地，并且每次访问当前cookie对应的域名的时候都会携带过去。因此当你在一个域名下向另一个域名发送请求的时候,浏览器会自动携带上另一个域名的cookie然后发送到对应的服务器。这样当你登陆你的银行页面之后然后还没有登出,当你在访问另一个页面的时候,它就可以在后台偷偷访问你的银行页面,然后干一些不为人知的事情。</p>
-<h1>http为什么是无状态的?</h1>
-<p>因为当时发明http的时候需求没有那么复杂，只是需要简单的浏览文本即可，根本没有什么长连接啊之类的需求，因此当时就为了简单起见所以http就设计成了无状态的了。</p>
-<h1>跨域问题如何解决?</h1>
-<p>同源策略其实是限制不同域名之间的访问，它是出于安全的目的。但安全和方便本就是对立的，安全了使用起来就麻烦。尤其是在现在前后端分离的场景下、在现在微服务大行其道的今天，一个服务一个域名或服务器也是很常见的。最常见的解决方法就是jsonp的方式，最正统的解决方案就是 cros</p>
-<h1>cros 跨站资源共享</h1>
-<p>跨站资源共享是解决跨域问题的首选，需要前后端配合。其本质上就是后端限制什么样的域名允许跨站访问我而已。用到了http的header中设置一些默认的参数。</p>
+                <p><img src="https://github.com/chen-shang/Picture/raw/master/java/String.jpg" alt=""><br>
+看到上面的提示时是不是有点疑问,对于初学Java的人来说，在学习String的时候，肯定有无数个人和我们讲过，“尽量不要使用+拼接字符串，效率不好，应该使用append，你自己循环拼接个十万次自己瞧瞧就知道了” 为什么这里连IDEA都提醒我们可以用+来代替append呢。</p>
+<p>结论:<br>
+Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们口中所说的效率低下指的是在循环中的+拼接，只是不知道从哪天开始完全变了味。如果你能保证在一条语句中把字符串或者字符串变量全部拼接完而不断开，那+拼接根本没有任何缺点，编译器还会有一些优化，如果拼接的全是字符串字面量，那效果更好，它们直接就变成了一个完整的字符串。并且+书写简洁方便，可读性强。直接用StringBuilder的append也没有问题，只是不要append()和+混合使用。</p>
+<p>如果用+拼接字符串中间不断,那么用+拼接的效率与StringBuffer或StringBuilder使用append的效率相当,甚至在编译器的优化下效率反而会更高。因为第一次遇到+拼接的时候,编译器会自动创new 一个 StringBuilder 然后只要+不断就会一路append下去。</p>
+<p>String采用连接运算符(+)效率低下，都是上述循环、大批量数据情况造成的，每做一次"+"就产生个StringBuilder对象，然后append后就扔掉。下次循环再到达时重新产生个StringBuilder对象，然后append字符串，如此循环直至结束。如果我们直接采用StringBuilder对象进行append的话，我们可以节省创建和销毁对象的时间。如果只是简单的字面量拼接或者很少的字符串拼接，性能都是差不多的。</p>
+<p>参考: <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_37589327/article/details/78605268">Java中对于+和append拼接字符串效率的误解</a></p>
 
                 
             </div>
@@ -371,6 +366,10 @@
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                         </div>
@@ -720,31 +719,35 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/05/java/chong-zai-yu-chong-xie/">
+                <a href="/2019/09/19/linux/shell/shell-dang-xin-for-xun-huan-zhong-de-bian-liang-zuo-yong-yu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="重载与重写">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Shell当心for循环中的变量作用域">
                         
-                        <span class="card-title">重载与重写</span>
+                        <span class="card-title">Shell当心for循环中的变量作用域</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            记住重载是同一个类中的行为，重写是父子类继承中的行为。
+                            摘要
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-05
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-09-19
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            <a href="/categories/Linux/Shell/" class="post-category">
+                                    Shell
                                 </a>
                             
                             
@@ -758,8 +761,8 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/Shell/">
+                        <span class="chip bg-color">Shell</span>
                     </a>
                     
                 </div>
@@ -773,13 +776,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/09/java/java-xian-cheng-zhuang-tai-zhuan-huan/">
+                <a href="/2019/09/19/vs-xi-lie/jin-cheng-vs-xian-cheng/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Java 线程状态转换">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="进程vs线程">
                         
-                        <span class="card-title">Java 线程状态转换</span>
+                        <span class="card-title">进程vs线程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -790,14 +793,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-19
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
+                            <a href="/categories/VS%E7%B3%BB%E5%88%97/" class="post-category">
+                                    VS系列
                                 </a>
                             
                             
@@ -811,8 +814,8 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -910,7 +913,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">118.3k</span>
+                        class="white-color">119.2k</span>
             
             
             
