@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="切换node版本, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="description" content="n 工具，是专门管理 node 版本的，可以用他来切换 node 的版本">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -230,7 +230,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -278,16 +278,12 @@
                                 <span class="chip bg-color">Linux</span>
                             </a>
                         
-                            <a href="/tags/Git/">
-                                <span class="chip bg-color">Git</span>
-                            </a>
-                        
                             <a href="/tags/Java/">
                                 <span class="chip bg-color">Java</span>
                             </a>
                         
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
                             </a>
                         
                             <a href="/tags/HTML/">
@@ -298,18 +294,35 @@
                                 <span class="chip bg-color">CSS</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                             <a href="/tags/JavaScript/">
                                 <span class="chip bg-color">JavaScript</span>
+                            </a>
+                        
+                            <a href="/tags/Git/">
+                                <span class="chip bg-color">Git</span>
+                            </a>
+                        
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                前端
+                            </a>
+                        
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" class="post-category">
+                                Vue
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -392,7 +405,7 @@
 <p>或者在环境变量里面单独 添加</p>
 <pre class="line-numbers language-none"><code class="language-none">export NODE_OPTIONS=—openssl-legacy-provide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>还是无法解决问题，遂 打算降低  node 的版本尝试一下</p>
-<p>全局安装 n 工具，值专门管理 node 版本的，可以用他来切换 node 的版本，当然还有其他工具也可以切换，自行百度就好，我用的是 n 工具。</p>
+<p>全局安装 n 工具，是专门管理 node 版本的，可以用他来切换 node 的版本，当然还有其他工具也可以切换，自行百度就好，我用的是 n 工具。</p>
 <pre class="line-numbers language-none"><code class="language-none">npm install -g n       // 全局安装n
 n                      // 查看Node.js版本列表
 n &lt;版本号&gt;              // 安装指定版本的Node.js
@@ -420,16 +433,12 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                                     <span class="chip bg-color">Linux</span>
                                 </a>
                             
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
-                                </a>
-                            
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
                                 </a>
                             
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                                 <a href="/tags/HTML/">
@@ -440,12 +449,16 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                                     <span class="chip bg-color">CSS</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
                                 <a href="/tags/JavaScript/">
                                     <span class="chip bg-color">JavaScript</span>
+                                </a>
+                            
+                                <a href="/tags/Git/">
+                                    <span class="chip bg-color">Git</span>
+                                </a>
+                            
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
                                 </a>
                             
                         </div>
@@ -808,7 +821,7 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            n 工具，是专门管理 node 版本的，可以用他来切换 node 的版本
                         
                     </div>
                     <div class="publish-info">
@@ -817,8 +830,16 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            陈尚
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" class="post-category">
+                                    Vue
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -835,16 +856,12 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                         <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
-                    </a>
-                    
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                     <a href="/tags/HTML/">
@@ -855,12 +872,16 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                         <span class="chip bg-color">CSS</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
-                    </a>
-                    
                     <a href="/tags/JavaScript/">
                         <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
                     </a>
                     
                 </div>
@@ -895,8 +916,16 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            陈尚
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/JavaScript/" class="post-category">
+                                    JavaScript
+                                </a>
+                            
                             
                         </span>
                     </div>

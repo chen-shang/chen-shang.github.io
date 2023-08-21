@@ -8,8 +8,16 @@
       <link href="/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/"/>
       <url>/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/</url>
       
-        <content type="html"><![CDATA[<p>今天启动vue服务的时候遇到了以下报错<br><img src="/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/image.png"></p><pre class="line-numbers language-none"><code class="language-none">Error: error:0308010C:digital envelope routines::unsupported    at new Hash (node:internal/crypto/hash:67:19)    at Object.createHash (node:crypto:135:10)    at module.exports (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/util/createHash.js:135:53)    at Compilation.createHash (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1918:16)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1386:9    at AsyncSeriesHook.eval [as callAsync] (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:6:1)    at AsyncSeriesHook.lazyCompileHook (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js:154:20)    at Compilation.seal (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1342:27)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js:675:18    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1261:4    at AsyncSeriesHook.eval [as callAsync] (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:15:1)    at AsyncSeriesHook.lazyCompileHook (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js:154:20)    at Compilation.finish (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1253:28)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js:672:17    at eval (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:11:1)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1185:12 {  opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],  library: 'digital envelope routines',  reason: 'unsupported',  code: 'ERR_OSSL_EVP_UNSUPPORTED'}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>按照 同事 给出的解决手段 在 package.json 中 使用 如下配置</p><pre class="line-numbers language-none"><code class="language-none">"serve": "export NODE_OPTIONS=—openssl-legacy-provider;node scripts/config.js &amp; npm run env &amp;&amp; vue-cli-service serve",  "build": "export NODE_OPTIONS=—openssl-legacy-provider;vue-cli-service build",<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>或者在环境变量里面单独 添加</p><pre class="line-numbers language-none"><code class="language-none">export NODE_OPTIONS=—openssl-legacy-provide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>还是无法解决问题，遂 打算降低  node 的版本尝试一下</p><p>全局安装 n 工具，值专门管理 node 版本的，可以用他来切换 node 的版本，当然还有其他工具也可以切换，自行百度就好，我用的是 n 工具。</p><pre class="line-numbers language-none"><code class="language-none">npm install -g n       // 全局安装nn                      // 查看Node.js版本列表n &lt;版本号&gt;              // 安装指定版本的Node.jsn list                 // 切换当前使用的Node.js版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>记得使用 sudo 指令获取管理员权限</p>]]></content>
+        <content type="html"><![CDATA[<p>今天启动vue服务的时候遇到了以下报错<br><img src="/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/image.png"></p><pre class="line-numbers language-none"><code class="language-none">Error: error:0308010C:digital envelope routines::unsupported    at new Hash (node:internal/crypto/hash:67:19)    at Object.createHash (node:crypto:135:10)    at module.exports (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/util/createHash.js:135:53)    at Compilation.createHash (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1918:16)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1386:9    at AsyncSeriesHook.eval [as callAsync] (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:6:1)    at AsyncSeriesHook.lazyCompileHook (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js:154:20)    at Compilation.seal (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1342:27)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js:675:18    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1261:4    at AsyncSeriesHook.eval [as callAsync] (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:15:1)    at AsyncSeriesHook.lazyCompileHook (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js:154:20)    at Compilation.finish (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1253:28)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js:672:17    at eval (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:11:1)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1185:12 {  opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],  library: 'digital envelope routines',  reason: 'unsupported',  code: 'ERR_OSSL_EVP_UNSUPPORTED'}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>按照 同事 给出的解决手段 在 package.json 中 使用 如下配置</p><pre class="line-numbers language-none"><code class="language-none">"serve": "export NODE_OPTIONS=—openssl-legacy-provider;node scripts/config.js &amp; npm run env &amp;&amp; vue-cli-service serve",  "build": "export NODE_OPTIONS=—openssl-legacy-provider;vue-cli-service build",<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>或者在环境变量里面单独 添加</p><pre class="line-numbers language-none"><code class="language-none">export NODE_OPTIONS=—openssl-legacy-provide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>还是无法解决问题，遂 打算降低  node 的版本尝试一下</p><p>全局安装 n 工具，是专门管理 node 版本的，可以用他来切换 node 的版本，当然还有其他工具也可以切换，自行百度就好，我用的是 n 工具。</p><pre class="line-numbers language-none"><code class="language-none">npm install -g n       // 全局安装nn                      // 查看Node.js版本列表n &lt;版本号&gt;              // 安装指定版本的Node.jsn list                 // 切换当前使用的Node.js版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>记得使用 sudo 指令获取管理员权限</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> Vue </category>
+          
+      </categories>
       
       
         <tags>
@@ -18,19 +26,19 @@
             
             <tag> Linux </tag>
             
-            <tag> Git </tag>
-            
             <tag> Java </tag>
             
-            <tag> Hexo </tag>
+            <tag> 未完待续 </tag>
             
             <tag> HTML </tag>
             
             <tag> CSS </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> JavaScript </tag>
+            
+            <tag> Git </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -45,6 +53,14 @@
       
         <content type="html"><![CDATA[<p>JavaScript 中的异步机制主要通过回调函数、Promise 和 async/await 来实现。</p><p>回调函数：在早期，异步操作通常通过回调函数来处理。例如，在执行异步操作时，可以指定一个回调函数，在操作完成后将调用该函数。但是，回调地狱（Callback Hell）的问题使得代码难以阅读和维护。</p><p>Promise：Promise 是一种更加可读和结构化的异步编程方式。一个 Promise 表示一个可能还未完成的异步操作，并提供了一种链式处理这个操作的方式。通过 .then() 方法可以附加处理已解决（resolved）和已拒绝（rejected）状态的回调函数，以处理操作的结果。</p><p>async/await：async/await 是 ES2017 引入的异步编程的更高级抽象。使用 async 关键字标记一个函数为异步函数，可以在其中使用 await 关键字来等待一个 Promise 完成。这种方式使得异步代码看起来更像同步代码，更易于理解和维护。</p><p>尽管 JavaScript 的异步操作使得程序在等待某些操作时能够继续执行其他任务，但它并不总是真正的并行。JavaScript 运行在单线程的主事件循环中，意味着在同一时刻只能执行一个任务。这意味着异步操作实际上是基于事件触发的，而不是真正的多线程并行执行。</p><p>总结来说，JavaScript 中的异步操作是一种允许程序在执行期间不阻塞主线程的机制，它通过回调函数、Promise 和 async/await 等方式实现。尽管不是真正的并行执行，异步操作仍然能够提高程序的响应性和性能。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> JavaScript </category>
+          
+      </categories>
       
       
         <tags>
@@ -65,6 +81,14 @@
         <content type="html"><![CDATA[]]></content>
       
       
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -72,19 +96,19 @@
             
             <tag> Linux </tag>
             
-            <tag> Git </tag>
-            
             <tag> Java </tag>
             
-            <tag> Hexo </tag>
+            <tag> 未完待续 </tag>
             
             <tag> HTML </tag>
             
             <tag> CSS </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> JavaScript </tag>
+            
+            <tag> Git </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -1412,9 +1436,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
