@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>git clone 凭据缓存问题</title>
+      <link href="/2023/08/21/gong-ju-kong/git/git-cang-ku-shi-yong-bu-tong-yong-hu-xia-zai-dai-ma/"/>
+      <url>/2023/08/21/gong-ju-kong/git/git-cang-ku-shi-yong-bu-tong-yong-hu-xia-zai-dai-ma/</url>
+      
+        <content type="html"><![CDATA[<img src="/2023/08/21/gong-ju-kong/git/git-cang-ku-shi-yong-bu-tong-yong-hu-xia-zai-dai-ma/image1.png"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.gitCloning into <span class="token string">'mod300004223'</span><span class="token punctuation">..</span>.Username <span class="token keyword">for</span> <span class="token string">'https://git-demo.flydiysz.cn'</span><span class="token builtin class-name">:</span> chenxiaoshangPassword <span class="token keyword">for</span> <span class="token string">'https://chenxiaoshang@git-demo.flydiysz.cn'</span><span class="token builtin class-name">:</span>remote: HTTP Basic: Access deniedfatal: Authentication failed <span class="token keyword">for</span> <span class="token string">'https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.git/'</span>chenshang@192.168.1.210:~/Work/Fly$ <span class="token function">git</span> clone https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.gitCloning into <span class="token string">'mod300004223'</span><span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这个问题通常是由于凭据缓存导致的。在 MacOS 上，Git 会使用系统中的凭据缓存，这可能导致在使用不同用户克隆代码时出现访问被拒绝的问题。</p><p>清除凭据缓存：</p><p>打开“钥匙串访问”应用程序。<br>在左上方的搜索框中输入“git”以筛选结果。<br>选择所有与 Git 相关的凭据条目。<br>右键单击所选条目，然后选择删除。</p><img src="/2023/08/21/gong-ju-kong/git/git-cang-ku-shi-yong-bu-tong-yong-hu-xia-zai-dai-ma/image.png">]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>切换node版本</title>
       <link href="/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/"/>
       <url>/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/</url>
@@ -23,22 +50,6 @@
         <tags>
             
             <tag> 原创 </tag>
-            
-            <tag> Linux </tag>
-            
-            <tag> Java </tag>
-            
-            <tag> 未完待续 </tag>
-            
-            <tag> HTML </tag>
-            
-            <tag> CSS </tag>
-            
-            <tag> JavaScript </tag>
-            
-            <tag> Git </tag>
-            
-            <tag> Hexo </tag>
             
         </tags>
       
@@ -93,22 +104,6 @@
         <tags>
             
             <tag> 原创 </tag>
-            
-            <tag> Linux </tag>
-            
-            <tag> Java </tag>
-            
-            <tag> 未完待续 </tag>
-            
-            <tag> HTML </tag>
-            
-            <tag> CSS </tag>
-            
-            <tag> JavaScript </tag>
-            
-            <tag> Git </tag>
-            
-            <tag> Hexo </tag>
             
         </tags>
       
@@ -432,9 +427,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1071,9 +1066,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1266,11 +1261,11 @@
             
             <tag> 原创 </tag>
             
+            <tag> 未完待续 </tag>
+            
             <tag> Linux </tag>
             
             <tag> Java </tag>
-            
-            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1521,9 +1516,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1635,9 +1630,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1722,9 +1717,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1762,11 +1757,11 @@
     
     
     <entry>
-      <title>重写设计模式-用λ实现单例模式</title>
-      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/"/>
-      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/</url>
+      <title>重写设计模式-用λ实现工厂模式</title>
+      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/"/>
+      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/</url>
       
-        <content type="html"><![CDATA[<p>DCL 单例 用λ表达式来实现</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">import java.util.Optional;public class Singleton{  //1. 构造方法私有化  //2. 持有自身的静态引用  //3. 提供获取自身静态引用的公有静态方法  private Singleton(){}  private static volatile Singleton singleton;  public static Singleton getInstance(){     return Optional.ofNullable(singleton).orElseGet(()-&gt;{       synchronized(Singleton.class){         return Optional.ofNullable(singleton).orElse(new Singleton());       }     });  }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<p>创建型设计模式一共有4中,分别叫 工厂、单例、构建、原型。创建型设计模式的目标是创建对象实例,其中我认为最简单的当属工厂设计模式。工厂设计模式的宗旨是把对象实例化的过程收集到一处来。</p><p>其中工厂模式还可以细分，分别是 简单工厂也叫静态工厂、工厂方法和抽象工厂，其中简单工厂也叫静态工厂是工厂方法的特例，工厂方法是抽象工厂的特例。<br>工厂方法的目的就是生产对象，也就是封装new的过程。只要你把某个对象的new过程封装到某个类或者某个方法中广义上我们都可以叫工厂方法<br>例如</p><pre class="line-numbers language-none"><code class="language-none">public static Object convert() {    return new Object();}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>一般简单工厂就是构造一个工厂类，里面写一个方法获取某个基类对象,至于最后如何生成具体子类的实例，则在该方法内部实现.这就是简单工厂的雏形</p><div width="100%"><div style="float:left; width:49%;"><h1>简单工厂普通写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">UserFactory</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">User</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> <span class="token class-name">UserFactory</span><span class="token punctuation">.</span><span class="token function">getUser</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>    <div style="float:left;height:50px; width:0px;border-left:solid white;border-right:1px solid white"></div>    <div style="float:left; width:49%;"><h1>简单工厂尝试λ写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> userFactory <span class="token operator">=</span> code <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> userFactory<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div><h1>工厂方法</h1><p>工厂方法和抽象工厂方法也类似，只是换成λ表达式即可。因为λ表达式本质上是一个函数一个方法，所以必然依托于出现在某个类中。</p></div>]]></content>
       
       
       <categories>
@@ -1789,11 +1784,11 @@
     
     
     <entry>
-      <title>重写设计模式-用λ实现工厂模式</title>
-      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/"/>
-      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/</url>
+      <title>重写设计模式-用λ实现单例模式</title>
+      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/"/>
+      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/</url>
       
-        <content type="html"><![CDATA[<p>创建型设计模式一共有4中,分别叫 工厂、单例、构建、原型。创建型设计模式的目标是创建对象实例,其中我认为最简单的当属工厂设计模式。工厂设计模式的宗旨是把对象实例化的过程收集到一处来。</p><p>其中工厂模式还可以细分，分别是 简单工厂也叫静态工厂、工厂方法和抽象工厂，其中简单工厂也叫静态工厂是工厂方法的特例，工厂方法是抽象工厂的特例。<br>工厂方法的目的就是生产对象，也就是封装new的过程。只要你把某个对象的new过程封装到某个类或者某个方法中广义上我们都可以叫工厂方法<br>例如</p><pre class="line-numbers language-none"><code class="language-none">public static Object convert() {    return new Object();}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>一般简单工厂就是构造一个工厂类，里面写一个方法获取某个基类对象,至于最后如何生成具体子类的实例，则在该方法内部实现.这就是简单工厂的雏形</p><div width="100%"><div style="float:left; width:49%;"><h1>简单工厂普通写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">UserFactory</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">User</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> <span class="token class-name">UserFactory</span><span class="token punctuation">.</span><span class="token function">getUser</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>    <div style="float:left;height:50px; width:0px;border-left:solid white;border-right:1px solid white"></div>    <div style="float:left; width:49%;"><h1>简单工厂尝试λ写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> userFactory <span class="token operator">=</span> code <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> userFactory<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div><h1>工厂方法</h1><p>工厂方法和抽象工厂方法也类似，只是换成λ表达式即可。因为λ表达式本质上是一个函数一个方法，所以必然依托于出现在某个类中。</p></div>]]></content>
+        <content type="html"><![CDATA[<p>DCL 单例 用λ表达式来实现</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">import java.util.Optional;public class Singleton{  //1. 构造方法私有化  //2. 持有自身的静态引用  //3. 提供获取自身静态引用的公有静态方法  private Singleton(){}  private static volatile Singleton singleton;  public static Singleton getInstance(){     return Optional.ofNullable(singleton).orElseGet(()-&gt;{       synchronized(Singleton.class){         return Optional.ofNullable(singleton).orElse(new Singleton());       }     });  }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -1950,9 +1945,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2592,9 +2587,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -2652,9 +2647,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
