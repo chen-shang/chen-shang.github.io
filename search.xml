@@ -4,6 +4,95 @@
   
     
     <entry>
+      <title>切换node版本</title>
+      <link href="/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/"/>
+      <url>/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/</url>
+      
+        <content type="html"><![CDATA[<p>今天启动vue服务的时候遇到了以下报错<br><img src="/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/image.png"></p><pre class="line-numbers language-none"><code class="language-none">Error: error:0308010C:digital envelope routines::unsupported    at new Hash (node:internal/crypto/hash:67:19)    at Object.createHash (node:crypto:135:10)    at module.exports (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/util/createHash.js:135:53)    at Compilation.createHash (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1918:16)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1386:9    at AsyncSeriesHook.eval [as callAsync] (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:6:1)    at AsyncSeriesHook.lazyCompileHook (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js:154:20)    at Compilation.seal (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1342:27)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js:675:18    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1261:4    at AsyncSeriesHook.eval [as callAsync] (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:15:1)    at AsyncSeriesHook.lazyCompileHook (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js:154:20)    at Compilation.finish (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1253:28)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js:672:17    at eval (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:11:1)    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1185:12 {  opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],  library: 'digital envelope routines',  reason: 'unsupported',  code: 'ERR_OSSL_EVP_UNSUPPORTED'}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>按照 同事 给出的解决手段 在 package.json 中 使用 如下配置</p><pre class="line-numbers language-none"><code class="language-none">"serve": "export NODE_OPTIONS=—openssl-legacy-provider;node scripts/config.js &amp; npm run env &amp;&amp; vue-cli-service serve",  "build": "export NODE_OPTIONS=—openssl-legacy-provider;vue-cli-service build",<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>或者在环境变量里面单独 添加</p><pre class="line-numbers language-none"><code class="language-none">export NODE_OPTIONS=—openssl-legacy-provide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>还是无法解决问题，遂 打算降低  node 的版本尝试一下</p><p>全局安装 n 工具，值专门管理 node 版本的，可以用他来切换 node 的版本，当然还有其他工具也可以切换，自行百度就好，我用的是 n 工具。</p><pre class="line-numbers language-none"><code class="language-none">npm install -g n       // 全局安装nn                      // 查看Node.js版本列表n &lt;版本号&gt;              // 安装指定版本的Node.jsn list                 // 切换当前使用的Node.js版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>记得使用 sudo 指令获取管理员权限</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Git </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> Hexo </tag>
+            
+            <tag> HTML </tag>
+            
+            <tag> CSS </tag>
+            
+            <tag> 未完待续 </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JavaScript异步机制</title>
+      <link href="/2023/08/20/qian-duan/javascript/javascript-yi-bu-bian-cheng/"/>
+      <url>/2023/08/20/qian-duan/javascript/javascript-yi-bu-bian-cheng/</url>
+      
+        <content type="html"><![CDATA[<p>JavaScript 中的异步机制主要通过回调函数、Promise 和 async/await 来实现。</p><p>回调函数：在早期，异步操作通常通过回调函数来处理。例如，在执行异步操作时，可以指定一个回调函数，在操作完成后将调用该函数。但是，回调地狱（Callback Hell）的问题使得代码难以阅读和维护。</p><p>Promise：Promise 是一种更加可读和结构化的异步编程方式。一个 Promise 表示一个可能还未完成的异步操作，并提供了一种链式处理这个操作的方式。通过 .then() 方法可以附加处理已解决（resolved）和已拒绝（rejected）状态的回调函数，以处理操作的结果。</p><p>async/await：async/await 是 ES2017 引入的异步编程的更高级抽象。使用 async 关键字标记一个函数为异步函数，可以在其中使用 await 关键字来等待一个 Promise 完成。这种方式使得异步代码看起来更像同步代码，更易于理解和维护。</p><p>尽管 JavaScript 的异步操作使得程序在等待某些操作时能够继续执行其他任务，但它并不总是真正的并行。JavaScript 运行在单线程的主事件循环中，意味着在同一时刻只能执行一个任务。这意味着异步操作实际上是基于事件触发的，而不是真正的多线程并行执行。</p><p>总结来说，JavaScript 中的异步操作是一种允许程序在执行期间不阻塞主线程的机制，它通过回调函数、Promise 和 async/await 等方式实现。尽管不是真正的并行执行，异步操作仍然能够提高程序的响应性和性能。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue3标签中:ref的作用</title>
+      <link href="/2023/08/20/qian-duan/vue/vue3-biao-qian-zhong-ref-de-zuo-yong/"/>
+      <url>/2023/08/20/qian-duan/vue/vue3-biao-qian-zhong-ref-de-zuo-yong/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Git </tag>
+            
+            <tag> Java </tag>
+            
+            <tag> Hexo </tag>
+            
+            <tag> HTML </tag>
+            
+            <tag> CSS </tag>
+            
+            <tag> 未完待续 </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript中方法的参数传递</title>
       <link href="/2023/08/20/qian-duan/javascript/javascript-zhong-fang-fa-de-can-shu-chuan-di/"/>
       <url>/2023/08/20/qian-duan/javascript/javascript-zhong-fang-fa-de-can-shu-chuan-di/</url>
@@ -1983,6 +2072,31 @@
     
     
     <entry>
+      <title>秒懂 QPS、TPS、PV、UV、GMV、IP、RPS！</title>
+      <link href="/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/"/>
+      <url>/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/</url>
+      
+        <content type="html"><![CDATA[<p>QPS、TPS、PV、UV、GMV、IP、RPS等各种名词，外行看起来很牛X，实际上对程序员来说都是必懂知识点。下面我来一一解释一下。</p><p>QPS</p><blockquote><p>Queries Per Second，每秒查询数。每秒能够响应的查询次数。QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。每秒的响应请求数，也即是最大吞吐能力。</p></blockquote><p>TPS</p><blockquote><p>Transactions Per Second 的缩写，每秒处理的事务数目。一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机在发送请求时开始计时，收到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数，最终利用这些信息作出的评估分。<br>TPS 的过程包括：客户端请求服务端、服务端内部处理、服务端返回客户端。例如，访问一个 Index 页面会请求服务器 3 次，包括一次 html，一次 css，一次 js，那么访问这一个页面就会产生一个“T”，产生三个“Q”。</p></blockquote><p>PV（page view）</p><blockquote><p>即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。PV 即 page view，页面浏览量。用户每一次对网站中的每个页面访问均被记录 1 次。用户对同一页面的多次刷新，访问量累计。<br>根据这个特性，刷网站的 PV 就很好刷了。</p></blockquote><p>与 PV 相关的还有 RV，即重复访问者数量（repeat visitors）。</p><blockquote><p>UV 访问数（Unique Visitor）<br>指独立访客访问数，统计1天内访问某站点的用户数(以 cookie 为依据)，一台电脑终端为一个访客。</p></blockquote><p>IP（Internet Protocol）</p><blockquote><p>独立 IP 数，是指 1 天内多少个独立的 IP 浏览了页面，即统计不同的 IP 浏览用户数量。同一 IP 不管访问了几个页面，独立 IP 数均为 1；不同的 IP 浏览页面，计数会加 1。IP 是基于用户广域网 IP 地址来区分不同的访问者的，所以，多个用户（多个局域网 IP）在同一个路由器（同一个广域网 IP）内上网，可能被记录为一个独立 IP 访问者。如果用户不断更换 IP，则有可能被多次统计。</p></blockquote><p>GMV，是 Gross Merchandise Volume 的简称。</p><blockquote><p>只要是订单，不管消费者是否付款、卖家是否发货、是否退货，都可放进 GMV 。</p></blockquote><p>RPS 代表吞吐率，即 Requests Per Second 的缩写。</p><blockquote><p>吞吐率是服务器并发处理能力的量化描述，单位是 reqs/s，指的是某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大的请求数，称之为最大吞吐率。<br>有人把 RPS 说等效于 QPS。其实可以看作同一个统计方式，只是叫法不同而已。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 引用 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>专有名词缩写</title>
       <link href="/2020/03/18/ji-suan-ji-ji-chu/zhuan-you-ming-ci-suo-xie/"/>
       <url>/2020/03/18/ji-suan-ji-ji-chu/zhuan-you-ming-ci-suo-xie/</url>
@@ -2002,31 +2116,6 @@
             <tag> 原创 </tag>
             
             <tag> 未完待续 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>秒懂 QPS、TPS、PV、UV、GMV、IP、RPS！</title>
-      <link href="/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/"/>
-      <url>/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/</url>
-      
-        <content type="html"><![CDATA[<p>QPS、TPS、PV、UV、GMV、IP、RPS等各种名词，外行看起来很牛X，实际上对程序员来说都是必懂知识点。下面我来一一解释一下。</p><p>QPS</p><blockquote><p>Queries Per Second，每秒查询数。每秒能够响应的查询次数。QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。每秒的响应请求数，也即是最大吞吐能力。</p></blockquote><p>TPS</p><blockquote><p>Transactions Per Second 的缩写，每秒处理的事务数目。一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机在发送请求时开始计时，收到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数，最终利用这些信息作出的评估分。<br>TPS 的过程包括：客户端请求服务端、服务端内部处理、服务端返回客户端。例如，访问一个 Index 页面会请求服务器 3 次，包括一次 html，一次 css，一次 js，那么访问这一个页面就会产生一个“T”，产生三个“Q”。</p></blockquote><p>PV（page view）</p><blockquote><p>即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。PV 即 page view，页面浏览量。用户每一次对网站中的每个页面访问均被记录 1 次。用户对同一页面的多次刷新，访问量累计。<br>根据这个特性，刷网站的 PV 就很好刷了。</p></blockquote><p>与 PV 相关的还有 RV，即重复访问者数量（repeat visitors）。</p><blockquote><p>UV 访问数（Unique Visitor）<br>指独立访客访问数，统计1天内访问某站点的用户数(以 cookie 为依据)，一台电脑终端为一个访客。</p></blockquote><p>IP（Internet Protocol）</p><blockquote><p>独立 IP 数，是指 1 天内多少个独立的 IP 浏览了页面，即统计不同的 IP 浏览用户数量。同一 IP 不管访问了几个页面，独立 IP 数均为 1；不同的 IP 浏览页面，计数会加 1。IP 是基于用户广域网 IP 地址来区分不同的访问者的，所以，多个用户（多个局域网 IP）在同一个路由器（同一个广域网 IP）内上网，可能被记录为一个独立 IP 访问者。如果用户不断更换 IP，则有可能被多次统计。</p></blockquote><p>GMV，是 Gross Merchandise Volume 的简称。</p><blockquote><p>只要是订单，不管消费者是否付款、卖家是否发货、是否退货，都可放进 GMV 。</p></blockquote><p>RPS 代表吞吐率，即 Requests Per Second 的缩写。</p><blockquote><p>吞吐率是服务器并发处理能力的量化描述，单位是 reqs/s，指的是某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大的请求数，称之为最大吞吐率。<br>有人把 RPS 说等效于 QPS。其实可以看作同一个统计方式，只是叫法不同而已。</p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 计算机基础 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 引用 </tag>
             
         </tags>
       
