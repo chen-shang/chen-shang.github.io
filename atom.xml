@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-08-22T05:48:18.405Z</updated>
+  <updated>2023-08-23T14:35:51.171Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>maven settings 配置</title>
+    <link href="https://chen-shang.github.io/2023/08/23/gou-jian-gong-ju/maven-pei-zhi/"/>
+    <id>https://chen-shang.github.io/2023/08/23/gou-jian-gong-ju/maven-pei-zhi/</id>
+    <published>2023-08-23T05:21:57.000Z</published>
+    <updated>2023-08-23T14:35:51.171Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;参考 maven 官网 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="构建工具" scheme="https://chen-shang.github.io/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>把json变成excel</title>
-    <link href="https://chen-shang.github.io/2023/08/22/ba-json-bian-cheng-excel/"/>
-    <id>https://chen-shang.github.io/2023/08/22/ba-json-bian-cheng-excel/</id>
+    <link href="https://chen-shang.github.io/2023/08/22/linux/shell/ba-json-bian-cheng-excel/"/>
+    <id>https://chen-shang.github.io/2023/08/22/linux/shell/ba-json-bian-cheng-excel/</id>
     <published>2023-08-22T01:02:07.000Z</published>
-    <updated>2023-08-22T05:48:18.405Z</updated>
+    <updated>2023-08-23T13:31:16.972Z</updated>
     
     
       
@@ -34,6 +59,10 @@
       
     
     
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -343,23 +372,26 @@
   
   <entry>
     <title>mac 刷新DNS缓存</title>
-    <link href="https://chen-shang.github.io/2023/08/16/linux/mac-shua-xin-dns-huan-cun/"/>
-    <id>https://chen-shang.github.io/2023/08/16/linux/mac-shua-xin-dns-huan-cun/</id>
+    <link href="https://chen-shang.github.io/2023/08/16/gong-ju-kong/mac/mac-shua-xin-dns-huan-cun/"/>
+    <id>https://chen-shang.github.io/2023/08/16/gong-ju-kong/mac/mac-shua-xin-dns-huan-cun/</id>
     <published>2023-08-16T04:10:25.000Z</published>
-    <updated>2023-08-16T04:12:33.180Z</updated>
+    <updated>2023-08-23T13:22:06.703Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;sudo&lt;/span&gt;</summary>
+    <summary type="html">&lt;p&gt;设置 DNS 命令&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;networksetup -setdnsservers Wi-Fi xxx&lt;span</summary>
         
       
     
     
     
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -477,9 +509,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
   </entry>
   
@@ -539,37 +571,6 @@
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HTML 中 src vs href</title>
-    <link href="https://chen-shang.github.io/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/"/>
-    <id>https://chen-shang.github.io/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/</id>
-    <published>2023-08-03T15:21:49.000Z</published>
-    <updated>2023-08-20T03:13:30.620Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在html页面中，同样是引入外部文件，为什么引入&lt;code&gt;javascript&lt;/code&gt;就用&lt;code&gt;src&lt;/code&gt;, 为什么引入 &lt;code&gt;css&lt;/code&gt; 就用 &lt;code&gt;href&lt;/code&gt; 呢?</summary>
-        
-      
-    
-    
-    
-    <category term="VS系列" scheme="https://chen-shang.github.io/categories/VS%E7%B3%BB%E5%88%97/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="HTML" scheme="https://chen-shang.github.io/tags/HTML/"/>
-    
-    <category term="CSS" scheme="https://chen-shang.github.io/tags/CSS/"/>
-    
-    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
     
   </entry>
   

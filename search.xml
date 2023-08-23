@@ -4,12 +4,45 @@
   
     
     <entry>
+      <title>maven settings 配置</title>
+      <link href="/2023/08/23/gou-jian-gong-ju/maven-pei-zhi/"/>
+      <url>/2023/08/23/gou-jian-gong-ju/maven-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<p>参考 maven 官网 <a href="https://maven.apache.org/pom.html#Distribution_Management">https://maven.apache.org/pom.html#Distribution_Management</a></p><h1>setting.xml 的作用</h1><p>settings.xml  是 Maven 的配置文件，用于配置 Maven 构建工具的行为和环境设置。它位于 Maven 安装目录下的  conf  文件夹中。</p><ol><li>仓库配置：您可以在  settings.xml  中配置 Maven 的本地仓库路径和远程仓库地址。本地仓库用于存储下载的依赖库和构建生成的构件。远程仓库用于下载依赖库和发布构件。</li><li>代理配置：如果您在访问远程仓库时需要经过代理服务器，可以在  settings.xml  中配置代理设置，包括代理主机、端口、用户名和密码等。</li><li>镜像配置：镜像是指向远程仓库的替代地址，用于加速依赖库的下载。您可以在  settings.xml  中配置镜像设置，指定镜像仓库的地址和对应的远程仓库。</li><li>服务器配置：如果您需要连接到需要身份验证的远程仓库或发布构件到远程仓库，可以在  settings.xml  中配置服务器凭据，包括服务器的唯一标识符、用户名和密码等。</li><li>构建配置： settings.xml  还可以配置构建过程中的一些行为和选项，例如构建工具的版本、构建插件的配置、构建环境的配置等。</li></ol><p>需要注意的是， settings.xml  是全局配置文件，适用于所有 Maven 项目。如果需要针对特定项目进行个性化配置，可以在项目的  pom.xml  文件中使用  <code>repositories</code> 、 <code>pluginRepositories</code>  等元素进行配置覆盖。</p><h1>属性配置</h1><p>在 Maven 的  settings.xml  文件中，第一层的属性可以配置如下：</p><ol><li>localRepository : 指定本地仓库的路径。</li><li>interactiveMode : 是否启用交互模式，即在构建过程中是否需要用户输入确认。</li><li>offline : 是否离线模式，即是否禁止从远程仓库下载依赖项。</li><li>pluginGroups : 定义插件组的列表，用于简化插件的引用。</li><li>proxies : 配置代理服务器的列表，用于访问远程仓库。</li><li>servers : 配置服务器的列表，用于连接到远程仓库或发布构件时的身份验证。</li><li>mirrors : 配置镜像的列表，用于加速下载依赖项的过程。</li><li>profiles : 定义配置文件的列表，每个配置文件可以包含特定环境的配置，如代理设置、仓库设置等。</li></ol><p>其中最常用的就是<br>6. servers : 配置服务器的列表，用于连接到远程仓库或发布构件时的身份验证。 就是配置账号密码的<br>7. mirrors : 配置镜像的列表，用于加速下载依赖项的过程。 这个是为了加速用的<br>8. profiles : 定义配置文件的列表，每个配置文件可以包含特定环境的配置，如代理设置、仓库设置等。 这个是真正配置远程仓库的地方，指定去哪里下载，上传到哪里的。</p><h2 id="servers">servers</h2><p>构建和部署的仓库是通过POM文件中的<code>repositories</code>和<code>distributionManagement</code>元素来定义的。然而，某些设置，如用户名和密码，不应该与pom.xml一起分发。这类信息应该存在于构建服务器的settings.xml文件中。</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  ...  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servers</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>server</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>server001<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>username</span><span class="token punctuation">&gt;</span></span>my_login<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>username</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>password</span><span class="token punctuation">&gt;</span></span>my_password<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>password</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>privateKey</span><span class="token punctuation">&gt;</span></span>${user.home}/.ssh/id_dsa<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>privateKey</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>passphrase</span><span class="token punctuation">&gt;</span></span>some_passphrase<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>passphrase</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filePermissions</span><span class="token punctuation">&gt;</span></span>664<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filePermissions</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>directoryPermissions</span><span class="token punctuation">&gt;</span></span>775<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>directoryPermissions</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>server</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servers</span><span class="token punctuation">&gt;</span></span>  ...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>id：这是服务器的ID（不是要登录的用户的ID），与Maven尝试连接的仓库/镜像的id元素匹配。</p><p>username、password：这些元素作为一对出现，表示登录到该服务器所需的用户名和密码进行身份验证。</p><p>privateKey、passphrase：与前两个元素类似，这对指定了私钥的路径（默认为${user.home}/.ssh/id_dsa）和（如果需要）密码。将来，密码和密码短语元素可能会外部化，但目前必须在settings.xml文件中以明文形式设置。</p><p>filePermissions、directoryPermissions：在部署时创建仓库文件或目录时，使用的权限。每个权限的合法值是对应于*nix文件权限的三位数字，例如664或775。</p><p>注意：如果您使用私钥登录服务器，请确保省略<code>password</code>元素。否则，密钥将被忽略。</p><h2 id="mirrors">mirrors</h2><p><code>mirrors</code>  元素在 Maven 的  settings.xml  文件中用于配置镜像仓库。镜像仓库是指向远程仓库的替代地址，用于加速依赖库的下载。 <code>mirrors</code> 走的是镜像服务器，一般也就是你搭建的 nexus 私服。不过 mirror 中配置的应该是一个公开的镜像仓库地址，一般不需要账号密码就可以访问进行查看，但是你是没有权限直接下载。比如 阿里云的镜像服务器 <a href="https://maven.aliyun.com/nexus/content/groups/public">https://maven.aliyun.com/nexus/content/groups/public</a><br>当 Maven 构建过程中需要下载依赖项时，它会首先检查  <code>mirrors</code>  元素中是否配置了与远程仓库匹配的镜像。如果找到匹配的镜像配置，Maven 将使用镜像仓库的地址来下载依赖项，而不是直接访问远程仓库。镜像仓库的作用是提供更快的下载速度和更好的稳定性，特别是在网络环境不佳的情况下。通过配置镜像仓库，可以将远程仓库的内容镜像到本地或其他可访问的服务器，从而加快依赖项的下载速度。<br>示例</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  ...  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrors</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>planetmirror.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>PlanetMirror Australia<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://downloads.planetmirror.com/pub/maven2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">&gt;</span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrors</span><span class="token punctuation">&gt;</span></span>  ...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>id用于区分镜像元素，并在连接到镜像时从<code>servers</code>部分选择相应的凭据。</p><h2 id="profiles">profiles</h2><p>settings.xml中的 <code>profile</code> 元素是pom.xml中 <code>profile</code> 元素的简化版本。它包括<code>activation</code>、<code>repositories</code>、<code>pluginRepositories</code>和<code>properties</code>元素。<code>profile</code>元素仅包含这四个元素，因为它们关注的是整个构建系统（这是settings.xml文件的作用），而不是个别项目对象模型设置。 如果从settings中激活了一个<code>profile</code>，它的值将覆盖POM或profiles.xml文件中具有相同ID的<code>profile</code>的任何值。</p><ol><li>id ：配置文件的唯一标识符。</li><li>activation ：配置文件的激活条件，可以根据不同的条件来激活特定的配置文件。例如，可以根据操作系统、Java 版本、环境变量等来激活配置文件。</li><li>properties ：定义配置文件中使用的属性，这些属性可以在配置文件中引用和使用。</li><li>repositories ：配置配置文件中使用的远程仓库，可以指定特定的远程仓库地址。</li><li>pluginRepositories ：配置配置文件中使用的插件仓库，可以指定特定的插件仓库地址。</li><li>activation ：定义配置文件的激活条件，可以根据不同的条件来激活特定的配置文件。</li><li>build ：定义配置文件中的构建设置，包括插件、资源、插件管理等。</li><li>dependencyManagement ：定义配置文件中的依赖管理，可以统一管理项目中的依赖项版本。</li></ol><p>这里头最常用的就是</p><ol start="4"><li>repositories ：配置配置文件中使用的远程仓库，可以指定特定的远程仓库地址。这个是下载的地址。</li><li>properties ：定义配置文件中使用的属性，这些属性可以在配置文件中引用和使用。 里头可以配置  <code>altReleaseDeploymentRepository</code>  和  <code>altSnapshotDeploymentRepository</code> 用于指定替代的发布和快照部署仓库。它们允许您在构建过程中指定不同于默认发布和快照部署仓库的替代仓库.</li></ol><h3 id="properties">properties</h3><p>这个是属性变量配置的地方</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  ...  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profiles</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">&gt;</span></span>      ...      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user.install</span><span class="token punctuation">&gt;</span></span>${user.home}/our-project<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>user.install</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>      ...    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profiles</span><span class="token punctuation">&gt;</span></span>  ...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h4 id="repositories">repositories</h4><p>这个是jar上传下载的地方</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  ...  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profiles</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">&gt;</span></span>      ...      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repositories</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repository</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>codehausSnapshots<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>Codehaus Snapshots<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>releases</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>updatePolicy</span><span class="token punctuation">&gt;</span></span>always<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>updatePolicy</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>checksumPolicy</span><span class="token punctuation">&gt;</span></span>warn<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>checksumPolicy</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>releases</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>snapshots</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>updatePolicy</span><span class="token punctuation">&gt;</span></span>never<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>updatePolicy</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>checksumPolicy</span><span class="token punctuation">&gt;</span></span>fail<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>checksumPolicy</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>snapshots</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>http://snapshots.maven.codehaus.org/maven2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>layout</span><span class="token punctuation">&gt;</span></span>default<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>layout</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repository</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repositories</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pluginRepositories</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pluginRepository</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>myPluginRepo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">&gt;</span></span>My Plugins repo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>releases</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>releases</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>snapshots</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>enabled</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>enabled</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>snapshots</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>https://maven-central-eu....com/maven2/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pluginRepository</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pluginRepositories</span><span class="token punctuation">&gt;</span></span>      ...    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profiles</span><span class="token punctuation">&gt;</span></span>  ...<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1>altReleaseDeploymentRepository &amp; altSnapshotDeploymentRepository</h1><p>官网上对这俩的记载比较少。关于  altReleaseDeploymentRepository  和  altSnapshotDeploymentRepository  这两个属性，它们通常用于在特定的构建配置文件（profile）中定义替代的发布部署仓库。</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profiles</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>my_profile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>altReleaseDeploymentRepository</span><span class="token punctuation">&gt;</span></span>https://example.com/release-repo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>altReleaseDeploymentRepository</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>altSnapshotDeploymentRepository</span><span class="token punctuation">&gt;</span></span>https://example.com/snapshot-repo<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>altSnapshotDeploymentRepository</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profiles</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在上述示例中， <code>altReleaseDeploymentRepository</code>  和  <code>altSnapshotDeploymentRepository</code>  属性分别设置了替代的发布部署仓库的地址。 这样，在构建过程中，当 Maven 需要发布构件时，它将使用这些属性中定义的替代仓库地址，而不是  <code>istributionManagement</code>  元素中配置的默认仓库地址。</p><p>一个完整的基本的setting.xml 大致长下面这个样子</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>    <span class="token comment">&lt;!-- 配置本地仓库路径 --&gt;</span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>localRepository</span><span class="token punctuation">&gt;</span></span>/path/to/local/repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>localRepository</span><span class="token punctuation">&gt;</span></span>    <span class="token comment">&lt;!-- 是否启用交互模式 --&gt;</span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>interactiveMode</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>interactiveMode</span><span class="token punctuation">&gt;</span></span>    <span class="token comment">&lt;!-- 是否离线模式 --&gt;</span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>offline</span><span class="token punctuation">&gt;</span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>offline</span><span class="token punctuation">&gt;</span></span>    <span class="token comment">&lt;!-- 配置插件组 --&gt;</span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pluginGroups</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pluginGroup</span><span class="token punctuation">&gt;</span></span>com.example.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pluginGroup</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pluginGroups</span><span class="token punctuation">&gt;</span></span>    <span class="token comment">&lt;!-- 配置代理服务器 --&gt;</span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>proxies</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>proxy</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>my_proxy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>active</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>active</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>protocol</span><span class="token punctuation">&gt;</span></span>http<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>protocol</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>host</span><span class="token punctuation">&gt;</span></span>proxy.example.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>host</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>port</span><span class="token punctuation">&gt;</span></span>8080<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>port</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>username</span><span class="token punctuation">&gt;</span></span>proxy_user<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>username</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>password</span><span class="token punctuation">&gt;</span></span>proxy_password<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>password</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nonProxyHosts</span><span class="token punctuation">&gt;</span></span>localhost|*.example.com<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nonProxyHosts</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>proxy</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>proxies</span><span class="token punctuation">&gt;</span></span>    <span class="token comment">&lt;!-- 配置服务器凭据 --&gt;</span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servers</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>server</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>my_repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>username</span><span class="token punctuation">&gt;</span></span>my_username<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>username</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>password</span><span class="token punctuation">&gt;</span></span>my_password<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>password</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>server</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servers</span><span class="token punctuation">&gt;</span></span>    <span class="token comment">&lt;!-- 配置镜像 --&gt;</span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrors</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirror</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>my_mirror<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>https://mirror.example.com/repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mirrorOf</span><span class="token punctuation">&gt;</span></span>central<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrorOf</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirror</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mirrors</span><span class="token punctuation">&gt;</span></span>    <span class="token comment">&lt;!-- 配置配置文件列表 --&gt;</span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profiles</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">&gt;</span></span>            <span class="token comment">&lt;!-- 定义配置文件的唯一标识符 --&gt;</span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>my_profile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activation</span><span class="token punctuation">&gt;</span></span>                <span class="token comment">&lt;!-- 配置文件的激活条件 --&gt;</span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>activeByDefault</span><span class="token punctuation">&gt;</span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activeByDefault</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>activation</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">&gt;</span></span>                <span class="token comment">&lt;!-- 定义配置文件中使用的属性 --&gt;</span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my.property</span><span class="token punctuation">&gt;</span></span>example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my.property</span><span class="token punctuation">&gt;</span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>altReleaseDeploymentRepository</span><span class="token punctuation">&gt;</span></span>rdc-releases::default::https://packages.aliyun.com/maven/repository/2130760-release-QBA04h/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>altReleaseDeploymentRepository</span><span class="token punctuation">&gt;</span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>altSnapshotDeploymentRepository</span><span class="token punctuation">&gt;</span></span>rdc-snapshots::default::https://packages.aliyun.com/maven/repository/2130760-snapshot-ERthMg/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>altSnapshotDeploymentRepository</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>properties</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repositories</span><span class="token punctuation">&gt;</span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>repository</span><span class="token punctuation">&gt;</span></span>                    <span class="token comment">&lt;!-- 配置特定的远程仓库地址 --&gt;</span>                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>my_repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>https://example.com/repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repository</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>repositories</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pluginRepositories</span><span class="token punctuation">&gt;</span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pluginRepository</span><span class="token punctuation">&gt;</span></span>                    <span class="token comment">&lt;!-- 配置特定的插件仓库地址 --&gt;</span>                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>id</span><span class="token punctuation">&gt;</span></span>my_plugin_repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>id</span><span class="token punctuation">&gt;</span></span>                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url</span><span class="token punctuation">&gt;</span></span>https://example.com/plugin-repository<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url</span><span class="token punctuation">&gt;</span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pluginRepository</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>pluginRepositories</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.example.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>my-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profile</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profiles</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 构建工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>把json变成excel</title>
-      <link href="/2023/08/22/ba-json-bian-cheng-excel/"/>
-      <url>/2023/08/22/ba-json-bian-cheng-excel/</url>
+      <link href="/2023/08/22/linux/shell/ba-json-bian-cheng-excel/"/>
+      <url>/2023/08/22/linux/shell/ba-json-bian-cheng-excel/</url>
       
         <content type="html"><![CDATA[<p>通过 jq 工具可以把 一段 json 数组 转换成 cvs , 然后就能用 excel 工具打开了。</p><p>参考 <a href="https://jqlang.github.io/jq/manual/">https://jqlang.github.io/jq/manual/</a></p><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>    <span class="token punctuation">{</span>        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span>        <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>        <span class="token property">"location"</span><span class="token operator">:</span> <span class="token string">"City A"</span>    <span class="token punctuation">}</span><span class="token punctuation">,</span>    <span class="token punctuation">{</span>        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Bob"</span><span class="token punctuation">,</span>        <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>        <span class="token property">"location"</span><span class="token operator">:</span> <span class="token string">"City B"</span>    <span class="token punctuation">}</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>保存到文件  data.json 中</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jq <span class="token parameter variable">-r</span> <span class="token string">'.[] | [.name, .age, .location] | @csv'</span> data.json <span class="token operator">&gt;</span> output.csv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>或者</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> text.json  <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.[] | [.name, .age] | @csv'</span> <span class="token operator">&gt;</span> output.csv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
       
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> Shell </category>
+          
+      </categories>
       
       
         <tags>
@@ -321,15 +354,17 @@
     
     <entry>
       <title>mac 刷新DNS缓存</title>
-      <link href="/2023/08/16/linux/mac-shua-xin-dns-huan-cun/"/>
-      <url>/2023/08/16/linux/mac-shua-xin-dns-huan-cun/</url>
+      <link href="/2023/08/16/gong-ju-kong/mac/mac-shua-xin-dns-huan-cun/"/>
+      <url>/2023/08/16/gong-ju-kong/mac/mac-shua-xin-dns-huan-cun/</url>
       
-        <content type="html"><![CDATA[<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> dscacheutil <span class="token parameter variable">-flushcache</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这是一个用于刷新 DNS 缓存的命令。在计算机上访问网站时，DNS（域名系统）被用于将网站域名转换为相应的 IP 地址。为了加快访问速度，计算机会将最近访问的 DNS 查询结果缓存在本地。然而，有时 DNS 缓存可能过期或者出现问题，导致无法正确解析域名。</p><p>这个命令可以强制刷新计算机的 DNS 缓存。通过执行该命令，计算机将清除存储在缓存中的 DNS 查询结果，并尝试重新解析所有域名。这样一来，它会从新的源（如 DNS 服务器）获取最新的 IP 地址，从而解决一些与 DNS 相关的访问问题。</p>]]></content>
+        <content type="html"><![CDATA[<p>设置 DNS 命令</p><pre class="line-numbers language-none"><code class="language-none">networksetup -setdnsservers Wi-Fi xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>查看 DNS</p><pre class="line-numbers language-none"><code class="language-none">networksetup -getdnsservers Wi-Fi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>刷新 DNS 缓存</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> dscacheutil <span class="token parameter variable">-flushcache</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这是一个用于刷新 DNS 缓存的命令。在计算机上访问网站时，DNS（域名系统）被用于将网站域名转换为相应的 IP 地址。为了加快访问速度，计算机会将最近访问的 DNS 查询结果缓存在本地。然而，有时 DNS 缓存可能过期或者出现问题，导致无法正确解析域名。这个命令可以强制刷新计算机的 DNS 缓存。通过执行该命令，计算机将清除存储在缓存中的 DNS 查询结果，并尝试重新解析所有域名。这样一来，它会从新的源（如 DNS 服务器）获取最新的 IP 地址，从而解决一些与 DNS 相关的访问问题。</p>]]></content>
       
       
       <categories>
           
-          <category> Linux </category>
+          <category> 工具控 </category>
+          
+          <category> Mac </category>
           
       </categories>
       
@@ -446,9 +481,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -516,15 +551,17 @@
     
     <entry>
       <title>HTML 中 src vs href</title>
-      <link href="/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/"/>
-      <url>/2023/08/03/vs-xi-lie/html-zhong-src-vs-href/</url>
+      <link href="/2023/08/03/qian-duan/html/html-zhong-src-vs-href/"/>
+      <url>/2023/08/03/qian-duan/html/html-zhong-src-vs-href/</url>
       
         <content type="html"><![CDATA[<p>在html页面中，同样是引入外部文件，为什么引入<code>javascript</code>就用<code>src</code>, 为什么引入 <code>css</code> 就用 <code>href</code> 呢? 为什么就没人统一一下呢?</p><p><code>src</code>  属性通常用于指定要加载的资源的路径，如脚本文件、图像文件等。而  <code>href</code>  属性通常用于指定链接的目标资源的 URL，如超链接的目标页面、外部样式表等。 如  <code>&lt;script&gt;</code>  和  <code>&lt;img&gt;</code>  标签中使用的是  <code>src</code>  属性，而  <code>&lt;link&gt;</code>  和  <code>&lt;a&gt;</code>  标签中使用的是  <code>href</code>  属性，但这只是由于历史原因和标签的设计规范。</p><p>在 HTML 中，有多个标签可以使用  <code>href</code>  属性来指定链接的目标资源的 URL。以下是一些常见的具有  <code>href</code>  属性的标签：</p><ul><li><code>&lt;a&gt;</code>  标签：用于创建超链接，指定链接的目标页面或资源的 URL。</li><li><code>&lt;link&gt;</code> 标签：用于引入外部资源，如样式表、图标等， href  属性指定资源的路径。</li><li><code>&lt;area&gt;</code>  标签：用于定义图像映射区域， href  属性指定与区域关联的链接。</li><li><code>&lt;base&gt;</code>  标签：用于指定页面中所有相对链接的基本 URL， href  属性指定基本 URL。</li></ul><p>在 HTML 中，有多个标签可以使用  <code>src</code>  属性来指定要加载的外部资源的 URL。以下是一些常见的具有  <code>src</code>  属性的标签：</p><ul><li><code>&lt;script&gt;</code>  标签：用于引入外部 JavaScript 文件， src  属性指定 JavaScript 文件的路径。</li><li><code>&lt;img&gt;</code>  标签：用于嵌入图像， <code>src</code>  属性指定图像文件的路径。</li><li><code>&lt;iframe&gt;</code>  标签：用于嵌入另一个 HTML 文档， <code>src</code>  属性指定嵌入文档的路径。</li><li><code>&lt;audio&gt;</code>  标签：用于嵌入音频文件，<code>src</code>  属性指定音频文件的路径。</li><li><code>&lt;video&gt;</code>  标签：用于嵌入视频文件， <code>src</code>  属性指定视频文件的路径。</li><li><code>&lt;source&gt;</code>  标签：用于为  <code>&lt;audio&gt;</code>  和  <code>&lt;video&gt;</code>  标签指定多个媒体源，每个源都使用  <code>src</code> 属性指定路径。</li></ul>]]></content>
       
       
       <categories>
           
-          <category> VS系列 </category>
+          <category> 前端 </category>
+          
+          <category> Html </category>
           
       </categories>
       
@@ -638,7 +675,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
           <category> Java单元测试 </category>
           
@@ -823,8 +860,8 @@
     
     <entry>
       <title>什么是标记语言</title>
-      <link href="/2023/07/01/qian-duan/qian-duan-ji-chu/shi-me-shi-biao-ji-yu-yan/"/>
-      <url>/2023/07/01/qian-duan/qian-duan-ji-chu/shi-me-shi-biao-ji-yu-yan/</url>
+      <link href="/2023/07/01/qian-duan/shi-me-shi-biao-ji-yu-yan/"/>
+      <url>/2023/07/01/qian-duan/shi-me-shi-biao-ji-yu-yan/</url>
       
         <content type="html"><![CDATA[<p>标记语言是一种用于描述文本结构和格式的计算机语言。它通过在文本中插入特定的标记或标签来指示文本的结构和样式。标记语言可以用于创建和格式化各种类型的文档，如网页、电子书、电子邮件等。</p><p>最常见的标记语言是HTML（超文本标记语言），它用于创建网页。HTML使用一系列标签来定义文本的结构、样式和链接。例如，使用<code>&lt;h1&gt;</code>标签可以定义一个标题，使用<code>&lt;p&gt;</code>标签可以定义一个段落。</p><p>另一个常见的标记语言是XML（可扩展标记语言），它被广泛用于数据交换和存储。XML使用自定义的标签来描述数据的结构和内容。与HTML不同，XML的标签是自定义的，可以根据需要创建。</p><p>除了HTML和XML，还有许多其他标记语言，如Markdown、LaTeX等。这些标记语言都有自己的语法和用途，但它们的基本原理都是相似的：使用标记或标签来描述文本的结构和样式。</p><p>标记语言的优点是它们可以使文本结构化，并且可以轻松地应用样式和格式。它们还可以与其他计算机系统和工具进行集成，使文本处理更加灵活和自动化。</p><p>总之，标记语言是一种用于描述文本结构和格式的计算机语言，它通过插入特定的标记或标签来指示文本的结构和样式。它们被广泛用于创建网页、数据交换和文本处理等领域。</p>]]></content>
       
@@ -832,8 +869,6 @@
       <categories>
           
           <category> 前端 </category>
-          
-          <category> 前端基础 </category>
           
       </categories>
       
@@ -1076,7 +1111,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -1085,9 +1120,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1097,8 +1132,8 @@
     
     <entry>
       <title>用shell教你搞定各种查找算法-二分查找</title>
-      <link href="/2022/04/19/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-er-fen-cha-zhao/"/>
-      <url>/2022/04/19/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-er-fen-cha-zhao/</url>
+      <link href="/2022/04/19/linux/shell/shu-ju-jie-gou-suan-fa/shell-er-fen-cha-zhao/"/>
+      <url>/2022/04/19/linux/shell/shu-ju-jie-gou-suan-fa/shell-er-fen-cha-zhao/</url>
       
         <content type="html"><![CDATA[<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">nums</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">4</span> <span class="token number">5</span> <span class="token number">6</span> <span class="token number">7</span> <span class="token number">8</span> <span class="token number">100</span><span class="token punctuation">)</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">low</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">high</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${<span class="token operator">#</span>nums<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token comment">#   local mid=$(((low+high)/2))</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">target</span><span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">;</span>  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$low</span> <span class="token parameter variable">-le</span> <span class="token variable">$high</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>    <span class="token builtin class-name">let</span> <span class="token assign-left variable">cha</span><span class="token operator">=</span><span class="token punctuation">(</span>high-low<span class="token punctuation">)</span>/2    <span class="token builtin class-name">let</span> <span class="token assign-left variable">mid</span><span class="token operator">=</span>low+cha    <span class="token builtin class-name">local</span> <span class="token assign-left variable">midNum</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span>}</span><span class="token punctuation">;</span>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${midNum}</span> <span class="token parameter variable">-eq</span> <span class="token variable">${target}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>      <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${mid}</span>"</span>      <span class="token builtin class-name">return</span><span class="token punctuation">;</span>    <span class="token keyword">fi</span>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${midNum}</span> <span class="token parameter variable">-lt</span> <span class="token variable">${target}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>      <span class="token assign-left variable">low</span><span class="token operator">=</span>mid+1    <span class="token keyword">fi</span>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${midNum}</span> <span class="token parameter variable">-gt</span> <span class="token variable">${target}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>      <span class="token assign-left variable">high</span><span class="token operator">=</span>high-1    <span class="token keyword">fi</span>  <span class="token keyword">done</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
@@ -1107,7 +1142,7 @@
           
           <category> Linux </category>
           
-          <category> BaseShell </category>
+          <category> Shell </category>
           
       </categories>
       
@@ -1155,8 +1190,8 @@
     
     <entry>
       <title>用shell教你搞定各种排序算法-归并排序</title>
-      <link href="/2022/04/05/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-gui-bing-pai-xu/"/>
-      <url>/2022/04/05/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-gui-bing-pai-xu/</url>
+      <link href="/2022/04/05/linux/shell/shu-ju-jie-gou-suan-fa/shell-gui-bing-pai-xu/"/>
+      <url>/2022/04/05/linux/shell/shu-ju-jie-gou-suan-fa/shell-gui-bing-pai-xu/</url>
       
         <content type="html"><![CDATA[<p>归并排序采用的是分治的思想。归就是归纳,并就是合并。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token number">2</span> <span class="token number">4</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">0</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token number">2</span> <span class="token number">4</span><span class="token punctuation">)</span>  <span class="token function">sort</span> <span class="token string">"0"</span> <span class="token string">"<span class="token variable">${<span class="token operator">#</span>array<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">}</span><span class="token keyword">function</span> <span class="token function-name function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token builtin class-name">local</span> <span class="token assign-left variable">low</span><span class="token operator">=</span><span class="token variable">$1</span>    <span class="token builtin class-name">local</span> <span class="token assign-left variable">high</span><span class="token operator">=</span><span class="token variable">$2</span>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${low}</span> <span class="token parameter variable">-ge</span>  <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>      <span class="token builtin class-name">return</span>    <span class="token keyword">fi</span>    <span class="token builtin class-name">local</span> <span class="token assign-left variable">mid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span><span class="token variable">$((</span>low<span class="token operator">+</span>high<span class="token variable">))</span></span>/2<span class="token punctuation">))</span>    <span class="token function">sort</span> <span class="token variable">${low}</span> <span class="token variable">${mid}</span>    <span class="token function">sort</span> <span class="token variable"><span class="token variable">$((</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span> <span class="token variable">${high}</span>    merge <span class="token variable">${low}</span> <span class="token variable">${mid}</span> <span class="token variable">${high}</span><span class="token punctuation">}</span><span class="token keyword">function</span> <span class="token function-name function">merge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">low</span><span class="token operator">=</span><span class="token variable">$1</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">mid</span><span class="token operator">=</span><span class="token variable">$2</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">high</span><span class="token operator">=</span><span class="token variable">$3</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token variable">${low}</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">k</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-le</span> <span class="token variable">${mid}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-le</span> <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-lt</span> <span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>        <span class="token builtin class-name">let</span> i++<span class="token punctuation">;</span>    <span class="token keyword">else</span>       tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span>       <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>       <span class="token builtin class-name">let</span> j++<span class="token punctuation">;</span>    <span class="token keyword">fi</span>  <span class="token keyword">done</span>  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-le</span> <span class="token variable">${mid}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>        <span class="token builtin class-name">let</span> i++<span class="token punctuation">;</span>  <span class="token keyword">done</span>  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-le</span> <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span>        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>        <span class="token builtin class-name">let</span> j++<span class="token punctuation">;</span>  <span class="token keyword">done</span>  <span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>l<span class="token operator">&lt;</span>k<span class="token punctuation">;</span>l<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span><span class="token keyword">do</span>        <span class="token assign-left variable">index</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>low <span class="token operator">+</span> l<span class="token variable">))</span></span>        array<span class="token punctuation">[</span><span class="token variable">$index</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp<span class="token punctuation">[</span>$l<span class="token punctuation">]</span>}</span>  <span class="token keyword">done</span>  <span class="token builtin class-name">echo</span> <span class="token variable">${array<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span><span class="token punctuation">}</span>main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>运行最后结果如下</p><pre class="line-numbers language-text" data-language="text"><code class="language-text">1 3 5 7 9 2 4 6 8 0 7 9 2 41 3 5 7 9 2 4 6 8 0 7 9 2 41 3 5 7 9 2 4 6 8 0 7 9 2 41 3 5 7 2 9 4 6 8 0 7 9 2 41 3 5 7 2 9 4 6 8 0 7 9 2 41 3 5 7 2 4 6 9 8 0 7 9 2 41 2 3 4 5 6 7 9 8 0 7 9 2 41 2 3 4 5 6 7 9 0 8 7 9 2 41 2 3 4 5 6 7 9 0 8 7 9 2 41 2 3 4 5 6 7 9 0 7 8 9 2 41 2 3 4 5 6 7 9 0 7 8 9 2 41 2 3 4 5 6 7 9 0 7 8 9 2 41 2 3 4 5 6 7 9 0 2 4 7 8 90 1 2 2 3 4 4 5 6 7 7 8 9 9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
@@ -1165,7 +1200,7 @@
           
           <category> Linux </category>
           
-          <category> BaseShell </category>
+          <category> Shell </category>
           
       </categories>
       
@@ -1192,7 +1227,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -1244,7 +1279,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -1280,11 +1315,11 @@
             
             <tag> 原创 </tag>
             
+            <tag> 未完待续 </tag>
+            
             <tag> Linux </tag>
             
             <tag> Java </tag>
-            
-            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1294,13 +1329,15 @@
     
     <entry>
       <title>为什么说32位操作系统的最大寻址空间是4G</title>
-      <link href="/2022/03/22/ji-suan-ji-ji-chu/wei-shi-me-shuo-32-wei-cao-zuo-xi-tong-de-zui-da-xun-zhi-kong-jian-shi-4g/"/>
-      <url>/2022/03/22/ji-suan-ji-ji-chu/wei-shi-me-shuo-32-wei-cao-zuo-xi-tong-de-zui-da-xun-zhi-kong-jian-shi-4g/</url>
+      <link href="/2022/03/22/ji-suan-ji/ji-suan-ji-ji-chu/wei-shi-me-shuo-32-wei-cao-zuo-xi-tong-de-zui-da-xun-zhi-kong-jian-shi-4g/"/>
+      <url>/2022/03/22/ji-suan-ji/ji-suan-ji-ji-chu/wei-shi-me-shuo-32-wei-cao-zuo-xi-tong-de-zui-da-xun-zhi-kong-jian-shi-4g/</url>
       
         <content type="html"><![CDATA[<p>为什么说32位操作系统的最大寻址空间是4G？而64位操作系统的最大寻址空间是8G呢？</p><p>32/64为操作系统你可以理解为有32/64跟铜线，每根铜线可以通电或者不通电，通电代表1，不通电代表0，那么32/64根线可以组合出来的数，用数据里面的组合原理，就可以得出一共有2^32/2^64种情况，如果每一种情况代表一个内存的一个字节的话，那么可以有2^32/2^64次方个字节，也就是2^32B/2^64B，正好等于4G/8G。</p>]]></content>
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> 计算机基础 </category>
           
@@ -1327,7 +1364,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -1354,7 +1391,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -1381,7 +1418,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
           <category> Java并发编程 </category>
           
@@ -1450,9 +1487,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -1518,13 +1555,15 @@
     
     <entry>
       <title>查看CPU型号以及核心数量</title>
-      <link href="/2021/08/05/ji-suan-ji-ji-chu/cha-kan-cpu-xing-hao-yi-ji-he-xin-shu-liang/"/>
-      <url>/2021/08/05/ji-suan-ji-ji-chu/cha-kan-cpu-xing-hao-yi-ji-he-xin-shu-liang/</url>
+      <link href="/2021/08/05/ji-suan-ji/ji-suan-ji-ji-chu/cha-kan-cpu-xing-hao-yi-ji-he-xin-shu-liang/"/>
+      <url>/2021/08/05/ji-suan-ji/ji-suan-ji-ji-chu/cha-kan-cpu-xing-hao-yi-ji-he-xin-shu-liang/</url>
       
         <content type="html"><![CDATA[<h1>MAC</h1><p><code>sysctl machdep.cpu.brand_string</code> 处理器型号。<br><code>sysctl hw.physicalcpu</code> 物理核心数量。<br><code>sysctl hw.logicalcpu</code> 逻辑核心数量。</p><p>物理核心数量就是服务器上实际有几颗CPU，按理论上来说一个CPU有一个核，这个核指的是 逻辑运算单元 LAU。但是一个CPU内部可有多组寄存器单元,有一个寄存器组就能并发执行多个任务也就是进程或者线程，也就是超了一个原来本来只能运行一个线程的限制，这叫超线程，有几组寄存器就叫有几个逻辑核心。</p><h1>LINUX</h1>]]></content>
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> 计算机基础 </category>
           
@@ -1535,9 +1574,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1609,7 +1648,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
           <category> Java设计模式 </category>
           
@@ -1649,9 +1688,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1669,7 +1708,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -1725,7 +1764,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
           <category> Java设计模式 </category>
           
@@ -1736,9 +1775,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1756,7 +1795,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
           <category> Java设计模式 </category>
           
@@ -1785,7 +1824,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
           <category> Java设计模式 </category>
           
@@ -1812,7 +1851,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
           <category> Java设计模式 </category>
           
@@ -1831,8 +1870,8 @@
     
     <entry>
       <title>用shell教你搞定各种排序算法-希尔排序</title>
-      <link href="/2020/04/15/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-xi-er-pai-xu/"/>
-      <url>/2020/04/15/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-xi-er-pai-xu/</url>
+      <link href="/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-xi-er-pai-xu/"/>
+      <url>/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-xi-er-pai-xu/</url>
       
         <content type="html"><![CDATA[<p>希尔排序的核心也是交换,是在插入排序的基础上演进的,目的是期望快速消除更多的逆序对儿。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">nums</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">33</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">1</span> <span class="token number">34</span> <span class="token number">56</span><span class="token punctuation">)</span><span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>nums<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span><span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>D<span class="token operator">=</span>size<span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">;</span>D<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">;</span>D<span class="token operator">/=</span><span class="token number">2</span><span class="token punctuation">))</span></span><span class="token punctuation">{</span> <span class="token comment">#希尔排序就是在插入排序的基础上加上一个跳跃序列，可以说插入是临近比较，希尔则是跳跃着比较。</span>  <span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span>D<span class="token punctuation">;</span>i<span class="token operator">&lt;</span>size<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">{</span> <span class="token comment">#先找一个下标指向第一个元素,因为默认第0个元素是排好的,所以从第1个下标的元素开始往前面插,i代表要取出的数</span>    <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token comment">#先记录下当前位置的元素,从他前面一个元素开始比较,直到找到自己合适位置就直接插入</span>    <span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span> j<span class="token operator">=</span>i<span class="token punctuation">;</span>j<span class="token operator">&gt;=</span>D <span class="token operator">&amp;&amp;</span> ${nums[j<span class="token operator">-</span>D]} <span class="token operator">&gt;</span> tmp<span class="token punctuation">;</span>j<span class="token operator">-=</span>D<span class="token punctuation">))</span></span><span class="token punctuation">;</span><span class="token keyword">do</span>      nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>j-D<span class="token punctuation">]</span>}</span>    <span class="token keyword">done</span>    nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp}</span>    <span class="token builtin class-name">echo</span> <span class="token string">"插入nums[<span class="token variable">${i}</span>]=<span class="token variable">${tmp}</span>到nums[<span class="token variable">${j}</span>]: <span class="token variable">${nums<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们执行以下看一下输出结果</p><pre class="line-numbers language-text" data-language="text"><code class="language-text">插入nums[8]=22到nums[8]: 1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56插入nums[9]=11到nums[9]: 1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56插入nums[10]=33到nums[10]: 1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56插入nums[11]=22到nums[11]: 1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56插入nums[12]=11到nums[12]: 1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56插入nums[13]=1到nums[5]: 1 3 5 7 2 1 6 8 22 11 33 22 11 3 34 56插入nums[14]=34到nums[14]: 1 3 5 7 2 1 6 8 22 11 33 22 11 3 34 56插入nums[15]=56到nums[15]: 1 3 5 7 2 1 6 8 22 11 33 22 11 3 34 56插入nums[4]=2到nums[4]: 1 3 5 7 2 1 6 8 22 11 33 22 11 3 34 56插入nums[5]=1到nums[1]: 1 1 5 7 2 3 6 8 22 11 33 22 11 3 34 56插入nums[6]=6到nums[6]: 1 1 5 7 2 3 6 8 22 11 33 22 11 3 34 56插入nums[7]=8到nums[7]: 1 1 5 7 2 3 6 8 22 11 33 22 11 3 34 56插入nums[8]=22到nums[8]: 1 1 5 7 2 3 6 8 22 11 33 22 11 3 34 56插入nums[9]=11到nums[9]: 1 1 5 7 2 3 6 8 22 11 33 22 11 3 34 56插入nums[10]=33到nums[10]: 1 1 5 7 2 3 6 8 22 11 33 22 11 3 34 56插入nums[11]=22到nums[11]: 1 1 5 7 2 3 6 8 22 11 33 22 11 3 34 56插入nums[12]=11到nums[8]: 1 1 5 7 2 3 6 8 11 11 33 22 22 3 34 56插入nums[13]=3到nums[9]: 1 1 5 7 2 3 6 8 11 3 33 22 22 11 34 56插入nums[14]=34到nums[14]: 1 1 5 7 2 3 6 8 11 3 33 22 22 11 34 56插入nums[15]=56到nums[15]: 1 1 5 7 2 3 6 8 11 3 33 22 22 11 34 56插入nums[2]=5到nums[2]: 1 1 5 7 2 3 6 8 11 3 33 22 22 11 34 56插入nums[3]=7到nums[3]: 1 1 5 7 2 3 6 8 11 3 33 22 22 11 34 56插入nums[4]=2到nums[2]: 1 1 2 7 5 3 6 8 11 3 33 22 22 11 34 56插入nums[5]=3到nums[3]: 1 1 2 3 5 7 6 8 11 3 33 22 22 11 34 56插入nums[6]=6到nums[6]: 1 1 2 3 5 7 6 8 11 3 33 22 22 11 34 56插入nums[7]=8到nums[7]: 1 1 2 3 5 7 6 8 11 3 33 22 22 11 34 56插入nums[8]=11到nums[8]: 1 1 2 3 5 7 6 8 11 3 33 22 22 11 34 56插入nums[9]=3到nums[5]: 1 1 2 3 5 3 6 7 11 8 33 22 22 11 34 56插入nums[10]=33到nums[10]: 1 1 2 3 5 3 6 7 11 8 33 22 22 11 34 56插入nums[11]=22到nums[11]: 1 1 2 3 5 3 6 7 11 8 33 22 22 11 34 56插入nums[12]=22到nums[10]: 1 1 2 3 5 3 6 7 11 8 22 22 33 11 34 56插入nums[13]=11到nums[11]: 1 1 2 3 5 3 6 7 11 8 22 11 33 22 34 56插入nums[14]=34到nums[14]: 1 1 2 3 5 3 6 7 11 8 22 11 33 22 34 56插入nums[15]=56到nums[15]: 1 1 2 3 5 3 6 7 11 8 22 11 33 22 34 56插入nums[1]=1到nums[1]: 1 1 2 3 5 3 6 7 11 8 22 11 33 22 34 56插入nums[2]=2到nums[2]: 1 1 2 3 5 3 6 7 11 8 22 11 33 22 34 56插入nums[3]=3到nums[3]: 1 1 2 3 5 3 6 7 11 8 22 11 33 22 34 56插入nums[4]=5到nums[4]: 1 1 2 3 5 3 6 7 11 8 22 11 33 22 34 56插入nums[5]=3到nums[4]: 1 1 2 3 3 5 6 7 11 8 22 11 33 22 34 56插入nums[6]=6到nums[6]: 1 1 2 3 3 5 6 7 11 8 22 11 33 22 34 56插入nums[7]=7到nums[7]: 1 1 2 3 3 5 6 7 11 8 22 11 33 22 34 56插入nums[8]=11到nums[8]: 1 1 2 3 3 5 6 7 11 8 22 11 33 22 34 56插入nums[9]=8到nums[8]: 1 1 2 3 3 5 6 7 8 11 22 11 33 22 34 56插入nums[10]=22到nums[10]: 1 1 2 3 3 5 6 7 8 11 22 11 33 22 34 56插入nums[11]=11到nums[10]: 1 1 2 3 3 5 6 7 8 11 11 22 33 22 34 56插入nums[12]=33到nums[12]: 1 1 2 3 3 5 6 7 8 11 11 22 33 22 34 56插入nums[13]=22到nums[12]: 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56插入nums[14]=34到nums[14]: 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56插入nums[15]=56到nums[15]: 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1>增量序列的选取</h1><ol><li>增量序列两个相邻元素最好互质<br>常用的增量序列</li><li>Hibbard 增量序列 2^n-1</li><li>Sedgewick 增量序列</li></ol>]]></content>
       
@@ -1841,7 +1880,7 @@
           
           <category> Linux </category>
           
-          <category> BaseShell </category>
+          <category> Shell </category>
           
       </categories>
       
@@ -1860,8 +1899,8 @@
     
     <entry>
       <title>用shell教你搞定各种排序算法-插入排序</title>
-      <link href="/2020/04/15/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-cha-ru-pai-xu/"/>
-      <url>/2020/04/15/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-cha-ru-pai-xu/</url>
+      <link href="/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-cha-ru-pai-xu/"/>
+      <url>/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-cha-ru-pai-xu/</url>
       
         <content type="html"><![CDATA[<p>插入排序的核心也是交换，注意和冒泡排序一样，都是相邻交换</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 定义一个数组</span><span class="token assign-left variable">nums</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">33</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">1</span> <span class="token number">34</span> <span class="token number">56</span><span class="token punctuation">)</span><span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>nums<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span><span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>size<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">{</span> <span class="token comment">#先找一个下标指向第一个元素,因为默认第0个元素是排好的,所以从第1个下标的元素开始往前面插,i代表要取出的数</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token comment">#先记录下当前位置的元素,从他前面一个元素开始比较,直到找到自己合适位置就直接插入</span>  <span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>j<span class="token operator">=</span>i<span class="token punctuation">;</span>j<span class="token operator">&gt;=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">--</span><span class="token punctuation">))</span></span><span class="token punctuation">{</span> <span class="token comment">#找一个下标先指向当前要插入的对象，然后一次和前面的元素进行比较，直到找到一个比自己小的元素，那这个元素后边位置就是要插入的元素所占的位置，否则就把前面的元素奔后移，来给要出入的元素腾空</span>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${nums<span class="token punctuation">[</span>j-1<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-gt</span> <span class="token variable">${tmp}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> <span class="token comment">#如果前面的元素比要出入的元素值大，就把前一个元素向后移动</span>         nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>j-1<span class="token punctuation">]</span>}</span>    <span class="token keyword">else</span>        nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp}</span>        <span class="token builtin class-name">echo</span> <span class="token string">"插入nums[<span class="token variable">${i}</span>]=<span class="token variable">${tmp}</span>到nums[<span class="token variable">${j}</span>]: <span class="token variable">${nums<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span>        <span class="token builtin class-name">break</span> <span class="token number">1</span> <span class="token comment"># 这里只跳出一层循环</span>    <span class="token keyword">fi</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们执行以下看一下输出结果</p><pre class="line-numbers language-text" data-language="text"><code class="language-text">插入nums[1]=3到nums[1]: 1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56插入nums[2]=5到nums[2]: 1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56插入nums[3]=7到nums[3]: 1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56插入nums[4]=2到nums[1]: 1 2 3 5 7 3 6 8 22 11 33 22 11 1 34 56插入nums[5]=3到nums[3]: 1 2 3 3 5 7 6 8 22 11 33 22 11 1 34 56插入nums[6]=6到nums[5]: 1 2 3 3 5 6 7 8 22 11 33 22 11 1 34 56插入nums[7]=8到nums[7]: 1 2 3 3 5 6 7 8 22 11 33 22 11 1 34 56插入nums[8]=22到nums[8]: 1 2 3 3 5 6 7 8 22 11 33 22 11 1 34 56插入nums[9]=11到nums[8]: 1 2 3 3 5 6 7 8 11 22 33 22 11 1 34 56插入nums[10]=33到nums[10]: 1 2 3 3 5 6 7 8 11 22 33 22 11 1 34 56插入nums[11]=22到nums[10]: 1 2 3 3 5 6 7 8 11 22 22 33 11 1 34 56插入nums[12]=11到nums[9]: 1 2 3 3 5 6 7 8 11 11 22 22 33 1 34 56插入nums[13]=1到nums[1]: 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56插入nums[14]=34到nums[14]: 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56插入nums[15]=56到nums[15]: 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>当然我们还可以简化</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 定义一个数组</span><span class="token assign-left variable">nums</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">33</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">1</span> <span class="token number">34</span> <span class="token number">56</span><span class="token punctuation">)</span><span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>nums<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span><span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>size<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">{</span> <span class="token comment">#先找一个下标指向第一个元素,因为默认第0个元素是排好的,所以从第1个下标的元素开始往前面插,i代表要取出的数</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token comment">#先记录下当前位置的元素,从他前面一个元素开始比较,直到找到自己合适位置就直接插入</span>  <span class="token builtin class-name">local</span> j<span class="token punctuation">;</span><span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>j <span class="token operator">=</span> i<span class="token punctuation">;</span> j<span class="token operator">&gt;=</span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums[j<span class="token operator">-</span><span class="token number">1</span>]<span class="token operator">&gt;</span>tmp<span class="token punctuation">;</span> j<span class="token operator">--</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span> <span class="token comment"># 这里不用if判断，直接在for里面进行判断，不满足条件的直接跳出</span>    nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>j-1<span class="token punctuation">]</span>}</span>  <span class="token keyword">done</span>  nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp}</span>  <span class="token builtin class-name">echo</span> <span class="token string">"插入nums[<span class="token variable">${i}</span>]=<span class="token variable">${tmp}</span>到nums[<span class="token variable">${j}</span>]: <span class="token variable">${nums<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>输出结果和上面一样一样的。</p>]]></content>
       
@@ -1870,7 +1909,7 @@
           
           <category> Linux </category>
           
-          <category> BaseShell </category>
+          <category> Shell </category>
           
       </categories>
       
@@ -1889,8 +1928,8 @@
     
     <entry>
       <title>用shell教你搞定各种排序算法-冒泡排序</title>
-      <link href="/2020/04/15/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-mou-pao-pai-xu/"/>
-      <url>/2020/04/15/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-mou-pao-pai-xu/</url>
+      <link href="/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-mou-pao-pai-xu/"/>
+      <url>/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-mou-pao-pai-xu/</url>
       
         <content type="html"><![CDATA[<p>最近在研究数据结构和算法,突然想用shell来实现一把,今天先来写一个冒泡排序。<br>要想记住各种排序算法，只要知道其原理，用什么语言实现都易如反掌</p><h1>冒泡排序</h1><ol><li>核心操作 交换相邻两个元素的值</li></ol><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 定义一个数组</span><span class="token assign-left variable">nums</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">33</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">1</span> <span class="token number">34</span> <span class="token number">56</span><span class="token punctuation">)</span><span class="token comment"># 核心操作</span><span class="token keyword">function</span> <span class="token function-name function">swap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment"># i 和 j 分别代表要交换的两个元素的在数组中的下标</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token variable">$1</span><span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token variable">$2</span>  <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token comment"># 注意这里用 ${nums[x]} 的形式才能取出数组对应下标的元素的值</span>  nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token comment"># 注意这里 ${nums[x]} 中的x 支持数学表达式，没必要 使用 $(()) 来计算</span>  nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp}</span>     <span class="token comment"># 注意这里 ${  } 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 ${} 包裹</span><span class="token punctuation">}</span><span class="token comment"># 数组的元素个数</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>nums<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> <span class="token comment"># 注意这里使用${@xxx[@]}的形式取出shell中数组元素的个数</span><span class="token comment"># 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位</span><span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span>size<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">))</span></span><span class="token punctuation">{</span> <span class="token comment"># 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的</span>  <span class="token comment"># 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的</span>  <span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>i<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span><span class="token keyword">do</span> <span class="token comment"># 这个地方是&lt;i</span>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-gt</span> <span class="token variable">${nums<span class="token punctuation">[</span>j+1<span class="token punctuation">]</span>}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> <span class="token comment"># 注意这个地方的比较[1]</span>      swap <span class="token string">"<span class="token variable">${j}</span>"</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>"</span>    <span class="token keyword">fi</span>  <span class="token keyword">done</span>  <span class="token builtin class-name">echo</span> <span class="token string">"第<span class="token variable"><span class="token variable">$((</span>size<span class="token operator">-</span>i<span class="token variable">))</span></span>轮冒泡后:<span class="token variable">${nums<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我们执行一把</p><pre class="line-numbers language-text" data-language="text"><code class="language-text">第1轮冒泡后:1 3 5 2 3 6 7 8 11 22 22 11 1 33 34 a b c 56第2轮冒泡后:1 3 2 3 5 6 7 8 11 22 11 1 22 33 a b c 34 56第3轮冒泡后:1 2 3 3 5 6 7 8 11 11 1 22 22 a b c 33 34 56第4轮冒泡后:1 2 3 3 5 6 7 8 11 1 11 22 a b c 22 33 34 56第5轮冒泡后:1 2 3 3 5 6 7 8 1 11 11 a b c 22 22 33 34 56第6轮冒泡后:1 2 3 3 5 6 7 1 8 11 a b c 11 22 22 33 34 56第7轮冒泡后:1 2 3 3 5 6 1 7 8 a b c 11 11 22 22 33 34 56第8轮冒泡后:1 2 3 3 5 1 6 7 a b c 8 11 11 22 22 33 34 56第9轮冒泡后:1 2 3 3 1 5 6 a b c 7 8 11 11 22 22 33 34 56第10轮冒泡后:1 2 3 1 3 5 a b c 6 7 8 11 11 22 22 33 34 56第11轮冒泡后:1 2 1 3 3 a b c 5 6 7 8 11 11 22 22 33 34 56第12轮冒泡后:1 1 2 3 a b c 3 5 6 7 8 11 11 22 22 33 34 56第13轮冒泡后:1 1 2 a b c 3 3 5 6 7 8 11 11 22 22 33 34 56第14轮冒泡后:1 1 a b c 2 3 3 5 6 7 8 11 11 22 22 33 34 56第15轮冒泡后:1 a b c 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第16轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第17轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意上面的[1],因为这里我们只能比较数字,也就是只能比较整型数组,小数和字符串的冒泡排序我们的代码是不支持的。搞鬼的地方就在 我代码注释里面标[1]的地方.</p><p>我们用的判断相邻两个元素大小的表达是 <code>if [[ a -gt b ]]</code> 这种形式，这种用 [[]] 包裹的if判定表达式只能针对 整数。这个是shell语法决定的</p><p>如果nums数组中出现小数，运行程序立马报错，因为shell中没有浮点类型，带点号的shell默认为字符串<br>line 34: [[: 3.3: syntax error: invalid arithmetic operator (error token is “.3”)</p><p>如果要按照字符串比较，应该吧if表达式换成这样 <code>if [ ${nums[j]} \&gt; ${nums[j+1]} ]</code> 但同样，这种形式的比较会使数字的比较出现紊乱，例如<br>21 和 12 用上面这种比较，shell会认为 12 &gt; 21 因为12的第一个字符1出现在21的第一个字符2之前。</p>]]></content>
       
@@ -1899,7 +1938,7 @@
           
           <category> Linux </category>
           
-          <category> BaseShell </category>
+          <category> Shell </category>
           
       </categories>
       
@@ -1918,8 +1957,8 @@
     
     <entry>
       <title>用shell教你搞定各种排序算法-快速排序</title>
-      <link href="/2020/04/15/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-kuai-su-pai-xu/"/>
-      <url>/2020/04/15/linux/baseshell/shu-ju-jie-gou-suan-fa/shell-kuai-su-pai-xu/</url>
+      <link href="/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-kuai-su-pai-xu/"/>
+      <url>/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-kuai-su-pai-xu/</url>
       
         <content type="html"><![CDATA[<p>排序算法中,没有一种算法在任意一种情况下都是最好的。我们总是能构造出一种最坏的情况。快速排序并不总是最快的。</p><p>快速排序是由东尼·霍尔提出的一种高效的排序算法，简称快排。它的算法思想并不复杂，可以用3个步骤6个字来概括：选基、分割、递归。</p><p>扩充成一句话就是：首先挑选基准值；然后分割数组，把小于基准值的元素放到基准值前面，大于基准值的元素放到基准值后面；最后递归地对小于基准值的子序列和大于基准值的子序列进行排序。主要使用了所谓的分治的思想</p><p>快速排序的写法有很多中,可以优化的点也有很多。但终归逃过不过一个分一个治，也就是递归。</p><p>光第一步选基就有很多方法和优化的空间<br>第一种方式,我们每次选待排数组的最左边一个元素为主<br>第二种方式,我们随机选待排数组的一个元素为主<br>第三种方式,我们组左,中,右三个数的中位数为主。或者5个数中的中位数<br>如果我们每次选的元素总是能将数组刚好左右分割，使得所选元素左边都比该元素小，右边的元素都比该元素大，那么我们的算法就是最优的。</p><p>下面我没来挑战一下这个看似简单实则超级难理解的算法。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                                   <span class="token comment">#我们还是先来定义一个main方法</span>  <span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token number">2</span> <span class="token number">4</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">10</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">8</span> <span class="token number">5</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token comment">#我们再来定义一个待排数组,注意这里是个全局的变量</span>  quick_sort                              <span class="token comment">#我们调用我们即将书写的快速排序</span>  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${array<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span>                      <span class="token comment">#打印数组,看看是不是按照从小到的的顺序排序了呢</span><span class="token punctuation">}</span><span class="token keyword">function</span> <span class="token function-name function">quick_sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment">#注意array是全局变量,我们可以在这里访问到它</span>  <span class="token comment">#快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标</span>  <span class="token keyword">function</span> <span class="token function-name function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token builtin class-name">local</span> <span class="token assign-left variable">left</span><span class="token operator">=</span><span class="token variable">$1</span><span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">right</span><span class="token operator">=</span><span class="token variable">$2</span>    <span class="token builtin class-name">local</span> <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token variable">${left}</span><span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token variable">${right}</span> <span class="token comment">#这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。</span>    <span class="token comment">#1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件</span>    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${left}</span> <span class="token parameter variable">-ge</span> <span class="token variable">${right}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> <span class="token builtin class-name">return</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>    <span class="token comment">#2. 选主元</span>    <span class="token builtin class-name">local</span> <span class="token assign-left variable">base</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>left<span class="token punctuation">]</span>}</span> <span class="token comment">#每次都已最左边的为基</span>    <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-ne</span> <span class="token variable">${j}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>      <span class="token comment">#3. 分隔</span>      <span class="token comment">#3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知</span>      <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-ge</span> <span class="token variable">${base}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-gt</span> <span class="token variable">${i}</span>  <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span> <span class="token comment">#注意等号</span>        <span class="token variable"><span class="token punctuation">((</span>j<span class="token operator">--</span><span class="token punctuation">))</span></span>      <span class="token keyword">done</span>      <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-le</span> <span class="token variable">${base}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-gt</span> <span class="token variable">${i}</span>  <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>        <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span>      <span class="token keyword">done</span>      <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-lt</span> <span class="token variable">${j}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>         <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span>         array<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>         array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp}</span>      <span class="token keyword">fi</span>    <span class="token keyword">done</span>    array<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>    array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${base}</span>    <span class="token function">sort</span> <span class="token string">"<span class="token variable">${left}</span>"</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token variable">))</span></span>"</span>    <span class="token function">sort</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>"</span> <span class="token string">"<span class="token variable">${right}</span>"</span>  <span class="token punctuation">}</span>  <span class="token function">sort</span><span class="token punctuation">}</span>main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
@@ -1928,7 +1967,7 @@
           
           <category> Linux </category>
           
-          <category> BaseShell </category>
+          <category> Shell </category>
           
       </categories>
       
@@ -1955,7 +1994,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -1964,9 +2003,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -1984,7 +2023,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -2011,7 +2050,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
           <category> Java并发编程 </category>
           
@@ -2084,15 +2123,17 @@
     
     <entry>
       <title>高版本JDK的坑-ClassNotFound</title>
-      <link href="/2020/03/18/java/gao-ban-ben-jdk-de-keng-classnotfound/"/>
-      <url>/2020/03/18/java/gao-ban-ben-jdk-de-keng-classnotfound/</url>
+      <link href="/2020/03/18/java/java-tian-keng/gao-ban-ben-jdk-de-keng-classnotfound/"/>
+      <url>/2020/03/18/java/java-tian-keng/gao-ban-ben-jdk-de-keng-classnotfound/</url>
       
         <content type="html"><![CDATA[<p>如果使用高版本的JDK启动jar包的时候,可能会遇到一些莫名其妙的问题,所以Java当前吹的永远向前兼容的牛逼算是吹破了。今天我就遇到了.<br>一开我使用java -jar xxxxx.jar 启动的时候会报出一些JVM启动参数问题，觉得莫名其妙，命名本地可以启动，为什么到了服务器上就启动不了呢？<br>于是第一时间想到了查看一下java的版本</p><pre class="line-numbers language-none"><code class="language-none">root@xr-travelse-arm-vm01:~# java -versionopenjdk version "11.0.4" 2019-07-16OpenJDK Runtime Environment (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3)OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mode)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>结果发现居然装的是java 11. 这个版本我们生产环境从未用过，本想正重装Java8来解决，但是难道以后都不升级了么，所以这个问题一定要弄明白，于是乎goole了一下发现java8 以后的jvm虚拟机去掉了好几个jvm配置参数，那是因为jdk8以后版本的jvm开始做减法了，去掉了一些功能.例如 配置</p><pre class="line-numbers language-none"><code class="language-none">#local JVM_HEAP="-XX:NewRatio=1 -XX:SurvivorRatio=8 -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m -XX:+HeapDumpOnOutOfMemoryError -XX:ReservedCodeCacheSize=64m -XX:InitialCodeCacheSize=64m"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>配置这些在java8中是没问题的，但是配置在java11中会导致服务启动不了。因为有些参数已经废弃掉了，或者改用了其他的方式来配置。</p><p>另外，还会出现一个现象，就是引用启动没有问题，但是程序就是运行不了，而且不打印异常堆栈信息，这你怎么排查！！！我没办法只要远程调试，断点执行，才发现一个异常。<br>最后还是使用java8吧先，有时间在研究java11.</p>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
+          
+          <category> Java填坑 </category>
           
       </categories>
       
@@ -2111,13 +2152,15 @@
     
     <entry>
       <title>秒懂 QPS、TPS、PV、UV、GMV、IP、RPS！</title>
-      <link href="/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/"/>
-      <url>/2020/03/18/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/</url>
+      <link href="/2020/03/18/ji-suan-ji/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/"/>
+      <url>/2020/03/18/ji-suan-ji/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/</url>
       
         <content type="html"><![CDATA[<p>QPS、TPS、PV、UV、GMV、IP、RPS等各种名词，外行看起来很牛X，实际上对程序员来说都是必懂知识点。下面我来一一解释一下。</p><p>QPS</p><blockquote><p>Queries Per Second，每秒查询数。每秒能够响应的查询次数。QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。每秒的响应请求数，也即是最大吞吐能力。</p></blockquote><p>TPS</p><blockquote><p>Transactions Per Second 的缩写，每秒处理的事务数目。一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机在发送请求时开始计时，收到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数，最终利用这些信息作出的评估分。<br>TPS 的过程包括：客户端请求服务端、服务端内部处理、服务端返回客户端。例如，访问一个 Index 页面会请求服务器 3 次，包括一次 html，一次 css，一次 js，那么访问这一个页面就会产生一个“T”，产生三个“Q”。</p></blockquote><p>PV（page view）</p><blockquote><p>即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。PV 即 page view，页面浏览量。用户每一次对网站中的每个页面访问均被记录 1 次。用户对同一页面的多次刷新，访问量累计。<br>根据这个特性，刷网站的 PV 就很好刷了。</p></blockquote><p>与 PV 相关的还有 RV，即重复访问者数量（repeat visitors）。</p><blockquote><p>UV 访问数（Unique Visitor）<br>指独立访客访问数，统计1天内访问某站点的用户数(以 cookie 为依据)，一台电脑终端为一个访客。</p></blockquote><p>IP（Internet Protocol）</p><blockquote><p>独立 IP 数，是指 1 天内多少个独立的 IP 浏览了页面，即统计不同的 IP 浏览用户数量。同一 IP 不管访问了几个页面，独立 IP 数均为 1；不同的 IP 浏览页面，计数会加 1。IP 是基于用户广域网 IP 地址来区分不同的访问者的，所以，多个用户（多个局域网 IP）在同一个路由器（同一个广域网 IP）内上网，可能被记录为一个独立 IP 访问者。如果用户不断更换 IP，则有可能被多次统计。</p></blockquote><p>GMV，是 Gross Merchandise Volume 的简称。</p><blockquote><p>只要是订单，不管消费者是否付款、卖家是否发货、是否退货，都可放进 GMV 。</p></blockquote><p>RPS 代表吞吐率，即 Requests Per Second 的缩写。</p><blockquote><p>吞吐率是服务器并发处理能力的量化描述，单位是 reqs/s，指的是某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大的请求数，称之为最大吞吐率。<br>有人把 RPS 说等效于 QPS。其实可以看作同一个统计方式，只是叫法不同而已。</p></blockquote>]]></content>
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> 计算机基础 </category>
           
@@ -2136,13 +2179,15 @@
     
     <entry>
       <title>专有名词缩写</title>
-      <link href="/2020/03/18/ji-suan-ji-ji-chu/zhuan-you-ming-ci-suo-xie/"/>
-      <url>/2020/03/18/ji-suan-ji-ji-chu/zhuan-you-ming-ci-suo-xie/</url>
+      <link href="/2020/03/18/ji-suan-ji/ji-suan-ji-ji-chu/zhuan-you-ming-ci-suo-xie/"/>
+      <url>/2020/03/18/ji-suan-ji/ji-suan-ji-ji-chu/zhuan-you-ming-ci-suo-xie/</url>
       
         <content type="html"><![CDATA[<p>说一个名词一定要说全称,最好还用英文说出来,让人觉得你很专业,嗯,很专业(哈哈)。其实这里就是简单记录一下啦。</p><table><thead><tr><th>缩写</th><th>全称</th><th>中文</th><th>解释</th></tr></thead><tbody><tr><td>UTF</td><td>UnicodeTransformationFormat</td><td></td><td></td></tr><tr><td>ANSI</td><td>American National Standards Institute</td><td>美国国家标准协会</td><td></td></tr><tr><td>E-R图</td><td>Entity Relationship Diagram</td><td>E-R图也称实体-联系图</td><td></td></tr><tr><td>Java RMI</td><td>Java Remote Method Invocation</td><td>Java远程方法调用</td><td></td></tr><tr><td>RPC</td><td>Remote Procedure Call</td><td>远程过程调用</td><td></td></tr><tr><td>IPC</td><td></td><td>进程间通</td><td></td></tr><tr><td>QPS</td><td></td><td>每秒查询率QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准。</td><td></td></tr><tr><td>RDP</td><td>Remote Desktop Protocol</td><td>远程桌面协议</td><td></td></tr><tr><td>JDK</td><td>Javd Develope Kit</td><td>Java 开发工具,是所有工具的集合,包括JRE+一些工具(jstack…）</td><td></td></tr><tr><td>JRE</td><td>Java Runtime Enviroment</td><td>Java 运行时环境,要让java运行起来只需要Jvm和Java的核心jar包即可</td><td></td></tr><tr><td>UML</td><td>Unified Modeling Language</td><td>统一建模语言</td><td></td></tr><tr><td>VPS</td><td>Virtual Private Server</td><td>虚拟专用服务器</td><td></td></tr><tr><td>PPPOE</td><td>Point To Point Protocol Over Ethernet</td><td>点对点协定在以太网</td><td></td></tr><tr><td>IDC</td><td>Internet Data Center</td><td>互联网数据中心</td><td>就是电信部门利用已有的互联网通信线路、带宽资源，建立标准化的电信专业级机房环境，为企业、政府提供服务器托管、租用以及相关增值等方面的全方位服务。</td></tr><tr><td>SOP</td><td>Standard Operating Procedure</td><td>标准作业程序</td><td></td></tr><tr><td>RTO</td><td></td><td>恢复时间目标</td><td>RTO是指灾难发生后，从IT系统宕机导致业务停顿之刻开始，到IT系统恢复至可以支持各部门运作，业务恢复运营之时，此两点之间的时间段。</td></tr><tr><td>ARPAnet</td><td>Advanced Research Projects Agency Network</td><td>高等研究计划署网络</td><td></td></tr><tr><td>DRAM</td><td>Dynamic Random Access Memory</td><td>动态随机存取存储器</td><td></td></tr><tr><td>主R</td><td>Responsible</td><td>责任人</td><td></td></tr><tr><td>QPS</td><td>Queries Per Second</td><td>每秒查询数。每秒能够响应的查询次数</td><td></td></tr><tr><td>TPS</td><td>Transactions Per Second</td><td>每秒处理的事务数目</td><td></td></tr><tr><td>PV</td><td>page view</td><td>页面浏览量</td><td></td></tr><tr><td>UV</td><td>Unique Visitor</td><td>独立访客访问数</td><td></td></tr><tr><td>IP</td><td>Internet Protocol</td><td>独立 IP 数，是指 1 天内多少个独立的 IP 浏览了页面，即统计不同的 IP 浏览用户数量</td><td></td></tr><tr><td>GMV</td><td>Gross Merchandise Volume</td><td>只要是订单，不管消费者是否付款、卖家是否发货、是否退货，都可放进 GMV 。</td><td></td></tr><tr><td>RPS</td><td>Requests Per Second</td><td>代表吞吐率</td><td></td></tr></tbody></table>]]></content>
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> 计算机基础 </category>
           
@@ -2163,15 +2208,17 @@
     
     <entry>
       <title>mavne不继承父pom插件</title>
-      <link href="/2020/02/12/java/mavne-bu-ji-cheng-fu-pom-cha-jian/"/>
-      <url>/2020/02/12/java/mavne-bu-ji-cheng-fu-pom-cha-jian/</url>
+      <link href="/2020/02/12/java/java-tian-keng/mavne-bu-ji-cheng-fu-pom-cha-jian/"/>
+      <url>/2020/02/12/java/java-tian-keng/mavne-bu-ji-cheng-fu-pom-cha-jian/</url>
       
         <content type="html"><![CDATA[<pre class="line-numbers language-none"><code class="language-none">&lt;configuration&gt;    &lt;skip&gt;true&lt;/skip&gt;&lt;/configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
+          
+          <category> Java填坑 </category>
           
       </categories>
       
@@ -2196,7 +2243,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -2223,7 +2270,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -2250,7 +2297,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -2269,15 +2316,17 @@
     
     <entry>
       <title>没有主属性清单</title>
-      <link href="/2020/02/10/java/mei-you-zhu-shu-xing-qing-dan/"/>
-      <url>/2020/02/10/java/mei-you-zhu-shu-xing-qing-dan/</url>
+      <link href="/2020/02/10/java/java-tian-keng/mei-you-zhu-shu-xing-qing-dan/"/>
+      <url>/2020/02/10/java/java-tian-keng/mei-you-zhu-shu-xing-qing-dan/</url>
       
         <content type="html"><![CDATA[<p>异常: *.jar中没有主清单属性</p><p>原因:<br>查看了MANIFEST.MF，发现没有Main-Class属性，我想了一下，就试着去SpringBoot的官方文档上找找，果然有讲这一部分，spring-boot-maven-plugin的打包过程与直接使用maven-jar-plugin不同，所以我们在使用spring-boot-maven-plugin时需要指定的执行项，或者我们在打包时指定，使用 mvn package spring-boot:repackage来打包也可以执行。</p><p>解决方法:</p><pre class="line-numbers language-none"><code class="language-none">&lt;build&gt;    &lt;plugins&gt;      &lt;plugin&gt;        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;        &lt;executions&gt;          &lt;execution&gt;            &lt;goals&gt;              &lt;goal&gt;repackage&lt;/goal&gt;            &lt;/goals&gt;          &lt;/execution&gt;        &lt;/executions&gt;      &lt;/plugin&gt;    &lt;/plugins&gt;&lt;/build&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
+          
+          <category> Java填坑 </category>
           
       </categories>
       
@@ -2294,15 +2343,17 @@
     
     <entry>
       <title>请使用-source=8或更高版本以启用lambda表达式</title>
-      <link href="/2020/02/10/java/qing-shi-yong-source-8-huo-geng-gao-ban-ben-yi-qi-yong-lambda-biao-da-shi/"/>
-      <url>/2020/02/10/java/qing-shi-yong-source-8-huo-geng-gao-ban-ben-yi-qi-yong-lambda-biao-da-shi/</url>
+      <link href="/2020/02/10/java/java-tian-keng/qing-shi-yong-source-8-huo-geng-gao-ban-ben-yi-qi-yong-lambda-biao-da-shi/"/>
+      <url>/2020/02/10/java/java-tian-keng/qing-shi-yong-source-8-huo-geng-gao-ban-ben-yi-qi-yong-lambda-biao-da-shi/</url>
       
         <content type="html"><![CDATA[<p>异常:[ERROR] (请使用 -source 8 或更高版本以启用 lambda 表达式)<br>解决方法: 在项目的pom.xml指定1.8</p><pre class="line-numbers language-none"><code class="language-none">&lt;build&gt;    &lt;plugins&gt;      &lt;plugin&gt;        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;        &lt;version&gt;3.8.1&lt;/version&gt;        &lt;configuration&gt;          &lt;source&gt;1.8&lt;/source&gt;          &lt;target&gt;1.8&lt;/target&gt;        &lt;/configuration&gt;      &lt;/plugin&gt;    &lt;/plugins&gt;&lt;/build&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
+          
+          <category> Java填坑 </category>
           
       </categories>
       
@@ -2327,7 +2378,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -2346,8 +2397,8 @@
     
     <entry>
       <title>跨域问题的理解</title>
-      <link href="/2020/02/02/qian-duan/qian-duan-ji-chu/kua-yu-wen-ti-de-li-jie/"/>
-      <url>/2020/02/02/qian-duan/qian-duan-ji-chu/kua-yu-wen-ti-de-li-jie/</url>
+      <link href="/2020/02/02/qian-duan/kua-yu-wen-ti-de-li-jie/"/>
+      <url>/2020/02/02/qian-duan/kua-yu-wen-ti-de-li-jie/</url>
       
         <content type="html"><![CDATA[<h1>什么是跨域问题?</h1><p>跨域问题指的是,在一个域名下向另一个域名发起请求试图获取数据或者页面DOM元素,浏览器是不允许的,因为你跨了不同的域名。但确确实实我们又想要向另一个域名发送请求获取数据,这时候我们就遇到了所谓的跨域问题。</p><h1>为什么会有跨域问题?</h1><p>跨域问题的出现是因为浏览器的同源策略,同源策略限制了不同域名之间是不允许访问的。注意这个限制是浏览器限制的,或者说是浏览器的内核限制的,脱离的这个限定是不会出现跨域问题的，因为不受同源策略的限制。这也就是为什么后端服务可以使用Http工具发起http请求而不会遇到所谓的跨域问题的原因。</p><h1>为什么会有同源策略?</h1><p>浏览器一开始并没有对不用域名之间的相会调用有任何限制,直到有人利用这个漏洞发明了跨站请求伪造获取了大量的用户信息。各大浏览器厂商才开始关注,所以 Netspace公司最先提出并应用了同源策略到浏览器上，至此之后所有的浏览器都不允许不同域名之间的相互调用了。</p><h1>什么是跨站请求伪造?</h1><p>在没有同源策略限制的时代,在一个域名下想另一个域名发送请求的时候会带上目标域名的cookie并返回结果,这样在当前域名下就可以获取到另一个域名请求的所有数据，包括该域名下的cookie,返回结果,页面DOM等等。你会说这样不是挺好的么，但是试想一下如果别有用心之人利用这个漏洞获取了你登录银行的cookie,你就该后悔了。</p><h1>跨站请求伪造是怎么做的?</h1><p>我们知道一般浏览器会保留一个叫做cookie的东西，cookie的发明是源于http协议无状态的特性发明的。cookie这个东西有一个特点,就是存储在浏览器当前所在电脑本地，并且每次访问当前cookie对应的域名的时候都会携带过去。因此当你在一个域名下向另一个域名发送请求的时候,浏览器会自动携带上另一个域名的cookie然后发送到对应的服务器。这样当你登陆你的银行页面之后然后还没有登出,当你在访问另一个页面的时候,它就可以在后台偷偷访问你的银行页面,然后干一些不为人知的事情。</p><h1>http为什么是无状态的?</h1><p>因为当时发明http的时候需求没有那么复杂，只是需要简单的浏览文本即可，根本没有什么长连接啊之类的需求，因此当时就为了简单起见所以http就设计成了无状态的了。</p><h1>跨域问题如何解决?</h1><p>同源策略其实是限制不同域名之间的访问，它是出于安全的目的。但安全和方便本就是对立的，安全了使用起来就麻烦。尤其是在现在前后端分离的场景下、在现在微服务大行其道的今天，一个服务一个域名或服务器也是很常见的。最常见的解决方法就是jsonp的方式，最正统的解决方案就是 cros</p><h1>cros 跨站资源共享</h1><p>跨站资源共享是解决跨域问题的首选，需要前后端配合。其本质上就是后端限制什么样的域名允许跨站访问我而已。用到了http的header中设置一些默认的参数。</p>]]></content>
       
@@ -2355,8 +2406,6 @@
       <categories>
           
           <category> 前端 </category>
-          
-          <category> 前端基础 </category>
           
       </categories>
       
@@ -2373,15 +2422,17 @@
     
     <entry>
       <title>Java 线程状态转换</title>
-      <link href="/2019/12/09/java/java-xian-cheng-zhuang-tai-zhuan-huan/"/>
-      <url>/2019/12/09/java/java-xian-cheng-zhuang-tai-zhuan-huan/</url>
+      <link href="/2019/12/09/java/java-bing-fa-bian-cheng/java-xian-cheng-zhuang-tai-zhuan-huan/"/>
+      <url>/2019/12/09/java/java-bing-fa-bian-cheng/java-xian-cheng-zhuang-tai-zhuan-huan/</url>
       
         <content type="html"><![CDATA[<p>我们要知道Java中的线程状态转换,得先知道它有哪些状态,然后在研究它们在什么情况下才会转换。我们先看一下Java源码中是如何定义线程状态的，位置在<br><code>java.lang.Thread</code> 类中的内部枚举类 <code>public enum State</code> 中，大概在1742行</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">/**     * A thread state.  A thread can be in one of the following states:     * &lt;ul&gt;     * &lt;li&gt;{@link #NEW}&lt;br&gt;     *     A thread that has not yet started is in this state.     *     &lt;/li&gt;     * &lt;li&gt;{@link #RUNNABLE}&lt;br&gt;     *     A thread executing in the Java virtual machine is in this state.     *     &lt;/li&gt;     * &lt;li&gt;{@link #BLOCKED}&lt;br&gt;     *     A thread that is blocked waiting for a monitor lock     *     is in this state.     *     &lt;/li&gt;     * &lt;li&gt;{@link #WAITING}&lt;br&gt;     *     A thread that is waiting indefinitely for another thread to     *     perform a particular action is in this state.     *     &lt;/li&gt;     * &lt;li&gt;{@link #TIMED_WAITING}&lt;br&gt;     *     A thread that is waiting for another thread to perform an action     *     for up to a specified waiting time is in this state.     *     &lt;/li&gt;     * &lt;li&gt;{@link #TERMINATED}&lt;br&gt;     *     A thread that has exited is in this state.     *     &lt;/li&gt;     * &lt;/ul&gt;     *     * &lt;p&gt;     * A thread can be in only one state at a given point in time.     * These states are virtual machine states which do not reflect     * any operating system thread states.     *     * @since   1.5     * @see #getState     */    public enum State {        /**         * Thread state for a thread which has not yet started.         */        NEW,        /**         * Thread state for a runnable thread.  A thread in the runnable         * state is executing in the Java virtual machine but it may         * be waiting for other resources from the operating system         * such as processor.         */        RUNNABLE,        /**         * Thread state for a thread blocked waiting for a monitor lock.         * A thread in the blocked state is waiting for a monitor lock         * to enter a synchronized block/method or         * reenter a synchronized block/method after calling         * {@link Object#wait() Object.wait}.         */        BLOCKED,        /**         * Thread state for a waiting thread.         * A thread is in the waiting state due to calling one of the         * following methods:         * &lt;ul&gt;         *   &lt;li&gt;{@link Object#wait() Object.wait} with no timeout&lt;/li&gt;         *   &lt;li&gt;{@link #join() Thread.join} with no timeout&lt;/li&gt;         *   &lt;li&gt;{@link LockSupport#park() LockSupport.park}&lt;/li&gt;         * &lt;/ul&gt;         *         * &lt;p&gt;A thread in the waiting state is waiting for another thread to         * perform a particular action.         *         * For example, a thread that has called &lt;tt&gt;Object.wait()&lt;/tt&gt;         * on an object is waiting for another thread to call         * &lt;tt&gt;Object.notify()&lt;/tt&gt; or &lt;tt&gt;Object.notifyAll()&lt;/tt&gt; on         * that object. A thread that has called &lt;tt&gt;Thread.join()&lt;/tt&gt;         * is waiting for a specified thread to terminate.         */        WAITING,        /**         * Thread state for a waiting thread with a specified waiting time.         * A thread is in the timed waiting state due to calling one of         * the following methods with a specified positive waiting time:         * &lt;ul&gt;         *   &lt;li&gt;{@link #sleep Thread.sleep}&lt;/li&gt;         *   &lt;li&gt;{@link Object#wait(long) Object.wait} with timeout&lt;/li&gt;         *   &lt;li&gt;{@link #join(long) Thread.join} with timeout&lt;/li&gt;         *   &lt;li&gt;{@link LockSupport#parkNanos LockSupport.parkNanos}&lt;/li&gt;         *   &lt;li&gt;{@link LockSupport#parkUntil LockSupport.parkUntil}&lt;/li&gt;         * &lt;/ul&gt;         */        TIMED_WAITING,        /**         * Thread state for a terminated thread.         * The thread has completed execution.         */        TERMINATED;    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>通过源码我们知道,Java是在1.5版本中才加入对线程支持的,也就是说一开始JDK其实是不支持多线程编程的。那源码中定义了6中状态分别是，</p><pre class="line-numbers language-none"><code class="language-none">NEW: 新建RUNNABLE: 就绪BLOCK: 阻塞WAITING: 等待TIMED_WATING: 限时等待TERMINATED: 终止<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>那为什么要区分这么多种状态呢? 注释都已经写得清清楚楚了。</p><h6 id="NEW">NEW</h6><blockquote><p>/**<br>* Thread state for a thread which has not yet started.<br>*/<br>还没有开始的线程所处的状态</p></blockquote><p>每一个线程，在堆内存中都有一个对应的Thread对象。Thread t = new Thread();当刚刚在堆内存中创建Thread对象，还没有调用t.start()方法之前，线程就处在NEW状态。在这个状态上，线程与普通的java对象没有什么区别，就仅仅是一个堆内存中的对象。</p><h6 id="RUNNABLE">RUNNABLE</h6><blockquote><p>/**<br>* A thread in the runnable state is executing in the Java virtual machine but it may be waiting for other resources from the operating * system such as processor.<br>*/<br>线程在Java虚拟机中的状态,再该状态下,线程正在等待操作系统的处理器给他分配资源</p></blockquote><p>对应 t.start() 调用的时候或者运行中的线程自己调用yield方法礼让一下的时候或者当前线程的cpu时间轮片到了出发了cpu中断，该线程响应中断后会改变状态,此时还会引起上下文的切换。</p><h6 id="BLOCK">BLOCK</h6><blockquote><p>/**<br>* Thread state for a thread blocked waiting for a monitor lock.<br>* A thread in the blocked state is waiting for a monitor lock<br>* to enter a synchronized block/method or<br>* reenter a synchronized block/method after calling<br>* {@link Object#wait() Object.wait}.<br>*/<br>该状态下当前线程在等待一把锁。当遇到 synchronized 的时候就会处于该状态 或者调用一个对象的wait方法后被其他线程唤醒再次尝试获取 synchronized 锁的时候获取失败会再次进入该状态。</p></blockquote><p>可见阻塞状态一定是跟锁有关的，也就是同步的时候，是因为线程获取不到锁才进入的状态，醒来的第一件事情一定是获取锁。获取到锁执行同步代码，获取不到锁就继续阻塞，直到下次醒来后继续执行。所以这个地方等待的是锁的释放。</p><p>WAITING,</p><ul><li>{@link Object#wait() Object.wait} with no timeout<br>当调用不加时间的wait方法的时候。注意这里要想调用wait方法一定得先获取到对象对应的锁。获取不到锁进入阻塞状态,获取到锁后才调用wait方法，这时候直接进入WAITING状态。这个地方等待的是有人来唤醒(调用notify或notifyAll)</li><li>{@link #join() Thread.join} with no timeout<br>把一个线程加到当前线程的执行流程中，也就是在join那个时间点等待执行线程的完成，完成后才继续执行，所以这是时候当前线程是处于WATING状态的，这个地方等待的是另一个线程执行完成后在唤醒。（其原理是先把当前线程挂起WATING，并把线程id传递给另一个线程，另一线程执行完成后，根据线程ID吧当前线程的状态改为RUNABLE。然后当前线程等待cpu调度）<br>Join 方法：本质上还是根据wait方法实现的。分析join源码发现join方法本身是使用了synchronized修饰符的。是加在方法上面的，意味着。 获取了当前对象的锁，然后继续发现里面的代码调用了wait。意味着我们先锁，再释放，等待唤醒，什么情况下被唤醒呢？执行结束的时候。调用wait之后一定阻塞的是当前线程，及时wait的对象是一个线程。</li><li>{@link LockSupport#park() LockSupport.park}<br>可见等待状态其实与锁无关，它的唤醒一定是另一个线程完成某件事情后主动去唤醒(所谓唤醒，其实就是把状态改为RUNNABLE)</li></ul><p>TIMED_WAITING</p><ul><li></li><li>{@link #sleep Thread.sleep}</li><li></li><li>{@link Object#wait(long) Object.wait} with timeout</li><li></li><li>{@link #join(long) Thread.join} with timeout</li><li></li><li>{@link LockSupport#parkNanos LockSupport.parkNanos}</li><li></li><li>{@link LockSupport#parkUntil LockSupport.parkUntil}</li></ul><p>TIMED_WATTING 状态一定是和时间有关，等时间到了，自动出发唤醒（其实现原理是，先把线程ID 放到一个队列中，然后每隔时钟周期都检查是不是有线程到时间了，到了就把状态改为RUNABLE)。这个定时唤醒是系统时钟搞得鬼，系统时钟也是独立运行的时钟，可以像它上面注册时钟事件，当时间到了之后，就会发起中断，以唤醒进程。而且cpu一定会响应的。</p><p>TERMINATED<br>这个状态没有什么多说的，当线程运行结束的时候或者异常的时候就会别设置为该状态。已经是终态了。</p>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
+          
+          <category> Java并发编程 </category>
           
       </categories>
       
@@ -2400,15 +2451,17 @@
     
     <entry>
       <title>mysql 时间戳插入后丢失毫秒</title>
-      <link href="/2019/11/28/java/mysql-shi-jian-chuo-cha-ru-hou-diu-shi-hao-miao/"/>
-      <url>/2019/11/28/java/mysql-shi-jian-chuo-cha-ru-hou-diu-shi-hao-miao/</url>
+      <link href="/2019/11/28/java/java-tian-keng/mysql-shi-jian-chuo-cha-ru-hou-diu-shi-hao-miao/"/>
+      <url>/2019/11/28/java/java-tian-keng/mysql-shi-jian-chuo-cha-ru-hou-diu-shi-hao-miao/</url>
       
         <content type="html"><![CDATA[<p>今天遇到一个问题,就是数据库中某个字段定义成了timestamp类型,当我向数据库中该字段赋值一个时间戳的时候,发现存入的值和我预期的值不同,我本来打算存储的是 1574978582234 但存入数据库中居然变成了 1574978582000 也就是后三位都变成000了，我称之为都是毫秒计数。</p><p>解决方法是在定义mysql的 DDL 的时候该字段的类型定义成 timestamp(3)即可</p>]]></content>
       
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
+          
+          <category> Java填坑 </category>
           
       </categories>
       
@@ -2433,7 +2486,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -2452,13 +2505,15 @@
     
     <entry>
       <title>编程范式</title>
-      <link href="/2019/10/08/ji-suan-ji-ji-chu/bian-cheng-fan-shi/"/>
-      <url>/2019/10/08/ji-suan-ji-ji-chu/bian-cheng-fan-shi/</url>
+      <link href="/2019/10/08/ji-suan-ji/ji-suan-ji-ji-chu/bian-cheng-fan-shi/"/>
+      <url>/2019/10/08/ji-suan-ji/ji-suan-ji-ji-chu/bian-cheng-fan-shi/</url>
       
         <content type="html"><![CDATA[<p>之前写过一篇文章叫《面向对象的理解》</p><blockquote><p>面向对象是一种程序设计的思想，之前人们搞程序设计用的都是面向过程的思想，更早则没有任何思想而言，随着人们对软件开发过程的深入，发现软件编程也是需要一类思想来指导的。就像共产主义革命，没有马克思主义的指导是无法成功的一样。</p></blockquote><p>今天再来说说编程范式,记得很早之前有一次去面试,被问到关于编程范式的问题,当时这个词是第一次听说,完全蒙了.</p><h3 id="百度百科">百度百科</h3><blockquote><p>编程范型、编程范式或程序设计法（英语：Programming paradigm），（范即模范、典范之意，范式即模式、方法），是一类典型的编程风格，是指从事软件工程的一类典型的风格（可以对照方法学）。 [1]</p></blockquote><h3 id="维基百科">维基百科</h3><blockquote><p>编程范型、编程范式或程序设计法（英语：Programming paradigm），（范即模范、典范之意，范式即模式、方法），是一类典型的编程风格，是指从事软件工程的一类典型的风格（可以对照方法学）。如：函数式编程、过程式编程、面向对象编程、指令式编程等等为不同的编程范型。</p></blockquote><h3 id="个人分析">个人分析</h3><p>编程编的多了,前辈程序员发现软件编程也需要一类思想来指导。就像共产主义革命，没有马克思主义的指导是无法成功的一样。我们经常说 Java是面向对象的编程语言、 C语言是面向过程的编程语言、scala是集面向对象编程范式与面向函数编程范式于一身的编程语言。所以说编程范式并不针对某一种语言,它是我们在写代码时候解决某类问题的一种指导思想。</p><ol><li>某种语言可能只属于某一种编程范式例如汇编语言你就只能按照面向过程的范式去写代码,你写不出面向对象范式语言那样的代码;</li><li>某种语言有可能更倾向于某一种编程范式，例如C语言更倾向于面向过程的编程范式，因为C语言解决的问题往往是那种与数学算法相关的问题,但并不是说他不能用面向对象或面向函数的方式来写代码,例如它的 结构体 数据类型就有面向对象的苗头了;</li><li>某中语言可能可以使用多种编程范式来解决问题，例如C++语言是在C语言的基础上发展出来的,它自然可以使用C语言式的面向过程的编程范式解决问题，有可以使用类、继承、封装、多态等诸多思想的面向对象范式编写代码,只不过他更倾向于面向对象编程而已，因为C++已经不仅限于解决与数学算法相关的问题了。</li></ol><h4 id="面向过程（过程式、命令式）">面向过程（过程式、命令式）</h4><p>一开始人们能用程序解决的问题比较少也比较局限,所以一开始人们关注的是事物发展变化的过程，前辈们自然而然的的就形成了面向过程编程的思维方式，要理解什么是面向过程，你首先需要知道什么是过程？过程就是事物发展的先后顺序，一个个事件发展连起来就是一个过程，而面向过程就是重点分析这个先后顺序，先干什么，后干什么，然后干什么。比如5除以2这个事件，面向过程的思维首先想到的是除法这个事件，所以它会先写一个除法的方法，用来接收数据5和3,就像这样div(5,3)。例如汇编语言需要知道把哪个寄存器的值移动到哪个寄存器,需要将哪两个寄存器的值进行求和,也就是我们的汇编指令<code>MOV</code> <code>SUB</code> <code>SADD</code>等。试想你写一个从1加到100的一段汇编代码得多么麻烦。但是前辈程序员在这样的指导思想下写了几十年的代码。这种编程思想就叫面向过程编程,也叫指令式编程。即使是使用了大量高级助记符的高级语言例如C,C++,Java等也有很多编写方式用到的思想是指令式编程。</p><h4 id="面向对象">面向对象</h4><p>随着程序要解决的问题的增多以及对事物发展认识的深入，人们发现事物才是需要关注的重点，事物的发展是由事物的本质决定的， 于是便产生了面向对象的设计思想，要理解什么是面向对象？你首先需要知道什么是对象，对象是对事物的抽象。那么什么是抽象？抽象就是对事物的归纳总结，那总结后会得出什么来呢？人们发现事物都有一些共同特点，那就是都有属性和动作，于是便概括出事物的属性和动作，归纳总结出来的这个抽象的东西就叫对象。那什么是属性？什么是动作呢？属性就是事物有哪些东西，动作就是事物能做那些事情，属性是内在的，动作是对外的。拿人为例，人有眼耳口鼻手，动作有看听说嗅打一样。那么人即是一个抽象，一个对象。对象有了，对象有千千万万，那么在对这同一类的对象进行抽象，就有了对象的类。类是对象的模板，对象是类的实例。同一类对象之间是有共性的，这种共性体现在他们是同一个模板刻画出来的，同一类对象之间是有差异的，这种差异体现在他们是不同的对象。我们把这些属性称为变量，把这些动作称为方法也叫函数，属性和动作都有他们作用的范围，我们称为变量和方法的作用域。比如5除以2这个事件,面向对象的思想首先想到的是5和2是一个整型,于是先创建一个整数类型的对象，对象包含一个基本的数据类型以及一个除法的行为,就像这样res=5.div(2).</p><h4 id="面向函数（函数式）">面向函数（函数式）</h4><p>随着编程大业的发展,先辈程序员发现,所有的编程行为都可以抽象为两个最最基本的函数，一个叫map一个叫reduce。函数是对行为过程的抽象，要想理解什么是函数式编程,要先知道什么是函数.函数式数学中的概念,从一个状态与另一个状态的对应关系,或者从一个状态到另一个状态的映射就是函数,y=f(x) 这个 f 就是函数。就像谈什么是面向对象一样,继承、封装、多态、抽象一样,谈什么函数式编程就要说函数式编程的特点,函数编程的特点有很多:函数式第一公民、高阶函数、模式匹配、无副作用、不变性。</p><p>函数其实说到底是一个集合到另一集合的映射。函数有 N多个名字,在 java 的类中叫方法，在 scala 的类中叫函数，在 java 的方法参数中叫 lamda 这个 lamda 的类型叫函数接口，而这个 lamda 又有一个别名叫匿名函数，在引用了外部环境变量的 lamda 中叫闭包 （js 中有这种叫法，不知道准不准），在 OC 中叫 block ，很像，像到我都不想去区分他们。</p><h3 id="总结">总结</h3><p>编程范式是一种解决特定问题的思想的抽象,它不与编程语言绑定,上面说的面向过程、面向对象、函数式编程 仅仅是我们常用到的三个,其实编程范式还有其他,不过我研究下来网上也没有一个比较权威的说法,我在这里也就不误人子弟了。</p>]]></content>
       
       
       <categories>
+          
+          <category> 计算机 </category>
           
           <category> 计算机基础 </category>
           
@@ -2506,15 +2561,15 @@
     
     <entry>
       <title>Java字符串拼接VS</title>
-      <link href="/2019/09/19/vs-xi-lie/java-zi-fu-chuan-pin-jie-vs/"/>
-      <url>/2019/09/19/vs-xi-lie/java-zi-fu-chuan-pin-jie-vs/</url>
+      <link href="/2019/09/19/java/java-zi-fu-chuan-pin-jie-vs/"/>
+      <url>/2019/09/19/java/java-zi-fu-chuan-pin-jie-vs/</url>
       
         <content type="html"><![CDATA[<p><img src="https://github.com/chen-shang/Picture/raw/master/java/String.jpg" alt=""><br>看到上面的提示时是不是有点疑问,对于初学Java的人来说，在学习String的时候，肯定有无数个人和我们讲过，“尽量不要使用+拼接字符串，效率不好，应该使用append，你自己循环拼接个十万次自己瞧瞧就知道了” 为什么这里连IDEA都提醒我们可以用+来代替append呢。</p><p>结论:<br>Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们口中所说的效率低下指的是在循环中的+拼接，只是不知道从哪天开始完全变了味。如果你能保证在一条语句中把字符串或者字符串变量全部拼接完而不断开，那+拼接根本没有任何缺点，编译器还会有一些优化，如果拼接的全是字符串字面量，那效果更好，它们直接就变成了一个完整的字符串。并且+书写简洁方便，可读性强。直接用StringBuilder的append也没有问题，只是不要append()和+混合使用。</p><p>如果用+拼接字符串中间不断,那么用+拼接的效率与StringBuffer或StringBuilder使用append的效率相当,甚至在编译器的优化下效率反而会更高。因为第一次遇到+拼接的时候,编译器会自动创new 一个 StringBuilder 然后只要+不断就会一路append下去。</p><p>String采用连接运算符(+)效率低下，都是上述循环、大批量数据情况造成的，每做一次"+"就产生个StringBuilder对象，然后append后就扔掉。下次循环再到达时重新产生个StringBuilder对象，然后append字符串，如此循环直至结束。如果我们直接采用StringBuilder对象进行append的话，我们可以节省创建和销毁对象的时间。如果只是简单的字面量拼接或者很少的字符串拼接，性能都是差不多的。</p><p>参考: <a href="https://blog.csdn.net/m0_37589327/article/details/78605268">Java中对于+和append拼接字符串效率的误解</a></p>]]></content>
       
       
       <categories>
           
-          <category> VS系列 </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -2533,15 +2588,17 @@
     
     <entry>
       <title>进程vs线程</title>
-      <link href="/2019/09/19/vs-xi-lie/jin-cheng-vs-xian-cheng/"/>
-      <url>/2019/09/19/vs-xi-lie/jin-cheng-vs-xian-cheng/</url>
+      <link href="/2019/09/19/ji-suan-ji/ji-suan-ji-ji-chu/jin-cheng-vs-xian-cheng/"/>
+      <url>/2019/09/19/ji-suan-ji/ji-suan-ji-ji-chu/jin-cheng-vs-xian-cheng/</url>
       
         <content type="html"><![CDATA[<h1>进程</h1><blockquote><p>维基百科</p></blockquote><p>进程（英语：process），是指计算机中已运行的程序。进程为曾经是分时系统的基本运作单位。在面向进程设计的系统（如早期的UNIX，Linux 2.4及更早的版本）中，进程是程序的基本执行实体；在面向线程设计的系统（如当代多数操作系统、Linux 2.6及更新的版本）中，进程本身不是基本运行单位，而是线程的容器。程序本身只是指令、数据及其组织形式的描述，进程才是程序（那些指令和数据）的真正运行实例。若干进程有可能与同一个程序相关系，且每个进程皆可以同步（循序）或异步（平行）的方式独立运行。现代计算机系统可在同一段时间内以进程的形式将多个程序加载到存储器中，并借由时间共享（或称时分复用），以在一个处理器上表现出同时（平行性）运行的感觉。同样的，使用多线程技术（多线程即每一个线程都代表一个进程内的一个独立执行上下文）的操作系统或计算机体系结构，同样程序的平行线程，可在多CPU主机或网络上真正同时运行（在不同的CPU上）。</p><h1>线程</h1><blockquote><p>维基百科</p></blockquote><p>线程（英语：thread）是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务。在Unix System V及SunOS中也被称为轻量进程（lightweight processes），但轻量进程更多指内核线程（kernel thread），而把用户线程（user thread）称为线程。</p><p>线程是独立调度和分派的基本单位。线程可以为操作系统内核调度的内核线程，如Win32线程；由用户进程自行调度的用户线程，如Linux平台的POSIX Thread；或者由内核与用户进程，如Windows 7的线程，进行混合调度。</p><p>同一进程中的多条线程将共享该进程中的全部系统资源，如虚拟地址空间，文件描述符和信号处理等等。但同一进程中的多个线程有各自的调用栈（call stack），自己的寄存器环境（register context），自己的线程本地存储（thread-local storage）。</p><p>一个进程可以有很多线程，每条线程并行执行不同的任务。</p><p>在多核或多CPU，或支持Hyper-threading的CPU上使用多线程程序设计的好处是显而易见的，即提高了程序的执行吞吐率。在单CPU单核的计算机上，使用多线程技术，也可以把进程中负责I/O处理、人机交互而常被阻塞的部分与密集计算的部分分开来执行，编写专门的workhorse线程执行密集计算，从而提高了程序的执行效率。</p>]]></content>
       
       
       <categories>
           
-          <category> VS系列 </category>
+          <category> 计算机 </category>
+          
+          <category> 计算机基础 </category>
           
       </categories>
       
@@ -2568,7 +2625,7 @@
       
       <categories>
           
-          <category> Java </category>
+          <category> JAVA </category>
           
       </categories>
       
@@ -2606,9 +2663,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -2666,9 +2723,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -2707,8 +2764,8 @@
     
     <entry>
       <title>前端各种尺寸单位</title>
-      <link href="/2019/08/22/qian-duan/qian-duan-ji-chu/qian-duan-ge-chong-chi-cun-dan-wei/"/>
-      <url>/2019/08/22/qian-duan/qian-duan-ji-chu/qian-duan-ge-chong-chi-cun-dan-wei/</url>
+      <link href="/2019/08/22/qian-duan/qian-duan-ge-chong-chi-cun-dan-wei/"/>
+      <url>/2019/08/22/qian-duan/qian-duan-ge-chong-chi-cun-dan-wei/</url>
       
         <content type="html"><![CDATA[<h2 id="em">em</h2><p>在做手机端的时候经常会用到的做字体的尺寸单位</p><p>说白了 em就相当于“倍”，比如设置当前的div的字体大小为1.5em，则当前的div的字体大小为：当前div继承的字体大小*1.5</p><p>但是当div进行嵌套的时候，em始终是按照当前div继承的字体大小来缩放，参照后面的例子。</p><h2 id="rem">rem</h2><p>这里的r就是root的意思，意思是相对于根节点来进行缩放，当有嵌套关系的时候，嵌套关系的元素的字体大小始终按照根节点的字体大小进行缩放。</p><h2 id="vh">vh</h2><p>vh就是当前屏幕可见高度的1%，也就是说<code>height:100vh == height:100%;</code><br>但是有个好处是当元素没有内容时候，设置height:100%该元素不会被撑开，但是设置height:100vh，该元素会被撑开屏幕高度一致。</p><h2 id="vw">vw</h2><p>vw就是当前屏幕宽度的1%<br>补充一句，当设置<code>width:100%</code>，被设置元素的宽度是按照父元素的宽度来设置，但是100vw是相对于屏幕可见宽度来设置的，所以会出现50vw 比50%大的情况</p>]]></content>
       
@@ -2716,8 +2773,6 @@
       <categories>
           
           <category> 前端 </category>
-          
-          <category> 前端基础 </category>
           
       </categories>
       
