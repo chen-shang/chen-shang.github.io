@@ -344,7 +344,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <pre class="line-numbers language-none"><code class="language-none">值传递(pass by value):传递的是值的拷贝
-引用传递(pass by reference):传递的是引用值的拷贝</code></pre>
+引用传递(pass by reference):传递的是引用值的拷贝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>讨论这个问题的意义在于分析当一个变量传递给一个含参函数之后,在函数内部改变形参变量的值,会不会影响实参变量。也就是说这个函数有没有副作用。这个问题的说法不一。个人觉得，无论将Java的参数传递归类为是值传递还是引用传递，都是将栈内存中的内容复制一份出来，由于对于基本数据类型来说，其值是直接存在栈内存中的，因此复制出来的就是其值，所以叫值传递；对于普通对象来说，由于栈内存中存储的是该对象的引用，因此复制出来的也就是其引用，所以叫引用传递。但从另一方面说，这个引用也是一个值，所以有的人也说Java只有值传递。</p>
 <p>至于将外部变量传递到方法内部后，什么情况下会改变外部变量的值，这个要视情况而定了。对于基本数据类型来说，由于行参拷贝的是实参的值，对行参的操作并不影响实参的值，除非将返回结果在赋值给实参。对于普通对象来说，如果在函数内部一开始改变了引用的指向，无论如何改变引用对象的值都不会影响实参的变化，但是如果直接就改变行参引用指向的对象的值是会改变实参的值的。</p>
 
@@ -918,7 +918,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

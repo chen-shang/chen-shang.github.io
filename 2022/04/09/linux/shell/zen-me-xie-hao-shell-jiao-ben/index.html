@@ -294,8 +294,8 @@
                                 Linux
                             </a>
                         
-                            <a href="/categories/Linux/BaseShell/" class="post-category">
-                                BaseShell
+                            <a href="/categories/Linux/Shell/" class="post-category">
+                                Shell
                             </a>
                         
                     </div>
@@ -314,7 +314,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-19
+                    2023-08-25
                 </div>
                 
 
@@ -355,7 +355,7 @@
 | __ )  __ _ ___  ___  ___| |__   ___| | |
 |  _ \ / _` / __|/ _ \/ __| '_ \ / _ \ | |
 | |_) | (_| \__ \  __/\__ \ | | |  __/ | |
-|____/ \__,_|___/\___||___/_| |_|\___|_|_|</code></pre>
+|____/ \__,_|___/\___||___/_| |_|\___|_|_|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>序</h1>
 <p>Shell脚本实在是太灵活了,相比标准的Java、C、C++ 等,它不过是一些现有命令的堆叠,这是他的优势也是他的劣势,太灵活导致不容易写规范。本人在写Shell脚本的过程中形成了自己一些规范,这些规范仍在实践中,在此分享出来。</p>
 <h1>Shell介绍</h1>
@@ -363,44 +363,44 @@
 <p>上面说了Shell是一些工具的集合,但同时Shell也是一门语言。就像Java一样,既是一些工具（jar包）的集合,也是一种编程语言。既然是语言就要选择是哪个阵营：解释型还是编译型。Shell选择了解释型,C语言选择了编译型,Java既选择了编译又选择了解释。既然是一种解释型语言,就需要解释器来解释执行。历史上出现过很多Shell解释器,例如 sh,bash,csh,zsh 等等,不同的Shell解释器有不同的词法和语法,就好比不同的方言。用不同的Shell其实指的仅仅是更换了脚本解释器而已。要注意的是有些命令在不同的解释器中会有不同的表现,这也是为什么我们的脚本一移植到别人电脑上就不可用的原因之一。</p>
 <p>举两个例子<br>
 坑一:echo 在 zsh 和其他 Shell解释器中对特殊字符转义的输出就不同。如果不分清具体使用的是哪个Shell,很有可能就落坑里还不知道原因。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ bash
-chenshang@chenshangMacBook-Pro:~$ echo \\
-\
-chenshang@chenshangMacBook-Pro:~$ echo \\\\
-\\</code></pre>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ zsh
-chenshangMacBook-Pro% echo \\
-\
-chenshangMacBook-Pro% echo \\\\
-\</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ <span class="token function">bash</span>
+chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token punctuation">\</span><span class="token punctuation">\</span>
+<span class="token punctuation">\</span>
+chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span>
+<span class="token punctuation">\</span><span class="token punctuation">\</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ <span class="token function">zsh</span>
+chenshangMacBook-Pro% <span class="token builtin class-name">echo</span> <span class="token punctuation">\</span><span class="token punctuation">\</span>
+<span class="token punctuation">\</span>
+chenshangMacBook-Pro% <span class="token builtin class-name">echo</span> <span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span>
+<span class="token punctuation">\</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>坑二: 数组使用方式也不同</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ bash
-chenshang@chenshangMacBook-Pro:~$ a=(1 2 3)
-chenshang@chenshangMacBook-Pro:~$ echo ${a}
-1</code></pre>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ zsh
-chenshangMacBook-Pro% a=(1 2 3)
-chenshangMacBook-Pro% echo ${a}
-1 2 3
-chenshangMacBook-Pro%</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ <span class="token function">bash</span>
+chenshang@chenshangMacBook-Pro:~$ <span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">)</span>
+chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token variable">${a}</span>
+<span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ <span class="token function">zsh</span>
+chenshangMacBook-Pro% <span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">)</span>
+chenshangMacBook-Pro% <span class="token builtin class-name">echo</span> <span class="token variable">${a}</span>
+<span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span>
+chenshangMacBook-Pro%<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>总之,Shell脚本中的坑很多,林林总总,写脚本的时候一定要小心,否则脚本的移植性堪忧。这也就是为什么Shell不适合开发大型应用的原因之一。但辅助开发还是绰绰有余的。尤其是在运维服务器和对文本处理的过程中,与linux的亲和性让它占尽了优势。</p>
 <p>本Shell规约是以bash为标准,在Mac OS 10.14上进行验证。所有命令和脚本都是依托bash这个解释器来执行的,我用bash的原因主要就是因为bash是发展比较早的解释器,后续发展的各种解释器如 zsh\csh 多多少少都兼容bash。不过,同时也无法使用其他Shell的高级特性。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ sw_vers
 ProductName:	Mac OS X
-ProductVersion:	10.14
-chenshang@chenshangMacBo    ok-Pro:~$ uname -a
-BuildVersion:	18A391Darwin chenshangMacBook-Pro.local 18.0.0 Darwin Kernel Version 18.0.0: Wed Aug 22 20:13:40 PDT 2018; root:xnu-4903.201.2~1/RELEASE_X86_64 x86_64
-chenshang@chenshangMacBook-Pro:~$ echo $0
--bash
-chenshang@chenshangMacBook-Pro:~$ echo ${SHELL}
+ProductVersion:	<span class="token number">10.14</span>
+chenshang@chenshangMacBo    ok-Pro:~$ <span class="token function">uname</span> <span class="token parameter variable">-a</span>
+BuildVersion:	18A391Darwin chenshangMacBook-Pro.local <span class="token number">18.0</span>.0 Darwin Kernel Version <span class="token number">18.0</span>.0: Wed Aug <span class="token number">22</span> <span class="token number">20</span>:13:40 PDT <span class="token number">2018</span><span class="token punctuation">;</span> root:xnu-4903.201.2~1/RELEASE_X86_64 x86_64
+chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token variable">$0</span>
+<span class="token parameter variable">-bash</span>
+chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token environment constant">SHELL</span>}</span>
 /usr/local/bin/bash
-chenshang@chenshangMacBook-Pro:~$ bash -version
-GNU bash, version 5.0.2(1)-release (x86_64-apple-darwin18.2.0)
-Copyright (C) 2019 Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;
+chenshang@chenshangMacBook-Pro:~$ <span class="token function">bash</span> <span class="token parameter variable">-version</span>
+GNU bash, version <span class="token number">5.0</span>.2<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>-release <span class="token punctuation">(</span>x86_64-apple-darwin18.2.0<span class="token punctuation">)</span>
+Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2019</span> Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version <span class="token number">3</span> or later <span class="token operator">&lt;</span>http://gnu.org/licenses/gpl.html<span class="token operator">&gt;</span>
 
-This is free software; you are free to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.</code></pre>
+This is <span class="token function">free</span> software<span class="token punctuation">;</span> you are <span class="token function">free</span> to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>既然Shell他是一门语言就免不了两大要素:词法和语法,首先有哪些词汇(保留词、关键字),词汇有哪些分类(数据类型),其次这些词汇如何表达语意(也就是语法)。Shell编程指的并不是编写这个工具,而是指利用现有的Shell工具进行编程,写出来的程序是轻量级的脚本,我们叫做Shell脚本。Shell的语法是从C继承过来的,因此我们在写Shell脚本的时候往往能看到C语言的影子。因为初代Unix内核中的Shell解释器最主要的两个贡献者一个是肯汤普森,另一个是丹尼斯里奇,而丹尼斯里奇是C语言的发明者,肯汤普森则用C语言重写了之前的Unix内核。</p>
 <h1>基础语法</h1>
 <h2 id="说明">说明</h2>
@@ -409,7 +409,7 @@ There is NO WARRANTY, to the extent permitted by law.</code></pre>
 <pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">chenshang@chenshangMacBook-Pro:~$ ls /bin/
 [         chmod     date      echo      hostname  launchctl ls        pax       rm        sleep     tcsh      wait4path
 bash      cp        dd        ed        kill      link      mkdir     ps        rmdir     stty      test      zsh
-cat       csh       df        expr      ksh       ln        mv        pwd       sh        sync      unlink</code></pre>
+cat       csh       df        expr      ksh       ln        mv        pwd       sh        sync      unlink<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>常用命令和工具</p>
 <blockquote>
 <p>sed、awk、grep、tr、column、jq、ssh、scp、expect、ps、top、htop、tree、pstree、curl、wget、java 相关的工具</p>
@@ -424,24 +424,24 @@ cat       csh       df        expr      ksh       ln        mv        pwd       
 </blockquote>
 <h2 id="运行方式">运行方式</h2>
 <p>既可以在命令行交互的运行,又可以将指令固化到文件中执行</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ cat test.sh
-#!/bin/zsh
-echo \\\\
-array=(1 2 3)
-echo "${array}"
-chenshang@chenshangMacBook-Pro:~$ sh test.sh
-\
-1 2 3
-chenshang@chenshangMacBook-Pro:~$ zsh test.sh
-\\
-1
-chenshang@chenshangMacBook-Pro:~$ chmod u+x test.sh
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ <span class="token function">cat</span> test.sh
+<span class="token comment">#!/bin/zsh</span>
+<span class="token builtin class-name">echo</span> <span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span>
+<span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${array}</span>"</span>
+chenshang@chenshangMacBook-Pro:~$ <span class="token function">sh</span> test.sh
+<span class="token punctuation">\</span>
+<span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span>
+chenshang@chenshangMacBook-Pro:~$ <span class="token function">zsh</span> test.sh
+<span class="token punctuation">\</span><span class="token punctuation">\</span>
+<span class="token number">1</span>
+chenshang@chenshangMacBook-Pro:~$ <span class="token function">chmod</span> u+x test.sh
 chenshang@chenshangMacBook-Pro:~$ ll test.sh
--rw-rw-rw-  1 chenshang  staff    40 Feb 18 17:32 test.sh
+-rw-rw-rw-  <span class="token number">1</span> chenshang  staff    <span class="token number">40</span> Feb <span class="token number">18</span> <span class="token number">17</span>:32 test.sh
 chenshang@chenshangMacBook-Pro:~$ ./test.sh
-\
-1 2 3
-chenshang@chenshangMacBook-Pro:~$</code></pre>
+<span class="token punctuation">\</span>
+<span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span>
+chenshang@chenshangMacBook-Pro:~$<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
 <p><font color="#dd0000">【推荐】脚本以均<code>.sh</code>结尾,使人可以一目了然知道该文件是脚本文件 </font><br></p>
@@ -460,9 +460,9 @@ chenshang@chenshangMacBook-Pro:~$</code></pre>
 <p>举几个例子,顺便学习一下shellchek工具</p>
 <p>我们看一下下面一段脚本,在改变第一行头部的时候,shellcheck给出的建议是什么。shellckek 类似我们在idea里面安装的语法检查工具。它会提示我们脚本中有哪些地方写的不够规范。<br>
 $ cat <a target="_blank" rel="noopener" href="http://jsons.sh">jsons.sh</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">echo \\\\
-array=(1 2 3)
-echo "${array}"</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span><span class="token punctuation">\</span>
+<span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">2</span> <span class="token number">3</span><span class="token punctuation">)</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${array}</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>不使用首行的时候</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">In test.sh line 1:
 echo \\\\
@@ -475,21 +475,21 @@ echo "${array}"
 
 For more information:
 https://www.shellcheck.net/wiki/SC2148 -- Tips depend on target shell and y...
-https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...</code></pre>
+https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用 #!/bin/bash 或 #!/usr/bin/env bash</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">In test.sh line 4:
 echo "${array}"
     ^------^ SC2128: Expanding an array without an index only gives the first element.
 
 For more information:
-https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...</code></pre>
+https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用 #!/bin/zsh</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">In test.sh line 1:
 #!/bin/zsh
 ^-- SC1071: ShellCheck only supports sh/bash/dash/ksh scripts. Sorry!
 
 For more information:
-https://www.shellcheck.net/wiki/SC1071 -- ShellCheck only supports sh/bash/...</code></pre>
+https://www.shellcheck.net/wiki/SC1071 -- ShellCheck only supports sh/bash/...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>使用 #!/bin/sh</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">In test.sh line 3:
 array=(1 2 3)
@@ -502,7 +502,7 @@ echo "${array}"
 
 For more information:
 https://www.shellcheck.net/wiki/SC2039 -- In POSIX sh, arrays are undefined.
-https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...</code></pre>
+https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这一行不写大多数时候我们运行脚本的时候也没有问题,但在使用shellcheck进行静态代码检查的时候,会提示</p>
 <blockquote>
 <p>^-- SC2148: Tips depend on target Shell and yours is unknown. Add a shebang.</p>
@@ -528,18 +528,18 @@ https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...</
 <h4 id="定义数组">定义数组</h4>
 <p>bash支持一维数组（不支持多维数组）,并且没有限定数组的大小。类似于 C 语言,数组元素的下标由 0 开始编号。获取数组中的元素要利用下标,下标可以是整数或算术表达式,其值应大于或等于 0。在 Shell 中,用括号来表示数组,数组元素用"空格"符号分割开。</p>
 <p>定义数组的一般形式为:数组名=(值1 值2 … 值n).例如:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">array=(value0 value1 value2 value3)
-# 或者
-array=(
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span>value0 value1 value2 value3<span class="token punctuation">)</span>
+<span class="token comment"># 或者</span>
+<span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span>
 value0
 value1
 value2
 value3
-)
-# 还可以单独定义数组的各个分量:
-array[0]=value0
-array[1]=value1
-array[n]=valueN</code></pre>
+<span class="token punctuation">)</span>
+<span class="token comment"># 还可以单独定义数组的各个分量:</span>
+array<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>value0
+array<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>value1
+array<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">=</span>valueN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以不使用连续的下标,而且下标的范围没有限制。</p>
 <h4 id="读取数组">读取数组</h4>
 <blockquote>
@@ -554,7 +554,7 @@ length=${#array[@]}
 或者
 length=${#array[*]}
 取得数组单个元素的长度
-lengthn=${#array[n]}</code></pre>
+lengthn=${#array[n]}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
 <p><font color="#dd0000">【强制】传递数组使用 “${list[*]}” 形式 </font><br></p>
@@ -563,13 +563,13 @@ lengthn=${#array[n]}</code></pre>
 <p><font color="#dd0000">【强制】接收数组使用 array=($*) 形式 </font><br></p>
 </blockquote>
 <p>示例:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># @return the number of elements in this list
-function list_size(){
-  local array=($1);local size=${#array[*]}
-  echo "${size}"
-}
-size=$(list_size "${list[*]}")
-assertEquals "${size}" "2"</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># @return the number of elements in this list</span>
+<span class="token keyword">function</span> <span class="token function-name function">list_size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token variable">$1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>array<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${size}</span>"</span>
+<span class="token punctuation">}</span>
+<span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>list_size <span class="token string">"<span class="token variable">${list<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span><span class="token variable">)</span></span>
+assertEquals <span class="token string">"<span class="token variable">${size}</span>"</span> <span class="token string">"2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>知道了数据类型,我们看怎么定义变量呢?</p>
 <h2 id="Shell变量">Shell变量</h2>
 <h3 id="变量类型">变量类型</h3>
@@ -603,17 +603,17 @@ assertEquals "${size}" "2"</code></pre>
 </blockquote>
 <h3 id="变量作用域">变量作用域</h3>
 <p>局部变量如果不明确变量的作用域则默认是全局可见的,也就是一个变量从定义它的位置开始到脚本的最后一行,一直是可以访问的,即使是在函数里面定义的,在函数外面也是可以访问的。这一点和我们用的Java是不一样的。Java在大括号内定义的变量只能在大括号内可见。如果想要实现在大括号的的作用于可见的变量,我们必须显示的用local关键字修饰。例如</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#!/usr/bin/env bash
-a=1           #全局变量
-function f1(){
-a=2         #全局变量
-b=3         #全局变量
-local c=2   #局部变量
-}
-f1            #这里得先调用一下
-echo "${a}"
-echo "${b}"
-echo "${c}"</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
+<span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">1</span>           <span class="token comment">#全局变量</span>
+<span class="token keyword">function</span> <span class="token function-name function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">2</span>         <span class="token comment">#全局变量</span>
+<span class="token assign-left variable">b</span><span class="token operator">=</span><span class="token number">3</span>         <span class="token comment">#全局变量</span>
+<span class="token builtin class-name">local</span> <span class="token assign-left variable">c</span><span class="token operator">=</span><span class="token number">2</span>   <span class="token comment">#局部变量</span>
+<span class="token punctuation">}</span>
+f1            <span class="token comment">#这里得先调用一下</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${a}</span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${b}</span>"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${c}</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>a 在函数外面定义,系全局作用域；在f1里面改变了a的值,同时定义了一个全局作用域的变量b ,和一个 函数作用域的变量c。 所以 b 在大括号外是可以被访问的,但是c却不能被访问。</p>
 <p>本shell规约规定</p>
 <blockquote>
@@ -634,24 +634,24 @@ echo "${c}"</code></pre>
 <h2 id="关于注释">关于注释</h2>
 <p>除脚本首行外,所有以 <code>#</code> 开头的语句都将成为注释。</p>
 <p>示例:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 主函数 []&lt;-()                   &lt;-------函数注释这样写
-function main(){
-local var="Hello World!!!"
-echo "${var}"
-}
-# info级别的日志 []&lt;-(msg:String)  &lt;-------带入参的函数注释
-log_info(){
-echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')][$$]: [info] $*" &gt;&amp;2
-}
-# error级别的日志 []&lt;-(msg:String) &lt;-------带入参的函数注释
-log_error(){
-# todo [error]用红色显示         &lt;------函数内注释
-local msg=$1 #将要输出的日志内容  &lt;------变量的注释紧跟在变量的后面
-if [[ x"${msg}" != x"" ]];then
-  # 注释                        &lt;-------函数内注释 `#` 与缩进格式对整齐
-  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')][$$]:[error] $*" &gt;&amp;2
-fi
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 主函数 []&lt;-()                   &lt;-------函数注释这样写</span>
+<span class="token keyword">function</span> <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">local</span> <span class="token assign-left variable">var</span><span class="token operator">=</span><span class="token string">"Hello World!!!"</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${var}</span>"</span>
+<span class="token punctuation">}</span>
+<span class="token comment"># info级别的日志 []&lt;-(msg:String)  &lt;-------带入参的函数注释</span>
+<span class="token function-name function">log_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"[<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">'%Y-%m-%dT%H:%M:%S%z'</span><span class="token variable">)</span></span>][<span class="token variable">$$</span>]: [info] <span class="token variable">$*</span>"</span> <span class="token operator">&gt;</span><span class="token file-descriptor important">&amp;2</span>
+<span class="token punctuation">}</span>
+<span class="token comment"># error级别的日志 []&lt;-(msg:String) &lt;-------带入参的函数注释</span>
+<span class="token function-name function">log_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token comment"># todo [error]用红色显示         &lt;------函数内注释</span>
+<span class="token builtin class-name">local</span> <span class="token assign-left variable">msg</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token comment">#将要输出的日志内容  &lt;------变量的注释紧跟在变量的后面</span>
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> x<span class="token string">"<span class="token variable">${msg}</span>"</span> <span class="token operator">!=</span> x<span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+  <span class="token comment"># 注释                        &lt;-------函数内注释 `#` 与缩进格式对整齐</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"[<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">'%Y-%m-%dT%H:%M:%S%z'</span><span class="token variable">)</span></span>][<span class="token variable">$$</span>]:[error] <span class="token variable">$*</span>"</span> <span class="token operator">&gt;</span><span class="token file-descriptor important">&amp;2</span>
+<span class="token keyword">fi</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
 <p><font color="#dd0000">【强制】函数需有注释标识该函数的用途、入参变量、函数的返回值类型</font></p>
@@ -668,15 +668,15 @@ fi
 </blockquote>
 <h2 id="关于函数">关于函数</h2>
 <p>函数定义的形式是</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">function main(){
-#函数执行的操作
-#函数的返回结果
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token comment">#函数执行的操作</span>
+<span class="token comment">#函数的返回结果</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>或</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">main(){
-#函数执行的操作
-#函数的返回结果
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token comment">#函数执行的操作</span>
+<span class="token comment">#函数的返回结果</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
 <p><font color="#dd0000"> 【强制】认定为常函数的必须用readonly修饰,相当于 Java 中的final。</font></p>
@@ -689,40 +689,40 @@ fi
 </blockquote>
 <p>说明:本Shell规约这样做的目的就在于使脚本具有一定的封装性,看到 <code>function</code> 修饰的就知道这个函数能被外部调用, 没有被修饰的函数就仅供内部调用。你就知道如果你修改的函数的影响范围. 如果是 被function 修饰的函数,修改后可能影响到外部调用他的脚本, 而修改未被function修饰的函数的时候,仅仅影响本文件中其他函数。</p>
 <p>如 <a target="_blank" rel="noopener" href="http://core.sh">core.sh</a> 脚本内容如下是</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 重新设置DNS地址 []&lt;-()
-function setNameServer(){
-log_info "setNameServer is ok"
-}
-# info级别的日志 []&lt;-(msg:String)
-log_info(){
-echo -e "[$(date +'%Y-%m-%dT%H:%M:%S%z')][$$]: \033[32m [info] \033[0m $*" &gt;&amp;2
-}
-# error级别的日志 []&lt;-(msg:String)
-log_error(){
-# todo [error]用红色显示
-echo -e "[$(date +'%Y-%m-%dT%H:%M:%S%z')][$$]: \033[31m [error] \033[0m $*" &gt;&amp;2
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 重新设置DNS地址 []&lt;-()</span>
+<span class="token keyword">function</span> <span class="token function-name function">setNameServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+log_info <span class="token string">"setNameServer is ok"</span>
+<span class="token punctuation">}</span>
+<span class="token comment"># info级别的日志 []&lt;-(msg:String)</span>
+<span class="token function-name function">log_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"[<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">'%Y-%m-%dT%H:%M:%S%z'</span><span class="token variable">)</span></span>][<span class="token variable">$$</span>]: <span class="token entity" title="\033">\033</span>[32m [info] <span class="token entity" title="\033">\033</span>[0m <span class="token variable">$*</span>"</span> <span class="token operator">&gt;</span><span class="token file-descriptor important">&amp;2</span>
+<span class="token punctuation">}</span>
+<span class="token comment"># error级别的日志 []&lt;-(msg:String)</span>
+<span class="token function-name function">log_error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token comment"># todo [error]用红色显示</span>
+<span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"[<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">'%Y-%m-%dT%H:%M:%S%z'</span><span class="token variable">)</span></span>][<span class="token variable">$$</span>]: <span class="token entity" title="\033">\033</span>[31m [error] <span class="token entity" title="\033">\033</span>[0m <span class="token variable">$*</span>"</span> <span class="token operator">&gt;</span><span class="token file-descriptor important">&amp;2</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>则我可以使用 <code>sh core.sh setNameServer</code> 的形式调用  <code>set_name_server</code> 函数,<br>
 但就不推荐使用 <code>sh core.sh log_info "Hello World"</code> 的形式使用 <code>log_info</code> 和 <code>log_error</code> 函数,注意是不推荐不是不能。</p>
 <h3 id="函数调用">函数调用</h3>
 <p>变量、函数调用必须在函数声明之后,也就是说在用一个函数的时候,这一行命令的前面必须出现了该函数,因为Shell的执行是从上向下解释执行的。</p>
 <p>为了能够调用另一个脚本中的方法，我们可以使用source关键字加载一下该脚本，source 相当于java中的import。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#!/usr/bin/env bash
-source ./../../BaseShell/Log/BaseLog.sh
-function f1(){
-echo "I am f1"
-}
-function main(){
-log_info "LINENO:${LINENO} 开始执行"      #调用 ./../../BaseShell/Log/BaseLog.sh 中的函数,需要先用source BaseLog.sh
-f1                                      #在函数内部调用当前脚本内的函数
-log_success "LINENO:${LINENO} 结束执行"   #调用 ./../../BaseShell/Log/BaseLog.sh 中的函数
-}
-main                                       #在脚本内部调用当前脚本内的函数
-bash ChangBaiShanFetcher.sh                #执行其他脚本
-bash ChangBaiShanFetcher.sh main           #执行其他脚本的main方法,前提是 ChangBaiShanFetcher.sh 脚本 支持按函数名调用</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
+<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Log/BaseLog.sh
+<span class="token keyword">function</span> <span class="token function-name function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"I am f1"</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+log_info <span class="token string">"LINENO:<span class="token variable">${LINENO}</span> 开始执行"</span>      <span class="token comment">#调用 ./../../BaseShell/Log/BaseLog.sh 中的函数,需要先用source BaseLog.sh</span>
+f1                                      <span class="token comment">#在函数内部调用当前脚本内的函数</span>
+log_success <span class="token string">"LINENO:<span class="token variable">${LINENO}</span> 结束执行"</span>   <span class="token comment">#调用 ./../../BaseShell/Log/BaseLog.sh 中的函数</span>
+<span class="token punctuation">}</span>
+main                                       <span class="token comment">#在脚本内部调用当前脚本内的函数</span>
+<span class="token function">bash</span> ChangBaiShanFetcher.sh                <span class="token comment">#执行其他脚本</span>
+<span class="token function">bash</span> ChangBaiShanFetcher.sh main           <span class="token comment">#执行其他脚本的main方法,前提是 ChangBaiShanFetcher.sh 脚本 支持按函数名调用</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】将函数分门别类保存在不同的脚本中
-【推荐】使用source的方式引入另一个脚本中的函数,不推荐使用`脚本 函数名 函数参数`的形式调用</code></pre>
+【推荐】使用source的方式引入另一个脚本中的函数,不推荐使用`脚本 函数名 函数参数`的形式调用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="函数参数">函数参数</h3>
 <table>
 <thead>
@@ -776,15 +776,15 @@ bash ChangBaiShanFetcher.sh main           #执行其他脚本的main方法,前�
 </blockquote>
 <h3 id="函数注释">函数注释</h3>
 <p>函数类型的概念是从函数编程语言中的概念偷过来的,Shell函数的函数类型指的是函数的输入到函数的输入的映射关系</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 主函数 []&lt;-()                  &lt;-------函数注释这样写
-function main(){
-local var="Hello World!!!"
-echo ${var}
-}
-# info级别的日志 []&lt;-(msg:String)  &lt;-------带入参的函数注释
-log_info(){
-echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')][$$]: [info] $*" &gt;&amp;2
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 主函数 []&lt;-()                  &lt;-------函数注释这样写</span>
+<span class="token keyword">function</span> <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">local</span> <span class="token assign-left variable">var</span><span class="token operator">=</span><span class="token string">"Hello World!!!"</span>
+<span class="token builtin class-name">echo</span> <span class="token variable">${var}</span>
+<span class="token punctuation">}</span>
+<span class="token comment"># info级别的日志 []&lt;-(msg:String)  &lt;-------带入参的函数注释</span>
+<span class="token function-name function">log_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"[<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +<span class="token string">'%Y-%m-%dT%H:%M:%S%z'</span><span class="token variable">)</span></span>][<span class="token variable">$$</span>]: [info] <span class="token variable">$*</span>"</span> <span class="token operator">&gt;</span><span class="token file-descriptor important">&amp;2</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>说明:</p>
 <blockquote>
 <p>main函数的函数类型是 <code>[]&lt;-()</code> , <code>&lt;-</code> 左侧表的是函数的返回值类型 用<code>[]</code>包裹, 右侧是函数的参数类型 用<code>()</code>包裹,多个参数用 <code>,</code> 分隔,参数的描述是从 Scala 语言中偷过来, 先是参数名称 然后是参数类型 中间用<code>:</code>分隔</p>
@@ -797,33 +797,33 @@ echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')][$$]: [info] $*" &gt;&amp;2
 </blockquote>
 <p>关于函数的返回值,我理解的函数的返回值有两种形式,一种是显示的return一种是隐式的echo</p>
 <p>以下是几种常见的写法</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">[]&lt;-()
-[String]&lt;-(var1:String,var2:String)
-[Boolean]&lt;-(var1:String,var2:Int)
-[]&lt;-(var1:String)</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&lt;</span>-<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span>String<span class="token punctuation">]</span><span class="token operator">&lt;</span>-<span class="token punctuation">(</span>var1:String,var2:String<span class="token punctuation">)</span>
+<span class="token punctuation">[</span>Boolean<span class="token punctuation">]</span><span class="token operator">&lt;</span>-<span class="token punctuation">(</span>var1:String,var2:Int<span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&lt;</span>-<span class="token punctuation">(</span>var1:String<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="返回值">返回值</h3>
 <p>Shell 函数的返回值比较复杂,获取函数的返回值又有多种方式.一般来说,一个函数内的所有标准输出都作为函数的返回值,注意是标准输出,不包含标准错误。<br>
 我们先来说,我们执行一条命令的时候, 比如 pwd 正常情况下它输出的结果是 当前所处的目录</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">Last login: Sat Jan 20 17:39:16 on ttys000
 chenshang@chenshangMacBook-Pro:~$ pwd
-/Users/chenshang</code></pre>
+/Users/chenshang<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>注意我说的是正常情况下,那异常情况下呢?输出的结果又是什么?输出的结果有可能五花八门!所以,Shell中必然有一种状态来标识一条命令是否执行成功,也就是命令执行结果的状态。那这种状态是怎么标识的,这就引出了Shell中一个反人类的规定,就是 0代表真、成功的含义。非零代表假、失败的含义。</p>
 <p>所以 pwd 这条命令如果执行成功的话,命令的执行结果状态一定是0,然后返回值才是当前目录。如果这条命令执行失败的话,命令的执行结果状态一定不是0,有可能是1 代表命令不存在,然后输出 not found,也有可能执行结果状态是2 代表超时,然后什么也不输出。(不要以为pwd这种linux内带的命令就一定执行成功,有可能你拿到的就是一台阉割版的linux呢)</p>
 <h4 id="显示return">显示return</h4>
 <p>return 用来显示的返回函数的返回结果,例如</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 检查当前系统版本 [Integer]&lt;-()
-function checkVersion(){
-(log_info "check_version ...") #log_info是我写的工具类中的一个函数
-local version #这里是先定义变量,在对变量进行赋值,我们往往是直接初始化,而不是像这样先定义在赋值,这里只是告诉大家可以这么用
-version=$(sed -r 's/.* ([0-9]+)\..*/\1/' /etc/redhat-release)
-(log_info "centos version is ${version}")
-return "${version}"
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 检查当前系统版本 [Integer]&lt;-()</span>
+<span class="token keyword">function</span> <span class="token function-name function">checkVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token punctuation">(</span>log_info <span class="token string">"check_version ..."</span><span class="token punctuation">)</span> <span class="token comment">#log_info是我写的工具类中的一个函数</span>
+<span class="token builtin class-name">local</span> version <span class="token comment">#这里是先定义变量,在对变量进行赋值,我们往往是直接初始化,而不是像这样先定义在赋值,这里只是告诉大家可以这么用</span>
+<span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">sed</span> <span class="token parameter variable">-r</span> <span class="token string">'s/.* ([0-9]+)\..*/\1/'</span> /etc/redhat-release<span class="token variable">)</span></span>
+<span class="token punctuation">(</span>log_info <span class="token string">"centos version is <span class="token variable">${version}</span>"</span><span class="token punctuation">)</span>
+<span class="token builtin class-name">return</span> <span class="token string">"<span class="token variable">${version}</span>"</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>显示的return结果,返回值只能是[0-255]的数值,常常用在状态判断的时候。所以这个return有点像我们定义的异常（异常code,异常msg）.code=0,则代表命令执行成功,code!=0代表异常,异常msg通过标准错误输出。</p>
 <p>这样这个函数的返回值是一个数值类型,我在脚本的任何地方调用 checkVersion 这个函数后,使用 $? 获取返回值</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">checkVersion
-version=$?
-echo "${version}"</code></pre>
+<span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token variable">$?</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${version}</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>注意这里不用 <code>version=$(check_version)</code> 这种形式获取结果,这样也是获取不到结果的</p>
 <p>本Shell规约规定:</p>
 <blockquote>
@@ -833,56 +833,56 @@ echo "${version}"</code></pre>
 <p><font color="#dd0000"> 【推荐】返回结果类型是Boolean类型,也就是说函数的功能是起判断作用,返回结果是真或者假的时候使用才显示 return 返回结果</font></p>
 </blockquote>
 <p>例如</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 检查网络 [Boolean]&lt;-()
-function check_network(){
-(log_info "check_network ...")
-for((i=1;i&lt;=3;i++));do
-  local http_code=$(curl -I -m 10 -o /dev/null -s -w %\{http_code\}  www.baidu.com)
-  if [[ ${http_code} -eq 200 ]];then
-    (log_info "network is ok")
-    return ${TRUE}
-  fi
-done
-(log_error "network is not ok")
-return ${FALSE}
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 检查网络 [Boolean]&lt;-()</span>
+<span class="token keyword">function</span> <span class="token function-name function">check_network</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token punctuation">(</span>log_info <span class="token string">"check_network ..."</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">3</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span><span class="token keyword">do</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">http_code</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">curl</span> <span class="token parameter variable">-I</span> <span class="token parameter variable">-m</span> <span class="token number">10</span> <span class="token parameter variable">-o</span> /dev/null <span class="token parameter variable">-s</span> <span class="token parameter variable">-w</span> %<span class="token punctuation">\</span><span class="token punctuation">{</span>http_code<span class="token punctuation">\</span><span class="token punctuation">}</span>  www.baidu.com<span class="token variable">)</span></span>
+  <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${http_code}</span> <span class="token parameter variable">-eq</span> <span class="token number">200</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+    <span class="token punctuation">(</span>log_info <span class="token string">"network is ok"</span><span class="token punctuation">)</span>
+    <span class="token builtin class-name">return</span> <span class="token variable">${TRUE}</span>
+  <span class="token keyword">fi</span>
+<span class="token keyword">done</span>
+<span class="token punctuation">(</span>log_error <span class="token string">"network is not ok"</span><span class="token punctuation">)</span>
+<span class="token builtin class-name">return</span> <span class="token variable">${FALSE}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="隐式echo">隐式echo</h4>
 <p>echo 用来显示的返回函数的返回结果,例如</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 将json字符串格式化树形结构 [String]&lt;-(json_string:String)
-function json_format(){
-local jsonString=$1
-echo "${jsonString}"|jq . #jq是Shell中处理json的一个工具
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 将json字符串格式化树形结构 [String]&lt;-(json_string:String)</span>
+<span class="token keyword">function</span> <span class="token function-name function">json_format</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">local</span> <span class="token assign-left variable">jsonString</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${jsonString}</span>"</span><span class="token operator">|</span>jq <span class="token builtin class-name">.</span> <span class="token comment">#jq是Shell中处理json的一个工具</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>函数中所有的echo照理都应该输出到控制台上 例如</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">json_format "{\"1\":\"one\"}"</code></pre>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">json_format "{\"1\":\"one\"}"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>你会在控制台上看到如下输出</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">{
-"1": "one"
-}</code></pre>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
+<span class="token property">"1"</span><span class="token operator">:</span> <span class="token string">"one"</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>但是一旦你用变量接收函数的返回值,这些本该输出到控制台的结果就都会存储到你定义的变量中 例如</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">json=$(json_format "{\"1\":\"one\"}")
-echo "${json}" #如果没有这句,上面的语句执行完成后,不会在控制台有任何的输出</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">json</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>json_format <span class="token string">"{<span class="token entity" title="\&quot;">\"</span>1<span class="token entity" title="\&quot;">\"</span>:<span class="token entity" title="\&quot;">\"</span>one<span class="token entity" title="\&quot;">\"</span>}"</span><span class="token variable">)</span></span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${json}</span>"</span> <span class="token comment">#如果没有这句,上面的语句执行完成后,不会在控制台有任何的输出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>我们把 json_format 改造一下</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 将json字符串格式化树形结构 [String]&lt;-(json_string:String)
-function json_format(){
-local jsonString=$1
-echo "为格式化之前:${jsonString}" #其实新添加的这一句只是用来记录一行日志的,但是返回结果会被外层变量接收
-echo "${jsonString}"|jq . #jq是Shell中处理json的一个工具
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 将json字符串格式化树形结构 [String]&lt;-(json_string:String)</span>
+<span class="token keyword">function</span> <span class="token function-name function">json_format</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">local</span> <span class="token assign-left variable">jsonString</span><span class="token operator">=</span><span class="token variable">$1</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"为格式化之前:<span class="token variable">${jsonString}</span>"</span> <span class="token comment">#其实新添加的这一句只是用来记录一行日志的,但是返回结果会被外层变量接收</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${jsonString}</span>"</span><span class="token operator">|</span>jq <span class="token builtin class-name">.</span> <span class="token comment">#jq是Shell中处理json的一个工具</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>echo “为格式化之前:${json_string}” 其实新添加的只一句只是用来记录一行日志的,但是json=$(json_format “{"1":"one"}”),变量 json 也会将这句话作为返回结果进行接收,但这是我不想要看到的。</p>
 <p>解决这个问题需要了解重定向相关</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 将json字符串格式化树形结构 [String]&lt;-(json_string:String)
-function json_format(){
-local jsonString=$1
-log_trace "为格式化之前:${jsonString}" #其实新添加的只一句只是用来记录一行日志的
-log_info  "为格式化之前:${jsonString}" #其实新添加的只一句只是用来记录一行日志的
-echo "${jsonString}"|jq . #jq是Shell中处理json的一个工具
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 将json字符串格式化树形结构 [String]&lt;-(json_string:String)</span>
+<span class="token keyword">function</span> <span class="token function-name function">json_format</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">local</span> <span class="token assign-left variable">jsonString</span><span class="token operator">=</span><span class="token variable">$1</span>
+log_trace <span class="token string">"为格式化之前:<span class="token variable">${jsonString}</span>"</span> <span class="token comment">#其实新添加的只一句只是用来记录一行日志的</span>
+log_info  <span class="token string">"为格式化之前:<span class="token variable">${jsonString}</span>"</span> <span class="token comment">#其实新添加的只一句只是用来记录一行日志的</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${jsonString}</span>"</span><span class="token operator">|</span>jq <span class="token builtin class-name">.</span> <span class="token comment">#jq是Shell中处理json的一个工具</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>详情请看 <a target="_blank" rel="noopener" href="http://BaseLog.sh">BaseLog.sh</a> 中对日志的处理</p>
 <h2 id="关于分支">关于分支</h2>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HEAD_KEYWORD parameters; BODY_BEGIN
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HEAD_KEYWORD parameters<span class="token punctuation">;</span> BODY_BEGIN
 BODY_COMMANDS
-BODY_END</code></pre>
+BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
@@ -894,52 +894,52 @@ BODY_END</code></pre>
 【推荐】parameters部分test表达式变量取值都用""包裹；<br>
 【推荐】parameters部分test表达式统一使用=等符号, 在明确是数字的时候可以使用 -eq等参数；</p>
 <h3 id="if">if</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">if [[ condition ]]; then
-  echo statements
-fi
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">fi</span>
 
-if [[ condition ]]; then
-  echo statements
-else
-  echo statements
-fi
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">else</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">fi</span>
 
-if [[ condition ]]; then
-  echo statements
-elif [[ condition ]]; then
-  echo statements
-else
-  echo statements
-fi</code></pre>
+<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">elif</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">else</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="while">while</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">while [[ condition ]]; do
-  echo statements
-done
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">done</span>
 
-while read -r item ;do
-  echo "${item}"
-done &lt; 'file_name'</code></pre>
+<span class="token keyword">while</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> item <span class="token punctuation">;</span><span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${item}</span>"</span>
+<span class="token keyword">done</span> <span class="token operator">&lt;</span> <span class="token string">'file_name'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="until">until</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">until [[ condition ]]; do
-  echo statements
-done</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">until</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="for">for</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">for (( i = 0; i &lt; 10; i++ )); do
-  echo statements
-done
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> statements
+<span class="token keyword">done</span>
 
-for item in ${array}; do
-  echo "${item}"
-done</code></pre>
+<span class="token keyword">for</span> <span class="token for-or-select variable">item</span> <span class="token keyword">in</span> <span class="token variable">${array}</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${item}</span>"</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="case">case</h3>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">case word in
-pattern )
-  #statements
-  ;;
-  *)
-  #statements
-  ;;
-esac</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">case</span> word <span class="token keyword">in</span>
+pattern <span class="token punctuation">)</span>
+  <span class="token comment">#statements</span>
+  <span class="token punctuation">;</span><span class="token punctuation">;</span>
+  *<span class="token punctuation">)</span>
+  <span class="token comment">#statements</span>
+  <span class="token punctuation">;</span><span class="token punctuation">;</span>
+<span class="token keyword">esac</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
@@ -1008,24 +1008,24 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
 <p><font color="#dd0000">【推荐】不在一行的时候使用 <code>\</code> 进行换行,使用 <code>\</code> 换行的原则是整齐美观</font></p>
 </blockquote>
 <p>例子:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#!/usr/bin/env bash
-# 脚本使用帮助文档 []&lt;-()
-manual(){
-cat "$0"|grep -v "less \"\$0\"" \
-        |grep -B1 "function "   \
-        |grep -v "\\--"         \
-        |sed "s/function //g"   \
-        |sed "s/(){//g"         \
-        |sed "s/#//g"           \
-        |sed 'N;s/\n/ /'        \
-        |column -t              \
-        |awk '{print $1,$3,$2}' \
-        |column -t
-}
-function search_user_info(){
-local result=$(httpclient_get --cookie "${cookie}" \
-                                       "${url}/userName=${user_name}")
-}</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
+<span class="token comment"># 脚本使用帮助文档 []&lt;-()</span>
+<span class="token function-name function">manual</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token function">cat</span> <span class="token string">"<span class="token variable">$0</span>"</span><span class="token operator">|</span><span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">"less <span class="token entity" title="\&quot;">\"</span>\<span class="token variable">$0</span><span class="token entity" title="\&quot;">\"</span>"</span> <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">grep</span> <span class="token parameter variable">-B1</span> <span class="token string">"function "</span>   <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">grep</span> <span class="token parameter variable">-v</span> <span class="token string">"<span class="token entity" title="\\">\\</span>--"</span>         <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">sed</span> <span class="token string">"s/function //g"</span>   <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">sed</span> <span class="token string">"s/(){//g"</span>         <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">sed</span> <span class="token string">"s/#//g"</span>           <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">sed</span> <span class="token string">'N;s/\n/ /'</span>        <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">column</span> <span class="token parameter variable">-t</span>              <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">awk</span> <span class="token string">'{print $1,$3,$2}'</span> <span class="token punctuation">\</span>
+        <span class="token operator">|</span><span class="token function">column</span> <span class="token parameter variable">-t</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function-name function">search_user_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token builtin class-name">local</span> <span class="token assign-left variable">result</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>httpclient_get <span class="token parameter variable">--cookie</span> <span class="token string">"<span class="token variable">${cookie}</span>"</span> <span class="token punctuation">\</span>
+                                       <span class="token string">"<span class="token variable">${url}</span>/userName=<span class="token variable">${user_name}</span>"</span><span class="token variable">)</span></span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1><code>()、(())、[]、[[]]、{}</code> 使用方法</h1>
 <h2 id="的用法">( ) 的用法</h2>
 <h3 id="命令组。">命令组。</h3>
@@ -1733,7 +1733,7 @@ local result=$(httpclient_get --cookie "${cookie}" \
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

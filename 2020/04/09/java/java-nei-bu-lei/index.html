@@ -344,79 +344,79 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>内部类就是类里面的类，形式上大概是这样</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Outer{
-  class Inner{
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Outer</span><span class="token punctuation">{</span>
+  <span class="token keyword">class</span> <span class="token class-name">Inner</span><span class="token punctuation">{</span>
 
-  }
-}</code></pre>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>你可以把内部类和这个外部类的某一个成员变量和成员方法看成同一个级别。例如</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Outer{
-  private int age;
-  String name;
-  private String say(){
-    System.out.println(age)
-  }
-  class Inner{
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Outer</span><span class="token punctuation">{</span>
+  <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+  <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+  <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">class</span> <span class="token class-name">Inner</span><span class="token punctuation">{</span>
 
-  }
-}</code></pre>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里 这个 Inner 就和成员变量和成员函数也叫成员方法一样，都属于这个类的一个属性而已。<br>
 另外既然和外部类的属性和方法属于同一级别，那也就可以被 访问限制修饰符来修饰，访问限制修饰符指的就是 private 、public 啊还有一个就是static .<br>
 private 和 public 就限制了一个内部类是不是能被外部访问，就像private修饰的变量 age 一样，只能被类内部使用，除非你在暴露接口扩大其访问权限。例如你写pubulic 的get set 方法。那内部类也一样，如果你用private修饰，那你在这个外部类的其他类你就不能创建一个Inner类了，因为他是private的嘛，要求只能在内部类里面使用。而这个使用指的就是创建实例，因为类的作用就是new一个个的对象出来嘛。private了就是不允许外部new对象了。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Outer{
-  public class Inner{
-  }
-}
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Outer</span><span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Inner</span><span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-class Mian{
-  public static final void main(String[] args){
-     //想要创建内部类必须先有外部类
-     Outer outer=new Outer();
-     //因为这里是public的内部类，所以可以直接这样写
-     //但要单独引用包 import xxxx.xx.Outer.Inner;
-     Inner inner=outer.new Inner();
-     //也可以这样写，表明这个内部类的外部类是Outer 下的Inner ,这样写更明确
-     Outer.Inner inner2=outer.new Inner();
-     //但如果这里是private的内部类，上面两行代码立马报错
-  }
-}</code></pre>
+<span class="token keyword">class</span> <span class="token class-name">Mian</span><span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+     <span class="token comment">//想要创建内部类必须先有外部类</span>
+     <span class="token class-name">Outer</span> outer<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Outer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment">//因为这里是public的内部类，所以可以直接这样写</span>
+     <span class="token comment">//但要单独引用包 import xxxx.xx.Outer.Inner;</span>
+     <span class="token class-name">Inner</span> inner<span class="token operator">=</span>outer<span class="token punctuation">.</span><span class="token keyword">new</span> <span class="token class-name">Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment">//也可以这样写，表明这个内部类的外部类是Outer 下的Inner ,这样写更明确</span>
+     <span class="token class-name">Outer<span class="token punctuation">.</span>Inner</span> inner2<span class="token operator">=</span>outer<span class="token punctuation">.</span><span class="token keyword">new</span> <span class="token class-name">Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token comment">//但如果这里是private的内部类，上面两行代码立马报错</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果一个内部类被static修饰了，就成了类级别的了，和外部类的实例对象就无关了，成了所有实例对象共享的一部分代码，这部分代码全局都只此一份。被static修饰的内部类有一个专门的名称叫，静态内部类。静态内部类和静态类一样，我们不用创建实例对象就可以访问里面的静态方法，注意是静态方法，对于费静态方法，我们还是得老老实实创建对象的。内部类都静态了，那她就和静态类一样，在用到他的时候他才会初始化，这就给我们安全的创造单例模式提供了方便,static的作用就是变成类相关的，而类的加载机制有保证了累得加载是惰性加载，也就是用到这个类的时候才会初始化类相关的变量，如果用不到那它就是一坨文本文件，静静的躺在磁盘上而已。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Outer{
-  static class Inner{
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Outer</span><span class="token punctuation">{</span>
+  <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Inner</span><span class="token punctuation">{</span>
 
-  }
-}
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-class Main(){
-  public static void main(String[] args){
-    //要想创建内部类的实例，我们不需要外部类的实例，所以可以直接通过下面的方式new
-    Outer.Inner inner=new Outer.Inner();
-    Inner inner=new Inner();
-    // 当然如果 内部类被private 修饰，那么上面两行代码立马报错
-  }
-}</code></pre>
+<span class="token keyword">class</span> <span class="token class-name">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//要想创建内部类的实例，我们不需要外部类的实例，所以可以直接通过下面的方式new</span>
+    <span class="token class-name">Outer<span class="token punctuation">.</span>Inner</span> inner<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Outer<span class="token punctuation">.</span>Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Inner</span> inner<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 当然如果 内部类被private 修饰，那么上面两行代码立马报错</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1>为啥要有内部类</h1>
 <p>把一个类写成一个单独的类怎么了，怎么了呢，非要搞这么复杂干啥呢?其实还是因为Java当前吹过的牛逼，那就是Java觉得只要单根继承就好，它根本不想去解决菱形问题或者叫钻石问题，为此他就丧失的多继承的优越性，为了弥补单根继承的缺陷，它发明了内部类。</p>
 <p>那单根继承有什么缺点呢？单根继承的确定就单根继承，这不废话么，说白了就是扩展不方便，我想把两个类的方法集于一身，你说怎么办吧？你会发现你在java里面怎么写都别扭，我implements吧，我还得写一遍实现，我用abstract 吧，我只能继承一次，那我就级联继承吧 A extents B ,B extents C ,那A不就有了B和C的功能了么，但你会发现 B继承C 更别扭，因为没有儿子继承妈妈，妈妈在继承爸爸一说，因为B和C 在语意上就应该是并列的。</p>
 <p>那内部类为什么就能弥补呢?因为Java规定了内部类可以访问外部的成员变量，甚至包括 private的，其实这个甚至不应该强调，因为一强调，我们就会重点去关注了，其实你想想内部类和内部的成员变量和成员方法一个级别，我在里面能访问和我同一个别的属性有什么问题么？没有问题！！！我就应该有权限。</p>
 <p>那能访问有怎么了呢，这样我们就可以引入不用的内部类分别继承我们想要多继承的类，然后我们就可以控制我们自己列的行为啦！类似这样</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class Son{
-  private String name;
-  private String say(){
-    return "你好"
-  }
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Son</span><span class="token punctuation">{</span>
+  <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+  <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">"你好"</span>
+  <span class="token punctuation">}</span>
 
-  public class Father{
-    public String name(){
-      return name
-    }
-  }
-  public class Mom{
-    public String name(){
-      return name
-    }
-  }
-}</code></pre>
+  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Father</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> name
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Mom</span><span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> name
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>那怎么实现的呢，我也不用反编译什么的，直接告诉你，因为内部类在实例化的时候，编译器通过构造函数偷偷的吧外部类实例的引用注入到了内部类中。</p>
 
                 
@@ -985,7 +985,7 @@ class Main(){
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

@@ -366,18 +366,18 @@
   library: 'digital envelope routines',
   reason: 'unsupported',
   code: 'ERR_OSSL_EVP_UNSUPPORTED'
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>按照 同事 给出的解决手段 在 package.json 中 使用 如下配置</p>
 <pre class="line-numbers language-none"><code class="language-none">"serve": "export NODE_OPTIONS=—openssl-legacy-provider;node scripts/config.js &amp; npm run env &amp;&amp; vue-cli-service serve",  
-"build": "export NODE_OPTIONS=—openssl-legacy-provider;vue-cli-service build",</code></pre>
+"build": "export NODE_OPTIONS=—openssl-legacy-provider;vue-cli-service build",<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>或者在环境变量里面单独 添加</p>
-<pre class="line-numbers language-none"><code class="language-none">export NODE_OPTIONS=—openssl-legacy-provide</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">export NODE_OPTIONS=—openssl-legacy-provide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>还是无法解决问题，遂 打算降低  node 的版本尝试一下</p>
 <p>全局安装 n 工具，是专门管理 node 版本的，可以用他来切换 node 的版本，当然还有其他工具也可以切换，自行百度就好，我用的是 n 工具。</p>
 <pre class="line-numbers language-none"><code class="language-none">npm install -g n       // 全局安装n
 n                      // 查看Node.js版本列表
 n &lt;版本号&gt;              // 安装指定版本的Node.js
-n list                 // 切换当前使用的Node.js版本</code></pre>
+n list                 // 切换当前使用的Node.js版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>记得使用 sudo 指令获取管理员权限</p>
 
                 
@@ -934,7 +934,7 @@ n list                 // 切换当前使用的Node.js版本</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

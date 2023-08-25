@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Shell编程规约, IT,技术,总结">
-    <meta name="description" content="没有规矩,不成方圆">
+    <meta name="keywords" content="Linux终端生存之道-压缩加密文件, IT,技术,总结">
+    <meta name="description" content="linux zip/unzip 压缩/解压缩 加密文件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Shell编程规约 | 涓涓细流</title>
+    <title>Linux终端生存之道-压缩加密文件 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -38,9 +38,7 @@
 
 
 
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
-
 
 
 
@@ -245,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Shell编程规约</h1>
+                    <h1 class="description center-align post-title">Linux终端生存之道-压缩加密文件</h1>
                 </div>
             </div>
         </div>
@@ -260,12 +258,10 @@
 
 
 
-<main class="post-container content">
+<main class="container content">
 
     
-    <div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
+    <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -278,8 +274,8 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
@@ -294,8 +290,8 @@
                                 Linux
                             </a>
                         
-                            <a href="/categories/Linux/BaseShell/" class="post-category">
-                                BaseShell
+                            <a href="/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/" class="post-category">
+                                终端生存之道
                             </a>
                         
                     </div>
@@ -307,28 +303,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-08-20
+                    2023-08-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-19
+                    2023-08-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    626
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    2 分
                 </div>
                 
 
@@ -351,123 +347,39 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="line-numbers language-text" data-language="text"><code class="language-text"> ____                      _          _ _
-| __ )  __ _ ___  ___  ___| |__   ___| | |
-|  _ \ / _` / __|/ _ \/ __| '_ \ / _ \ | |
-| |_) | (_| \__ \  __/\__ \ | | |  __/ | |
-|____/ \__,_|___/\___||___/_| |_|\___|_|_|</code></pre>
-<h1>首条规约</h1>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】Linux 工具的使用不必死记硬背,不必死记硬背,不必死记硬背,即查即用即可。</code></pre>
-<h1>运行方式</h1>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】脚本均以`.sh`结尾
-正例:BaseLog.sh、init.sh
-说明:以`.sh`结尾,使人可以一目了然知道该文件是脚本文件,而且用的解析器是sh或bash
-
-【强制】脚本执行明确指定具体解析器
-正例: #!/bin/bash 、#!/usr/bin/bash、#!/usr/bin/env bash
-说明: 参考首行规约,这样可以不用每个文件都单独赋予可执行权限
-
-【强制】脚本执行要到脚本所在目录下执行</code></pre>
-<h1>命名风格</h1>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】脚本中变量、函数、文件的命名均不能以数字、下划线、$开头,也不能以下划线或者$结尾
-反例: _name / __name / $name / name_ / name$ / 5name
-说明: $作为Shell语言的取值符号,其他命名约束参考Java规约。
-
-【强制】代码中的命名严禁使用拼音与英文混合的方式,更不允许直接使用中文的方式。
-正例:alibaba / taobao / youku / hangzhou 等国际通用的名称,可视同英文。
-说明:正确的英文拼写和语法可以让阅读者易于理解,避免歧义。注意,即使纯拼音命名方式 也要避免采用。
-
-【强制】参数名、局部变量都统一使用 lowerCamelCase 风格,必须遵从 驼峰形式。
-正例: localValue / errMsg / userName
-
-【推荐】使用下划线分割函数命名,都统一使用 lowerCamelCase 风格,必须遵从 驼峰形式。
-正例:getUserName() / log_info() / map_add()
-说明: 纯用下划线会使得命名很长,纯用驼峰又无法将函数聚类
-get_user_english_name()  vs getUserEnglishName()
-log_info() vs logInfo()
-map_add() vs mapAdd()
-log_info "xxx" 在调用的时候类比于Java 的 log.info("xxx")
-
-【强制】文件名 UpperCamelCase 风格,首字母大写的驼峰形式
-正例:BaseLog.sh / BaseString.sh
-说明:类比Java的类,我们把相同功能的函数抽象到一个脚本文件中,留待后续其他脚本引用。随着我们写的脚本日渐增多
-我们很有必要分门别类的将它们聚集到一个文本文件中,一是方便后续查阅,而是方便后续调用
-
-【强制】常量命名全部大写,单词间用下划线隔开,力求语义表达完整清楚,不要嫌名字长。
-正例:MAX_STOCK_COUNT 反例:MAX_COUNT
-
-【推荐】文件夹名字统一大写或者统一小写,推荐大写
-【强制】文件名以 .sh 结尾
-【强制】使用两个空格进行缩进,不适用tab缩进
-【推荐】不在一行的时候使用 `\` 进行换行,使用 `\` 换行的原则是整齐美观</code></pre>
-<h1>关于首行</h1>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】推荐使用 `#!/usr/bin/env bash` 作为 shebang
-说明: 提高脚本的可以执性</code></pre>
-<h1>关于数组</h1>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">【强制】传递数组使用 "${list[*]}" 形式
-【强制】接收数组使用 array=($*) 形式
-正例:
-# @return the number of elements in this list
-function list_size(){
-  local array=($1);local size=${\#array[*]}
-  echo "${size}"
-}
-size=$(list_size "${list[*]}")
-assertEquals "${size}" "2"</code></pre>
-<h1>关于变量</h1>
-<p>本shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】不要定义与环境变量重名的局部变量,会改变环境变量的值,进而影响后续脚本的执行。
-【推荐】如果要打破上一个推荐,修改后及时修改回来。例如 IFS 代表分隔符的情况。
-【强制】变量名和等号之间不能有空格,这可能和你熟悉的所有编程语言都不一样。
-【强制】变量取值用 "${}", 使用 {} 包裹,给所有变量加上花括号,防止产生歧义
-【强制】变量取值用 "${}", 使用 "" 包裹,防止分词
-【强制】若需要将调用的函数的返回结果赋值给local变量,使用 $(),不推荐使用 ``
-【推荐】能缩小变量作用域的就缩小变量的作用域,也就是能用local的就用local修饰
-【强制】认定为常量的必须用readonly修饰,相当于 Java 中的final
-【推荐】删除变量能不用就不用,一般没什么应用场景</code></pre>
-<h1>关于函数</h1>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】函数需有注释标识该函数的用途、入参变量、函数的返回值类型
-【强制】函数的注释 `#` 顶格写, 井号后面紧跟一个空格,对于该格式的要求是为了最后生成函数的帮助文档是用的(markdown语法),然后是注释的内容,注释尽量简短且在一行,最后跟的是函数的类型。
-【强制】函数内注释 `#` 与缩进格式对整齐
-【强制】变量的注释紧跟在变量的后面,不推荐换行写注释
-【强制】在函数内部首先使用有意义的变量名接受参数,然后在使用这些变量进行操作,禁止直接操作$1,$2等,除非这些变量只用一次
-【推荐】不推荐使用return方式返回,推荐使用echo方式返回结果
-【推荐】返回结果类型是Boolean类型,也就是说函数的功能是起判断作用,返回结果是真或者假的时候使用才显示 return 返回结果</code></pre>
-<h1>关于注释</h1>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】认定为常函数的必须用readonly修饰,相当于 Java 中的final。
-【推荐】使用关键字 `function` 显示定义的函数为 public 的函数,可以供 外部脚本以 `sh 脚本 函数 函数入参` 的形式调用,可以认为成Java当中的public的方法
-【推荐】未使用关键字 `function` 显示定义的函数为 private 的函数, 仅供本脚本内部调用,可以认为成Java中的私有方法,注意这种private是人为规定的,并不是Shell的语法,不推荐以 `sh 脚本 函数 函数入参` 的形式调用,注意是不推荐而不是不能。
-【强制】将函数分门别类保存在不同的脚本中
-【推荐】使用source的方式引入另一个脚本中的函数,不推荐使用`脚本 函数名 函数参数`的形式调用</code></pre>
-<p>说明:本Shell规约这样做的目的就在于使脚本具有一定的封装性,看到 <code>function</code> 修饰的就知道这个函数能被外部调用, 没有被修饰的函数就仅供内部调用。你就知道如果你修改的函数的影响范围. 如果是 被function 修饰的函数,修改后可能影响到外部调用他的脚本, 而修改未被function修饰的函数的时候,仅仅影响本文件中其他函数。</p>
-<h1>关于分支</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HEAD_KEYWORD parameters; BODY_BEGIN
-  BODY_COMMANDS
-BODY_END</code></pre>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】将HEAD_KEYWORD和初始化命令或者参数放在第一行；
-【强制】将BODY_BEGIN同样放在第一行；
-【强制】复合命令中的BODY部分以2个空格缩进；
-【强制】BODY_END部分独立一行放在最后；
-【推荐】parameters部分test表达式变量取值都用""包裹；
-【推荐】parameters部分test表达式统一使用=等符号, 在明确是数字的时候可以使用 -eq等参数；
-【强制】if\while\until 后面的判断 使用 双中括号`[[]]`</code></pre>
-<h1>关于数学计算</h1>
-<p>本Shell规约规定</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】明确知道变量是整数,计算使用$(())包裹计算,(())内对变量的操作不用$取值
-正确 a=$((1+1))
-反例 a=$(($a++))
-【推荐】复杂计算使用bc计算器,前提是得安装bc计算器命令</code></pre>
-<h1>单元测试</h1>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">【推荐】建议写单元测试</code></pre>
-<p>未完待续,明天再写</p>
+                <p>压缩文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token operator">&lt;</span>压缩文件名<span class="token operator">&gt;</span>.zip <span class="token operator">&lt;</span>要压缩的文件<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>压缩文件夹 用 <code>-r</code> 参数，代表递归文件夹里面的内容</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token parameter variable">-r</span> <span class="token operator">&lt;</span>压缩文件名<span class="token operator">&gt;</span>.zip <span class="token operator">&lt;</span>要压缩的文件夹<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>加密压缩 用 <code>-e</code> 参数，如果要加密压缩文件夹 则连用 <code>-re</code> 就行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token parameter variable">-re</span> <span class="token operator">&lt;</span>压缩文件名<span class="token operator">&gt;</span>.zip <span class="token operator">&lt;</span>要压缩的文件夹<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>解压使用 unzip 到当前目录</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> <span class="token operator">&lt;</span>压缩文件名<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>解压使用 unzip 到指定目录</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> archive.zip <span class="token parameter variable">-d</span> mydir<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<div width="100%" style="overflow:hidden">
+    <div style="float:left; width:49%;"><h1>zip 常用的参数以及含义</h1>
+-r: 递归地压缩目录和其子目录中的文件。 <br>
+-q: 静默模式，不显示压缩进度。 <br>
+-m: 压缩后将源文件移动到垃圾桶（删除源文件）。 <br>
+-j: 仅压缩文件，不包含目录信息。这样可以在解压缩时将所有文件提取到当前目录，而不是具有原始目录的结构。 <br>
+-9: 最高压缩级别。这会导致更小的压缩文件，但会花费更长的时间。 <br>
+-o: 将压缩文件写入指定的输出文件而不是默认的zip文件。 <br>
+-d: 从压缩文件中删除指定的文件。 <br>
+-u: 只压缩新添加或修改的文件。 <br>
+-x: 排除指定的文件或目录，不进行压缩。 <br>
+    </div>
+    <div style="float:right; width:50%;"><h1>unzip 常用的参数以及含义</h1>
+-l or --list：用于列出压缩文件中的内容列表。这个选项不会解压缩文件，只是显示文件列表和其他相关信息。<br>
+-d &lt;目标目录&gt; or --directory &lt;目标目录&gt;：指定解压缩后的文件将要被放置的目标目录。可以使用绝对路径或相对路径。<br>
+-o or --overwrite：如果目标目录下已存在同名文件，则覆盖已存在的文件。<br>
+-x or --exclude &lt;文件 目录&gt;：用于排除指定的文件或目录，不进行解压缩。可以使用通配符来匹配多个文件或目录。<br>
+-j or --junk-paths：在解压缩时丢弃目录路径，将所有文件提取到当前目录下。这意味着解压缩后的文件将不包含原始的目录结构。<br>
+-q or --quiet：静默模式，不显示解压缩过程中的任何信息。<br>
+-f or --freshen：只解压缩那些压缩包中包含的新文件，或者其内容已更新的文件。<br>
+-v or --verbose：详细模式，显示解压缩过程中的详细信息。<br>
+   <!--文件--><!--目标目录--><!--目标目录--></div>
+</div>
 
                 
             </div>
@@ -486,8 +398,8 @@ BODY_END</code></pre>
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -837,31 +749,35 @@ BODY_END</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/08/22/qian-duan/qian-duan-ge-chong-chi-cun-dan-wei/">
+                <a href="/2023/08/16/gong-ju-kong/mac/mac-shua-xin-dns-huan-cun/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="前端各种尺寸单位">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="mac 刷新DNS缓存">
                         
-                        <span class="card-title">前端各种尺寸单位</span>
+                        <span class="card-title">mac 刷新DNS缓存</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            em|rem|vh|vw
+                            有时 DNS 缓存可能过期或者出现问题，导致无法正确解析域名。
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-08-22
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-16
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    前端
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
+                                    工具控
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/" class="post-category">
+                                    Mac
                                 </a>
                             
                             
@@ -871,8 +787,8 @@ BODY_END</code></pre>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/HTML/">
-                        <span class="chip bg-color">HTML</span>
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
                     </a>
                     
                 </div>
@@ -886,31 +802,35 @@ BODY_END</code></pre>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/08/20/wo-de-shi-ci/yao-yin/">
+                <a href="/2023/08/16/qian-duan/vue/ru-he-zai-vite-xiang-mu-zhong-pei-zhi-ip-port-deng-lu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="药引">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="如何在Vite项目中配置ip:port访问">
                         
-                        <span class="card-title">药引</span>
+                        <span class="card-title">如何在Vite项目中配置ip:port访问</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            相思差一味,名字叫当归
+                            在Vite项目中配置ip:port访问 以及 同时支持 localhost:port 形式访问
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/" class="post-category">
-                                    我的诗词
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
+                                </a>
+                            
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/Vue/" class="post-category">
+                                    Vue
                                 </a>
                             
                             
@@ -997,87 +917,6 @@ BODY_END</code></pre>
 
 
 
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('1'),
-            headingSelector: 'h1, h2, h3, h4'
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
     
 
 </main>
@@ -1100,7 +939,7 @@ BODY_END</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

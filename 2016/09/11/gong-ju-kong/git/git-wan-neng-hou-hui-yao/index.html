@@ -346,29 +346,29 @@
                 <p><code>git reset --hard</code>往往用来移动 HEAD 指针,但这样会导致 commit 的内容被删除,往往后悔不已。</p>
 <p>可以通过reflog来进行恢复，前提是丢失的分支或commit信息没有被git gc清除,一般情况下gc对那些无用的object会保留很长时间后才清除的</p>
 <p>可以使用<code>git reflog</code>或<code>git log -g</code>命令来看到所有的操作日志。你执行的每一条git指令都有迹可循，而且可以回退到任意一步。可谓回滚操作中的万能钥匙了。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@bogon:~/learn/gitk [master]$ git reflog
-baf1722 HEAD@{0}: reset: moving to baf1722
-add2e4e HEAD@{1}: reset: moving to HEAD^
-f6df0e4 HEAD@{2}: reset: moving to HEAD^^
-baf1722 HEAD@{3}: reset: moving to baf1722
-f6df0e4 HEAD@{4}: reset: moving to HEAD^^
-baf1722 HEAD@{5}: merge feture/f2: Merge made by the 'recursive' strategy.
-0f02b7a HEAD@{6}: merge feture/f1: Merge made by the 'recursive' strategy.
-f6df0e4 HEAD@{7}: checkout: moving from feture/f2 to master
-3e54d52 HEAD@{8}: commit: 5
-5465608 HEAD@{9}: checkout: moving from feture/f1 to feture/f2
-0f4153e HEAD@{10}: commit: 4
-add2e4e HEAD@{11}: checkout: moving from master to feture/f1
-f6df0e4 HEAD@{12}: merge feture/f2: Merge made by the 'recursive' strategy.
-add2e4e HEAD@{13}: merge feture/f1: Fast-forward
-1195d28 HEAD@{14}: checkout: moving from feture/f2 to master
-5465608 HEAD@{15}: commit: 3
-1195d28 HEAD@{16}: checkout: moving from master to feture/f2
-1195d28 HEAD@{17}: checkout: moving from feture/f1 to master
-add2e4e HEAD@{18}: commit: 2
-1195d28 HEAD@{19}: checkout: moving from master to feture/f1
-1195d28 HEAD@{20}: commit: 1
-9cb291d HEAD@{21}: commit (initial): 0</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@bogon:~/learn/gitk <span class="token punctuation">[</span>master<span class="token punctuation">]</span>$ <span class="token function">git</span> reflog
+baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span>: reset: moving to baf1722
+add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>: reset: moving to HEAD^
+f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span>: reset: moving to HEAD^^
+baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">}</span>: reset: moving to baf1722
+f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span>: reset: moving to HEAD^^
+baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.
+0f02b7a HEAD@<span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>: merge feture/f1: Merge made by the <span class="token string">'recursive'</span> strategy.
+f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master
+3e54d52 HEAD@<span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">}</span>: commit: <span class="token number">5</span>
+<span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to feture/f2
+0f4153e HEAD@<span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>: commit: <span class="token number">4</span>
+add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">11</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f1
+f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">12</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.
+add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">}</span>: merge feture/f1: Fast-forward
+1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">14</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master
+<span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">15</span><span class="token punctuation">}</span>: commit: <span class="token number">3</span>
+1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">16</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f2
+1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">17</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to master
+add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">18</span><span class="token punctuation">}</span>: commit: <span class="token number">2</span>
+1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">19</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f1
+1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span>: commit: <span class="token number">1</span>
+9cb291d HEAD@<span class="token punctuation">{</span><span class="token number">21</span><span class="token punctuation">}</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>恢复的过程很简单</p>
 <ol>
 <li>通过<code>git log -g</code>或<code>git reflog</code> 命令来找到需要恢复的信息对应的 commitid，可以通过提交的时间和日期来辨别,</li>
@@ -741,13 +741,13 @@ add2e4e HEAD@{18}: commit: 2
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bu-quan/">
+                <a href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Linux终端生存之道-Git补全">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Linux终端生存之道-git别名">
                         
-                        <span class="card-title">Linux终端生存之道-Git补全</span>
+                        <span class="card-title">Linux终端生存之道-git别名</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -935,7 +935,7 @@ add2e4e HEAD@{18}: commit: 2
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

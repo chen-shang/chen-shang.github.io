@@ -390,14 +390,14 @@ class MyThread extends Thread{
   public void run() {
    //任务逻辑
   }
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>或者</p>
 <pre class="line-numbers language-JAVA" data-language="JAVA"><code class="language-JAVA">new Thread() {
       @Override
       public void run() {
         //任务逻辑
       }
-}.start();</code></pre>
+}.start();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>第二种</p>
 <pre class="line-numbers language-JAVA" data-language="JAVA"><code class="language-JAVA">package main;
 public class Main {
@@ -411,7 +411,7 @@ class MyRunnable implements Runnable {
   public void run() {
     //任务逻辑
   }
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>但是我一般的写法习惯用Java的函数式写法,包括后面的示例代码,我都会大量使用Java的λ表达式。</p>
 <pre class="line-numbers language-JAVA" data-language="JAVA"><code class="language-JAVA">package main;
 public class Main {
@@ -420,7 +420,7 @@ public class Main {
       //任务逻辑
     });
   }
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面两种方法无论是继承Thread类然后重写run方法，还是实现Runnable接口的run方法，两种方式都有一个共同点那就是run方法是没有返回值的。这就是说当年Java设计线程的时候就没有考虑过一个线程还有返回值的情况，当年的作者认为一个任务就应该完全在一个线程内执行结束，中间执行的结果不应该逃逸到线程之外，如果一个线程要等另一个线程的话，就用通知的方式或共享变量的方式通信就好了。但是后来发现需要有返回值的情况，但是没办法，Thread这时候已经设计出来了，就是没有返回值的，改也改不了了，那怎么办呢？搞了Future + Callable = FutureTask , Future 的意思就是未来，也就是说未来可能会有某个值，我现在不用，一会儿可能会获取。</p>
 <p>以上是最基本的创建线程的写法，肯定会有人问用哪种方式好呢? 无论你回答哪种方式好我觉得都不合适，我们在决定使用哪种方式的时候一定不能脱离实际。我们在技术选型的时候也一样，不能脱离业务背景。<br>
 这里就涉及到继承和实现接口两种方式的优缺点对比了。</p>
@@ -441,7 +441,7 @@ class Thread implements Runnable {
     }
 
     .....
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>该native的registerNatives方法的目的就是将Java 线程对象中的方法同操作系统线程的方法进行一一绑定。其中run方法也就是线程执行的任务被绑定到了操作系统的run方法上，当操作系统线程开始执行的时候其实就是执行的Java线程的run方法。</p>
 <p>我们创建好线程对象之后必须得通知操作系统该线程可以执行了，用的就是 start() 这个函数。所以 start()并不是执行 run() 函数里面的代码，而是通知操作系统你需要在合适的时间分配资源来执行run里面的代码，至于具体什么时候执行，就看操作系统心情了。运行线程是需要内存空间的，有一部分内存空间在创建线程的时候就开始分配了，后面会讲 程序计数器、栈、本地方法栈、堆、方法区的时候还会提及。</p>
 <p>Java 语言是如何实现线程的呢？<br>
@@ -479,7 +479,7 @@ Java 语言的线程实现是依托于JVM帮忙实现的，JVM是什么？JVM �
                  it will be passed up the call stack */
            }
        }
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>首先我们注意到这个方法是synchronized修饰的，目的就是防止并发情况下的start. 另外注意，里面有个判断 <code>if (threadStatus != 0) throw new IllegalThreadStateException();</code><br>
 如果连续两次start，第二次start肯定会报错，就是因为 threadStatus !=0 了。0代表初始状态，start后就变成其他状态了。</p>
 <p>那一个线程都有哪些状态，以及状态机是怎么转换的呢？一切都在源码当中</p>
@@ -580,7 +580,7 @@ public enum State {
      * The thread has completed execution.
      */
     TERMINATED;
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>看到没只有6中 NEW(新建)、RUNNABLE(可运行)、BLOCK(阻塞)、WATING(等待)、TIME_WATING(限时等待)、TERMINATED(结束). 注意这六中只是JVM中一个线程所处的状态，可不代表操作系统线程的状态，例如对于操作系统来说 RUNABLE 对应两种一种叫 READY 一种叫 RUNNING。</p>
 <p>一个线程的生命周期始于 NEW 终于 TERMINATED. NEW 之后经过start() 变成 RUNNABLE 可运行状态。注意可运行并不一定在运行，必须得等操作系统真正分配时间片段后才算真正的运行，所以看到RUNNABLE状态的线程可能在运行也可能在等待运行，区分不出来的，这个算是JAVA线程设计的一个败笔吧。</p>
 <p>这几个状态中，最难理解的就是 BLOCK 和 WATING 、TIME_WATING 明明都是被阻塞住了，当前程序都不再往下执行了，为啥要区分呢？</p>
@@ -593,7 +593,7 @@ public enum State {
  * to enter a synchronized block/method or
  * reenter a synchronized block/method after calling
  * {@link Object#wait() Object.wait}.
- */</code></pre>
+ */<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面 <code>reenter a synchronized block/method after calling {@link Object#wait() Object.wait}.</code>该怎么理解呢。<br>
 翻译过来是 调用object.wait方法后重入同步代码块的时候会变成 Block状态。按理说调用Object.wait后应该变成WATING状态啊，怎么这这里又变成BLOCK状态了呢？按照我的理解，调用Object.wait方法后当前线程先变成了WATING状态.当他被唤醒后先变成RUNNABLE状态，轮到他执行的时候，发现需要先获取到锁资源才行，于是该线程重新征用锁，也就是重入的时候，如果获取到锁则向下继续执行如果获取不到所则进入BLOCK状态。</p>
 <h4 id="WATING">WATING</h4>
@@ -651,21 +651,21 @@ Join 方法：本质上还是根据wait方法实现的。分析join源码发现j
 <p>上面说到了变量的可见性问题。变量的可见性指的是一个线程修改了一个变量成功之后，另一个线程能不能立马看到这个修改后变量的值。如果不能看到，那就叫做存在可见性的问题。就会导致运行结果与预期不同。</p>
 <p>这类问题一定出现在多线程共享内存的时候，单线程内代码是从上到下依次解释执行的不存在可见性问题。网上很多人都在讲什么cpu架构、什么缓存一致性协议OMEI 其实跟 volatile 没有半毛钱关系。那个是cpu在有多级缓存的时候如何保证共享内存在多个缓存中的一致性的。跟voliatle 解决的根本不是一个问题。</p>
 <p>共享变量的可见性问题产生的原因是由于JVM规定，线程运行有自己的内存空间，先把变量都缓存一份到自己的运行空间，之后所有的操作都是在自己运行空间里面玩，至于修改后的变量什么时候同步到实际的内存则视情况而定，这种方式我们称之为写回，也就是写完自己的运行空间的变量就认为操作成功了。这就造成了内存可见性问题。volitale 就是为了解决这样的问题，其原理也很简单，就是把共享变量变成看起来只有一份，其本质是把共享变量的写回变成写穿，然后通知其他缓存了该共享变量的线程缓存失效。</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">{
-  "translation": [
-    "挥发性"
-  ],
-  "basic": {
-    "us-phonetic": "ˈvɑːlətl",
-    "phonetic": "ˈvɒlətaɪl",
-    "uk-phonetic": "ˈvɒlətaɪl",
-    "explains": [
-      "n. 挥发物；有翅的动物",
-      "adj. [化学] 挥发性的；不稳定的；爆炸性的；反复无常的",
-      "n. (Volatile)人名；(意)沃拉蒂莱"
-    ]
-  }
-}</code></pre>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"translation"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"挥发性"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"basic"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"us-phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɑːlətl"</span><span class="token punctuation">,</span>
+    <span class="token property">"phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɒlətaɪl"</span><span class="token punctuation">,</span>
+    <span class="token property">"uk-phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɒlətaɪl"</span><span class="token punctuation">,</span>
+    <span class="token property">"explains"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"n. 挥发物；有翅的动物"</span><span class="token punctuation">,</span>
+      <span class="token string">"adj. [化学] 挥发性的；不稳定的；爆炸性的；反复无常的"</span><span class="token punctuation">,</span>
+      <span class="token string">"n. (Volatile)人名；(意)沃拉蒂莱"</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>volitale 的意思是挥发性引申为不稳定的易失的，所以被他修饰的变量很不稳定，那就得每次读之前去主内存里面读，每次写之后都要同步到主内存。</p>
 <p>这个可见性问题说是好验证，无非就是一个线程修改一个共享变量的值之后，另一个线程看不到就行，但由于线程运行的非常快且不可控，真要你写一个示例出来，你还真不见的能写对。</p>
 <pre class="line-numbers language-JAVA" data-language="JAVA"><code class="language-JAVA">package main;
@@ -700,7 +700,7 @@ public class Main {
     thread1.start();
     thread2.start();
   }
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里共享变量加上volatile修饰就可以解决，证明volatile可以解决共享变的可见性问题。那他是怎么解决可见性的问题的呢？</p>
 <h3 id="volatile究竟如何让变量的修改在多线程之间可见的呢">volatile究竟如何让变量的修改在多线程之间可见的呢</h3>
 <p>所有对volatile变量的操作翻译成会变之后，都会加一个lock指令，这个lock指令是一个cpu原语，可以保证变量在变化后立马写入主存，也能保证在读取数据的时候每次都去主内存中读取，就好像过线程之间从来没有缓存过变量的拷贝一样。</p>
@@ -715,7 +715,7 @@ public class Main {
 <p>字节码也依然是人写的代码，cpu在执行的时候也不傻，也会优化字节码指令，也可以合并执行，可以乱序执行等等。<br>
 举个例子</p>
 <pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">bit a=0;
-bit b=0;</code></pre>
+bit b=0;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>上面这条语句在编译成JAVA字节码的时候，可能就变成了 b=0 在前，a=0 在后了。<br>
 cpu执行的时候，可能 a和b 是一起赋值的，因为一条总线可以传输64位数据，可能a\b所在的内存会同时充电赋值。当然也可能先给b赋值然后再给a赋值</p>
 <h3 id="复现指令重排序">复现指令重排序</h3>
@@ -741,7 +741,7 @@ public class Main {
       }
     }
   }
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>上面这段代码可以验证指令重排序的存在</p>
 <center>
   <img src="/2022/03/15/java/java-bing-fa-bian-cheng/bing-fa-xue-xi-bi-ji/重排序.jpg">
@@ -811,7 +811,7 @@ public final int getAndAddInt(Object o, long offset, int delta) {
         v = getIntVolatile(o, offset);
     } while (!weakCompareAndSetInt(o, offset, v, v + delta));
     return v;
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>底层有一个native的方法</p>
 <pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">/**
  * Atomically updates Java variable to {@code x} if it is currently
@@ -823,7 +823,7 @@ public final int getAndAddInt(Object o, long offset, int delta) {
  * @return {@code true} if successful
  */
 @IntrinsicCandidate
-public final native boolean compareAndSetInt(Object o, long offset,int expected,int x);</code></pre>
+public final native boolean compareAndSetInt(Object o, long offset,int expected,int x);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>CAS 的原理 跟 volatile 的原理是一样的，所有的CAS操作 和 被volatile修饰的变量 翻译成底层汇编指令后都会被加上一个lock指令，这个lock指令是一个cpu原语，这个指令可以理解为cpu级别的锁，要不怎叫 lock指令呢。lock 指令可以保证后面的操作变成原子的操作中途不会被打断，也能保证后面的操作用到的内存被立即写回主存，读取都从主存中读取。</p>
 <h3 id="Java-中的悲观锁">Java 中的悲观锁</h3>
 <p>Java 中的锁分两大类，一类是依靠关键字实现的自动锁，一类是实现Lock接口而生的手动锁。</p>
@@ -1477,7 +1477,7 @@ public final native boolean compareAndSetInt(Object o, long offset,int expected,
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

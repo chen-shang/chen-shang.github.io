@@ -350,24 +350,24 @@
 }
 
 // 你仍然可以调用而不用担心报错
-echo(1,2,3,4)</code></pre>
+echo(1,2,3,4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这么是因为 你传递的参数其实是 放到了 函数 内部一个名叫 arguments 的方法 里面。我们可以在函数内部，使用 arguments 变量 依次取出 传递给 函数的 参数</p>
 <pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">function echo(){
     console.log("我执行了echo() 第一个参数是:",arguments[0])
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>上面的函数是可以打印出传递的参数的，即使 函数没有显示的定义一个变量来接受参数</p>
 <p>这一点 和 shell 很像. 在 shell 里面, 定义一个函数，你可以传参也可以不传参，传参的话，一个参数就用 $1 取值，第二个参数就用 $2 取值，依次类推</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">function echo(){
-  local param1=$1
-  local param2=$2
-  echo "${param1} and ${param2}"
-}
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">param1</span><span class="token operator">=</span><span class="token variable">$1</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">param2</span><span class="token operator">=</span><span class="token variable">$2</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${param1}</span> and <span class="token variable">${param2}</span>"</span>
+<span class="token punctuation">}</span>
 
-echo "1" "2"</code></pre>
+<span class="token builtin class-name">echo</span> <span class="token string">"1"</span> <span class="token string">"2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>不过要注意一下 JavaScript 中对于箭头函数中，是没有办法 获取到 arguments 这个特殊变量的 ,因为 箭头函数这种写法其实是没有绑定一个实体的，他连this 都没有。不过可以使用 剩余参数的形式来间接实现</p>
 <pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">const echo=(...arg)=&gt;{
 
-}</code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>不过，JavaScript 语法实在是太多而且太灵活了，一种形式可以有多种写法，而且还有原生和EMACScript等多种标准，学习每一种写法，不亚于重新学习了一门新的语言。</p>
 
                 
@@ -924,7 +924,7 @@ echo "1" "2"</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

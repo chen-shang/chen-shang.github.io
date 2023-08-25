@@ -348,71 +348,71 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>归并排序采用的是分治的思想。归就是归纳,并就是合并。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">main(){
-  local array=(1 3 5 7 9 2 4 6 8 0 7 9 2 4)
-  sort "0" "${#array[@]}"
-}
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token number">2</span> <span class="token number">4</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">0</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token number">2</span> <span class="token number">4</span><span class="token punctuation">)</span>
+  <span class="token function">sort</span> <span class="token string">"0"</span> <span class="token string">"<span class="token variable">${<span class="token operator">#</span>array<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
+<span class="token punctuation">}</span>
 
-function sort(){
-    local low=$1
-    local high=$2
+<span class="token keyword">function</span> <span class="token function-name function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">low</span><span class="token operator">=</span><span class="token variable">$1</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">high</span><span class="token operator">=</span><span class="token variable">$2</span>
 
-    if [[ ${low} -ge  ${high} ]] ; then
-      return
-    fi
-
-
-    local mid=$(($((low+high))/2))
-
-    sort ${low} ${mid}
-    sort $((mid+1)) ${high}
-    merge ${low} ${mid} ${high}
-}
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${low}</span> <span class="token parameter variable">-ge</span>  <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+      <span class="token builtin class-name">return</span>
+    <span class="token keyword">fi</span>
 
 
-function merge(){
-  local low=$1
-  local mid=$2
-  local high=$3
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">mid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span><span class="token variable">$((</span>low<span class="token operator">+</span>high<span class="token variable">))</span></span>/2<span class="token punctuation">))</span>
 
-  local i=${low}
-  local j=$((mid+1))
-  local tmp=();
-
-  local k=0;
-  while [[ ${i} -le ${mid} ]] &amp;&amp; [[ ${j} -le ${high} ]];do
-    if [[ ${array[i]} -lt ${array[j]} ]];then
-        tmp[k]=${array[i]}
-        let k++;
-        let i++;
-    else
-       tmp[k]=${array[j]}
-       let k++;
-       let j++;
-    fi
-  done
+    <span class="token function">sort</span> <span class="token variable">${low}</span> <span class="token variable">${mid}</span>
+    <span class="token function">sort</span> <span class="token variable"><span class="token variable">$((</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span> <span class="token variable">${high}</span>
+    merge <span class="token variable">${low}</span> <span class="token variable">${mid}</span> <span class="token variable">${high}</span>
+<span class="token punctuation">}</span>
 
 
-  while [[ ${i} -le ${mid} ]];do
-        tmp[k]=${array[i]}
-        let k++;
-        let i++;
-  done
+<span class="token keyword">function</span> <span class="token function-name function">merge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">low</span><span class="token operator">=</span><span class="token variable">$1</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">mid</span><span class="token operator">=</span><span class="token variable">$2</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">high</span><span class="token operator">=</span><span class="token variable">$3</span>
 
-  while [[ ${j} -le ${high} ]];do
-        tmp[k]=${array[j]}
-        let k++;
-        let j++;
-  done
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token variable">${low}</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  for((l=0;l&lt;k;l++));do
-        index=$((low + l))
-        array[$index]=${tmp[$l]}
-  done
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">k</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-le</span> <span class="token variable">${mid}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-le</span> <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-lt</span> <span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>
+        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>
+        <span class="token builtin class-name">let</span> i++<span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+       tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span>
+       <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>
+       <span class="token builtin class-name">let</span> j++<span class="token punctuation">;</span>
+    <span class="token keyword">fi</span>
+  <span class="token keyword">done</span>
 
-  echo ${array[*]}
-}
-main</code></pre>
+
+  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-le</span> <span class="token variable">${mid}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>
+        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>
+        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>
+        <span class="token builtin class-name">let</span> i++<span class="token punctuation">;</span>
+  <span class="token keyword">done</span>
+
+  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-le</span> <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>
+        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span>
+        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>
+        <span class="token builtin class-name">let</span> j++<span class="token punctuation">;</span>
+  <span class="token keyword">done</span>
+
+  <span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>l<span class="token operator">&lt;</span>k<span class="token punctuation">;</span>l<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span><span class="token keyword">do</span>
+        <span class="token assign-left variable">index</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>low <span class="token operator">+</span> l<span class="token variable">))</span></span>
+        array<span class="token punctuation">[</span><span class="token variable">$index</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp<span class="token punctuation">[</span>$l<span class="token punctuation">]</span>}</span>
+  <span class="token keyword">done</span>
+
+  <span class="token builtin class-name">echo</span> <span class="token variable">${array<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>
+<span class="token punctuation">}</span>
+main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行最后结果如下</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">1 3 5 7 9 2 4 6 8 0 7 9 2 4
 1 3 5 7 9 2 4 6 8 0 7 9 2 4
@@ -427,7 +427,7 @@ main</code></pre>
 1 2 3 4 5 6 7 9 0 7 8 9 2 4
 1 2 3 4 5 6 7 9 0 7 8 9 2 4
 1 2 3 4 5 6 7 9 0 2 4 7 8 9
-0 1 2 2 3 4 4 5 6 7 7 8 9 9</code></pre>
+0 1 2 2 3 4 4 5 6 7 7 8 9 9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -797,7 +797,7 @@ main</code></pre>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/09/linux/baseshell/zen-me-xie-hao-shell-jiao-ben/">
+                <a href="/2022/04/09/linux/shell/zen-me-xie-hao-shell-jiao-ben/">
                     <div class="card-image">
                         
                         
@@ -824,8 +824,8 @@ main</code></pre>
                                     Linux
                                 </a>
                             
-                            <a href="/categories/Linux/BaseShell/" class="post-category">
-                                    BaseShell
+                            <a href="/categories/Linux/Shell/" class="post-category">
+                                    Shell
                                 </a>
                             
                             
@@ -991,7 +991,7 @@ main</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

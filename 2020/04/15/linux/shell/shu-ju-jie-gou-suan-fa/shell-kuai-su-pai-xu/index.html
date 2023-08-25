@@ -357,56 +357,56 @@
 第三种方式,我们组左,中,右三个数的中位数为主。或者5个数中的中位数<br>
 如果我们每次选的元素总是能将数组刚好左右分割，使得所选元素左边都比该元素小，右边的元素都比该元素大，那么我们的算法就是最优的。</p>
 <p>下面我没来挑战一下这个看似简单实则超级难理解的算法。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">main(){                                   #我们还是先来定义一个main方法
-  array=(1 3 5 7 9 2 4 6 8 10 1 2 8 5 31) #我们再来定义一个待排数组,注意这里是个全局的变量
-  quick_sort                              #我们调用我们即将书写的快速排序
-  echo "${array[*]}"                      #打印数组,看看是不是按照从小到的的顺序排序了呢
-}
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                                   <span class="token comment">#我们还是先来定义一个main方法</span>
+  <span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token number">2</span> <span class="token number">4</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">10</span> <span class="token number">1</span> <span class="token number">2</span> <span class="token number">8</span> <span class="token number">5</span> <span class="token number">31</span><span class="token punctuation">)</span> <span class="token comment">#我们再来定义一个待排数组,注意这里是个全局的变量</span>
+  quick_sort                              <span class="token comment">#我们调用我们即将书写的快速排序</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${array<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span>                      <span class="token comment">#打印数组,看看是不是按照从小到的的顺序排序了呢</span>
+<span class="token punctuation">}</span>
 
-function quick_sort(){
-  #注意array是全局变量,我们可以在这里访问到它
+<span class="token keyword">function</span> <span class="token function-name function">quick_sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">#注意array是全局变量,我们可以在这里访问到它</span>
 
-  #快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标
+  <span class="token comment">#快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标</span>
 
-  function sort(){
-    local left=$1;local right=$2
-    local i=${left};local j=${right} #这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。
+  <span class="token keyword">function</span> <span class="token function-name function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">left</span><span class="token operator">=</span><span class="token variable">$1</span><span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">right</span><span class="token operator">=</span><span class="token variable">$2</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token variable">${left}</span><span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token variable">${right}</span> <span class="token comment">#这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。</span>
 
-    #1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件
-    if [[ ${left} -ge ${right} ]];then return; fi
+    <span class="token comment">#1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${left}</span> <span class="token parameter variable">-ge</span> <span class="token variable">${right}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> <span class="token builtin class-name">return</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
 
-    #2. 选主元
-    local base=${array[left]} #每次都已最左边的为基
+    <span class="token comment">#2. 选主元</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">base</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>left<span class="token punctuation">]</span>}</span> <span class="token comment">#每次都已最左边的为基</span>
 
-    while [[ ${i} -ne ${j} ]]; do
-      #3. 分隔
-      #3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知
-      while [[ ${array[j]} -ge ${base} ]] &amp;&amp; [[ ${j} -gt ${i}  ]];do #注意等号
-        ((j--))
-      done
+    <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-ne</span> <span class="token variable">${j}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+      <span class="token comment">#3. 分隔</span>
+      <span class="token comment">#3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知</span>
+      <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-ge</span> <span class="token variable">${base}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-gt</span> <span class="token variable">${i}</span>  <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span> <span class="token comment">#注意等号</span>
+        <span class="token variable"><span class="token punctuation">((</span>j<span class="token operator">--</span><span class="token punctuation">))</span></span>
+      <span class="token keyword">done</span>
 
-      while [[ ${array[i]} -le ${base} ]] &amp;&amp; [[ ${j} -gt ${i}  ]];do
-        ((i++))
-      done
+      <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-le</span> <span class="token variable">${base}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-gt</span> <span class="token variable">${i}</span>  <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>
+        <span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">++</span><span class="token punctuation">))</span></span>
+      <span class="token keyword">done</span>
 
-      if [[ ${i} -lt ${j} ]];then
-         local tmp=${array[j]}
-         array[j]=${array[i]}
-         array[i]=${tmp}
-      fi
-    done
+      <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-lt</span> <span class="token variable">${j}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+         <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span>
+         array<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>
+         array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp}</span>
+      <span class="token keyword">fi</span>
+    <span class="token keyword">done</span>
 
-    array[left]=${array[i]}
-    array[i]=${base}
+    array<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>
+    array<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${base}</span>
 
-    sort "${left}" "$((i-1))"
-    sort "$((i+1))" "${right}"
-  }
-  sort
-}
+    <span class="token function">sort</span> <span class="token string">"<span class="token variable">${left}</span>"</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token variable">))</span></span>"</span>
+    <span class="token function">sort</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>"</span> <span class="token string">"<span class="token variable">${right}</span>"</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">sort</span>
+<span class="token punctuation">}</span>
 
 
-main</code></pre>
+main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -974,7 +974,7 @@ main</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             

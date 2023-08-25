@@ -362,59 +362,59 @@
 所以，我们得从正反两方面来考虑写单元测试。一面是应该抛异常，一面是不应该抛异常。</li>
 </ol>
 <p>例如</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class TargetCode {
-    public static int divide(int a, int b) {
-        if (b == 0) {
-            throw new ArithmeticException("除数不能为0");
-        }
-        return a / b;
-    }
-}</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TargetCode</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">divide</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>b <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">ArithmeticException</span><span class="token punctuation">(</span><span class="token string">"除数不能为0"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> a <span class="token operator">/</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>对应的单元测试</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">import org.junit.Test;
-import static org.junit.Assert.*;
- public class TargetCodeTest {
-    //我们要测试一个会抛出异常的。如果没有抛出异常这个单元测试是通过不了的
-    @Test(expected = ArithmeticException.class)
-    public void testDivideByZero() {
-        int a = 10;
-        int b = 0;
-        TargetCode.divide(a, b);
-    }
-    //还要测试一个正常场景下不会抛出异常的。如果抛出异常，这个单元测试是通过不了
-    @Test
-    public void testDivide() {
-        int a = 10;
-        int b = 2;
-        int result = TargetCode.divide(a, b);
-        assertEquals(5, result);
-    }
-}</code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Test</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token keyword">static</span> <span class="token import static"><span class="token namespace">org<span class="token punctuation">.</span>junit<span class="token punctuation">.</span></span><span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+ <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TargetCodeTest</span> <span class="token punctuation">{</span>
+    <span class="token comment">//我们要测试一个会抛出异常的。如果没有抛出异常这个单元测试是通过不了的</span>
+    <span class="token annotation punctuation">@Test</span><span class="token punctuation">(</span>expected <span class="token operator">=</span> <span class="token class-name">ArithmeticException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDivideByZero</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token class-name">TargetCode</span><span class="token punctuation">.</span><span class="token function">divide</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">//还要测试一个正常场景下不会抛出异常的。如果抛出异常，这个单元测试是通过不了</span>
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testDivide</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> result <span class="token operator">=</span> <span class="token class-name">TargetCode</span><span class="token punctuation">.</span><span class="token function">divide</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们该try catch么？有人说我直接<code>try catch</code>不行么。不行，try catch 住了之后，只能校验抛出了异常的情况，但是针对可能因为代码出错而导致没有抛异常这样的场景无法测试到。如果只是想测试这个方法在特定场景下会抛出异常，直接用 <code>@Test(expected=XXXExcepting.class)</code>就好了。但是有的时候我们需要测试抛出的异常的报文是什么，这时候有两种手段，第一种是使用 <code>@Rule</code> 第二种是使用 <code>Assert.assertThrows</code>。不过 <code>@Rule</code>已经在新版本的junit中标记为废弃了，进而推荐使用 <code>Assert.assertThrows</code> 这种形式。</p>
 <h3 id="方式一-Rule-示例">方式一: <code>@Rule</code> 示例</h3>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Rule
-private final ExpectedException exception = ExpectedException.none();
-@Test
-public void testLoginWhenAccountPassIsBlank() {
-    exception.expect(IllegalArgumentException.class);
-    exception.expectMessage("accountPass can not be blank");
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Rule</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ExpectedException</span> exception <span class="token operator">=</span> <span class="token class-name">ExpectedException</span><span class="token punctuation">.</span><span class="token function">none</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token annotation punctuation">@Test</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testLoginWhenAccountPassIsBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    exception<span class="token punctuation">.</span><span class="token function">expect</span><span class="token punctuation">(</span><span class="token class-name">IllegalArgumentException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    exception<span class="token punctuation">.</span><span class="token function">expectMessage</span><span class="token punctuation">(</span><span class="token string">"accountPass can not be blank"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    AccountLoginRequest accountLoginRequest = new AccountLoginRequest();
-    accountLoginRequest.setAccountName("mock");
-    loginService.login(accountLoginRequest);
-}</code></pre>
+    <span class="token class-name">AccountLoginRequest</span> accountLoginRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AccountLoginRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    accountLoginRequest<span class="token punctuation">.</span><span class="token function">setAccountName</span><span class="token punctuation">(</span><span class="token string">"mock"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    loginService<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>accountLoginRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="方式二-Assert-assertThrows-示例">方式二: <code>Assert.assertThrows</code> 示例</h3>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java">@Test
-    public void testLoginWhenAccountNameIsBlank() {
-        IllegalArgumentException illegalArgumentException = Assert.assertThrows(IllegalArgumentException.class, () -&gt; {
-            AccountLoginRequest accountLoginRequest = new AccountLoginRequest();
-            loginService.login(accountLoginRequest);
-        });
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testLoginWhenAccountNameIsBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">IllegalArgumentException</span> illegalArgumentException <span class="token operator">=</span> <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">assertThrows</span><span class="token punctuation">(</span><span class="token class-name">IllegalArgumentException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
+            <span class="token class-name">AccountLoginRequest</span> accountLoginRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">AccountLoginRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            loginService<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>accountLoginRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        String message = illegalArgumentException.getMessage();
-        Assert.assertEquals("accountName can not be blank", message);
-    }
-    </code></pre>
+        <span class="token class-name">String</span> message <span class="token operator">=</span> illegalArgumentException<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">assertEquals</span><span class="token punctuation">(</span><span class="token string">"accountName can not be blank"</span><span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -1058,7 +1058,7 @@ public void testLoginWhenAccountPassIsBlank() {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.2k</span>
+                        class="white-color">124k</span>
             
             
             
