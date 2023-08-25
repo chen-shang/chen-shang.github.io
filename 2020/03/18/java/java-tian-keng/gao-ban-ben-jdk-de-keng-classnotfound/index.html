@@ -353,9 +353,9 @@
 <pre class="line-numbers language-none"><code class="language-none">root@xr-travelse-arm-vm01:~# java -version
 openjdk version "11.0.4" 2019-07-16
 OpenJDK Runtime Environment (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3)
-OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mode)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mode)</code></pre>
 <p>结果发现居然装的是java 11. 这个版本我们生产环境从未用过，本想正重装Java8来解决，但是难道以后都不升级了么，所以这个问题一定要弄明白，于是乎goole了一下发现java8 以后的jvm虚拟机去掉了好几个jvm配置参数，那是因为jdk8以后版本的jvm开始做减法了，去掉了一些功能.例如 配置</p>
-<pre class="line-numbers language-none"><code class="language-none">#local JVM_HEAP="-XX:NewRatio=1 -XX:SurvivorRatio=8 -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m -XX:+HeapDumpOnOutOfMemoryError -XX:ReservedCodeCacheSize=64m -XX:InitialCodeCacheSize=64m"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">#local JVM_HEAP="-XX:NewRatio=1 -XX:SurvivorRatio=8 -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m -XX:+HeapDumpOnOutOfMemoryError -XX:ReservedCodeCacheSize=64m -XX:InitialCodeCacheSize=64m"</code></pre>
 <p>配置这些在java8中是没问题的，但是配置在java11中会导致服务启动不了。因为有些参数已经废弃掉了，或者改用了其他的方式来配置。</p>
 <p>另外，还会出现一个现象，就是引用启动没有问题，但是程序就是运行不了，而且不打印异常堆栈信息，这你怎么排查！！！我没办法只要远程调试，断点执行，才发现一个异常。<br>
 最后还是使用java8吧先，有时间在研究java11.</p>
@@ -914,7 +914,7 @@ OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mod
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

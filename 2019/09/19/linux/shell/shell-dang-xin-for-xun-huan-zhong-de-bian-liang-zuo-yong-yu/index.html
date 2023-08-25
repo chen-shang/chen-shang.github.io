@@ -347,25 +347,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token keyword">for</span> <span class="token for-or-select variable">item</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token keyword">do</span>
-    <span class="token builtin class-name">echo</span> <span class="token variable">${item}</span>
-  <span class="token keyword">done</span>
-  <span class="token builtin class-name">echo</span> <span class="token string">"done"</span>
+                <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">main(){
+  for item in {1..5};do
+    echo ${item}
+  done
+  echo "done"
   func
-<span class="token punctuation">}</span>
+}
 
-<span class="token keyword">function</span> <span class="token function-name function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token builtin class-name">echo</span> <span class="token variable">${item}</span>
-<span class="token punctuation">}</span>
+function func(){
+  echo ${item}
+}
 
-main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+main</code></pre>
 <p>上面这段代码,在for循环执行完毕后又执行了一个函数func,但是func居然打印出了item的最后一次的赋值5,说明这里for 中 item定义的是一个全局的变量,<br>
 这和我们的认知是不太一样的,理论上item的作用域应该只在main函数中,出了main函数,其他函数应该是不认的。所以这里可能会有坑。</p>
 <p>因此比较保险一点的做法是,在for之前先定义一个local的变量item</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">local</span> item<span class="token punctuation">;</span><span class="token keyword">for</span> <span class="token for-or-select variable">item</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token keyword">do</span>
-    <span class="token builtin class-name">echo</span> <span class="token variable">${item}</span>
-<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">local item;for item in {1..5};do
+    echo ${item}
+done</code></pre>
 
                 
             </div>
@@ -925,7 +925,7 @@ main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

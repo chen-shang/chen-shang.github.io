@@ -406,7 +406,7 @@ Some of the options include:
 Named arguments are also available as $ARGS.named[], while
 positional arguments are available as $ARGS.positional[].
 
-See the manpage for more options.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+See the manpage for more options.</code></pre>
 <p>需要说明的是 jq 只能接受 well form 的 JSON 字符串作为输入内容。也就是说输入内容必须严格遵循 JSON 格式的标准。所有的属性名必须是以双引号包括的字符串。对象的最后一个属性的末尾或者数组的最后一个元素的末尾不能有逗号。否则 jq 会抛出无法解析 JSON 的错误。</p>
 <h2 id="官方使用手册">官方使用手册</h2>
 <p><a target="_blank" rel="noopener" href="https://stedolan.github.io/jq/manual/">https://stedolan.github.io/jq/manual/</a></p>
@@ -417,14 +417,14 @@ See the manpage for more options.<span aria-hidden="true" class="line-numbers-ro
 <blockquote>
 <p>使用 <code>-r</code> 参数</p>
 </blockquote>
-<pre class="line-numbers language-commandline" data-language="commandline"><code class="language-commandline">echo '{"foo": 42, "bar": "less interesting data"}'|jq -r .bar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-commandline" data-language="commandline"><code class="language-commandline">echo '{"foo": 42, "bar": "less interesting data"}'|jq -r .bar</code></pre>
 <center>
   <img src="/2021/08/04/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-jq/jq1.jpg">
 </center>
 2. request_timestamp/0 is not defined at <top-level>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">jq: error: request_timestamp/0 is not defined at &lt;top-level&gt;, line 1:
 request_timestamp
-jq: 1 compile error<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+jq: 1 compile error</code></pre>
 &gt; 解决方法:  local subJson=$(echo "${json}"|jq ".\"${key}\"") 用引号包裹
 </top-level>
                 
@@ -1070,7 +1070,7 @@ jq: 1 compile error<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

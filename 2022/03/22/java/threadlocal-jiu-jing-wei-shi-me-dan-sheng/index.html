@@ -346,116 +346,116 @@
                 <p>我们都知道Java中有一个ThreadLocal类,但是你知道它为什么会被设计出来么,那它究竟解决了什么问题,在什么场景下使用呢?</p>
 <p>首先我们先设想一个问题<br>
 我在a方法中有一个变量,我想在b方法中打印，我该怎么做</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token class-name">String</span> uuid<span class="token operator">=</span><span class="token string">"02ED1C90-F75B-4A06-89E7-EE0451F4BABC"</span><span class="token punctuation">;</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] a 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public statis void a(){
+  String uuid="02ED1C90-F75B-4A06-89E7-EE0451F4BABC";
+  log.info("[{}] a 方法执行了",uuid);
+}
 
-<span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token class-name">String</span> uuid<span class="token operator">=</span><span class="token punctuation">;</span> <span class="token comment">//这里我改怎么获取到a方法中的变量uuid呢</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] b 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+public statis void b(){
+  String uuid=; //这里我改怎么获取到a方法中的变量uuid呢
+  log.info("[{}] b 方法执行了",uuid);
+}</code></pre>
 <p>于是我们想到了第一种解决方案<br>
 a 方法调用b 方法，然后把这个变量传进去嘛<br>
 于是就大概就编程了这样</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token class-name">String</span> uuid<span class="token operator">=</span><span class="token string">"02ED1C90-F75B-4A06-89E7-EE0451F4BABC"</span><span class="token punctuation">;</span>
-  <span class="token function">b</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] a 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public statis void a(){
+  String uuid="02ED1C90-F75B-4A06-89E7-EE0451F4BABC";
+  b(uuid)
+  log.info("[{}] a 方法执行了",uuid);
+}
 
-<span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token class-name">String</span> uuidFromA<span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token class-name">String</span> uuid<span class="token operator">=</span>uuidFromA<span class="token punctuation">;</span> <span class="token comment">//这里我改怎么获取到a方法中的变量name呢</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] b 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+public statis void b(String uuidFromA){
+  String uuid=uuidFromA; //这里我改怎么获取到a方法中的变量name呢
+  log.info("[{}] b 方法执行了",uuid);
+}</code></pre>
 <p>问题解决了么,当然。那如果 c ,d ,f 等函数也要做这样的操作呢,你怎么做，每个方法都加一个参数么，而且这个参数很可能是跟业务无关的。<br>
 然后你就会发现你的getUserNameById(String uuid,int id) 里面多了一个叫 uuid的业务无关的传参,是不是很别扭呢。而且调用的地方也不一定就能获取到这个参数,会让调用者很困惑，明明只需要一个id字段就好了，而且你的函数名也写的是ById,干嘛还要我传一个无关的 uuid 过去，设计一点都不专业啊。</p>
 <p>那好，于是我们就产生了第二种解决方案<br>
 全局变量</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> uuid<span class="token operator">=</span><span class="token string">"02ED1C90-F75B-4A06-89E7-EE0451F4BABC"</span>
-<span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] a 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public static String uuid="02ED1C90-F75B-4A06-89E7-EE0451F4BABC"
+public statis void a(){
+  b()
+  log.info("[{}] a 方法执行了",uuid);
+}
 
-<span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] b 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+public statis void b(){
+  log.info("[{}] b 方法执行了",uuid);
+}</code></pre>
 <p>是不是感觉清爽多了，问题解决了么,当然！但是，可是，可但是，只要用到全局的静态变量，就要很小心，你要看看这个静态变量是不是在其他的类中或者其他service中也会是使用，如果是就要设置为 public 如果不是就要设置为 private，另外还要关注这个变量是不是能被其他地方修改，还是只是被读取，而不会并发修改等等之类的问题。此外你还要注意，这个static 的全局的变量一旦初始化就会永久留在内存中，注意是永久，除非你手动的释放，否则gc也很难回收它，至少我到目前学到的jvm没有回收静态变量的，因为静态变量是跟随类实例化而产生，跟随类的消亡而消亡的，我还没见哪个类加载之后过一点时间还会销毁的。</p>
 <p>好，现在问题升级，如果这个uuid 要随线程产生而产生，随线程消亡而释放(节约空间吗，只在线程中使用，不会永久驻留在内存中)。如何来解决上面提到的问题。</p>
 <p>于是自然而然的我们想到只需要在线程初始化的时候,在线程对象里面(没错，线程也是一个对象，而且是一个占用空间不小的对象，Java中特意封装了一个类叫Thread用以映射操作系统的一个线程，其实说到底还是进程)保存一个变量，这个变量可用在线程的任何地方都访问到。<br>
 于是我又灵光一闪，想到了一个方案，我可以改写 Thread 类，然后让Thread类里面包含一个 HashMap 结构，用来存储我先搞在线程上线文中传递的变量，于是就变成了这样的设计。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ContextThread</span> <span class="token keyword">extends</span> <span class="token class-name">Thread</span> <span class="token punctuation">{</span>
-	<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> locals <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class ContextThread extends Thread {
+	private final Map&lt;Object, Object&gt; locals = new HashMap();
 
-	<span class="token keyword">public</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token class-name">Runnable</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">super</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
+	public ContextThread(Runnable target) {
+		super(target);
+	}
 
-	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">putLocal</span><span class="token punctuation">(</span><span class="token class-name">Object</span> k<span class="token punctuation">,</span> <span class="token class-name">Object</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		locals<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
+	public void putLocal(Object k, Object v) {
+		locals.put(k, v);
+	}
 
-	<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">getLocal</span><span class="token punctuation">(</span><span class="token class-name">Object</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">return</span> locals<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+	public Object getLocal(Object k) {
+		return locals.get(k);
+	}
+}
 
-<span class="token keyword">class</span> <span class="token class-name">Main2</span> <span class="token punctuation">{</span>
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token class-name">Object</span> uuid <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+class Main2 {
+	public static void main(String[] args) {
+    Object uuid = new Object();
 
-		<span class="token class-name">ContextThread</span> uuid0 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-			<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		uuid0<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		ContextThread uuid0 = new ContextThread(() -&gt; {
+			((ContextThread)Thread.currentThread()).putLocal(uuid, "12345");
+			say();
+		});
+		uuid0.start();
 
-		<span class="token class-name">ContextThread</span> uuid1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-			<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345222222"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		ContextThread uuid1 = new ContextThread(() -&gt; {
+			((ContextThread)Thread.currentThread()).putLocal(uuid, "12345222222");
+			say();
+		});
 
-		uuid1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
+		uuid1.start();
+	}
 
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token class-name">Object</span> uuid <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getLocal</span><span class="token punctuation">(</span><span class="token string">"uuid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	public static void say() {
+		Object uuid = ((ContextThread)Thread.currentThread()).getLocal("uuid");
+		System.out.println(uuid);
+	}
+}</code></pre>
 <p>我上面自定义的 ContextThread ,也能实现保存变量的目的, 然后 每个变量也只在 当前线程的上下文中有效。为什么JDK的作者们不在Thread里面放一个HashMap呢？你要说HashMap 不够线程安全，那可以用ConcurrentHashMap呀。重点就在于这样设计的话，如法做到变量的隔离，因为我们还可以写出这样的代码</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Main2</span> <span class="token punctuation">{</span>
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token class-name">Object</span> uuid <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">class Main2 {
+	public static void main(String[] args) {
+		Object uuid = new Object();
 
-		<span class="token class-name">ContextThread</span> uuid0 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-			<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		uuid0<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		ContextThread uuid0 = new ContextThread(() -&gt; {
+			((ContextThread)Thread.currentThread()).putLocal(uuid, "12345");
+			say();
+		});
+		uuid0.start();
 
-		<span class="token class-name">ContextThread</span> uuid1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-			<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345222222"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		ContextThread uuid1 = new ContextThread(() -&gt; {
+			((ContextThread)Thread.currentThread()).putLocal(uuid, "12345222222");
+			say();
+		});
 
-		uuid1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token comment">//注意这里</span>
-		<span class="token class-name">ContextThread</span> uuid3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-			<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345222222"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			uuid0<span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"1234"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		uuid3<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		uuid1.start();
+    //注意这里
+		ContextThread uuid3 = new ContextThread(() -&gt; {
+			((ContextThread)Thread.currentThread()).putLocal(uuid, "12345222222");
+			say();
+			uuid0.putLocal(uuid, "1234");
+		});
+		uuid3.start();
 
-	<span class="token punctuation">}</span>
+	}
 
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token class-name">Object</span> uuid <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getLocal</span><span class="token punctuation">(</span><span class="token string">"uuid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	public static void say() {
+		Object uuid = ((ContextThread)Thread.currentThread()).getLocal("uuid");
+		System.out.println(uuid);
+	}
+}</code></pre>
 <p>注意 <code>	ContextThread uuid3 = ... </code> 这个线程里面居然改动了 uuid0线程里面的uuid的值，变量不隔离了。而且我们不得不写putLocal(k,v)这样丑陋的代码。</p>
 <p>那就只能在换个方式设计了，要求也就更明确了</p>
 <ol>
@@ -465,12 +465,12 @@ a 方法调用b 方法，然后把这个变量传进去嘛<br>
 </ol>
 <p>所以Java的开发大牛们就提前在设计Thread类的时候设计出来了这个变量。所以，ThreadLocal就是解决这个问题。目的就是为了在各自的线程里面共享一个变量或几个变量，你要共享几个，你就创建几个ThreadLocal对象，这样的好处就是避免了创建一个线程外的对象所要考虑的并发问题了，因为threadLocal都只是某一个线程里面自己的变量了，随便你怎么取值，怎么修改都不会影响其他的线程里面的值。</p>
 <p>我们看Thread 中 本地变量的实现代码的时候，我们先看这个地方，大概在181行</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token comment">/* ThreadLocal values pertaining to this thread. This map is maintained
-     * by the ThreadLocal class. */</span>
-<span class="token class-name">ThreadLocal<span class="token punctuation">.</span>ThreadLocalMap</span> threadLocals <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"> /* ThreadLocal values pertaining to this thread. This map is maintained
+     * by the ThreadLocal class. */
+ThreadLocal.ThreadLocalMap threadLocals = null;</code></pre>
 <p>我们发现他是一个叫做ThreadLocal.ThreadLocalMap的一个数据类型，我们先不着急进到 ThreadLocal.ThreadLocalMap 这个类里面，我们先看一下这个变量threadLocals我们就知道，原来在每一个线程里面还有一个隐藏的私有变量叫 threadLocal ，他的类型是 一个类似map的东西。我们要在脑海中构建出这样一个常见，一个线程，里面有一个map。</p>
 <p>然后我们在进入到ThreadLocal类。重点去看他的api 中的 get方法和set方法，至于为什么先看这个（也是别人教我的，没有为什么）</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">/**
      * Sets the current thread's copy of this thread-local variable
      * to the specified value.  Most subclasses will have no need to
      * override this method, relying solely on the {@link #initialValue}
@@ -478,16 +478,16 @@ a 方法调用b 方法，然后把这个变量传进去嘛<br>
      *
      * @param value the value to be stored in the current thread's copy of
      *        this thread-local.
-     */</span>
-    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token class-name">T</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">Thread</span> t <span class="token operator">=</span> <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">ThreadLocalMap</span> map <span class="token operator">=</span> <span class="token function">getMap</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>map <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            map<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token function">createMap</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+     */
+    public void set(T value) {
+        Thread t = Thread.currentThread();
+        ThreadLocalMap map = getMap(t);
+        if (map != null) {
+            map.set(this, value);
+        } else {
+            createMap(t, value);
+        }
+    }</code></pre>
 <p>很明显，先获取当前线程，Thread.currentThread(); 这里获取到的是当前应用上下文所在的线程的对象实例，就是原原本本的当前线程。<br>
 然后 getMap(t) ，把当前线程t当参数传递进去了，获取的是当前线程，也就是上面我们脑海中构建的那个map结构。这里是关键，因为获取的是当前线程的，那么每次set的时候，其实都是操作的自己线程的map，而不会影响其他线程里面的map. 因为线程是隔离的，那线程里面的变量自然也是隔离的。<br>
 如果map没有实例化就实例化一个，如果实例化了，就把 k=this 和 v=value 添加到那个数组里面。回头取的时候，也一定是取当前线程的当前map中按照k=this取。<br>
@@ -495,20 +495,20 @@ a 方法调用b 方法，然后把这个变量传进去嘛<br>
 <p>所以我们可以想象一下，实际上根本不是 threadLocal这个对象里面存储了某个value，其实你操作的还是线程的一个内部对象，这个对象是一个map.底层是KV结构。而threadLocal 仅仅是在充当一个key 罢了，所以我们完全可以自己设计实现一个对象也同样实现类似的功能，然后放到我们自定义的线程对象中去。</p>
 <p>所以，get方法，闭着眼睛也能想到，肯定是先获取当前线程对象，然后获取当前线程对象map,然后把threalLocal对象的应用作为key去map中查找，找到就返回，没有找到要么异常，要么返回为空，肯定跑不了。</p>
 <p>我们去看一下get方法的实现</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">Thread</span> t <span class="token operator">=</span> <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token class-name">ThreadLocalMap</span> map <span class="token operator">=</span> <span class="token function">getMap</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>map <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token class-name">ThreadLocalMap<span class="token punctuation">.</span>Entry</span> e <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">getEntry</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>e <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>
-                <span class="token class-name">T</span> result <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">T</span><span class="token punctuation">)</span>e<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
-                <span class="token keyword">return</span> result<span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token function">setInitialValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public T get() {
+        Thread t = Thread.currentThread();
+        ThreadLocalMap map = getMap(t);
+        if (map != null) {
+            ThreadLocalMap.Entry e = map.getEntry(this);
+            if (e != null) {
+                @SuppressWarnings("unchecked")
+                T result = (T)e.value;
+                return result;
+            }
+        }
+        return setInitialValue();
+    }
+</code></pre>
 <p>果然，无出其右。其他逻辑像 setInitialValue 就自己看吧，不在主流程里面。</p>
 <p>这个是最基本的ThreadLocal. 如果细心一点我们可以看到 ThreadLocal 是有很多子类的，既然有继承了，那肯定不同的子类都实现不同的ThreadLocal的一些方法，他们之间是有差异的，例如 TerminatingThreadLocal 、InheritableThreadLocal 等等，说实话我只知道InheritableThreadLocal用在父子类继承上，没有实际用过，以后再研究吧。</p>
 <h1>ThreadLocal 内部实现</h1>
@@ -1110,7 +1110,7 @@ jdk 中大多数的类都是采用了链地址法来解决hash 冲突，为什�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

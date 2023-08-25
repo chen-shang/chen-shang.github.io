@@ -349,20 +349,20 @@
             <div id="articleContent">
                 <p>在Bash中,有这样一个常量FUNCNAME,它是一个数组而非字符串,其中数组的第一个元素为当前函数的名称。FUNCNAME是一个数组，bash中会将它维护成类似一个堆栈的形式。</p>
 <p>运行下面的函数</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
-<span class="token keyword">function</span> <span class="token function-name function">fun2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token builtin class-name">echo</span> <span class="token variable">${FUNCNAME<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>
-<span class="token punctuation">}</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">#!/usr/bin/env bash
+function fun2(){
+  echo ${FUNCNAME[@]}
+}
 
-<span class="token keyword">function</span> <span class="token function-name function">fun1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+function fun1(){
   fun2
-<span class="token punctuation">}</span>
-<span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+}
+main(){
   fun1
-<span class="token punctuation">}</span>
-main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}
+main</code></pre>
 <p>执行结果是</p>
-<pre class="line-numbers language-none"><code class="language-none">fun2 fun1 main main<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">fun2 fun1 main main</code></pre>
 <p>由此可见 ${FUNCNAME[0]} 是当前函数的名字。${FUNCNAME[1]} 则是调用它的函数的名字</p>
 <p>我们可以这样利用这个变量,我们写一个统一的日志服务函数,打印日志的时候顺便打印一下是哪个方法打印的日志。如下</p>
 <pre class="line-numbers language-none"><code class="language-none"># debug级别的日志 []&lt;-(msg:String)
@@ -370,7 +370,7 @@ function log_debug(){
   echo -e "[$(date +%Y-%m-%dT%H:%M:%S)][$$ $BASHPID][${FUNCNAME[1]}] [DEBUG]:   $*"|trim 1&gt;&amp;2
   echo -e "[$(date +%Y-%m-%dT%H:%M:%S)][$$ $BASHPID][${FUNCNAME[1]}] [DEBUG]:   $*"|trim &gt;&gt; "${LOG_DIR}/$(date +%Y-%m-%d).debug.log" 2&gt;&amp;1
   echo -e "[$(date +%Y-%m-%dT%H:%M:%S)][$$ $BASHPID][${FUNCNAME[1]}] [DEBUG]:   $*"|trim &gt;&gt; "${LOG_DIR}/$(date +%Y-%m-%d).log" 2&gt;&amp;1
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}</code></pre>
 <p>在脚本中调用 log_debug 函数</p>
 <pre class="line-numbers language-none"><code class="language-none">function sum(){
   local sum=$(($1+$2))
@@ -379,9 +379,9 @@ function log_debug(){
 }
 main(){
   sum 1 2
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}</code></pre>
 <p>执行结果是</p>
-<pre class="line-numbers language-none"><code class="language-none">[2019-08-26T22:58:20][62045 62077][sum] [INFO]:    所有数之和是:3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">[2019-08-26T22:58:20][62045 62077][sum] [INFO]:    所有数之和是:3</code></pre>
 <p>这样就能很方便的知道日志是哪个方法调用的了!还是很方便的</p>
 <p><font color="red"> 注意:这种做法会让脚本失去一些可移植性，因为不是所有的shell都支持这些常量。</font></p>
 
@@ -959,7 +959,7 @@ main(){
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

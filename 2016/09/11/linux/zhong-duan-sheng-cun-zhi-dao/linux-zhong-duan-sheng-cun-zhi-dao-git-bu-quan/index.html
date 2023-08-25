@@ -350,15 +350,15 @@
                 <p>在Linux平台上,很多命令在我们按下<code>tab</code>键之后会自动补全该命令,在多次连续按下<code>tab</code>键之后会一次补全并切换匹配的命令。我们在使用git的过程中,也希望能够自动补全一些指令,比如 我想执行 <code>git status</code> 命令的时候,我只用输入 <code>git st </code> 然后按下<code>tab</code>键,就能输出 <code>git status</code>了。</p>
 <p>在mac平台,使用HomeBrew安装Git <code>brew install git</code><br>
 我们会得到如下的输出(可以使用 <code>brew info git</code> 命令查看安装git时候的输出信息),我截取了最后几行。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">...
 Bash completion has been installed to:
   /usr/local/etc/bash_completion.d
 
-<span class="token function">zsh</span> completions and functions have been installed to:
+zsh completions and functions have been installed to:
   /usr/local/share/zsh/site-functions
 
 Emacs Lisp files have been installed to:
-  /usr/local/share/emacs/site-lisp/git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  /usr/local/share/emacs/site-lisp/git</code></pre>
 <p><code>Bash completion has been installed to:</code> 这句话告诉我们git的自动补全脚本已经添加到了 <code>/usr/local/etc/</code> 目录下面的 <code>bash_completion.d</code>文件</p>
 <p>我们所要做的就是,把它加到linux的补全功能中<br>
 我们首先进入 <code>/etc</code> 目录 ,使用管理员权限修改 <code>bashrc</code> 文件,在文件的最后一行加入下面一句话<br>
@@ -919,7 +919,7 @@ Emacs Lisp files have been installed to:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

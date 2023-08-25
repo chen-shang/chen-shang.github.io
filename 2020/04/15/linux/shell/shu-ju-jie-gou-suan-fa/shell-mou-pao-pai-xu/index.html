@@ -353,29 +353,29 @@
 <ol>
 <li>核心操作 交换相邻两个元素的值</li>
 </ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 定义一个数组</span>
-<span class="token assign-left variable">nums</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">2</span> <span class="token number">3</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">33</span> <span class="token number">22</span> <span class="token number">11</span> <span class="token number">1</span> <span class="token number">34</span> <span class="token number">56</span><span class="token punctuation">)</span>
-<span class="token comment"># 核心操作</span>
-<span class="token keyword">function</span> <span class="token function-name function">swap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token comment"># i 和 j 分别代表要交换的两个元素的在数组中的下标</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token variable">$1</span><span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token variable">$2</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token comment"># 注意这里用 ${nums[x]} 的形式才能取出数组对应下标的元素的值</span>
-  nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token comment"># 注意这里 ${nums[x]} 中的x 支持数学表达式，没必要 使用 $(()) 来计算</span>
-  nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp}</span>     <span class="token comment"># 注意这里 ${  } 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 ${} 包裹</span>
-<span class="token punctuation">}</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"># 定义一个数组
+nums=(1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56)
+# 核心操作
+function swap(){
+  # i 和 j 分别代表要交换的两个元素的在数组中的下标
+  local i=$1;local j=$2
+  local tmp=${nums[i]} # 注意这里用 ${nums[x]} 的形式才能取出数组对应下标的元素的值
+  nums[i]=${nums[j]} # 注意这里 ${nums[x]} 中的x 支持数学表达式，没必要 使用 $(()) 来计算
+  nums[j]=${tmp}     # 注意这里 ${  } 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 ${} 包裹
+}
 
-<span class="token comment"># 数组的元素个数</span>
-<span class="token builtin class-name">local</span> <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable">${<span class="token operator">#</span>nums<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span> <span class="token comment"># 注意这里使用${@xxx[@]}的形式取出shell中数组元素的个数</span>
-<span class="token comment"># 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位</span>
-<span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>i<span class="token operator">=</span>size<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">--</span><span class="token punctuation">))</span></span><span class="token punctuation">{</span> <span class="token comment"># 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的</span>
-  <span class="token comment"># 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的</span>
-  <span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>i<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span><span class="token keyword">do</span> <span class="token comment"># 这个地方是&lt;i</span>
-    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-gt</span> <span class="token variable">${nums<span class="token punctuation">[</span>j+1<span class="token punctuation">]</span>}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span> <span class="token comment"># 注意这个地方的比较[1]</span>
-      swap <span class="token string">"<span class="token variable">${j}</span>"</span> <span class="token string">"<span class="token variable"><span class="token variable">$((</span>j<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>"</span>
-    <span class="token keyword">fi</span>
-  <span class="token keyword">done</span>
-  <span class="token builtin class-name">echo</span> <span class="token string">"第<span class="token variable"><span class="token variable">$((</span>size<span class="token operator">-</span>i<span class="token variable">))</span></span>轮冒泡后:<span class="token variable">${nums<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+# 数组的元素个数
+local size=${#nums[@]} # 注意这里使用${@xxx[@]}的形式取出shell中数组元素的个数
+# 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位
+for((i=size-1;i&gt;0;i--)){ # 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的
+  # 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的
+  for((j=0;j&lt;i;j++));do # 这个地方是&lt;i
+    if [[ ${nums[j]} -gt ${nums[j+1]} ]];then # 注意这个地方的比较[1]
+      swap "${j}" "$((j+1))"
+    fi
+  done
+  echo "第$((size-i))轮冒泡后:${nums[*]}"
+}</code></pre>
 <p>我们执行一把</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">第1轮冒泡后:1 3 5 2 3 6 7 8 11 22 22 11 1 33 34 a b c 56
 第2轮冒泡后:1 3 2 3 5 6 7 8 11 22 11 1 22 33 a b c 34 56
@@ -394,7 +394,7 @@
 第15轮冒泡后:1 a b c 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56
 第16轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56
 第17轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56
-第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56</code></pre>
 <p>注意上面的[1],因为这里我们只能比较数字,也就是只能比较整型数组,小数和字符串的冒泡排序我们的代码是不支持的。搞鬼的地方就在 我代码注释里面标[1]的地方.</p>
 <p>我们用的判断相邻两个元素大小的表达是 <code>if [[ a -gt b ]]</code> 这种形式，这种用 [[]] 包裹的if判定表达式只能针对 整数。这个是shell语法决定的</p>
 <p>如果nums数组中出现小数，运行程序立马报错，因为shell中没有浮点类型，带点号的shell默认为字符串<br>
@@ -968,7 +968,7 @@ line 34: [[: 3.3: syntax error: invalid arithmetic operator (error token is “.
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

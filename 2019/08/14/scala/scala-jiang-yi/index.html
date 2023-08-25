@@ -317,14 +317,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.8k
+                    9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    34 分
+                    35 分
                 </div>
                 
 
@@ -397,31 +397,31 @@
 <p>模式匹配：模式可能出现的一个地方就是 模式匹配表达式(pattern matching expression)： 一个表达式 e ，后面跟着关键字 match 以及一个代码块，这个代码块包含了一些匹配样例； 而样例又包含了 case 关键字、模式、可选的 守卫分句(guard clause) ，以及最右边的代码块； 如果模式匹配成功，这个代码块就会执行。 写成代码，看起来会是下面这种样子：</p>
 </li>
 </ol>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">e <span class="token keyword">match</span> <span class="token punctuation">{</span>
-  <span class="token keyword">case</span> Pattern1 <span class="token keyword">=&gt;</span> block1
-  <span class="token keyword">case</span> Pattern2 <span class="token keyword">if</span><span class="token operator">-</span>clause <span class="token keyword">=&gt;</span> block2
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">e match {
+  case Pattern1 =&gt; block1
+  case Pattern2 if-clause =&gt; block2
+  ...
+}</code></pre>
 <p>很多特点自行百度，不在一一赘述。</p>
 <h1>基础语法</h1>
 <h2 id="一切从-Hello-word-开始">一切从 Hello word 开始</h2>
 <div width="100%">
     <div style="float:left; width:50%;"><h1>Scala</h1>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">object</span> ScalaMain <span class="token punctuation">{</span>
-  <span class="token keyword">def</span> main<span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Unit</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
-    <span class="token keyword">val</span> variable <span class="token operator">=</span> <span class="token string">"hello word"</span>
-    println<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token id function">s</span><span class="token string">"</span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">variable</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">object ScalaMain {
+  def main(args: Array[String]): Unit = {
+    val variable = "hello word"
+    println(s"${variable}")
+  }
+}</code></pre>
 </div>
     <div style="float:left;height:50px; width:0px;border-left:solid white;border-right:1px solid white"></div>
     <div style="float:left; width:49%;"><h1>Java8</h1>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaMain</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">String</span> variable <span class="token operator">=</span> <span class="token string">"hello word!!"</span><span class="token punctuation">;</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>variable<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">public class JavaMain {
+    public static void main(String[] args) {
+        String variable = "hello word!!";
+        System.out.println(variable);
+    }
+}</code></pre>
 </div>
 上述代码片段刨去关闭花括号的空行之后一共就4行，我们逐一分析。
 <p>第一行代码有点奇怪，object在这里表示单例类的声明，即ScalaMian是一个类，这个类只有一个实例，这个单一实例会在需要时由scala创建。</p>
@@ -432,114 +432,114 @@
 </div>
 <p>你可能会有几个疑惑的点？为什么声明变量的时候用 var/val ? 为什么不用声明变量的类型呢？object 是个什么鬼?<br><br>
 答: scala 中声明变量用 var ,声明常量用 val 。var 代表该变量在以后的使用中可以改变其值，而 val 修饰的变量一经定义便不再允许修改。变量可以不用显示的声明类型，其类型有类型推导得来</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> x1<span class="token operator">=</span><span class="token string">"123"</span> <span class="token comment">//自认而然就认识他是字符串类型而不是整型</span>
-<span class="token keyword">val</span> x2<span class="token operator">:</span><span class="token builtin">String</span><span class="token operator">=</span><span class="token string">"123"</span> <span class="token comment">//也可显示表明数据类型</span>
-<span class="token keyword">var</span> x3<span class="token operator">:</span><span class="token builtin">Int</span><span class="token operator">=</span><span class="token number">123</span> <span class="token comment">// var 表明 x3 是一个变量</span>
-x3<span class="token operator">=</span><span class="token number">10</span> <span class="token comment">//这是正确的</span>
-x1<span class="token operator">=</span><span class="token string">"chenshang"</span> <span class="token comment">// 立马编译报错,因为是 val 修饰的常量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val x1="123" //自认而然就认识他是字符串类型而不是整型
+val x2:String="123" //也可显示表明数据类型
+var x3:Int=123 // var 表明 x3 是一个变量
+x3=10 //这是正确的
+x1="chenshang" // 立马编译报错,因为是 val 修饰的常量</code></pre>
 <p>scala 中用 def 声明函数</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token comment">/**
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">/**
  * 这是最传统的声明方式,还有很多情况可以简写
- */</span>
-<span class="token keyword">def</span> add<span class="token punctuation">(</span>x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span>y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token operator">:</span><span class="token builtin">Int</span><span class="token operator">=</span><span class="token punctuation">{</span>
-  x<span class="token operator">+</span>y
-<span class="token punctuation">}</span>
+ */
+def add(x:Int,y:Int):Int={
+  x+y
+}
 
-<span class="token keyword">def</span> returnUnit<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span><span class="token builtin">Unit</span><span class="token operator">=</span><span class="token punctuation">{</span>
-  println<span class="token punctuation">(</span><span class="token string">"another way to return void"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+def returnUnit():Unit={
+  println("another way to return void")
+}
 
-<span class="token comment">//写法二，省略非Unit返回值；如果没有写返回值，则根据等号后面的东西进行类型推演</span>
-<span class="token keyword">def</span> test<span class="token punctuation">(</span>x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token punctuation">{</span>
+//写法二，省略非Unit返回值；如果没有写返回值，则根据等号后面的东西进行类型推演
+def test(x:Int)={
    x
-<span class="token punctuation">}</span>
+}
 
-<span class="token comment">//写法三，省略等号，返回Unit</span>
-<span class="token keyword">def</span> returnVoid<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  println<span class="token punctuation">(</span><span class="token string">"return void"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+//写法三，省略等号，返回Unit
+def returnVoid(){
+  println("return void")
+}
 
-<span class="token comment">//写法四：省略花括号，如果函数仅包含一条语句，那么连花括号都可以选择不写</span>
-<span class="token keyword">def</span> max2<span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span> y<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;</span> y<span class="token punctuation">)</span> x <span class="token keyword">else</span> y
+//写法四：省略花括号，如果函数仅包含一条语句，那么连花括号都可以选择不写
+def max2(x: Int, y: Int) = if (x &gt; y) x else y
 
-<span class="token keyword">def</span> greet<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> println<span class="token punctuation">(</span><span class="token string">"Hello, world!"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+def greet() = println("Hello, world!")</code></pre>
 <p>既然说到object 这个关键字了，我们先来说说 scala 的这个 object --单例对象。</p>
 <p>Java 中的单例对象的概念,全局独一份的对象实例,scala 中也是这个意思，用 object 修饰的类就变成了单例类,单例类中的方法都是静态,不过 scala 中没有明确的静态方法的概念，因此他没有 staic 这样的关键字的！！所以这个 object 类就是 new 了一个单例对象罢了。我们看看 java 是如何实现一个单例类的呢：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">/**
  * 懒汉式
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Single1</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Single1</span> instance<span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Single1</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Single1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment">/**
+ */
+public class Single1 {
+&nbsp;&nbsp;&nbsp;&nbsp;private static Single1 instance;
+&nbsp;&nbsp;&nbsp;&nbsp;public static Single1 getInstance() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (instance == null) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance = new Single1();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return instance;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}
+/**
  * 双重检查（Double-Check）版本
- */</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Single3</span> <span class="token punctuation">{</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Single3</span> instance<span class="token punctuation">;</span>
-    <span class="token keyword">private</span> <span class="token class-name">Single3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Single3</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token class-name">Single3</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    instance <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Single3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> instance<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ */
+public class Single3 {
+&nbsp;&nbsp;&nbsp;&nbsp;private static Single3 instance;
+&nbsp;&nbsp;&nbsp;&nbsp;private Single3() {}
+&nbsp;&nbsp;&nbsp;&nbsp;public static Single3 getInstance() {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (instance == null) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;synchronized (Single3.class) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (instance == null) {
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance = new Single3();
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return instance;
+&nbsp;&nbsp;&nbsp;&nbsp;}
+}</code></pre>
 <p>scala 只用一个 object 关键字就搞定了！scala在实例化object 时使用的什么方式呢？大家可以试着反编译一下 scala 生成的 java class 看看。</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">object</span> ScalaOBJ <span class="token punctuation">{</span>
-  <span class="token keyword">def</span> get<span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span> <span class="token operator">=</span> print<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">object ScalaOBJ {
+  def get(x: String) = print(x)
+}</code></pre>
 <p><code>scalac ScalaOBJ.scala</code>一个 scala 文件被编译成</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">.</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">.
 ├── ScalaOBJ$.class
 └── ScalaOBJ.class
 
-<span class="token number">0</span> directories, <span class="token number">2</span> files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+0 directories, 2 files</code></pre>
 <p>我们有 javap 来翻译一下其中一个.class 文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@begon:~/learn$ javap <span class="token parameter variable">-c</span> ScalaOBJ<span class="token punctuation">\</span>$.class
-Compiled from <span class="token string">"ScalaOBJ.scala"</span>
-public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{</span>
-  public static main.javavsscala.ScalaOBJ$ MODULE$<span class="token punctuation">;</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@begon:~/learn$ javap -c ScalaOBJ\$.class
+Compiled from "ScalaOBJ.scala"
+public final class main.javavsscala.ScalaOBJ$ {
+  public static main.javavsscala.ScalaOBJ$ MODULE$;
 
-  public static <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  public static {};
     Code:
-       <span class="token number">0</span>: new           <span class="token comment">#2                  // class main/javavsscala/ScalaOBJ$</span>
-       <span class="token number">3</span>: invokespecial <span class="token comment">#12                 // Method "&lt;init&gt;":()V</span>
-       <span class="token number">6</span>: <span class="token builtin class-name">return</span>
+       0: new           #2                  // class main/javavsscala/ScalaOBJ$
+       3: invokespecial #12                 // Method "&lt;init&gt;":()V
+       6: return
 
-  public void get<span class="token punctuation">(</span>java.lang.String<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  public void get(java.lang.String);
     Code:
-       <span class="token number">0</span>: getstatic     <span class="token comment">#20                 // Field scala/Predef$.MODULE$:Lscala/Predef$;</span>
-       <span class="token number">3</span>: aload_1
-       <span class="token number">4</span>: invokevirtual <span class="token comment">#24                 // Method scala/Predef$.print:(Ljava/lang/Object;)V</span>
-       <span class="token number">7</span>: <span class="token builtin class-name">return</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+       0: getstatic     #20                 // Field scala/Predef$.MODULE$:Lscala/Predef$;
+       3: aload_1
+       4: invokevirtual #24                 // Method scala/Predef$.print:(Ljava/lang/Object;)V
+       7: return
+}</code></pre>
 <h2 id="伴生类-伴生对象">伴生类&amp;伴生对象</h2>
 <p>上面介绍到了object,以此为引申来讲讲伴生对象和伴生类</p>
 <blockquote>
 <p>所谓伴生对象， 也是一个Scala中的单例对象， 使用object关键字修饰。除此之外， 还有一个使用class关键字定义的同名类， 这个类和单例对象存在于同一个文件中，这个类就叫做这个单例对象的伴生类， 相对来说， 这个单例对象叫做伴生类的伴生对象。</p>
 </blockquote>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token comment">// 下面这个类的伴生类</span>
-<span class="token keyword">class</span> OBJ<span class="token punctuation">(</span><span class="token keyword">val</span> id<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> age<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">// 下面这个类的伴生类
+class OBJ(val id: String, age: Option[Int]) {
 
-<span class="token punctuation">}</span>
-<span class="token comment">// 上面这个类的伴生对象</span>
-<span class="token keyword">object</span> OBJ <span class="token punctuation">{</span>
-  <span class="token keyword">private</span> <span class="token keyword">val</span> name<span class="token operator">:</span> <span class="token builtin">String</span> <span class="token operator">=</span> <span class="token string">"chenshang"</span>
-  <span class="token keyword">def</span> apply<span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> age<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">Int</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> OBJ <span class="token operator">=</span> <span class="token keyword">new</span> OBJ<span class="token punctuation">(</span>id<span class="token punctuation">,</span> age<span class="token punctuation">)</span>
-  <span class="token keyword">def</span> done<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
-    println<span class="token punctuation">(</span><span class="token string">"haha"</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}
+// 上面这个类的伴生对象
+object OBJ {
+  private val name: String = "chenshang"
+  def apply(id: String, age: Option[Int]): OBJ = new OBJ(id, age)
+  def done() = {
+    println("haha")
+  }
+}</code></pre>
 <blockquote>
 <p>Scala单例对象是十分重要的，没有像在Java一样，有静态类、静态成员、静态方法，但是Scala提供了object对象，这个object对象类似于Java的静态类,它的成员、它的方法都默认是静态的。</p>
 </blockquote>
@@ -549,8 +549,8 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 <p>上边我们已经自定义过object 单例对象了,它本质上也是定义了一个 class 然后实例化了一个类的对象出来,我们接下来看看 scala 面向对象的特性与 java的有那些写法上的不同。</p>
 <div width="100%">
   <div style="float:left; width:49%;"><h3>定义scala的简单类</h3>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span><span class="token keyword">val</span> x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token keyword">val</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">class Point (val x:Int, val y:Int) {
+}</code></pre>
 <p>注意用 val 声明的属相是没有 set 方法的,因为 val 修饰的变量属于常量不可以修改,所以其相当于 java 的类种没有 set 方法。</p>
 <p>上面一行代码就是一个scala类的定义：</p>
 <ol>
@@ -561,71 +561,71 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
   </div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>翻译成Java8</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaPoint</span> <span class="token punctuation">{</span>
-   <span class="token keyword">public</span> <span class="token keyword">int</span> x<span class="token punctuation">;</span>
-   <span class="token keyword">public</span> <span class="token keyword">int</span> y<span class="token punctuation">;</span>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java">public class JavaPoint {
+   public int x;
+   public int y;
 
-   <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getX</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       <span class="token keyword">return</span> x<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+   public int getX() {
+       return x;
+   }
 
-   <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getY</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       <span class="token keyword">return</span> y<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
+   public int getY() {
+       return y;
+   }
 
-   <span class="token keyword">public</span> <span class="token class-name">JavaPoint</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-       <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> x<span class="token punctuation">;</span>
-       <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> y<span class="token punctuation">;</span>
-   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+   public JavaPoint(int x, int y) {
+       this.x = x;
+       this.y = y;
+   }
+}</code></pre>
  </div>
 </div>
 <p>把上面那个简单的 scala 写成传统形式是这样的</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span>xArg<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> yArg<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">val</span> x <span class="token operator">=</span> xArg
-  <span class="token keyword">val</span> y <span class="token operator">=</span> yArg
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">class Point (xArg:Int, yArg:Int) {
+  val x = xArg
+  val y = yArg
+}</code></pre>
 <p>这个是不是和 java 的构造方法很像呢？没错,scala将类的主构造方法绑定到一块了,它认为这样做更简洁吧,但 scala 同样支持想 java那样定义类。</p>
 <div width="100%">
   <div style="float:left; width:49%;"><h3>带函数的 scala 类</h3>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span><span class="token keyword">var</span> x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token keyword">var</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment">// 定义函数</span>
-    <span class="token keyword">def</span> add<span class="token operator">=</span> x<span class="token operator">+</span>y
+  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">class Point (var x:Int, var y:Int){
+    // 定义函数
+    def add= x+y
 
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}</code></pre>
   </div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>翻译成Java8</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaPoint</span> <span class="token punctuation">{</span>
-  <span class="token comment">//省略上面的变量定义和 set/get 方法</span>
-  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java">public class JavaPoint {
+  //省略上面的变量定义和 set/get 方法
+  public int add() {
+      return x + y;
+  }
+}</code></pre>
  </div>
 </div>
 <h2 id="继承">继承</h2>
 <div width="100%">
   <div style="float:left; width:49%;"><h3>带继承的 scala 类</h3>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> TalkPoint<span class="token punctuation">(</span>x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token keyword">extends</span> Point <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">def</span> talk<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
-    println<span class="token punctuation">(</span><span class="token string">"my position is ("</span><span class="token operator">+</span>x<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>y<span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">class TalkPoint(x:Int, y:Int) extends Point (x,y) {
+  def talk() = {
+    println("my position is ("+x+","+y+")")
+  }
+}</code></pre>
 <p>extends Point(x,y) 之后会自动调用基类的构造函数。不用像 java 一样还得显示的用 super(x,y).注意这里说的是显示,其实 scala 还是这么干了</p>
   </div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>翻译成Java8</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TalkPoint</span> extend <span class="token class-name">Point</span> <span class="token punctuation">{</span>
-  <span class="token comment">//省略上面的变量定义和 set/get 方法</span>
-  <span class="token keyword">public</span> <span class="token class-name">TalkPoin</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">super</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java">public class TalkPoint extend Point {
+  //省略上面的变量定义和 set/get 方法
+  public TalkPoin(int x, int y) {
+      super(x, y);
+  }
 
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">talk</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-      <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"my position is ("</span><span class="token operator">+</span>x<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>y<span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  public void talk(){
+      println("my position is ("+x+","+y+")");
+  }
+}</code></pre>
  </div>
 </div>
 <p>上面只是 scala 的 class 定义最基本的几种形式,大家可以自行学习一下 scala 的 class 在各种情况下翻译成对应的java 代码长什么样子?想要了解请<a href="www.baidu.com">点击这里</a></p>
@@ -633,31 +633,31 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 <p>面向对象的本质是抽象,对事物的抽象是对象,对象中行为的抽象就是接口,scala 中没有 interface 在样的关键字,取而代之的是 trait ,翻译成中文叫特性特质,实现 trait 不用 implement 而是用 extends ,过个 trait 用 with 相连标示一个整体,我们先来看一下</p>
 <div width="100%">
   <div style="float:left; width:49%;"><h3>Scala Trait(特征)</h3>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">trait</span> Equal <span class="token punctuation">{</span>
-  <span class="token keyword">def</span> isEqual<span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">Any</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Boolean</span>
+  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">trait Equal {
+  def isEqual(x: Any): Boolean
 
-  <span class="token keyword">def</span> isNotEqual<span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">Any</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Boolean</span> <span class="token operator">=</span><span class="token punctuation">{</span>
-      <span class="token operator">!</span>isEqual<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+  def isNotEqual(x: Any): Boolean ={
+      !isEqual(x)
+  }
+}
 
-clase A <span class="token keyword">extends</span> Equal <span class="token keyword">with</span> TraitB<span class="token punctuation">{</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+clase A extends Equal with TraitB{
+  ...
+}</code></pre>
   </div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>Java8 Interface(接口)</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">interface</span> <span class="token class-name">Equal</span> <span class="token punctuation">{</span>
-    <span class="token class-name">Boolean</span> <span class="token function">isEqual</span><span class="token punctuation">(</span><span class="token class-name">Object</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java">interface Equal {
+    Boolean isEqual(Object x);
 
-    <span class="token keyword">default</span> <span class="token class-name">Boolean</span> <span class="token function">isNotEqual</span><span class="token punctuation">(</span><span class="token class-name">Object</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token operator">!</span><span class="token function">isEqual</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+    default Boolean isNotEqual(Object x) {
+        return !isEqual(x);
+    }
+}
 
-<span class="token keyword">class</span> <span class="token class-name">A</span> implement <span class="token class-name">Equal</span><span class="token punctuation">,</span><span class="token class-name">InterfaceB</span><span class="token punctuation">{</span>
-  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+class A implement Equal,InterfaceB{
+  ...
+}</code></pre>
 <p>java8 中的默认方法用 default 关键字声明<br></p>
  </div>
 </div>
@@ -713,104 +713,104 @@ clase A <span class="token keyword">extends</span> Equal <span class="token keyw
 <li>字符串中的变量替换，Scala中基础的字符串插值就是在字符串前加字幕‘s’，然后在字符串中放入变量，每个变量都应以‘$’开头。字符串前加字母‘s’时，其实是在创建一个处理字符串字面量</li>
 <li>在字符串字面量中使用表达式，“${}内可嵌入任何表达式”,包括等号表达式。</li>
 </ul>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala<span class="token operator">&gt;</span> println<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token id function">s</span><span class="token string">"Age next year: </span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">age <span class="token operator">+</span> <span class="token number">1</span></span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
-Age next year<span class="token operator">:</span> <span class="token number">34</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala&gt; println(s"Age next year: ${age + 1}")
+Age next year: 34
 
-scala<span class="token operator">&gt;</span> println<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token id function">s</span><span class="token string">"You are 33 years old:</span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">age <span class="token operator">==</span> <span class="token number">33</span></span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
-You are <span class="token number">33</span> years old<span class="token operator">:</span><span class="token boolean">true</span>
+scala&gt; println(s"You are 33 years old:${age == 33}")
+You are 33 years old:true
 # 注意，在打印对象字段时使用花括号。
 
-scala<span class="token operator">&gt;</span> <span class="token keyword">case</span> <span class="token keyword">class</span> Student<span class="token punctuation">(</span>name<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span> score<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span>
-defined <span class="token keyword">class</span> Student
+scala&gt; case class Student(name: String, score: Int)
+defined class Student
 
-scala<span class="token operator">&gt;</span> <span class="token keyword">val</span> hannah <span class="token operator">=</span> Student<span class="token punctuation">(</span><span class="token string">"Hannah"</span><span class="token punctuation">,</span> <span class="token number">95</span><span class="token punctuation">)</span>
-hannah<span class="token operator">:</span> Student <span class="token operator">=</span> Student<span class="token punctuation">(</span>Hannah<span class="token punctuation">,</span><span class="token number">95</span><span class="token punctuation">)</span>
+scala&gt; val hannah = Student("Hannah", 95)
+hannah: Student = Student(Hannah,95)
 
-scala<span class="token operator">&gt;</span> println<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token id function">s</span><span class="token string">"</span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">hannah<span class="token punctuation">.</span>name</span><span class="token punctuation">}</span></span><span class="token string"> has a score of </span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">hannah<span class="token punctuation">.</span>score</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
-Hannah has a score of <span class="token number">95</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+scala&gt; println(s"${hannah.name} has a score of ${hannah.score}")
+Hannah has a score of 95</code></pre>
 <h2 id="for-表达式">for 表达式</h2>
 <p>for 主要用来处理循环的,一般应用在 list、seq 等数据类型或者用来解Future 等包装类,这个后面会说</p>
 <p>先学会定义一个列表</p>
 <div width="100%">
   <div style="float:left; width:49%;"><h3>Scala 定义list</h3>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> list01<span class="token operator">=</span> <span class="token number">1</span> to <span class="token number">10</span>
-<span class="token keyword">val</span> list02<span class="token operator">=</span> <span class="token number">1</span> to <span class="token number">100</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val list01= 1 to 10
+val list02= 1 to 100</code></pre>
   </div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>Java8 定义 list</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list01 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java">List&lt;Integer&gt; list01 = new ArrayList&lt;&gt;(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
 
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list02 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+List&lt;Integer&gt; list02 = new ArrayList&lt;&gt;(100);
+for (int i = 0; i &lt; 100; i++) {
+      list.add(i);
+}</code></pre>
 </div>
 <div width="100%">
   <div style="float:left; width:49%;"><h3>Scala for 表达式</h3>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token comment">//第一种:普通的 for 循环</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>x <span class="token keyword">&lt;-</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  println<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token comment">//第二种:带守卫的 for 循环</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>x <span class="token keyword">&lt;-</span> list <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  println<span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token comment">//第三种:中间变量绑定</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span>x <span class="token keyword">&lt;-</span> list<span class="token punctuation">;</span> a <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> y <span class="token keyword">&lt;-</span> list2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  println<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token id function">s</span><span class="token string">"</span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">x</span></span><span class="token string">:</span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">a</span></span><span class="token string">:</span><span class="token interpolation"><span class="token punctuation">$</span><span class="token expression">y</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
-<span class="token comment">//第四种:for yeild</span>
-<span class="token keyword">val</span> result <span class="token operator">=</span> <span class="token keyword">for</span> <span class="token punctuation">{</span>
-  x <span class="token keyword">&lt;-</span> list<span class="token punctuation">;</span>
-  result <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span>
-<span class="token punctuation">}</span> <span class="token keyword">yield</span> result
+  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">//第一种:普通的 for 循环
+for (x &lt;- list) {
+  println(x)
+}
+//第二种:带守卫的 for 循环
+for (x &lt;- list if (x / 2 == 0)) {
+  println(x + 2)
+}
+//第三种:中间变量绑定
+for (x &lt;- list; a = x + 1; y &lt;- list2) {
+  println(s"$x:$a:$y")
+}
+//第四种:for yeild
+val result = for {
+  x &lt;- list;
+  result = x + 1
+} yield result
 
-<span class="token comment">/**
- * yield 关键字的简短总结:
+/**
+ * yield&nbsp;关键字的简短总结:
  * •	针对每一次 for 循环的迭代, yield 会产生一个值，被循环记录下来 (内部实现上，像是一个缓冲区).
  * •	当循环结束后, 会返回所有 yield 的值组成的集合.
  * •	返回集合的类型与被遍历的集合类型是一致的.
- */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ */</code></pre>
   </div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>Java8 for 语法糖</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//第一种</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span> x <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-list<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>x <span class="token operator">-&gt;</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>x <span class="token operator">-&gt;</span> <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//对应 scala 中带守卫的 for循环</span>
-ist<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>x <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span> x <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">/</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment">//中间变量绑定</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span> x <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> a <span class="token operator">=</span> x<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span> y <span class="token operator">:</span> list2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x <span class="token operator">+</span> <span class="token string">":"</span> <span class="token operator">+</span> a <span class="token operator">+</span> <span class="token string">":"</span> <span class="token operator">+</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>x <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> a <span class="token operator">=</span> x<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token keyword">final</span> <span class="token class-name">Integer</span> finalX <span class="token operator">=</span> x<span class="token punctuation">;</span><span class="token comment">//注意这个地方有个坑,闭包要求传入的变量是不可变的额</span>
-    list2<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>y <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>finalX <span class="token operator">+</span> <span class="token string">":"</span> <span class="token operator">+</span> a <span class="token operator">+</span> <span class="token string">":"</span> <span class="token operator">+</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">//for yield , scala 的表达式是有返回值的</span>
-<span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> result <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-list<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>x <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> res <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    result<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+  <pre class="line-numbers language-java" data-language="java"><code class="language-java">//第一种
+for (Integer x : list) {
+    System.out.println(x);
+}
+list.stream().forEach(x -&gt; System.out.println(x));
+list.forEach(x -&gt; System.out.println(x));
+//对应 scala 中带守卫的 for循环
+ist.forEach(x -&gt; {
+    if (x / 2 == 0) {
+        System.out.println(x);
+    }
+});
+for (Integer x : list) {
+    if (x / 2 == 0) {
+        System.out.println(x);
+    }
+}
+//中间变量绑定
+for (Integer x : list) {
+    int a = x++;
+    for (Integer y : list2) {
+        System.out.println(x + ":" + a + ":" + y);
+    }
+}
+list.forEach(x -&gt; {
+    int a = x++;
+    final Integer finalX = x;//注意这个地方有个坑,闭包要求传入的变量是不可变的额
+    list2.forEach(y -&gt; {
+        System.out.println(finalX + ":" + a + ":" + y);
+    });
+});
+//for yield , scala 的表达式是有返回值的
+List&lt;Integer&gt; result = new ArrayList&lt;&gt;();
+list.forEach(x -&gt; {
+    int res = x + 1;
+    result.add(res);
+});</code></pre>
 </div>
 </div>
 <h2 id="Option-vs-Optional">Option vs Optional</h2>
@@ -826,56 +826,56 @@ list<span class="token punctuation">.</span><span class="token function">forEach
 <p>Option 是强制的！不要使用 null 来表示一个值是缺失的。</p>
 <h3 id="创建-Option">创建 Option</h3>
 <p>通常，你可以直接实例化 Some 样例类来创建一个 Option 。</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> greeting<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> Some<span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val greeting: Option[String] = Some("Hello world")</code></pre>
 <p>或者，在知道值缺失的情况下，直接使用 None 对象：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> greeting<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> None<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val greeting: Option[String] = None</code></pre>
 <p>然而，在实际工作中，你不可避免的要去操作一些 Java 库， 或者是其他将 null 作为缺失值的JVM 语言的代码。 为此， Option 伴生对象提供了一个工厂方法，可以根据给定的参数创建相应的 Option ：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> absentGreeting<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> Option<span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token comment">// absentGreeting will be None</span>
-<span class="token keyword">val</span> presentGreeting<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> Option<span class="token punctuation">(</span><span class="token string">"Hello!"</span><span class="token punctuation">)</span> <span class="token comment">// presentGreeting will be Some("Hello!")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val absentGreeting: Option[String] = Option(null) // absentGreeting will be None
+val presentGreeting: Option[String] = Option("Hello!") // presentGreeting will be Some("Hello!")</code></pre>
 <h3 id="使用-Option">使用 Option</h3>
 <p>目前为止，所有的这些都很简洁，不过该怎么使用 Option 呢？是时候开始举些无聊的例子了。</p>
 <p>想象一下，你正在为某个创业公司工作，要做的第一件事情就是实现一个用户的存储库， 要求能够通过唯一的用户 ID 来查找他们。 有时候请求会带来假的 ID，这种情况，查找方法就需要返回 Option[User] 类型的数据。 一个假想的实现可能是：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">case</span> <span class="token keyword">class</span> User<span class="token punctuation">(</span>
-  id<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span>
-  firstName<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span>
-  lastName<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">,</span>
-  age<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">,</span>
-  gender<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span>
-<span class="token punctuation">)</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">case class User(
+  id: Int,
+  firstName: String,
+  lastName: String,
+  age: Int,
+  gender: Option[String]
+)
 
-<span class="token keyword">object</span> UserRepository <span class="token punctuation">{</span>
-  <span class="token keyword">private</span> <span class="token keyword">val</span> users <span class="token operator">=</span> Map<span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">-&gt;</span> User<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"John"</span><span class="token punctuation">,</span> <span class="token string">"Doe"</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">,</span> Some<span class="token punctuation">(</span><span class="token string">"male"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-                          <span class="token number">2</span> <span class="token operator">-&gt;</span> User<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Johanna"</span><span class="token punctuation">,</span> <span class="token string">"Doe"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token keyword">def</span> findById<span class="token punctuation">(</span>id<span class="token operator">:</span> <span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token operator">:</span> Option<span class="token punctuation">[</span>User<span class="token punctuation">]</span> <span class="token operator">=</span> users<span class="token punctuation">.</span>get<span class="token punctuation">(</span>id<span class="token punctuation">)</span>
-  <span class="token keyword">def</span> findAll <span class="token operator">=</span> users<span class="token punctuation">.</span>values
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+object UserRepository {
+  private val users = Map(1 -&gt; User(1, "John", "Doe", 32, Some("male")),
+                          2 -&gt; User(2, "Johanna", "Doe", 30, None))
+  def findById(id: Int): Option[User] = users.get(id)
+  def findAll = users.values
+}</code></pre>
 <p>现在，假设从 UserRepository 接收到一个 Option[User] 实例，并需要拿它做点什么，该怎么办呢？</p>
 <p>一个办法就是通过 isDefined 方法来检查它是否有值。 如果有，你就可以用 get 方法来获取该值：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> user1 <span class="token operator">=</span> UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>user1<span class="token punctuation">.</span>isDefined<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  println<span class="token punctuation">(</span>user1<span class="token punctuation">.</span>get<span class="token punctuation">.</span>firstName<span class="token punctuation">)</span>
-<span class="token punctuation">}</span> <span class="token comment">// will print "John"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val user1 = UserRepository.findById(1)
+if (user1.isDefined) {
+  println(user1.get.firstName)
+} // will print "John"</code></pre>
 <p>这和 Guava 库 中的 Optional 使用方法类似。 不过这种使用方式太过笨重，更重要的是，使用 get 之前， 你可能会忘记用 isDefined 做检查，这会导致运行期出现异常。 这样一来，相对于 null ，使用 Option 并没有什么优势。</p>
 <p><strong>你应该尽可能远离这种访问方式！</strong></p>
 <h3 id="提供一个默认值">提供一个默认值</h3>
 <p>很多时候，在值不存在时，需要进行回退，或者提供一个默认值。 Scala 为 Option 提供了 getOrElse 方法，以应对这种情况：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> user <span class="token operator">=</span> User<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Johanna"</span><span class="token punctuation">,</span> <span class="token string">"Doe"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span>
-println<span class="token punctuation">(</span><span class="token string">"Gender: "</span> <span class="token operator">+</span> user<span class="token punctuation">.</span>gender<span class="token punctuation">.</span>getOrElse<span class="token punctuation">(</span><span class="token string">"not specified"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// will print "not specified"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val user = User(2, "Johanna", "Doe", 30, None)
+println("Gender: " + user.gender.getOrElse("not specified")) // will print "not specified"</code></pre>
 <p>请注意，作为 getOrElse 参数的默认值是一个 传名参数 ， 这意味着，只有当这个 Option 确实是 None 时，传名参数才会被求值。 因此，没必要担心创建默认值的代价，它只有在需要时才会发生。</p>
 <h3 id="模式匹配">模式匹配</h3>
 <p>Some 是一个样例类，可以出现在模式匹配表达式或者其他允许模式出现的地方。 上面的例子可以用模式匹配来重写：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> user <span class="token operator">=</span> User<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Johanna"</span><span class="token punctuation">,</span> <span class="token string">"Doe"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span>
-user<span class="token punctuation">.</span>gender <span class="token keyword">match</span> <span class="token punctuation">{</span>
-  <span class="token keyword">case</span> Some<span class="token punctuation">(</span>gender<span class="token punctuation">)</span> <span class="token keyword">=&gt;</span> println<span class="token punctuation">(</span><span class="token string">"Gender: "</span> <span class="token operator">+</span> gender<span class="token punctuation">)</span>
-  <span class="token keyword">case</span> None <span class="token keyword">=&gt;</span> println<span class="token punctuation">(</span><span class="token string">"Gender: not specified"</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val user = User(2, "Johanna", "Doe", 30, None)
+user.gender match {
+  case Some(gender) =&gt; println("Gender: " + gender)
+  case None =&gt; println("Gender: not specified")
+}</code></pre>
 <p>或者，你想删除重复的 println 语句，并重点突出模式匹配表达式的使用：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> user <span class="token operator">=</span> User<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Johanna"</span><span class="token punctuation">,</span> <span class="token string">"Doe"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span>
-<span class="token keyword">val</span> gender <span class="token operator">=</span> user<span class="token punctuation">.</span>gender <span class="token keyword">match</span> <span class="token punctuation">{</span>
-  <span class="token keyword">case</span> Some<span class="token punctuation">(</span>gender<span class="token punctuation">)</span> <span class="token keyword">=&gt;</span> gender
-  <span class="token keyword">case</span> None <span class="token keyword">=&gt;</span> <span class="token string">"not specified"</span>
-<span class="token punctuation">}</span>
-println<span class="token punctuation">(</span><span class="token string">"Gender: "</span> <span class="token operator">+</span> gender<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val user = User(2, "Johanna", "Doe", 30, None)
+val gender = user.gender match {
+  case Some(gender) =&gt; gender
+  case None =&gt; "not specified"
+}
+println("Gender: " + gender)</code></pre>
 <p>你可能已经发现用模式匹配处理 Option 实例是非常啰嗦的，这也是它非惯用法的原因。 所以，即使你很喜欢模式匹配，也尽量用其他方法吧。</p>
 <p>不过在 Option 上使用模式确实是有一个相当优雅的方式， 在下面的 for 语句一节中，你就会学到。</p>
 <h3 id="作为集合的-Option">作为集合的 Option</h3>
@@ -885,71 +885,71 @@ println<span class="token punctuation">(</span><span class="token string">"Gende
 <p>那么这又能让你做什么呢？</p>
 <h3 id="执行一个副作用">执行一个副作用</h3>
 <p>如果想在 Option 值存在的时候执行某个副作用，foreach 方法就派上用场了：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>foreach<span class="token punctuation">(</span>user <span class="token keyword">=&gt;</span> println<span class="token punctuation">(</span>user<span class="token punctuation">.</span>firstName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// prints "Johanna"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">UserRepository.findById(2).foreach(user =&gt; println(user.firstName)) // prints "Johanna"</code></pre>
 <p>如果这个 Option 是一个 Some ，传递给 foreach 的函数就会被调用一次，且只有一次； 如果是 None ，那它就不会被调用。</p>
 <h3 id="执行映射">执行映射</h3>
 <p>Option 表现的像集合，最棒的一点是， 你可以用它来进行函数式编程，就像处理列表、集合那样。</p>
 <p>正如你可以将 List[A] 映射到 List[B] 一样，你也可以映射 Option[A] 到 Option[B]： 如果 Option[A] 实例是 Some[A] 类型，那映射结果就是 Some[B] 类型；否则，就是 None 。</p>
 <p>如果将 Option 和 List 做对比 ，那 None 就相当于一个空列表： 当你映射一个空的 List[A] ，会得到一个空的 List[B] ， 而映射一个是 None 的 Option[A] 时，得到的 Option[B] 也是 None 。</p>
 <p>让我们得到一个可能不存在的用户的年龄：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> age <span class="token operator">=</span> UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>age<span class="token punctuation">)</span> <span class="token comment">// age is Some(32)</span>
-Option 与 flatMap<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val age = UserRepository.findById(1).map(_.age) // age is Some(32)
+Option 与 flatMap</code></pre>
 <p>也可以在 gender 上做 map 操作：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> gender <span class="token operator">=</span> UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>gender<span class="token punctuation">)</span> <span class="token comment">// gender is an Option[Option[String]]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val gender = UserRepository.findById(1).map(_.gender) // gender is an Option[Option[String]]</code></pre>
 <p>所生成的 gender 类型是 Option[Option[String]] 。这是为什么呢？</p>
 <p>这样想：你有一个装有 User 的 Option 容器，在容器里面，你将 User 映射到 Option[String] （ User 类上的属性 gender 是 Option[String] 类型的）。 得到的必然是嵌套的 Option。</p>
 <p>既然可以 flatMap 一个 List[List[A]] 到 List[B] ， 也可以 flatMap 一个 Option[Option[A]] 到 Option[B] ，这没有任何问题： Option 提供了 flatMap 方法。</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> gender1 <span class="token operator">=</span> UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>_<span class="token punctuation">.</span>gender<span class="token punctuation">)</span> <span class="token comment">// gender is Some("male")</span>
-<span class="token keyword">val</span> gender2 <span class="token operator">=</span> UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>_<span class="token punctuation">.</span>gender<span class="token punctuation">)</span> <span class="token comment">// gender is None</span>
-<span class="token keyword">val</span> gender3 <span class="token operator">=</span> UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>_<span class="token punctuation">.</span>gender<span class="token punctuation">)</span> <span class="token comment">// gender is None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val gender1 = UserRepository.findById(1).flatMap(_.gender) // gender is Some("male")
+val gender2 = UserRepository.findById(2).flatMap(_.gender) // gender is None
+val gender3 = UserRepository.findById(3).flatMap(_.gender) // gender is None</code></pre>
 <p>现在结果就变成了 Option[String] 类型， 如果 user 和 gender 都有值，那结果就会是 Some 类型，反之，就得到一个 None 。</p>
 <p>要理解这是什么原理，让我们看看当 flatMap 一个 List[List[A] 时，会发生什么？ （要记得， Option 就像一个集合，比如列表）</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> names<span class="token operator">:</span> List<span class="token punctuation">[</span>List<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span>
- List<span class="token punctuation">(</span>List<span class="token punctuation">(</span><span class="token string">"John"</span><span class="token punctuation">,</span> <span class="token string">"Johanna"</span><span class="token punctuation">,</span> <span class="token string">"Daniel"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> List<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> List<span class="token punctuation">(</span><span class="token string">"Doe"</span><span class="token punctuation">,</span> <span class="token string">"Westheide"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-names<span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>toUpperCase<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment">// results in List(List("JOHN", "JOHANNA", "DANIEL"), List(), List("DOE", "WESTHEIDE"))</span>
-names<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>_<span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>toUpperCase<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment">// results in List("JOHN", "JOHANNA", "DANIEL", "DOE", "WESTHEIDE")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val names: List[List[String]] =
+ List(List("John", "Johanna", "Daniel"), List(), List("Doe", "Westheide"))
+names.map(_.map(_.toUpperCase))
+// results in List(List("JOHN", "JOHANNA", "DANIEL"), List(), List("DOE", "WESTHEIDE"))
+names.flatMap(_.map(_.toUpperCase))
+// results in List("JOHN", "JOHANNA", "DANIEL", "DOE", "WESTHEIDE")</code></pre>
 <p>如果我们使用 flatMap ，内部列表中的所有元素会被转换成一个扁平的字符串列表。 显然，如果内部列表是空的，则不会有任何东西留下。</p>
 <p>现在回到 Option 类型，如果映射一个由 Option 组成的列表呢？</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> names<span class="token operator">:</span> List<span class="token punctuation">[</span>Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> List<span class="token punctuation">(</span>Some<span class="token punctuation">(</span><span class="token string">"Johanna"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> None<span class="token punctuation">,</span> Some<span class="token punctuation">(</span><span class="token string">"Daniel"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-names<span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>toUpperCase<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// List(Some("JOHANNA"), None, Some("DANIEL"))</span>
-names<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>xs <span class="token keyword">=&gt;</span> xs<span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>toUpperCase<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// List("JOHANNA", "DANIEL")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">val names: List[Option[String]] = List(Some("Johanna"), None, Some("Daniel"))
+names.map(_.map(_.toUpperCase)) // List(Some("JOHANNA"), None, Some("DANIEL"))
+names.flatMap(xs =&gt; xs.map(_.toUpperCase)) // List("JOHANNA", "DANIEL")</code></pre>
 <p>如果只是 map ，那结果类型还是 List[Option[String]] 。 而使用 flatMap 时，内部集合的元素就会被放到一个扁平的列表里： 任何一个 Some[String] 里的元素都会被解包，放入结果集中； 而原列表中的 None 值由于不包含任何元素，就直接被过滤出去了。</p>
 <p>记住这一点，然后再去看看 faltMap 在 Option 身上做了什么。</p>
 <h3 id="过滤-Option">过滤 Option</h3>
 <p>也可以像过滤列表那样过滤 Option： 如果选项包含有值，而且传递给 filter 的谓词函数返回真， filter 会返回 Some 实例。 否则（即选项没有值，或者谓词函数返回假值），返回值为 None 。</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>age <span class="token operator">&gt;</span> <span class="token number">30</span><span class="token punctuation">)</span> <span class="token comment">// None, because age is &lt;= 30</span>
-UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>age <span class="token operator">&gt;</span> <span class="token number">30</span><span class="token punctuation">)</span> <span class="token comment">// Some(user), because age is &gt; 30</span>
-UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>age <span class="token operator">&gt;</span> <span class="token number">30</span><span class="token punctuation">)</span> <span class="token comment">// None, because user is already None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">UserRepository.findById(1).filter(_.age &gt; 30) // None, because age is &lt;= 30
+UserRepository.findById(2).filter(_.age &gt; 30) // Some(user), because age is &gt; 30
+UserRepository.findById(3).filter(_.age &gt; 30) // None, because user is already None</code></pre>
 <h3 id="for-语句">for 语句</h3>
 <p>现在，你已经知道 Option 可以被当作集合来看待，并且有 map 、 flatMap 、 filter 这样的方法。 可能你也在想 Option 是否能够用在 for 语句中，答案是肯定的。 而且，用 for 语句来处理 Option 是可读性最好的方式，尤其是当你有多个 map 、flatMap 、filter 调用的时候。 如果只是一个简单的 map 调用，那 for 语句可能有点繁琐。</p>
 <p>假如我们想得到一个用户的性别，可以这样使用 for 语句：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">for</span> <span class="token punctuation">{</span>
-  user <span class="token keyword">&lt;-</span> UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-  gender <span class="token keyword">&lt;-</span> user<span class="token punctuation">.</span>gender
-<span class="token punctuation">}</span> <span class="token keyword">yield</span> gender <span class="token comment">// results in Some("male")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">for {
+  user &lt;- UserRepository.findById(1)
+  gender &lt;- user.gender
+} yield gender // results in Some("male")</code></pre>
 <p>可能你已经知道，这样的 for 语句等同于嵌套的 flatMap 调用。 如果 UserRepository.findById 返回 None，或者 gender 是 None ， 那这个 for 语句的结果就是 None 。 不过这个例子里， gender 含有值，所以返回结果是 Some 类型的。</p>
 <p>如果我们想返回所有用户的性别（当然，如果用户设置了性别），可以遍历用户，yield 其性别：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">for</span> <span class="token punctuation">{</span>
-  user <span class="token keyword">&lt;-</span> UserRepository<span class="token punctuation">.</span>findAll
-  gender <span class="token keyword">&lt;-</span> user<span class="token punctuation">.</span>gender
-<span class="token punctuation">}</span> <span class="token keyword">yield</span> gender
-<span class="token comment">// result in List("male")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">for {
+  user &lt;- UserRepository.findAll
+  gender &lt;- user.gender
+} yield gender
+// result in List("male")</code></pre>
 <p>在生成器左侧使用</p>
 <p>也许你还记得，前一章曾经提到过， for 语句中生成器的左侧也是一个模式。 这意味着也可以在 for 语句中使用包含选项的模式。</p>
 <p>重写之前的例子：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">for</span> <span class="token punctuation">{</span>
-  User<span class="token punctuation">(</span>_<span class="token punctuation">,</span> _<span class="token punctuation">,</span> _<span class="token punctuation">,</span> _<span class="token punctuation">,</span> Some<span class="token punctuation">(</span>gender<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">&lt;-</span> UserRepository<span class="token punctuation">.</span>findAll
-<span class="token punctuation">}</span> <span class="token keyword">yield</span> gender<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">for {
+  User(_, _, _, _, Some(gender)) &lt;- UserRepository.findAll
+} yield gender</code></pre>
 <p>在生成器左侧使用 Some 模式就可以在结果集中排除掉值为 None 的元素。</p>
 <h3 id="链接-Option">链接 Option</h3>
 <p>Option 还可以被链接使用，这有点像偏函数的链接： 在 Option 实例上调用 orElse 方法，并将另一个 Option 实例作为传名参数传递给它。 如果一个 Option 是 None ， orElse 方法会返回传名参数的值，否则，就直接返回这个 Option。</p>
 <p>一个很好的使用案例是资源查找：对多个不同的地方按优先级进行搜索。 下面的例子中，我们首先搜索 config 文件夹，并调用 orElse 方法，以传递备用目录：</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">case</span> <span class="token keyword">class</span> Resource<span class="token punctuation">(</span>content<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span>
-<span class="token keyword">val</span> resourceFromConfigDir<span class="token operator">:</span> Option<span class="token punctuation">[</span>Resource<span class="token punctuation">]</span> <span class="token operator">=</span> None
-<span class="token keyword">val</span> resourceFromClasspath<span class="token operator">:</span> Option<span class="token punctuation">[</span>Resource<span class="token punctuation">]</span> <span class="token operator">=</span> Some<span class="token punctuation">(</span>Resource<span class="token punctuation">(</span><span class="token string">"I was found on the classpath"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">val</span> resource <span class="token operator">=</span> resourceFromConfigDir orElse resourceFromClasspath<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">case class Resource(content: String)
+val resourceFromConfigDir: Option[Resource] = None
+val resourceFromClasspath: Option[Resource] = Some(Resource("I was found on the classpath"))
+val resource = resourceFromConfigDir orElse resourceFromClasspath</code></pre>
 <p>如果想链接多个选项，而不仅仅是两个，使用 orElse 会非常合适。 不过，如果只是想在值缺失的情况下提供一个默认值，那还是使用 getOrElse 吧。</p>
 <h4 id="小结-4">小结</h4>
 <p>在这一章里，你学到了有关 Option 的所有知识， 这有利于你理解别人的代码，也有利于你写出更可读，更函数式的代码。</p>
@@ -963,22 +963,22 @@ UserRepository<span class="token punctuation">.</span>findById<span class="token
 <h1>sclal集合</h1>
 <h2 id="Tuple-元组">Tuple 元组</h2>
 <p>元组是在不使用类的前提下，将元素组合起来形成简单的逻辑集合。</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala<span class="token operator">&gt;</span> <span class="token keyword">val</span> hostPort <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">"localhost"</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">)</span>
-hostPort<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>localhost<span class="token punctuation">,</span><span class="token number">80</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala&gt; val hostPort = ("localhost", 80)
+hostPort: (String, Int) = (localhost,80)</code></pre>
 <p>与样本类不同，元组不能通过名称获取字段，而是使用位置下标来读取对象；而且这个下标基于1，而不是基于0。</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala<span class="token operator">&gt;</span> hostPort<span class="token punctuation">.</span>_1
-res1<span class="token operator">:</span> <span class="token builtin">String</span> <span class="token operator">=</span> localhost
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala&gt; hostPort._1
+res1: String = localhost
 
-scala<span class="token operator">&gt;</span> hostPort<span class="token punctuation">.</span>_2
-res2<span class="token operator">:</span> <span class="token builtin">Int</span> <span class="token operator">=</span> <span class="token number">80</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+scala&gt; hostPort._2
+res2: Int = 80</code></pre>
 <p>元组可以很好得与模式匹配相结合。</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">hostPort <span class="token keyword">match</span> <span class="token punctuation">{</span>
-  <span class="token keyword">case</span> <span class="token punctuation">(</span><span class="token string">"localhost"</span><span class="token punctuation">,</span> port<span class="token punctuation">)</span> <span class="token keyword">=&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-  <span class="token keyword">case</span> <span class="token punctuation">(</span>host<span class="token punctuation">,</span> port<span class="token punctuation">)</span> <span class="token keyword">=&gt;</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">hostPort match {
+  case ("localhost", port) =&gt; ...
+  case (host, port) =&gt; ...
+}</code></pre>
 <p>在创建两个元素的元组时，可以使用特殊语法：-&gt;</p>
-<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala<span class="token operator">&gt;</span>  <span class="token number">1</span> <span class="token operator">-&gt;</span> <span class="token number">2</span>
-res3<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala&gt;  1 -&gt; 2
+res3: (Int, Int) = (1,2)</code></pre>
 <h1>常用函数的</h1>
 <h2 id="map">map</h2>
 <p>map对列表中的每个元素应用一个函数，返回应用后的元素所组成的列表。</p>
@@ -1664,7 +1664,7 @@ res3<span class="token operator">:</span> <span class="token punctuation">(</spa
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

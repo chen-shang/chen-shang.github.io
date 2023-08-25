@@ -348,15 +348,15 @@
 但是在Alfred内使用重建功能时报错。
 <p>既然Alfred帮我们建立不了，那我自己手工去重建 Spotlight 的索引让它使用就好了。</p>
 <p>我们进入到  Alfred 的安装目录下，这里面有对应的重建索引的脚本</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /Applications/Alfred <span class="token number">5</span>.app/Contents/Frameworks/Alfred Framework.framework/Versions/A/Resources<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cd /Applications/Alfred 5.app/Contents/Frameworks/Alfred Framework.framework/Versions/A/Resources</code></pre>
 <p>脚本分别是</p>
 <pre class="line-numbers language-none"><code class="language-none">sh reindex.sh
-sh reindexdel.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+sh reindexdel.sh</code></pre>
 <p>如果遇到  <code>Spotlight server is disabled.</code> 这种报错</p>
 <pre class="line-numbers language-none"><code class="language-none">sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
 sudo mdutil -i off /
 sudo mdutil -E /
-sudo mdutil -i on /<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+sudo mdutil -i on /</code></pre>
 <p>提示 Indexing enabled. 即可。然后在重新执行重建索引命令</p>
 
                 
@@ -913,7 +913,7 @@ sudo mdutil -i on /<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

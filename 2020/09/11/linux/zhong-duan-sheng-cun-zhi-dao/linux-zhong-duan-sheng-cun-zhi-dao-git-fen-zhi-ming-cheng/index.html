@@ -353,27 +353,27 @@
 </center>
 首先进入主目录下 `cd ~` ,找到 `.bashrc` 文件如果没有则新建之
 <p>找到如下类似的一段文本,没有则添加</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">$color_prompt</span>"</span> <span class="token operator">=</span> <span class="token function">yes</span> <span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
-    <span class="token assign-left variable"><span class="token environment constant">PS1</span></span><span class="token operator">=</span><span class="token string">'${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '</span>
-<span class="token keyword">else</span>
-    <span class="token assign-left variable"><span class="token environment constant">PS1</span></span><span class="token operator">=</span><span class="token string">'${debian_chroot:+($debian_chroot)}\u@\h:\w\[\033[01;32m\]$(git_branch)\[\033[00m\]\$ '</span>
-<span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\[\033[01;32m\]$(git_branch)\[\033[00m\]\$ '
+fi</code></pre>
 <p>注意 else 中 PS1= 后面那条命令中 <code>$(git_branch)</code>这一个,这其实是一个函数,我们需要在 <code>.bashrc</code>文件中实现这个函数,所以我们需要在这个文件中添加这个函数的实现如下</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">git_branch</span> <span class="token punctuation">{</span>
-  <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">git</span> branch <span class="token parameter variable">-vv</span> <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"^\*"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token parameter variable">-e</span> <span class="token string">"s/^\*\ //"</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"\["</span><span class="token variable">`</span></span>
-  <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${tmp<span class="token operator">#</span>*<span class="token punctuation">[</span>}</span>
-  <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token variable">${tmp<span class="token operator">%</span><span class="token punctuation">]</span>*}</span>
-  <span class="token assign-left variable">branch</span><span class="token operator">=</span><span class="token variable">${tmp<span class="token operator">#</span>*<span class="token operator">/</span>}</span>
-  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${branch}</span>"</span> <span class="token operator">=</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-    <span class="token assign-left variable">branch</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span><span class="token function">git</span> branch <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>/dev/null <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"^\*"</span> <span class="token operator">|</span> <span class="token function">sed</span> <span class="token parameter variable">-e</span> <span class="token string">"s/^\*\ //"</span><span class="token variable">`</span></span>
-  <span class="token keyword">fi</span>
-  <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${branch}</span>"</span> <span class="token operator">!=</span> <span class="token string">""</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-    <span class="token keyword">if</span> <span class="token punctuation">[</span> <span class="token string">"<span class="token variable">${branch}</span>"</span> <span class="token operator">=</span> <span class="token string">"(no branch)"</span> <span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
-        <span class="token assign-left variable">branch</span><span class="token operator">=</span><span class="token string">"(<span class="token variable"><span class="token variable">`</span><span class="token function">git</span> rev-parse <span class="token parameter variable">--short</span> HEAD<span class="token variable">`</span></span>...)"</span>
-    <span class="token keyword">fi</span>
-    <span class="token builtin class-name">echo</span> <span class="token string">" [<span class="token variable">$branch</span>]"</span>
-  <span class="token keyword">fi</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">function git_branch {
+  tmp=`git branch -vv 2&gt;/dev/null | grep "^\*" | sed -e "s/^\*\ //" | grep "\["`
+  tmp=${tmp#*[}
+  tmp=${tmp%]*}
+  branch=${tmp#*/}
+  if [ "${branch}" = "" ];then
+    branch=`git branch 2&gt;/dev/null | grep "^\*" | sed -e "s/^\*\ //"`
+  fi
+  if [ "${branch}" != "" ];then
+    if [ "${branch}" = "(no branch)" ];then
+        branch="(`git rev-parse --short HEAD`...)"
+    fi
+    echo " [$branch]"
+  fi
+}</code></pre>
 
                 
             </div>
@@ -941,7 +941,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

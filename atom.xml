@@ -268,7 +268,7 @@
         
         
     <summary type="html">&lt;p&gt;我们先看一下下面的html页面&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-markup&quot; data-language=&quot;markup&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&lt;span class=&quot;token</summary>
+&lt;pre class=&quot;line-numbers language-markup&quot; data-language=&quot;markup&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&amp;lt;!DOCTYPE</summary>
         
       
     
@@ -410,7 +410,7 @@
         
         
     <summary type="html">&lt;p&gt;设置 DNS 命令&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;networksetup -setdnsservers Wi-Fi xxx&lt;span</summary>
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;networksetup -setdnsservers Wi-Fi</summary>
         
       
     
@@ -438,7 +438,7 @@
         
         
     <summary type="html">&lt;p&gt;压缩文件&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token</summary>
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;zip &amp;lt;压缩文件名&amp;gt;.zip</summary>
         
       
     

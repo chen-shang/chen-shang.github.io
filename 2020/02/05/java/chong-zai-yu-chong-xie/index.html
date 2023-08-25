@@ -362,7 +362,7 @@
   }
 
 }
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>注意下面两个方法是不能共存的，因为在调用的时候没有办法区分</p>
 <pre class="line-numbers language-none"><code class="language-none">public String print(Object o) {
     return "111";
@@ -370,15 +370,15 @@
 
 public &lt;T&gt; T print(T o) {
   return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}</code></pre>
 <p>理由是泛型的类型擦除</p>
 <pre class="line-numbers language-none"><code class="language-none">public &lt;T&gt; T print(T o) {
   return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+}</code></pre>
 <p>这个方法和</p>
 <pre class="line-numbers language-none"><code class="language-none">public Object  print(o o) {
   return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+}</code></pre>
 <p>方法无异</p>
 <h1>重写</h1>
 <p>重写就是重新一份，这个新写的一份是有条件的</p>
@@ -943,7 +943,7 @@ public &lt;T&gt; T print(T o) {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

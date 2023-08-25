@@ -375,35 +375,35 @@ hexo-theme-matery原来主题Banner头图都是偏紫色系,因此个人觉得�
 </center>
 <p>打开 <code>matery/source/css/matery.css</code> 文件 搜索 <code>.bg-color</code> 大概在198行<br>
 修改<code>background-image</code>属性中<code>linear-gradient</code>内的值即可改成你自己想要的颜色</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.bg-color</span> <span class="token punctuation">{</span>
-  <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right<span class="token punctuation">,</span>#623AA2 0%<span class="token punctuation">,</span>#F97794 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">.bg-color {
+  background-image: linear-gradient(to right,#623AA2 0%,#F97794 100%);
+}</code></pre>
 <p>之后顶部导航栏颜色,底部状态栏颜色都会改变了</p>
 <p>然后是github右上角的角标。这个通过浏览器搜索可以定位到标签,但在 <code>matery.css</code> 内却找不到关于颜色的标签控制器。因此推断,这个地方的颜色控制没有写在该文件中,理由是因为这个是个性化的配置,而<code>matery.csw</code>这个文件主打的是全局配置,一般多个地方都会用到的样式才会写到这里,因此需要去读源码了。我们先看看 <code>layout</code>中</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">$ ls
 _partial       about.ejs      categories.ejs friends.ejs    gallery.ejs    layout.ejs     tag.ejs
-_widget        archive.ejs    category.ejs   galleries.ejs  index.ejs      post.ejs       tags.ejs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+_widget        archive.ejs    category.ejs   galleries.ejs  index.ejs      post.ejs       tags.ejs</code></pre>
 <p>貌似没有相关的,再看看 <code>_partial</code> 目录下</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">$ ls
 back-top.ejs           gitalk.ejs             header.ejs             paging.ejs             prev-next.ejs          social-link-simple.ejs
 bg-cover-content.ejs   github-link.ejs        index-cover.ejs        post-cover.ejs         reprint-statement.ejs  social-link.ejs
 bg-cover.ejs           gitment.ejs            livere.ejs             post-detail-toc.ejs    reward.ejs             valine.ejs
 disqus.ejs             google-analytics.ejs   mobile-nav.ejs         post-detail.ejs        search.ejs
-footer.ejs             head.ejs               navigation.ejs         post-statis.ejs        share.ejs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+footer.ejs             head.ejs               navigation.ejs         post-statis.ejs        share.ejs</code></pre>
 <p>有一个与github相关的 <code>github-link.ejs</code>,打开查看发现原来配置就在这里,第15行左右</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.github-corner svg</span> <span class="token punctuation">{</span>
-    <span class="token property">color</span><span class="token punctuation">:</span> #F062A7<span class="token punctuation">;</span>
-    <span class="token property">fill</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> 64px<span class="token punctuation">;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 64px<span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-css" data-language="css"><code class="language-css">.github-corner svg {
+    color: #F062A7;
+    fill: #fff;
+    height: 64px;
+    width: 64px;
+}</code></pre>
 <p>我们修改 <code>color</code> 的属性值就可以随心所欲的改变github角标的颜色。</p>
 <h2 id="主题中跳转连接都指向自己的github">主题中跳转连接都指向自己的github</h2>
 <p>这个在主题的配置文件中</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text"># Whether to display fork me on github icon and link, default true, You can change it to your repo address
  # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
  githubLink:
-   enable: true<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+   enable: true</code></pre>
 <p>网站底部还有一部分连接</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">-------------------------- layout/_partial/footer.ejs --------------------------
 index 8b051a7..1630d35 100755
@@ -420,32 +420,32 @@ index 8b051a7..1630d35 100755
 +            &amp;nbsp;&amp;copy;&lt;span id="year"&gt;2019&lt;/span&gt;
              &lt;% if (theme.wordCount.totalCount) { %&gt;
              &amp;nbsp;&lt;i class="fas fa-chart-area"&gt;&lt;/i&gt;&amp;nbsp;站点总字数:&amp;nbsp;&lt;span
-                 class="white-color"&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;&amp;nbsp;字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                 class="white-color"&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;&amp;nbsp;字</code></pre>
 <h2 id="背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的">背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的</h2>
 <p>这个在<code>themes/matery/source/medias</code>目录下面,找到图标替换成同名的即可。<br>
 轮播图的位置在 <code>themes/matery/source/medias/banner</code> 只用放七张就好,代码逻辑是每天换一</p>
 <h2 id="去掉wordcloud功能">去掉wordcloud功能</h2>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-144050.jpg" width="100%">
 <p>修改 layout/tags.ejs 内容为如下代码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_partial/bg-cover'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">&lt;%- partial('_partial/bg-cover') %&gt;
 
-<span class="token operator">&lt;</span>main <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"content"</span><span class="token operator">&gt;</span>
+&lt;main class="content"&gt;
 
-    <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_widget/category-cloud'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
+    &lt;%- partial('_widget/category-cloud') %&gt;
 
-    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>site<span class="token punctuation">.</span>tags <span class="token operator">&amp;&amp;</span> site<span class="token punctuation">.</span>tags<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_widget/tag-wordcloud'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
+    &lt;% if (site.tags &amp;&amp; site.tags.length &gt; 0) { %&gt;
+    &lt;%- partial('_widget/tag-wordcloud') %&gt;
+    &lt;% } %&gt;
 
-<span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span>
-    <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_widget/tag-cloud'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>site<span class="token punctuation">.</span>categories <span class="token operator">&amp;&amp;</span> site<span class="token punctuation">.</span>categories<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_widget/category-radar'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
-    <span class="token operator">&lt;</span><span class="token operator">%</span> <span class="token punctuation">}</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
-<span class="token operator">--</span><span class="token operator">&gt;</span>
+&lt;!--
+    &lt;%- partial('_widget/tag-cloud') %&gt;
+    &lt;% if (site.categories &amp;&amp; site.categories.length &gt; 0) { %&gt;
+    &lt;%- partial('_widget/category-radar') %&gt;
+    &lt;% } %&gt;
+--&gt;
 
-    <span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_widget/post-charts'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
-<span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    &lt;%- partial('_widget/post-charts') %&gt;
+&lt;/main&gt;</code></pre>
 <p>其目的是把标签、分类两个页面合二唯一,将所有关于文件分类统计的内容都放到标签页面，这样可以省出一个标签的位置来，顶部导航栏也不会太拥挤,效果如下<br>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-152930.jpg" width="100%"></p>
 <h2 id="添加百度统计">添加百度统计</h2>
@@ -460,112 +460,112 @@ index 8b051a7..1630d35 100755
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/wron.jpg" width="100%"></p>
 <pre class="line-numbers language-css" data-language="css"><code class="language-css">---------------------------- source/css/matery.css ----------------------------
 
-<span class="token comment">/*全局基础样式*/</span>
-<span class="token comment">/*小屏幕下(手机类)的样式*/</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 601px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-    <span class="token selector">.container</span> <span class="token punctuation">{</span>
-        <span class="token property">width</span><span class="token punctuation">:</span> 95%<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token selector">header .brand-logo .logo-span</span> <span class="token punctuation">{</span>
-        <span class="token property">font-size</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token selector">.bg-cover .title</span> <span class="token punctuation">{</span>
-        <span class="token property">font-size</span><span class="token punctuation">:</span> 3rem<span class="token punctuation">;</span>
-        <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
-        <span class="token property">line-height</span><span class="token punctuation">:</span> 1.85em<span class="token punctuation">;</span>
-        <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
-        <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+/*全局基础样式*/
+/*小屏幕下(手机类)的样式*/
+@media only screen and (max-width: 601px) {
+    .container {
+        width: 95%;
+    }
+    header .brand-logo .logo-span {
+        font-size: 1rem;
+    }
+    .bg-cover .title {
+        font-size: 3rem;
+        font-weight: 700;
+        line-height: 1.85em;
+        margin-bottom: 20px;
+        position: relative;
+    }
+}
 
-<span class="token comment">/*中等屏幕下(平板类)的样式*/</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 600px<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">max-width</span><span class="token punctuation">:</span> 992px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-    <span class="token selector">.container</span> <span class="token punctuation">{</span>
-        <span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token selector">header .brand-logo .logo-span</span> <span class="token punctuation">{</span>
-        <span class="token property">font-size</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token selector">.bg-cover .title</span> <span class="token punctuation">{</span>
-        <span class="token property">font-size</span><span class="token punctuation">:</span> 4rem<span class="token punctuation">;</span>
-        <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
-        <span class="token property">line-height</span><span class="token punctuation">:</span> 1.85em<span class="token punctuation">;</span>
-        <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
-        <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span class="token comment">/*大屏幕下(桌面类)的样式*/</span>
-<span class="token atrule"><span class="token rule">@media</span> <span class="token keyword">only</span> screen <span class="token keyword">and</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 993px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
-    <span class="token selector">.container</span> <span class="token punctuation">{</span>
-        <span class="token property">width</span><span class="token punctuation">:</span> 85%<span class="token punctuation">;</span>
-        <span class="token property">max-width</span><span class="token punctuation">:</span> 1125px<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+/*中等屏幕下(平板类)的样式*/
+@media only screen and (min-width: 600px) and (max-width: 992px) {
+    .container {
+        width: 90%;
+    }
+    header .brand-logo .logo-span {
+        font-size: 2rem;
+    }
+    .bg-cover .title {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.85em;
+        margin-bottom: 20px;
+        position: relative;
+    }
+}
+/*大屏幕下(桌面类)的样式*/
+@media only screen and (min-width: 993px) {
+    .container {
+        width: 85%;
+        max-width: 1125px;
+    }
 
-    <span class="token selector">.post-container</span> <span class="token punctuation">{</span>
-        <span class="token property">width</span><span class="token punctuation">:</span> 90%<span class="token punctuation">;</span>
-        <span class="token property">margin</span><span class="token punctuation">:</span> 0 auto<span class="token punctuation">;</span>
-        <span class="token property">max-width</span><span class="token punctuation">:</span> 1250px<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    .post-container {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 1250px;
+    }
 
-    <span class="token selector">header .brand-logo .logo-span</span> <span class="token punctuation">{</span>
-        <span class="token property">font-size</span><span class="token punctuation">:</span> 2rem<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    header .brand-logo .logo-span {
+        font-size: 2rem;
+    }
 
-    <span class="token selector">.bg-cover .title</span> <span class="token punctuation">{</span>
-        <span class="token property">font-size</span><span class="token punctuation">:</span> 4rem<span class="token punctuation">;</span>
-        <span class="token property">font-weight</span><span class="token punctuation">:</span> 700<span class="token punctuation">;</span>
-        <span class="token property">line-height</span><span class="token punctuation">:</span> 1.85em<span class="token punctuation">;</span>
-        <span class="token property">margin-bottom</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
-        <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    .bg-cover .title {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.85em;
+        margin-bottom: 20px;
+        position: relative;
+    }
+}</code></pre>
 <h2 id="每一一言">每一一言</h2>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-151408.jpg" width="100%">
 上面 嗷呜 下的内容是动态生成的，增加网站的趣味性
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">--------------------------- layout/_widget/dream.ejs ---------------------------
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>row<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hitokoto<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>&lt;%- theme.dream.text %&gt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
-      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto<span class="token punctuation">"</span></span> <span class="token attr-name">defer</span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
- <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&lt;div class="row"&gt;
+   &lt;div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text"&gt;
+     &lt;span id="hitokoto"&gt;&lt;%- theme.dream.text %&gt;&lt;/span&gt;
+      &lt;script src="https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto" defer&gt;&lt;/script&gt;
+   &lt;/div&gt;
+ &lt;/div&gt;</code></pre>
 <h2 id="每日诗词">每日诗词</h2>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-151909.jpg" width="100%">
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">--------------------- layout/_partial/bg-cover-content.ejs ---------------------
 index c7d1b7f..121716f 100755
 @@ -11,18 +11,8 @@
 
-             <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>description center-align<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+             &lt;div class="description center-align"&gt;
                  &lt;% if (theme.subtitle.enable) { %&gt;
--                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>subtitle<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
--                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://cdn.jsdelivr.net/npm/typed.js@2.0.11<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
--                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
-<span class="token operator">-</span>                    <span class="token keyword">var</span> typed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Typed</span><span class="token punctuation">(</span><span class="token string">"#subtitle"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-<span class="token operator">-</span>                        strings<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'&lt;%= theme.subtitle.sub1 %&gt;'</span><span class="token punctuation">,</span><span class="token string">'&lt;%= theme.subtitle.sub2 %&gt;'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-<span class="token operator">-</span>                        startDelay<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token operator">%=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>startDelay <span class="token operator">%</span><span class="token operator">&gt;</span><span class="token punctuation">,</span>
-<span class="token operator">-</span>                        typeSpeed<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token operator">%=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>typeSpeed <span class="token operator">%</span><span class="token operator">&gt;</span><span class="token punctuation">,</span>
-<span class="token operator">-</span>                        loop<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token operator">%=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>loop <span class="token operator">%</span><span class="token operator">&gt;</span><span class="token punctuation">,</span>
-<span class="token operator">-</span>                        backSpeed<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token operator">%=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>backSpeed <span class="token operator">%</span><span class="token operator">&gt;</span><span class="token punctuation">,</span>
-<span class="token operator">-</span>                        showCursor<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token operator">%=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>showCursor <span class="token operator">%</span><span class="token operator">&gt;</span>
-<span class="token operator">-</span>                    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token operator">-</span>                </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-+ 		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jinrishici-sentence<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>&lt;%= config.description %&gt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
-+                  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://sdk.jinrishici.com/v2/browser/jinrishici.js<span class="token punctuation">"</span></span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+-                &lt;span id="subtitle"&gt;&lt;/span&gt;
+-                &lt;script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"&gt;&lt;/script&gt;
+-                &lt;script&gt;
+-                    var typed = new Typed("#subtitle", {
+-                        strings: ['&lt;%= theme.subtitle.sub1 %&gt;','&lt;%= theme.subtitle.sub2 %&gt;'],
+-                        startDelay: &lt;%= theme.subtitle.startDelay %&gt;,
+-                        typeSpeed: &lt;%= theme.subtitle.typeSpeed %&gt;,
+-                        loop: &lt;%= theme.subtitle.loop %&gt;,
+-                        backSpeed: &lt;%= theme.subtitle.backSpeed %&gt;,
+-                        showCursor: &lt;%= theme.subtitle.showCursor %&gt;
+-                    });
+-                &lt;/script&gt;
++ 		  &lt;span id="jinrishici-sentence"&gt;&lt;%= config.description %&gt;&lt;/span&gt;
++                  &lt;script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"&gt;&lt;/script&gt;
                  &lt;% } else { %&gt;
                  &lt;%= config.description %&gt;
-                 &lt;% } %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                 &lt;% } %&gt;</code></pre>
 <h2 id="添加文章显示作者名字">添加文章显示作者名字</h2>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-152321.jpg" width="100%">
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">---------------------- layout/_partial/post-detail.ejs -----------------------
 
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>info-break-policy<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+&lt;div class="info-break-policy"&gt;
     &lt;% if (page.author &amp;&amp; page.author.length &gt; 0) { %&gt;
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa fa-pencil<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span> 作者: &lt;%- page.author %&gt;
+        &lt;i class="fa fa-pencil"&gt;&lt;/i&gt; 作者: &lt;%- page.author %&gt;
      &lt;% } else { %&gt;
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa fa-pencil<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span> 作者: &lt;%- config.author %&gt;
+    &lt;i class="fa fa-pencil"&gt;&lt;/i&gt; 作者: &lt;%- config.author %&gt;
     &lt;% } %&gt;
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&lt;/div&gt;</code></pre>
 <h2 id="自动生成分类">自动生成分类</h2>
 <p><code>hexo-enchancer</code> 无法配置生成的目录深度,所以选择了 <code>hexo-auto-category</code> 使用教程参考: <a target="_blank" rel="noopener" href="https://blog.eson.org/pub/e2f6e239/">https://blog.eson.org/pub/e2f6e239/</a></p>
 
@@ -1204,7 +1204,7 @@ index c7d1b7f..121716f 100755
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             

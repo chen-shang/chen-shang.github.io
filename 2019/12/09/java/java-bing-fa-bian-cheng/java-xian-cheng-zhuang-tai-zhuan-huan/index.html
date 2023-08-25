@@ -446,14 +446,14 @@
          * The thread has completed execution.
          */
         TERMINATED;
-    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    }</code></pre>
 <p>通过源码我们知道,Java是在1.5版本中才加入对线程支持的,也就是说一开始JDK其实是不支持多线程编程的。那源码中定义了6中状态分别是，</p>
 <pre class="line-numbers language-none"><code class="language-none">NEW: 新建
 RUNNABLE: 就绪
 BLOCK: 阻塞
 WAITING: 等待
 TIMED_WATING: 限时等待
-TERMINATED: 终止<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+TERMINATED: 终止</code></pre>
 <p>那为什么要区分这么多种状态呢? 注释都已经写得清清楚楚了。</p>
 <h6 id="NEW">NEW</h6>
 <blockquote>
@@ -1069,7 +1069,7 @@ Join 方法：本质上还是根据wait方法实现的。分析join源码发现j
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124k</span>
+                        class="white-color">124.2k</span>
             
             
             
