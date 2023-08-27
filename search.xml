@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>vue怎么就响应式了</title>
+      <link href="/2023/08/27/qian-duan/vue/vue-zen-me-jiu-xiang-ying-shi-liao/"/>
+      <url>/2023/08/27/qian-duan/vue/vue-zen-me-jiu-xiang-ying-shi-liao/</url>
+      
+        <content type="html"><![CDATA[<p>我们看这段vue代码</p><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;    &lt;h1&gt;{{ count }}&lt;/h1&gt;    &lt;el-button @click="count++"&gt;count++&lt;/el-button&gt;&lt;/template&gt;&lt;script setup&gt;const count = 10;&lt;/script&gt;&lt;style scoped&gt;&lt;/style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>效果如图<br><img src="/2023/08/27/qian-duan/vue/vue-zen-me-jiu-xiang-ying-shi-liao/iShot_2023-08-27_12.27.25.gif"><br>这里我们怎么点击 count++ 按钮, h1 标签中 count 显示的值都不会变化。 但是你说 内存 中 count 的值 变了么，当然变了，只是我们没有再反向给 h1 标签 赋值而已</p><pre class="line-numbers language-vue" data-language="vue"><code class="language-vue">&lt;template&gt;    &lt;h1&gt;{{ count }}&lt;/h1&gt;    &lt;el-button @click="count++"&gt;count++&lt;/el-button&gt;&lt;/template&gt;&lt;script setup&gt;import {ref} from "vue";const count = ref(10);&lt;/script&gt;&lt;style scoped&gt;&lt;/style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>而 如果 我们 使用 ref() 这个 函数 来定义 一个变量 ，那么 当我们再次点击 count++ 按钮的时候 ，h1 标签里面的值就会自动跟着变了。这就是 响应式 最基本的 表现形式 之一。</p><p><img src="/2023/08/27/qian-duan/vue/vue-zen-me-jiu-xiang-ying-shi-liao/iShot_2023-08-27_12.26.18.gif"></p><p>响应式的实现原理 参考 vue 的官方文档吧 <a href="https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html#ref">https://cn.vuejs.org/guide/essentials/reactivity-fundamentals.html#ref</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue中ref属性的作用</title>
+      <link href="/2023/08/26/qian-duan/vue/vue-zhong-ref-shu-xing-de-zuo-yong/"/>
+      <url>/2023/08/26/qian-duan/vue/vue-zhong-ref-shu-xing-de-zuo-yong/</url>
+      
+        <content type="html"><![CDATA[<p>注意这里指的 <code>ref</code> 是 内置的特殊 Attributes ，不是指的 <code>ref()</code> 函数。也就是用在 模板 标签 的属性上的那个 <code>ref</code></p><p>我们在引入组件后，怎么得到这个组件的引用，进而通过引用来操作组件呢。以elementui中表单组件的校验为例<br><img src="/2023/08/26/qian-duan/vue/vue-zhong-ref-shu-xing-de-zuo-yong/image.png"></p><p>其实 <code>&lt;el-form ref="formRef" &gt;</code>，这有点像java 中的 变量定义  <code>String formRef= null </code>.  意思是 针对 组件 <code>el-form</code> 我给他定义一个变量 <code>formRef</code> 后面就可以用 <code>formRef</code> 来代替当前组件了。</p><p>这个 ref 属性 属于 内置的特殊 Attributes。vue 中 内置的特殊 Attributes 一共有 仨 : <code>key</code>,<code>is</code>,<code>ref</code><br>参考 官方 文档 <a href="https://cn.vuejs.org/api/built-in-special-attributes.html#ref">https://cn.vuejs.org/api/built-in-special-attributes.html#ref</a><br><img src="/2023/08/26/qian-duan/vue/vue-zhong-ref-shu-xing-de-zuo-yong/image2.png"></p><p>ref 的作用 主要 用于注册模板引用。</p><p>什么是 模板引用 <a href="https://cn.vuejs.org/guide/essentials/template-refs.html">https://cn.vuejs.org/guide/essentials/template-refs.html</a></p><p>说白了，就是我最开始解释的那样，为了在后续能够方便和直接的操作那个组件。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>aria-label标签</title>
+      <link href="/2023/08/26/qian-duan/vue/aria-label-biao-qian/"/>
+      <url>/2023/08/26/qian-duan/vue/aria-label-biao-qian/</url>
+      
+        <content type="html"><![CDATA[<h1>不寻常的属性</h1><p>html 中 总有一些 奇奇怪怪 不常见 的一些 标签和属性，今天见到了一个 叫 <code>aria-label</code> 的属性。</p><p>“aria-label” 是一个用于辅助技术的属性，用于提供元素的可访问名称。它用于描述一个元素的目的或功能，以便屏幕阅读器等辅助技术可以正确地传达给用户。 它通常用于没有文本内容的元素，例如图标按钮或仅包含图像的元素。</p><p>以下是一个示例，展示了如何使用 “aria-label” 属性：</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>搜索<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa fa-search<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>在上面的示例中，我们使用 “aria-label” 属性为按钮提供了一个可访问的名称，即 “搜索”。这样，屏幕阅读器用户将能够听到按钮的目的，即搜索功能。</p><h1>屏幕阅读器</h1><p>屏幕阅读器是一种辅助技术，用于帮助视力受限的用户浏览和使用网页。</p><p>屏幕阅读器通常提供导航功能，如标题导航、链接导航、表单导航等。用户可以使用这些功能快速浏览和定位到页面上的不同元素。</p><p>屏幕阅读器会逐个读取网页上的元素，如标题、段落、链接、按钮等。用户可以使用屏幕阅读器的命令来控制阅读速度、跳过内容等。</p><p>屏幕阅读器可以帮助用户导航到页面上的链接和表单元素，并提供相应的命令和提示，使用户能够点击链接或填写表单。</p><p>开发者应该正确使用 HTML 标记和语义，以便屏幕阅读器能够准确解读和呈现网页内容。例如，使用语义化的标签（如  </p><h1>  到  </h1><h6> 、 <nav> 、 <main>  等）来表示页面结构。<p></p></main></nav></h6>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+          <category> Vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Idea打开properties文件显示中文乱码解决方案</title>
       <link href="/2023/08/24/gong-ju-kong/intellij-idea/idea-da-kai-properties-wen-jian-xian-shi-zhong-wen-luan-ma-jie-jue-fang-an/"/>
       <url>/2023/08/24/gong-ju-kong/intellij-idea/idea-da-kai-properties-wen-jian-xian-shi-zhong-wen-luan-ma-jie-jue-fang-an/</url>
@@ -330,7 +411,7 @@
       <link href="/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/"/>
       <url>/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/</url>
       
-        <content type="html"><![CDATA[<p>当使用多台计算机时，使用一个键盘和鼠标来控制所有计算机可能会非常方便。</p><p>ShareMouse 是一个可以实现 Mac 和 Windows 之间键盘和鼠标共享的软件。以下是使用 ShareMouse 实现键盘和鼠标共享的简单教程：</p><p>步骤 1：下载和安装 ShareMouse 首先，你需要在每台计算机上下载和安装 ShareMouse 软件。你可以在官方网站上找到 ShareMouse 的下载链接。确保选择适合你的操作系统的版本。</p><p>步骤 2：设置主机和客户端 在你的计算机网络中，其中一台计算机将被设置为主机（即使用该计算机的键盘和鼠标来控制其他计算机），其他计算机将作为客户端。</p><p>在主机计算机上运行 ShareMouse 软件，并选择 “This computer is the master” 选项。</p><p>在客户端计算机上运行 ShareMouse 软件，并选择 “This computer is a client” 选项。</p><p>步骤 3：连接主机和客户端 在主机和客户端计算机上运行 ShareMouse 软件后，它们会自动在同一个网络中进行搜索，然后显示在软件的界面中。</p><p>在主机计算机上，你应该能够看到所有客户端计算机的名称。从中选择要共享键盘和鼠标的客户端计算机。 在 Mac 上配置如下</p><center> <img src="/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/image2.png" style="height:300px"> </center><p>在客户端计算机上，你应该能够看到主机计算机的名称。选择主机计算机以连接到主机。在windows上配置如下</p><p>步骤 4：开始键盘和鼠标共享 连接成功后，你将能够使用主机计算机的键盘和鼠标来控制客户端计算机。</p><center> <img src="/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/image.png" style="height:300px"> </center><p>将鼠标移动到客户端计算机的屏幕边缘，鼠标会跨越到主机计算机的屏幕。这样你就可以在主机和客户端之间自由地切换。</p><p>你还可以使用 ShareMouse 软件提供的一些额外功能，如跨屏剪贴板共享和文件拖放。</p><p>步骤 5：停止键盘和鼠标共享 当你完成键盘和鼠标共享后，你可以随时在 ShareMouse 软件界面的 “Disconnect” 或 “Exit” 按钮上点击来停止共享。</p><p>如果连接不成功就重启试试</p>]]></content>
+        <content type="html"><![CDATA[<p>当使用多台计算机时，使用一个键盘和鼠标来控制所有计算机可能会非常方便。</p><p>ShareMouse 是一个可以实现 Mac 和 Windows 之间键盘和鼠标共享的软件。以下是使用 ShareMouse 实现键盘和鼠标共享的简单教程：</p><p>步骤 1：下载和安装 ShareMouse 首先，你需要在每台计算机上下载和安装 ShareMouse 软件。你可以在官方网站上找到 ShareMouse 的下载链接。确保选择适合你的操作系统的版本。</p><p>步骤 2：设置主机和客户端 在你的计算机网络中，其中一台计算机将被设置为主机（即使用该计算机的键盘和鼠标来控制其他计算机），其他计算机将作为客户端。</p><p>在主机计算机上运行 ShareMouse 软件，并选择 “This computer is the master” 选项。</p><p>在客户端计算机上运行 ShareMouse 软件，并选择 “This computer is a client” 选项。</p><p>步骤 3：连接主机和客户端 在主机和客户端计算机上运行 ShareMouse 软件后，它们会自动在同一个网络中进行搜索，然后显示在软件的界面中。</p><p>在主机计算机上，你应该能够看到所有客户端计算机的名称。从中选择要共享键盘和鼠标的客户端计算机。 在 Mac 上配置如下</p><center> <img src="/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/image2.png" style="height:300px"> </center><p>在客户端计算机上，你应该能够看到主机计算机的名称。选择主机计算机以连接到主机。在windows上配置如下</p><p>步骤 4：开始键盘和鼠标共享 连接成功后，你将能够使用主机计算机的键盘和鼠标来控制客户端计算机。</p><center> <img src="/2023/08/18/gong-ju-kong/sharemouse/mac-windows-jian-shu-gong-xiang/image.png" style="height:300px"> </center><p>将鼠标移动到客户端计算机的屏幕边缘，鼠标会跨越到主机计算机的屏幕。这样你就可以在主机和客户端之间自由地切换。</p><p>你还可以使用 ShareMouse 软件提供的一些额外功能，如跨屏剪贴板共享和文件拖放。</p><p>步骤 5：停止键盘和鼠标共享 当你完成键盘和鼠标共享后，你可以随时在 ShareMouse 软件界面的 “Disconnect” 或 “Exit” 按钮上点击来停止共享。</p><p>如果连接不成功就重启试试. windows 上运行的时候记得用 管理员打开 ，不然有些系统应用比如 设备管理器 啥的能打开但是无法点击里面的内容</p>]]></content>
       
       
       <categories>
@@ -510,9 +591,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1027,7 +1108,7 @@
       <link href="/2023/06/25/gong-ju-kong/excel/excel-dan-yuan-ge-xia-la-lie-biao-shi-xian/"/>
       <url>/2023/06/25/gong-ju-kong/excel/excel-dan-yuan-ge-xia-la-lie-biao-shi-xian/</url>
       
-        <content type="html"><![CDATA[<ol><li>先选中对应的列</li><li>点击数据验证 <center> <img src="/2023/06/25/gong-ju-kong/excel/excel-dan-yuan-ge-xia-la-lie-biao-shi-xian/1.png"> </center></li><li>在验证条件里面，允许选择序列，然后来源中使用逗号分割的形式将这个单元格下来列表中的可选值填上就好<center> <img src="/2023/06/25/gong-ju-kong/excel/excel-dan-yuan-ge-xia-la-lie-biao-shi-xian/2.png"> </center></li></ol><p>那如何去掉表头那个单元格的下拉列表呢?<br>其实只需要选中表头的单元格,然后把数据验证中的允许值从序列改成对应的类型或者把右侧的提供下拉箭头去掉即可</p>]]></content>
+        <content type="html"><![CDATA[<h1>excel 单元格下拉列表实现</h1><ol><li>先选中对应的列</li><li>点击数据验证 <center> <img src="/2023/06/25/gong-ju-kong/excel/excel-dan-yuan-ge-xia-la-lie-biao-shi-xian/1.png"> </center></li><li>在验证条件里面，允许选择序列，然后来源中使用逗号分割的形式将这个单元格下来列表中的可选值填上就好<center> <img src="/2023/06/25/gong-ju-kong/excel/excel-dan-yuan-ge-xia-la-lie-biao-shi-xian/2.png"> </center></li></ol><h1>那如何去掉表头那个单元格的下拉列表呢?</h1><p>其实只需要选中表头的单元格,然后把数据验证中的允许值从序列改成对应的类型或者把右侧的提供下拉箭头去掉即可</p>]]></content>
       
       
       <categories>
@@ -1344,11 +1425,11 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> Java </tag>
             
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1516,9 +1597,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -1603,9 +1684,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -1717,9 +1798,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -2692,9 +2773,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -2752,9 +2833,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3183,35 +3264,6 @@
     
     
     <entry>
-      <title>Linux终端生存之道-git别名</title>
-      <link href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/"/>
-      <url>/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/</url>
-      
-        <content type="html"><![CDATA[<p>在Linux平台上,很多命令在我们按下<code>tab</code>键之后会自动补全该命令,在多次连续按下<code>tab</code>键之后会一次补全并切换匹配的命令。我们在使用git的过程中,也希望能够自动补全一些指令,比如 我想执行 <code>git status</code> 命令的时候,我只用输入 <code>git st </code> 然后按下<code>tab</code>键,就能输出 <code>git status</code>了。</p><p>在mac平台,使用HomeBrew安装Git <code>brew install git</code><br>我们会得到如下的输出(可以使用 <code>brew info git</code> 命令查看安装git时候的输出信息),我截取了最后几行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.Bash completion has been installed to:  /usr/local/etc/bash_completion.d<span class="token function">zsh</span> completions and functions have been installed to:  /usr/local/share/zsh/site-functionsEmacs Lisp files have been installed to:  /usr/local/share/emacs/site-lisp/git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>Bash completion has been installed to:</code> 这句话告诉我们git的自动补全脚本已经添加到了 <code>/usr/local/etc/</code> 目录下面的 <code>bash_completion.d</code>文件</p><p>我们所要做的就是,把它加到linux的补全功能中<br>我们首先进入 <code>/etc</code> 目录 ,使用管理员权限修改 <code>bashrc</code> 文件,在文件的最后一行加入下面一句话<br><code>[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] &amp;&amp; . /usr/local/etc/bash_completion.d/git-completion.bash</code><br>保存,重启终端即可</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-          <category> 终端生存之道 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> Git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Git万能后悔药</title>
       <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
       <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
@@ -3285,6 +3337,35 @@
         <tags>
             
             <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux终端生存之道-git别名</title>
+      <link href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/"/>
+      <url>/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/</url>
+      
+        <content type="html"><![CDATA[<p>在Linux平台上,很多命令在我们按下<code>tab</code>键之后会自动补全该命令,在多次连续按下<code>tab</code>键之后会一次补全并切换匹配的命令。我们在使用git的过程中,也希望能够自动补全一些指令,比如 我想执行 <code>git status</code> 命令的时候,我只用输入 <code>git st </code> 然后按下<code>tab</code>键,就能输出 <code>git status</code>了。</p><p>在mac平台,使用HomeBrew安装Git <code>brew install git</code><br>我们会得到如下的输出(可以使用 <code>brew info git</code> 命令查看安装git时候的输出信息),我截取了最后几行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.Bash completion has been installed to:  /usr/local/etc/bash_completion.d<span class="token function">zsh</span> completions and functions have been installed to:  /usr/local/share/zsh/site-functionsEmacs Lisp files have been installed to:  /usr/local/share/emacs/site-lisp/git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>Bash completion has been installed to:</code> 这句话告诉我们git的自动补全脚本已经添加到了 <code>/usr/local/etc/</code> 目录下面的 <code>bash_completion.d</code>文件</p><p>我们所要做的就是,把它加到linux的补全功能中<br>我们首先进入 <code>/etc</code> 目录 ,使用管理员权限修改 <code>bashrc</code> 文件,在文件的最后一行加入下面一句话<br><code>[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] &amp;&amp; . /usr/local/etc/bash_completion.d/git-completion.bash</code><br>保存,重启终端即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 终端生存之道 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
