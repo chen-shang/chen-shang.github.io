@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="系统之间聚合操作数据量, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="keywords" content="Markdown使用笔记, IT,技术,总结">
+    <meta name="description" content="Markdown一些语法记录,有些语法偶尔用一下导致记忆不牢,这里可以让自己速查一下">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>系统之间聚合操作数据量 | 涓涓细流</title>
+    <title>Markdown使用笔记 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -38,7 +38,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -230,7 +232,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -243,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">系统之间聚合操作数据量</h1>
+                    <h1 class="description center-align post-title">Markdown使用笔记</h1>
                 </div>
             </div>
         </div>
@@ -258,10 +260,12 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -274,42 +278,23 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                            <a href="/tags/Git/">
-                                <span class="chip bg-color">Git</span>
-                            </a>
-                        
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
-                            </a>
-                        
-                            <a href="/tags/HTML/">
-                                <span class="chip bg-color">HTML</span>
-                            </a>
-                        
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
-                            </a>
-                        
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
+                                工具控
+                            </a>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Markdown/" class="post-category">
+                                Markdown
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -318,7 +303,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-30
+                    2023-09-02
                 </div>
                 
 
@@ -332,14 +317,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    700
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -362,7 +347,64 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1>跳转到目标网站</h1>
+<p>语法 : [链接文本](链接URL)</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url">[<span class="token content">Linux终端生存之道-网络小工具</span>](<span class="token url">https://chen-shang.github.io/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>长下面这个样子<br>
+<a href="https://chen-shang.github.io/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/">Linux终端生存之道-网络小工具</a><br>
+<a id="section1"></a></p>
+<h1>去掉跳转链接的下划线</h1>
+<p>Markdown本身并没有提供一种直接的方式来去掉链接文本下的下划线。这是因为Markdown的设计初衷是提供一种简单且易读的标记语言，而不是提供复杂的样式控制。<br>
+直接写<code>&lt;a&gt;</code>标签实现<br>
+语法 : &lt;a href="链接URL" style="text-decoration:none;"&gt;链接文本&lt;/a&gt;</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-decoration</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Linux终端生存之道-网络小工具<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>长下面这个样子<br>
+<a href="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/" style="text-decoration:none;">Linux终端生存之道-网络小工具</a></p>
+<h1>跳转到目标网站的目标章节</h1>
+<p>这时候可以使用所谓的锚点实现。<br>
+语法 : [跳转到目标章节](目标网站URL#目标章节锚点)</p>
+<p>比如我想跳转到  <code>Linux终端生存之道-网络小工具</code> 这篇文章 的 <code>dig</code> 这个小节.</p>
+<ol>
+<li>
+<p>先在目标页面的目标目录插入一个锚点 <code>&lt;a name="section1"&gt;</code><br>
+<img src="/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/iShot_2023-09-02_11.43.43.jpg" alt=""></p>
+</li>
+<li>
+<p>然后在在另一篇文章中，按照如下写跳转链接，注意最后加上 <code>#section1</code></p>
+</li>
+</ol>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url">[<span class="token content">Linux终端生存之道-网络小工具-dig</span>](<span class="token url">/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/#section1</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>连接如下,点击查看效果<br>
+<a href="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/#section1">Linux终端生存之道-网络小工具-dig</a></p>
+<h1>跳转到当前页面的目标章节</h1>
+<p>刚才是跳转到了其他页面的目标章节，如果想要在当前页面实现跳转呢?<br>
+Markdown本身并没有提供一种直接的方式在当前页面中实现跳转到目标章节而不打开新的页面。Markdown是一种标记语言，主要用于文本的格式化和排版，并不支持页面内部的交互功能。</p>
+<p>如果这么写</p>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url">[<span class="token content">跳转到第一部分</span>](<span class="token url">#section1</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>每次都会打开一个新的页面，其实不是我们想要的效果，这时候只能 上  JavaScript 代码了。</p>
+<p>示例：<a href="#section1">跳转到第一部分-每次都会打开一个新的页面</a></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"#section1"</span> onclick<span class="token operator">=</span><span class="token string">"scrollToSection('#section1'); return false;"</span><span class="token operator">&gt;</span>跳转到第一部分<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  <span class="token keyword">function</span> <span class="token function">scrollToSection</span><span class="token punctuation">(</span><span class="token parameter">sectionId</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> section <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span>sectionId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>section<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      section<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">behavior</span><span class="token operator">:</span> <span class="token string">'smooth'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>还是先插入锚点<br>
+<img src="/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/iShot_2023-09-02_17.12.14.jpg" alt=""></p>
+<p>然后在文章的结尾加上 上面的script 代码<br>
+<img src="/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/iShot_2023-09-02_17.14.44.jpg" alt=""></p>
+<p>示例：<a href="#section1" style="text-decoration:none;" onclick="scrollToSection('#section1'); return false;">跳转到第一部分-使用JavaScript实现平滑跳转</a></p>
+<script>
+  function scrollToSection(sectionId) {
+    var section = document.querySelector(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>
                 
             </div>
             <hr/>
@@ -378,38 +420,6 @@
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
-                                </a>
-                            
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
-                                </a>
-                            
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
-                                </a>
-                            
-                                <a href="/tags/HTML/">
-                                    <span class="chip bg-color">HTML</span>
-                                </a>
-                            
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
-                                </a>
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                         </div>
@@ -755,74 +765,52 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/09/01/ru-he-cha-kan-duan-kou-shi-fou-kai-fang/">
+                <a href="/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="如何查看端口是否开放">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Markdown使用笔记">
                         
-                        <span class="card-title">如何查看端口是否开放</span>
+                        <span class="card-title">Markdown使用笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            Markdown一些语法记录,有些语法偶尔用一下导致记忆不牢,这里可以让自己速查一下
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-02
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            陈尚
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
+                                    工具控
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Markdown/" class="post-category">
+                                    Markdown
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
-                    </a>
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                    <a href="/tags/HTML/">
-                        <span class="chip bg-color">HTML</span>
-                    </a>
-                    
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -836,31 +824,35 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/29/shu-ju-ku/mysql-yong-hu-quan-xian-ji-cao/">
+                <a href="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Mysql用户、权限基操">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="npm使用笔记">
                         
-                        <span class="card-title">Mysql用户、权限基操</span>
+                        <span class="card-title">npm使用笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            给初始root用户设置密码,给用户授权
+                            npm是Node Package Manager（Node包管理器）的缩写, 他的定位 跟 Maven 类似。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-29
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-02
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
-                                    数据库
+                            <a href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    构建工具
+                                </a>
+                            
+                            <a href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/NPM/" class="post-category">
+                                    NPM
                                 </a>
                             
                             
@@ -947,6 +939,87 @@
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -969,7 +1042,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">131.7k</span>
+                        class="white-color">133k</span>
             
             
             

@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="如何查看端口是否开放, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="keywords" content="Linux终端生存之道-查看开放端口, IT,技术,总结">
+    <meta name="description" content="telnet、nc 查看开放端口号">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>如何查看端口是否开放 | 涓涓细流</title>
+    <title>Linux终端生存之道-查看开放端口 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -38,7 +38,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -230,7 +232,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -243,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">如何查看端口是否开放</h1>
+                    <h1 class="description center-align post-title">Linux终端生存之道-查看开放端口</h1>
                 </div>
             </div>
         </div>
@@ -258,10 +260,12 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -274,42 +278,23 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                            <a href="/tags/Git/">
-                                <span class="chip bg-color">Git</span>
-                            </a>
-                        
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
-                            </a>
-                        
-                            <a href="/tags/HTML/">
-                                <span class="chip bg-color">HTML</span>
-                            </a>
-                        
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
-                            </a>
-                        
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                            <a href="/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/" class="post-category">
+                                终端生存之道
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -332,14 +317,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    847
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -362,7 +347,92 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h2 id="telnet、nc-查看开放端口号">telnet、nc 查看开放端口号</h2>
+<p><img src="/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/iShot_2023-09-02_01.02.15.jpg" alt="telnet 和 nc 工具对比使用: 本地访问"></p>
+<p><img src="/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/2023-09-02_010434.jpg" alt="telnet 和 nc 工具对比使用: 远程访问"></p>
+<h3 id="telnet-命令">telnet 命令</h3>
+<p>telnet 命令 的可选参数</p>
+<pre class="line-numbers language-none"><code class="language-none">telnet [-468EFKLNacdfruxy] [-S tos] [-X authtype] [-e escapechar] [-k realm] [-l user] [-n tracefile] [-s src_addr] [host
+           [port]]
+    -4      Forces telnet to use IPv4 addresses only.
+    -6      Forces telnet to use IPv6 addresses only.
+    -8      Specifies an 8-bit data path.  This causes an attempt to negotiate the TELNET BINARY option on both input and
+            output.
+    -E      Stops any character from being recognized as an escape character.
+    -F      If Kerberos V5 authentication is being used, the -F option allows the local credentials to be forwarded to the
+            remote system, including any credentials that have already been forwarded into the local environment.
+    -K      Specifies no automatic login to the remote system.
+    -L      Specifies an 8-bit data path on output.  This causes the BINARY option to be negotiated on output.
+    -N      Prevents IP address to name lookup when destination host is given as an IP address.
+    -S tos  Sets the IP type-of-service (TOS) option for the telnet connection to the value tos, which can be a numeric TOS
+            value or, on systems that support it, a symbolic TOS name found in the /etc/iptos file.
+    -X atype
+            Disables the atype type of authentication.
+    -a      Attempt automatic login.  This is now the default, so this option is ignored.  Currently, this sends the user name
+            via the USER variable of the ENVIRON option if supported by the remote system.  The name used is that of the
+            current user as returned by getlogin(2) if it agrees with the current user ID, otherwise it is the name associated
+            with the user ID.
+    -c      Disables the reading of the user's .telnetrc file.  (See the toggle skiprc command on this man page.)
+    -d      Sets the initial value of the debug toggle to TRUE.
+    -e escapechar
+            Sets the initial telnet escape character to escapechar.  If escapechar is omitted, then there will be no escape
+            character.
+    -f      If Kerberos V5 authentication is being used, the -f option allows the local credentials to be forwarded to the
+            remote system.
+    -k realm
+            If Kerberos authentication is being used, the -k option requests that telnet obtain tickets for the remote host in
+            realm realm instead of the remote host's realm, as determined by krb_realmofhost(3).
+    -l user
+            When connecting to the remote system, if the remote system understands the ENVIRON option, then user will be sent
+            to the remote system as the value for the variable USER.  This option implies the -a option.  This option may also
+            be used with the open command.
+    -n tracefile
+            Opens tracefile for recording trace information.  See the set tracefile command below.
+    -r      Specifies a user interface similar to rlogin(1).  In this mode, the escape character is set to the tilde (~)
+            character, unless modified by the -e option.
+    -s src_addr
+            Set the source IP address for the telnet connection to src_addr, which can be an IP address or a host name.
+    -u      Forces telnet to use AF_UNIX addresses only (e.g., UNIX domain sockets, accessed with a file path).
+    -x      Turns on encryption of the data stream if possible.  This is now the default, so this option is ignored.
+    -y      Suppresses encryption of the data stream.
+    host    Indicates the official name, an alias, or the Internet address of a remote host.  If host starts with a ‘/’, telnet
+            establishes a connection to the corresponding named socket.
+    port    Indicates a port number (address of an application).  If a number is not specified, the default telnet port is
+            used.            <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="nc命令">nc命令</h3>
+<p>nc命令（也称为netcat）命令的可选参数</p>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">GNU netcat 0.7.1, a rewrite of the famous networking tool.
+Basic usages:
+connect to somewhere:  nc [options] hostname port [port] ...
+listen for inbound:    nc -l -p port [options] [hostname] [port] ...
+tunnel to somewhere:   nc -L hostname:port -p port [options]
+
+Mandatory arguments to long options are mandatory for short options too.
+Options:
+  -c, --close                close connection on EOF from stdin
+  -e, --exec=PROGRAM         program to exec after connect
+  -g, --gateway=LIST         source-routing hop point[s], up to 8
+  -G, --pointer=NUM          source-routing pointer: 4, 8, 12, ...
+  -h, --help                 display this help and exit
+  -i, --interval=SECS        delay interval for lines sent, ports scanned
+  -l, --listen               listen mode, for inbound connects
+  -L, --tunnel=ADDRESS:PORT  forward local port to remote address
+  -n, --dont-resolve         numeric-only IP addresses, no DNS
+  -o, --output=FILE          output hexdump traffic to FILE (implies -x)
+  -p, --local-port=NUM       local port number
+  -r, --randomize            randomize local and remote ports
+  -s, --source=ADDRESS       local source address (ip or hostname)
+  -t, --tcp                  TCP mode (default)
+  -T, --telnet               answer using TELNET negotiation
+  -u, --udp                  UDP mode
+  -v, --verbose              verbose (use twice to be more verbose)
+  -V, --version              output version information and exit
+  -x, --hexdump              hexdump incoming and outgoing traffic
+  -w, --wait=SECS            timeout for connects and final net reads
+  -z, --zero                 zero-I/O mode (used for scanning)
+
+Remote port number can also be specified as range.  Example: '1-1024'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -378,38 +448,6 @@
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
-                                </a>
-                            
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
-                                <a href="/tags/Git/">
-                                    <span class="chip bg-color">Git</span>
-                                </a>
-                            
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
-                                </a>
-                            
-                                <a href="/tags/HTML/">
-                                    <span class="chip bg-color">HTML</span>
-                                </a>
-                            
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
-                                </a>
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                         </div>
@@ -755,76 +793,50 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/09/01/ru-he-cha-kan-duan-kou-shi-fou-kai-fang/">
+                <a href="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="如何查看端口是否开放">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="npm使用笔记">
                         
-                        <span class="card-title">如何查看端口是否开放</span>
+                        <span class="card-title">npm使用笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            npm是Node Package Manager（Node包管理器）的缩写, 他的定位 跟 Maven 类似。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-02
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            陈尚
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="post-category">
+                                    构建工具
+                                </a>
+                            
+                            <a href="/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/NPM/" class="post-category">
+                                    NPM
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
-                    </a>
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                    <a href="/tags/HTML/">
-                        <span class="chip bg-color">HTML</span>
-                    </a>
-                    
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -838,29 +850,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/30/xi-tong-zhi-jian-ju-he-cao-zuo-shu-ju-liang/">
+                <a href="/2023/08/29/shu-ju-ku/mysql-yong-hu-quan-xian-ji-cao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="系统之间聚合操作数据量">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Mysql用户、权限基操">
                         
-                        <span class="card-title">系统之间聚合操作数据量</span>
+                        <span class="card-title">Mysql用户、权限基操</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            给初始root用户设置密码,给用户授权
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-29
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            陈尚
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -870,38 +886,6 @@
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
-                    </a>
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
-                    <a href="/tags/HTML/">
-                        <span class="chip bg-color">HTML</span>
-                    </a>
-                    
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -977,6 +961,87 @@
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -999,7 +1064,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">131.7k</span>
+                        class="white-color">133k</span>
             
             
             

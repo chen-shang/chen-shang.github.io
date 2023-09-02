@@ -317,14 +317,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    6 分
                 </div>
                 
 
@@ -363,90 +363,9 @@
          <span class="token operator">|</span>                                    <span class="token operator">|</span>
          +------------<span class="token operator">&gt;</span> Network --------------<span class="token operator">&gt;</span>+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>要注意一点，ping 访问目标服务器的时候，是不用指定端口的，也没有默认端口一说。因为ping命令是一种工具，用于测试和检查网络连接。它使用的是ICMP协议（互联网控制报文协议），而不是传输层协议（如TCP或UDP）。ICMP（Internet Control Message Protocol）是一个用于在IP网络中传输控制消息的协议。ICMP消息不使用端口号的原因是因为它们不是用于在不同主机之间直接进行通信，而是用于发送网络控制信息、错误报告和诊断信息。端口号通常用于标识目标主机上的特定应用程序或服务。但是，ICMP消息不是直接发送给特定的应用程序或服务，而是发送给目标主机的网络协议栈（通常是操作系统内核），然后由它们处理。</p>
-<h1>telnet、nc 查看端口号能否访问</h1>
-<p><img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-09-02_01.02.15.jpg" alt="telnet 和 nc 工具对比使用: 本地访问"></p>
-<p><img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/2023-09-02_010434.jpg" alt="telnet 和 nc 工具对比使用: 远程访问"></p>
-<h3 id="telnet">telnet</h3>
-<pre class="line-numbers language-none"><code class="language-none">telnet [-468EFKLNacdfruxy] [-S tos] [-X authtype] [-e escapechar] [-k realm] [-l user] [-n tracefile] [-s src_addr] [host
-           [port]]
-    -4      Forces telnet to use IPv4 addresses only.
-    -6      Forces telnet to use IPv6 addresses only.
-    -8      Specifies an 8-bit data path.  This causes an attempt to negotiate the TELNET BINARY option on both input and
-            output.
-    -E      Stops any character from being recognized as an escape character.
-    -F      If Kerberos V5 authentication is being used, the -F option allows the local credentials to be forwarded to the
-            remote system, including any credentials that have already been forwarded into the local environment.
-    -K      Specifies no automatic login to the remote system.
-    -L      Specifies an 8-bit data path on output.  This causes the BINARY option to be negotiated on output.
-    -N      Prevents IP address to name lookup when destination host is given as an IP address.
-    -S tos  Sets the IP type-of-service (TOS) option for the telnet connection to the value tos, which can be a numeric TOS
-            value or, on systems that support it, a symbolic TOS name found in the /etc/iptos file.
-    -X atype
-            Disables the atype type of authentication.
-    -a      Attempt automatic login.  This is now the default, so this option is ignored.  Currently, this sends the user name
-            via the USER variable of the ENVIRON option if supported by the remote system.  The name used is that of the
-            current user as returned by getlogin(2) if it agrees with the current user ID, otherwise it is the name associated
-            with the user ID.
-    -c      Disables the reading of the user's .telnetrc file.  (See the toggle skiprc command on this man page.)
-    -d      Sets the initial value of the debug toggle to TRUE.
-    -e escapechar
-            Sets the initial telnet escape character to escapechar.  If escapechar is omitted, then there will be no escape
-            character.
-    -f      If Kerberos V5 authentication is being used, the -f option allows the local credentials to be forwarded to the
-            remote system.
-    -k realm
-            If Kerberos authentication is being used, the -k option requests that telnet obtain tickets for the remote host in
-            realm realm instead of the remote host's realm, as determined by krb_realmofhost(3).
-    -l user
-            When connecting to the remote system, if the remote system understands the ENVIRON option, then user will be sent
-            to the remote system as the value for the variable USER.  This option implies the -a option.  This option may also
-            be used with the open command.
-    -n tracefile
-            Opens tracefile for recording trace information.  See the set tracefile command below.
-    -r      Specifies a user interface similar to rlogin(1).  In this mode, the escape character is set to the tilde (~)
-            character, unless modified by the -e option.
-    -s src_addr
-            Set the source IP address for the telnet connection to src_addr, which can be an IP address or a host name.
-    -u      Forces telnet to use AF_UNIX addresses only (e.g., UNIX domain sockets, accessed with a file path).
-    -x      Turns on encryption of the data stream if possible.  This is now the default, so this option is ignored.
-    -y      Suppresses encryption of the data stream.
-    host    Indicates the official name, an alias, or the Internet address of a remote host.  If host starts with a ‘/’, telnet
-            establishes a connection to the corresponding named socket.
-    port    Indicates a port number (address of an application).  If a number is not specified, the default telnet port is
-            used.            <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="nc命令（也称为netcat）：">nc命令（也称为netcat）：</h3>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">GNU netcat 0.7.1, a rewrite of the famous networking tool.
-Basic usages:
-connect to somewhere:  nc [options] hostname port [port] ...
-listen for inbound:    nc -l -p port [options] [hostname] [port] ...
-tunnel to somewhere:   nc -L hostname:port -p port [options]
-
-Mandatory arguments to long options are mandatory for short options too.
-Options:
-  -c, --close                close connection on EOF from stdin
-  -e, --exec=PROGRAM         program to exec after connect
-  -g, --gateway=LIST         source-routing hop point[s], up to 8
-  -G, --pointer=NUM          source-routing pointer: 4, 8, 12, ...
-  -h, --help                 display this help and exit
-  -i, --interval=SECS        delay interval for lines sent, ports scanned
-  -l, --listen               listen mode, for inbound connects
-  -L, --tunnel=ADDRESS:PORT  forward local port to remote address
-  -n, --dont-resolve         numeric-only IP addresses, no DNS
-  -o, --output=FILE          output hexdump traffic to FILE (implies -x)
-  -p, --local-port=NUM       local port number
-  -r, --randomize            randomize local and remote ports
-  -s, --source=ADDRESS       local source address (ip or hostname)
-  -t, --tcp                  TCP mode (default)
-  -T, --telnet               answer using TELNET negotiation
-  -u, --udp                  UDP mode
-  -v, --verbose              verbose (use twice to be more verbose)
-  -V, --version              output version information and exit
-  -x, --hexdump              hexdump incoming and outgoing traffic
-  -w, --wait=SECS            timeout for connects and final net reads
-  -z, --zero                 zero-I/O mode (used for scanning)
-
-Remote port number can also be specified as range.  Example: '1-1024'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>dig</h1>
+<h1> telnet、nc 查看开放端口号</h1>
+<p><a href="https://chen-shang.github.io/2023/09/01/ru-he-cha-kan-duan-kou-shi-fou-kai-fang/">telnet、nc 查看开放端口号</a></p>
+<h1>dig <a name="section1"></a></h1>
 <p>dig命令是一种常用的网络工具，用于查询DNS（Domain Name System）服务器，获取域名的IP地址、主机名、MX（Mail Exchange）记录等信息。我们最常用的就是看</p>
 <center>
   <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/image.png">
@@ -460,8 +379,8 @@ Remote port number can also be specified as range.  Example: '1-1024'<span aria-
 <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-09-02_00.30.00.jpg" alt="链接vpn走了公司自己设置的DNS服务器"></p>
 <p><img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-09-02_00.36.17.jpg" alt="如果断开VPN后的情形"></p>
 <h1>DNS 是什么</h1>
-<h2 id="DNS-的记录类型">DNS 的记录类型</h2>
-<p>1.主机[A]记录<br>
+<p>DNS 的记录类型<br>
+1.主机[A]记录<br>
 描述: 主机地址记录。在 DNS 域名与 IP 地址之间建立映射关系语法: <code>owner class ttl A IP_v4_address</code></p>
 <blockquote>
 <p>例子: <code>host1.example.microsoft.com. IN A 127.0.0.1</code></p>
@@ -1069,7 +988,7 @@ Remote port number can also be specified as range.  Example: '1-1024'<span aria-
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('1'),
+            collapseDepth: Number('2'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1147,7 +1066,7 @@ Remote port number can also be specified as range.  Example: '1-1024'<span aria-
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">131.7k</span>
+                        class="white-color">133k</span>
             
             
             

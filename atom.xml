@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-01T16:40:03.726Z</updated>
+  <updated>2023-09-02T09:26:10.661Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,64 +17,87 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>如何查看端口是否开放</title>
-    <link href="https://chen-shang.github.io/2023/09/01/ru-he-cha-kan-duan-kou-shi-fou-kai-fang/"/>
-    <id>https://chen-shang.github.io/2023/09/01/ru-he-cha-kan-duan-kou-shi-fou-kai-fang/</id>
-    <published>2023-09-01T14:21:54.000Z</published>
-    <updated>2023-09-01T16:40:03.726Z</updated>
+    <title>Markdown使用笔记</title>
+    <link href="https://chen-shang.github.io/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/"/>
+    <id>https://chen-shang.github.io/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/</id>
+    <published>2023-09-02T02:40:08.000Z</published>
+    <updated>2023-09-02T09:26:10.661Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;跳转到目标网站&lt;/h1&gt;
+&lt;p&gt;语法 : [链接文本](链接URL)&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-markdown&quot; data-language=&quot;markdown&quot;&gt;&lt;code</summary>
+        
+      
     
     
     
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Markdown" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Markdown/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="Git" scheme="https://chen-shang.github.io/tags/Git/"/>
-    
-    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
-    
-    <category term="Hexo" scheme="https://chen-shang.github.io/tags/Hexo/"/>
-    
-    <category term="HTML" scheme="https://chen-shang.github.io/tags/HTML/"/>
-    
-    <category term="CSS" scheme="https://chen-shang.github.io/tags/CSS/"/>
-    
-    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
   <entry>
-    <title>系统之间聚合操作数据量</title>
-    <link href="https://chen-shang.github.io/2023/08/30/xi-tong-zhi-jian-ju-he-cao-zuo-shu-ju-liang/"/>
-    <id>https://chen-shang.github.io/2023/08/30/xi-tong-zhi-jian-ju-he-cao-zuo-shu-ju-liang/</id>
-    <published>2023-08-30T04:11:49.000Z</published>
-    <updated>2023-09-01T16:40:03.726Z</updated>
+    <title>npm使用笔记</title>
+    <link href="https://chen-shang.github.io/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/"/>
+    <id>https://chen-shang.github.io/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/</id>
+    <published>2023-09-02T02:20:05.000Z</published>
+    <updated>2023-09-02T10:04:38.479Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1&gt;npm 是啥&lt;/h1&gt;
+&lt;p&gt;npm是Node Package Manager（Node包管理器）的缩写，是JavaScript运行时环境Node.js的默认包管理工具。它允许开发者在Node.js项目中方便地安装、管理和共享代码库（称为包或模块）。 跟 Maven</summary>
+        
+      
     
     
     
+    <category term="构建工具" scheme="https://chen-shang.github.io/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="NPM" scheme="https://chen-shang.github.io/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/NPM/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+  </entry>
+  
+  <entry>
+    <title>Linux终端生存之道-查看开放端口</title>
+    <link href="https://chen-shang.github.io/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/"/>
+    <id>https://chen-shang.github.io/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/</id>
+    <published>2023-09-01T14:21:54.000Z</published>
+    <updated>2023-09-02T09:18:34.714Z</updated>
     
-    <category term="Git" scheme="https://chen-shang.github.io/tags/Git/"/>
     
-    <category term="Java" scheme="https://chen-shang.github.io/tags/Java/"/>
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;telnet、nc-查看开放端口号&quot;&gt;telnet、nc 查看开放端口号&lt;/h2&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
     
-    <category term="Hexo" scheme="https://chen-shang.github.io/tags/Hexo/"/>
     
-    <category term="HTML" scheme="https://chen-shang.github.io/tags/HTML/"/>
     
-    <category term="CSS" scheme="https://chen-shang.github.io/tags/CSS/"/>
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
     
-    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
+    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
   </entry>
   
@@ -545,34 +568,6 @@
     <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
     <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Afred和Spotlight无法搜索问题解决</title>
-    <link href="https://chen-shang.github.io/2023/08/18/gong-ju-kong/mac/afred-he-spotlight-wu-fa-sou-suo-wen-ti-jie-jue/"/>
-    <id>https://chen-shang.github.io/2023/08/18/gong-ju-kong/mac/afred-he-spotlight-wu-fa-sou-suo-wen-ti-jie-jue/</id>
-    <published>2023-08-18T15:38:36.000Z</published>
-    <updated>2023-08-19T05:06:06.882Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;试图重建索引&lt;/p&gt;
-&lt;center&gt; &lt;img src=&quot;/2023/08/18/gong-ju-kong/mac/afred-he-spotlight-wu-fa-sou-suo-wen-ti-jie-jue/image.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
