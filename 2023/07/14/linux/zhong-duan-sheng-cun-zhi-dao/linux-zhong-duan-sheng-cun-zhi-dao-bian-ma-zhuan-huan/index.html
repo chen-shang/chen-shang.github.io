@@ -38,7 +38,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -230,7 +232,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -258,10 +260,12 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -310,14 +314,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-25
+                    2023-09-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    171
+                    131
                 </div>
                 
 
@@ -351,36 +355,32 @@
 <ol>
 <li>通过vim查看</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">:set fileencoding<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">:set fileencoding<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>即可显示文件编码格式。</p>
 <ol start="2">
 <li>通过 file 命令查看</li>
 </ol>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!-- file 文件名 --&gt;
-file application-common.properties<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span><span class="token operator">!</span>-- <span class="token function">file</span> 文件名 --<span class="token operator">&gt;</span>
+<span class="token function">file</span> application-common.properties<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>输出如下</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;!-- 文件名: Unicode text, UTF-8 text --&gt;
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span><span class="token operator">!</span>-- 文件名: Unicode text, UTF-8 text --<span class="token operator">&gt;</span>
 application-common.properties: Unicode text, UTF-8 text<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1>如何进行编码转化</h1>
-<h1>如何进行编解码</h1>
-<h2 id="base64-编码-解码">base64 编码/解码</h2>
-<p>在Linux中，可以使用base64命令来进行Base64编码和解码操作。</p>
-<h3 id="文本如何进行编解码">文本如何进行编解码</h3>
-<h4 id="编码">编码</h4>
+<h1>文本如何进行编解码</h1>
+<h2 id="编码">编码</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"17319271179"</span><span class="token operator">|</span>base64
 MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h4 id="解码">解码</h4>
+<h2 id="解码">解码</h2>
 <p>多了个<code>-d</code>参数</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"MTczMTkyNzExNzkK"</span><span class="token operator">|</span>base64 <span class="token parameter variable">-d</span>
 <span class="token number">17319271179</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="文件如何进行编解码">文件如何进行编解码</h3>
-<h4 id="编码-2">编码</h4>
+<h1>文件如何进行编解码</h1>
+<h2 id="编码-2">编码</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 <span class="token parameter variable">-i</span> 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>例如</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"17319271179"</span><span class="token operator">&gt;</span> a.txt
 <span class="token operator">&gt;</span> base64 <span class="token parameter variable">-i</span> a.txt 
 MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h4 id="解码-2">解码</h4>
+<h2 id="解码-2">解码</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 <span class="token parameter variable">-d</span> 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
@@ -919,6 +919,87 @@ MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span>
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('2'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -941,7 +1022,7 @@ MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">133k</span>
+                        class="white-color">136.1k</span>
             
             
             

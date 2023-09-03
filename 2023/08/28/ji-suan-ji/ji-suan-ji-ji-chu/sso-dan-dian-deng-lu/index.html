@@ -377,7 +377,7 @@
 <li>要能让各自系统知道当前用户的信息<br>
 上面三个功能是最基础的，此外这些功能必须保证安全，信息不泄露</li>
 </ol>
-<p><img src="/2023/08/28/ji-suan-ji/ji-suan-ji-ji-chu/sso-dan-dian-deng-lu/image.png" alt="Alt text"><br>
+<p><img src="/2023/08/28/ji-suan-ji/ji-suan-ji-ji-chu/sso-dan-dian-deng-lu/image.png" alt=""><br>
 上图是CAS官网上的标准流程，具体流程如下：</p>
 <p>用户访问app系统，app系统是需要登录的，但用户现在没有登录。<br>
 跳转到CAS server，即SSO登录系统，以后图中的CAS Server我们统一叫做SSO系统。 SSO系统也没有登录，弹出用户登录页。<br>
@@ -401,7 +401,7 @@ app2拿到ST，后台访问SSO，验证ST是否有效。<br>
 <p>我们只要在sso.a.com登录，app1.a.com和app2.a.com就也登录了。通过上面的登陆认证机制，我们可以知道，在sso.a.com中登录了，其实是在sso.a.com的服务端的session中记录了登录状态，同时在浏览器端（Browser）的sso.a.com下写入了Cookie。那么我们怎么才能让app1.a.com和app2.a.com登录呢？这里有两个问题：</p>
 <p>Cookie是不能跨域的，<a target="_blank" rel="noopener" href="http://xn--Cookiedomainsso-vh6xg68nmiourizovmm2f.a.com">我们Cookie的domain属性是sso.a.com</a>，在给app1.a.com和app2.a.com发送请求是带不上的。<br>
 sso、app1和app2是不同的应用，它们的session存在自己的应用内，是不共享的。<br>
-<img src="/2023/08/28/ji-suan-ji/ji-suan-ji-ji-chu/sso-dan-dian-deng-lu/image2.png" alt="Alt text"></p>
+<img src="/2023/08/28/ji-suan-ji/ji-suan-ji-ji-chu/sso-dan-dian-deng-lu/image2.png" alt=""></p>
 <p>那么我们如何解决这两个问题呢？针对第一个问题，sso登录以后，可以将Cookie的域设置为顶域，<a target="_blank" rel="noopener" href="http://xn--zlr.a.com">即.a.com</a>，这样所有子域的系统都可以访问到顶域的Cookie。我们在设置Cookie时，只能设置顶域和自己的域，不能设置其他的域。比如：我们不能在自己的系统中给baidu.com的域设置Cookie。</p>
 <p>Cookie的问题解决了，我们再来看看session的问题。我们在sso系统登录了，这时再访问app1，Cookie也带到了app1的服务端（Server），app1的服务端怎么找到这个Cookie对应的Session呢？这里就要把3个系统的Session共享，如图所示。共享Session的解决方案有很多，例如：Spring-Session。这样第2个问题也解决了。</p>
 <p>同域下的单点登录就实现了，但这还不是真正的单点登录。</p>
@@ -962,7 +962,7 @@ sso、app1和app2是不同的应用，它们的session存在自己的应用内�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">133k</span>
+                        class="white-color">136.1k</span>
             
             
             

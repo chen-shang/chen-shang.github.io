@@ -310,21 +310,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-02
+                    2023-09-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    517
+                    598
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -368,12 +368,32 @@ Major（主版本号）：表示大版本更新，通常涉及到项目中大的
 Minor（次版本号）：表示小功能新增。这些新增功能版本与之前版本是兼容的，在项目中的影响不会太大。<br>
 Patch（修订版本号）：用于修复bug或增强某些功能，但不会引入新功能。和Minor相似，此版本与之前版本兼容不会对项目产生影响。</p>
 <h1>查看需要升级的包</h1>
-<pre class="line-numbers language-none"><code class="language-none">npm outdated<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/iShot_2023-09-02_17.40.34.jpg" alt="Alt text"></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> outdated<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/iShot_2023-09-02_17.40.34.jpg" alt=""></p>
 <h1>更新 npm 自身版本</h1>
-<pre class="line-numbers language-none"><code class="language-none">npm install -g npm<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> <span class="token function">npm</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h1>更新依赖模块版本（不破坏依赖间的联系）</h1>
-<pre class="line-numbers language-none"><code class="language-none">npm update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1>使用 ncu 工具一把梭</h1>
+<p><img src="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/iShot_2023-09-04_01.34.17.jpg" alt=""></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> npm-check-updates <span class="token parameter variable">-g</span>
+$ ncu
+Checking /Users/tommy/blog/package.json
+<span class="token punctuation">[</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token punctuation">]</span> <span class="token number">16</span>/16 <span class="token number">100</span>%
+
+ hexo                    ^4.2.0  →  ^5.0.0
+ hexo-generator-sitemap  ^2.0.0  →  ^2.1.0
+
+Run ncu <span class="token parameter variable">-u</span> to upgrade package.json
+$ ncu <span class="token parameter variable">-u</span>
+Upgrading /Users/tommy/blog/package.json
+<span class="token punctuation">[</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token punctuation">]</span> <span class="token number">16</span>/16 <span class="token number">100</span>%
+
+ hexo                    ^4.2.0  →  ^5.0.0
+ hexo-generator-sitemap  ^2.0.0  →  ^2.1.0
+
+Run <span class="token function">npm</span> <span class="token function">install</span> to <span class="token function">install</span> new versions.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -1009,7 +1029,7 @@ Patch（修订版本号）：用于修复bug或增强某些功能，但不会引
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">133k</span>
+                        class="white-color">136.1k</span>
             
             
             
