@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-03T17:20:28.184Z</updated>
+  <updated>2023-09-04T15:48:12.140Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Jrebel激活</title>
+    <link href="https://chen-shang.github.io/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/"/>
+    <id>https://chen-shang.github.io/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/</id>
+    <published>2023-09-04T15:37:45.000Z</published>
+    <updated>2023-09-04T15:48:12.140Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近因为升级了Jrebel插件导致的激活失败问题–那就暂时先不要升级了,先降级回支持的版本再说,网上本地激活的方式暂时没有尝试，后续实在受不了低版本了在尝试吧。&lt;/p&gt;
+&lt;p&gt;一键地址直接使用:</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/tags/Intellij-IDEA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于认证、授权、ACL、RBAC、OAuth、SSO的理解</title>
     <link href="https://chen-shang.github.io/2023/09/04/ji-suan-ji/ji-suan-ji-an-quan/guan-yu-ren-zheng-shou-quan-acl-rbac-oauth-sso-de-li-jie/"/>
     <id>https://chen-shang.github.io/2023/09/04/ji-suan-ji/ji-suan-ji-an-quan/guan-yu-ren-zheng-shou-quan-acl-rbac-oauth-sso-de-li-jie/</id>
     <published>2023-09-03T16:42:39.000Z</published>
-    <updated>2023-09-03T17:20:28.184Z</updated>
+    <updated>2023-09-04T15:46:55.606Z</updated>
     
     
       
@@ -40,7 +70,9 @@
     <category term="计算机安全" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机安全" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -49,7 +81,7 @@
     <link href="https://chen-shang.github.io/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/"/>
     <id>https://chen-shang.github.io/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/</id>
     <published>2023-09-03T02:01:05.000Z</published>
-    <updated>2023-09-03T16:49:41.016Z</updated>
+    <updated>2023-09-04T16:07:57.445Z</updated>
     
     
       
@@ -69,6 +101,10 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
+    
+    <category term="Spring" scheme="https://chen-shang.github.io/tags/Spring/"/>
     
   </entry>
   
@@ -134,7 +170,7 @@
     <link href="https://chen-shang.github.io/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/"/>
     <id>https://chen-shang.github.io/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/</id>
     <published>2023-09-01T14:21:54.000Z</published>
-    <updated>2023-09-02T09:18:34.714Z</updated>
+    <updated>2023-09-04T16:16:31.455Z</updated>
     
     
       
@@ -154,6 +190,10 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="终端生存之道" scheme="https://chen-shang.github.io/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
     
   </entry>
   
@@ -409,7 +449,7 @@
     <link href="https://chen-shang.github.io/2023/08/22/linux/shell/ba-json-bian-cheng-excel/"/>
     <id>https://chen-shang.github.io/2023/08/22/linux/shell/ba-json-bian-cheng-excel/</id>
     <published>2023-08-22T01:02:07.000Z</published>
-    <updated>2023-08-23T13:31:16.972Z</updated>
+    <updated>2023-09-04T16:10:39.990Z</updated>
     
     
       
@@ -429,6 +469,10 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="Shell" scheme="https://chen-shang.github.io/tags/Shell/"/>
     
   </entry>
   
@@ -531,33 +575,6 @@
     <summary type="html">&lt;p&gt;JavaScript 中 如果定义了一个无参的函数 ，我们仍然可以调用这个函数并传递参数给这个函数，在JavaScript 中这是允许的，而且不会报错。但是这在Java中确实不允许的，这一点可以对比一下。&lt;/p&gt;
 &lt;p&gt;例如&lt;/p&gt;
 &lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript模块的导入和导出</title>
-    <link href="https://chen-shang.github.io/2023/08/20/qian-duan/javascript/javascript-mo-kuai-de-dao-ru-he-dao-chu/"/>
-    <id>https://chen-shang.github.io/2023/08/20/qian-duan/javascript/javascript-mo-kuai-de-dao-ru-he-dao-chu/</id>
-    <published>2023-08-20T02:27:09.000Z</published>
-    <updated>2023-08-20T06:48:39.694Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;https://chen-shang.github.io/2023/07/01/qian-duan/html/liu-lan-qi-zhi-chi-es-mo-kuai-zhong-de-es-mo-kuai-shi-shi-me/&quot;&gt;浏览器支持ES模块</summary>
         
       
     
