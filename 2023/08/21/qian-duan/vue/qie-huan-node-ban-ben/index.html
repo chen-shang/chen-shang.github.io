@@ -86,11 +86,11 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/categories" class="waves-effect waves-light">
+    <a href="/tags" class="waves-effect waves-light">
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>分类</span>
+      <span>标签</span>
     </a>
     
   </li>
@@ -172,11 +172,11 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/categories" class="waves-effect waves-light">
+		<a href="/tags" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-bookmark"></i>
+			    <i class="fa-fw fas fa-tags"></i>
 			
-			分类
+			标签
 		</a>
           
         </li>
@@ -274,6 +274,14 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
+                            </a>
+                        
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -306,7 +314,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-21
+                    2023-09-05
                 </div>
                 
 
@@ -345,36 +353,36 @@
             <div id="articleContent">
                 <p>今天启动vue服务的时候遇到了以下报错<br>
 <img src="/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/image.png"></p>
-<pre class="line-numbers language-none"><code class="language-none">Error: error:0308010C:digital envelope routines::unsupported
-    at new Hash (node:internal/crypto/hash:67:19)
-    at Object.createHash (node:crypto:135:10)
-    at module.exports (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/util/createHash.js:135:53)
-    at Compilation.createHash (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1918:16)
-    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1386:9
-    at AsyncSeriesHook.eval [as callAsync] (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:6:1)
-    at AsyncSeriesHook.lazyCompileHook (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js:154:20)
-    at Compilation.seal (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1342:27)
-    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js:675:18
-    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1261:4
-    at AsyncSeriesHook.eval [as callAsync] (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:15:1)
-    at AsyncSeriesHook.lazyCompileHook (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js:154:20)
-    at Compilation.finish (/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1253:28)
-    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js:672:17
-    at eval (eval at create (/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js:33:10), &lt;anonymous&gt;:11:1)
-    at /Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js:1185:12 {
-  opensslErrorStack: [ 'error:03000086:digital envelope routines::initialization error' ],
-  library: 'digital envelope routines',
-  reason: 'unsupported',
-  code: 'ERR_OSSL_EVP_UNSUPPORTED'
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-log" data-language="log"><code class="language-log"><span class="token property">Error:</span> error<span class="token operator">:</span><span class="token number">0308010C</span><span class="token operator">:</span>digital envelope routines<span class="token operator">:</span><span class="token operator">:</span>unsupported
+    at new Hash <span class="token operator">(</span>node<span class="token operator">:</span>internal<span class="token operator">/</span>crypto<span class="token operator">/</span>hash<span class="token operator">:</span><span class="token number">67</span><span class="token operator">:</span><span class="token number">19</span><span class="token operator">)</span>
+    at Object<span class="token punctuation">.</span>createHash <span class="token operator">(</span>node<span class="token operator">:</span>crypto<span class="token operator">:</span><span class="token number">135</span><span class="token operator">:</span><span class="token number">10</span><span class="token operator">)</span>
+    at <span class="token domain constant">module.exports</span> <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/util/createHash.js</span><span class="token operator">:</span><span class="token number">135</span><span class="token operator">:</span><span class="token number">53</span><span class="token operator">)</span>
+    at Compilation<span class="token punctuation">.</span>createHash <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js</span><span class="token operator">:</span><span class="token number">1918</span><span class="token operator">:</span><span class="token number">16</span><span class="token operator">)</span>
+    at <span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js</span><span class="token operator">:</span><span class="token number">1386</span><span class="token operator">:</span><span class="token number">9</span>
+    at AsyncSeriesHook<span class="token punctuation">.</span>eval <span class="token punctuation">[</span>as callAsync<span class="token punctuation">]</span> <span class="token operator">(</span>eval at create <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js</span><span class="token operator">:</span><span class="token number">33</span><span class="token operator">:</span><span class="token number">10</span><span class="token operator">)</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>anonymous<span class="token operator">&gt;</span><span class="token operator">:</span><span class="token number">6</span><span class="token operator">:</span><span class="token number">1</span><span class="token operator">)</span>
+    at AsyncSeriesHook<span class="token punctuation">.</span>lazyCompileHook <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js</span><span class="token operator">:</span><span class="token number">154</span><span class="token operator">:</span><span class="token number">20</span><span class="token operator">)</span>
+    at Compilation<span class="token punctuation">.</span>seal <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js</span><span class="token operator">:</span><span class="token number">1342</span><span class="token operator">:</span><span class="token number">27</span><span class="token operator">)</span>
+    at <span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js</span><span class="token operator">:</span><span class="token number">675</span><span class="token operator">:</span><span class="token number">18</span>
+    at <span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js</span><span class="token operator">:</span><span class="token number">1261</span><span class="token operator">:</span><span class="token number">4</span>
+    at AsyncSeriesHook<span class="token punctuation">.</span>eval <span class="token punctuation">[</span>as callAsync<span class="token punctuation">]</span> <span class="token operator">(</span>eval at create <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js</span><span class="token operator">:</span><span class="token number">33</span><span class="token operator">:</span><span class="token number">10</span><span class="token operator">)</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>anonymous<span class="token operator">&gt;</span><span class="token operator">:</span><span class="token number">15</span><span class="token operator">:</span><span class="token number">1</span><span class="token operator">)</span>
+    at AsyncSeriesHook<span class="token punctuation">.</span>lazyCompileHook <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/Hook.js</span><span class="token operator">:</span><span class="token number">154</span><span class="token operator">:</span><span class="token number">20</span><span class="token operator">)</span>
+    at Compilation<span class="token punctuation">.</span>finish <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js</span><span class="token operator">:</span><span class="token number">1253</span><span class="token operator">:</span><span class="token number">28</span><span class="token operator">)</span>
+    at <span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compiler.js</span><span class="token operator">:</span><span class="token number">672</span><span class="token operator">:</span><span class="token number">17</span>
+    at eval <span class="token operator">(</span>eval at create <span class="token operator">(</span><span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/tapable/lib/HookCodeFactory.js</span><span class="token operator">:</span><span class="token number">33</span><span class="token operator">:</span><span class="token number">10</span><span class="token operator">)</span><span class="token punctuation">,</span> <span class="token operator">&lt;</span>anonymous<span class="token operator">&gt;</span><span class="token operator">:</span><span class="token number">11</span><span class="token operator">:</span><span class="token number">1</span><span class="token operator">)</span>
+    at <span class="token file-path string">/Users/chenshang/Work/Fly/web001/node_modules/webpack/lib/Compilation.js</span><span class="token operator">:</span><span class="token number">1185</span><span class="token operator">:</span><span class="token number">12</span> <span class="token operator">{</span>
+  <span class="token property">opensslErrorStack:</span> <span class="token punctuation">[</span> <span class="token string">'error:03000086:digital envelope routines::initialization error'</span> <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">library:</span> <span class="token string">'digital envelope routines'</span><span class="token punctuation">,</span>
+  <span class="token property">reason:</span> <span class="token string">'unsupported'</span><span class="token punctuation">,</span>
+  <span class="token property">code:</span> <span class="token string">'ERR_OSSL_EVP_UNSUPPORTED'</span>
+<span class="token operator">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>按照 同事 给出的解决手段 在 package.json 中 使用 如下配置</p>
-<pre class="line-numbers language-none"><code class="language-none">"serve": "export NODE_OPTIONS=—openssl-legacy-provider;node scripts/config.js &amp; npm run env &amp;&amp; vue-cli-service serve",  
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">"serve": "export NODE_OPTIONS=—openssl-legacy-provider;node scripts/config.js &amp; npm run env &amp;&amp; vue-cli-service serve",  
 "build": "export NODE_OPTIONS=—openssl-legacy-provider;vue-cli-service build",<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>或者在环境变量里面单独 添加</p>
-<pre class="line-numbers language-none"><code class="language-none">export NODE_OPTIONS=—openssl-legacy-provide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">export NODE_OPTIONS=—openssl-legacy-provide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>还是无法解决问题，遂 打算降低  node 的版本尝试一下</p>
 <p>全局安装 n 工具，是专门管理 node 版本的，可以用他来切换 node 的版本，当然还有其他工具也可以切换，自行百度就好，我用的是 n 工具。</p>
-<pre class="line-numbers language-none"><code class="language-none">npm install -g n       // 全局安装n
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">npm install -g n       // 全局安装n
 n                      // 查看Node.js版本列表
 n &lt;版本号&gt;              // 安装指定版本的Node.js
 n list                 // 切换当前使用的Node.js版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
@@ -395,6 +403,14 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
+                                </a>
+                            
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
                                 </a>
                             
                         </div>
@@ -784,6 +800,14 @@ n list                 // 切换当前使用的Node.js版本<span aria-hidden="t
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
+                        <span class="chip bg-color">工具控</span>
                     </a>
                     
                 </div>

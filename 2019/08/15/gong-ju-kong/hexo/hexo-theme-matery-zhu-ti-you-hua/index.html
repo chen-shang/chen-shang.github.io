@@ -88,11 +88,11 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/categories" class="waves-effect waves-light">
+    <a href="/tags" class="waves-effect waves-light">
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>分类</span>
+      <span>标签</span>
     </a>
     
   </li>
@@ -174,11 +174,11 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/categories" class="waves-effect waves-light">
+		<a href="/tags" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-bookmark"></i>
+			    <i class="fa-fw fas fa-tags"></i>
 			
-			分类
+			标签
 		</a>
           
         </li>
@@ -278,8 +278,16 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
                             <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
                                 <span class="chip bg-color">未完待续</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
+                                <span class="chip bg-color">工具控</span>
                             </a>
                         
                     </div>
@@ -314,14 +322,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-29
+                    2023-09-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.8k
                 </div>
                 
 
@@ -550,7 +558,7 @@ index c7d1b7f..121716f 100755
 <span class="token operator">-</span>                        showCursor<span class="token operator">:</span> <span class="token operator">&lt;</span><span class="token operator">%=</span> theme<span class="token punctuation">.</span>subtitle<span class="token punctuation">.</span>showCursor <span class="token operator">%</span><span class="token operator">&gt;</span>
 <span class="token operator">-</span>                    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token operator">-</span>                </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
-+ 		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jinrishici-sentence<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>&lt;%= config.description %&gt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
++     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>jinrishici-sentence<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>&lt;%= config.description %&gt;<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
 +                  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://sdk.jinrishici.com/v2/browser/jinrishici.js<span class="token punctuation">"</span></span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
                  &lt;% } else { %&gt;
                  &lt;%= config.description %&gt;
@@ -568,6 +576,16 @@ index c7d1b7f..121716f 100755
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="自动生成分类">自动生成分类</h2>
 <p><code>hexo-enchancer</code> 无法配置生成的目录深度,所以选择了 <code>hexo-auto-category</code> 使用教程参考: <a target="_blank" rel="noopener" href="https://blog.eson.org/pub/e2f6e239/">https://blog.eson.org/pub/e2f6e239/</a></p>
+<h2 id="关于页面优化">关于页面优化</h2>
+<p><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.25.47.jpg" alt=""></p>
+<p>第一步: 找到 layout/_widget/post-charts.ejs<br>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.28.55.jpg" alt=""><br>
+第二步：去掉 tags-chart 相关的代码<br>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.35.52.jpg" alt=""><br>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.34.12.jpg" alt=""><br>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.34.45.jpg" alt=""></p>
+<p>最终的效果<br>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.37.19.jpg" alt=""></p>
 
                 
             </div>
@@ -586,8 +604,16 @@ index c7d1b7f..121716f 100755
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
+                                </a>
+                            
                                 <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
                                     <span class="chip bg-color">未完待续</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
+                                    <span class="chip bg-color">工具控</span>
                                 </a>
                             
                         </div>
@@ -973,6 +999,10 @@ index c7d1b7f..121716f 100755
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/">
+                        <span class="chip bg-color">我的诗词</span>
                     </a>
                     
                 </div>

@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-04T15:48:12.140Z</updated>
+  <updated>2023-09-05T14:59:23.283Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://chen-shang.github.io/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/"/>
     <id>https://chen-shang.github.io/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/</id>
     <published>2023-09-04T15:37:45.000Z</published>
-    <updated>2023-09-04T15:48:12.140Z</updated>
+    <updated>2023-09-05T14:59:23.283Z</updated>
     
     
       
@@ -142,7 +142,7 @@
     <link href="https://chen-shang.github.io/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/"/>
     <id>https://chen-shang.github.io/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/</id>
     <published>2023-09-02T02:20:05.000Z</published>
-    <updated>2023-09-03T17:36:11.888Z</updated>
+    <updated>2023-09-05T14:24:48.111Z</updated>
     
     
       
@@ -162,6 +162,10 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="构建工具" scheme="https://chen-shang.github.io/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="NPM" scheme="https://chen-shang.github.io/tags/NPM/"/>
     
   </entry>
   
@@ -202,7 +206,7 @@
     <link href="https://chen-shang.github.io/2023/08/29/shu-ju-ku/mysql-yong-hu-quan-xian-ji-cao/"/>
     <id>https://chen-shang.github.io/2023/08/29/shu-ju-ku/mysql-yong-hu-quan-xian-ji-cao/</id>
     <published>2023-08-29T13:57:11.000Z</published>
-    <updated>2023-08-29T15:25:45.317Z</updated>
+    <updated>2023-09-05T14:33:10.473Z</updated>
     
     
       
@@ -220,6 +224,8 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
   </entry>
   
   <entry>
@@ -227,7 +233,7 @@
     <link href="https://chen-shang.github.io/2023/08/29/za-qi-za-ba/racher2-0-ru-he-guan-bi-yi-ge-fu-wu/"/>
     <id>https://chen-shang.github.io/2023/08/29/za-qi-za-ba/racher2-0-ru-he-guan-bi-yi-ge-fu-wu/</id>
     <published>2023-08-29T09:20:40.000Z</published>
-    <updated>2023-08-29T13:22:06.117Z</updated>
+    <updated>2023-09-05T15:00:17.496Z</updated>
     
     
       
@@ -246,6 +252,8 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
   </entry>
   
   <entry>
@@ -253,7 +261,7 @@
     <link href="https://chen-shang.github.io/2023/08/28/ji-suan-ji/ji-suan-ji-ji-chu/sso-dan-dian-deng-lu/"/>
     <id>https://chen-shang.github.io/2023/08/28/ji-suan-ji/ji-suan-ji-ji-chu/sso-dan-dian-deng-lu/</id>
     <published>2023-08-27T16:37:12.000Z</published>
-    <updated>2023-08-29T02:13:18.514Z</updated>
+    <updated>2023-09-05T14:25:44.272Z</updated>
     
     
       
@@ -272,9 +280,13 @@
     <category term="计算机基础" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
     
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机基础" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -283,7 +295,7 @@
     <link href="https://chen-shang.github.io/2023/08/27/qian-duan/vue/flex-bu-ju-xue-xi-bi-ji/"/>
     <id>https://chen-shang.github.io/2023/08/27/qian-duan/vue/flex-bu-ju-xue-xi-bi-ji/</id>
     <published>2023-08-27T06:06:56.000Z</published>
-    <updated>2023-08-27T06:39:43.376Z</updated>
+    <updated>2023-09-05T14:31:35.080Z</updated>
     
     
       
@@ -303,6 +315,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
+    
   </entry>
   
   <entry>
@@ -310,7 +326,7 @@
     <link href="https://chen-shang.github.io/2023/08/27/qian-duan/vue/vue-zen-me-jiu-xiang-ying-shi-liao/"/>
     <id>https://chen-shang.github.io/2023/08/27/qian-duan/vue/vue-zen-me-jiu-xiang-ying-shi-liao/</id>
     <published>2023-08-27T04:17:59.000Z</published>
-    <updated>2023-08-27T06:00:25.460Z</updated>
+    <updated>2023-09-05T14:31:56.129Z</updated>
     
     
       
@@ -332,6 +348,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
+    
   </entry>
   
   <entry>
@@ -339,7 +359,7 @@
     <link href="https://chen-shang.github.io/2023/08/26/qian-duan/vue/vue-zhong-ref-shu-xing-de-zuo-yong/"/>
     <id>https://chen-shang.github.io/2023/08/26/qian-duan/vue/vue-zhong-ref-shu-xing-de-zuo-yong/</id>
     <published>2023-08-26T12:37:09.000Z</published>
-    <updated>2023-08-27T06:01:22.300Z</updated>
+    <updated>2023-09-05T14:32:11.081Z</updated>
     
     
       
@@ -359,6 +379,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
+    
   </entry>
   
   <entry>
@@ -366,7 +390,7 @@
     <link href="https://chen-shang.github.io/2023/08/26/qian-duan/vue/aria-label-biao-qian/"/>
     <id>https://chen-shang.github.io/2023/08/26/qian-duan/vue/aria-label-biao-qian/</id>
     <published>2023-08-26T12:36:57.000Z</published>
-    <updated>2023-08-27T05:54:35.795Z</updated>
+    <updated>2023-09-05T14:31:17.275Z</updated>
     
     
       
@@ -388,6 +412,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
+    
   </entry>
   
   <entry>
@@ -395,7 +423,7 @@
     <link href="https://chen-shang.github.io/2023/08/24/gong-ju-kong/intellij-idea/idea-da-kai-properties-wen-jian-xian-shi-zhong-wen-luan-ma-jie-jue-fang-an/"/>
     <id>https://chen-shang.github.io/2023/08/24/gong-ju-kong/intellij-idea/idea-da-kai-properties-wen-jian-xian-shi-zhong-wen-luan-ma-jie-jue-fang-an/</id>
     <published>2023-08-24T09:20:55.000Z</published>
-    <updated>2023-08-24T09:25:55.518Z</updated>
+    <updated>2023-09-05T14:22:39.823Z</updated>
     
     
       
@@ -415,6 +443,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/tags/Intellij-IDEA/"/>
+    
   </entry>
   
   <entry>
@@ -422,7 +454,7 @@
     <link href="https://chen-shang.github.io/2023/08/23/gou-jian-gong-ju/maven/maven-pei-zhi/"/>
     <id>https://chen-shang.github.io/2023/08/23/gou-jian-gong-ju/maven/maven-pei-zhi/</id>
     <published>2023-08-23T05:21:57.000Z</published>
-    <updated>2023-08-29T13:18:51.464Z</updated>
+    <updated>2023-09-05T14:24:31.814Z</updated>
     
     
       
@@ -441,6 +473,10 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="构建工具" scheme="https://chen-shang.github.io/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="Maven" scheme="https://chen-shang.github.io/tags/Maven/"/>
     
   </entry>
   
@@ -481,7 +517,7 @@
     <link href="https://chen-shang.github.io/2023/08/21/gong-ju-kong/git/git-cang-ku-shi-yong-bu-tong-yong-hu-xia-zai-dai-ma/"/>
     <id>https://chen-shang.github.io/2023/08/21/gong-ju-kong/git/git-cang-ku-shi-yong-bu-tong-yong-hu-xia-zai-dai-ma/</id>
     <published>2023-08-21T09:46:08.000Z</published>
-    <updated>2023-08-21T10:06:39.696Z</updated>
+    <updated>2023-09-05T14:23:53.949Z</updated>
     
     
       
@@ -502,6 +538,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="Git" scheme="https://chen-shang.github.io/tags/Git/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
   </entry>
   
   <entry>
@@ -509,7 +549,7 @@
     <link href="https://chen-shang.github.io/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/"/>
     <id>https://chen-shang.github.io/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/</id>
     <published>2023-08-21T02:22:07.000Z</published>
-    <updated>2023-08-21T10:07:44.576Z</updated>
+    <updated>2023-09-05T14:28:21.235Z</updated>
     
     
       
@@ -518,7 +558,7 @@
         
     <summary type="html">&lt;p&gt;今天启动vue服务的时候遇到了以下报错&lt;br&gt;
 &lt;img src=&quot;/2023/08/21/qian-duan/vue/qie-huan-node-ban-ben/image.png&quot;&gt;&lt;/p&gt;
-&lt;pre class=&quot;line-numbers</summary>
+&lt;pre class=&quot;line-numbers language-log&quot;</summary>
         
       
     
@@ -530,6 +570,10 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
     
   </entry>
   

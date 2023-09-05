@@ -88,11 +88,11 @@
   
   <li class="hide-on-med-and-down nav-item">
     
-    <a href="/categories" class="waves-effect waves-light">
+    <a href="/tags" class="waves-effect waves-light">
       
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
       
-      <span>分类</span>
+      <span>标签</span>
     </a>
     
   </li>
@@ -174,11 +174,11 @@
         
         <li class="m-nav-item">
 	  
-		<a href="/categories" class="waves-effect waves-light">
+		<a href="/tags" class="waves-effect waves-light">
 			
-			    <i class="fa-fw fas fa-bookmark"></i>
+			    <i class="fa-fw fas fa-tags"></i>
 			
-			分类
+			标签
 		</a>
           
         </li>
@@ -314,7 +314,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">30</a></span>
+    <span class="count"><a href="/tags">40</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -344,7 +344,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">30</a></span>
+    <span class="count"><a href="/tags">40</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -445,17 +445,19 @@
         <i class="far fa-bar-chart"></i>&nbsp;&nbsp;文章统计图
     </div>
     <div class="row">
-        <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
+        <div class="chart col s12 m6 l6" data-aos="zoom-in-up">
             <div id="posts-chart"></div>
         </div>
 
-        <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
+        <div class="chart col s12 m6 l6" data-aos="zoom-in-up">
             <div id="categories-chart"></div>
         </div>
 
+<!--
         <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
             <div id="tags-chart"></div>
         </div>
+-->
     </div>
 </div>
 
@@ -463,7 +465,7 @@
 <script>
     let postsChart = echarts.init(document.getElementById('posts-chart'));
     let categoriesChart = echarts.init(document.getElementById('categories-chart'));
-    let tagsChart = echarts.init(document.getElementById('tags-chart'));
+//    let tagsChart = echarts.init(document.getElementById('tags-chart'));
 
     
 
@@ -530,7 +532,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"JAVA","value":30},{"name":"Scala","value":1},{"name":"Linux","value":32},{"name":"前端","value":18},{"name":"思考","value":6},{"name":"我的诗词","value":8},{"name":"数据库","value":4},{"name":"杂七杂八","value":1},{"name":"Java单元测试","value":1},{"name":"Java填坑","value":5},{"name":"Java并发编程","value":3},{"name":"Java设计模式","value":5},{"name":"Spring","value":1},{"name":"BaseShell","value":1},{"name":"Shell","value":13},{"name":"终端生存之道","value":13},{"name":"Html","value":3},{"name":"Vue","value":6},{"name":"JavaScript","value":6},{"name":"工具控","value":31},{"name":"经济学","value":2},{"name":"构建工具","value":2},{"name":"计算机","value":7},{"name":"数据结构算法","value":6},{"name":"Excel","value":1},{"name":"AI","value":1},{"name":"Git","value":6},{"name":"Hexo","value":5},{"name":"Intellij IDEA","value":12},{"name":"Mac","value":2},{"name":"Markdown","value":1},{"name":"ShareMouse","value":1},{"name":"Vim","value":1},{"name":"VsCode","value":1},{"name":"Maven","value":1},{"name":"NPM","value":1},{"name":"计算机基础","value":6},{"name":"计算机安全","value":1}],
+                data: [{"name":"JAVA","value":30},{"name":"Linux","value":32},{"name":"Scala","value":1},{"name":"前端","value":18},{"name":"思考","value":6},{"name":"数据库","value":4},{"name":"我的诗词","value":8},{"name":"杂七杂八","value":1},{"name":"Java单元测试","value":1},{"name":"Java填坑","value":5},{"name":"Java并发编程","value":3},{"name":"Java设计模式","value":5},{"name":"Spring","value":1},{"name":"BaseShell","value":1},{"name":"Shell","value":13},{"name":"终端生存之道","value":13},{"name":"工具控","value":31},{"name":"Html","value":3},{"name":"JavaScript","value":6},{"name":"Vue","value":6},{"name":"经济学","value":2},{"name":"构建工具","value":2},{"name":"计算机","value":7},{"name":"数据结构算法","value":6},{"name":"Excel","value":1},{"name":"Git","value":6},{"name":"Hexo","value":5},{"name":"Intellij IDEA","value":12},{"name":"Mac","value":2},{"name":"Markdown","value":1},{"name":"ShareMouse","value":1},{"name":"Vim","value":1},{"name":"VsCode","value":1},{"name":"Maven","value":1},{"name":"NPM","value":1},{"name":"AI","value":1},{"name":"计算机基础","value":6},{"name":"计算机安全","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -542,6 +544,7 @@
         ]
     };
 
+/*
     
 
     let tagsOption = {
@@ -554,7 +557,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["原创","Linux","未完待续","Java","Shell","终端生存之道","Idea-Tips","JAVA","数据结构算法","Git"]
+                data: ["原创","Linux","工具控","未完待续","Java","Shell","终端生存之道","Intellij IDEA","前端","Idea-Tips"]
             }
         ],
         yAxis: [
@@ -567,7 +570,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [132,34,22,17,14,13,9,6,6,4],
+                data: [135,32,25,22,17,14,13,12,9,9],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -589,11 +592,11 @@
             }
         ]
     };
-
+*/
     // render the charts
     postsChart.setOption(postsOption);
     categoriesChart.setOption(categoriesOption);
-    tagsChart.setOption(tagsOption);
+    // tagsChart.setOption(tagsOption);
 </script>
 
 
@@ -779,14 +782,44 @@
             
             
             
+            <a href="/tags/Shell/">
+                <span class="chip center-align waves-effect waves-light chip-default">Shell</span>
+            </a>
+            
+            
+            
             <a href="/tags/Scala/">
                 <span class="chip center-align waves-effect waves-light chip-default">Scala</span>
             </a>
             
             
             
-            <a href="/tags/Shell/">
-                <span class="chip center-align waves-effect waves-light chip-default">Shell</span>
+            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                <span class="chip center-align waves-effect waves-light chip-default">前端</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%80%9D%E8%80%83/">
+                <span class="chip center-align waves-effect waves-light chip-default">思考</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                <span class="chip center-align waves-effect waves-light chip-default">数据库</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/">
+                <span class="chip center-align waves-effect waves-light chip-default">我的诗词</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/">
+                <span class="chip center-align waves-effect waves-light chip-default">杂七杂八</span>
             </a>
             
             
@@ -839,26 +872,14 @@
             
             
             
-            <a href="/tags/Excel/">
-                <span class="chip center-align waves-effect waves-light chip-default">Excel</span>
-            </a>
-            
-            
-            
-            <a href="/tags/AI/">
-                <span class="chip center-align waves-effect waves-light chip-default">AI</span>
-            </a>
-            
-            
-            
-            <a href="/tags/Idea-Tips/">
-                <span class="chip center-align waves-effect waves-light chip-default">Idea-Tips</span>
-            </a>
-            
-            
-            
             <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
                 <span class="chip center-align waves-effect waves-light chip-default">工具控</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Excel/">
+                <span class="chip center-align waves-effect waves-light chip-default">Excel</span>
             </a>
             
             
@@ -869,8 +890,50 @@
             
             
             
+            <a href="/tags/Idea-Tips/">
+                <span class="chip center-align waves-effect waves-light chip-default">Idea-Tips</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Vue/">
+                <span class="chip center-align waves-effect waves-light chip-default">Vue</span>
+            </a>
+            
+            
+            
             <a href="/tags/%E4%B8%8D%E8%89%AF%E8%B5%84%E4%BA%A7/">
                 <span class="chip center-align waves-effect waves-light chip-default">不良资产</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/">
+                <span class="chip center-align waves-effect waves-light chip-default">经济学</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/">
+                <span class="chip center-align waves-effect waves-light chip-default">构建工具</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Maven/">
+                <span class="chip center-align waves-effect waves-light chip-default">Maven</span>
+            </a>
+            
+            
+            
+            <a href="/tags/NPM/">
+                <span class="chip center-align waves-effect waves-light chip-default">NPM</span>
+            </a>
+            
+            
+            
+            <a href="/tags/AI/">
+                <span class="chip center-align waves-effect waves-light chip-default">AI</span>
             </a>
             
             
@@ -881,14 +944,14 @@
             
             
             
-            <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                <span class="chip center-align waves-effect waves-light chip-default">前端</span>
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
+                <span class="chip center-align waves-effect waves-light chip-default">计算机</span>
             </a>
             
             
             
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
-                <span class="chip center-align waves-effect waves-light chip-default">计算机</span>
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                <span class="chip center-align waves-effect waves-light chip-default">计算机基础</span>
             </a>
             
             
