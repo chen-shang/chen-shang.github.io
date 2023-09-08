@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Linux终端生存之道-图片压缩</title>
+      <link href="/2023/09/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-tu-pian-ya-suo/"/>
+      <url>/2023/09/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-tu-pian-ya-suo/</url>
+      
+        <content type="html"><![CDATA[<p>在访问自己网站的时候发现有些请求比较耗时，观察得出是某个图片实在太大了导致加载的时间比较久。于是想要压缩这些背景图片，发现了一款在linux终端就能压缩图片的工具–jpegoptim<br><img src="/2023/09/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-tu-pian-ya-suo/iShot_2023-09-08_22.30.46.jpg" alt=""></p><p>在终端中运行以下命令来优化单个 JPEG 图像文件：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jpegoptim image.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>优化多个 JPEG 图像文件</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jpegoptim image1.jpg image2.jpg image3.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>递归优化目录中的所有 JPEG 图像文件</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jpegoptim <span class="token parameter variable">-r</span> directory/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>设置优化质量，</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jpegoptim <span class="token parameter variable">--max</span><span class="token operator">=</span><span class="token number">80</span> image.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>这将将优化质量设置为 80，其中 80 是一个介于 0 和 100 之间的值。较低的值会产生更高的压缩率，但可能会降低图像质量。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 终端生存之道 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>brew跳过某个软件不升级</title>
       <link href="/2023/09/08/gong-ju-kong/mac/brew-tiao-guo-mou-ge-ruan-jian-bu-sheng-ji/"/>
       <url>/2023/09/08/gong-ju-kong/mac/brew-tiao-guo-mou-ge-ruan-jian-bu-sheng-ji/</url>
