@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>brew跳过某个软件不升级</title>
+      <link href="/2023/09/08/gong-ju-kong/mac/brew-tiao-guo-mou-ge-ruan-jian-bu-sheng-ji/"/>
+      <url>/2023/09/08/gong-ju-kong/mac/brew-tiao-guo-mou-ge-ruan-jian-bu-sheng-ji/</url>
+      
+        <content type="html"><![CDATA[<p>有时候执行<code>brew upgrade</code>的时候会卡在某个软件一直下载不下来，这时候可以先把这个软件给跳过，先更新其他的软件再说。</p><ul><li><p>brew update ：这个命令用于更新Homebrew自身和Homebrew的软件包清单。当您运行 brew update 时，Homebrew会检查官方软件包库中是否有新的软件包版本或更新，然后更新本地的软件包清单以反映最新的变化。这个命令并不会升级已安装的软件包，它只更新软件包清单。</p></li><li><p>brew upgrade ：这个命令用于升级已安装的软件包到最新版本。当您运行 brew upgrade 时，Homebrew会检查已安装的软件包是否有可用的新版本，并将其升级到最新版本。这个命令会逐个检查并升级所有已安装的软件包。</p></li></ul><p>比如我遇到了 minio 这个工具下载很慢，于是使用下面的命令先跳过 minio 的升级。<br>指定minio不升级</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew pin minio<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>解除minio的版本固定</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew unpin minio<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>显示固定了版本的软件包列表</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew list <span class="token parameter variable">--pinned</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 工具控 </tag>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mac上Excel打开csv文件乱码</title>
       <link href="/2023/09/07/gong-ju-kong/excel/mac-shang-excel-da-kai-csv-wen-jian-luan-ma/"/>
       <url>/2023/09/07/gong-ju-kong/excel/mac-shang-excel-da-kai-csv-wen-jian-luan-ma/</url>
@@ -533,9 +564,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
@@ -1359,9 +1390,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
@@ -1674,9 +1705,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -1707,9 +1738,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
             <tag> 数据结构算法 </tag>
             
@@ -1740,11 +1771,11 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
             
             <tag> 未完待续 </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
@@ -1775,9 +1806,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
             <tag> 数据结构算法 </tag>
             
@@ -1889,9 +1920,9 @@
             
             <tag> Linux </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2067,9 +2098,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 工具控 </tag>
             
@@ -2278,11 +2309,11 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
             
             <tag> 未完待续 </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
@@ -2371,9 +2402,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2487,9 +2518,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
             <tag> 数据结构算法 </tag>
             
@@ -2522,9 +2553,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
             <tag> 数据结构算法 </tag>
             
@@ -2557,9 +2588,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
             <tag> 数据结构算法 </tag>
             
@@ -2592,9 +2623,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
             <tag> 数据结构算法 </tag>
             
@@ -2623,9 +2654,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -3193,9 +3224,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
@@ -3344,9 +3375,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
@@ -3468,11 +3499,11 @@
             
             <tag> 原创 </tag>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
             
             <tag> 未完待续 </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
@@ -3528,9 +3559,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 工具控 </tag>
             
@@ -3588,9 +3619,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 工具控 </tag>
             
@@ -3671,9 +3702,9 @@
       
         <tags>
             
-            <tag> Shell </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> Shell </tag>
             
         </tags>
       
