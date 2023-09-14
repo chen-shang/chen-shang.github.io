@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-08T14:38:22.924Z</updated>
+  <updated>2023-09-14T16:51:45.702Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vim常用操作</title>
+    <link href="https://chen-shang.github.io/2023/09/15/gong-ju-kong/vim/vim-chang-yong-cao-zuo/"/>
+    <id>https://chen-shang.github.io/2023/09/15/gong-ju-kong/vim/vim-chang-yong-cao-zuo/</id>
+    <published>2023-09-14T16:41:38.000Z</published>
+    <updated>2023-09-14T16:51:45.702Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;移动光标：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;h：向左移动光标&lt;/li&gt;
+&lt;li&gt;j：向下移动光标&lt;/li&gt;
+&lt;li&gt;k：向上移动光标&lt;/li&gt;
+&lt;li&gt;l：向右移动光标&lt;/li&gt;
+&lt;li&gt;w：跳到下一个单词的开头&lt;/li&gt;
+&lt;li&gt;b：跳到上一个单词的开头&lt;/</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Vim" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Vim/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Vim" scheme="https://chen-shang.github.io/tags/Vim/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux终端生存之道-图片压缩</title>
@@ -83,7 +123,7 @@
     <link href="https://chen-shang.github.io/2023/09/07/gong-ju-kong/excel/mac-shang-excel-da-kai-csv-wen-jian-luan-ma/"/>
     <id>https://chen-shang.github.io/2023/09/07/gong-ju-kong/excel/mac-shang-excel-da-kai-csv-wen-jian-luan-ma/</id>
     <published>2023-09-06T16:43:08.000Z</published>
-    <updated>2023-09-06T17:17:56.707Z</updated>
+    <updated>2023-09-14T16:34:07.442Z</updated>
     
     
       
@@ -599,38 +639,6 @@
     <category term="构建工具" scheme="https://chen-shang.github.io/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
     
     <category term="Maven" scheme="https://chen-shang.github.io/tags/Maven/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>把json变成excel</title>
-    <link href="https://chen-shang.github.io/2023/08/22/linux/shell/ba-json-bian-cheng-excel/"/>
-    <id>https://chen-shang.github.io/2023/08/22/linux/shell/ba-json-bian-cheng-excel/</id>
-    <published>2023-08-22T01:02:07.000Z</published>
-    <updated>2023-09-04T16:10:39.990Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;通过 jq 工具可以把 一段 json 数组 转换成 cvs , 然后就能用 excel 工具打开了。&lt;/p&gt;
-&lt;p&gt;参考 &lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="Shell" scheme="https://chen-shang.github.io/tags/Shell/"/>
     
   </entry>
   
