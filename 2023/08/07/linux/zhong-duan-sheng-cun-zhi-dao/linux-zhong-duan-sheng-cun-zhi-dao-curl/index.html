@@ -355,7 +355,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="curl-编码问题">curl 编码问题</h3>
+                <h3 id="curl-编码问题"><a class="markdownIt-Anchor" href="#curl-编码问题"></a> curl 编码问题</h3>
 <p>最近在写一款终端的词典翻译工具，原来的有道api不能用了，转而使用百度翻译的api ,先凑合用吧，谁让它现在免费呢。但是在使用curl 发起请求的时候，针对带有空格的单词查询总是报错.<br>
 最开始的错误写法如下</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">dic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -379,9 +379,9 @@
 <p>–data-urlencode: 将数据作为 URL 编码的字符串传递给服务器。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-sG</span> --data-urlencode <span class="token string">"name=John Doe"</span> --data-urlencode <span class="token string">"age=30"</span> https://example.com/api<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在这个例子中，–data-urlencode 参数将 name 和 age 作为键值对传递给服务器，并将它们 URL 编码为 name=John%20Doe 和 age=30。服务器可以使用这些值来处理请求并返回响应。</p>
-<h3 id="打印出返回的-HTTP-请求头部和正文">打印出返回的 HTTP 请求头部和正文</h3>
+<h3 id="打印出返回的-http-请求头部和正文"><a class="markdownIt-Anchor" href="#打印出返回的-http-请求头部和正文"></a> 打印出返回的 HTTP 请求头部和正文</h3>
 <p>curl 命令的 -i 选项</p>
-<h3 id="打印出返回的-HTTP-响应头部和正文">打印出返回的 HTTP 响应头部和正文</h3>
+<h3 id="打印出返回的-http-响应头部和正文"><a class="markdownIt-Anchor" href="#打印出返回的-http-响应头部和正文"></a> 打印出返回的 HTTP 响应头部和正文</h3>
 <p>curl 命令的 -v 选项</p>
 
                 
@@ -965,7 +965,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1043,7 +1043,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

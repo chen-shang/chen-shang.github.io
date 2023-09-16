@@ -347,20 +347,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>跳转到目标网站</h1>
+                <h1 id="跳转到目标网站"><a class="markdownIt-Anchor" href="#跳转到目标网站"></a> 跳转到目标网站</h1>
 <p>语法 : [链接文本](链接URL)</p>
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url">[<span class="token content">Linux终端生存之道-网络小工具</span>](<span class="token url">https://chen-shang.github.io/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>长下面这个样子<br>
 <a href="https://chen-shang.github.io/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/">Linux终端生存之道-网络小工具</a><br>
 <a id="section1"></a></p>
-<h1>去掉跳转链接的下划线</h1>
+<h1 id="去掉跳转链接的下划线"><a class="markdownIt-Anchor" href="#去掉跳转链接的下划线"></a> 去掉跳转链接的下划线</h1>
 <p>Markdown本身并没有提供一种直接的方式来去掉链接文本下的下划线。这是因为Markdown的设计初衷是提供一种简单且易读的标记语言，而不是提供复杂的样式控制。<br>
 直接写<code>&lt;a&gt;</code>标签实现<br>
 语法 : &lt;a href="链接URL" style="text-decoration:none;"&gt;链接文本&lt;/a&gt;</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-decoration</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Linux终端生存之道-网络小工具<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>长下面这个样子<br>
 <a href="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/" style="text-decoration:none;">Linux终端生存之道-网络小工具</a></p>
-<h1>跳转到目标网站的目标章节</h1>
+<h1 id="跳转到目标网站的目标章节"><a class="markdownIt-Anchor" href="#跳转到目标网站的目标章节"></a> 跳转到目标网站的目标章节</h1>
 <p>这时候可以使用所谓的锚点实现。<br>
 语法 : [跳转到目标章节](目标网站URL#目标章节锚点)</p>
 <p>比如我想跳转到  <code>Linux终端生存之道-网络小工具</code> 这篇文章 的 <code>dig</code> 这个小节.</p>
@@ -376,7 +376,7 @@
 <pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url">[<span class="token content">Linux终端生存之道-网络小工具-dig</span>](<span class="token url">/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/#section1</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>连接如下,点击查看效果<br>
 <a href="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/#section1">Linux终端生存之道-网络小工具-dig</a></p>
-<h1>跳转到当前页面的目标章节</h1>
+<h1 id="跳转到当前页面的目标章节"><a class="markdownIt-Anchor" href="#跳转到当前页面的目标章节"></a> 跳转到当前页面的目标章节</h1>
 <p>刚才是跳转到了其他页面的目标章节，如果想要在当前页面实现跳转呢?<br>
 Markdown本身并没有提供一种直接的方式在当前页面中实现跳转到目标章节而不打开新的页面。Markdown是一种标记语言，主要用于文本的格式化和排版，并不支持页面内部的交互功能。</p>
 <p>如果这么写</p>
@@ -978,7 +978,7 @@ Markdown本身并没有提供一种直接的方式在当前页面中实现跳转
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1056,7 +1056,7 @@ Markdown本身并没有提供一种直接的方式在当前页面中实现跳转
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

@@ -359,13 +359,13 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>简介</h1>
+                <h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
 <p>JSON 是一种轻量级的数据交换格式。其采用完全独立于语言的文本格式，具有方便人阅读和编写，同时也易于机器的解析和生成。这些特性决定了 JSON 格式越来越广泛的应用于现代的各种系统中。作为系统管理员，在日常的工作中无论是编辑配置文件或者通过 http 请求查询信息，我们都不可避免的要处理 JSON 格式的数据。</p>
 <p>jq 是一款命令行下处理 JSON 数据的工具。其可以接受标准输入，命令管道或者文件中的 JSON 数据，经过一系列的过滤器(filters)和表达式的转后形成我们需要的数据结构并将结果输出到标准输出中。jq 的这种特性使我们可以很容易地在 Shell 脚本中调用它。</p>
-<h1>安装</h1>
-<h2 id="Mac">Mac</h2>
+<h1 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h1>
+<h2 id="mac"><a class="markdownIt-Anchor" href="#mac"></a> Mac</h2>
 <p><code>brew install jq</code></p>
-<h1>使用</h1>
+<h1 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 使用</h1>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">&gt; jq -h
 
 jq - commandline JSON processor [version 1.6]
@@ -416,9 +416,9 @@ positional arguments are available as $ARGS.positional[].
 
 See the manpage for more options.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>需要说明的是 jq 只能接受 well form 的 JSON 字符串作为输入内容。也就是说输入内容必须严格遵循 JSON 格式的标准。所有的属性名必须是以双引号包括的字符串。对象的最后一个属性的末尾或者数组的最后一个元素的末尾不能有逗号。否则 jq 会抛出无法解析 JSON 的错误。</p>
-<h2 id="官方使用手册">官方使用手册</h2>
+<h2 id="官方使用手册"><a class="markdownIt-Anchor" href="#官方使用手册"></a> 官方使用手册</h2>
 <p><a target="_blank" rel="noopener" href="https://stedolan.github.io/jq/manual/">https://stedolan.github.io/jq/manual/</a></p>
-<h1>QA</h1>
+<h1 id="qa"><a class="markdownIt-Anchor" href="#qa"></a> QA</h1>
 <ol>
 <li>如何去掉返回结果中value的双引号</li>
 </ol>
@@ -1008,7 +1008,7 @@ jq: 1 compile error<span aria-hidden="true" class="line-numbers-rows"><span></sp
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1086,7 +1086,7 @@ jq: 1 compile error<span aria-hidden="true" class="line-numbers-rows"><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

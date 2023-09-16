@@ -459,7 +459,7 @@ WAITING: 等待
 TIMED_WATING: 限时等待
 TERMINATED: 终止<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>那为什么要区分这么多种状态呢? 注释都已经写得清清楚楚了。</p>
-<h6 id="NEW">NEW</h6>
+<h6 id="new"><a class="markdownIt-Anchor" href="#new"></a> NEW</h6>
 <blockquote>
 <p>/**<br>
 * Thread state for a thread which has not yet started.<br>
@@ -467,7 +467,7 @@ TERMINATED: 终止<span aria-hidden="true" class="line-numbers-rows"><span></spa
 还没有开始的线程所处的状态</p>
 </blockquote>
 <p>每一个线程，在堆内存中都有一个对应的Thread对象。Thread t = new Thread();当刚刚在堆内存中创建Thread对象，还没有调用t.start()方法之前，线程就处在NEW状态。在这个状态上，线程与普通的java对象没有什么区别，就仅仅是一个堆内存中的对象。</p>
-<h6 id="RUNNABLE">RUNNABLE</h6>
+<h6 id="runnable"><a class="markdownIt-Anchor" href="#runnable"></a> RUNNABLE</h6>
 <blockquote>
 <p>/**<br>
 * A thread in the runnable state is executing in the Java virtual machine but it may be waiting for other resources from the operating * system such as processor.<br>
@@ -475,7 +475,7 @@ TERMINATED: 终止<span aria-hidden="true" class="line-numbers-rows"><span></spa
 线程在Java虚拟机中的状态,再该状态下,线程正在等待操作系统的处理器给他分配资源</p>
 </blockquote>
 <p>对应 t.start() 调用的时候或者运行中的线程自己调用yield方法礼让一下的时候或者当前线程的cpu时间轮片到了出发了cpu中断，该线程响应中断后会改变状态,此时还会引起上下文的切换。</p>
-<h6 id="BLOCK">BLOCK</h6>
+<h6 id="block"><a class="markdownIt-Anchor" href="#block"></a> BLOCK</h6>
 <blockquote>
 <p>/**<br>
 * Thread state for a thread blocked waiting for a monitor lock.<br>
@@ -1081,7 +1081,7 @@ Join 方法：本质上还是根据wait方法实现的。分析join源码发现j
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

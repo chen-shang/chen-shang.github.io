@@ -310,7 +310,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-16
+                    2023-09-16
                 </div>
                 
 
@@ -350,42 +350,42 @@
                 <p>现在的项目虽然都转到 java 来了，但旧的项目hyperloop、space-core依然在使用 scala 维护，这篇讲义只讲scala的简单使用，目的是使各位新来的同事能够首先看懂程序，因为 scala 有的语法对于之前使用习惯了 java 的人来说还是比较晦涩的。</p>
 <p>网上对 scala 的介绍很多，都说从 java 转到 scala 很容易，我觉得说这句话的人90%都没有认真写过 scala 代码。</p>
 <p>Scala like Java ，scala 和 java 很像，我总结下来 scala = java ++ --, Scala 等于 Java 加加减减</p>
-<h1>scala 介绍与安装</h1>
-<h4 id="这个-体现在">这个 ++ 体现在</h4>
+<h1 id="scala-介绍与安装"><a class="markdownIt-Anchor" href="#scala-介绍与安装"></a> scala 介绍与安装</h1>
+<h4 id="这个-体现在"><a class="markdownIt-Anchor" href="#这个-体现在"></a> 这个 ++ 体现在</h4>
 <div width="100%" style="overflow:hidden">
-    <div style="float:left; width:49%;"><h1>Scala</h1>
-	1. Fp(Function programming) 函数编程<br>
-	2. Future 对异步任务的处理<br>
-	3. Option 规避 null 指针异常<br>
-	4. Tuple 元组 返回自由的对象组合<br>
-	5. 以及无处不在的模式匹配<br>
-	6. Trait 混入<br>
+    <div style="float:left; width:49%;"><p style="font-size: 20px">Scala</p>
+ 1. Fp(Function programming) 函数编程<br>
+ 2. Future 对异步任务的处理<br>
+ 3. Option 规避 null 指针异常<br>
+ 4. Tuple 元组 返回自由的对象组合<br>
+ 5. 以及无处不在的模式匹配<br>
+ 6. Trait 混入<br>
   ...
     </div>
-    <div style="float:right; width:50%;"><h1>Java8</h1>
-	1. Java8 则加入了 lamda &amp; stream api &amp; 函数接口<br>
-	2. Java8 则提供了 completableFuture 工具类<br>
-	3. Java8 则提供了与之类似的Optional 包装类<br>
-	4. Java8 目前还不支持，但可以自定义<br>
-	5. Java8 不支持<br>
-	6. Java8 接口支持默认方法<br>
+    <div style="float:right; width:50%;"><p style="font-size: 20px">Java8</p>
+ 1. Java8 则加入了 lamda &amp; stream api &amp; 函数接口<br>
+ 2. Java8 则提供了 completableFuture 工具类<br>
+ 3. Java8 则提供了与之类似的Optional 包装类<br>
+ 4. Java8 目前还不支持，但可以自定义<br>
+ 5. Java8 不支持<br>
+ 6. Java8 接口支持默认方法<br>
   ...
    </div>
 </div>
 <p><strong>以上2、3、4 是对现有 java中类型的补充和扩展,如早在 java5中就有 Future 、FutureTask 等异步接口了</strong></p>
-<h4 id="这个-就体现在">这个 - - 就体现在</h4>
+<h4 id="这个-就体现在"><a class="markdownIt-Anchor" href="#这个-就体现在"></a> 这个 - - 就体现在</h4>
 <ol>
 <li>语法的精简，让你可以写更多简单易懂的 one line code （一行代码）</li>
 </ol>
-<h2 id="小结">小结</h2>
+<h2 id="小结"><a class="markdownIt-Anchor" href="#小结"></a> 小结</h2>
 <p>Scala 类似于JAVA，设计初衷是实现可伸缩、融合面向对象编程特性与函式编程风格，可直译、可编译、静态、运行于JVM之上、可与Java互操作的一门多范式的编程语言。Scala 代码会先翻译成 Java 的 class 在执行</p>
 <p><code>下面就讲讲这门多范式的编程语言!!!</code></p>
-<h1>函数编程的理解</h1>
+<h1 id="函数编程的理解"><a class="markdownIt-Anchor" href="#函数编程的理解"></a> 函数编程的理解</h1>
 <p>啥叫函数编程? 写几个java8 的 stream 表达式就会函数编程了？</p>
 <p>先理解啥叫函数，我类比 OOP 中的对象来说，对象是对事物的抽象，面向对象编程的特点就是抽象、继承、封装、多态等等<br>
 函数是对行为过程的抽象，要想理解什么是函数式编程,要先知道什么是函数.函数式数学中的概念,从一个状态与另一个状态的对应关系,或者从一个状态到另一个状态的映射就是函数,y=f(x) 这个 f 就是函数。就像谈什么是面向对象一样,继承、封装、多态、抽象一样,谈什么函数式编程就要说函数式编程的特点,函数编程的特点有很多:函数式第一公民、高阶函数、模式匹配、无副作用、不变性。</p>
-<p>函数其实说到底是一个集合到另一集合的映射。函数有 N多个名字,在 java 的类中叫方法，在 scala 的类中叫函数，在 java 的方法参数中叫 lamda 这个 lamda 的类型叫函数接口，而这个 lamda 又有一个别名叫	匿名函数，在引用了外部环境变量的 lamda 中叫闭包 （js 中有这种叫法，不知道准不准），在 OC 中叫 block ，很像，像到我都不想去区分他们。</p>
-<h2 id="一些函数编程的特性">一些函数编程的特性</h2>
+<p>函数其实说到底是一个集合到另一集合的映射。函数有 N多个名字,在 java 的类中叫方法，在 scala 的类中叫函数，在 java 的方法参数中叫 lamda 这个 lamda 的类型叫函数接口，而这个 lamda 又有一个别名叫 匿名函数，在引用了外部环境变量的 lamda 中叫闭包 （js 中有这种叫法，不知道准不准），在 OC 中叫 block ，很像，像到我都不想去区分他们。</p>
+<h2 id="一些函数编程的特性"><a class="markdownIt-Anchor" href="#一些函数编程的特性"></a> 一些函数编程的特性</h2>
 <ol>
 <li>
 <p>函数是第一公民: 函数可以传递，这也是语言支持高阶函数的先决条件</p>
@@ -403,10 +403,10 @@
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>很多特点自行百度，不在一一赘述。</p>
-<h1>基础语法</h1>
-<h2 id="一切从-Hello-word-开始">一切从 Hello word 开始</h2>
+<h1 id="基础语法"><a class="markdownIt-Anchor" href="#基础语法"></a> 基础语法</h1>
+<h2 id="一切从-hello-word-开始"><a class="markdownIt-Anchor" href="#一切从-hello-word-开始"></a> 一切从 Hello word 开始</h2>
 <div width="100%">
-    <div style="float:left; width:50%;"><h1>Scala</h1>
+    <div style="float:left; width:50%;"><p style="font-size: 20px">Scala</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">object</span> ScalaMain <span class="token punctuation">{</span>
   <span class="token keyword">def</span> main<span class="token punctuation">(</span>args<span class="token operator">:</span> Array<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Unit</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
     <span class="token keyword">val</span> variable <span class="token operator">=</span> <span class="token string">"hello word"</span>
@@ -415,7 +415,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </div>
     <div style="float:left;height:50px; width:0px;border-left:solid white;border-right:1px solid white"></div>
-    <div style="float:left; width:49%;"><h1>Java8</h1>
+    <div style="float:left; width:49%;"><p style="font-size: 20px">Java8</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaMain</span> <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token class-name">String</span> variable <span class="token operator">=</span> <span class="token string">"hello word!!"</span><span class="token punctuation">;</span>
@@ -523,7 +523,7 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
        <span class="token number">4</span>: invokevirtual <span class="token comment">#24                 // Method scala/Predef$.print:(Ljava/lang/Object;)V</span>
        <span class="token number">7</span>: <span class="token builtin class-name">return</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="伴生类-伴生对象">伴生类&amp;伴生对象</h2>
+<h2 id="伴生类伴生对象"><a class="markdownIt-Anchor" href="#伴生类伴生对象"></a> 伴生类&amp;伴生对象</h2>
 <p>上面介绍到了object,以此为引申来讲讲伴生对象和伴生类</p>
 <blockquote>
 <p>所谓伴生对象， 也是一个Scala中的单例对象， 使用object关键字修饰。除此之外， 还有一个使用class关键字定义的同名类， 这个类和单例对象存在于同一个文件中，这个类就叫做这个单例对象的伴生类， 相对来说， 这个单例对象叫做伴生类的伴生对象。</p>
@@ -543,12 +543,12 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 <blockquote>
 <p>Scala单例对象是十分重要的，没有像在Java一样，有静态类、静态成员、静态方法，但是Scala提供了object对象，这个object对象类似于Java的静态类,它的成员、它的方法都默认是静态的。</p>
 </blockquote>
-<h3 id="小结-2">小结</h3>
+<h3 id="小结-2"><a class="markdownIt-Anchor" href="#小结-2"></a> 小结</h3>
 <p>里面的方法全是静态方法 相当于把 java 中静态类的方法单独抽取出来了一个对象</p>
-<h2 id="类的定义">类的定义</h2>
+<h2 id="类的定义"><a class="markdownIt-Anchor" href="#类的定义"></a> 类的定义</h2>
 <p>上边我们已经自定义过object 单例对象了,它本质上也是定义了一个 class 然后实例化了一个类的对象出来,我们接下来看看 scala 面向对象的特性与 java的有那些写法上的不同。</p>
 <div width="100%">
-  <div style="float:left; width:49%;"><h3>定义scala的简单类</h3>
+  <div style="float:left; width:49%;"><p style="font-size: 20px">定义scala的简单类</p>
   <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span><span class="token keyword">val</span> x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token keyword">val</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>注意用 val 声明的属相是没有 set 方法的,因为 val 修饰的变量属于常量不可以修改,所以其相当于 java 的类种没有 set 方法。</p>
@@ -587,7 +587,7 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个是不是和 java 的构造方法很像呢？没错,scala将类的主构造方法绑定到一块了,它认为这样做更简洁吧,但 scala 同样支持想 java那样定义类。</p>
 <div width="100%">
-  <div style="float:left; width:49%;"><h3>带函数的 scala 类</h3>
+  <div style="float:left; width:49%;"><p style="font-size: 20px">带函数的 scala 类</p>
   <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span><span class="token keyword">var</span> x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token keyword">var</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token comment">// 定义函数</span>
     <span class="token keyword">def</span> add<span class="token operator">=</span> x<span class="token operator">+</span>y
@@ -604,9 +604,9 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
  </div>
 </div>
-<h2 id="继承">继承</h2>
+<h2 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h2>
 <div width="100%">
-  <div style="float:left; width:49%;"><h3>带继承的 scala 类</h3>
+  <div style="float:left; width:49%;"><p style="font-size: 20px">带继承的 scala 类</p>
   <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> TalkPoint<span class="token punctuation">(</span>x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token keyword">extends</span> Point <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">def</span> talk<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
     println<span class="token punctuation">(</span><span class="token string">"my position is ("</span><span class="token operator">+</span>x<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>y<span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">)</span>
@@ -629,10 +629,10 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
  </div>
 </div>
 <p>上面只是 scala 的 class 定义最基本的几种形式,大家可以自行学习一下 scala 的 class 在各种情况下翻译成对应的java 代码长什么样子?想要了解请<a href="www.baidu.com">点击这里</a></p>
-<h2 id="Trait">Trait</h2>
+<h2 id="trait"><a class="markdownIt-Anchor" href="#trait"></a> Trait</h2>
 <p>面向对象的本质是抽象,对事物的抽象是对象,对象中行为的抽象就是接口,scala 中没有 interface 在样的关键字,取而代之的是 trait ,翻译成中文叫特性特质,实现 trait 不用 implement 而是用 extends ,过个 trait 用 with 相连标示一个整体,我们先来看一下</p>
 <div width="100%">
-  <div style="float:left; width:49%;"><h3>Scala Trait(特征)</h3>
+  <div style="float:left; width:49%;"><p style="font-size: 20px">Scala Trait(特征)</p>
   <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">trait</span> Equal <span class="token punctuation">{</span>
   <span class="token keyword">def</span> isEqual<span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">Any</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Boolean</span>
 
@@ -661,7 +661,7 @@ clase A <span class="token keyword">extends</span> Equal <span class="token keyw
 <p>java8 中的默认方法用 default 关键字声明<br></p>
  </div>
 </div>
-<h3 id="特征构造顺序">特征构造顺序</h3>
+<h3 id="特征构造顺序"><a class="markdownIt-Anchor" href="#特征构造顺序"></a> 特征构造顺序</h3>
 <p>特征也可以有构造器，由字段的初始化和其他特征体中的语句构成。这些语句在任何混入该特征的对象在构造是都会被执行。<br>
 构造器的执行顺序：</p>
 <ul>
@@ -673,41 +673,51 @@ clase A <span class="token keyword">extends</span> Equal <span class="token keyw
 <li>所有特征被构造完毕，子类被构造。</li>
 <li>构造器的顺序是类的线性化的反向。线性化是描述某个类型的所有超类型的一种技术规格。</li>
 </ul>
-<h4 id="小结-3">小结</h4>
+<h4 id="小结-3"><a class="markdownIt-Anchor" href="#小结-3"></a> 小结</h4>
 <ol>
 <li>Scala Trait(特征) 相当于 Java 的接口，实际上它比接口还功能强大。</li>
 <li>与接口不同的是，它还可以定义属性和方法的实现。</li>
 <li>一般情况下Scala的类只能够继承单一父类，但是如果是 Trait(特征) 的话就可以继承多个，从结果来看就是实现了多重继承</li>
 </ol>
-<h2 id="臭名昭著的菱形问题">臭名昭著的菱形问题</h2>
+<h2 id="臭名昭著的菱形问题"><a class="markdownIt-Anchor" href="#臭名昭著的菱形问题"></a> 臭名昭著的菱形问题</h2>
 <p>java 从 c++ 除去了多重继承,只允许单根继承,这个直接解决了<a target="_blank" rel="noopener" href="https://my.oschina.net/Barudisshu/blog/419678">菱形问题</a>,但如今 scala 和 java8 都允许接口可以有默认的实现法法了,之所以打破以前的设计在接口中增加具体的方法， 是为了既有的成千上万的Java类库的类增加新的功能， 且不必对这些类重新进行设计。 因此不可避免的的就要花精力来解决这个问题,C++中解决的办法是虚拟基类,我么看看 java 和 scala 是如何处理的。</p>
 <p>我们知道， 接口可以继承接口， 类可以继承类和实现接口。 一旦继承的类和实现的接口中有相同签名的方法， 会出现什么样的状况呢？</p>
 <div width="100%">
-  <div style="float:left;width:49%;"><h3>C++ 解决方法</h3>
+  <div style="float:left;width:49%;"><p style="font-size: 20px">C++ 解决方法</p>
 <ul>
-<li>在C++中是通过虚基类virtual实现，并按照深度优先，从左到右的顺序遍历调用</li>
-</ul>
-  </div>
-  <div style="float:left;width:49%;"><h3>Java8 解决方法</h3>
-<ul>
-<li>类优先于接口。 如果一个子类继承的父类和接口有相同的方法实现。 那么子类继承父类的方法</li>
-<li>子类型中的方法优先于父类型中的方法。</li>
-<li>如果以上条件都不满足， 则必须显示覆盖/实现其方法，或者声明成abstract。</li>
-</ul>
-  </div>
-  <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
-  <div style="float:left;width:98%;"><h3>Scala解决方法</h3>
-<ul>
-<li>Scala 的基于混入的类构成（mixin class composition）体系是线性混入构成（linearmixin compostion）和对称的混入模块（mixin modules），以及traits这三者的融合。</li>
-<li>Scala是通过类的全序化(Class Linearization)，或称作类的线性化。线性化指出一个类的祖先类是一条线性路径的，包括超类(superclass)和特性(traits)。它通过两步来处理方法调用的问题:<br><br>
+<li>
+<p>在C++中是通过虚基类virtual实现，并按照深度优先，从左到右的顺序遍历调用</p>
+</li></ul></div>
+<div style="float:left;width:49%;"><p style="font-size: 20px">Java8 解决方法</p>
+
+<li>
+<p>类优先于接口。 如果一个子类继承的父类和接口有相同的方法实现。 那么子类继承父类的方法</p>
+</li>
+<li>
+<p>子类型中的方法优先于父类型中的方法。</p>
+</li>
+<li>
+<p>如果以上条件都不满足， 则必须显示覆盖/实现其方法，或者声明成abstract。</p>
+</li></div>
+<div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
+<div style="float:left;width:98%;"><p style="font-size: 20px">Scala解决方法</p>
+
+<li>
+<p>Scala 的基于混入的类构成（mixin class composition）体系是线性混入构成（linearmixin compostion）和对称的混入模块（mixin modules），以及traits这三者的融合。</p>
+</li>
+<li>
+<p>Scala是通过类的全序化(Class Linearization)，或称作类的线性化。线性化指出一个类的祖先类是一条线性路径的，包括超类(superclass)和特性(traits)。它通过两步来处理方法调用的问题:<br><br>
 ① 使用右孩子优先的深度优先遍历搜索(right-first,depth-first search)算法进行搜索。<br><br>
-② 遍历得到的结构层次中，保留最后一个元素，其余删除。</li>
-<li>线性混入，即是指使用右孩子优先的深度优先遍历搜索算法，列出层次结构（Scala class hierarchy），因此Scala多重继承的混入类中，如果包含有混入类（Mixins，或称为混入组合），则多重继承中总是选择最右边的（right-mostly）的实现方法。</li>
-</ul>
-  </div>
+② 遍历得到的结构层次中，保留最后一个元素，其余删除。</p>
+</li>
+<li>
+<p>线性混入，即是指使用右孩子优先的深度优先遍历搜索算法，列出层次结构（Scala class hierarchy），因此Scala多重继承的混入类中，如果包含有混入类（Mixins，或称为混入组合），则多重继承中总是选择最右边的（right-mostly）的实现方法。</p>
+</li></div>
+
+
 </div>
-<h1>项目中常用的语法</h1>
-<h2 id="字符串插值">字符串插值</h2>
+<h1 id="项目中常用的语法"><a class="markdownIt-Anchor" href="#项目中常用的语法"></a> 项目中常用的语法</h1>
+<h2 id="字符串插值"><a class="markdownIt-Anchor" href="#字符串插值"></a> 字符串插值</h2>
 <ul>
 <li>Scala中的String类就是Java的String类，所以可以直接调用Java里String的所有方法。</li>
 <li>字符串中的变量替换，Scala中基础的字符串插值就是在字符串前加字幕‘s’，然后在字符串中放入变量，每个变量都应以‘$’开头。字符串前加字母‘s’时，其实是在创建一个处理字符串字面量</li>
@@ -728,16 +738,14 @@ hannah<span class="token operator">:</span> Student <span class="token operator"
 
 scala<span class="token operator">&gt;</span> println<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token id function">s</span><span class="token string">"</span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">hannah<span class="token punctuation">.</span>name</span><span class="token punctuation">}</span></span><span class="token string"> has a score of </span><span class="token interpolation"><span class="token punctuation">${</span><span class="token expression">hannah<span class="token punctuation">.</span>score</span><span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
 Hannah has a score of <span class="token number">95</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="for-表达式">for 表达式</h2>
-<p>for 主要用来处理循环的,一般应用在 list、seq 等数据类型或者用来解Future 等包装类,这个后面会说</p>
-<p>先学会定义一个列表</p>
+<h2 id="for-表达式"><a class="markdownIt-Anchor" href="#for-表达式"></a> for 表达式</h2>
 <div width="100%">
-  <div style="float:left; width:49%;"><h3>Scala 定义list</h3>
+  <div style="float:left; width:49%;"><p style="font-size: 20px">Scala 定义list</p>
   <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> list01<span class="token operator">=</span> <span class="token number">1</span> to <span class="token number">10</span>
 <span class="token keyword">val</span> list02<span class="token operator">=</span> <span class="token number">1</span> to <span class="token number">100</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
   </div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
-  <div style="float:left;width:49%;"><h3>Java8 定义 list</h3>
+  <div style="float:left;width:49%;"><p style="font-size: 20px">Java8 定义 list</p>
   <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list01 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list02 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -745,8 +753,9 @@ Hannah has a score of <span class="token number">95</span><span aria-hidden="tru
       list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </div>
+上面先学会定义一个列表，而 for 主要用来处理循环的,一般应用在 list、seq 等数据类型或者用来解Future 等包装类,这个后面会说
 <div width="100%">
-  <div style="float:left; width:49%;"><h3>Scala for 表达式</h3>
+  <div style="float:left; width:49%;"><p style="font-size: 20px">Scala for 表达式</p>
   <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token comment">//第一种:普通的 for 循环</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span>x <span class="token keyword">&lt;-</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   println<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
@@ -767,13 +776,13 @@ Hannah has a score of <span class="token number">95</span><span aria-hidden="tru
 
 <span class="token comment">/**
  * yield 关键字的简短总结:
- * •	针对每一次 for 循环的迭代, yield 会产生一个值，被循环记录下来 (内部实现上，像是一个缓冲区).
- * •	当循环结束后, 会返回所有 yield 的值组成的集合.
- * •	返回集合的类型与被遍历的集合类型是一致的.
+ * • 针对每一次 for 循环的迭代, yield 会产生一个值，被循环记录下来 (内部实现上，像是一个缓冲区).
+ * • 当循环结束后, 会返回所有 yield 的值组成的集合.
+ * • 返回集合的类型与被遍历的集合类型是一致的.
  */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
   </div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
-  <div style="float:left;width:49%;"><h3>Java8 for 语法糖</h3>
+  <div style="float:left;width:49%;"><p style="font-size: 20px">Java8 for 语法糖</p>
   <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//第一种</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span> x <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -813,10 +822,10 @@ list<span class="token punctuation">.</span><span class="token function">forEach
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </div>
 </div>
-<h2 id="Option-vs-Optional">Option vs Optional</h2>
+<h2 id="option-vs-optional"><a class="markdownIt-Anchor" href="#option-vs-optional"></a> Option vs Optional</h2>
 <p>在使用 scala的函数编程之前先要讲解一个新的类型,这个类型在 scala 中叫 Option ,在Java 中叫 Optional。</p>
 <p>以下内容<a target="_blank" rel="noopener" href="http://udn.yyuap.com/doc/guides-to-scala-book/chp5-the-option-type.html">原文地址</a></p>
-<h3 id="基本概念">基本概念</h3>
+<h3 id="基本概念"><a class="markdownIt-Anchor" href="#基本概念"></a> 基本概念</h3>
 <p>Java 开发者一般都知道 NullPointerException（其他语言也有类似的东西）， 通常这是由于某个方法返回了 null ，但这并不是开发者所希望发生的，代码也不好去处理这种异常。</p>
 <p>值 null 通常被滥用来表征一个可能会缺失的值。 不过，某些语言以一种特殊的方法对待 null 值，或者允许你安全的使用可能是 null 的值。 比如说，Groovy 有 安全运算符(Safe Navigation Operator) 用于访问属性， 这样 foo?.bar?.baz 不会在 foo 或 bar 是 null 时而引发异常，而是直接返回 null， 然而，Groovy 中没有什么机制来强制你使用此运算符，所以如果你忘记使用它，那就完蛋了！</p>
 <p>Clojure 对待 nil 基本上就像对待空字符串一样。 也可以把它当作列表或者映射表一样去访问，这意味着， nil 在调用层级中向上冒泡。 很多时候这样是可行的，但有时会导致异常出现在更高的调用层级中，而那里的代码没有对 nil 加以考虑。</p>
@@ -824,7 +833,7 @@ list<span class="token punctuation">.</span><span class="token function">forEach
 <p>Option[A] 是一个类型为 A 的可选值的容器： 如果值存在， Option[A] 就是一个 Some[A] ，如果不存在， Option[A] 就是对象 None 。</p>
 <p>在类型层面上指出一个值是否存在，使用你的代码的开发者（也包括你自己）就会被编译器强制去处理这种可能性， 而不能依赖值存在的偶然性。</p>
 <p>Option 是强制的！不要使用 null 来表示一个值是缺失的。</p>
-<h3 id="创建-Option">创建 Option</h3>
+<h3 id="创建-option"><a class="markdownIt-Anchor" href="#创建-option"></a> 创建 Option</h3>
 <p>通常，你可以直接实例化 Some 样例类来创建一个 Option 。</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> greeting<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> Some<span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>或者，在知道值缺失的情况下，直接使用 None 对象：</p>
@@ -832,7 +841,7 @@ list<span class="token punctuation">.</span><span class="token function">forEach
 <p>然而，在实际工作中，你不可避免的要去操作一些 Java 库， 或者是其他将 null 作为缺失值的JVM 语言的代码。 为此， Option 伴生对象提供了一个工厂方法，可以根据给定的参数创建相应的 Option ：</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> absentGreeting<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> Option<span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token comment">// absentGreeting will be None</span>
 <span class="token keyword">val</span> presentGreeting<span class="token operator">:</span> Option<span class="token punctuation">[</span><span class="token builtin">String</span><span class="token punctuation">]</span> <span class="token operator">=</span> Option<span class="token punctuation">(</span><span class="token string">"Hello!"</span><span class="token punctuation">)</span> <span class="token comment">// presentGreeting will be Some("Hello!")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="使用-Option">使用 Option</h3>
+<h3 id="使用-option"><a class="markdownIt-Anchor" href="#使用-option"></a> 使用 Option</h3>
 <p>目前为止，所有的这些都很简洁，不过该怎么使用 Option 呢？是时候开始举些无聊的例子了。</p>
 <p>想象一下，你正在为某个创业公司工作，要做的第一件事情就是实现一个用户的存储库， 要求能够通过唯一的用户 ID 来查找他们。 有时候请求会带来假的 ID，这种情况，查找方法就需要返回 Option[User] 类型的数据。 一个假想的实现可能是：</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">case</span> <span class="token keyword">class</span> User<span class="token punctuation">(</span>
@@ -857,12 +866,12 @@ list<span class="token punctuation">.</span><span class="token function">forEach
 <span class="token punctuation">}</span> <span class="token comment">// will print "John"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这和 Guava 库 中的 Optional 使用方法类似。 不过这种使用方式太过笨重，更重要的是，使用 get 之前， 你可能会忘记用 isDefined 做检查，这会导致运行期出现异常。 这样一来，相对于 null ，使用 Option 并没有什么优势。</p>
 <p><strong>你应该尽可能远离这种访问方式！</strong></p>
-<h3 id="提供一个默认值">提供一个默认值</h3>
+<h3 id="提供一个默认值"><a class="markdownIt-Anchor" href="#提供一个默认值"></a> 提供一个默认值</h3>
 <p>很多时候，在值不存在时，需要进行回退，或者提供一个默认值。 Scala 为 Option 提供了 getOrElse 方法，以应对这种情况：</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> user <span class="token operator">=</span> User<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Johanna"</span><span class="token punctuation">,</span> <span class="token string">"Doe"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span>
 println<span class="token punctuation">(</span><span class="token string">"Gender: "</span> <span class="token operator">+</span> user<span class="token punctuation">.</span>gender<span class="token punctuation">.</span>getOrElse<span class="token punctuation">(</span><span class="token string">"not specified"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// will print "not specified"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>请注意，作为 getOrElse 参数的默认值是一个 传名参数 ， 这意味着，只有当这个 Option 确实是 None 时，传名参数才会被求值。 因此，没必要担心创建默认值的代价，它只有在需要时才会发生。</p>
-<h3 id="模式匹配">模式匹配</h3>
+<h3 id="模式匹配"><a class="markdownIt-Anchor" href="#模式匹配"></a> 模式匹配</h3>
 <p>Some 是一个样例类，可以出现在模式匹配表达式或者其他允许模式出现的地方。 上面的例子可以用模式匹配来重写：</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> user <span class="token operator">=</span> User<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Johanna"</span><span class="token punctuation">,</span> <span class="token string">"Doe"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">,</span> None<span class="token punctuation">)</span>
 user<span class="token punctuation">.</span>gender <span class="token keyword">match</span> <span class="token punctuation">{</span>
@@ -878,16 +887,16 @@ user<span class="token punctuation">.</span>gender <span class="token keyword">m
 println<span class="token punctuation">(</span><span class="token string">"Gender: "</span> <span class="token operator">+</span> gender<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>你可能已经发现用模式匹配处理 Option 实例是非常啰嗦的，这也是它非惯用法的原因。 所以，即使你很喜欢模式匹配，也尽量用其他方法吧。</p>
 <p>不过在 Option 上使用模式确实是有一个相当优雅的方式， 在下面的 for 语句一节中，你就会学到。</p>
-<h3 id="作为集合的-Option">作为集合的 Option</h3>
+<h3 id="作为集合的-option"><a class="markdownIt-Anchor" href="#作为集合的-option"></a> 作为集合的 Option</h3>
 <p>到目前为止，你还没有看见过优雅使用 Option 的方式吧。下面这个就是了。</p>
 <p>前文我提到过， Option 是类型 A 的容器，更确切地说，你可以把它看作是某种集合， 这个特殊的集合要么只包含一个元素，要么就什么元素都没有。</p>
 <p>虽然在类型层次上， Option 并不是 Scala 的集合类型， 但，凡是你觉得 Scala 集合好用的方法， Option 也有， 你甚至可以将其转换成一个集合，比如说 List 。</p>
 <p>那么这又能让你做什么呢？</p>
-<h3 id="执行一个副作用">执行一个副作用</h3>
+<h3 id="执行一个副作用"><a class="markdownIt-Anchor" href="#执行一个副作用"></a> 执行一个副作用</h3>
 <p>如果想在 Option 值存在的时候执行某个副作用，foreach 方法就派上用场了：</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>foreach<span class="token punctuation">(</span>user <span class="token keyword">=&gt;</span> println<span class="token punctuation">(</span>user<span class="token punctuation">.</span>firstName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// prints "Johanna"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>如果这个 Option 是一个 Some ，传递给 foreach 的函数就会被调用一次，且只有一次； 如果是 None ，那它就不会被调用。</p>
-<h3 id="执行映射">执行映射</h3>
+<h3 id="执行映射"><a class="markdownIt-Anchor" href="#执行映射"></a> 执行映射</h3>
 <p>Option 表现的像集合，最棒的一点是， 你可以用它来进行函数式编程，就像处理列表、集合那样。</p>
 <p>正如你可以将 List[A] 映射到 List[B] 一样，你也可以映射 Option[A] 到 Option[B]： 如果 Option[A] 实例是 Some[A] 类型，那映射结果就是 Some[B] 类型；否则，就是 None 。</p>
 <p>如果将 Option 和 List 做对比 ，那 None 就相当于一个空列表： 当你映射一个空的 List[A] ，会得到一个空的 List[B] ， 而映射一个是 None 的 Option[A] 时，得到的 Option[B] 也是 None 。</p>
@@ -917,12 +926,12 @@ names<span class="token punctuation">.</span>map<span class="token punctuation">
 names<span class="token punctuation">.</span>flatMap<span class="token punctuation">(</span>xs <span class="token keyword">=&gt;</span> xs<span class="token punctuation">.</span>map<span class="token punctuation">(</span>_<span class="token punctuation">.</span>toUpperCase<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// List("JOHANNA", "DANIEL")</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>如果只是 map ，那结果类型还是 List[Option[String]] 。 而使用 flatMap 时，内部集合的元素就会被放到一个扁平的列表里： 任何一个 Some[String] 里的元素都会被解包，放入结果集中； 而原列表中的 None 值由于不包含任何元素，就直接被过滤出去了。</p>
 <p>记住这一点，然后再去看看 faltMap 在 Option 身上做了什么。</p>
-<h3 id="过滤-Option">过滤 Option</h3>
+<h3 id="过滤-option"><a class="markdownIt-Anchor" href="#过滤-option"></a> 过滤 Option</h3>
 <p>也可以像过滤列表那样过滤 Option： 如果选项包含有值，而且传递给 filter 的谓词函数返回真， filter 会返回 Some 实例。 否则（即选项没有值，或者谓词函数返回假值），返回值为 None 。</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>age <span class="token operator">&gt;</span> <span class="token number">30</span><span class="token punctuation">)</span> <span class="token comment">// None, because age is &lt;= 30</span>
 UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>age <span class="token operator">&gt;</span> <span class="token number">30</span><span class="token punctuation">)</span> <span class="token comment">// Some(user), because age is &gt; 30</span>
 UserRepository<span class="token punctuation">.</span>findById<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">.</span>filter<span class="token punctuation">(</span>_<span class="token punctuation">.</span>age <span class="token operator">&gt;</span> <span class="token number">30</span><span class="token punctuation">)</span> <span class="token comment">// None, because user is already None</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="for-语句">for 语句</h3>
+<h3 id="for-语句"><a class="markdownIt-Anchor" href="#for-语句"></a> for 语句</h3>
 <p>现在，你已经知道 Option 可以被当作集合来看待，并且有 map 、 flatMap 、 filter 这样的方法。 可能你也在想 Option 是否能够用在 for 语句中，答案是肯定的。 而且，用 for 语句来处理 Option 是可读性最好的方式，尤其是当你有多个 map 、flatMap 、filter 调用的时候。 如果只是一个简单的 map 调用，那 for 语句可能有点繁琐。</p>
 <p>假如我们想得到一个用户的性别，可以这样使用 for 语句：</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">for</span> <span class="token punctuation">{</span>
@@ -943,7 +952,7 @@ UserRepository<span class="token punctuation">.</span>findById<span class="token
   User<span class="token punctuation">(</span>_<span class="token punctuation">,</span> _<span class="token punctuation">,</span> _<span class="token punctuation">,</span> _<span class="token punctuation">,</span> Some<span class="token punctuation">(</span>gender<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">&lt;-</span> UserRepository<span class="token punctuation">.</span>findAll
 <span class="token punctuation">}</span> <span class="token keyword">yield</span> gender<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>在生成器左侧使用 Some 模式就可以在结果集中排除掉值为 None 的元素。</p>
-<h3 id="链接-Option">链接 Option</h3>
+<h3 id="链接-option"><a class="markdownIt-Anchor" href="#链接-option"></a> 链接 Option</h3>
 <p>Option 还可以被链接使用，这有点像偏函数的链接： 在 Option 实例上调用 orElse 方法，并将另一个 Option 实例作为传名参数传递给它。 如果一个 Option 是 None ， orElse 方法会返回传名参数的值，否则，就直接返回这个 Option。</p>
 <p>一个很好的使用案例是资源查找：对多个不同的地方按优先级进行搜索。 下面的例子中，我们首先搜索 config 文件夹，并调用 orElse 方法，以传递备用目录：</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">case</span> <span class="token keyword">class</span> Resource<span class="token punctuation">(</span>content<span class="token operator">:</span> <span class="token builtin">String</span><span class="token punctuation">)</span>
@@ -951,17 +960,17 @@ UserRepository<span class="token punctuation">.</span>findById<span class="token
 <span class="token keyword">val</span> resourceFromClasspath<span class="token operator">:</span> Option<span class="token punctuation">[</span>Resource<span class="token punctuation">]</span> <span class="token operator">=</span> Some<span class="token punctuation">(</span>Resource<span class="token punctuation">(</span><span class="token string">"I was found on the classpath"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 <span class="token keyword">val</span> resource <span class="token operator">=</span> resourceFromConfigDir orElse resourceFromClasspath<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>如果想链接多个选项，而不仅仅是两个，使用 orElse 会非常合适。 不过，如果只是想在值缺失的情况下提供一个默认值，那还是使用 getOrElse 吧。</p>
-<h4 id="小结-4">小结</h4>
+<h4 id="小结-4"><a class="markdownIt-Anchor" href="#小结-4"></a> 小结</h4>
 <p>在这一章里，你学到了有关 Option 的所有知识， 这有利于你理解别人的代码，也有利于你写出更可读，更函数式的代码。</p>
 <p>这一章最重要的一点是：列表、集合、映射、Option，以及之后你会见到的其他数据类型， 它们都有一个非常统一的使用方式，这种使用方式既强大又优雅。</p>
-<h2 id="Java8-Optional">Java8 Optional</h2>
+<h2 id="java8-optional"><a class="markdownIt-Anchor" href="#java8-optional"></a> Java8 Optional</h2>
 <p>身为一名Java程序员，大家可能都有这样的经历：调用一个方法得到了返回值却不能直接将返回值作为参数去调用别的方法。我们首先要判断这个返回值是否为null，只有在非空的前提下才能将其作为其他方法的参数。这正是一些类似Guava的外部API试图解决的问题。一些JVM编程语言比如Scala、Ceylon等已经将对在核心API中解决了这个问题。</p>
 <p>Optional类的Javadoc描述如下：<br>
 这是一个可以为null的容器对象。如果值存在则isPresent()方法会返回true，调用get()方法会返回该对象。</p>
 <p>今天的主角是 scala ,java8 的 optional 用法请参考<br>
 <a target="_blank" rel="noopener" href="http://www.importnew.com/6675.html">相关文档</a></p>
-<h1>sclal集合</h1>
-<h2 id="Tuple-元组">Tuple 元组</h2>
+<h1 id="sclal集合"><a class="markdownIt-Anchor" href="#sclal集合"></a> sclal集合</h1>
+<h2 id="tuple-元组"><a class="markdownIt-Anchor" href="#tuple-元组"></a> Tuple 元组</h2>
 <p>元组是在不使用类的前提下，将元素组合起来形成简单的逻辑集合。</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala<span class="token operator">&gt;</span> <span class="token keyword">val</span> hostPort <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">"localhost"</span><span class="token punctuation">,</span> <span class="token number">80</span><span class="token punctuation">)</span>
 hostPort<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token builtin">String</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span>localhost<span class="token punctuation">,</span><span class="token number">80</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -979,19 +988,19 @@ res2<span class="token operator">:</span> <span class="token builtin">Int</span>
 <p>在创建两个元素的元组时，可以使用特殊语法：-&gt;</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">scala<span class="token operator">&gt;</span>  <span class="token number">1</span> <span class="token operator">-&gt;</span> <span class="token number">2</span>
 res3<span class="token operator">:</span> <span class="token punctuation">(</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1>常用函数的</h1>
-<h2 id="map">map</h2>
+<h1 id="常用函数的"><a class="markdownIt-Anchor" href="#常用函数的"></a> 常用函数的</h1>
+<h2 id="map"><a class="markdownIt-Anchor" href="#map"></a> map</h2>
 <p>map对列表中的每个元素应用一个函数，返回应用后的元素所组成的列表。</p>
-<h2 id="foreach">foreach</h2>
+<h2 id="foreach"><a class="markdownIt-Anchor" href="#foreach"></a> foreach</h2>
 <p>foreach很像map，但没有返回值。foreach仅用于有副作用[side-effects]的函数。</p>
-<h2 id="filter">filter</h2>
+<h2 id="filter"><a class="markdownIt-Anchor" href="#filter"></a> filter</h2>
 <p>filter移除任何对传入函数计算结果为false的元素。返回一个布尔值的函数通常被称为谓词函数[或判定函数]。</p>
-<h2 id="flatMap">flatMap</h2>
+<h2 id="flatmap"><a class="markdownIt-Anchor" href="#flatmap"></a> flatMap</h2>
 <p>flatMap是一种常用的组合子，结合映射[mapping]和扁平化[flattening]。 flatMap需要一个处理嵌套列表的函数，然后将结果串连起来。</p>
-<h1>Future</h1>
+<h1 id="future"><a class="markdownIt-Anchor" href="#future"></a> Future</h1>
 <p>scala.concurrent 包里的 Future[T] 是一个容器类型，代表一种返回值类型为 T 的计算。 计算可能会出错，也可能会超时；从而，当一个 future 完成时，它可能会包含异常，而不是你期望的那个值。</p>
 <p>Future 只能写一次： 当一个 future 完成后，它就不能再被改变了。 同时，Future 只提供了读取计算值的接口，写入计算值的任务交给了 Promise，这样，API 层面上会有一个清晰的界限。 这篇文章里，我们主要关注前者，下一章会介绍 Promise 的使用。</p>
-<h1>之前遇到的坑</h1>
+<h1 id="之前遇到的坑"><a class="markdownIt-Anchor" href="#之前遇到的坑"></a> 之前遇到的坑</h1>
 <ul>
 <li>酌情在 List 中使用 map 或 flatMap 等操作, map中是一个数据库查询或者是一个远程接口调用,立马会出现并发问题,不是数据库连接数超出,就是接口返回失败,Java8的 stream 就不会这么严重,想想为甚么?</li>
 <li>隐式转换,这个真就需要经验了</li>
@@ -1420,12 +1429,12 @@ res3<span class="token operator">:</span> <span class="token punctuation">(</spa
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
-                    </a>
-                    
                     <a href="/tags/Hexo/">
                         <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                     <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
@@ -1485,12 +1494,12 @@ res3<span class="token operator">:</span> <span class="token punctuation">(</spa
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
-                    </a>
-                    
                     <a href="/tags/Hexo/">
                         <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                     <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
@@ -1595,7 +1604,7 @@ res3<span class="token operator">:</span> <span class="token punctuation">(</spa
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1680,7 +1689,7 @@ res3<span class="token operator">:</span> <span class="token punctuation">(</spa
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

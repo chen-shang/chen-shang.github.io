@@ -359,17 +359,17 @@
 <p><a target="_blank" rel="noopener" href="https://spring.io/projects/spring-security">Spring Security 官网</a></p>
 <p>按照官网的教程这么写<br>
 <img src="/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/iShot_2023-09-03_10.03.28.jpg" alt=""></p>
-<h2 id="坑一-运行时报错-java-lang-IllegalArgumentException-There-is-no-PasswordEncoder-mapped-for-the-id-“null”">坑一: 运行时报错 java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id “null”</h2>
+<h2 id="坑一-运行时报错-javalangillegalargumentexception-there-is-no-passwordencoder-mapped-for-the-id-null"><a class="markdownIt-Anchor" href="#坑一-运行时报错-javalangillegalargumentexception-there-is-no-passwordencoder-mapped-for-the-id-null"></a> 坑一: 运行时报错 java.lang.IllegalArgumentException: There is no PasswordEncoder mapped for the id “null”</h2>
 <p>解决手段,添加 <code>PasswordEncoder</code></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
 <span class="token keyword">public</span> <span class="token class-name">PasswordEncoder</span> <span class="token function">passwordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BCryptPasswordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>下面这个写法也行，但是没有谁会在内存里这么写的，都是去用户中心查询用户<br>
-<img src="/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/iShot_2023-09-03_10.34.45.jpg" alt=""></p>
-<h2 id="坑二：编译时报错-ROLE-USER-cannot-start-with-ROLE-it-is-automatically-added">坑二：编译时报错 ROLE_USER cannot start with ROLE_ (it is automatically added)</h2>
+<img src="/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/iShot_2023-09-03_10.34.45.jpg" alt="这种写法就不用配置PasswordEncoder了"></p>
+<h2 id="坑二编译时报错-role_user-cannot-start-with-role_-it-is-automatically-added"><a class="markdownIt-Anchor" href="#坑二编译时报错-role_user-cannot-start-with-role_-it-is-automatically-added"></a> 坑二：编译时报错 ROLE_USER cannot start with ROLE_ (it is automatically added)</h2>
 <p>解决手段,去掉 “ROLE_” 前缀<br>
-<img src="/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/iShot_2023-09-03_10.07.29.jpg" alt=""></p>
+<img src="/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/iShot_2023-09-03_10.07.29.jpg" alt="去掉ROLE前缀"></p>
 <p>注意：</p>
 <ol>
 <li>In-Memory Authentication: 基于内存的认证，这个没有实际意义，仅仅用于测试或者演示方便而已</li>
@@ -944,7 +944,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1022,7 +1022,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

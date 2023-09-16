@@ -315,28 +315,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-09
+                    2020-05-31
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-05
+                    2023-09-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10k
+                    10.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    38 分
+                    39 分
                 </div>
                 
 
@@ -364,9 +364,9 @@
 |  _ \ / _` / __|/ _ \/ __| '_ \ / _ \ | |
 | |_) | (_| \__ \  __/\__ \ | | |  __/ | |
 |____/ \__,_|___/\___||___/_| |_|\___|_|_|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>序</h1>
+<h1 id="序"><a class="markdownIt-Anchor" href="#序"></a> 序</h1>
 <p>Shell脚本实在是太灵活了,相比标准的Java、C、C++ 等,它不过是一些现有命令的堆叠,这是他的优势也是他的劣势,太灵活导致不容易写规范。本人在写Shell脚本的过程中形成了自己一些规范,这些规范仍在实践中,在此分享出来。</p>
-<h1>Shell介绍</h1>
+<h1 id="shell介绍"><a class="markdownIt-Anchor" href="#shell介绍"></a> Shell介绍</h1>
 <p>Shell中文译名叫 壳(ke,又读qiao) 外壳的意思,有壳就要有核.核指的是内核,内核即操作系统<strong>内</strong>的<strong>核</strong>心代码,内核是操作系统对计算机硬件资源(例如显示器、硬盘、内存等等)进行调度的唯一通道,也就是说所有对计算机发出的指令,例如使蜂鸣器鸣响、点亮键盘背光、复制粘贴等等都需要经过内核来操作才行,这无论如何你是跨越不过去的。而Shell则是包裹在内核之外的一层壳,通过Shell我们可以方便的操控系统的软硬件,体现就是我们使用的一个个的命令或工具,都是Shell这层壳的范畴。</p>
 <p>上面说了Shell是一些工具的集合,但同时Shell也是一门语言。就像Java一样,既是一些工具（jar包）的集合,也是一种编程语言。既然是语言就要选择是哪个阵营：解释型还是编译型。Shell选择了解释型,C语言选择了编译型,Java既选择了编译又选择了解释。既然是一种解释型语言,就需要解释器来解释执行。历史上出现过很多Shell解释器,例如 sh,bash,csh,zsh 等等,不同的Shell解释器有不同的词法和语法,就好比不同的方言。用不同的Shell其实指的仅仅是更换了脚本解释器而已。要注意的是有些命令在不同的解释器中会有不同的表现,这也是为什么我们的脚本一移植到别人电脑上就不可用的原因之一。</p>
 <p>举两个例子<br>
@@ -410,8 +410,8 @@ License GPLv3+: GNU GPL version <span class="token number">3</span> or later <sp
 This is <span class="token function">free</span> software<span class="token punctuation">;</span> you are <span class="token function">free</span> to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>既然Shell他是一门语言就免不了两大要素:词法和语法,首先有哪些词汇(保留词、关键字),词汇有哪些分类(数据类型),其次这些词汇如何表达语意(也就是语法)。Shell编程指的并不是编写这个工具,而是指利用现有的Shell工具进行编程,写出来的程序是轻量级的脚本,我们叫做Shell脚本。Shell的语法是从C继承过来的,因此我们在写Shell脚本的时候往往能看到C语言的影子。因为初代Unix内核中的Shell解释器最主要的两个贡献者一个是肯汤普森,另一个是丹尼斯里奇,而丹尼斯里奇是C语言的发明者,肯汤普森则用C语言重写了之前的Unix内核。</p>
-<h1>基础语法</h1>
-<h2 id="说明">说明</h2>
+<h1 id="基础语法"><a class="markdownIt-Anchor" href="#基础语法"></a> 基础语法</h1>
+<h2 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h2>
 <p>写Shell脚本考验是的你对各个命令或工具使用的熟练程度。基本命令必须要熟练掌握,常用命令要知道基本功能和基本参数,生僻命令只需要知道大概即可,要学会使用man手册查看命令的帮助文档。对于一些命令不必死记硬背,用的时候查一下解决问题即可。</p>
 <p>基本命令例如 /bin 目录下的</p>
 <pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">chenshang@chenshangMacBook-Pro:~$ ls /bin/
@@ -430,7 +430,7 @@ cat       csh       df        expr      ksh       ln        mv        pwd       
 <blockquote>
 <p><font color="#dd0000">【强制】Linux工具的使用不必死记硬背,不必死记硬背,不必死记硬背,即查即用即可 </font><br></p>
 </blockquote>
-<h2 id="运行方式">运行方式</h2>
+<h2 id="运行方式"><a class="markdownIt-Anchor" href="#运行方式"></a> 运行方式</h2>
 <p>既可以在命令行交互的运行,又可以将指令固化到文件中执行</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ <span class="token function">cat</span> test.sh
 <span class="token comment">#!/bin/zsh</span>
@@ -458,7 +458,7 @@ chenshang@chenshangMacBook-Pro:~$<span aria-hidden="true" class="line-numbers-ro
 <p><font color="#dd0000">【推荐】脚本执行建议明确指定解析器,这样可以不用每个文件都单独赋予可执行权限 </font><br></p>
 </blockquote>
 <p>如果要固化到文件中,那我们的脚本该怎么写呢？</p>
-<h2 id="关于首行">关于首行</h2>
+<h2 id="关于首行"><a class="markdownIt-Anchor" href="#关于首行"></a> 关于首行</h2>
 <blockquote>
 <p><font color="#dd0000">【推荐】推荐使用 <code>#!/usr/bin/env bash</code> 作为 shebang </font><br></p>
 </blockquote>
@@ -523,8 +523,8 @@ https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...<s
 例如,以指令<code>#!/bin/sh</code>开头的文件在执行时会实际调用 <code>/bin/sh</code> 程序（通常是 Bourne Shell 或兼容的 Shell,例如 bash、dash 等）来执行。这行内容也是 Shell 脚本的标准起始行。</p>
 </blockquote>
 <p>首行写完之后,就要正式写我们的代码了。我们学Java的时候第一件事情就是学习Java的8种基本数据类型。我们学Shell也一样,先看这门语言支持哪些数据类型。对于比Java这种强类型的语言,Shell是一门弱类型语言,Shell可以说只有两类数据类型 字符串 &amp; 数组。</p>
-<h2 id="数据类型">数据类型</h2>
-<h3 id="字符串">字符串</h3>
+<h2 id="数据类型"><a class="markdownIt-Anchor" href="#数据类型"></a> 数据类型</h2>
+<h3 id="字符串"><a class="markdownIt-Anchor" href="#字符串"></a> 字符串</h3>
 <p>无论输入的是字符串还是数字,Shell都是按照字符串类型来进行存储的(也就是说Shell无法显示定义一个 bit、short、int、long、float、double、boolean、char),具体属于什么数据类型,shell会根据上下文或操作符自行确定。</p>
 <p>字符串可以用单引号,也可以用双引号,也可以不用引号。单双引号的区别跟PHP类似。区别</p>
 <ol>
@@ -532,8 +532,8 @@ https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...<s
 <li>``单引号字串中不能出现单独一个的单引号（对单引号使用转义符后也不行）,但可成对出现,作为字符串拼接使用。</li>
 <li>""双引号里可以有变量(这在编程语言里面叫字符串插值)和转义字符</li>
 </ol>
-<h3 id="Shell数组">Shell数组</h3>
-<h4 id="定义数组">定义数组</h4>
+<h3 id="shell数组"><a class="markdownIt-Anchor" href="#shell数组"></a> Shell数组</h3>
+<h4 id="定义数组"><a class="markdownIt-Anchor" href="#定义数组"></a> 定义数组</h4>
 <p>bash支持一维数组（不支持多维数组）,并且没有限定数组的大小。类似于 C 语言,数组元素的下标由 0 开始编号。获取数组中的元素要利用下标,下标可以是整数或算术表达式,其值应大于或等于 0。在 Shell 中,用括号来表示数组,数组元素用"空格"符号分割开。</p>
 <p>定义数组的一般形式为:数组名=(值1 值2 … 值n).例如:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span>value0 value1 value2 value3<span class="token punctuation">)</span>
@@ -549,14 +549,14 @@ array<span class="token punctuation">[</span><span class="token number">0</span>
 array<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>value1
 array<span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token operator">=</span>valueN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以不使用连续的下标,而且下标的范围没有限制。</p>
-<h4 id="读取数组">读取数组</h4>
+<h4 id="读取数组"><a class="markdownIt-Anchor" href="#读取数组"></a> 读取数组</h4>
 <blockquote>
-<p><font color="#dd0000"> 读取数组元素值的一般格式是:${数组名[下标]}。</font><br><br>
-例如:valuen=${array[n]}<br>
+<p><font color="#dd0000"> 读取数组元素值的一般格式是:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mtext>数组名</mtext><mo stretchy="false">[</mo><mtext>下标</mtext><mo stretchy="false">]</mo></mrow><mtext>。</mtext><mo>&lt;</mo><mi mathvariant="normal">/</mi><mi>f</mi><mi>o</mi><mi>n</mi><mi>t</mi><mo>&gt;</mo><mo>&lt;</mo><mi>b</mi><mi>r</mi><mi mathvariant="normal">/</mi><mo>&gt;</mo><mtext>例如</mtext><mo>:</mo><mi>v</mi><mi>a</mi><mi>l</mi><mi>u</mi><mi>e</mi><mi>n</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">{数组名[下标]}。&lt;/font&gt;&lt;br /&gt;
+例如:valuen=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">组</span><span class="mord cjk_fallback">名</span><span class="mopen">[</span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">标</span><span class="mclose">]</span></span><span class="mord cjk_fallback">。</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">/</span><span class="mord mathnormal" style="margin-right:0.10764em;">f</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span></span><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord">/</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord cjk_fallback">例</span><span class="mord cjk_fallback">如</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>{array[n]}<br>
 使用 @ 或 * 符号可以获取数组中的所有元素。<br>
-例如:echo ${array[@]}, echo ${array[*]}</p>
+例如:echo ${array[@]}, echo ${array[*]}</font></p>
 </blockquote>
-<h4 id="数组长度">数组长度</h4>
+<h4 id="数组长度"><a class="markdownIt-Anchor" href="#数组长度"></a> 数组长度</h4>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">取得数组元素的个数
 length=${#array[@]}
 或者
@@ -579,8 +579,8 @@ lengthn=${#array[n]}<span aria-hidden="true" class="line-numbers-rows"><span></s
 <span class="token assign-left variable">size</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>list_size <span class="token string">"<span class="token variable">${list<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>"</span><span class="token variable">)</span></span>
 assertEquals <span class="token string">"<span class="token variable">${size}</span>"</span> <span class="token string">"2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>知道了数据类型,我们看怎么定义变量呢?</p>
-<h2 id="Shell变量">Shell变量</h2>
-<h3 id="变量类型">变量类型</h3>
+<h2 id="shell变量"><a class="markdownIt-Anchor" href="#shell变量"></a> Shell变量</h2>
+<h3 id="变量类型"><a class="markdownIt-Anchor" href="#变量类型"></a> 变量类型</h3>
 <p>Shell里面的变量分为 局部变量、环境变量。</p>
 <ol>
 <li>局部变量 局部变量在脚本或命令中定义,仅在当前shell实例中有效,其他shell启动的程序不能访问局部变量。</li>
@@ -593,13 +593,13 @@ assertEquals <span class="token string">"<span class="token variable">${size}</s
 <blockquote>
 <p><font color="#dd0000">【推荐】如果要打破上一个推荐,修改后及时修改回来。例如 IFS 代表分隔符的情况。</font><br></p>
 </blockquote>
-<h3 id="变量定义">变量定义</h3>
+<h3 id="变量定义"><a class="markdownIt-Anchor" href="#变量定义"></a> 变量定义</h3>
 <p>基本形式 <code>变量=变量值</code></p>
 <p>本shell规约规定</p>
 <blockquote>
 <p><font color="#dd0000">【强制】变量名和等号之间不能有空格,这可能和你熟悉的所有编程语言都不一样。</font><br></p>
 </blockquote>
-<h3 id="变量取值">变量取值</h3>
+<h3 id="变量取值"><a class="markdownIt-Anchor" href="#变量取值"></a> 变量取值</h3>
 <blockquote>
 <p><font color="#dd0000">【强制】变量取值用 “${}”, 使用 {} 包裹,给所有变量加上花括号,防止产生歧义 </font><br></p>
 </blockquote>
@@ -609,7 +609,7 @@ assertEquals <span class="token string">"<span class="token variable">${size}</s
 <blockquote>
 <p><font color="#dd0000">【强制】若需要将调用的函数的返回结果赋值给local变量,使用 $(),不推荐使用 `` </font><br></p>
 </blockquote>
-<h3 id="变量作用域">变量作用域</h3>
+<h3 id="变量作用域"><a class="markdownIt-Anchor" href="#变量作用域"></a> 变量作用域</h3>
 <p>局部变量如果不明确变量的作用域则默认是全局可见的,也就是一个变量从定义它的位置开始到脚本的最后一行,一直是可以访问的,即使是在函数里面定义的,在函数外面也是可以访问的。这一点和我们用的Java是不一样的。Java在大括号内定义的变量只能在大括号内可见。如果想要实现在大括号的的作用于可见的变量,我们必须显示的用local关键字修饰。例如</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
 <span class="token assign-left variable">a</span><span class="token operator">=</span><span class="token number">1</span>           <span class="token comment">#全局变量</span>
@@ -627,19 +627,19 @@ f1            <span class="token comment">#这里得先调用一下</span>
 <blockquote>
 <p><font color="#dd0000">【推荐】能缩小变量作用域的就缩小变量的作用域,也就是能用local的就用local修饰</font></p>
 </blockquote>
-<h3 id="只读变量">只读变量</h3>
+<h3 id="只读变量"><a class="markdownIt-Anchor" href="#只读变量"></a> 只读变量</h3>
 <p>使用 readonly 命令可以将变量定义为只读变量,只读变量的值不能被改变。</p>
 <p>本shell规约规定</p>
 <blockquote>
 <p><font color="#dd0000">【强制】认定为常量的必须用readonly修饰,相当于 Java 中的final</font></p>
 </blockquote>
-<h3 id="删除变量">删除变量</h3>
+<h3 id="删除变量"><a class="markdownIt-Anchor" href="#删除变量"></a> 删除变量</h3>
 <p>使用 unset 命令可以删除变量,变量被删除后不能再次使用。unset 命令不能删除只读变量。</p>
 <p>本shell规约规定</p>
 <blockquote>
 <p><font color="#dd0000">【推荐】删除变量能不用就不用,一般没什么应用场景</font></p>
 </blockquote>
-<h2 id="关于注释">关于注释</h2>
+<h2 id="关于注释"><a class="markdownIt-Anchor" href="#关于注释"></a> 关于注释</h2>
 <p>除脚本首行外,所有以 <code>#</code> 开头的语句都将成为注释。</p>
 <p>示例:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 主函数 []&lt;-()                   &lt;-------函数注释这样写</span>
@@ -674,7 +674,7 @@ f1            <span class="token comment">#这里得先调用一下</span>
 <blockquote>
 <p><font color="#dd0000">【强制】变量的注释紧跟在变量的后面,不推荐换行写注释</font></p>
 </blockquote>
-<h2 id="关于函数">关于函数</h2>
+<h2 id="关于函数"><a class="markdownIt-Anchor" href="#关于函数"></a> 关于函数</h2>
 <p>函数定义的形式是</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
 <span class="token comment">#函数执行的操作</span>
@@ -712,7 +712,7 @@ log_info <span class="token string">"setNameServer is ok"</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>则我可以使用 <code>sh core.sh setNameServer</code> 的形式调用  <code>set_name_server</code> 函数,<br>
 但就不推荐使用 <code>sh core.sh log_info "Hello World"</code> 的形式使用 <code>log_info</code> 和 <code>log_error</code> 函数,注意是不推荐不是不能。</p>
-<h3 id="函数调用">函数调用</h3>
+<h3 id="函数调用"><a class="markdownIt-Anchor" href="#函数调用"></a> 函数调用</h3>
 <p>变量、函数调用必须在函数声明之后,也就是说在用一个函数的时候,这一行命令的前面必须出现了该函数,因为Shell的执行是从上向下解释执行的。</p>
 <p>为了能够调用另一个脚本中的方法，我们可以使用source关键字加载一下该脚本，source 相当于java中的import。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
@@ -731,7 +731,7 @@ main                                       <span class="token comment">#在脚�
 <p>本Shell规约规定</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">【强制】将函数分门别类保存在不同的脚本中
 【推荐】使用source的方式引入另一个脚本中的函数,不推荐使用`脚本 函数名 函数参数`的形式调用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h3 id="函数参数">函数参数</h3>
+<h3 id="函数参数"><a class="markdownIt-Anchor" href="#函数参数"></a> 函数参数</h3>
 <table>
 <thead>
 <tr>
@@ -763,7 +763,7 @@ main                                       <span class="token comment">#在脚�
 </tr>
 <tr>
 <td>$@</td>
-<td>与$*相同,但是使用时加引号,并在引号中返回每个参数。如"$@“用「”」括起来的情况、以"$1" “$2” … “$n” 的形式输出所有参数。</td>
+<td>与<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∗</mo><mtext>相同</mtext><mo separator="true">,</mo><mtext>但是使用时加引号</mtext><mo separator="true">,</mo><mtext>并在引号中返回每个参数。如</mtext><mi mathvariant="normal">"</mi></mrow><annotation encoding="application/x-tex">*相同,但是使用时加引号,并在引号中返回每个参数。如"</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">∗</span><span class="mord cjk_fallback">相</span><span class="mord cjk_fallback">同</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">但</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">使</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">引</span><span class="mord cjk_fallback">号</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">并</span><span class="mord cjk_fallback">在</span><span class="mord cjk_fallback">引</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">返</span><span class="mord cjk_fallback">回</span><span class="mord cjk_fallback">每</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">参</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">如</span><span class="mord">"</span></span></span></span>@“用「”」括起来的情况、以"$1" “<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mi mathvariant="normal">"</mi><mo>…</mo><mi mathvariant="normal">"</mi></mrow><annotation encoding="application/x-tex">2" … "</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">"</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">"</span></span></span></span>n” 的形式输出所有参数。</td>
 <td></td>
 </tr>
 <tr>
@@ -782,7 +782,7 @@ main                                       <span class="token comment">#在脚�
 <blockquote>
 <p><font color="#dd0000"> 【强制】 在函数内部首先使用有意义的变量名接受参数,然后在使用这些变量进行操作,禁止直接操作$1,$2等,除非这些变量只用一次</font></p>
 </blockquote>
-<h3 id="函数注释">函数注释</h3>
+<h3 id="函数注释"><a class="markdownIt-Anchor" href="#函数注释"></a> 函数注释</h3>
 <p>函数类型的概念是从函数编程语言中的概念偷过来的,Shell函数的函数类型指的是函数的输入到函数的输入的映射关系</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 主函数 []&lt;-()                  &lt;-------函数注释这样写</span>
 <span class="token keyword">function</span> <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -809,7 +809,7 @@ main                                       <span class="token comment">#在脚�
 <span class="token punctuation">[</span>String<span class="token punctuation">]</span><span class="token operator">&lt;</span>-<span class="token punctuation">(</span>var1:String,var2:String<span class="token punctuation">)</span>
 <span class="token punctuation">[</span>Boolean<span class="token punctuation">]</span><span class="token operator">&lt;</span>-<span class="token punctuation">(</span>var1:String,var2:Int<span class="token punctuation">)</span>
 <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&lt;</span>-<span class="token punctuation">(</span>var1:String<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="返回值">返回值</h3>
+<h3 id="返回值"><a class="markdownIt-Anchor" href="#返回值"></a> 返回值</h3>
 <p>Shell 函数的返回值比较复杂,获取函数的返回值又有多种方式.一般来说,一个函数内的所有标准输出都作为函数的返回值,注意是标准输出,不包含标准错误。<br>
 我们先来说,我们执行一条命令的时候, 比如 pwd 正常情况下它输出的结果是 当前所处的目录</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">Last login: Sat Jan 20 17:39:16 on ttys000
@@ -817,7 +817,7 @@ chenshang@chenshangMacBook-Pro:~$ pwd
 /Users/chenshang<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>注意我说的是正常情况下,那异常情况下呢?输出的结果又是什么?输出的结果有可能五花八门!所以,Shell中必然有一种状态来标识一条命令是否执行成功,也就是命令执行结果的状态。那这种状态是怎么标识的,这就引出了Shell中一个反人类的规定,就是 0代表真、成功的含义。非零代表假、失败的含义。</p>
 <p>所以 pwd 这条命令如果执行成功的话,命令的执行结果状态一定是0,然后返回值才是当前目录。如果这条命令执行失败的话,命令的执行结果状态一定不是0,有可能是1 代表命令不存在,然后输出 not found,也有可能执行结果状态是2 代表超时,然后什么也不输出。(不要以为pwd这种linux内带的命令就一定执行成功,有可能你拿到的就是一台阉割版的linux呢)</p>
-<h4 id="显示return">显示return</h4>
+<h4 id="显示return"><a class="markdownIt-Anchor" href="#显示return"></a> 显示return</h4>
 <p>return 用来显示的返回函数的返回结果,例如</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 检查当前系统版本 [Integer]&lt;-()</span>
 <span class="token keyword">function</span> <span class="token function-name function">checkVersion</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -854,7 +854,7 @@ chenshang@chenshangMacBook-Pro:~$ pwd
 <span class="token punctuation">(</span>log_error <span class="token string">"network is not ok"</span><span class="token punctuation">)</span>
 <span class="token builtin class-name">return</span> <span class="token variable">${FALSE}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="隐式echo">隐式echo</h4>
+<h4 id="隐式echo"><a class="markdownIt-Anchor" href="#隐式echo"></a> 隐式echo</h4>
 <p>echo 用来显示的返回函数的返回结果,例如</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 将json字符串格式化树形结构 [String]&lt;-(json_string:String)</span>
 <span class="token keyword">function</span> <span class="token function-name function">json_format</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -877,7 +877,7 @@ chenshang@chenshangMacBook-Pro:~$ pwd
 <span class="token builtin class-name">echo</span> <span class="token string">"为格式化之前:<span class="token variable">${jsonString}</span>"</span> <span class="token comment">#其实新添加的这一句只是用来记录一行日志的,但是返回结果会被外层变量接收</span>
 <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${jsonString}</span>"</span><span class="token operator">|</span>jq <span class="token builtin class-name">.</span> <span class="token comment">#jq是Shell中处理json的一个工具</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>echo “为格式化之前:${json_string}” 其实新添加的只一句只是用来记录一行日志的,但是json=$(json_format “{"1":"one"}”),变量 json 也会将这句话作为返回结果进行接收,但这是我不想要看到的。</p>
+<p>echo "为格式化之前:<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>j</mi><mi>s</mi><mi>o</mi><msub><mi>n</mi><mi>s</mi></msub><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi></mrow><mi mathvariant="normal">"</mi><mtext>其实新添加的只一句只是用来记录一行日志的</mtext><mo separator="true">,</mo><mtext>但是</mtext><mi>j</mi><mi>s</mi><mi>o</mi><mi>n</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">{json_string}" 其实新添加的只一句只是用来记录一行日志的,但是json=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span><span class="mord"><span class="mord mathnormal">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span></span><span class="mord">"</span><span class="mord cjk_fallback">其</span><span class="mord cjk_fallback">实</span><span class="mord cjk_fallback">新</span><span class="mord cjk_fallback">添</span><span class="mord cjk_fallback">加</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">只</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">句</span><span class="mord cjk_fallback">只</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">来</span><span class="mord cjk_fallback">记</span><span class="mord cjk_fallback">录</span><span class="mord cjk_fallback">一</span><span class="mord cjk_fallback">行</span><span class="mord cjk_fallback">日</span><span class="mord cjk_fallback">志</span><span class="mord cjk_fallback">的</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">但</span><span class="mord cjk_fallback">是</span><span class="mord mathnormal" style="margin-right:0.05724em;">j</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>(json_format “{"1":"one"}”),变量 json 也会将这句话作为返回结果进行接收,但这是我不想要看到的。</p>
 <p>解决这个问题需要了解重定向相关</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 将json字符串格式化树形结构 [String]&lt;-(json_string:String)</span>
 <span class="token keyword">function</span> <span class="token function-name function">json_format</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -887,7 +887,7 @@ log_info  <span class="token string">"为格式化之前:<span class="token vari
 <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${jsonString}</span>"</span><span class="token operator">|</span>jq <span class="token builtin class-name">.</span> <span class="token comment">#jq是Shell中处理json的一个工具</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>详情请看 <a target="_blank" rel="noopener" href="http://BaseLog.sh">BaseLog.sh</a> 中对日志的处理</p>
-<h2 id="关于分支">关于分支</h2>
+<h2 id="关于分支"><a class="markdownIt-Anchor" href="#关于分支"></a> 关于分支</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HEAD_KEYWORD parameters<span class="token punctuation">;</span> BODY_BEGIN
 BODY_COMMANDS
 BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -901,7 +901,7 @@ BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 【强制】BODY_END部分独立一行放在最后；<br>
 【推荐】parameters部分test表达式变量取值都用""包裹；<br>
 【推荐】parameters部分test表达式统一使用=等符号, 在明确是数字的时候可以使用 -eq等参数；</p>
-<h3 id="if">if</h3>
+<h3 id="if"><a class="markdownIt-Anchor" href="#if"></a> if</h3>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span>
   <span class="token builtin class-name">echo</span> statements
 <span class="token keyword">fi</span>
@@ -919,7 +919,7 @@ BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <span class="token keyword">else</span>
   <span class="token builtin class-name">echo</span> statements
 <span class="token keyword">fi</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="while">while</h3>
+<h3 id="while"><a class="markdownIt-Anchor" href="#while"></a> while</h3>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
   <span class="token builtin class-name">echo</span> statements
 <span class="token keyword">done</span>
@@ -927,11 +927,11 @@ BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <span class="token keyword">while</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> item <span class="token punctuation">;</span><span class="token keyword">do</span>
   <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${item}</span>"</span>
 <span class="token keyword">done</span> <span class="token operator">&lt;</span> <span class="token string">'file_name'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="until">until</h3>
+<h3 id="until"><a class="markdownIt-Anchor" href="#until"></a> until</h3>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">until</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> condition <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
   <span class="token builtin class-name">echo</span> statements
 <span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h3 id="for">for</h3>
+<h3 id="for"><a class="markdownIt-Anchor" href="#for"></a> for</h3>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
   <span class="token builtin class-name">echo</span> statements
 <span class="token keyword">done</span>
@@ -939,7 +939,7 @@ BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <span class="token keyword">for</span> <span class="token for-or-select variable">item</span> <span class="token keyword">in</span> <span class="token variable">${array}</span><span class="token punctuation">;</span> <span class="token keyword">do</span>
   <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${item}</span>"</span>
 <span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="case">case</h3>
+<h3 id="case"><a class="markdownIt-Anchor" href="#case"></a> case</h3>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">case</span> word <span class="token keyword">in</span>
 pattern <span class="token punctuation">)</span>
   <span class="token comment">#statements</span>
@@ -953,25 +953,25 @@ pattern <span class="token punctuation">)</span>
 <font color="#dd0000">
 </font></blockquote>
 <p>【强制】 if\while\until 后面的判断 使用 双中括号<code>[[]]</code></p>
-<h2 id="数学计算">数学计算</h2>
+<h2 id="数学计算"><a class="markdownIt-Anchor" href="#数学计算"></a> 数学计算</h2>
 <p>注释 1:shell 的自加、自减操作符在使用上和 c 语言一样。-- 或者 ++ 出现在变量前面是前缀形式,先运算后赋值；-- 或者 ++ 出现在变量后面是后缀形式,先赋值后运算。<br>
 本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
 </font></blockquote>
-<p>【推荐】明确知道变量是整数,计算使用$(())包裹计算,(())内对变量的操作不用$取值<br>
-正确 a=$((1+1))<br>
-反例 a=$(($a++))<br>
+<p>【推荐】明确知道变量是整数,计算使用<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mtext>包裹计算</mtext><mo separator="true">,</mo><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mtext>内对变量的操作不用</mtext></mrow><annotation encoding="application/x-tex">(())包裹计算,(())内对变量的操作不用</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mopen">(</span><span class="mclose">)</span><span class="mclose">)</span><span class="mord cjk_fallback">包</span><span class="mord cjk_fallback">裹</span><span class="mord cjk_fallback">计</span><span class="mord cjk_fallback">算</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mopen">(</span><span class="mopen">(</span><span class="mclose">)</span><span class="mclose">)</span><span class="mord cjk_fallback">内</span><span class="mord cjk_fallback">对</span><span class="mord cjk_fallback">变</span><span class="mord cjk_fallback">量</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">操</span><span class="mord cjk_fallback">作</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">用</span></span></span></span>取值<br>
+正确 a=<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mn>1</mn><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mtext>反例</mtext><mi>a</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">((1+1))
+反例 a=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">)</span><span class="mord cjk_fallback">反</span><span class="mord cjk_fallback">例</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span></span></span>(($a++))<br>
 【推荐】复杂计算使用bc计算器,前提是得安装bc计算器命令</p>
-<h2 id="关于Debug">关于Debug</h2>
+<h2 id="关于debug"><a class="markdownIt-Anchor" href="#关于debug"></a> 关于Debug</h2>
 <p>详情见 <a target="_blank" rel="noopener" href="http://localhost:4000/2021/06/03/ji-zhu-zong-jie/baseshell/shell-gao-ji-bian-cheng-ji-qiao/">Shell高级编程技巧</a></p>
-<h2 id="关于单元测试">关于单元测试</h2>
+<h2 id="关于单元测试"><a class="markdownIt-Anchor" href="#关于单元测试"></a> 关于单元测试</h2>
 <p>详情见 <a target="_blank" rel="noopener" href="http://localhost:4000/2021/06/03/ji-zhu-zong-jie/baseshell/shell-gao-ji-bian-cheng-ji-qiao/">Shell高级编程技巧</a></p>
-<h1>命名风格</h1>
+<h1 id="命名风格"><a class="markdownIt-Anchor" href="#命名风格"></a> 命名风格</h1>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】脚本中变量、函数、文件的命名均不能以数字、下划线、$开头,也不能以下划线或者$结尾<br>
-反例: _name / _<em>name / $name / name</em> / name$ / 5name<br>
+<p><font color="#dd0000">【强制】脚本中变量、函数、文件的命名均不能以数字、下划线、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>开头</mtext><mo separator="true">,</mo><mtext>也不能以下划线或者</mtext></mrow><annotation encoding="application/x-tex">开头,也不能以下划线或者</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord cjk_fallback">开</span><span class="mord cjk_fallback">头</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">也</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">能</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">下</span><span class="mord cjk_fallback">划</span><span class="mord cjk_fallback">线</span><span class="mord cjk_fallback">或</span><span class="mord cjk_fallback">者</span></span></span></span>结尾<br>
+反例: _name / __name / <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">/</mi><mi>n</mi><mi>a</mi><mi>m</mi><msub><mi>e</mi><mi mathvariant="normal">/</mi></msub><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">name / name_ / name</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3551999999999999em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord">/</span><span class="mord mathnormal">n</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">/</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span></span></span></span> / 5name<br>
 说明: $作为Shell语言的取值符号,其他命名约束参考Java规约。</font></p>
 </blockquote>
 <blockquote>
@@ -1034,48 +1034,48 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
 <span class="token builtin class-name">local</span> <span class="token assign-left variable">result</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>httpclient_get <span class="token parameter variable">--cookie</span> <span class="token string">"<span class="token variable">${cookie}</span>"</span> <span class="token punctuation">\</span>
                                        <span class="token string">"<span class="token variable">${url}</span>/userName=<span class="token variable">${user_name}</span>"</span><span class="token variable">)</span></span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1><code>()、(())、[]、[[]]、{}</code> 使用方法</h1>
-<h2 id="的用法">( ) 的用法</h2>
-<h3 id="命令组。">命令组。</h3>
+<h1 id="使用方法"><a class="markdownIt-Anchor" href="#使用方法"></a> <code>()、(())、[]、[[]]、{}</code> 使用方法</h1>
+<h2 id="的用法"><a class="markdownIt-Anchor" href="#的用法"></a> ( ) 的用法</h2>
+<h3 id="命令组"><a class="markdownIt-Anchor" href="#命令组"></a> 命令组。</h3>
 <p>括号中的命令将会新开一个子shell顺序执行,所以括号中的变量不能够被脚本余下的部分使用。括号中多个命令之间用分号’;'隔开,最后一个命令可以没有分号,各命令和括号之间不必有空格。</p>
-<h3 id="命令替换。">命令替换。</h3>
-<p>等同于 `command`,shell扫描一遍命令行,发现了$(command)结构,便将$(command)中的command执行一次,得到其标准输出,再将此输出放到原来命令。</p>
-<h3 id="用于初始化数组。">用于初始化数组。</h3>
+<h3 id="命令替换"><a class="markdownIt-Anchor" href="#命令替换"></a> 命令替换。</h3>
+<p>等同于 `command`,shell扫描一遍命令行,发现了<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>a</mi><mi>n</mi><mi>d</mi><mo stretchy="false">)</mo><mtext>结构</mtext><mo separator="true">,</mo><mtext>便将</mtext></mrow><annotation encoding="application/x-tex">(command)结构,便将</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mord cjk_fallback">结</span><span class="mord cjk_fallback">构</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">便</span><span class="mord cjk_fallback">将</span></span></span></span>(command)中的command执行一次,得到其标准输出,再将此输出放到原来命令。</p>
+<h3 id="用于初始化数组"><a class="markdownIt-Anchor" href="#用于初始化数组"></a> 用于初始化数组。</h3>
 <p>如：array=(a b c d e f)</p>
-<h2 id="的用法-2">(( )) 的用法</h2>
+<h2 id="的用法-2"><a class="markdownIt-Anchor" href="#的用法-2"></a> (( )) 的用法</h2>
 <ol>
 <li>
 <p>这种扩展计算是整数型的计算,不支持浮点型。((exp))结构扩展并计算一个算术表达式的值,如果表达式的结果为0,那么返回的退出状态码为1,或者是"false",而一个非零值的表达式所返回的退出状态码将为0,或者是"true"。若是逻辑判断,表达式exp为真则为1,假则为0。</p>
 </li>
 <li>
 <p>只要括号中的运算符、表达式符合C语言运算规则,都可用在$((exp))中,甚至是三目运算符。作不同进位(如二进制、八进制、十六进制)运算时,输出结果全都自动转化成了十进制。如：echo $((16#5f)) 结果为95 (16进制转十进制)<br>
-单纯用 (( )) 也可重定义变量值,比如 a=5; ((a++))可将 $a 重定义为6<br>
-常用于算术运算比较,双括号中的变量可以不使用$符号前缀。括号内支持多个表达式用逗号分开。只要括号中的表达式符合C语言运算规则,比如可以直接使用for((i=0;i&lt;5;i++)), 如果不使用双括号, 则为for i in <code>seq 0 4</code>或者for i in {0…4}。再如可以直接使用if (($i&lt;5)), 如果不使用双括号, 则为if [ $i -lt 5 ]。</p>
+单纯用 (( )) 也可重定义变量值,比如 a=5; ((a++))可将 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mtext>重定义为</mtext><mn>6</mn><mtext>常用于算术运算比较</mtext><mo separator="true">,</mo><mtext>双括号中的变量可以不使用</mtext></mrow><annotation encoding="application/x-tex">a 重定义为6
+常用于算术运算比较,双括号中的变量可以不使用</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mord cjk_fallback">重</span><span class="mord cjk_fallback">定</span><span class="mord cjk_fallback">义</span><span class="mord cjk_fallback">为</span><span class="mord">6</span><span class="mord cjk_fallback">常</span><span class="mord cjk_fallback">用</span><span class="mord cjk_fallback">于</span><span class="mord cjk_fallback">算</span><span class="mord cjk_fallback">术</span><span class="mord cjk_fallback">运</span><span class="mord cjk_fallback">算</span><span class="mord cjk_fallback">比</span><span class="mord cjk_fallback">较</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">双</span><span class="mord cjk_fallback">括</span><span class="mord cjk_fallback">号</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">变</span><span class="mord cjk_fallback">量</span><span class="mord cjk_fallback">可</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">不</span><span class="mord cjk_fallback">使</span><span class="mord cjk_fallback">用</span></span></span></span>符号前缀。括号内支持多个表达式用逗号分开。只要括号中的表达式符合C语言运算规则,比如可以直接使用for((i=0;i&lt;5;i++)), 如果不使用双括号, 则为for i in <code>seq 0 4</code>或者for i in {0…4}。再如可以直接使用if (($i&lt;5)), 如果不使用双括号, 则为if [ $i -lt 5 ]。</p>
 </li>
 </ol>
-<h2 id="的用法-3">[ ] 的用法</h2>
+<h2 id="的用法-3"><a class="markdownIt-Anchor" href="#的用法-3"></a> [ ] 的用法</h2>
 <ol>
 <li>bash 的内部命令,[和test是等同的。如果我们不用绝对路径指明,通常我们用的都是bash自带的命令。if/test结构中的左中括号是调用test的命令标识,右中括号是关闭条件判断的。这个命令把它的参数作为比较表达式或者作为文件测试,并且根据比较的结果来返回一个退出状态码。if/test结构中并不是必须右中括号,但是新版的Bash中要求必须这样。</li>
 <li>test和[]中可用的比较运算符只有==和!=,两者都是用于字符串比较的,不可用于整数比较,整数比较只能使用-eq,-gt这种形式。无论是字符串比较还是整数比较都不支持大于号小于号。如果实在想用,对于字符串比较可以使用转义形式,如果比较"ab"和"bc"：[ ab &lt; bc ],结果为真,也就是返回状态为0。[ ]中的逻辑与和逻辑或使用-a 和-o 表示。</li>
 <li>字符范围。用作正则表达式的一部分,描述一个匹配的字符范围。作为test用途的中括号内不能使用正则。</li>
 <li>在一个array 结构的上下文中,中括号用来引用数组中每个元素的编号。</li>
 </ol>
-<h2 id="的用法-4">[[ ]] 的用法</h2>
+<h2 id="的用法-4"><a class="markdownIt-Anchor" href="#的用法-4"></a> [[ ]] 的用法</h2>
 <ol>
 <li>[[是 bash 程序语言的关键字。并不是一个命令,[[ ]] 结构比[ ]结构更加通用。在[[和]]之间所有的字符都不会发生文件名扩展或者单词分割,但是会发生参数扩展和命令替换。</li>
 <li>支持字符串的模式匹配,使用=~操作符时甚至支持shell的正则表达式。字符串比较时可以把右边的作为一个模式,而不仅仅是一个字符串,比如[[ hello == hell? ]],结果为真。[[ ]] 中匹配字符串或通配符,不需要引号。</li>
 <li>使用[[ … ]]条件判断结构,而不是[ … ],能够防止脚本中的许多逻辑错误。比如,&amp;&amp;、||、&lt;和&gt; 操作符能够正常存在于[[ ]]条件判断结构中,但是如果出现在[ ]结构中的话,会报错。比如可以直接使用if [[ $a != 1 &amp;&amp; $a != 2 ]], 如果不适用双括号, 则为if [ $a -ne 1] &amp;&amp; [ $a != 2 ]或者if [ $a -ne 1 -a $a != 2 ]。</li>
 <li>bash把双中括号中的表达式看作一个单独的元素,并返回一个退出状态码。</li>
 </ol>
-<h2 id="的用法-5">{ } 的用法</h2>
+<h2 id="的用法-5"><a class="markdownIt-Anchor" href="#的用法-5"></a> { } 的用法</h2>
 <ol>
 <li>对大括号{}中的以逗号分割的文件列表进行拓展。如 touch {a,b}.txt 结果为a.txt b.txt。</li>
 <li>对大括号{}中以点点（…）分割的顺序文件列表起拓展作用,如：touch {a…d}.txt 结果为a.txt b.txt c.txt d.txt。</li>
 <li>代码块,又被称为内部组,这个结构事实上创建了一个匿名函数 。<br>
 与()中的命令不同,{}内的命令不会新开一个子shell运行,即脚本余下部分仍可使用括号内变量。括号内的命令间用分号隔开,最后一个也必须有分号。{}的第一个命令和左括号之间必须要有一个空格。</li>
 </ol>
-<h1>字符串常用操作</h1>
-<h2 id="特殊的替换结构">特殊的替换结构</h2>
+<h1 id="字符串常用操作"><a class="markdownIt-Anchor" href="#字符串常用操作"></a> 字符串常用操作</h1>
+<h2 id="特殊的替换结构"><a class="markdownIt-Anchor" href="#特殊的替换结构"></a> 特殊的替换结构</h2>
 <ol>
 <li><code>${var:-string}</code> 和 <code>${var:=string}</code>:若变量var为空,则用在命令行中用string来替换 <code>${var:-string}</code>,否则变量var不为空时,则用变量var的值来替换 <code>${var:-string}</code>；对于<code>${var:=string}</code> 的替换规则和 <code>${var:-string}</code> 是一样的,所不同之处是<code>${var:=string}</code>若var为空时,用string替换 <code>${var:=string}</code> 的同时,把string赋给变量var,<code>${var:=string}</code> 很常用的一种用法是,判断某个变量是否赋值,没有的话则给它赋上一个默认值。</li>
 <li><code>${var:+string}</code> 的替换规则和上面的相反,即只有当var不是空的时候才替换成string,若var为空时则不替换或者说是替换成变量 var的值,即空值。</li>
@@ -1086,10 +1086,10 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
 <li><code>${variable##pattern}</code>这种模式,shell在variable中查找,看它是否以给的模式pattern结尾,如果是,就从命令行把variable中的内容去掉右边最长的匹配模式<br>
 这四种模式中都不会改变variable的值,其中,只有在pattern中使用了匹配符号时,%和%%,#和##才有区别。结构中的pattern支持通配符,表示零个或多个任意字符,?表示仅与一个任意字符匹配,[…]表示匹配中括号里面的字符,[!..]表示不匹配中括号里面的字符。**</li>
 </ol>
-<h2 id="字符串提取和替换">字符串提取和替换</h2>
+<h2 id="字符串提取和替换"><a class="markdownIt-Anchor" href="#字符串提取和替换"></a> 字符串提取和替换</h2>
 <ol>
-<li><code>${var:num}</code>,shell在var中提取第num个字符到末尾的所有字符。若num为正数,从左边0处开始；若num为负数,从右边开始提取字串,但必须使用在冒号后面加空格或一个数字或整个num加上括号,如${var: -2}、<code>${var:1-3}</code>或<code>${var:(-2)}</code>。</li>
-<li><code>${var:num1:num2}</code>,num1是位置,num2是长度。表示从$var字符串的第$num1个位置开始提取长度为$num2的子串。不能为负数。</li>
+<li><code>${var:num}</code>,shell在var中提取第num个字符到末尾的所有字符。若num为正数,从左边0处开始；若num为负数,从右边开始提取字串,但必须使用在冒号后面加空格或一个数字或整个num加上括号,如<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi>v</mi><mi>a</mi><mi>r</mi><mo>:</mo><mo>−</mo><mn>2</mn></mrow><mtext>、</mtext><mi mathvariant="normal">‘</mi></mrow><annotation encoding="application/x-tex">{var: -2}、`</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord">−</span><span class="mord">2</span></span><span class="mord cjk_fallback">、</span><span class="mord">‘</span></span></span></span>{var:1-3}<code>或</code>${var:(-2)}`。</li>
+<li><code>${var:num1:num2}</code>,num1是位置,num2是长度。表示从<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mi>a</mi><mi>r</mi><mtext>字符串的第</mtext></mrow><annotation encoding="application/x-tex">var字符串的第</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord cjk_fallback">字</span><span class="mord cjk_fallback">符</span><span class="mord cjk_fallback">串</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">第</span></span></span></span>num1个位置开始提取长度为$num2的子串。不能为负数。</li>
 <li><code>${var/pattern1/pattern2}</code>表示将var字符串的第一个匹配的pattern1替换为另一个pattern2。</li>
 <li><code>${var//pattern1/pattern2}</code>表示将<code>var</code>字符串中的所有能匹配的pattern1替换为另一个pattern2。</li>
 </ol>
@@ -1470,39 +1470,35 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/04/19/linux/shell/shu-ju-jie-gou-suan-fa/shell-er-fen-cha-zhao/">
+                <a href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="用shell教你搞定各种查找算法-二分查找">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="重写设计模式-用λ实现工厂模式">
                         
-                        <span class="card-title">用shell教你搞定各种查找算法-二分查找</span>
+                        <span class="card-title">重写设计模式-用λ实现工厂模式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            工厂方法的目的就是生产对象，也就是封装new的过程。只要你把某个对象的new过程封装到某个类或者某个方法中广义上我们都可以叫工厂方法
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-10
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
                                 </a>
                             
-                            <a href="/categories/Linux/Shell/" class="post-category">
-                                    Shell
-                                </a>
-                            
-                            <a href="/categories/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/" class="post-category">
-                                    数据结构算法
+                            <a href="/categories/JAVA/Java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    Java设计模式
                                 </a>
                             
                             
@@ -1516,18 +1512,6 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Shell/">
-                        <span class="chip bg-color">Shell</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">数据结构算法</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1539,24 +1523,24 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/04/05/linux/shell/shu-ju-jie-gou-suan-fa/shell-gui-bing-pai-xu/">
+                <a href="/2020/04/15/linux/shell/shu-ju-jie-gou-suan-fa/shell-xi-er-pai-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="用shell教你搞定各种排序算法-归并排序">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="用shell教你搞定各种排序算法-希尔排序">
                         
-                        <span class="card-title">用shell教你搞定各种排序算法-归并排序</span>
+                        <span class="card-title">用shell教你搞定各种排序算法-希尔排序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            归并排序
+                            希尔排序
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-15
                             </span>
                         <span class="publish-author">
                             
@@ -1695,7 +1679,7 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1773,7 +1757,7 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

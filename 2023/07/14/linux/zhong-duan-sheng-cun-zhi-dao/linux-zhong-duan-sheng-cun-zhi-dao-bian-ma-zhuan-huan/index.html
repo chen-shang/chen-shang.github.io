@@ -359,7 +359,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>如何查看文件编码</h1>
+                <h1 id="如何查看文件编码"><a class="markdownIt-Anchor" href="#如何查看文件编码"></a> 如何查看文件编码</h1>
 <ol>
 <li>通过vim查看</li>
 </ol>
@@ -373,22 +373,22 @@
 <p>输出如下</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span><span class="token operator">!</span>-- 文件名: Unicode text, UTF-8 text --<span class="token operator">&gt;</span>
 application-common.properties: Unicode text, UTF-8 text<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1>文本如何进行编解码</h1>
-<h2 id="编码">编码</h2>
+<h1 id="文本如何进行编解码"><a class="markdownIt-Anchor" href="#文本如何进行编解码"></a> 文本如何进行编解码</h1>
+<h2 id="编码"><a class="markdownIt-Anchor" href="#编码"></a> 编码</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"17319271179"</span><span class="token operator">|</span>base64
 MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h2 id="解码">解码</h2>
+<h2 id="解码"><a class="markdownIt-Anchor" href="#解码"></a> 解码</h2>
 <p>多了个<code>-d</code>参数</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"MTczMTkyNzExNzkK"</span><span class="token operator">|</span>base64 <span class="token parameter variable">-d</span>
 <span class="token number">17319271179</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<h1>文件如何进行编解码</h1>
-<h2 id="编码-2">编码</h2>
+<h1 id="文件如何进行编解码"><a class="markdownIt-Anchor" href="#文件如何进行编解码"></a> 文件如何进行编解码</h1>
+<h2 id="编码-2"><a class="markdownIt-Anchor" href="#编码-2"></a> 编码</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 <span class="token parameter variable">-i</span> 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>例如</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"17319271179"</span><span class="token operator">&gt;</span> a.txt
 <span class="token operator">&gt;</span> base64 <span class="token parameter variable">-i</span> a.txt 
 MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="解码-2">解码</h2>
+<h2 id="解码-2"><a class="markdownIt-Anchor" href="#解码-2"></a> 解码</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 <span class="token parameter variable">-d</span> 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
@@ -968,7 +968,7 @@ MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span>
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1046,7 +1046,7 @@ MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

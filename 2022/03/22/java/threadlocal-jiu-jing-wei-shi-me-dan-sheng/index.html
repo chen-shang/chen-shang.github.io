@@ -511,7 +511,7 @@ a 方法调用b 方法，然后把这个变量传进去嘛<br>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>果然，无出其右。其他逻辑像 setInitialValue 就自己看吧，不在主流程里面。</p>
 <p>这个是最基本的ThreadLocal. 如果细心一点我们可以看到 ThreadLocal 是有很多子类的，既然有继承了，那肯定不同的子类都实现不同的ThreadLocal的一些方法，他们之间是有差异的，例如 TerminatingThreadLocal 、InheritableThreadLocal 等等，说实话我只知道InheritableThreadLocal用在父子类继承上，没有实际用过，以后再研究吧。</p>
-<h1>ThreadLocal 内部实现</h1>
+<h1 id="threadlocal-内部实现"><a class="markdownIt-Anchor" href="#threadlocal-内部实现"></a> ThreadLocal 内部实现</h1>
 <p>ThreadLocalMap 和HashMap的功能类似，但是实现上却有很大的不同：</p>
 <ol>
 <li><code>HashMap 的数据结构是数组+链表</code> but <code>ThreadLocalMap的数据结构仅仅是数组</code></li>
@@ -530,14 +530,14 @@ jdk 中大多数的类都是采用了链地址法来解决hash 冲突，为什�
 <blockquote>
 <p>这种方法的基本思想是一旦发生了冲突，就去寻找下一个空的散列地址(这非常重要，源码都是根据这个特性，必须理解这里才能往下走)，只要散列表足够大，空的散列地址总能找到，并将记录存入。</p>
 </blockquote>
-<h5 id="链地址法和开放地址法的优缺点">链地址法和开放地址法的优缺点</h5>
-<h6 id="链式地址法（HashMap">链式地址法（HashMap)</h6>
+<h5 id="链地址法和开放地址法的优缺点"><a class="markdownIt-Anchor" href="#链地址法和开放地址法的优缺点"></a> 链地址法和开放地址法的优缺点</h5>
+<h6 id="链式地址法hashmap"><a class="markdownIt-Anchor" href="#链式地址法hashmap"></a> 链式地址法（HashMap)</h6>
 <p>优点：<br>
   处理冲突简单，且无堆积现象，平均查找长度短；也就是说遇到冲突我就网链表的头上添加，因此简单，只要hash函数设计合理，那就不会出现堆积，因此查找速度也快。<br>
   链表中的结点是动态申请的，适合构造表不能确定长度的情况；如果不停的向map里面存值，只是冲突越来越多，但是只要往链表里面加就行。</p>
 <p>缺点：<br>
   指针占用较大空间时，会造成空间浪费。</p>
-<h6 id="开放地址法：-ThreadLocalMap">开放地址法：(ThreadLocalMap)</h6>
+<h6 id="开放地址法threadlocalmap"><a class="markdownIt-Anchor" href="#开放地址法threadlocalmap"></a> 开放地址法：(ThreadLocalMap)</h6>
 <p>优点：<br>
   当节点规模较少，或者装载因子较少的时候，使用开放地址法较为节省空间。</p>
 <p>缺点：<br>
@@ -1118,7 +1118,7 @@ jdk 中大多数的类都是采用了链地址法来解决hash 冲突，为什�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

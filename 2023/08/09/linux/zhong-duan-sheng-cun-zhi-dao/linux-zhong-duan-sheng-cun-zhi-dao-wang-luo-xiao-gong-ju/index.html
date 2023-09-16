@@ -356,7 +356,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>今天公司在部署服务器的时候，一直在倒腾 DNS 服务器。公司自己部署 DNS 服务器而不是 使用外网的 DNS 服务器，是因为我们没有暴露公网的打算，而且我们的服务是金融服务，就更不能轻易暴露到外网了。所以通过自己的DNS服务器把域名给隐藏掉。但是不暴露也意味着外网访问受限，不过后面会用VPN的方式接入。这里用到了 nslookup 小工具，以前自己没有用过，特此学习一下，继而引出了其他几个工具的使用，在这里也一并记录一下原理和常用的手段</p>
-<h1>ping 查看网络通不通</h1>
+<h1 id="ping-查看网络通不通"><a class="markdownIt-Anchor" href="#ping-查看网络通不通"></a> ping 查看网络通不通</h1>
 <p>ping 用的最多的就是看网络通不通。例如我们可以通过 ping <a target="_blank" rel="noopener" href="http://www.baidu.com">www.baidu.com</a> 然后根据终端输出的结果来判断网络是不是通的。</p>
 <center>
   <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-08-09_01.23.04.jpg">
@@ -371,9 +371,9 @@
          <span class="token operator">|</span>                                    <span class="token operator">|</span>
          +------------<span class="token operator">&gt;</span> Network --------------<span class="token operator">&gt;</span>+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>要注意一点，ping 访问目标服务器的时候，是不用指定端口的，也没有默认端口一说。因为ping命令是一种工具，用于测试和检查网络连接。它使用的是ICMP协议（互联网控制报文协议），而不是传输层协议（如TCP或UDP）。ICMP（Internet Control Message Protocol）是一个用于在IP网络中传输控制消息的协议。ICMP消息不使用端口号的原因是因为它们不是用于在不同主机之间直接进行通信，而是用于发送网络控制信息、错误报告和诊断信息。端口号通常用于标识目标主机上的特定应用程序或服务。但是，ICMP消息不是直接发送给特定的应用程序或服务，而是发送给目标主机的网络协议栈（通常是操作系统内核），然后由它们处理。</p>
-<h1> telnet、nc 查看开放端口号</h1>
+<h1 id="a-telnet-nc-查看开放端口号"><a class="markdownIt-Anchor" href="#a-telnet-nc-查看开放端口号"></a>  telnet、nc 查看开放端口号</h1>
 <p><a href="https://chen-shang.github.io/2023/09/01/ru-he-cha-kan-duan-kou-shi-fou-kai-fang/">telnet、nc 查看开放端口号</a></p>
-<h1>dig <a name="section1"></a></h1>
+<h1 id="dig-a-namesection1"><a class="markdownIt-Anchor" href="#dig-a-namesection1"></a> dig <a name="section1"></a></h1>
 <p>dig命令是一种常用的网络工具，用于查询DNS（Domain Name System）服务器，获取域名的IP地址、主机名、MX（Mail Exchange）记录等信息。我们最常用的就是看</p>
 <center>
   <img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/image.png">
@@ -384,9 +384,9 @@
 </center>
 <hr>
 <p>再通过自己公司的配置来理解这个工具的使用<br>
-<img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-09-02_00.30.00.jpg" alt=""></p>
-<p><img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-09-02_00.36.17.jpg" alt=""></p>
-<h1>DNS 是什么</h1>
+<img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-09-02_00.30.00.jpg" alt="链接vpn走了公司自己设置的DNS服务器"></p>
+<p><img src="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/iShot_2023-09-02_00.36.17.jpg" alt="如果断开VPN后的情形"></p>
+<h1 id="dns-是什么"><a class="markdownIt-Anchor" href="#dns-是什么"></a> DNS 是什么</h1>
 <p>DNS 的记录类型<br>
 1.主机[A]记录<br>
 描述: 主机地址记录。在 DNS 域名与 IP 地址之间建立映射关系语法: <code>owner class ttl A IP_v4_address</code></p>
@@ -1012,7 +1012,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1090,7 +1090,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

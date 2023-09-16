@@ -352,7 +352,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>参考 maven 官网 <a target="_blank" rel="noopener" href="https://maven.apache.org/pom.html#Distribution_Management">https://maven.apache.org/pom.html#Distribution_Management</a></p>
-<h1>setting.xml 的作用</h1>
+<h1 id="settingxml-的作用"><a class="markdownIt-Anchor" href="#settingxml-的作用"></a> setting.xml 的作用</h1>
 <p>settings.xml  是 Maven 的配置文件，用于配置 Maven 构建工具的行为和环境设置。它位于 Maven 安装目录下的  conf  文件夹中。</p>
 <ol>
 <li>仓库配置：您可以在  settings.xml  中配置 Maven 的本地仓库路径和远程仓库地址。本地仓库用于存储下载的依赖库和构建生成的构件。远程仓库用于下载依赖库和发布构件。</li>
@@ -362,7 +362,7 @@
 <li>构建配置： settings.xml  还可以配置构建过程中的一些行为和选项，例如构建工具的版本、构建插件的配置、构建环境的配置等。</li>
 </ol>
 <p>需要注意的是， settings.xml  是全局配置文件，适用于所有 Maven 项目。如果需要针对特定项目进行个性化配置，可以在项目的  pom.xml  文件中使用  <code>repositories</code> 、 <code>pluginRepositories</code>  等元素进行配置覆盖。</p>
-<h1>属性配置</h1>
+<h1 id="属性配置"><a class="markdownIt-Anchor" href="#属性配置"></a> 属性配置</h1>
 <p>在 Maven 的  settings.xml  文件中，第一层的属性可以配置如下：</p>
 <ol>
 <li>localRepository : 指定本地仓库的路径。</li>
@@ -378,7 +378,7 @@
 6. servers : 配置服务器的列表，用于连接到远程仓库或发布构件时的身份验证。 就是配置账号密码的<br>
 7. mirrors : 配置镜像的列表，用于加速下载依赖项的过程。 这个是为了加速用的<br>
 8. profiles : 定义配置文件的列表，每个配置文件可以包含特定环境的配置，如代理设置、仓库设置等。 这个是真正配置远程仓库的地方，指定去哪里下载，上传到哪里的。</p>
-<h2 id="servers">servers</h2>
+<h2 id="servers"><a class="markdownIt-Anchor" href="#servers"></a> servers</h2>
 <p>构建和部署的仓库是通过POM文件中的<code>repositories</code>和<code>distributionManagement</code>元素来定义的。然而，某些设置，如用户名和密码，不应该与pom.xml一起分发。这类信息应该存在于构建服务器的settings.xml文件中。</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
   <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
@@ -402,7 +402,7 @@
 <p>privateKey、passphrase：与前两个元素类似，这对指定了私钥的路径（默认为${user.home}/.ssh/id_dsa）和（如果需要）密码。将来，密码和密码短语元素可能会外部化，但目前必须在settings.xml文件中以明文形式设置。</p>
 <p>filePermissions、directoryPermissions：在部署时创建仓库文件或目录时，使用的权限。每个权限的合法值是对应于*nix文件权限的三位数字，例如664或775。</p>
 <p>注意：如果您使用私钥登录服务器，请确保省略<code>password</code>元素。否则，密钥将被忽略。</p>
-<h2 id="mirrors">mirrors</h2>
+<h2 id="mirrors"><a class="markdownIt-Anchor" href="#mirrors"></a> mirrors</h2>
 <p><code>mirrors</code>  元素在 Maven 的  settings.xml  文件中用于配置镜像仓库。镜像仓库是指向远程仓库的替代地址，用于加速依赖库的下载。 <code>mirrors</code> 走的是镜像服务器，一般也就是你搭建的 nexus 私服。不过 mirror 中配置的应该是一个公开的镜像仓库地址，一般不需要账号密码就可以访问进行查看，但是你是没有权限直接下载。比如 阿里云的镜像服务器 <a target="_blank" rel="noopener" href="https://maven.aliyun.com/nexus/content/groups/public">https://maven.aliyun.com/nexus/content/groups/public</a><br>
 当 Maven 构建过程中需要下载依赖项时，它会首先检查  <code>mirrors</code>  元素中是否配置了与远程仓库匹配的镜像。如果找到匹配的镜像配置，Maven 将使用镜像仓库的地址来下载依赖项，而不是直接访问远程仓库。镜像仓库的作用是提供更快的下载速度和更好的稳定性，特别是在网络环境不佳的情况下。通过配置镜像仓库，可以将远程仓库的内容镜像到本地或其他可访问的服务器，从而加快依赖项的下载速度。<br>
 示例</p>
@@ -420,7 +420,7 @@
   ...
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>id用于区分镜像元素，并在连接到镜像时从<code>servers</code>部分选择相应的凭据。</p>
-<h2 id="profiles">profiles</h2>
+<h2 id="profiles"><a class="markdownIt-Anchor" href="#profiles"></a> profiles</h2>
 <p>settings.xml中的 <code>profile</code> 元素是pom.xml中 <code>profile</code> 元素的简化版本。它包括<code>activation</code>、<code>repositories</code>、<code>pluginRepositories</code>和<code>properties</code>元素。<code>profile</code>元素仅包含这四个元素，因为它们关注的是整个构建系统（这是settings.xml文件的作用），而不是个别项目对象模型设置。 如果从settings中激活了一个<code>profile</code>，它的值将覆盖POM或profiles.xml文件中具有相同ID的<code>profile</code>的任何值。</p>
 <ol>
 <li>id ：配置文件的唯一标识符。</li>
@@ -437,7 +437,7 @@
 <li>repositories ：配置配置文件中使用的远程仓库，可以指定特定的远程仓库地址。这个是下载的地址。</li>
 <li>properties ：定义配置文件中使用的属性，这些属性可以在配置文件中引用和使用。 里头可以配置  <code>altReleaseDeploymentRepository</code>  和  <code>altSnapshotDeploymentRepository</code> 用于指定替代的发布和快照部署仓库。它们允许您在构建过程中指定不同于默认发布和快照部署仓库的替代仓库.</li>
 </ol>
-<h3 id="properties">properties</h3>
+<h3 id="properties"><a class="markdownIt-Anchor" href="#properties"></a> properties</h3>
 <p>这个是属性变量配置的地方</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
   <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
@@ -453,7 +453,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profiles</span><span class="token punctuation">&gt;</span></span>
   ...
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="repositories">repositories</h4>
+<h4 id="repositories"><a class="markdownIt-Anchor" href="#repositories"></a> repositories</h4>
 <p>这个是jar上传下载的地方</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>settings</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
   <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
@@ -497,7 +497,7 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>profiles</span><span class="token punctuation">&gt;</span></span>
   ...
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>settings</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>altReleaseDeploymentRepository &amp; altSnapshotDeploymentRepository</h1>
+<h1 id="altreleasedeploymentrepository-altsnapshotdeploymentrepository"><a class="markdownIt-Anchor" href="#altreleasedeploymentrepository-altsnapshotdeploymentrepository"></a> altReleaseDeploymentRepository &amp; altSnapshotDeploymentRepository</h1>
 <p>官网上对这俩的记载比较少。关于  altReleaseDeploymentRepository  和  altSnapshotDeploymentRepository  这两个属性，它们通常用于在特定的构建配置文件（profile）中定义替代的发布部署仓库。</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profiles</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>profile</span><span class="token punctuation">&gt;</span></span>
@@ -1169,7 +1169,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

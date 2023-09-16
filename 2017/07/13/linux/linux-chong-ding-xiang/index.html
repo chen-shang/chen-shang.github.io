@@ -347,10 +347,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="shell重定向介绍">shell重定向介绍</h2>
+                <h2 id="shell重定向介绍"><a class="markdownIt-Anchor" href="#shell重定向介绍"></a> shell重定向介绍</h2>
 <p>就像我们平时写的程序一样，一段程序会处理外部的输入，然后将运算结果输出到指定的位置。在交互式的程序中，输入来自用户的键盘和鼠标，结果输出到用户的屏幕，甚至播放设备中。而对于某些后台运行的程序，输入可能来自于外部的一些文件，运算的结果通常又写到其他的文件中。而且程序在运行的过程中，会有一些关键性的信息，比如异常堆栈，外部接口调用情况等，这些都会统统写到日志文件里。</p>
 <p>shell脚本也一样，但是我们一般在使用shell命令的时候，更多地还是通过键盘输入，然后在屏幕上查看命令的执行结果。如果某些情况下，我们需要将shell命令的执行结果存储到文件中，那么我们就需要使用输入输出的重定向功能。</p>
-<h2 id="文件描述符">文件描述符</h2>
+<h2 id="文件描述符"><a class="markdownIt-Anchor" href="#文件描述符"></a> 文件描述符</h2>
 <p>当执行shell命令时，会默认打开3个文件，每个文件有对应的文件描述符来方便我们使用：</p>
 <table>
 <thead>
@@ -388,11 +388,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="输出重定向">输出重定向</h2>
+<h2 id="输出重定向"><a class="markdownIt-Anchor" href="#输出重定向"></a> 输出重定向</h2>
 <p>我们使用&gt;或者&gt;&gt;对输出进行重定向。符号的左边表示文件描述符，如果没有的话表示1，也就是标准输出，符号的右边可以是一个文件，也可以是一个输出设备。当使用&gt;时，会判断右边的文件存不存在，如果存在的话就先删除，然后创建一个新的文件，不存在的话则直接创建。但是当使用&gt;&gt;进行追加时，则不会删除原来已经存在的文件。</p>
-<h2 id="输入重定向">输入重定向</h2>
+<h2 id="输入重定向"><a class="markdownIt-Anchor" href="#输入重定向"></a> 输入重定向</h2>
 <p>我们使用&lt;对输入做重定向，如果符号左边没有写值，那么默认就是0。</p>
-<h2 id="重定向绑定">重定向绑定</h2>
+<h2 id="重定向绑定"><a class="markdownIt-Anchor" href="#重定向绑定"></a> 重定向绑定</h2>
 <p>好了，在有了以上知识的基础上，我们再来看开头提到的&gt;/dev/null 2&gt;&amp;1。这条命令其实分为两命令，一个是&gt;/dev/null，另一个是2&gt;&amp;1。</p>
 <ol>
 <li><code>&gt;/dev/null</code><br>
@@ -964,7 +964,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1042,7 +1042,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

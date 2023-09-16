@@ -355,9 +355,9 @@
 <p>导出：使用 export 关键字将模块中的变量、函数或类导出，使其可以被其他模块引用。一个模块中可以有多个导出。</p>
 </blockquote>
 <p>我们知道 Java 语言中，如果我们需要调用另一个类中的方法, 我们最简单的手段就是把他声明为 public 就行了。而在javascript中如果一个方法需要被其他模块能够使用，就要用 export 进行暴露，只要没有用export暴露的就都是当前模块私有的。你可以理解 export 就相当于给属性或者函数加了 public 修饰符而已。只不过 export 的用法比较灵活，它甚至可以在 模块的 最后在选择暴露，而不是在定义的时候暴露。这一点和 shell 这类面向过程的编程语言有点类似</p>
-<h1>导出 export  &amp; 导入 import</h1>
+<h1 id="导出-export-导入-import"><a class="markdownIt-Anchor" href="#导出-export-导入-import"></a> 导出 export  &amp; 导入 import</h1>
 <p>在ES6中，模块可以通过两种方式导出功能：默认导出和命名导出。</p>
-<h2 id="默认导出">默认导出</h2>
+<h2 id="默认导出"><a class="markdownIt-Anchor" href="#默认导出"></a> 默认导出</h2>
 <p>一个模块可以使用 default 关键字导出一个默认的值，并且默认的导出在导入时可以随意命名。如果使用默认导出，可以在一个模块中只导出一个默认功能。当一个模块只需要导出一个功能时，可以使用默认导出。使用默认导出时，在导入该功能时可以就不用加{}了。{} 属于命名导出，其本质是解构语法。否则idea也会有提示。<br>
 <img src="/2023/08/20/qian-duan/javascript/javascript-mo-kuai-de-dao-ru-he-dao-chu/image.png"></p>
 <p>例子：</p>
@@ -370,7 +370,7 @@
 <span class="token keyword">import</span> add <span class="token keyword">from</span> <span class="token string">'./math.js'</span><span class="token punctuation">;</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="命名导出">命名导出</h2>
+<h2 id="命名导出"><a class="markdownIt-Anchor" href="#命名导出"></a> 命名导出</h2>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导出变量</span>
 <span class="token keyword">export</span> <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'John'</span><span class="token punctuation">;</span>
 <span class="token keyword">export</span> <span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
@@ -955,7 +955,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

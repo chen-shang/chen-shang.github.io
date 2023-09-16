@@ -274,12 +274,12 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                             <a href="/tags/Java/">
                                 <span class="chip bg-color">Java</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
                             </a>
                         
                     </div>
@@ -402,32 +402,32 @@ redies有哪些新的数据类型<br>
 <p>如何排查oom<br>
 spring spring mvc springboot<br>
 git flow</p>
-<h4 id="Java-中的final关键字有哪些用法？">Java 中的final关键字有哪些用法？</h4>
+<h4 id="java-中的final关键字有哪些用法"><a class="markdownIt-Anchor" href="#java-中的final关键字有哪些用法"></a> Java 中的final关键字有哪些用法？</h4>
 <p>(1)修饰类：表示该类不能被继承；<br>
 (2)修饰方法：表示方法不能被重写；<br>
 (3)修饰变量：表示变量只能一次赋值以后值不能被修改（常量）。</p>
-<h4 id="阐述final、finally、finalize的区别。">阐述final、finally、finalize的区别。</h4>
+<h4 id="阐述final-finally-finalize的区别"><a class="markdownIt-Anchor" href="#阐述final-finally-finalize的区别"></a> 阐述final、finally、finalize的区别。</h4>
 <p>答：</p>
 <ul>
 <li>final：修饰符（关键字）有三种用法：如果一个类被声明为final，意味着它不能再派生出新的子类，即不能被继承，因此它和abstract是反义词。将变量声明为final，可以保证它们在使用中不被改变，被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取不可修改。被声明为final的方法也同样只能使用，不能在子类中被重写。</li>
 <li>finally：通常放在try…catch…的后面构造总是执行代码块，这就意味着程序无论正常执行还是发生异常，这里的代码只要JVM不关闭都能执行，可以将释放外部资源的代码写在finally块中。</li>
 <li>finalize：Object类中定义的方法，Java中允许使用finalize()方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在销毁对象时调用的，通过重写finalize()方法可以整理系统资源或者执行其他清理工作。</li>
 </ul>
-<h3 id="常识">常识</h3>
-<h4 id="int-和-Integer-有什么区别">int 和 Integer 有什么区别?</h4>
+<h3 id="常识"><a class="markdownIt-Anchor" href="#常识"></a> 常识</h3>
+<h4 id="int-和-integer-有什么区别"><a class="markdownIt-Anchor" href="#int-和-integer-有什么区别"></a> int 和 Integer 有什么区别?</h4>
 <p>分析:这个题目问的其实是基本数据类型和对应包装类相关问题。不一定单单说区别,可以把自己联想到的都说出来。<br>
 首先先回答这个问题,<br>
 int 是 Java 中的基本数据类型,Integer 是引用数据类型。<br>
 Integer 是 int 类型的包装类,在编译器中实现了自动拆装箱操作,<br>
 int 类型的数据不能有方法,但 Integer 类型的数据可以有自己的方法, 也就是可以变量名.XX() 方法出来。<br>
 这也反映出 Java 并不是纯粹的面向对象的语言,一门纯粹的面向对象的语言是不会有基本数据类型之说的,所有的类型都应该是对象,Java 之所以这样设计是考虑到这些基本设计类型是比较常用的,单独出来有利于优化代码的性能,比如他的存储位置啊,基本数据类型就是直接存储在栈中或方法区中的,而引用数据类型的实例则是存储在堆中的。包装类是对 Java 基本类型面向对象特性的补充,是为了弥补基本数据类型不是对象这一缺陷来的。而由于有自动拆装箱的操作,Java 还在方法区的静态存储区中设计了缓存,如 int 类型的-127-&gt;+127的数,这使得在拆装箱的过程中会出现一些诡异的问题,不建议使用。</p>
-<h4 id="什么是函数式编程？">什么是函数式编程？</h4>
+<h4 id="什么是函数式编程"><a class="markdownIt-Anchor" href="#什么是函数式编程"></a> 什么是函数式编程？</h4>
 <p>用函数式思想来编程就是函数式编程,用面向对象的思想来编程就是面向对象编程,要想理解什么是函数式编程,要先知道什么是函数.函数式数学中的概念,从一个状态与另一个状态的对应关系,或者从一个状态到另一个状态的映射就是函数,y=f(x) 这个 f 就是函数。就像谈什么是面向对象一样,继承、封装、多态、抽象一样,谈什么函数式编程就要说函数式编程的特点,函数编程的特点有很多:函数式第一公民、高阶函数、模式匹配、无副作用、不变性<br>
 。</p>
-<h4 id="创建对象时构造器的调用顺序是">创建对象时构造器的调用顺序是</h4>
+<h4 id="创建对象时构造器的调用顺序是"><a class="markdownIt-Anchor" href="#创建对象时构造器的调用顺序是"></a> 创建对象时构造器的调用顺序是</h4>
 <p>先初始化静态成员，然后调用父类构造器，再初始化非静态成员，最后调用自身构造器。</p>
-<h3 id="冷门">冷门</h3>
-<h4 id="比较一下Java和JavaSciprt。">比较一下Java和JavaSciprt。</h4>
+<h3 id="冷门"><a class="markdownIt-Anchor" href="#冷门"></a> 冷门</h3>
+<h4 id="比较一下java和javasciprt"><a class="markdownIt-Anchor" href="#比较一下java和javasciprt"></a> 比较一下Java和JavaSciprt。</h4>
 <p>JavaScript 与Java是两个公司开发的不同的两个产品。Java 是原Sun Microsystems公司推出的面向对象的程序设计语言，特别适合于互联网应用程序开发；而JavaScript是Netscape公司的产品，为了扩展Netscape浏览器的功能而开发的一种可以嵌入Web页面中运行的基于对象和事件驱动的解释性语言。JavaScript的前身是LiveScript；而Java的前身是Oak语言。<br>
 下面对两种语言间的异同作如下比较：</p>
 <ul>
@@ -485,12 +485,12 @@ StringBuffer 复写了 Object 的 toString 方法, 一个 StringBuffer 类型的
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
                                 <a href="/tags/Java/">
                                     <span class="chip bg-color">Java</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                         </div>
@@ -1054,7 +1054,7 @@ StringBuffer 复写了 Object 的 toString 方法, 一个 StringBuffer 类型的
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

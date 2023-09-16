@@ -359,7 +359,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>简介</h1>
+                <h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
 <p>volatile 这个单词一定要能够拼写正确 v-o-l-a-t-i-l-e ，因为我相信你在写代码的时候肯定没有经常用到它。还有一个最长的关键字叫 synchronized 。</p>
 <p>volatile 的中文翻译</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
@@ -379,7 +379,7 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到是挥发性，也可以理解为易失性。容易失去它，为什么这么说呢?因为被volatile修饰的变量在多线程或者多核cpu中，只要一个线程或cpu修改了它的值，那在其他线程或cpu里面就失去了它，如果还想获取到它，就不得不去指定的内存地址里面在去找它。<br>
 所以这个字段修饰的变量一定要被多线程访问才行，否则修饰它就没有意义了。编译器在编译的时候就有可能帮你吧这个修饰符自动给去掉。所以单线程里面我们一般不用volatile关键字修饰变量，因为你修饰了也没用。由此建议写代码的时候审视一下是不是该用volatile关键字修饰，关键在于这个变量是不是多线程共享的，另外就算是多线程共享的也不一定要被volatile修饰，例如引用变量，只要引用变量的初始化不是在多个线程里面都写一份就不需要修饰了。</p>
-<h1>怎么实现</h1>
+<h1 id="怎么实现"><a class="markdownIt-Anchor" href="#怎么实现"></a> 怎么实现</h1>
 <p>不整那些虚头巴脑的名词，什么 内存可见性啊、缓存行啊、嗅探啊、读屏障、写屏障啊、lock指令啊。我直接说过程。<br>
 首先被 volatile 修饰的关键字在cpu里面或者某个线程里面被修改之前，先发送一个命令给其他cpu，大喊一声我要修改xxx内存地址的值了，你们谁有不要在动这个地址了，这一声大喊，其实就是在一个电子电路上加了一个高电平，这个电平加的及其快，快到几乎是所有cpu同时收到，然后其他cpu就会把这个内存对应的cpu里面的缓存设置为失效状态，当然如果在设置失效之前，你读取了这个缓存值去处理我们就没有办法了，因为我们没有办法让时光倒流嘛。但是只要刚刚那个cpu说了我要修改，其他cpu再想读写这个内存里面的值就读不出来了，就会阻塞，但是阻塞的机器很短，因此cpu会选用自旋的方式，哎呀所谓自旋就是不停的看我能不能不了，我能不能读了，如果不能就继续疯狂的询问，为的是减少上下文的切换的开销。<br>
 然后大吼一声的cpu开始计算修改缓存里面的值，完事之后有一个最重要的一步那就是把这个内存里面的值，立马写回到共享内存中。这之后，在大吼一声，你们可以操作该内存地址啦。</p>
@@ -958,7 +958,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1036,7 +1036,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

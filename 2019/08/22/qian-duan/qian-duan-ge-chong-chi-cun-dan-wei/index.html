@@ -347,16 +347,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="em">em</h2>
+                <h2 id="em"><a class="markdownIt-Anchor" href="#em"></a> em</h2>
 <p>在做手机端的时候经常会用到的做字体的尺寸单位</p>
 <p>说白了 em就相当于“倍”，比如设置当前的div的字体大小为1.5em，则当前的div的字体大小为：当前div继承的字体大小*1.5</p>
 <p>但是当div进行嵌套的时候，em始终是按照当前div继承的字体大小来缩放，参照后面的例子。</p>
-<h2 id="rem">rem</h2>
+<h2 id="rem"><a class="markdownIt-Anchor" href="#rem"></a> rem</h2>
 <p>这里的r就是root的意思，意思是相对于根节点来进行缩放，当有嵌套关系的时候，嵌套关系的元素的字体大小始终按照根节点的字体大小进行缩放。</p>
-<h2 id="vh">vh</h2>
+<h2 id="vh"><a class="markdownIt-Anchor" href="#vh"></a> vh</h2>
 <p>vh就是当前屏幕可见高度的1%，也就是说<code>height:100vh == height:100%;</code><br>
 但是有个好处是当元素没有内容时候，设置height:100%该元素不会被撑开，但是设置height:100vh，该元素会被撑开屏幕高度一致。</p>
-<h2 id="vw">vw</h2>
+<h2 id="vw"><a class="markdownIt-Anchor" href="#vw"></a> vw</h2>
 <p>vw就是当前屏幕宽度的1%<br>
 补充一句，当设置<code>width:100%</code>，被设置元素的宽度是按照父元素的宽度来设置，但是100vw是相对于屏幕可见宽度来设置的，所以会出现50vw 比50%大的情况</p>
 
@@ -945,7 +945,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1023,7 +1023,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

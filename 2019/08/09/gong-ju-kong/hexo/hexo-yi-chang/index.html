@@ -38,7 +38,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -258,10 +260,12 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -274,12 +278,12 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                             <a href="/tags/Hexo/">
                                 <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
                             </a>
                         
                             <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
@@ -318,21 +322,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-05
+                    2023-09-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    141
+                    584
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -356,9 +360,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>本文记录常见Hexo异常和解决方案</p>
-<ol>
-<li>Cannot set property ‘lastIndex’ of undefined</li>
-</ol>
+<h1 id="cannot-set-property-lastindex-of-undefined"><a class="markdownIt-Anchor" href="#cannot-set-property-lastindex-of-undefined"></a> Cannot set property ‘lastIndex’ of undefined</h1>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">INFO  Start processing
 FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
 TypeError: Cannot set property 'lastIndex' of undefined
@@ -372,9 +374,17 @@ TypeError: Cannot set property 'lastIndex' of undefined
 <blockquote>
 <p>修改配置文件<code>_config.yml</code>，注意不是主题里面的配置文件！把<code>auto_detect</code>设置为false，即可解决。</p>
 </blockquote>
-<ol start="2">
-<li>Hexo关于categories名字大写导致404问题</li>
-</ol>
+<h1 id="hexo关于categories名字大写导致404问题"><a class="markdownIt-Anchor" href="#hexo关于categories名字大写导致404问题"></a> Hexo关于categories名字大写导致404问题</h1>
+<h1 id="关于hexo-renderer-markdown-it引起的一级目录无法跳转的错误"><a class="markdownIt-Anchor" href="#关于hexo-renderer-markdown-it引起的一级目录无法跳转的错误"></a> 关于hexo-renderer-markdown-it引起的一级目录无法跳转的错误</h1>
+<p><code>hexo-renderer-marked</code> 是 Hexo 默认的 Markdown 的渲染器，针对于普通的 Markdown 的文章书写，该渲染器已经足够，但是由于不支持 Mathjax，不支持插件扩展，不支持 emoji 表情，所以该渲染器也是介绍的渲染器中功能最弱的。</p>
+<p>于是后面安装了 <code>hexo-renderer-markdown-it</code> 这个渲染器，支持 Mathjax 语法（支持不太好），支持 Markdown 以及 CommonMark 语法，渲染速度比 <code>hexo-renderer-marked</code> 快，支持插件配置，支持标题带安全的 id 信息，支持脚注（上标，下标，下划线）。</p>
+<p>但是这个工具会引起一级目录跳转总是回到顶部而不是对应的标题。于是想要改回 <code>hexo-renderer-marked</code> ，可是 这个原生的插件会导致 <code>![图片](目录/图片)</code> 这种写法下图片无法显示，只能转而使用 <code>&lt;img src="目录/图片"&gt;</code> 这种形式，而我文章中已经有大量这样语法写的图片展示了，要是改变写法估计够呛了。</p>
+<p>于是最终百度查到了 <code>hexo-renderer-markdown-it-plus</code> 这个插件，看名字就是 <code>hexo-renderer-markdown-it</code> 的升级版，支持 Katex 插件并默认启用，默认启用插件列表：<code>markdown-it-emoji</code>，<code>markdown-it-sub</code>，<code>markdown-it-sup</code>，<code>markdown-it-deflist</code>，<code>markdown-it-abbr</code>，<code>markdown-it-footnote</code>，<code>markdown-it-ins</code>，<code>markdown-it-mark</code>，<code>@iktakahiro/markdown-it-katex</code>，<code>markdown-it-toc-and-anchor</code>。</p>
+<p>试用了一下，果然所有问题都解决了，目录也能正常跳转了，图片也能正常显示了，完美。</p>
+<p>安装 <code>hexo-renderer-markdown-it-plus</code> 之前，先把<code>hexo-renderer-marked</code>和<code>hexo-renderer-markdown-it</code>都卸载干净</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-marked <span class="token parameter variable">-s</span>
+<span class="token function">npm</span> uninstall hexo-renderer-markdown-it <span class="token parameter variable">-s</span>
+<span class="token function">npm</span> <span class="token function">install</span> hexo-renderer-markdown-it-plus <span class="token parameter variable">-s</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -393,12 +403,12 @@ TypeError: Cannot set property 'lastIndex' of undefined
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
                                 <a href="/tags/Hexo/">
                                     <span class="chip bg-color">Hexo</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                                 <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
@@ -920,6 +930,87 @@ TypeError: Cannot set property 'lastIndex' of undefined
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -942,7 +1033,7 @@ TypeError: Cannot set property 'lastIndex' of undefined
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

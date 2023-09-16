@@ -391,7 +391,7 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们该try catch么？有人说我直接<code>try catch</code>不行么。不行，try catch 住了之后，只能校验抛出了异常的情况，但是针对可能因为代码出错而导致没有抛异常这样的场景无法测试到。如果只是想测试这个方法在特定场景下会抛出异常，直接用 <code>@Test(expected=XXXExcepting.class)</code>就好了。但是有的时候我们需要测试抛出的异常的报文是什么，这时候有两种手段，第一种是使用 <code>@Rule</code> 第二种是使用 <code>Assert.assertThrows</code>。不过 <code>@Rule</code>已经在新版本的junit中标记为废弃了，进而推荐使用 <code>Assert.assertThrows</code> 这种形式。</p>
-<h3 id="方式一-Rule-示例">方式一: <code>@Rule</code> 示例</h3>
+<h3 id="方式一-rule-示例"><a class="markdownIt-Anchor" href="#方式一-rule-示例"></a> 方式一: <code>@Rule</code> 示例</h3>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Rule</span>
 <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">ExpectedException</span> exception <span class="token operator">=</span> <span class="token class-name">ExpectedException</span><span class="token punctuation">.</span><span class="token function">none</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token annotation punctuation">@Test</span>
@@ -403,7 +403,7 @@
     accountLoginRequest<span class="token punctuation">.</span><span class="token function">setAccountName</span><span class="token punctuation">(</span><span class="token string">"mock"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     loginService<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>accountLoginRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="方式二-Assert-assertThrows-示例">方式二: <code>Assert.assertThrows</code> 示例</h3>
+<h3 id="方式二-assertassertthrows-示例"><a class="markdownIt-Anchor" href="#方式二-assertassertthrows-示例"></a> 方式二: <code>Assert.assertThrows</code> 示例</h3>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Test</span>
     <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testLoginWhenAccountNameIsBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token class-name">IllegalArgumentException</span> illegalArgumentException <span class="token operator">=</span> <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">assertThrows</span><span class="token punctuation">(</span><span class="token class-name">IllegalArgumentException</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>
@@ -988,7 +988,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1066,7 +1066,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

@@ -355,7 +355,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>npm 是啥</h1>
+                <h1 id="npm-是啥"><a class="markdownIt-Anchor" href="#npm-是啥"></a> npm 是啥</h1>
 <p>npm是Node Package Manager（Node包管理器）的缩写，是JavaScript运行时环境Node.js的默认包管理工具。它允许开发者在Node.js项目中方便地安装、管理和共享代码库（称为包或模块）。 跟 Maven 类似。</p>
 <p>通过npm，开发者可以轻松地安装和更新各种JavaScript包。这些包可以包含各种功能，如框架、库、工具等，可以用于开发Web应用、命令行工具、服务器端应用等。</p>
 <p>使用npm，您可以在命令行界面中运行各种命令，例如：</p>
@@ -368,21 +368,21 @@
 </ul>
 <p>除了管理包，npm还提供了一些其他功能，如创建和管理项目脚手架、管理全局安装的包、管理项目的依赖关系等。</p>
 <p>总而言之，npm是一个强大的工具，可以大大简化JavaScript项目的依赖管理和代码共享过程。</p>
-<h1>npm版本号怎么看</h1>
+<h1 id="npm版本号怎么看"><a class="markdownIt-Anchor" href="#npm版本号怎么看"></a> npm版本号怎么看</h1>
 <pre class="line-numbers language-none"><code class="language-none">npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h2 id="npm版本号各个数的含义">npm版本号各个数的含义</h2>
+<h2 id="npm版本号各个数的含义"><a class="markdownIt-Anchor" href="#npm版本号各个数的含义"></a> npm版本号各个数的含义</h2>
 <p>如前所述，npm版本号由三部分组成: Major.Minor.Patch。其中，三个数字各自代表的含义如下：<br>
 Major（主版本号）：表示大版本更新，通常涉及到项目中大的改变，可能引起了不兼容的更改。<br>
 Minor（次版本号）：表示小功能新增。这些新增功能版本与之前版本是兼容的，在项目中的影响不会太大。<br>
 Patch（修订版本号）：用于修复bug或增强某些功能，但不会引入新功能。和Minor相似，此版本与之前版本兼容不会对项目产生影响。</p>
-<h1>查看需要升级的包</h1>
+<h1 id="查看需要升级的包"><a class="markdownIt-Anchor" href="#查看需要升级的包"></a> 查看需要升级的包</h1>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> outdated<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/iShot_2023-09-02_17.40.34.jpg" alt=""></p>
-<h1>更新 npm 自身版本</h1>
+<h1 id="更新-npm-自身版本"><a class="markdownIt-Anchor" href="#更新-npm-自身版本"></a> 更新 npm 自身版本</h1>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> <span class="token function">npm</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1>更新依赖模块版本（不破坏依赖间的联系）</h1>
+<h1 id="更新依赖模块版本不破坏依赖间的联系"><a class="markdownIt-Anchor" href="#更新依赖模块版本不破坏依赖间的联系"></a> 更新依赖模块版本（不破坏依赖间的联系）</h1>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1>使用 ncu 工具一把梭</h1>
+<h1 id="使用-ncu-工具一把梭"><a class="markdownIt-Anchor" href="#使用-ncu-工具一把梭"></a> 使用 ncu 工具一把梭</h1>
 <p><img src="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/iShot_2023-09-04_01.34.17.jpg" alt=""></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> npm-check-updates <span class="token parameter variable">-g</span>
 $ ncu
@@ -975,7 +975,7 @@ Run <span class="token function">npm</span> <span class="token function">install
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1053,7 +1053,7 @@ Run <span class="token function">npm</span> <span class="token function">install
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

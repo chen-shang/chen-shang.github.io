@@ -278,12 +278,12 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                             <a href="/tags/Hexo/">
                                 <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
                             </a>
                         
                             <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
@@ -370,7 +370,7 @@
   <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/5.jpeg" width="20%" align="left">
   <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/6.jpeg" width="20%">
 </center>
-<h2 id="页面配色">页面配色</h2>
+<h2 id="页面配色"><a class="markdownIt-Anchor" href="#页面配色"></a> 页面配色</h2>
 <p>修改顶部导航栏颜色,底部状态栏颜色,顶部导航栏右上角github图标颜色<br>
 hexo-theme-matery原来主题Banner头图都是偏紫色系,因此个人觉得原来主题顶部和底部的绿色状态来显示的很突兀.对比如下:</p>
 <center>
@@ -406,7 +406,7 @@ footer.ejs             head.ejs               navigation.ejs         post-statis
     <span class="token property">width</span><span class="token punctuation">:</span> 64px<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>我们修改 <code>color</code> 的属性值就可以随心所欲的改变github角标的颜色。</p>
-<h2 id="主题中跳转连接都指向自己的github">主题中跳转连接都指向自己的github</h2>
+<h2 id="主题中跳转连接都指向自己的github"><a class="markdownIt-Anchor" href="#主题中跳转连接都指向自己的github"></a> 主题中跳转连接都指向自己的github</h2>
 <p>这个在主题的配置文件中</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text"># Whether to display fork me on github icon and link, default true, You can change it to your repo address
  # 配置是否在 header 中显示 fork me on github 的图标，默认为true，你可以修改为你的仓库地址.
@@ -429,10 +429,10 @@ index 8b051a7..1630d35 100755
              &lt;% if (theme.wordCount.totalCount) { %&gt;
              &amp;nbsp;&lt;i class="fas fa-chart-area"&gt;&lt;/i&gt;&amp;nbsp;站点总字数:&amp;nbsp;&lt;span
                  class="white-color"&gt;&lt;%= totalcount(site) %&gt;&lt;/span&gt;&amp;nbsp;字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的">背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的</h2>
+<h2 id="背景图-头图-轮播图-头像-站点图标都替换成自己喜欢的"><a class="markdownIt-Anchor" href="#背景图-头图-轮播图-头像-站点图标都替换成自己喜欢的"></a> 背景图、头图、轮播图、头像、站点图标都替换成自己喜欢的</h2>
 <p>这个在<code>themes/matery/source/medias</code>目录下面,找到图标替换成同名的即可。<br>
 轮播图的位置在 <code>themes/matery/source/medias/banner</code> 只用放七张就好,代码逻辑是每天换一</p>
-<h2 id="去掉wordcloud功能">去掉wordcloud功能</h2>
+<h2 id="去掉wordcloud功能"><a class="markdownIt-Anchor" href="#去掉wordcloud功能"></a> 去掉wordcloud功能</h2>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-144050.jpg" width="100%">
 <p>修改 layout/tags.ejs 内容为如下代码</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">%</span><span class="token operator">-</span> <span class="token function">partial</span><span class="token punctuation">(</span><span class="token string">'_partial/bg-cover'</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span>
@@ -456,14 +456,14 @@ index 8b051a7..1630d35 100755
 <span class="token operator">&lt;</span><span class="token operator">/</span>main<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>其目的是把标签、分类两个页面合二唯一,将所有关于文件分类统计的内容都放到标签页面，这样可以省出一个标签的位置来，顶部导航栏也不会太拥挤,效果如下<br>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-152930.jpg" width="100%"></p>
-<h2 id="添加百度统计">添加百度统计</h2>
+<h2 id="添加百度统计"><a class="markdownIt-Anchor" href="#添加百度统计"></a> 添加百度统计</h2>
 <p>添加百度统计可以看到自己网站的访问情况等等<br>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-144425.jpg" width="100%"><br>
 先去注册个百度统计账号，然后管理-代码管理里面可以看到安装方法<br>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-144711.jpg" width="100%"><br>
 同时在底部添加一个超链接可以直接连接到百度云统计,这样很方便的可以查看自己网站的访问情况<br>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-151007.jpg" width="100%"></p>
-<h2 id="自适应屏幕的时候字体大小">自适应屏幕的时候字体大小</h2>
+<h2 id="自适应屏幕的时候字体大小"><a class="markdownIt-Anchor" href="#自适应屏幕的时候字体大小"></a> 自适应屏幕的时候字体大小</h2>
 <p>修改<code>matery/source/css/matery.css</code>,这样在手机等小屏幕上显示的字体大小就正常了,否则会因为标题字太长导致换行<br>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/wron.jpg" width="100%"></p>
 <pre class="line-numbers language-css" data-language="css"><code class="language-css">---------------------------- source/css/matery.css ----------------------------
@@ -527,7 +527,7 @@ index 8b051a7..1630d35 100755
         <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="每一一言">每一一言</h2>
+<h2 id="每一一言"><a class="markdownIt-Anchor" href="#每一一言"></a> 每一一言</h2>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-151408.jpg" width="100%">
 上面 嗷呜 下的内容是动态生成的，增加网站的趣味性
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">--------------------------- layout/_widget/dream.ejs ---------------------------
@@ -538,7 +538,7 @@ index 8b051a7..1630d35 100755
       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://v1.hitokoto.cn/?encode=js&amp;select=%23hitokoto<span class="token punctuation">"</span></span> <span class="token attr-name">defer</span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="每日诗词">每日诗词</h2>
+<h2 id="每日诗词"><a class="markdownIt-Anchor" href="#每日诗词"></a> 每日诗词</h2>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-151909.jpg" width="100%">
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">--------------------- layout/_partial/bg-cover-content.ejs ---------------------
 index c7d1b7f..121716f 100755
@@ -563,7 +563,7 @@ index c7d1b7f..121716f 100755
                  &lt;% } else { %&gt;
                  &lt;%= config.description %&gt;
                  &lt;% } %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="添加文章显示作者名字">添加文章显示作者名字</h2>
+<h2 id="添加文章显示作者名字"><a class="markdownIt-Anchor" href="#添加文章显示作者名字"></a> 添加文章显示作者名字</h2>
 <img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/Jietu20191116-152321.jpg" width="100%">
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">---------------------- layout/_partial/post-detail.ejs -----------------------
 
@@ -574,18 +574,18 @@ index c7d1b7f..121716f 100755
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>fa fa-pencil<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span> 作者: &lt;%- config.author %&gt;
     &lt;% } %&gt;
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="自动生成分类">自动生成分类</h2>
+<h2 id="自动生成分类"><a class="markdownIt-Anchor" href="#自动生成分类"></a> 自动生成分类</h2>
 <p><code>hexo-enchancer</code> 无法配置生成的目录深度,所以选择了 <code>hexo-auto-category</code> 使用教程参考: <a target="_blank" rel="noopener" href="https://blog.eson.org/pub/e2f6e239/">https://blog.eson.org/pub/e2f6e239/</a></p>
-<h2 id="关于页面优化">关于页面优化</h2>
+<h2 id="关于页面优化"><a class="markdownIt-Anchor" href="#关于页面优化"></a> 关于页面优化</h2>
 <p><img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.25.47.jpg" alt=""></p>
 <p>第一步: 找到 layout/_widget/post-charts.ejs<br>
-<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.28.55.jpg" alt=""><br>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.28.55.jpg" alt="找到 layout/_widget/post-charts.ejs"><br>
 第二步：去掉 tags-chart 相关的代码<br>
-<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.35.52.jpg" alt=""><br>
-<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.34.12.jpg" alt=""><br>
-<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.34.45.jpg" alt=""></p>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.35.52.jpg" alt="注释掉代码"><br>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.34.12.jpg" alt="注释掉代码"><br>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.34.45.jpg" alt="注释掉代码"></p>
 <p>最终的效果<br>
-<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.37.19.jpg" alt=""></p>
+<img src="/2019/08/15/gong-ju-kong/hexo/hexo-theme-matery-zhu-ti-you-hua/iShot_2023-09-05_23.37.19.jpg" alt="最终的效果"></p>
 
                 
             </div>
@@ -604,12 +604,12 @@ index c7d1b7f..121716f 100755
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
                                 <a href="/tags/Hexo/">
                                     <span class="chip bg-color">Hexo</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                                 <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
@@ -1156,7 +1156,7 @@ index c7d1b7f..121716f 100755
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1234,7 +1234,7 @@ index c7d1b7f..121716f 100755
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

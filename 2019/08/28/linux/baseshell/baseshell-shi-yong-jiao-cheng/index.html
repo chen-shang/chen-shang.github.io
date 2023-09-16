@@ -364,15 +364,15 @@
 |  _ \ / _` / __|/ _ \/ __| '_ \ / _ \ | |
 | |_) | (_| \__ \  __/\__ \ | | |  __/ | |
 |____/ \__,_|___/\___||___/_| |_|\___|_|_|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>项目地址</h1>
+<h1 id="项目地址"><a class="markdownIt-Anchor" href="#项目地址"></a> 项目地址</h1>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/chen-shang/BaseShell">https://github.com/chen-shang/BaseShell</a></p>
 </blockquote>
-<h1>使用教程</h1>
+<h1 id="使用教程"><a class="markdownIt-Anchor" href="#使用教程"></a> 使用教程</h1>
 <center>
   <img src="/2019/08/28/linux/baseshell/baseshell-shi-yong-jiao-cheng/init.gif">
 </center>
-<h1>环境准备</h1>
+<h1 id="环境准备"><a class="markdownIt-Anchor" href="#环境准备"></a> 环境准备</h1>
 <p>本Shell框架是以bash为标准,在Mac OS 10.14上进行验证。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ sw_vers
 ProductName:	Mac OS X
@@ -390,7 +390,7 @@ License GPLv3+: GNU GPL version <span class="token number">3</span> or later <sp
 
 This is <span class="token function">free</span> software<span class="token punctuation">;</span> you are <span class="token function">free</span> to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>配套工具安装</h1>
+<h1 id="配套工具安装"><a class="markdownIt-Anchor" href="#配套工具安装"></a> 配套工具安装</h1>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew <span class="token function">install</span> jq
 brew <span class="token function">install</span> terminal-notifier
 brew <span class="token function">install</span> <span class="token function">shellcheck</span>
@@ -486,7 +486,7 @@ BaseShell类似于Java语言的SDK是为Shell脚本语言提供的一套工具�
 ├── mini.sh                              #常用最小引入脚本
 └── readme.md                            #项目介绍<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>目前还在完善当中。旨在简化shell脚本的编写、提高shell脚本的健壮性。丰富的脚本库可以大大减少shell脚本编写的难度，其类Java的实现方式可以使得面向对象范式的程序员很快的理解并使用。与之相配套的我会出一篇《Shell编程规约》,以期规范Shell脚本程序员的书写习惯。</p>
-<h2 id="初始化项目">初始化项目</h2>
+<h2 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> ~
 <span class="token function">mkdir</span> shell <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> shell <span class="token comment">#新建一个script目录用于存放所有的脚本</span>
 <span class="token function">git</span> clone https://github.com/chen-shang/BaseShell.git
@@ -513,7 +513,7 @@ module[模块名称]:Script
     └── readme.md
 
 6 directories, 3 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="运行项目">运行项目</h2>
+<h2 id="运行项目"><a class="markdownIt-Anchor" href="#运行项目"></a> 运行项目</h2>
 <p>【强制】运行shell脚本要到脚本目录下执行</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> com.baseshell.learn/Script/Controller
 <span class="token function">sh</span> Main.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -524,7 +524,7 @@ module[模块名称]:Script
 | |_) | (_| \__ \  __/___) | | | |  __/ | |
 |____/ \__,_|___/\___|____/|_| |_|\___|_|_|
 hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>目录结构</h1>
+<h1 id="目录结构"><a class="markdownIt-Anchor" href="#目录结构"></a> 目录结构</h1>
 <pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">./../../com.baseshell.learn                         项目目录
 ├── BaseShell -&gt; /Users/chenshang/shell/BaseShell   BaseShell的源码软链
 └── Script                                          模块目录：一般建议大写,代表一个Shell模块,里面专门是针对某个模块儿的脚本
@@ -548,7 +548,7 @@ hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <p>BaseShell相当于Java的JDK.<br>
 配置文件:<br>
 【推荐】<a target="_blank" rel="noopener" href="http://config.sh">config.sh</a> 脚本中尽量只定义变量,不要定义函数或可执行命令,类比Java项目中的properties</p>
-<h1>功能介绍</h1>
+<h1 id="功能介绍"><a class="markdownIt-Anchor" href="#功能介绍"></a> 功能介绍</h1>
 <p>脚本应该怎么写-示例</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
 <span class="token comment"># shellcheck disable=SC1091,SC2155</span>
@@ -607,19 +607,19 @@ hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#===============================================================================</span>
 <span class="token builtin class-name">source</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseEnd.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>这样直接执行脚本的时候,会先寻找脚本里面的main函数去执行,类似运行一个Java Class类中的main方法</p>
-<h2 id="如何引用包">如何引用包</h2>
+<h2 id="如何引用包"><a class="markdownIt-Anchor" href="#如何引用包"></a> 如何引用包</h2>
 <p>我们规定项目目录最大深度为2层,也就是不允许在Service同级的目录下在创建目录然后在里面写脚本</p>
 <p>引用包使用<code>source</code>命令,<code>source 第三方脚本</code>会使第三方脚本从头到尾加载一遍,遇到函数就加载函数、遇到变量就加载变量、遇到可执行的命令就会执行,这个命令其实就是把第三方脚本定义的函数、全局变量加载到当前脚本的上下文中</p>
 <p>这里推荐使用相对路径,因为使用绝对路径,IDEA无法进行代码提示,也是醉了<br>
 示例<br>
 如果想引入日期相关的函数 <code>source ./../../BaseShell/Date/BaseLocalDate.sh</code><br>
 如果想引入文件相关的函数 <code>source ./../../BaseShell/File/BaseFile.sh</code></p>
-<h2 id="如何查看工具包的使用文档">如何查看工具包的使用文档</h2>
+<h2 id="如何查看工具包的使用文档"><a class="markdownIt-Anchor" href="#如何查看工具包的使用文档"></a> 如何查看工具包的使用文档</h2>
 <p>通过使用<code>sh 脚本名称 -ha</code>或者<code>sh 脚本名称 ?a</code>可以快速查看BaseShell框架工具的使用api。使用 <code>sh 脚本名称 -ds 具体的函数</code> 可以查看指定函数的使用api.</p>
 <center>
   <img src="/2019/08/28/linux/baseshell/baseshell-shi-yong-jiao-cheng/api.gif">
 </center>
-<h2 id="入参检查脚本【Annotation】">入参检查脚本【Annotation】</h2>
+<h2 id="入参检查脚本annotation"><a class="markdownIt-Anchor" href="#入参检查脚本annotation"></a> 入参检查脚本【Annotation】</h2>
 <pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">.
 ├── Annotation                         #入参检查脚本
 |&nbsp;&nbsp; └── BaseAnnotation.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -661,14 +661,14 @@ hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span
   <span class="token builtin class-name">local</span> <span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">port</span><span class="token operator">=</span><span class="token variable">$2</span> <span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">user</span><span class="token operator">=</span><span class="token variable">$3</span> <span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">pass</span><span class="token operator">=</span><span class="token variable">$4</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>一般函数的参数校验,我一般和函数也在一行上,第二行用具体的变量名接收参数。上面的函数如果有某个参数没有传,函数会异常退出,下面的代码也不会执行。</p>
-<h2 id="集合工具脚本【Collection】">集合工具脚本【Collection】</h2>
+<h2 id="集合工具脚本collection"><a class="markdownIt-Anchor" href="#集合工具脚本collection"></a> 集合工具脚本【Collection】</h2>
 <pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">├── Collection
 |&nbsp;&nbsp; ├── BaseArrayList.sh
 |&nbsp;&nbsp; ├── BaseHasMap.sh
 |&nbsp;&nbsp; └── BaseMap.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>默认不自动引入,如要使用需单据引入 <code>source ./../../BaseShell/Collection/BaseArrayList.sh</code><br>
 此包下的工具是用来对 集合 和 Map 进行操作的。</p>
-<h3 id="BaseArrayList-sh"><a target="_blank" rel="noopener" href="http://BaseArrayList.sh">BaseArrayList.sh</a></h3>
+<h3 id="basearraylistsh"><a class="markdownIt-Anchor" href="#basearraylistsh"></a> <a target="_blank" rel="noopener" href="http://BaseArrayList.sh">BaseArrayList.sh</a></h3>
 <table>
 <thead>
 <tr>
@@ -771,10 +771,10 @@ hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 </tbody>
 </table>
 <p>详细用法请参考对应的单元测试类 <a target="_blank" rel="noopener" href="http://BaseArrayListTest.sh">BaseArrayListTest.sh</a>、<a target="_blank" rel="noopener" href="http://BaseMapTest.sh">BaseMapTest.sh</a></p>
-<h2 id="日志工具【Log】">日志工具【Log】</h2>
-<h3 id="如何引入">如何引入</h3>
+<h2 id="日志工具log"><a class="markdownIt-Anchor" href="#日志工具log"></a> 日志工具【Log】</h2>
+<h3 id="如何引入"><a class="markdownIt-Anchor" href="#如何引入"></a> 如何引入</h3>
 <p>首先使用 <code>source ./../../BaseShell/Starter/BaseHeader.sh</code> 默认会自动引入Log框架<code>source ./../../BaseShell/Log/BaseLog.sh</code> 无需额外手动引入</p>
-<h3 id="使用方法">使用方法</h3>
+<h3 id="使用方法"><a class="markdownIt-Anchor" href="#使用方法"></a> 使用方法</h3>
 <p>Log 包里面有8个方法</p>
 <table>
 <thead>
@@ -835,13 +835,13 @@ log_debug <span class="token string">"要记录的日志内容. key=<span class=
 log_debug <span class="token string">"要记录的日志内容."</span> <span class="token string">"1=<span class="token variable">$1</span>"</span> <span class="token string">"2=<span class="token variable">$2</span>"</span>
 <span class="token comment"># 支持函数</span>
 log_debug <span class="token string">"要记录的日志内容."</span> <span class="token string">"now=<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span><span class="token variable">)</span></span>"</span> <span class="token string">"index=<span class="token variable"><span class="token variable">$((</span>i<span class="token operator">++</span><span class="token variable">))</span></span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="默认配置">默认配置</h3>
+<h3 id="默认配置"><a class="markdownIt-Anchor" href="#默认配置"></a> 默认配置</h3>
 <p>两个系统默认配置,在 <code>config.sh</code> 配置文件中,用户可根据自己的意愿在自己的项目目录下修改</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 日志记录位置</span>
 <span class="token assign-left variable">LOG_DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${<span class="token environment constant">HOME</span>}</span>/.baseshell"</span>
 <span class="token comment"># 日志级别</span>
 <span class="token assign-left variable">LOG_LEVEL</span><span class="token operator">=</span>SYSTEM<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="输出示例">输出示例</h3>
+<h3 id="输出示例"><a class="markdownIt-Anchor" href="#输出示例"></a> 输出示例</h3>
 <p>执行Test下的测试用例,输出如下</p>
 <center>
   <img src="/2019/08/28/linux/baseshell/baseshell-shi-yong-jiao-cheng/log.jpg">
@@ -851,16 +851,16 @@ log_debug <span class="token string">"要记录的日志内容."</span> <span cl
   <img src="/2019/08/28/linux/baseshell/baseshell-shi-yong-jiao-cheng/Log.gif">
 </center>
 <p>未完待续。。。明天再写</p>
-<h2 id="并发工具【Concurrent】">并发工具【Concurrent】</h2>
-<h2 id="锁【Concurrent】">锁【Concurrent】</h2>
-<h2 id="Object工具【Lang】">Object工具【Lang】</h2>
-<h2 id="数学工具【Lang】">数学工具【Lang】</h2>
-<h2 id="常量【Constant】">常量【Constant】</h2>
-<h2 id="字符串工具【Lang】">字符串工具【Lang】</h2>
-<h2 id="SSH【Ssh】">SSH【Ssh】</h2>
-<h2 id="Starter包【Starter】">Starter包【Starter】</h2>
-<h2 id="工具包【Utils】">工具包【Utils】</h2>
-<h2 id="测试【Utils】">测试【Utils】</h2>
+<h2 id="并发工具concurrent"><a class="markdownIt-Anchor" href="#并发工具concurrent"></a> 并发工具【Concurrent】</h2>
+<h2 id="锁concurrent"><a class="markdownIt-Anchor" href="#锁concurrent"></a> 锁【Concurrent】</h2>
+<h2 id="object工具lang"><a class="markdownIt-Anchor" href="#object工具lang"></a> Object工具【Lang】</h2>
+<h2 id="数学工具lang"><a class="markdownIt-Anchor" href="#数学工具lang"></a> 数学工具【Lang】</h2>
+<h2 id="常量constant"><a class="markdownIt-Anchor" href="#常量constant"></a> 常量【Constant】</h2>
+<h2 id="字符串工具lang"><a class="markdownIt-Anchor" href="#字符串工具lang"></a> 字符串工具【Lang】</h2>
+<h2 id="sshssh"><a class="markdownIt-Anchor" href="#sshssh"></a> SSH【Ssh】</h2>
+<h2 id="starter包starter"><a class="markdownIt-Anchor" href="#starter包starter"></a> Starter包【Starter】</h2>
+<h2 id="工具包utils"><a class="markdownIt-Anchor" href="#工具包utils"></a> 工具包【Utils】</h2>
+<h2 id="测试utils"><a class="markdownIt-Anchor" href="#测试utils"></a> 测试【Utils】</h2>
 <p>单元测试的写法</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
 <span class="token comment"># shellcheck disable=SC1091,SC2155</span>
@@ -1517,7 +1517,7 @@ log_debug <span class="token string">"要记录的日志内容."</span> <span cl
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('2'),
+            collapseDepth: Number('1'),
             headingSelector: 'h1, h2, h3, h4'
         });
 
@@ -1595,7 +1595,7 @@ log_debug <span class="token string">"要记录的日志内容."</span> <span cl
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

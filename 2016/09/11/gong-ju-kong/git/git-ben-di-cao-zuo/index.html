@@ -360,13 +360,13 @@
 <blockquote>
 <p>已修改为跟踪-&gt;已跟踪为提交-&gt;已提交未发布</p>
 </blockquote>
-<h2 id="查看分支的状态">查看分支的状态</h2>
+<h2 id="查看分支的状态"><a class="markdownIt-Anchor" href="#查看分支的状态"></a> 查看分支的状态</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#是否有已修改未暂存的文件，有的话用 git add 命令暂存。是否有已暂存未提交的文件，有的话用git commit -m " " 命令提交。</span>
 $ <span class="token function">git</span> status
 
 <span class="token comment">#也许能提高速度</span>
 $ <span class="token function">git</span> status <span class="token parameter variable">-uno</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="查看分支情况">查看分支情况</h2>
+<h2 id="查看分支情况"><a class="markdownIt-Anchor" href="#查看分支情况"></a> 查看分支情况</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#总共有那些分支，当前处于那个分支</span>
 $ <span class="token function">git</span> branch
 <span class="token comment"># 查看远程分支</span>
@@ -377,21 +377,21 @@ $ <span class="token function">git</span> branch <span class="token parameter va
 $ <span class="token function">git</span> branch <span class="token parameter variable">-d</span> +分支名
 <span class="token comment"># 重命名分支</span>
 $ <span class="token function">git</span> branch <span class="token parameter variable">-m</span> 原名 新名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-add-操作">git add 操作</h2>
+<h2 id="git-add-操作"><a class="markdownIt-Anchor" href="#git-add-操作"></a> git add 操作</h2>
 <p>使用 “git add <file>…” 以包含要提交的内容</file></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#添加已修改未暂存的所有文件，也就是跟踪所有文件。未跟踪的文件标记为红色，已跟踪的文件标记为绿色。</span>
 <span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
 <span class="token comment">#添加指定的已修改未暂存的文件到暂存区。</span>
 <span class="token function">git</span> <span class="token function">add</span> + 文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-rm-操作">git rm 操作</h2>
+<h2 id="git-rm-操作"><a class="markdownIt-Anchor" href="#git-rm-操作"></a> git rm 操作</h2>
 <p>使用 “git rm --cached <file>…” 撤出暂存区</file></p>
-<h2 id="git-commit-操作">git commit 操作</h2>
+<h2 id="git-commit-操作"><a class="markdownIt-Anchor" href="#git-commit-操作"></a> git commit 操作</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#提交代码到本地仓库，-m 中的m是message的意思，就是添加一个标记信息，方便查看提交历史，git log 可以查看代码提交日志。</span>
 <span class="token function">git</span> commit <span class="token parameter variable">-m</span> <span class="token string">"xxx"</span>
 
 <span class="token comment">#可以修改最后一次提交的信息</span>
 <span class="token function">git</span> commit <span class="token parameter variable">--amend</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-查看提交历史记录">git 查看提交历史记录</h2>
+<h2 id="git-查看提交历史记录"><a class="markdownIt-Anchor" href="#git-查看提交历史记录"></a> git 查看提交历史记录</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 如果不带任何参数，它会列出所有历史记录，最近的排在最上方，显示提交对象的哈希值，作者、提交日期、和提交说明。</span>
 $ <span class="token function">git</span> log <span class="token comment">#按q退出历史记录列表。</span>
 <span class="token comment"># 以选择显示前n条。</span>
@@ -410,7 +410,7 @@ $ <span class="token function">git</span> log <span class="token parameter varia
 注意作者与提交者的关系：作者是程序的修改者，提交者是代码提交人。
 如指定2天前，作者为“BeginMan”的提交含有关键字<span class="token string">'init'</span>的前2条记录：$ <span class="token function">git</span> log <span class="token parameter variable">--since</span><span class="token operator">=</span><span class="token number">2</span>.days <span class="token parameter variable">--author</span><span class="token operator">=</span>BeginMan <span class="token parameter variable">--grep</span><span class="token operator">=</span>init <span class="token parameter variable">-2</span>
 注意：上面选项后面的参数可以带单双引号，如--author<span class="token operator">=</span><span class="token string">"BeginMan"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-checkout-操作">git checkout 操作</h2>
+<h2 id="git-checkout-操作"><a class="markdownIt-Anchor" href="#git-checkout-操作"></a> git checkout 操作</h2>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># 切换到指定的分支
 $ git checkout +分支名
 # 新建一个分支并切换到该分支，-b就是分支的意思，切换分支，没有的话就新建一个分支出来并切换到新分支，删除分支用 git branch -d +分支名。
@@ -419,7 +419,7 @@ $ git checkout -b + 分支名
 $ git checkout -b + 分支名 远程分支
 # 放弃对文件的修改，回到上次提交之后本次修改之前的原始状态。
 $ git checkout + 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-暂存操作">git 暂存操作</h2>
+<h2 id="git-暂存操作"><a class="markdownIt-Anchor" href="#git-暂存操作"></a> git 暂存操作</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># git栈，在切换分支的时候，当前分支有未完成提交的代码，但又不想提交，一方面是因为代码没有完成，一方面是因为这样会在log中打印许多无用的日志信息。但是不提交就无法切换分支，于是git便开辟出来一个临时的仓库，这个仓库可以暂时存放最新修改过的代码。</span>
 <span class="token comment"># git栈，可以存放多次修改，切换分支后这些存放的修改还在。</span>
 $ <span class="token function">git</span> stash <span class="token comment">#保存当前的工作进度,会分别对暂存区和工作区的状态进行保存。保存后工作区恢复到之前最后一次提交的状态</span>
@@ -436,7 +436,7 @@ $ <span class="token function">git</span> stash drop <span class="token punctuat
 $ <span class="token function">git</span> stash <span class="token function">clear</span>
 <span class="token comment"># 查看git栈中相对与当前分支的修改</span>
 $ <span class="token function">git</span> stash show <span class="token parameter variable">-p</span> stash<span class="token punctuation">{</span>?<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-标签操作">git 标签操作</h2>
+<h2 id="git-标签操作"><a class="markdownIt-Anchor" href="#git-标签操作"></a> git 标签操作</h2>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"># 列显已有的标签
 $ git tag = git tag -l
 # git标签分为两种类型：轻量标签和附注标签。轻量标签是指向提交对象的引用，附注标签则是仓库中的一个独立对象。建议使用附注标签。
@@ -455,13 +455,13 @@ $ git tag -a "标签名" 哈希码
 # 通常的git push不会将标签对象提交到git服务器，我们需要进行显式的操作：
 $ git push origin 标签名 # 将v0.1.2标签提交到git服务器
 $ git push origin –tags # 将本地所有标签一次性提交到git服务器<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-clean-操作">git clean 操作</h2>
+<h2 id="git-clean-操作"><a class="markdownIt-Anchor" href="#git-clean-操作"></a> git clean 操作</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clean<span class="token punctuation">(</span>只是删除未跟踪的文件<span class="token punctuation">)</span>
 
 <span class="token parameter variable">-n</span>  显示将要删除的文件和目录
 <span class="token parameter variable">-f</span>  删除文件
 <span class="token parameter variable">-df</span> 删除文件和目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-reset-操作">git reset 操作</h2>
+<h2 id="git-reset-操作"><a class="markdownIt-Anchor" href="#git-reset-操作"></a> git reset 操作</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 回到上次提交前的状态，本地的修改和暂存区的跟踪都在。这是最柔软的退回。</span>
 $ <span class="token function">git</span> reset <span class="token parameter variable">--soft</span> HEAD^<span class="token punctuation">(</span>或SHA码<span class="token punctuation">)</span>:
 <span class="token comment"># 下面两个命令是一样的，回到上次暂存时的状态，本地的修改还在，但是暂存区中的跟踪已经不再，提交也不在了。</span>
@@ -472,16 +472,16 @@ $ <span class="token function">git</span> reset <span class="token parameter var
 $ <span class="token function">git</span> reset <span class="token parameter variable">--hard</span> HEAD^
 <span class="token comment"># add错了，从暂存区中删除，但保留更改,如果不加参数，代表删除所有暂存。</span>
 $ <span class="token function">git</span> reset HEAD +文件名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-revert">git revert</h2>
+<h2 id="git-revert"><a class="markdownIt-Anchor" href="#git-revert"></a> git revert</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 撤销某次的提交内容(Revert a commit by providing a new commit with contrary changes)</span>
 $ <span class="token function">git</span> revert  <span class="token operator">&lt;</span>commit<span class="token operator">&gt;</span>              
 <span class="token comment"># 撤销某次提交的某个文件的内容(Revert a specific file from a previous commit)</span>
 $ <span class="token function">git</span> checkout <span class="token operator">&lt;</span>commit<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>file<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-pull">git pull</h2>
+<h2 id="git-pull"><a class="markdownIt-Anchor" href="#git-pull"></a> git pull</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> pull <span class="token parameter variable">-p</span> <span class="token comment"># 等同于下面的命令</span>
 $ <span class="token function">git</span> fetch <span class="token parameter variable">--prune</span> origin
 $ <span class="token function">git</span> fetch <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="git-分支对比">git 分支对比</h2>
+<h2 id="git-分支对比"><a class="markdownIt-Anchor" href="#git-分支对比"></a> git 分支对比</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看 dev 有，而 master 中没有的：</span>
 $ <span class="token function">git</span> log dev ^master
 <span class="token comment"># 查看 dev 中比 master 中多提交了哪些内容：</span>
@@ -1073,7 +1073,7 @@ $ <span class="token function">git</span> log master<span class="token punctuati
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             

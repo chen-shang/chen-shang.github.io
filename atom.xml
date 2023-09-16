@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-14T16:51:45.702Z</updated>
+  <updated>2023-09-16T13:07:12.528Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,70 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>VsCode插件&amp;快捷键</title>
+    <link href="https://chen-shang.github.io/2023/09/16/gong-ju-kong/vscode/vscode-cha-jian-kuai-jie-jian/"/>
+    <id>https://chen-shang.github.io/2023/09/16/gong-ju-kong/vscode/vscode-cha-jian-kuai-jie-jian/</id>
+    <published>2023-09-16T02:38:37.000Z</published>
+    <updated>2023-09-16T13:07:12.528Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;插件推荐&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#插件推荐&quot;&gt;&lt;/a&gt; 插件推荐&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="VsCode" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/VsCode/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>努力做一个开明的父母</title>
+    <link href="https://chen-shang.github.io/2023/09/16/si-kao/nu-li-zuo-yi-ge-kai-ming-de-fu-mu/"/>
+    <id>https://chen-shang.github.io/2023/09/16/si-kao/nu-li-zuo-yi-ge-kai-ming-de-fu-mu/</id>
+    <published>2023-09-16T02:15:53.000Z</published>
+    <updated>2023-09-16T16:37:51.942Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;陈卓一周岁的时候抓周抓了一枚大印。&lt;/p&gt;
+&lt;p&gt;抓周的时候孩子爷爷希望他抓书，因为孩子爷爷认为&quot;天子重英豪，文章教尔曹，万般皆下品,惟有读书高&quot;。孩子姥爷则希望他抓金元宝，因为孩子姥爷认为&quot;钱不是万能的，但没钱是万万不能的&quot;,“有钱能使鬼推磨，何况人乎”。陈卓的表现也似乎</summary>
+        
+      
+    
+    
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+  </entry>
+  
+  <entry>
     <title>vim常用操作</title>
     <link href="https://chen-shang.github.io/2023/09/15/gong-ju-kong/vim/vim-chang-yong-cao-zuo/"/>
     <id>https://chen-shang.github.io/2023/09/15/gong-ju-kong/vim/vim-chang-yong-cao-zuo/</id>
     <published>2023-09-14T16:41:38.000Z</published>
-    <updated>2023-09-14T16:51:45.702Z</updated>
+    <updated>2023-09-16T02:14:53.276Z</updated>
     
     
       
@@ -220,8 +279,8 @@
       
         
         
-    <summary type="html">&lt;h1&gt;认证&lt;/h1&gt;
-&lt;p&gt;认证是指验证实体（如用户、设备）的身份是否真实和有效。认证通常要求提供凭据（如用户名和密码）或使用其他身份验证方（如生物特征识别）。所以我理解 认证 就是 认识并证明</summary>
+    <summary type="html">&lt;h1 id=&quot;认证&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#认证&quot;&gt;&lt;/a&gt; 认证&lt;/h1&gt;
+&lt;p&gt;认证是指验证实体（如用户、设备）的身份是否真实和有效。认证通常要求提供凭据（如用户名和密码）或使用其他身份验证方（如生物特征识别）。所以我理解</summary>
         
       
     
@@ -282,9 +341,9 @@
       
         
         
-    <summary type="html">&lt;h1&gt;跳转到目标网站&lt;/h1&gt;
+    <summary type="html">&lt;h1 id=&quot;跳转到目标网站&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#跳转到目标网站&quot;&gt;&lt;/a&gt; 跳转到目标网站&lt;/h1&gt;
 &lt;p&gt;语法 : [链接文本](链接URL)&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-markdown&quot; data-language=&quot;markdown&quot;&gt;&lt;code</summary>
+&lt;pre class=&quot;line-numbers</summary>
         
       
     
@@ -311,8 +370,8 @@
       
         
         
-    <summary type="html">&lt;h1&gt;npm 是啥&lt;/h1&gt;
-&lt;p&gt;npm是Node Package Manager（Node包管理器）的缩写，是JavaScript运行时环境Node.js的默认包管理工具。它允许开发者在Node.js项目中方便地安装、管理和共享代码库（称为包或模块）。 跟 Maven</summary>
+    <summary type="html">&lt;h1 id=&quot;npm-是啥&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#npm-是啥&quot;&gt;&lt;/a&gt; npm 是啥&lt;/h1&gt;
+&lt;p&gt;npm是Node Package</summary>
         
       
     
@@ -343,7 +402,7 @@
       
         
         
-    <summary type="html">&lt;h2 id=&quot;telnet、nc-查看开放端口号&quot;&gt;telnet、nc 查看开放端口号&lt;/h2&gt;
+    <summary type="html">&lt;h2 id=&quot;telnet-nc-查看开放端口号&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#telnet-nc-查看开放端口号&quot;&gt;&lt;/a&gt; telnet、nc 查看开放端口号&lt;/h2&gt;
 &lt;p&gt;&lt;img</summary>
         
       
@@ -430,7 +489,7 @@
       
         
         
-    <summary type="html">&lt;h1&gt;多系统登录问题&lt;/h1&gt;
+    <summary type="html">&lt;h1 id=&quot;多系统登录问题&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#多系统登录问题&quot;&gt;&lt;/a&gt; 多系统登录问题&lt;/h1&gt;
 &lt;p&gt;传统的登录方式要求用户在每个应用系统中都输入用户名和密码进行登录，这样不仅繁琐，还会增加用户的负担。比如 你有</summary>
         
       
@@ -559,9 +618,8 @@
       
         
         
-    <summary type="html">&lt;h1&gt;不寻常的属性&lt;/h1&gt;
-&lt;p&gt;html 中 总有一些 奇奇怪怪 不常见 的一些 标签和属性，今天见到了一个 叫 &lt;code&gt;aria-label&lt;/code&gt; 的属性。&lt;/p&gt;
-&lt;p&gt;“aria-label”</summary>
+    <summary type="html">&lt;h1 id=&quot;不寻常的属性&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#不寻常的属性&quot;&gt;&lt;/a&gt; 不寻常的属性&lt;/h1&gt;
+&lt;p&gt;html 中 总有一些 奇奇怪怪 不常见 的一些 标签和属性，今天见到了一个 叫</summary>
         
       
     
@@ -577,68 +635,6 @@
     <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
     <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Idea打开properties文件显示中文乱码解决方案</title>
-    <link href="https://chen-shang.github.io/2023/08/24/gong-ju-kong/intellij-idea/idea-da-kai-properties-wen-jian-xian-shi-zhong-wen-luan-ma-jie-jue-fang-an/"/>
-    <id>https://chen-shang.github.io/2023/08/24/gong-ju-kong/intellij-idea/idea-da-kai-properties-wen-jian-xian-shi-zhong-wen-luan-ma-jie-jue-fang-an/</id>
-    <published>2023-08-24T09:20:55.000Z</published>
-    <updated>2023-09-05T14:22:39.823Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;center&gt; &lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/tags/Intellij-IDEA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>maven settings 配置</title>
-    <link href="https://chen-shang.github.io/2023/08/23/gou-jian-gong-ju/maven/maven-pei-zhi/"/>
-    <id>https://chen-shang.github.io/2023/08/23/gou-jian-gong-ju/maven/maven-pei-zhi/</id>
-    <published>2023-08-23T05:21:57.000Z</published>
-    <updated>2023-09-05T14:24:31.814Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;参考 maven 官网 &lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="构建工具" scheme="https://chen-shang.github.io/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="Maven" scheme="https://chen-shang.github.io/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/Maven/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="构建工具" scheme="https://chen-shang.github.io/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="Maven" scheme="https://chen-shang.github.io/tags/Maven/"/>
     
   </entry>
   

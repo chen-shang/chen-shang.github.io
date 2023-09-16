@@ -395,7 +395,7 @@ private 和 public 就限制了一个内部类是不是能被外部访问，就�
     <span class="token comment">// 当然如果 内部类被private 修饰，那么上面两行代码立马报错</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h1>为啥要有内部类</h1>
+<h1 id="为啥要有内部类"><a class="markdownIt-Anchor" href="#为啥要有内部类"></a> 为啥要有内部类</h1>
 <p>把一个类写成一个单独的类怎么了，怎么了呢，非要搞这么复杂干啥呢?其实还是因为Java当前吹过的牛逼，那就是Java觉得只要单根继承就好，它根本不想去解决菱形问题或者叫钻石问题，为此他就丧失的多继承的优越性，为了弥补单根继承的缺陷，它发明了内部类。</p>
 <p>那单根继承有什么缺点呢？单根继承的确定就单根继承，这不废话么，说白了就是扩展不方便，我想把两个类的方法集于一身，你说怎么办吧？你会发现你在java里面怎么写都别扭，我implements吧，我还得写一遍实现，我用abstract 吧，我只能继承一次，那我就级联继承吧 A extents B ,B extents C ,那A不就有了B和C的功能了么，但你会发现 B继承C 更别扭，因为没有儿子继承妈妈，妈妈在继承爸爸一说，因为B和C 在语意上就应该是并列的。</p>
 <p>那内部类为什么就能弥补呢?因为Java规定了内部类可以访问外部的成员变量，甚至包括 private的，其实这个甚至不应该强调，因为一强调，我们就会重点去关注了，其实你想想内部类和内部的成员变量和成员方法一个级别，我在里面能访问和我同一个别的属性有什么问题么？没有问题！！！我就应该有权限。</p>
@@ -825,12 +825,12 @@ private 和 public 就限制了一个内部类是不是能被外部访问，就�
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
-                    </a>
-                    
                     <a href="/tags/Java/">
                         <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -993,7 +993,7 @@ private 和 public 就限制了一个内部类是不是能被外部访问，就�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">138.4k</span>
+                        class="white-color">140.1k</span>
             
             
             
