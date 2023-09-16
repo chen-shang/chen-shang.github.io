@@ -8,7 +8,7 @@
       <link href="/2023/09/17/mo-xiang-zhi-jian/tang-shi-song-ci/tang-shi-song-ci/"/>
       <url>/2023/09/17/mo-xiang-zhi-jian/tang-shi-song-ci/tang-shi-song-ci/</url>
       
-        <content type="html"><![CDATA[<div class="card-container">  <div class="card back">    山亭夏日 唐·高骈    <hr>    <p>绿树荫浓夏日长，楼台倒影入池塘。</p>    <p>水晶帘动微风起，满架蔷薇一院香。</p>  </div></div><style>.card-container {  display: flex;  justify-content: space-between;  flex-wrap: wrap;}.card {  flex-basis: calc(33.33% - 20px);  background-color: #f9f9f9;  border-radius: 10px;  padding: 20px;  margin-bottom: 20px;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  transition: background-color 0.3s ease;}.back {    background: linear-gradient(to right, #FFC3A0, #FFAFBD);}.card:hover {  background-color: #e3e3e3;}.card h2 {  font-size: 18px;  color: #333;  margin-bottom: 10px;}.card p {  font-size: 16px;  color: #333;}</style><script>function getRandomColor() {  var letters = '0123456789ABCDEF';  var color = '#';  do {    for (var i = 0; i < 6; i++) {      color += letters[Math.floor(Math.random() * 16)];    }  } while (color === '#00FF00' || color === '#00FF80' || color === '#00FFBF' || color === '#00FFFF' || color === '#00BFFF'); // 排除绿色系列  return color;}function isColorTooDark(color) {  var hex = color.replace('#', '');  var r = parseInt(hex.substring(0, 2), 16);  var g = parseInt(hex.substring(2, 4), 16);  var b = parseInt(hex.substring(4, 6), 16);  var brightness = (r *299 + g* 587 + b * 114) / 1000;  return brightness < 128;}var backCards = document.getElementsByClassName('back');for (var i = 0; i < backCards.length; i++) {  var randomColor1 = getRandomColor();  var randomColor2 = getRandomColor();  while (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    randomColor1 = getRandomColor();    randomColor2 = getRandomColor();  }  backCards[i].style.background = 'linear-gradient(to right, ' + randomColor1 + ', ' + randomColor2 + ')';  if (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    backCards[i].style.color = '#333';  }}</script>]]></content>
+        <content type="html"><![CDATA[<div class="card-container">  <div class="card back">    山亭夏日 唐·高骈    <hr>    <p>绿树荫浓夏日长，楼台倒影入池塘。</p>    <p>水晶帘动微风起，满架蔷薇一院香。</p>  </div></div><style>.card-container {  display: flex;  justify-content: space-between;  flex-wrap: wrap;}.card {  flex-basis: calc(33.33% - 20px);  background-color: #f9f9f9;  border-radius: 10px;  padding: 20px;  margin-bottom: 20px;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  transition: background-color 0.3s ease;}/* 在小屏幕设备上的样式 */@media screen and (max-width: 768px) {  .card {    /* 小屏幕样式 */    flex-basis: calc(100% - 20px);    background-color: #f9f9f9;    border-radius: 10px;    padding: 20px;    margin-bottom: 20px;    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);    transition: background-color 0.3s ease;  }}.back {    background: linear-gradient(to right, #FFC3A0, #FFAFBD);}.card:hover {  background-color: #e3e3e3;}.card h2 {  font-size: 18px;  color: #333;  margin-bottom: 10px;}.card p {  font-size: 16px;  color: #333;}</style><script>function getRandomColor() {  var letters = '0123456789ABCDEF';  var color = '#';  do {    for (var i = 0; i < 6; i++) {      color += letters[Math.floor(Math.random() * 16)];    }  } while (color === '#00FF00' || color === '#00FF80' || color === '#00FFBF' || color === '#00FFFF' || color === '#00BFFF'); // 排除绿色系列  return color;}function isColorTooDark(color) {  var hex = color.replace('#', '');  var r = parseInt(hex.substring(0, 2), 16);  var g = parseInt(hex.substring(2, 4), 16);  var b = parseInt(hex.substring(4, 6), 16);  var brightness = (r *299 + g* 587 + b * 114) / 1000;  return brightness < 128;}var backCards = document.getElementsByClassName('back');for (var i = 0; i < backCards.length; i++) {  var randomColor1 = getRandomColor();  var randomColor2 = getRandomColor();  while (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    randomColor1 = getRandomColor();    randomColor2 = getRandomColor();  }  backCards[i].style.background = 'linear-gradient(to right, ' + randomColor1 + ', ' + randomColor2 + ')';  if (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    backCards[i].style.color = '#333';  }}</script>]]></content>
       
       
       <categories>
@@ -37,7 +37,7 @@
       <link href="/2023/09/17/mo-xiang-zhi-jian/mei-wen-ju-zhai/mei-wen-ju-zhai/"/>
       <url>/2023/09/17/mo-xiang-zhi-jian/mei-wen-ju-zhai/mei-wen-ju-zhai/</url>
       
-        <content type="html"><![CDATA[<div class="card-container"><div class="card back">  <p>三毛说：“读书多了，容颜自然改变，许多时候，自己可能以为许多看过的书籍都成过眼烟云，不复记忆，其实它们仍是潜在气质里、在谈吐上、在胸襟的无涯，当然也可能显露在生活和文字中。”</p></div><div class="card back">  <p>自己太软弱，就不要说现实太残酷。自己的爱情不笃定，就不要说周围有太多诱惑。</p></div><div class="card back">  <p>正如《后会无期》里的一句台词，"我听过很多大道理，可依然过不好这一生"。</p></div><div class="card back">  <p>是我的错那就道歉让你生气了；不是我的错那就抱歉让你误会了。</p></div><div class="card back">  <p>喜欢孤独，享受人群后默默耕耘的寂静时光。</p></div><div class="card back">  <p>大航海家南森就曾说过：“人生的第一件大事是发现自己，因此人们需要不时孤独和沉思。”</p></div><div class="card back">  <p>有的时候我很怀疑情商是真的存在的吗？还是某些人把它当成讨厌一个人或者喜欢一个人的理由和借口。</p></div><div class="card back">  <p>成了年啊，言行总不能比身份矮太多。</p></div><div class="card back">  <p>收获不佳的三种情况，接触不久以为全面，掌握不多急于推翻，领悟不够夸夸其谈。</p></div><div class="card back">  <p>总之，凡是有人得到了她没有得到的东西，她都持怀疑态度，她怀疑这个世上有完美的爱情，她怀疑努力的意义，她怀疑一个人能够靠正常的渠道取得成功。她觉得世界上的所有人，都应该和自己一样，过着平淡平庸的生活。凡是与她不一样的人，凡是她没有经历过的事，她都不相信会真实地存在着。</p></div><div class="card back">  <p>有人一年四季在路上，不但看遍世界各地的风景人情，还能顺便赚很多钱，真让人羡慕，好想也做这么随心的事。</p></div><div class="card back">  <p>如果没有很清晰的头脑，总是高涨的热情，很容易将生活变得混乱。</p></div><div class="card back">  <p>没有爱情，人不会死，没有面包，人会饿死。</p></div><div class="card back">  <p>没有绝对的安全，有的只是绝对的不安全；没有绝对安全的防火墙，即使密度在厚的防火墙也不能保证有绝对的安全。防火墙是汇编而成的程序，只要是程序就有漏洞。</p></div><div class="card back">  <p>一个剑客最重要的是什么，当然是剑；那么一个黑客如果攻击的话最重要的就是工具。一个运做速度快且又精确度高的工具，往往是一把锋利的剑。</p></div><div class="card back">  <p>选择合适的工具与使用最好的算法同等重要。</p></div><div class="card back">  <p>人之为学，不日进则日退。独学无友，则孤陋而难成；久处一方，则习染而不自觉。</p></div><div class="card back">  <p>最好的关系，就是爸爸爱妈妈，妈妈爱宝宝啊。</p></div><div class="card back">  <p>一到冬天，他都要求我穿上超厚的加绒棉裤，让我不要羡慕那些穿丝袜的长腿美女，保护好自己的关节才会美得更持久。</p></div><div class="card back">  <p>不打扰别人是一种极高的教养。</p></div><div class="card back">  <p>英国诗人蒲柏在牛顿的墓志铭中写道：『自然和自然的法则在黑暗中隐藏，上帝说，让牛顿去吧，于是一切都被照亮！』</p></div><div class="card back">  <p>主义的危险，就是能使人心满意足，自以为寻着治病的根本方法，从此用不着费心力去研究这个那个具体问题的解决法了。</p></div><div class="card back">  <p>生命本没有意义，你要给它什么意义，它就有什么意义。与其终日冥想人生有何意义，不如试用此生做点有意义的事。</p></div><div class="card back">  <p>读古人的书，一方面要知道古人聪明到怎样，一方面也要知道古人傻到怎样。</p></div><div class="card back">  <p>要用自己的头脑独立思考，不要轻易受人惑，不要轻易相信别人的理论，哪怕是我胡适说的话。</p></div><div class="card back">  <p>世间有一种最流行的迷信，叫做'服从多数的迷信'。人都以为多数人的公论总是不错的。</p></div><div class="card back">  <p>我这里千言万语，只是要教人一个不受人惑的方法。被孔丘、朱熹牵着鼻子走，固然不算高明；被马克思、列宁、斯大林牵着鼻子走，也算不得好汉。我自己决不想牵着谁的鼻子走。我只希望尽我的微薄的能力，教我的少年朋友们学一点防身的本领，努力做一个不受人惑的人。</p></div><div class="card back">  <p>第一层面是理论，理论是认知的必经途径，也是被广泛认同和传播的基线。</p></div><div class="card back">  <p>我的母亲出生于上世纪五十年代。她经历了物质极度匮乏的年代。她的内心一直很匮乏，总是认为自己没钱，总是认为自己不值得拥有美好的东西。</p></div><div class="card back">  <p>万般皆下品惟有读书高的时代已经过去，要是放在以前，人们对大学生那是要高看一眼的。</p></div><div class="card back">  <p>闷头码代码的是码农，抬头看世界才是优质程序员</p></div><div class="card back">  <p>原来我的经验不过是豹之一斑，荒谬的年代从未真正终结，它就在我们身边。</p></div><div class="card back">  <p>互联网的强大足以让我们查找到我们想要学习的资料。</p></div><div class="card back">  <p>椿萱并茂，棠棣同馨，葳蕤繁祉，延彼遐龄</p></div><div class="card back">  <p>夏虫不可语于冰，笃于时也；井蛙不可语于海，拘于虚也；曲士不可语于道，束于教也</p></div><div class="card back">  <p>不飞则已一飞冲天，不鸣则已一鸣惊人</p></div><div class="card back">  <p>言者众，思虑者少，献计者寡，担当者无几</p></div><div class="card back">  <p>人到底是应该遵从自己的内心活着，还是按照别人的意愿而活。</p></div><div class="card back">  <p>大城市大，多数压力来自工作，觉得人情冷漠；小城市小，多数压力来自世故，觉得无处可躲。在大城市如果你有能力，工资低只会是一时的，但在小城市，则有可能是一世的。</p></div><div class="card back">  <p>请把注意力放在真正值得的事情上。</p></div><div class="card back">  <p>贵有恒何必三更起五更睡，最无益只怕一日曝十日寒。-- 毛泽东</p></div><div class="card back">  <p>坚信概率，坚持按照优势概率下注，哪怕违反直觉，哪怕屡屡受挫也不更改人生下注的原则，这就是赢家的秘密。</p></div><div class="card back">  <p>主义的危险，就是能使人心满意足，自以为寻着治病的根本方法，从此用不着费心力去研究这个那个具体问题的解决法了。</p></div></div><style>.card-container {  display: flex;  justify-content: space-between;  flex-wrap: wrap;}.card {  flex-basis: calc(33.33% - 20px);  background-color: #f9f9f9;  border-radius: 10px;  padding: 20px;  margin-bottom: 20px;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);}.card p {  font-size: 16px;  color: #333;}</style><script>// 获取卡片容器const cardContainer = document.querySelector('.card-container');// 获取所有卡片元素const cards = Array.from(cardContainer.querySelectorAll('.card'));// 随机排序卡片顺序cards.sort(() => Math.random() - 0.5);// 清空卡片容器cardContainer.innerHTML = '';// 将排序后的卡片重新添加到容器中cards.forEach(card => {  cardContainer.appendChild(card);});function getRandomColor() {  var letters = '0123456789ABCDEF';  var color = '#';  do {    for (var i = 0; i < 6; i++) {      color += letters[Math.floor(Math.random() * 16)];    }  } while (color === '#00FF00' || color === '#00FF80' || color === '#00FFBF' || color === '#00FFFF' || color === '#00BFFF'); // 排除绿色系列  return color;}function isColorTooDark(color) {  var hex = color.replace('#', '');  var r = parseInt(hex.substring(0, 2), 16);  var g = parseInt(hex.substring(2, 4), 16);  var b = parseInt(hex.substring(4, 6), 16);  var brightness = (r *299 + g* 587 + b * 114) / 1000;  return brightness < 128;}var backCards = document.getElementsByClassName('back');for (var i = 0; i < backCards.length; i++) {  var randomColor1 = getRandomColor();  var randomColor2 = getRandomColor();  while (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    randomColor1 = getRandomColor();    randomColor2 = getRandomColor();  }  backCards[i].style.background = 'linear-gradient(to right, ' + randomColor1 + ', ' + randomColor2 + ')';  if (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    backCards[i].style.color = '#333';  }}</script>]]></content>
+        <content type="html"><![CDATA[<div class="card-container"><div class="card back">  <p>三毛说：“读书多了，容颜自然改变，许多时候，自己可能以为许多看过的书籍都成过眼烟云，不复记忆，其实它们仍是潜在气质里、在谈吐上、在胸襟的无涯，当然也可能显露在生活和文字中。”</p></div><div class="card back">  <p>自己太软弱，就不要说现实太残酷。自己的爱情不笃定，就不要说周围有太多诱惑。</p></div><div class="card back">  <p>正如《后会无期》里的一句台词，"我听过很多大道理，可依然过不好这一生"。</p></div><div class="card back">  <p>是我的错那就道歉让你生气了；不是我的错那就抱歉让你误会了。</p></div><div class="card back">  <p>喜欢孤独，享受人群后默默耕耘的寂静时光。</p></div><div class="card back">  <p>大航海家南森就曾说过：“人生的第一件大事是发现自己，因此人们需要不时孤独和沉思。”</p></div><div class="card back">  <p>有的时候我很怀疑情商是真的存在的吗？还是某些人把它当成讨厌一个人或者喜欢一个人的理由和借口。</p></div><div class="card back">  <p>成了年啊，言行总不能比身份矮太多。</p></div><div class="card back">  <p>收获不佳的三种情况，接触不久以为全面，掌握不多急于推翻，领悟不够夸夸其谈。</p></div><div class="card back">  <p>总之，凡是有人得到了她没有得到的东西，她都持怀疑态度，她怀疑这个世上有完美的爱情，她怀疑努力的意义，她怀疑一个人能够靠正常的渠道取得成功。她觉得世界上的所有人，都应该和自己一样，过着平淡平庸的生活。凡是与她不一样的人，凡是她没有经历过的事，她都不相信会真实地存在着。</p></div><div class="card back">  <p>有人一年四季在路上，不但看遍世界各地的风景人情，还能顺便赚很多钱，真让人羡慕，好想也做这么随心的事。</p></div><div class="card back">  <p>如果没有很清晰的头脑，总是高涨的热情，很容易将生活变得混乱。</p></div><div class="card back">  <p>没有爱情，人不会死，没有面包，人会饿死。</p></div><div class="card back">  <p>没有绝对的安全，有的只是绝对的不安全；没有绝对安全的防火墙，即使密度在厚的防火墙也不能保证有绝对的安全。防火墙是汇编而成的程序，只要是程序就有漏洞。</p></div><div class="card back">  <p>一个剑客最重要的是什么，当然是剑；那么一个黑客如果攻击的话最重要的就是工具。一个运做速度快且又精确度高的工具，往往是一把锋利的剑。</p></div><div class="card back">  <p>选择合适的工具与使用最好的算法同等重要。</p></div><div class="card back">  <p>人之为学，不日进则日退。独学无友，则孤陋而难成；久处一方，则习染而不自觉。</p></div><div class="card back">  <p>最好的关系，就是爸爸爱妈妈，妈妈爱宝宝啊。</p></div><div class="card back">  <p>一到冬天，他都要求我穿上超厚的加绒棉裤，让我不要羡慕那些穿丝袜的长腿美女，保护好自己的关节才会美得更持久。</p></div><div class="card back">  <p>不打扰别人是一种极高的教养。</p></div><div class="card back">  <p>英国诗人蒲柏在牛顿的墓志铭中写道：『自然和自然的法则在黑暗中隐藏，上帝说，让牛顿去吧，于是一切都被照亮！』</p></div><div class="card back">  <p>主义的危险，就是能使人心满意足，自以为寻着治病的根本方法，从此用不着费心力去研究这个那个具体问题的解决法了。</p></div><div class="card back">  <p>生命本没有意义，你要给它什么意义，它就有什么意义。与其终日冥想人生有何意义，不如试用此生做点有意义的事。</p></div><div class="card back">  <p>读古人的书，一方面要知道古人聪明到怎样，一方面也要知道古人傻到怎样。</p></div><div class="card back">  <p>要用自己的头脑独立思考，不要轻易受人惑，不要轻易相信别人的理论，哪怕是我胡适说的话。</p></div><div class="card back">  <p>世间有一种最流行的迷信，叫做'服从多数的迷信'。人都以为多数人的公论总是不错的。</p></div><div class="card back">  <p>我这里千言万语，只是要教人一个不受人惑的方法。被孔丘、朱熹牵着鼻子走，固然不算高明；被马克思、列宁、斯大林牵着鼻子走，也算不得好汉。我自己决不想牵着谁的鼻子走。我只希望尽我的微薄的能力，教我的少年朋友们学一点防身的本领，努力做一个不受人惑的人。</p></div><div class="card back">  <p>第一层面是理论，理论是认知的必经途径，也是被广泛认同和传播的基线。</p></div><div class="card back">  <p>我的母亲出生于上世纪五十年代。她经历了物质极度匮乏的年代。她的内心一直很匮乏，总是认为自己没钱，总是认为自己不值得拥有美好的东西。</p></div><div class="card back">  <p>万般皆下品惟有读书高的时代已经过去，要是放在以前，人们对大学生那是要高看一眼的。</p></div><div class="card back">  <p>闷头码代码的是码农，抬头看世界才是优质程序员</p></div><div class="card back">  <p>原来我的经验不过是豹之一斑，荒谬的年代从未真正终结，它就在我们身边。</p></div><div class="card back">  <p>互联网的强大足以让我们查找到我们想要学习的资料。</p></div><div class="card back">  <p>椿萱并茂，棠棣同馨，葳蕤繁祉，延彼遐龄</p></div><div class="card back">  <p>夏虫不可语于冰，笃于时也；井蛙不可语于海，拘于虚也；曲士不可语于道，束于教也</p></div><div class="card back">  <p>不飞则已一飞冲天，不鸣则已一鸣惊人</p></div><div class="card back">  <p>言者众，思虑者少，献计者寡，担当者无几</p></div><div class="card back">  <p>人到底是应该遵从自己的内心活着，还是按照别人的意愿而活。</p></div><div class="card back">  <p>大城市大，多数压力来自工作，觉得人情冷漠；小城市小，多数压力来自世故，觉得无处可躲。在大城市如果你有能力，工资低只会是一时的，但在小城市，则有可能是一世的。</p></div><div class="card back">  <p>请把注意力放在真正值得的事情上。</p></div><div class="card back">  <p>贵有恒何必三更起五更睡，最无益只怕一日曝十日寒。-- 毛泽东</p></div><div class="card back">  <p>坚信概率，坚持按照优势概率下注，哪怕违反直觉，哪怕屡屡受挫也不更改人生下注的原则，这就是赢家的秘密。</p></div><div class="card back">  <p>主义的危险，就是能使人心满意足，自以为寻着治病的根本方法，从此用不着费心力去研究这个那个具体问题的解决法了。</p></div></div><style>.card-container {  display: flex;  justify-content: space-between;  flex-wrap: wrap;}.card {  flex-basis: calc(33.33% - 20px);  background-color: #f9f9f9;  border-radius: 10px;  padding: 20px;  margin-bottom: 20px;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  transition: background-color 0.3s ease;}/* 在小屏幕设备上的样式 */@media screen and (max-width: 768px) {  .card {    /* 小屏幕样式 */    flex-basis: calc(100% - 20px);    background-color: #f9f9f9;    border-radius: 10px;    padding: 20px;    margin-bottom: 20px;    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);    transition: background-color 0.3s ease;  }}.card p {  font-size: 16px;  color: #333;}</style><script>// 获取卡片容器const cardContainer = document.querySelector('.card-container');// 获取所有卡片元素const cards = Array.from(cardContainer.querySelectorAll('.card'));// 随机排序卡片顺序cards.sort(() => Math.random() - 0.5);// 清空卡片容器cardContainer.innerHTML = '';// 将排序后的卡片重新添加到容器中cards.forEach(card => {  cardContainer.appendChild(card);});function getRandomColor() {  var letters = '0123456789ABCDEF';  var color = '#';  do {    for (var i = 0; i < 6; i++) {      color += letters[Math.floor(Math.random() * 16)];    }  } while (color === '#00FF00' || color === '#00FF80' || color === '#00FFBF' || color === '#00FFFF' || color === '#00BFFF'); // 排除绿色系列  return color;}function isColorTooDark(color) {  var hex = color.replace('#', '');  var r = parseInt(hex.substring(0, 2), 16);  var g = parseInt(hex.substring(2, 4), 16);  var b = parseInt(hex.substring(4, 6), 16);  var brightness = (r *299 + g* 587 + b * 114) / 1000;  return brightness < 128;}var backCards = document.getElementsByClassName('back');for (var i = 0; i < backCards.length; i++) {  var randomColor1 = getRandomColor();  var randomColor2 = getRandomColor();  while (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    randomColor1 = getRandomColor();    randomColor2 = getRandomColor();  }  backCards[i].style.background = 'linear-gradient(to right, ' + randomColor1 + ', ' + randomColor2 + ')';  if (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    backCards[i].style.color = '#333';  }}</script>]]></content>
       
       
       <categories>
@@ -1438,9 +1438,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -1850,9 +1850,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2030,11 +2030,11 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
             
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2210,9 +2210,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 工具控 </tag>
             
@@ -2299,9 +2299,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2330,9 +2330,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -2421,9 +2421,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> Shell </tag>
             
@@ -2514,9 +2514,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2628,9 +2628,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> Shell </tag>
             
@@ -2799,9 +2799,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Java </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -3048,11 +3048,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/2020/02/11/java/java-suo/"/>
-      <url>/2020/02/11/java/java-suo/</url>
+      <title>Java配置文件变量替换</title>
+      <link href="/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/"/>
+      <url>/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/</url>
       
-        <content type="html"><![CDATA[<p>为什么需要锁？<br>我们把多个线程竞争处理的资源称为临界资源（代码块、方法体等），当一个线程获得了临界资源的使用权以后，为了保证临界资源在同一时间只能由一个线程获得，其它线程必须等这个线程处理完以后才能通过竞争再次尝试获得临界资源的使用权。</p><p>追问：为什么要保证临界资源在同一时间只能由一个线程使用?<br>首先肯定是有这样的场景存在，多个线程同时操作临界资源会导致数据的不一致。</p><p>追问：什么叫数据的不一致?<br>就是你本来期望是一个结果，但是偏偏变成了另一个结果，本来不应该出现的情况，但是偏偏出现了，就叫数据不一致了。</p><p>追问：所以归根结底是为了解决临界资源在并发使用过程中可能出现的数据不一致性问题才必须保证临界资源在同一时间只能由一个线程获得?<br>是的。因为并发会导致数据不一致，那干脆在使用临界资源的时候不要并发了，多么简单暴力啊。</p><p>追问：说了半天还是没有说到锁啊?<br>那我们如何实现上面说的 必须保证临界资源在同一时间只能由一个线程获得呢？答案就是大家对向某个人提出申请，这个人必须足够公正，能保证在同一时间只能有一个人获得申请，而且要保证获得申请的人不撤销申请其他人即使再申请也不会获得申请，这个人就是锁，要知道这个人一旦被看作锁，那么他也将变成临界资源，申请锁的这个动作在多线程里必须也得能保证数据一致，也就是线程安全，貌似陷入死循环了。但这个保证是操作系统保证的，更确切的说是操作系统的内核保证的，操作系统毕竟还是一个软件，内核要保证线程安全本质上是通过硬件完成的，其实就是锁总线。</p><p>锁的分类<br>锁并不是某个语言特有的，c语言也有锁，c++也是，包括一些后现代的编程语言例如scala、groovy等都有锁，操作系统更需要锁，redis有锁，数据库有锁，分布式系统有分布式锁。锁你可以理解为一个工具类，使用这个工具类可以保证临界资源在同一时间只能由一个线程获得。锁的种类有很多，真的很多，有悲观锁、乐观锁，有互斥锁、共享锁，有可重入锁、不可重入锁，数据库有行锁、表锁、页锁，分布式有分布式锁，可以用redis实现可以用zookeeper实现。按照我的理解和记忆方案，不见得是对的，但在这里提出来，大家一起讨论一下。</p><p>我认为只要是锁一定都是悲观锁，因为乐观锁虽然叫锁，但是其实并不是锁，只是后人为了区分而强加的概念。乐观锁的实现原理逃不出CAS，悲观锁的原理逃不出互斥量。所以Java中所有叫锁的都是悲观锁包括 synchornized。</p><p>然后就是锁的几个特性，比如 公平不公平啊、可重入不可重入啊、独享啊还是共享啊。每个锁必然有这三个特性。</p><p>锁分类<br>悲观锁/乐观锁<br>重点讲两类锁的思想区别 和 cas</p><p>锁特性<br>公平性/非公平性、公平锁/非公平锁<br>公平锁是指多个线程按照申请锁的顺序来获取锁。</p><p>非公平锁不按照申请顺序，后申请的可能会先获得锁。</p><p>对于Java的ReentranLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。</p><p>ReentranLock中有一个内部类：Sync。FairSync、NonFairSync继承了Sync，公平与不公平在源码体现在【!hasQueuedPredecessors()】这句代码，公平的话：如果前面有等待节点，那就不去获得锁；不公平就是抢占；具体看：<a href="https://blog.csdn.net/lsgqjh/article/details/63685058">https://blog.csdn.net/lsgqjh/article/details/63685058</a></p><p>对于 Synchonized而言，也是一种非公平锁，由于其不像 ReentrantLock是通过AQS实现的，所以没办法变成公平锁。</p><p>可重入性/不可重入性、可重入锁/不可重入锁<br>可重入锁又名递归锁，是指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁，不会因为之前已经获取过还没释放而阻塞。</p><p>Java中ReentrantLock和synchronized都是可重入锁，可重入锁的一个优点是可一定程度避免死锁。</p><p>到目前为止我还没有遇到过不可重入的锁，也想象不到不可重入锁的使用场景，因为不可重入锁大概率会出现死锁情况，所以貌似没有人会去实现不可重入锁。</p><p>独占性/共享性、互斥锁/读写锁<br>独享锁是指该锁一次只能被一个线程所持有。共享锁是指该锁可被多个线程所持有。这里主要是为了把一个操作掰成两个操作，一个读一个写，分别加不同粒度的锁，目的是实现在只有读的场景下的最大并发。</p><p>独享锁也叫互斥锁，读写锁等同于一个独享锁+一个共享锁，也叫一个写锁+读锁。读锁的共享锁可保证并发读是非常高效的，读写，写读，写写的过程是互斥的。</p><p>对于Java ReentrantLock而言，其是独享锁。但是对于Lock的另一个实现类ReadWriteLock，其读锁是共享锁，其写锁是独享锁。</p><p>对于Synchronized而言，当然是独享锁。</p><p>另外在synchronizd关键字的优化相关知识里面，会碰到 诸如 偏向锁/轻量级锁/自旋锁/适应性自旋锁/重量级锁 的概念，这些都是锁升级中的某些状态，除了重量级锁是锁外，其它要么不是锁，要么就是在成为锁的路上，这里不过多讨论，只需要记住只要是锁一定有上面三个特性就好。所以synchronized的全称应该叫 非公平的可重入的互斥悲观锁。同理，ReentrantLock 默认也是非公平的可重入的互斥悲观锁，当然ReentrantLock也可以实现 公平的可重入的互斥悲观锁。</p>]]></content>
+        <content type="html"><![CDATA[<p>由于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow></mrow><mtext>方式会被</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mtext>处理。如果你</mtext><mi>p</mi><mi>o</mi><mi>m</mi><mtext>继承了</mtext><mi>s</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>−</mo><mi>b</mi><mi>o</mi><mi>o</mi><mi>t</mi><mo>−</mo><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>e</mi><mi>r</mi><mo>−</mo><mi>p</mi><mi>a</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>，</mtext><mi>S</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>B</mi><mi>o</mi><mi>o</mi><mi>t</mi><mtext>已经将</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mo>−</mo><mi>r</mi><mi>e</mi><mi>s</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>c</mi><mi>e</mi><mi>s</mi><mo>−</mo><mi>p</mi><mi>l</mi><mi>u</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>s</mi><mtext>默认的</mtext></mrow><annotation encoding="application/x-tex">{}方式会被maven处理。如果你pom继承了spring-boot-starter-parent，Spring Boot已经将maven-resources-plugins默认的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"></span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">式</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">被</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">处</span><span class="mord cjk_fallback">理</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">你</span><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord cjk_fallback">继</span><span class="mord cjk_fallback">承</span><span class="mord cjk_fallback">了</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">，</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">经</span><span class="mord cjk_fallback">将</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">c</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">默</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">的</span></span></span></span>{}方式改为了@@方式，如@version@</p><center>  <img src="/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/show.jpg"></center>]]></content>
       
       
       <categories>
@@ -3075,11 +3075,11 @@
     
     
     <entry>
-      <title>Java配置文件变量替换</title>
-      <link href="/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/"/>
-      <url>/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/</url>
+      <title></title>
+      <link href="/2020/02/11/java/java-suo/"/>
+      <url>/2020/02/11/java/java-suo/</url>
       
-        <content type="html"><![CDATA[<p>由于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow></mrow><mtext>方式会被</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mtext>处理。如果你</mtext><mi>p</mi><mi>o</mi><mi>m</mi><mtext>继承了</mtext><mi>s</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>−</mo><mi>b</mi><mi>o</mi><mi>o</mi><mi>t</mi><mo>−</mo><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>e</mi><mi>r</mi><mo>−</mo><mi>p</mi><mi>a</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>，</mtext><mi>S</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>B</mi><mi>o</mi><mi>o</mi><mi>t</mi><mtext>已经将</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mo>−</mo><mi>r</mi><mi>e</mi><mi>s</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>c</mi><mi>e</mi><mi>s</mi><mo>−</mo><mi>p</mi><mi>l</mi><mi>u</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>s</mi><mtext>默认的</mtext></mrow><annotation encoding="application/x-tex">{}方式会被maven处理。如果你pom继承了spring-boot-starter-parent，Spring Boot已经将maven-resources-plugins默认的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"></span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">式</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">被</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">处</span><span class="mord cjk_fallback">理</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">你</span><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord cjk_fallback">继</span><span class="mord cjk_fallback">承</span><span class="mord cjk_fallback">了</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">，</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">经</span><span class="mord cjk_fallback">将</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">c</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">默</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">的</span></span></span></span>{}方式改为了@@方式，如@version@</p><center>  <img src="/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/show.jpg"></center>]]></content>
+        <content type="html"><![CDATA[<p>为什么需要锁？<br>我们把多个线程竞争处理的资源称为临界资源（代码块、方法体等），当一个线程获得了临界资源的使用权以后，为了保证临界资源在同一时间只能由一个线程获得，其它线程必须等这个线程处理完以后才能通过竞争再次尝试获得临界资源的使用权。</p><p>追问：为什么要保证临界资源在同一时间只能由一个线程使用?<br>首先肯定是有这样的场景存在，多个线程同时操作临界资源会导致数据的不一致。</p><p>追问：什么叫数据的不一致?<br>就是你本来期望是一个结果，但是偏偏变成了另一个结果，本来不应该出现的情况，但是偏偏出现了，就叫数据不一致了。</p><p>追问：所以归根结底是为了解决临界资源在并发使用过程中可能出现的数据不一致性问题才必须保证临界资源在同一时间只能由一个线程获得?<br>是的。因为并发会导致数据不一致，那干脆在使用临界资源的时候不要并发了，多么简单暴力啊。</p><p>追问：说了半天还是没有说到锁啊?<br>那我们如何实现上面说的 必须保证临界资源在同一时间只能由一个线程获得呢？答案就是大家对向某个人提出申请，这个人必须足够公正，能保证在同一时间只能有一个人获得申请，而且要保证获得申请的人不撤销申请其他人即使再申请也不会获得申请，这个人就是锁，要知道这个人一旦被看作锁，那么他也将变成临界资源，申请锁的这个动作在多线程里必须也得能保证数据一致，也就是线程安全，貌似陷入死循环了。但这个保证是操作系统保证的，更确切的说是操作系统的内核保证的，操作系统毕竟还是一个软件，内核要保证线程安全本质上是通过硬件完成的，其实就是锁总线。</p><p>锁的分类<br>锁并不是某个语言特有的，c语言也有锁，c++也是，包括一些后现代的编程语言例如scala、groovy等都有锁，操作系统更需要锁，redis有锁，数据库有锁，分布式系统有分布式锁。锁你可以理解为一个工具类，使用这个工具类可以保证临界资源在同一时间只能由一个线程获得。锁的种类有很多，真的很多，有悲观锁、乐观锁，有互斥锁、共享锁，有可重入锁、不可重入锁，数据库有行锁、表锁、页锁，分布式有分布式锁，可以用redis实现可以用zookeeper实现。按照我的理解和记忆方案，不见得是对的，但在这里提出来，大家一起讨论一下。</p><p>我认为只要是锁一定都是悲观锁，因为乐观锁虽然叫锁，但是其实并不是锁，只是后人为了区分而强加的概念。乐观锁的实现原理逃不出CAS，悲观锁的原理逃不出互斥量。所以Java中所有叫锁的都是悲观锁包括 synchornized。</p><p>然后就是锁的几个特性，比如 公平不公平啊、可重入不可重入啊、独享啊还是共享啊。每个锁必然有这三个特性。</p><p>锁分类<br>悲观锁/乐观锁<br>重点讲两类锁的思想区别 和 cas</p><p>锁特性<br>公平性/非公平性、公平锁/非公平锁<br>公平锁是指多个线程按照申请锁的顺序来获取锁。</p><p>非公平锁不按照申请顺序，后申请的可能会先获得锁。</p><p>对于Java的ReentranLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。</p><p>ReentranLock中有一个内部类：Sync。FairSync、NonFairSync继承了Sync，公平与不公平在源码体现在【!hasQueuedPredecessors()】这句代码，公平的话：如果前面有等待节点，那就不去获得锁；不公平就是抢占；具体看：<a href="https://blog.csdn.net/lsgqjh/article/details/63685058">https://blog.csdn.net/lsgqjh/article/details/63685058</a></p><p>对于 Synchonized而言，也是一种非公平锁，由于其不像 ReentrantLock是通过AQS实现的，所以没办法变成公平锁。</p><p>可重入性/不可重入性、可重入锁/不可重入锁<br>可重入锁又名递归锁，是指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁，不会因为之前已经获取过还没释放而阻塞。</p><p>Java中ReentrantLock和synchronized都是可重入锁，可重入锁的一个优点是可一定程度避免死锁。</p><p>到目前为止我还没有遇到过不可重入的锁，也想象不到不可重入锁的使用场景，因为不可重入锁大概率会出现死锁情况，所以貌似没有人会去实现不可重入锁。</p><p>独占性/共享性、互斥锁/读写锁<br>独享锁是指该锁一次只能被一个线程所持有。共享锁是指该锁可被多个线程所持有。这里主要是为了把一个操作掰成两个操作，一个读一个写，分别加不同粒度的锁，目的是实现在只有读的场景下的最大并发。</p><p>独享锁也叫互斥锁，读写锁等同于一个独享锁+一个共享锁，也叫一个写锁+读锁。读锁的共享锁可保证并发读是非常高效的，读写，写读，写写的过程是互斥的。</p><p>对于Java ReentrantLock而言，其是独享锁。但是对于Lock的另一个实现类ReadWriteLock，其读锁是共享锁，其写锁是独享锁。</p><p>对于Synchronized而言，当然是独享锁。</p><p>另外在synchronizd关键字的优化相关知识里面，会碰到 诸如 偏向锁/轻量级锁/自旋锁/适应性自旋锁/重量级锁 的概念，这些都是锁升级中的某些状态，除了重量级锁是锁外，其它要么不是锁，要么就是在成为锁的路上，这里不过多讨论，只需要记住只要是锁一定有上面三个特性就好。所以synchronized的全称应该叫 非公平的可重入的互斥悲观锁。同理，ReentrantLock 默认也是非公平的可重入的互斥悲观锁，当然ReentrantLock也可以实现 公平的可重入的互斥悲观锁。</p>]]></content>
       
       
       <categories>
@@ -3491,9 +3491,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> BaseShell </tag>
             
@@ -3555,9 +3555,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -3588,9 +3588,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -3648,9 +3648,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Linux </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> Shell </tag>
             
@@ -3712,9 +3712,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 工具控 </tag>
             
@@ -3772,9 +3772,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> Hexo </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> 工具控 </tag>
             
