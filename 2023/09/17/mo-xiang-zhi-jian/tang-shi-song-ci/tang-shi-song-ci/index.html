@@ -317,7 +317,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    152
+                    243
                 </div>
                 
 
@@ -348,11 +348,11 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <div class="card-container">
-  <div class="card">
-  山亭夏日 唐·高骈
-  <hr>
-  <p>绿树荫浓夏日长，楼台倒影入池塘。</p>
-  <p>水晶帘动微风起，满架蔷薇一院香。</p>
+  <div class="card back">
+    山亭夏日 唐·高骈
+    <hr>
+    <p>绿树荫浓夏日长，楼台倒影入池塘。</p>
+    <p>水晶帘动微风起，满架蔷薇一院香。</p>
   </div>
 </div>
 <style>
@@ -369,6 +369,21 @@
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.back {
+    background: linear-gradient(to right, #FFC3A0, #FFAFBD);
+}
+
+.card:hover {
+  background-color: #e3e3e3;
+}
+
+.card h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
 }
 
 .card p {
@@ -377,22 +392,44 @@
 }
 </style>
 <script>
-  // 获取卡片容器
-  const cardContainer = document.querySelector('.card-container');
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  do {
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+  } while (color === '#00FF00' || color === '#00FF80' || color === '#00FFBF' || color === '#00FFFF' || color === '#00BFFF'); // 排除绿色系列
 
-  // 获取所有卡片元素
-  const cards = Array.from(cardContainer.querySelectorAll('.card'));
+  return color;
+}
 
-  // 随机排序卡片顺序
-  cards.sort(() => Math.random() - 0.5);
+function isColorTooDark(color) {
+  var hex = color.replace('#', '');
+  var r = parseInt(hex.substring(0, 2), 16);
+  var g = parseInt(hex.substring(2, 4), 16);
+  var b = parseInt(hex.substring(4, 6), 16);
+  var brightness = (r *299 + g* 587 + b * 114) / 1000;
 
-  // 清空卡片容器
-  cardContainer.innerHTML = '';
+  return brightness < 128;
+}
 
-  // 将排序后的卡片重新添加到容器中
-  cards.forEach(card => {
-    cardContainer.appendChild(card);
-  });
+var backCards = document.getElementsByClassName('back');
+for (var i = 0; i < backCards.length; i++) {
+  var randomColor1 = getRandomColor();
+  var randomColor2 = getRandomColor();
+
+  while (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {
+    randomColor1 = getRandomColor();
+    randomColor2 = getRandomColor();
+  }
+
+  backCards[i].style.background = 'linear-gradient(to right, ' + randomColor1 + ', ' + randomColor2 + ')';
+
+  if (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {
+    backCards[i].style.color = '#333';
+  }
+}
 </script>
 
                 
@@ -967,7 +1004,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142k</span>
+                        class="white-color">142.3k</span>
             
             
             
