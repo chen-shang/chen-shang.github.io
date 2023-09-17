@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -278,12 +278,12 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
                             </a>
                         
                             <a href="/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/">
@@ -329,7 +329,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    135
+                    131
                 </div>
                 
 
@@ -363,27 +363,33 @@
 <ol>
 <li>通过vim查看</li>
 </ol>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:set fileencoding</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">:set fileencoding<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>即可显示文件编码格式。</p>
 <ol start="2">
 <li>通过 file 命令查看</li>
 </ol>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- file 文件名 --&gt;</span><br><span class="line">file application-common.properties</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span><span class="token operator">!</span>-- <span class="token function">file</span> 文件名 --<span class="token operator">&gt;</span>
+<span class="token function">file</span> application-common.properties<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>输出如下</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 文件名: Unicode text, UTF-8 text --&gt;</span><br><span class="line">application-common.properties: Unicode text, UTF-8 text</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span><span class="token operator">!</span>-- 文件名: Unicode text, UTF-8 text --<span class="token operator">&gt;</span>
+application-common.properties: Unicode text, UTF-8 text<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h1 id="文本如何进行编解码"><a class="markdownIt-Anchor" href="#文本如何进行编解码"></a> 文本如何进行编解码</h1>
 <h2 id="编码"><a class="markdownIt-Anchor" href="#编码"></a> 编码</h2>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">"17319271179"</span>|<span class="built_in">base64</span></span></span><br><span class="line">MTczMTkyNzExNzkK</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"17319271179"</span><span class="token operator">|</span>base64
+MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h2 id="解码"><a class="markdownIt-Anchor" href="#解码"></a> 解码</h2>
 <p>多了个<code>-d</code>参数</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">"MTczMTkyNzExNzkK"</span>|<span class="built_in">base64</span> -d</span></span><br><span class="line">17319271179</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"MTczMTkyNzExNzkK"</span><span class="token operator">|</span>base64 <span class="token parameter variable">-d</span>
+<span class="token number">17319271179</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h1 id="文件如何进行编解码"><a class="markdownIt-Anchor" href="#文件如何进行编解码"></a> 文件如何进行编解码</h1>
 <h2 id="编码-2"><a class="markdownIt-Anchor" href="#编码-2"></a> 编码</h2>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base64 -i 文件名</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 <span class="token parameter variable">-i</span> 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>例如</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">"17319271179"</span>&gt; a.txt</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash"><span class="built_in">base64</span> -i a.txt</span> </span><br><span class="line">MTczMTkyNzExNzkK</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> <span class="token builtin class-name">echo</span> <span class="token string">"17319271179"</span><span class="token operator">&gt;</span> a.txt
+<span class="token operator">&gt;</span> base64 <span class="token parameter variable">-i</span> a.txt 
+MTczMTkyNzExNzkK<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="解码-2"><a class="markdownIt-Anchor" href="#解码-2"></a> 解码</h2>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base64 -d 文件名</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">base64 <span class="token parameter variable">-d</span> 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -402,12 +408,12 @@
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                                 <a href="/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/">
@@ -856,12 +862,12 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
-                        <span class="chip bg-color">工具控</span>
-                    </a>
-                    
                     <a href="/tags/Hexo/">
                         <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
+                        <span class="chip bg-color">工具控</span>
                     </a>
                     
                 </div>

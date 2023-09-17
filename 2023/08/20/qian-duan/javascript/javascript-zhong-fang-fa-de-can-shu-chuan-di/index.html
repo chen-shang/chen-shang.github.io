@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -345,14 +345,29 @@
             <div id="articleContent">
                 <p>JavaScript 中 如果定义了一个无参的函数 ，我们仍然可以调用这个函数并传递参数给这个函数，在JavaScript 中这是允许的，而且不会报错。但是这在Java中确实不允许的，这一点可以对比一下。</p>
 <p>例如</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">echo</span>(<span class="params"></span>){</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"我执行了echo()"</span>)</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 你仍然可以调用而不用担心报错</span></span><br><span class="line"><span class="title function_">echo</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">function echo(){
+    console.log("我执行了echo()")
+}
+
+// 你仍然可以调用而不用担心报错
+echo(1,2,3,4)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这么是因为 你传递的参数其实是 放到了 函数 内部一个名叫 arguments 的方法 里面。我们可以在函数内部，使用 arguments 变量 依次取出 传递给 函数的 参数</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">echo</span>(<span class="params"></span>){</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">"我执行了echo() 第一个参数是:"</span>,<span class="variable language_">arguments</span>[<span class="number">0</span>])</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">function echo(){
+    console.log("我执行了echo() 第一个参数是:",arguments[0])
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>上面的函数是可以打印出传递的参数的，即使 函数没有显示的定义一个变量来接受参数</p>
 <p>这一点 和 shell 很像. 在 shell 里面, 定义一个函数，你可以传参也可以不传参，传参的话，一个参数就用 $1 取值，第二个参数就用 $2 取值，依次类推</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function echo(){</span><br><span class="line">  local param1=$1</span><br><span class="line">  local param2=$2</span><br><span class="line">  echo "${param1} and ${param2}"</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">echo "1" "2"</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">echo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">param1</span><span class="token operator">=</span><span class="token variable">$1</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">param2</span><span class="token operator">=</span><span class="token variable">$2</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${param1}</span> and <span class="token variable">${param2}</span>"</span>
+<span class="token punctuation">}</span>
+
+<span class="token builtin class-name">echo</span> <span class="token string">"1"</span> <span class="token string">"2"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>不过要注意一下 JavaScript 中对于箭头函数中，是没有办法 获取到 arguments 这个特殊变量的 ,因为 箭头函数这种写法其实是没有绑定一个实体的，他连this 都没有。不过可以使用 剩余参数的形式来间接实现</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">echo</span>=(<span class="params">...arg</span>)=&gt;{</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-JavaScript" data-language="JavaScript"><code class="language-JavaScript">const echo=(...arg)=&gt;{
+
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>不过，JavaScript 语法实在是太多而且太灵活了，一种形式可以有多种写法，而且还有原生和EMACScript等多种标准，学习每一种写法，不亚于重新学习了一门新的语言。</p>
 
                 

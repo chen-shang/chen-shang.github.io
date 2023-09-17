@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -317,7 +317,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    443
+                    444
                 </div>
                 
 
@@ -350,9 +350,12 @@
                 <p>如果使用高版本的JDK启动jar包的时候,可能会遇到一些莫名其妙的问题,所以Java当前吹的永远向前兼容的牛逼算是吹破了。今天我就遇到了.<br>
 一开我使用java -jar xxxxx.jar 启动的时候会报出一些JVM启动参数问题，觉得莫名其妙，命名本地可以启动，为什么到了服务器上就启动不了呢？<br>
 于是第一时间想到了查看一下java的版本</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@xr-travelse-arm-vm01:~# java -version</span><br><span class="line">openjdk version "11.0.4" 2019-07-16</span><br><span class="line">OpenJDK Runtime Environment (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mode)</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">root@xr-travelse-arm-vm01:~# java -version
+openjdk version "11.0.4" 2019-07-16
+OpenJDK Runtime Environment (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3)
+OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mode)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>结果发现居然装的是java 11. 这个版本我们生产环境从未用过，本想正重装Java8来解决，但是难道以后都不升级了么，所以这个问题一定要弄明白，于是乎goole了一下发现java8 以后的jvm虚拟机去掉了好几个jvm配置参数，那是因为jdk8以后版本的jvm开始做减法了，去掉了一些功能.例如 配置</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#local JVM_HEAP="-XX:NewRatio=1 -XX:SurvivorRatio=8 -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m -XX:+HeapDumpOnOutOfMemoryError -XX:ReservedCodeCacheSize=64m -XX:InitialCodeCacheSize=64m"</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">#local JVM_HEAP="-XX:NewRatio=1 -XX:SurvivorRatio=8 -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m -XX:+HeapDumpOnOutOfMemoryError -XX:ReservedCodeCacheSize=64m -XX:InitialCodeCacheSize=64m"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>配置这些在java8中是没问题的，但是配置在java11中会导致服务启动不了。因为有些参数已经废弃掉了，或者改用了其他的方式来配置。</p>
 <p>另外，还会出现一个现象，就是引用启动没有问题，但是程序就是运行不了，而且不打印异常堆栈信息，这你怎么排查！！！我没办法只要远程调试，断点执行，才发现一个异常。<br>
 最后还是使用java8吧先，有时间在研究java11.</p>

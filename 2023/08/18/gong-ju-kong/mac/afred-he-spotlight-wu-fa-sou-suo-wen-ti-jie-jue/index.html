@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -313,7 +313,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    152
+                    154
                 </div>
                 
 
@@ -348,11 +348,15 @@
 但是在Alfred内使用重建功能时报错。
 <p>既然Alfred帮我们建立不了，那我自己手工去重建 Spotlight 的索引让它使用就好了。</p>
 <p>我们进入到  Alfred 的安装目录下，这里面有对应的重建索引的脚本</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /Applications/Alfred 5.app/Contents/Frameworks/Alfred Framework.framework/Versions/A/Resources</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /Applications/Alfred <span class="token number">5</span>.app/Contents/Frameworks/Alfred Framework.framework/Versions/A/Resources<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>脚本分别是</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sh reindex.sh</span><br><span class="line">sh reindexdel.sh</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sh reindex.sh
+sh reindexdel.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>如果遇到  <code>Spotlight server is disabled.</code> 这种报错</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist</span><br><span class="line">sudo mdutil -i off /</span><br><span class="line">sudo mdutil -E /</span><br><span class="line">sudo mdutil -i on /</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist
+sudo mdutil -i off /
+sudo mdutil -E /
+sudo mdutil -i on /<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>提示 Indexing enabled. 即可。然后在重新执行重建索引命令</p>
 
                 

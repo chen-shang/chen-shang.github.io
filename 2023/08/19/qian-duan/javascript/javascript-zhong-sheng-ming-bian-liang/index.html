@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -346,13 +346,13 @@
                 <h1 id="在javascript中声明变量的三种方式"><a class="markdownIt-Anchor" href="#在javascript中声明变量的三种方式"></a> 在JavaScript中声明变量的三种方式</h1>
 <p>在JavaScript中，可以使用关键字var、let或const来声明变量。<br>
 使用var关键字声明变量：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myVariable = <span class="number">10</span>;</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> myVariable <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这将创建一个名为myVariable的变量并将其初始化为10。使用var声明的变量是函数作用域的，意味着它们只在声明它们的函数内部可见。</p>
 <p>使用let关键字声明变量：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myVariable = <span class="number">10</span>;</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> myVariable <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>与var不同，使用let声明的变量是块级作用域的，意味着它们只在声明它们的块（例如，if语句或循环）内部可见。</p>
 <p>使用const关键字声明常量：</p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> myConstant = <span class="number">10</span>;</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> myConstant <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>使用const声明的变量是常量，不可以重新赋值。一旦初始化，它们的值将保持不变。</p>
 <p>注意：在ECMAScript 6（ES6）中引入了let和const关键字。如果您的项目是基于ES6或更高版本的JavaScript，建议使用let和const来声明变量，因为它们提供了更好的作用域规则和不可变性。</p>
 <h1 id="var-let-const-的区别"><a class="markdownIt-Anchor" href="#var-let-const-的区别"></a> var | let | const 的区别</h1>

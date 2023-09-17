@@ -6,7 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="重写设计模式-用λ实现单例模式, IT,技术,总结">
     <meta name="description" content="DCL 单例 用λ表达式来实现
-1234567891011121314151617import java.util.Optional;public class Singleton{  //1. 构造方法私有化  //2. 持有自身的静态引用">
+import java.util.Optional;
+
+public class Singleton{
+  //1. 构造方法私有化
+  //2. 持有自身的静态引用
+  //3. 提供获取自身静态引用的公有">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -51,7 +56,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -345,7 +350,23 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>DCL 单例 用λ表达式来实现</p>
-<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Optional;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton</span>{</span><br><span class="line">  <span class="comment">//1. 构造方法私有化</span></span><br><span class="line">  <span class="comment">//2. 持有自身的静态引用</span></span><br><span class="line">  <span class="comment">//3. 提供获取自身静态引用的公有静态方法</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">Singleton</span><span class="params">()</span>{}</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">volatile</span> Singleton singleton;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title function_">getInstance</span><span class="params">()</span>{</span><br><span class="line">     <span class="keyword">return</span> Optional.ofNullable(singleton).orElseGet(()-&gt;{</span><br><span class="line">       <span class="keyword">synchronized</span>(Singleton.class){</span><br><span class="line">         <span class="keyword">return</span> Optional.ofNullable(singleton).orElse(<span class="keyword">new</span> <span class="title class_">Singleton</span>());</span><br><span class="line">       }</span><br><span class="line">     });</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">import java.util.Optional;
+
+public class Singleton{
+  //1. 构造方法私有化
+  //2. 持有自身的静态引用
+  //3. 提供获取自身静态引用的公有静态方法
+
+  private Singleton(){}
+  private static volatile Singleton singleton;
+  public static Singleton getInstance(){
+     return Optional.ofNullable(singleton).orElseGet(()-&gt;{
+       synchronized(Singleton.class){
+         return Optional.ofNullable(singleton).orElse(new Singleton());
+       }
+     });
+  }
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>

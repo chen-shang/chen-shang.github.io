@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -362,7 +362,21 @@
                 <h1 id="简介"><a class="markdownIt-Anchor" href="#简介"></a> 简介</h1>
 <p>volatile 这个单词一定要能够拼写正确 v-o-l-a-t-i-l-e ，因为我相信你在写代码的时候肯定没有经常用到它。还有一个最长的关键字叫 synchronized 。</p>
 <p>volatile 的中文翻译</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"translation"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">"挥发性"</span></span><br><span class="line">  <span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">"basic"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"us-phonetic"</span><span class="punctuation">:</span> <span class="string">"ˈvɑːlətl"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"phonetic"</span><span class="punctuation">:</span> <span class="string">"ˈvɒlətaɪl"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"uk-phonetic"</span><span class="punctuation">:</span> <span class="string">"ˈvɒlətaɪl"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"explains"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">      <span class="string">"n. 挥发物；有翅的动物"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"adj. [化学] 挥发性的；不稳定的；爆炸性的；反复无常的"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="string">"n. (Volatile)人名；(意)沃拉蒂莱"</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"translation"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"挥发性"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"basic"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"us-phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɑːlətl"</span><span class="token punctuation">,</span>
+    <span class="token property">"phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɒlətaɪl"</span><span class="token punctuation">,</span>
+    <span class="token property">"uk-phonetic"</span><span class="token operator">:</span> <span class="token string">"ˈvɒlətaɪl"</span><span class="token punctuation">,</span>
+    <span class="token property">"explains"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"n. 挥发物；有翅的动物"</span><span class="token punctuation">,</span>
+      <span class="token string">"adj. [化学] 挥发性的；不稳定的；爆炸性的；反复无常的"</span><span class="token punctuation">,</span>
+      <span class="token string">"n. (Volatile)人名；(意)沃拉蒂莱"</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到是挥发性，也可以理解为易失性。容易失去它，为什么这么说呢?因为被volatile修饰的变量在多线程或者多核cpu中，只要一个线程或cpu修改了它的值，那在其他线程或cpu里面就失去了它，如果还想获取到它，就不得不去指定的内存地址里面在去找它。<br>
 所以这个字段修饰的变量一定要被多线程访问才行，否则修饰它就没有意义了。编译器在编译的时候就有可能帮你吧这个修饰符自动给去掉。所以单线程里面我们一般不用volatile关键字修饰变量，因为你修饰了也没用。由此建议写代码的时候审视一下是不是该用volatile关键字修饰，关键在于这个变量是不是多线程共享的，另外就算是多线程共享的也不一定要被volatile修饰，例如引用变量，只要引用变量的初始化不是在多个线程里面都写一份就不需要修饰了。</p>
 <h1 id="怎么实现"><a class="markdownIt-Anchor" href="#怎么实现"></a> 怎么实现</h1>

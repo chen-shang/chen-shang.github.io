@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -278,12 +278,12 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                             <a href="/tags/Linux/">
                                 <span class="chip bg-color">Linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
                             </a>
                         
                             <a href="/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/">
@@ -329,7 +329,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    719
+                    726
                 </div>
                 
 
@@ -366,7 +366,55 @@
 <h2 id="mac"><a class="markdownIt-Anchor" href="#mac"></a> Mac</h2>
 <p><code>brew install jq</code></p>
 <h1 id="使用"><a class="markdownIt-Anchor" href="#使用"></a> 使用</h1>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">&gt; jq -h</span><br><span class="line"></span><br><span class="line">jq - commandline JSON processor [version 1.6]</span><br><span class="line"></span><br><span class="line">Usage:	jq [options] &lt;jq filter&gt; [file...]</span><br><span class="line">	jq [options] --args &lt;jq filter&gt; [strings...]</span><br><span class="line">	jq [options] --jsonargs &lt;jq filter&gt; [JSON_TEXTS...]</span><br><span class="line"></span><br><span class="line">jq is a tool for processing JSON inputs, applying the given filter to</span><br><span class="line">its JSON text inputs and producing the filter's results as JSON on</span><br><span class="line">standard output.</span><br><span class="line"></span><br><span class="line">The simplest filter is ., which copies jq's input to its output</span><br><span class="line">unmodified (except for formatting, but note that IEEE754 is used</span><br><span class="line">for number representation internally, with all that that implies).</span><br><span class="line"></span><br><span class="line">For more advanced filters see the jq(1) manpage ("man jq")</span><br><span class="line">and/or https://stedolan.github.io/jq</span><br><span class="line"></span><br><span class="line">Example:</span><br><span class="line"></span><br><span class="line">	$ echo '{"foo": 0}' | jq .</span><br><span class="line">	{</span><br><span class="line">		"foo": 0</span><br><span class="line">	}</span><br><span class="line"></span><br><span class="line">Some of the options include:</span><br><span class="line">  -c               compact instead of pretty-printed output;</span><br><span class="line">  -n               use `null` as the single input value;</span><br><span class="line">  -e               set the exit status code based on the output;</span><br><span class="line">  -s               read (slurp) all inputs into an array; apply filter to it;</span><br><span class="line">  -r               output raw strings, not JSON texts;</span><br><span class="line">  -R               read raw strings, not JSON texts;</span><br><span class="line">  -C               colorize JSON;</span><br><span class="line">  -M               monochrome (don't colorize JSON);</span><br><span class="line">  -S               sort keys of objects on output;</span><br><span class="line">  --tab            use tabs for indentation;</span><br><span class="line">  --arg a v        set variable $a to value &lt;v&gt;;</span><br><span class="line">  --argjson a v    set variable $a to JSON value &lt;v&gt;;</span><br><span class="line">  --slurpfile a f  set variable $a to an array of JSON texts read from &lt;f&gt;;</span><br><span class="line">  --rawfile a f    set variable $a to a string consisting of the contents of &lt;f&gt;;</span><br><span class="line">  --args           remaining arguments are string arguments, not files;</span><br><span class="line">  --jsonargs       remaining arguments are JSON arguments, not files;</span><br><span class="line">  --               terminates argument processing;</span><br><span class="line"></span><br><span class="line">Named arguments are also available as $ARGS.named[], while</span><br><span class="line">positional arguments are available as $ARGS.positional[].</span><br><span class="line"></span><br><span class="line">See the manpage for more options.</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">&gt; jq -h
+
+jq - commandline JSON processor [version 1.6]
+
+Usage:	jq [options] &lt;jq filter&gt; [file...]
+	jq [options] --args &lt;jq filter&gt; [strings...]
+	jq [options] --jsonargs &lt;jq filter&gt; [JSON_TEXTS...]
+
+jq is a tool for processing JSON inputs, applying the given filter to
+its JSON text inputs and producing the filter's results as JSON on
+standard output.
+
+The simplest filter is ., which copies jq's input to its output
+unmodified (except for formatting, but note that IEEE754 is used
+for number representation internally, with all that that implies).
+
+For more advanced filters see the jq(1) manpage ("man jq")
+and/or https://stedolan.github.io/jq
+
+Example:
+
+	$ echo '{"foo": 0}' | jq .
+	{
+		"foo": 0
+	}
+
+Some of the options include:
+  -c               compact instead of pretty-printed output;
+  -n               use `null` as the single input value;
+  -e               set the exit status code based on the output;
+  -s               read (slurp) all inputs into an array; apply filter to it;
+  -r               output raw strings, not JSON texts;
+  -R               read raw strings, not JSON texts;
+  -C               colorize JSON;
+  -M               monochrome (don't colorize JSON);
+  -S               sort keys of objects on output;
+  --tab            use tabs for indentation;
+  --arg a v        set variable $a to value &lt;v&gt;;
+  --argjson a v    set variable $a to JSON value &lt;v&gt;;
+  --slurpfile a f  set variable $a to an array of JSON texts read from &lt;f&gt;;
+  --rawfile a f    set variable $a to a string consisting of the contents of &lt;f&gt;;
+  --args           remaining arguments are string arguments, not files;
+  --jsonargs       remaining arguments are JSON arguments, not files;
+  --               terminates argument processing;
+
+Named arguments are also available as $ARGS.named[], while
+positional arguments are available as $ARGS.positional[].
+
+See the manpage for more options.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>需要说明的是 jq 只能接受 well form 的 JSON 字符串作为输入内容。也就是说输入内容必须严格遵循 JSON 格式的标准。所有的属性名必须是以双引号包括的字符串。对象的最后一个属性的末尾或者数组的最后一个元素的末尾不能有逗号。否则 jq 会抛出无法解析 JSON 的错误。</p>
 <h2 id="官方使用手册"><a class="markdownIt-Anchor" href="#官方使用手册"></a> 官方使用手册</h2>
 <p><a target="_blank" rel="noopener" href="https://stedolan.github.io/jq/manual/">https://stedolan.github.io/jq/manual/</a></p>
@@ -377,12 +425,14 @@
 <blockquote>
 <p>使用 <code>-r</code> 参数</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo '{"foo": 42, "bar": "less interesting data"}'|jq -r .bar</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-commandline" data-language="commandline"><code class="language-commandline">echo '{"foo": 42, "bar": "less interesting data"}'|jq -r .bar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <center>
   <img src="/2021/08/04/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-jq/jq1.jpg">
 </center>
 2. request_timestamp/0 is not defined at <top-level>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jq: error: request_timestamp/0 is not defined at &lt;top-level&gt;, line 1:</span><br><span class="line">request_timestamp</span><br><span class="line">jq: 1 compile error</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">jq: error: request_timestamp/0 is not defined at &lt;top-level&gt;, line 1:
+request_timestamp
+jq: 1 compile error<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 &gt; 解决方法:  local subJson=$(echo "${json}"|jq ".\"${key}\"") 用引号包裹
 </top-level>
                 
@@ -402,12 +452,12 @@
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
                                 <a href="/tags/Linux/">
                                     <span class="chip bg-color">Linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                                 <a href="/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/">
@@ -799,12 +849,12 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
-                    </a>
-                    
                     <a href="/tags/Linux/">
                         <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>

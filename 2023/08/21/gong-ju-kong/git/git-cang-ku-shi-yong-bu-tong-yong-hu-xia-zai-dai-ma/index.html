@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -321,7 +321,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    190
+                    194
                 </div>
                 
 
@@ -352,7 +352,14 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <img src="/2023/08/21/gong-ju-kong/git/git-cang-ku-shi-yong-bu-tong-yong-hu-xia-zai-dai-ma/image1.png">
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">git clone https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.git</span><br><span class="line">Cloning into 'mod300004223'...</span><br><span class="line">Username for 'https://git-demo.flydiysz.cn': chenxiaoshang</span><br><span class="line">Password for 'https://chenxiaoshang@git-demo.flydiysz.cn':</span><br><span class="line">remote: HTTP Basic: Access denied</span><br><span class="line">fatal: Authentication failed for 'https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.git/'</span><br><span class="line">chenshang@192.168.1.210:~/Work/Fly$ git clone https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.git</span><br><span class="line">Cloning into 'mod300004223'...</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.git
+Cloning into <span class="token string">'mod300004223'</span><span class="token punctuation">..</span>.
+Username <span class="token keyword">for</span> <span class="token string">'https://git-demo.flydiysz.cn'</span><span class="token builtin class-name">:</span> chenxiaoshang
+Password <span class="token keyword">for</span> <span class="token string">'https://chenxiaoshang@git-demo.flydiysz.cn'</span><span class="token builtin class-name">:</span>
+remote: HTTP Basic: Access denied
+fatal: Authentication failed <span class="token keyword">for</span> <span class="token string">'https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.git/'</span>
+chenshang@192.168.1.210:~/Work/Fly$ <span class="token function">git</span> clone https://git-demo.flydiysz.cn/autoapp-demo-repo/vw3mq0dto6/mod300004223.git
+Cloning into <span class="token string">'mod300004223'</span><span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这个问题通常是由于凭据缓存导致的。在 MacOS 上，Git 会使用系统中的凭据缓存，这可能导致在使用不同用户克隆代码时出现访问被拒绝的问题。</p>
 <p>清除凭据缓存：</p>
 <p>打开“钥匙串访问”应用程序。<br>

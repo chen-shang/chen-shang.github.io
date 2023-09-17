@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -321,7 +321,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    83
+                    82
                 </div>
                 
 
@@ -353,11 +353,22 @@
             <div id="articleContent">
                 <p>通过 jq 工具可以把 一段 json 数组 转换成 cvs , 然后就能用 excel 工具打开了。</p>
 <p>参考 <a target="_blank" rel="noopener" href="https://jqlang.github.io/jq/manual/">https://jqlang.github.io/jq/manual/</a></p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">        <span class="attr">"name"</span><span class="punctuation">:</span> <span class="string">"Alice"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"age"</span><span class="punctuation">:</span> <span class="number">25</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"location"</span><span class="punctuation">:</span> <span class="string">"City A"</span></span><br><span class="line">    <span class="punctuation">}</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">{</span></span><br><span class="line">        <span class="attr">"name"</span><span class="punctuation">:</span> <span class="string">"Bob"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"age"</span><span class="punctuation">:</span> <span class="number">30</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"location"</span><span class="punctuation">:</span> <span class="string">"City B"</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span>
+        <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
+        <span class="token property">"location"</span><span class="token operator">:</span> <span class="token string">"City A"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Bob"</span><span class="token punctuation">,</span>
+        <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
+        <span class="token property">"location"</span><span class="token operator">:</span> <span class="token string">"City B"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>保存到文件  data.json 中</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jq -r '.[] | [.name, .age, .location] | @csv' data.json &gt; output.csv</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jq <span class="token parameter variable">-r</span> <span class="token string">'.[] | [.name, .age, .location] | @csv'</span> data.json <span class="token operator">&gt;</span> output.csv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>或者</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat text.json  | jq -r '.[] | [.name, .age] | @csv' &gt; output.csv</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> text.json  <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.[] | [.name, .age] | @csv'</span> <span class="token operator">&gt;</span> output.csv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>

@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -317,7 +317,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    705
+                    700
                 </div>
                 
 
@@ -349,7 +349,7 @@
             <div id="articleContent">
                 <h1 id="跳转到目标网站"><a class="markdownIt-Anchor" href="#跳转到目标网站"></a> 跳转到目标网站</h1>
 <p>语法 : [链接文本](链接URL)</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Linux终端生存之道-网络小工具</span>](<span class="link">https://chen-shang.github.io/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url">[<span class="token content">Linux终端生存之道-网络小工具</span>](<span class="token url">https://chen-shang.github.io/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>长下面这个样子<br>
 <a href="https://chen-shang.github.io/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/">Linux终端生存之道-网络小工具</a><br>
 <a id="section1"></a></p>
@@ -357,7 +357,7 @@
 <p>Markdown本身并没有提供一种直接的方式来去掉链接文本下的下划线。这是因为Markdown的设计初衷是提供一种简单且易读的标记语言，而不是提供复杂的样式控制。<br>
 直接写<code>&lt;a&gt;</code>标签实现<br>
 语法 : &lt;a href="链接URL" style="text-decoration:none;"&gt;链接文本&lt;/a&gt;</p>
-<figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/"</span> <span class="attr">style</span>=<span class="string">"text-decoration:none;"</span>&gt;</span>Linux终端生存之道-网络小工具<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">text-decoration</span><span class="token punctuation">:</span>none<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>Linux终端生存之道-网络小工具<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>长下面这个样子<br>
 <a href="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/" style="text-decoration:none;">Linux终端生存之道-网络小工具</a></p>
 <h1 id="跳转到目标网站的目标章节"><a class="markdownIt-Anchor" href="#跳转到目标网站的目标章节"></a> 跳转到目标网站的目标章节</h1>
@@ -373,17 +373,25 @@
 <p>然后在在另一篇文章中，按照如下写跳转链接，注意最后加上 <code>#section1</code></p>
 </li>
 </ol>
-<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">Linux终端生存之道-网络小工具-dig</span>](<span class="link">/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/#section1</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url">[<span class="token content">Linux终端生存之道-网络小工具-dig</span>](<span class="token url">/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/#section1</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>连接如下,点击查看效果<br>
 <a href="/2023/08/09/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-wang-luo-xiao-gong-ju/#section1">Linux终端生存之道-网络小工具-dig</a></p>
 <h1 id="跳转到当前页面的目标章节"><a class="markdownIt-Anchor" href="#跳转到当前页面的目标章节"></a> 跳转到当前页面的目标章节</h1>
 <p>刚才是跳转到了其他页面的目标章节，如果想要在当前页面实现跳转呢?<br>
 Markdown本身并没有提供一种直接的方式在当前页面中实现跳转到目标章节而不打开新的页面。Markdown是一种标记语言，主要用于文本的格式化和排版，并不支持页面内部的交互功能。</p>
 <p>如果这么写</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">跳转到第一部分</span>](<span class="link">#section1</span>)</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-markdown" data-language="markdown"><code class="language-markdown"><span class="token url">[<span class="token content">跳转到第一部分</span>](<span class="token url">#section1</span>)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>每次都会打开一个新的页面，其实不是我们想要的效果，这时候只能 上  JavaScript 代码了。</p>
 <p>示例：<a href="#section1">跳转到第一部分-每次都会打开一个新的页面</a></p>
-<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"#section1"</span> onclick=<span class="string">"scrollToSection('#section1'); return false;"</span>&gt;跳转到第一部分&lt;/a&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="keyword">function</span> <span class="title function_">scrollToSection</span>(<span class="params">sectionId</span>) {</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">var</span> section = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(sectionId);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">if</span> (section) {</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      section.<span class="title function_">scrollIntoView</span>({ <span class="attr">behavior</span>: <span class="string">'smooth'</span> });</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    }</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  }</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>a href<span class="token operator">=</span><span class="token string">"#section1"</span> onclick<span class="token operator">=</span><span class="token string">"scrollToSection('#section1'); return false;"</span><span class="token operator">&gt;</span>跳转到第一部分<span class="token operator">&lt;</span><span class="token operator">/</span>a<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+  <span class="token keyword">function</span> <span class="token function">scrollToSection</span><span class="token punctuation">(</span><span class="token parameter">sectionId</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> section <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span>sectionId<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>section<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      section<span class="token punctuation">.</span><span class="token function">scrollIntoView</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">behavior</span><span class="token operator">:</span> <span class="token string">'smooth'</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>还是先插入锚点<br>
 <img src="/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/iShot_2023-09-02_17.12.14.jpg" alt=""></p>
 <p>然后在文章的结尾加上 上面的script 代码<br>

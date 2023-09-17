@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -329,7 +329,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    371
+                    384
                 </div>
                 
 
@@ -360,9 +360,86 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>归并排序采用的是分治的思想。归就是归纳,并就是合并。</p>
-<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">main(){</span><br><span class="line">  local array=(1 3 5 7 9 2 4 6 8 0 7 9 2 4)</span><br><span class="line">  sort "0" "${#array[@]}"</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">function sort(){</span><br><span class="line">    local low=$1</span><br><span class="line">    local high=$2</span><br><span class="line"></span><br><span class="line">    if [[ ${low} -ge  ${high} ]] ; then</span><br><span class="line">      return</span><br><span class="line">    fi</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    local mid=$(($((low+high))/2))</span><br><span class="line"></span><br><span class="line">    sort ${low} ${mid}</span><br><span class="line">    sort $((mid+1)) ${high}</span><br><span class="line">    merge ${low} ${mid} ${high}</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">function merge(){</span><br><span class="line">  local low=$1</span><br><span class="line">  local mid=$2</span><br><span class="line">  local high=$3</span><br><span class="line"></span><br><span class="line">  local i=${low}</span><br><span class="line">  local j=$((mid+1))</span><br><span class="line">  local tmp=();</span><br><span class="line"></span><br><span class="line">  local k=0;</span><br><span class="line">  while [[ ${i} -le ${mid} ]] &amp;&amp; [[ ${j} -le ${high} ]];do</span><br><span class="line">    if [[ ${array[i]} -lt ${array[j]} ]];then</span><br><span class="line">        tmp[k]=${array[i]}</span><br><span class="line">        let k++;</span><br><span class="line">        let i++;</span><br><span class="line">    else</span><br><span class="line">       tmp[k]=${array[j]}</span><br><span class="line">       let k++;</span><br><span class="line">       let j++;</span><br><span class="line">    fi</span><br><span class="line">  done</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  while [[ ${i} -le ${mid} ]];do</span><br><span class="line">        tmp[k]=${array[i]}</span><br><span class="line">        let k++;</span><br><span class="line">        let i++;</span><br><span class="line">  done</span><br><span class="line"></span><br><span class="line">  while [[ ${j} -le ${high} ]];do</span><br><span class="line">        tmp[k]=${array[j]}</span><br><span class="line">        let k++;</span><br><span class="line">        let j++;</span><br><span class="line">  done</span><br><span class="line"></span><br><span class="line">  for((l=0;l&lt;k;l++));do</span><br><span class="line">        index=$((low + l))</span><br><span class="line">        array[$index]=${tmp[$l]}</span><br><span class="line">  done</span><br><span class="line"></span><br><span class="line">  echo ${array[*]}</span><br><span class="line">}</span><br><span class="line">main</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">array</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token number">3</span> <span class="token number">5</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token number">2</span> <span class="token number">4</span> <span class="token number">6</span> <span class="token number">8</span> <span class="token number">0</span> <span class="token number">7</span> <span class="token number">9</span> <span class="token number">2</span> <span class="token number">4</span><span class="token punctuation">)</span>
+  <span class="token function">sort</span> <span class="token string">"0"</span> <span class="token string">"<span class="token variable">${<span class="token operator">#</span>array<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function-name function">sort</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">low</span><span class="token operator">=</span><span class="token variable">$1</span>
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">high</span><span class="token operator">=</span><span class="token variable">$2</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${low}</span> <span class="token parameter variable">-ge</span>  <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token punctuation">;</span> <span class="token keyword">then</span>
+      <span class="token builtin class-name">return</span>
+    <span class="token keyword">fi</span>
+
+
+    <span class="token builtin class-name">local</span> <span class="token assign-left variable">mid</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span><span class="token variable">$((</span>low<span class="token operator">+</span>high<span class="token variable">))</span></span>/2<span class="token punctuation">))</span>
+
+    <span class="token function">sort</span> <span class="token variable">${low}</span> <span class="token variable">${mid}</span>
+    <span class="token function">sort</span> <span class="token variable"><span class="token variable">$((</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span> <span class="token variable">${high}</span>
+    merge <span class="token variable">${low}</span> <span class="token variable">${mid}</span> <span class="token variable">${high}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">function</span> <span class="token function-name function">merge</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">low</span><span class="token operator">=</span><span class="token variable">$1</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">mid</span><span class="token operator">=</span><span class="token variable">$2</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">high</span><span class="token operator">=</span><span class="token variable">$3</span>
+
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token variable">${low}</span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">j</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token variable">))</span></span>
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token builtin class-name">local</span> <span class="token assign-left variable">k</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-le</span> <span class="token variable">${mid}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-le</span> <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>
+    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span> <span class="token parameter variable">-lt</span> <span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">then</span>
+        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>
+        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>
+        <span class="token builtin class-name">let</span> i++<span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+       tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span>
+       <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>
+       <span class="token builtin class-name">let</span> j++<span class="token punctuation">;</span>
+    <span class="token keyword">fi</span>
+  <span class="token keyword">done</span>
+
+
+  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${i}</span> <span class="token parameter variable">-le</span> <span class="token variable">${mid}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>
+        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>i<span class="token punctuation">]</span>}</span>
+        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>
+        <span class="token builtin class-name">let</span> i++<span class="token punctuation">;</span>
+  <span class="token keyword">done</span>
+
+  <span class="token keyword">while</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">${j}</span> <span class="token parameter variable">-le</span> <span class="token variable">${high}</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">do</span>
+        tmp<span class="token punctuation">[</span>k<span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${array<span class="token punctuation">[</span>j<span class="token punctuation">]</span>}</span>
+        <span class="token builtin class-name">let</span> k++<span class="token punctuation">;</span>
+        <span class="token builtin class-name">let</span> j++<span class="token punctuation">;</span>
+  <span class="token keyword">done</span>
+
+  <span class="token keyword">for</span><span class="token variable"><span class="token punctuation">((</span>l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>l<span class="token operator">&lt;</span>k<span class="token punctuation">;</span>l<span class="token operator">++</span><span class="token punctuation">))</span></span><span class="token punctuation">;</span><span class="token keyword">do</span>
+        <span class="token assign-left variable">index</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>low <span class="token operator">+</span> l<span class="token variable">))</span></span>
+        array<span class="token punctuation">[</span><span class="token variable">$index</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">${tmp<span class="token punctuation">[</span>$l<span class="token punctuation">]</span>}</span>
+  <span class="token keyword">done</span>
+
+  <span class="token builtin class-name">echo</span> <span class="token variable">${array<span class="token punctuation">[</span>*<span class="token punctuation">]</span>}</span>
+<span class="token punctuation">}</span>
+main<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>运行最后结果如下</p>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1 3 5 7 9 2 4 6 8 0 7 9 2 4</span><br><span class="line">1 3 5 7 9 2 4 6 8 0 7 9 2 4</span><br><span class="line">1 3 5 7 9 2 4 6 8 0 7 9 2 4</span><br><span class="line">1 3 5 7 2 9 4 6 8 0 7 9 2 4</span><br><span class="line">1 3 5 7 2 9 4 6 8 0 7 9 2 4</span><br><span class="line">1 3 5 7 2 4 6 9 8 0 7 9 2 4</span><br><span class="line">1 2 3 4 5 6 7 9 8 0 7 9 2 4</span><br><span class="line">1 2 3 4 5 6 7 9 0 8 7 9 2 4</span><br><span class="line">1 2 3 4 5 6 7 9 0 8 7 9 2 4</span><br><span class="line">1 2 3 4 5 6 7 9 0 7 8 9 2 4</span><br><span class="line">1 2 3 4 5 6 7 9 0 7 8 9 2 4</span><br><span class="line">1 2 3 4 5 6 7 9 0 7 8 9 2 4</span><br><span class="line">1 2 3 4 5 6 7 9 0 2 4 7 8 9</span><br><span class="line">0 1 2 2 3 4 4 5 6 7 7 8 9 9</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">1 3 5 7 9 2 4 6 8 0 7 9 2 4
+1 3 5 7 9 2 4 6 8 0 7 9 2 4
+1 3 5 7 9 2 4 6 8 0 7 9 2 4
+1 3 5 7 2 9 4 6 8 0 7 9 2 4
+1 3 5 7 2 9 4 6 8 0 7 9 2 4
+1 3 5 7 2 4 6 9 8 0 7 9 2 4
+1 2 3 4 5 6 7 9 8 0 7 9 2 4
+1 2 3 4 5 6 7 9 0 8 7 9 2 4
+1 2 3 4 5 6 7 9 0 8 7 9 2 4
+1 2 3 4 5 6 7 9 0 7 8 9 2 4
+1 2 3 4 5 6 7 9 0 7 8 9 2 4
+1 2 3 4 5 6 7 9 0 7 8 9 2 4
+1 2 3 4 5 6 7 9 0 2 4 7 8 9
+0 1 2 2 3 4 4 5 6 7 7 8 9 9<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>

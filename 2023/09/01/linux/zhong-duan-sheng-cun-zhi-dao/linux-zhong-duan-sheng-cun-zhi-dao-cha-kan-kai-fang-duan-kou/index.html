@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -360,10 +360,86 @@
 <p><img src="/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/2023-09-02_010434.jpg" alt="telnet 和 nc 工具对比使用: 远程访问"></p>
 <h3 id="telnet-命令"><a class="markdownIt-Anchor" href="#telnet-命令"></a> telnet 命令</h3>
 <p>telnet 命令 的可选参数</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">telnet [-468EFKLNacdfruxy] [-S tos] [-X authtype] [-e escapechar] [-k realm] [-l user] [-n tracefile] [-s src_addr] [host</span><br><span class="line">           [port]]</span><br><span class="line">    -4      Forces telnet to use IPv4 addresses only.</span><br><span class="line">    -6      Forces telnet to use IPv6 addresses only.</span><br><span class="line">    -8      Specifies an 8-bit data path.  This causes an attempt to negotiate the TELNET BINARY option on both input and</span><br><span class="line">            output.</span><br><span class="line">    -E      Stops any character from being recognized as an escape character.</span><br><span class="line">    -F      If Kerberos V5 authentication is being used, the -F option allows the local credentials to be forwarded to the</span><br><span class="line">            remote system, including any credentials that have already been forwarded into the local environment.</span><br><span class="line">    -K      Specifies no automatic login to the remote system.</span><br><span class="line">    -L      Specifies an 8-bit data path on output.  This causes the BINARY option to be negotiated on output.</span><br><span class="line">    -N      Prevents IP address to name lookup when destination host is given as an IP address.</span><br><span class="line">    -S tos  Sets the IP type-of-service (TOS) option for the telnet connection to the value tos, which can be a numeric TOS</span><br><span class="line">            value or, on systems that support it, a symbolic TOS name found in the /etc/iptos file.</span><br><span class="line">    -X atype</span><br><span class="line">            Disables the atype type of authentication.</span><br><span class="line">    -a      Attempt automatic login.  This is now the default, so this option is ignored.  Currently, this sends the user name</span><br><span class="line">            via the USER variable of the ENVIRON option if supported by the remote system.  The name used is that of the</span><br><span class="line">            current user as returned by getlogin(2) if it agrees with the current user ID, otherwise it is the name associated</span><br><span class="line">            with the user ID.</span><br><span class="line">    -c      Disables the reading of the user's .telnetrc file.  (See the toggle skiprc command on this man page.)</span><br><span class="line">    -d      Sets the initial value of the debug toggle to TRUE.</span><br><span class="line">    -e escapechar</span><br><span class="line">            Sets the initial telnet escape character to escapechar.  If escapechar is omitted, then there will be no escape</span><br><span class="line">            character.</span><br><span class="line">    -f      If Kerberos V5 authentication is being used, the -f option allows the local credentials to be forwarded to the</span><br><span class="line">            remote system.</span><br><span class="line">    -k realm</span><br><span class="line">            If Kerberos authentication is being used, the -k option requests that telnet obtain tickets for the remote host in</span><br><span class="line">            realm realm instead of the remote host's realm, as determined by krb_realmofhost(3).</span><br><span class="line">    -l user</span><br><span class="line">            When connecting to the remote system, if the remote system understands the ENVIRON option, then user will be sent</span><br><span class="line">            to the remote system as the value for the variable USER.  This option implies the -a option.  This option may also</span><br><span class="line">            be used with the open command.</span><br><span class="line">    -n tracefile</span><br><span class="line">            Opens tracefile for recording trace information.  See the set tracefile command below.</span><br><span class="line">    -r      Specifies a user interface similar to rlogin(1).  In this mode, the escape character is set to the tilde (~)</span><br><span class="line">            character, unless modified by the -e option.</span><br><span class="line">    -s src_addr</span><br><span class="line">            Set the source IP address for the telnet connection to src_addr, which can be an IP address or a host name.</span><br><span class="line">    -u      Forces telnet to use AF_UNIX addresses only (e.g., UNIX domain sockets, accessed with a file path).</span><br><span class="line">    -x      Turns on encryption of the data stream if possible.  This is now the default, so this option is ignored.</span><br><span class="line">    -y      Suppresses encryption of the data stream.</span><br><span class="line">    host    Indicates the official name, an alias, or the Internet address of a remote host.  If host starts with a ‘/’, telnet</span><br><span class="line">            establishes a connection to the corresponding named socket.</span><br><span class="line">    port    Indicates a port number (address of an application).  If a number is not specified, the default telnet port is</span><br><span class="line">            used.            </span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">telnet [-468EFKLNacdfruxy] [-S tos] [-X authtype] [-e escapechar] [-k realm] [-l user] [-n tracefile] [-s src_addr] [host
+           [port]]
+    -4      Forces telnet to use IPv4 addresses only.
+    -6      Forces telnet to use IPv6 addresses only.
+    -8      Specifies an 8-bit data path.  This causes an attempt to negotiate the TELNET BINARY option on both input and
+            output.
+    -E      Stops any character from being recognized as an escape character.
+    -F      If Kerberos V5 authentication is being used, the -F option allows the local credentials to be forwarded to the
+            remote system, including any credentials that have already been forwarded into the local environment.
+    -K      Specifies no automatic login to the remote system.
+    -L      Specifies an 8-bit data path on output.  This causes the BINARY option to be negotiated on output.
+    -N      Prevents IP address to name lookup when destination host is given as an IP address.
+    -S tos  Sets the IP type-of-service (TOS) option for the telnet connection to the value tos, which can be a numeric TOS
+            value or, on systems that support it, a symbolic TOS name found in the /etc/iptos file.
+    -X atype
+            Disables the atype type of authentication.
+    -a      Attempt automatic login.  This is now the default, so this option is ignored.  Currently, this sends the user name
+            via the USER variable of the ENVIRON option if supported by the remote system.  The name used is that of the
+            current user as returned by getlogin(2) if it agrees with the current user ID, otherwise it is the name associated
+            with the user ID.
+    -c      Disables the reading of the user's .telnetrc file.  (See the toggle skiprc command on this man page.)
+    -d      Sets the initial value of the debug toggle to TRUE.
+    -e escapechar
+            Sets the initial telnet escape character to escapechar.  If escapechar is omitted, then there will be no escape
+            character.
+    -f      If Kerberos V5 authentication is being used, the -f option allows the local credentials to be forwarded to the
+            remote system.
+    -k realm
+            If Kerberos authentication is being used, the -k option requests that telnet obtain tickets for the remote host in
+            realm realm instead of the remote host's realm, as determined by krb_realmofhost(3).
+    -l user
+            When connecting to the remote system, if the remote system understands the ENVIRON option, then user will be sent
+            to the remote system as the value for the variable USER.  This option implies the -a option.  This option may also
+            be used with the open command.
+    -n tracefile
+            Opens tracefile for recording trace information.  See the set tracefile command below.
+    -r      Specifies a user interface similar to rlogin(1).  In this mode, the escape character is set to the tilde (~)
+            character, unless modified by the -e option.
+    -s src_addr
+            Set the source IP address for the telnet connection to src_addr, which can be an IP address or a host name.
+    -u      Forces telnet to use AF_UNIX addresses only (e.g., UNIX domain sockets, accessed with a file path).
+    -x      Turns on encryption of the data stream if possible.  This is now the default, so this option is ignored.
+    -y      Suppresses encryption of the data stream.
+    host    Indicates the official name, an alias, or the Internet address of a remote host.  If host starts with a ‘/’, telnet
+            establishes a connection to the corresponding named socket.
+    port    Indicates a port number (address of an application).  If a number is not specified, the default telnet port is
+            used.            <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="nc命令"><a class="markdownIt-Anchor" href="#nc命令"></a> nc命令</h3>
 <p>nc命令（也称为netcat）命令的可选参数</p>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">GNU netcat 0.7.1, a rewrite of the famous networking tool.</span><br><span class="line">Basic usages:</span><br><span class="line">connect to somewhere:  nc [options] hostname port [port] ...</span><br><span class="line">listen for inbound:    nc -l -p port [options] [hostname] [port] ...</span><br><span class="line">tunnel to somewhere:   nc -L hostname:port -p port [options]</span><br><span class="line"></span><br><span class="line">Mandatory arguments to long options are mandatory for short options too.</span><br><span class="line">Options:</span><br><span class="line">  -c, --close                close connection on EOF from stdin</span><br><span class="line">  -e, --exec=PROGRAM         program to exec after connect</span><br><span class="line">  -g, --gateway=LIST         source-routing hop point[s], up to 8</span><br><span class="line">  -G, --pointer=NUM          source-routing pointer: 4, 8, 12, ...</span><br><span class="line">  -h, --help                 display this help and exit</span><br><span class="line">  -i, --interval=SECS        delay interval for lines sent, ports scanned</span><br><span class="line">  -l, --listen               listen mode, for inbound connects</span><br><span class="line">  -L, --tunnel=ADDRESS:PORT  forward local port to remote address</span><br><span class="line">  -n, --dont-resolve         numeric-only IP addresses, no DNS</span><br><span class="line">  -o, --output=FILE          output hexdump traffic to FILE (implies -x)</span><br><span class="line">  -p, --local-port=NUM       local port number</span><br><span class="line">  -r, --randomize            randomize local and remote ports</span><br><span class="line">  -s, --source=ADDRESS       local source address (ip or hostname)</span><br><span class="line">  -t, --tcp                  TCP mode (default)</span><br><span class="line">  -T, --telnet               answer using TELNET negotiation</span><br><span class="line">  -u, --udp                  UDP mode</span><br><span class="line">  -v, --verbose              verbose (use twice to be more verbose)</span><br><span class="line">  -V, --version              output version information and exit</span><br><span class="line">  -x, --hexdump              hexdump incoming and outgoing traffic</span><br><span class="line">  -w, --wait=SECS            timeout for connects and final net reads</span><br><span class="line">  -z, --zero                 zero-I/O mode (used for scanning)</span><br><span class="line"></span><br><span class="line">Remote port number can also be specified as range.  Example: '1-1024'</span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-text" data-language="text"><code class="language-text">GNU netcat 0.7.1, a rewrite of the famous networking tool.
+Basic usages:
+connect to somewhere:  nc [options] hostname port [port] ...
+listen for inbound:    nc -l -p port [options] [hostname] [port] ...
+tunnel to somewhere:   nc -L hostname:port -p port [options]
+
+Mandatory arguments to long options are mandatory for short options too.
+Options:
+  -c, --close                close connection on EOF from stdin
+  -e, --exec=PROGRAM         program to exec after connect
+  -g, --gateway=LIST         source-routing hop point[s], up to 8
+  -G, --pointer=NUM          source-routing pointer: 4, 8, 12, ...
+  -h, --help                 display this help and exit
+  -i, --interval=SECS        delay interval for lines sent, ports scanned
+  -l, --listen               listen mode, for inbound connects
+  -L, --tunnel=ADDRESS:PORT  forward local port to remote address
+  -n, --dont-resolve         numeric-only IP addresses, no DNS
+  -o, --output=FILE          output hexdump traffic to FILE (implies -x)
+  -p, --local-port=NUM       local port number
+  -r, --randomize            randomize local and remote ports
+  -s, --source=ADDRESS       local source address (ip or hostname)
+  -t, --tcp                  TCP mode (default)
+  -T, --telnet               answer using TELNET negotiation
+  -u, --udp                  UDP mode
+  -v, --verbose              verbose (use twice to be more verbose)
+  -V, --version              output version information and exit
+  -x, --hexdump              hexdump incoming and outgoing traffic
+  -w, --wait=SECS            timeout for connects and final net reads
+  -z, --zero                 zero-I/O mode (used for scanning)
+
+Remote port number can also be specified as range.  Example: '1-1024'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>

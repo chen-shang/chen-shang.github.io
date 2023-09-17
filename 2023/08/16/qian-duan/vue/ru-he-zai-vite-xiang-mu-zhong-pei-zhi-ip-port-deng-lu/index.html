@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 7.0.0-rc2">
+<meta name="generator" content="Hexo 6.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -362,7 +362,10 @@
 <li>重新启动你的Vite项目，确保你的更改已经生效。</li>
 </ol>
 <p>如果要同时支持 localhost:port 形式登录</p>
-<figure class="highlight json"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server<span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">  port<span class="punctuation">:</span> <span class="number">3000</span><span class="punctuation">,</span> <span class="comment">// 修改为所需的端口号</span></span><br><span class="line">  host<span class="punctuation">:</span> '<span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>'<span class="punctuation">,</span> <span class="comment">// 允许所有 IP 访问</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">server<span class="token operator">:</span> <span class="token punctuation">{</span>
+  port<span class="token operator">:</span> <span class="token number">3000</span><span class="token punctuation">,</span> <span class="token comment">// 修改为所需的端口号</span>
+  host<span class="token operator">:</span> '<span class="token number">0.0</span>.<span class="token number">0.0</span>'<span class="token punctuation">,</span> <span class="token comment">// 允许所有 IP 访问</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在 vite.config.js 文件中，host: ‘0.0.0.0’ 用于配置服务器的主机地址。这个特殊的主机地址代表所有可用的网络接口，也就是允许任何 IP 地址访问你的应用程序。</p>
 <p>通常情况下，当你使用 host: ‘0.0.0.0’，你的应用程序将监听计算机上所有可用的网络接口，无论是通过本地网络还是公共网络。这样做的好处是，你的应用程序可以在任何设备上访问，而不仅仅是在本地计算机上。</p>
 <p>换句话说，使用 host: ‘0.0.0.0’ 可以使你的应用程序在本地网络和公共网络上都可见，这在某些情况下非常有用，例如当你想在局域网内的其他设备上测试应用程序时。当然，为了安全起见，在生产环境中，你可能需要更严格地限制哪些 IP 地址能够访问你的应用程序。应谨慎使用此设置，以防止安全问题。可以将host设置为’localhost’来限制只有本地访问服务器。</p>
