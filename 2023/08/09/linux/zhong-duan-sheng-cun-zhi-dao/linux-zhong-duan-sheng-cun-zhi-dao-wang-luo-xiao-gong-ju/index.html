@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -363,13 +363,7 @@
 </center>
 <p>Ping是一种网络工具，用于测试主机之间的网络连接。它发送一个小的网络数据包（ICMP Echo Request）到目标主机，并等待接收到相应的回复（ICMP Echo Reply）。通过测量往返时间（Round-Trip Time，RTT）和丢包率，可以评估网络的可达性和性能。<br>
 以下是一张简单的图示，展示了Ping请求和响应的过程：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">+-----------------+                   +-----------------+
-<span class="token operator">|</span>   Your Computer <span class="token operator">|</span>                   <span class="token operator">|</span> Target Computer <span class="token operator">|</span>
-+-----------------+                   +-----------------+
-         <span class="token operator">|</span>                                    <span class="token operator">|</span>
-  ICMP Echo请求                           ICMP Echo响应
-         <span class="token operator">|</span>                                    <span class="token operator">|</span>
-         +------------<span class="token operator">&gt;</span> Network --------------<span class="token operator">&gt;</span>+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+-----------------+                   +-----------------+</span><br><span class="line">|   Your Computer |                   | Target Computer |</span><br><span class="line">+-----------------+                   +-----------------+</span><br><span class="line">         |                                    |</span><br><span class="line">  ICMP Echo请求                           ICMP Echo响应</span><br><span class="line">         |                                    |</span><br><span class="line">         +------------&gt; Network --------------&gt;+</span><br></pre></td></tr></tbody></table></figure>
 <p>要注意一点，ping 访问目标服务器的时候，是不用指定端口的，也没有默认端口一说。因为ping命令是一种工具，用于测试和检查网络连接。它使用的是ICMP协议（互联网控制报文协议），而不是传输层协议（如TCP或UDP）。ICMP（Internet Control Message Protocol）是一个用于在IP网络中传输控制消息的协议。ICMP消息不使用端口号的原因是因为它们不是用于在不同主机之间直接进行通信，而是用于发送网络控制信息、错误报告和诊断信息。端口号通常用于标识目标主机上的特定应用程序或服务。但是，ICMP消息不是直接发送给特定的应用程序或服务，而是发送给目标主机的网络协议栈（通常是操作系统内核），然后由它们处理。</p>
 <h1 id="a-telnet-nc-查看开放端口号"><a class="markdownIt-Anchor" href="#a-telnet-nc-查看开放端口号"></a>  telnet、nc 查看开放端口号</h1>
 <p><a href="https://chen-shang.github.io/2023/09/01/ru-he-cha-kan-duan-kou-shi-fou-kai-fang/">telnet、nc 查看开放端口号</a></p>
@@ -1090,7 +1084,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

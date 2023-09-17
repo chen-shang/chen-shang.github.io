@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -361,44 +361,10 @@
 而提供获取自身引用的静态方法,是因为我们没法显示的new一个实例出来了,那总得有获取这个唯一实例的方法嘛,不然怎么提供给第三方使用呢？</li>
 </ol>
 <p>第一种写法</p>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">public class Singleton01 {
-    //1. 构造方法私有化
-    private Singleton01() {
-    }
-
-    //2. 持有自身的静态引用，饿汉式初始化
-    // 这个地用静态的原因,是因为提供获取实例的方法是静态的，静态方法中用到的方法和变量必须是静态的
-    // 利用JVM的类加载机制,确保类中的静态变量只在类加载到内存中的时候执行一次的特性
-    private static final Singleton01 SINGLETON = new Singleton01();
-
-    //3. 提供获取的静态方法
-    public static Singleton01 getInstance() {
-        return SINGLETON;
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton01</span> {</span><br><span class="line">    <span class="comment">//1. 构造方法私有化</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton01</span><span class="params">()</span> {</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2. 持有自身的静态引用，饿汉式初始化</span></span><br><span class="line">    <span class="comment">// 这个地用静态的原因,是因为提供获取实例的方法是静态的，静态方法中用到的方法和变量必须是静态的</span></span><br><span class="line">    <span class="comment">// 利用JVM的类加载机制,确保类中的静态变量只在类加载到内存中的时候执行一次的特性</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Singleton01</span> <span class="variable">SINGLETON</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Singleton01</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 提供获取的静态方法</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton01 <span class="title function_">getInstance</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">return</span> SINGLETON;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>上面这种写法叫做饿汉式,因为不是懒加载的,而是在类加载的过程中就实例化了,而不是在用的时候也即是getInstance的时候才实例化的。有些人就觉得这样一点都不优雅,因为他们觉得对象如果我不使用,你就不应该初始化去占用空间,而是要等到我实际使用的时候才初始化才叫完美。于是有了下面的懒汉式加载写法</p>
 <p>第二种写法</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Singleton02</span> <span class="token punctuation">{</span>
-    <span class="token comment">// 1. 构造方法私有化</span>
-    <span class="token keyword">private</span> <span class="token class-name">Singleton02</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-    <span class="token punctuation">}</span>
-
-    <span class="token comment">// 2. 持有自身的静态引用,懒加载</span>
-    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">Singleton02</span> <span class="token constant">SINGLETON</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// 3. 提供获取实例的静态方法</span>
-    <span class="token comment">// 但是这种是按方式有瑕疵，在并发场景下可能会有问题</span>
-    <span class="token comment">// 并发的时候，两个线程同时判断SINGLETON为null,同时最后那个赋值线程赋给的值</span>
-    <span class="token comment">// 如何证明只要用多线程初始化实例打印获取到的单例对象的hashcode不一样就行</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Singleton02</span> <span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">SINGLETON</span> <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token constant">SINGLETON</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Singleton02</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-
-        <span class="token keyword">return</span> <span class="token constant">SINGLETON</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Singleton02</span> {</span><br><span class="line">    <span class="comment">// 1. 构造方法私有化</span></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Singleton02</span><span class="params">()</span> {</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 持有自身的静态引用,懒加载</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton02 SINGLETON;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 提供获取实例的静态方法</span></span><br><span class="line">    <span class="comment">// 但是这种是按方式有瑕疵，在并发场景下可能会有问题</span></span><br><span class="line">    <span class="comment">// 并发的时候，两个线程同时判断SINGLETON为null,同时最后那个赋值线程赋给的值</span></span><br><span class="line">    <span class="comment">// 如何证明只要用多线程初始化实例打印获取到的单例对象的hashcode不一样就行</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Singleton02 <span class="title function_">getInstance</span><span class="params">()</span> {</span><br><span class="line">        <span class="keyword">if</span> (SINGLETON == <span class="literal">null</span>) {</span><br><span class="line">            SINGLETON = <span class="keyword">new</span> <span class="title class_">Singleton02</span>();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> SINGLETON;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>可是这种写法其实是错的,因为在并发情况下根本没办法保证返回的单例对象是同一个。于是我们很自然而然的想到加锁的方式</p>
 
                 
@@ -975,7 +941,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

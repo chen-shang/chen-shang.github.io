@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -325,7 +325,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    598
+                    595
                 </div>
                 
 
@@ -369,38 +369,22 @@
 <p>除了管理包，npm还提供了一些其他功能，如创建和管理项目脚手架、管理全局安装的包、管理项目的依赖关系等。</p>
 <p>总而言之，npm是一个强大的工具，可以大大简化JavaScript项目的依赖管理和代码共享过程。</p>
 <h1 id="npm版本号怎么看"><a class="markdownIt-Anchor" href="#npm版本号怎么看"></a> npm版本号怎么看</h1>
-<pre class="line-numbers language-none"><code class="language-none">npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="npm版本号各个数的含义"><a class="markdownIt-Anchor" href="#npm版本号各个数的含义"></a> npm版本号各个数的含义</h2>
 <p>如前所述，npm版本号由三部分组成: Major.Minor.Patch。其中，三个数字各自代表的含义如下：<br>
 Major（主版本号）：表示大版本更新，通常涉及到项目中大的改变，可能引起了不兼容的更改。<br>
 Minor（次版本号）：表示小功能新增。这些新增功能版本与之前版本是兼容的，在项目中的影响不会太大。<br>
 Patch（修订版本号）：用于修复bug或增强某些功能，但不会引入新功能。和Minor相似，此版本与之前版本兼容不会对项目产生影响。</p>
 <h1 id="查看需要升级的包"><a class="markdownIt-Anchor" href="#查看需要升级的包"></a> 查看需要升级的包</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> outdated<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm outdated</span><br></pre></td></tr></tbody></table></figure>
 <p><img src="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/iShot_2023-09-02_17.40.34.jpg" alt=""></p>
 <h1 id="更新-npm-自身版本"><a class="markdownIt-Anchor" href="#更新-npm-自身版本"></a> 更新 npm 自身版本</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> <span class="token parameter variable">-g</span> <span class="token function">npm</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="更新依赖模块版本不破坏依赖间的联系"><a class="markdownIt-Anchor" href="#更新依赖模块版本不破坏依赖间的联系"></a> 更新依赖模块版本（不破坏依赖间的联系）</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="使用-ncu-工具一把梭"><a class="markdownIt-Anchor" href="#使用-ncu-工具一把梭"></a> 使用 ncu 工具一把梭</h1>
 <p><img src="/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/iShot_2023-09-04_01.34.17.jpg" alt=""></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">install</span> npm-check-updates <span class="token parameter variable">-g</span>
-$ ncu
-Checking /Users/tommy/blog/package.json
-<span class="token punctuation">[</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token punctuation">]</span> <span class="token number">16</span>/16 <span class="token number">100</span>%
-
- hexo                    ^4.2.0  →  ^5.0.0
- hexo-generator-sitemap  ^2.0.0  →  ^2.1.0
-
-Run ncu <span class="token parameter variable">-u</span> to upgrade package.json
-$ ncu <span class="token parameter variable">-u</span>
-Upgrading /Users/tommy/blog/package.json
-<span class="token punctuation">[</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token operator">==</span><span class="token punctuation">]</span> <span class="token number">16</span>/16 <span class="token number">100</span>%
-
- hexo                    ^4.2.0  →  ^5.0.0
- hexo-generator-sitemap  ^2.0.0  →  ^2.1.0
-
-Run <span class="token function">npm</span> <span class="token function">install</span> to <span class="token function">install</span> new versions.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">npm install npm-check-updates -g</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ncu</span></span><br><span class="line">Checking /Users/tommy/blog/package.json</span><br><span class="line">[====================] 16/16 100%</span><br><span class="line"></span><br><span class="line"> hexo                    ^4.2.0  →  ^5.0.0</span><br><span class="line"> hexo-generator-sitemap  ^2.0.0  →  ^2.1.0</span><br><span class="line"></span><br><span class="line">Run ncu -u to upgrade package.json</span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ncu -u</span></span><br><span class="line">Upgrading /Users/tommy/blog/package.json</span><br><span class="line">[====================] 16/16 100%</span><br><span class="line"></span><br><span class="line"> hexo                    ^4.2.0  →  ^5.0.0</span><br><span class="line"> hexo-generator-sitemap  ^2.0.0  →  ^2.1.0</span><br><span class="line"></span><br><span class="line">Run npm install to install new versions.</span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -1053,7 +1037,7 @@ Run <span class="token function">npm</span> <span class="token function">install
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

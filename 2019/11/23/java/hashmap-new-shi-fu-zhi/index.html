@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -344,14 +344,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Java 中hashMap 怎么在新建的时候赋值</p>
-<pre class="line-numbers language-none"><code class="language-none">public static void main(String[] args) {
-    Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;() {
-      {
-        put("one", "1");
-        put("two", "2");
-      }
-    };
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) {</span><br><span class="line">    Map&lt;String, String&gt; map = new HashMap&lt;String, String&gt;() {</span><br><span class="line">      {</span><br><span class="line">        put("one", "1");</span><br><span class="line">        put("two", "2");</span><br><span class="line">      }</span><br><span class="line">    };</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>这种写法建议在只在测试的时候使用,其实是一种偷懒的写法,目前Java还没有优化这方面的打算。</p>
 
                 
@@ -920,7 +913,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

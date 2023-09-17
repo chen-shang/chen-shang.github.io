@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -282,12 +282,12 @@
                                 <span class="chip bg-color">未完待续</span>
                             </a>
                         
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
-                            </a>
-                        
                             <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
                                 <span class="chip bg-color">工具控</span>
+                            </a>
+                        
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
                             </a>
                         
                     </div>
@@ -329,7 +329,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    584
+                    580
                 </div>
                 
 
@@ -361,16 +361,7 @@
             <div id="articleContent">
                 <p>本文记录常见Hexo异常和解决方案</p>
 <h1 id="cannot-set-property-lastindex-of-undefined"><a class="markdownIt-Anchor" href="#cannot-set-property-lastindex-of-undefined"></a> Cannot set property ‘lastIndex’ of undefined</h1>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">INFO  Start processing
-FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html
-TypeError: Cannot set property 'lastIndex' of undefined
-    at highlight (/Users/chenshang/Blog/node_modules/highlight.js/lib/highlight.js:579:35)
-    at /Users/chenshang/Blog/node_modules/highlight.js/lib/highlight.js:629:21
-    at Array.forEach (&lt;anonymous&gt;)
-    at Object.highlightAuto (/Users/chenshang/Blog/node_modules/highlight.js/lib/highlight.js:628:62)
-    at /Users/chenshang/Blog/node_modules/hexo-util/lib/
-
-    ......<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INFO  Start processing</span><br><span class="line">FATAL Something's wrong. Maybe you can find the solution here: https://hexo.io/docs/troubleshooting.html</span><br><span class="line">TypeError: Cannot set property 'lastIndex' of undefined</span><br><span class="line">    at highlight (/Users/chenshang/Blog/node_modules/highlight.js/lib/highlight.js:579:35)</span><br><span class="line">    at /Users/chenshang/Blog/node_modules/highlight.js/lib/highlight.js:629:21</span><br><span class="line">    at Array.forEach (&lt;anonymous&gt;)</span><br><span class="line">    at Object.highlightAuto (/Users/chenshang/Blog/node_modules/highlight.js/lib/highlight.js:628:62)</span><br><span class="line">    at /Users/chenshang/Blog/node_modules/hexo-util/lib/</span><br><span class="line"></span><br><span class="line">    ......</span><br></pre></td></tr></tbody></table></figure>
 <blockquote>
 <p>修改配置文件<code>_config.yml</code>，注意不是主题里面的配置文件！把<code>auto_detect</code>设置为false，即可解决。</p>
 </blockquote>
@@ -382,9 +373,7 @@ TypeError: Cannot set property 'lastIndex' of undefined
 <p>于是最终百度查到了 <code>hexo-renderer-markdown-it-plus</code> 这个插件，看名字就是 <code>hexo-renderer-markdown-it</code> 的升级版，支持 Katex 插件并默认启用，默认启用插件列表：<code>markdown-it-emoji</code>，<code>markdown-it-sub</code>，<code>markdown-it-sup</code>，<code>markdown-it-deflist</code>，<code>markdown-it-abbr</code>，<code>markdown-it-footnote</code>，<code>markdown-it-ins</code>，<code>markdown-it-mark</code>，<code>@iktakahiro/markdown-it-katex</code>，<code>markdown-it-toc-and-anchor</code>。</p>
 <p>试用了一下，果然所有问题都解决了，目录也能正常跳转了，图片也能正常显示了，完美。</p>
 <p>安装 <code>hexo-renderer-markdown-it-plus</code> 之前，先把<code>hexo-renderer-marked</code>和<code>hexo-renderer-markdown-it</code>都卸载干净</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> uninstall hexo-renderer-marked <span class="token parameter variable">-s</span>
-<span class="token function">npm</span> uninstall hexo-renderer-markdown-it <span class="token parameter variable">-s</span>
-<span class="token function">npm</span> <span class="token function">install</span> hexo-renderer-markdown-it-plus <span class="token parameter variable">-s</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked -s</span><br><span class="line">npm uninstall hexo-renderer-markdown-it -s</span><br><span class="line">npm install hexo-renderer-markdown-it-plus -s</span><br></pre></td></tr></tbody></table></figure>
 
                 
             </div>
@@ -407,12 +396,12 @@ TypeError: Cannot set property 'lastIndex' of undefined
                                     <span class="chip bg-color">未完待续</span>
                                 </a>
                             
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
                                     <span class="chip bg-color">工具控</span>
+                                </a>
+                            
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
                                 </a>
                             
                         </div>
@@ -1033,7 +1022,7 @@ TypeError: Cannot set property 'lastIndex' of undefined
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

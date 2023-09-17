@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -346,13 +346,13 @@
                 <p>在访问自己网站的时候发现有些请求比较耗时，观察得出是某个图片实在太大了导致加载的时间比较久。于是想要压缩这些背景图片，发现了一款在linux终端就能压缩图片的工具–jpegoptim<br>
 <img src="/2023/09/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-tu-pian-ya-suo/iShot_2023-09-08_22.30.46.jpg" alt="Alt text"></p>
 <p>在终端中运行以下命令来优化单个 JPEG 图像文件：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jpegoptim image.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jpegoptim image.jpg</span><br></pre></td></tr></tbody></table></figure>
 <p>优化多个 JPEG 图像文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jpegoptim image1.jpg image2.jpg image3.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jpegoptim image1.jpg image2.jpg image3.jpg</span><br></pre></td></tr></tbody></table></figure>
 <p>递归优化目录中的所有 JPEG 图像文件</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jpegoptim <span class="token parameter variable">-r</span> directory/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jpegoptim -r directory/</span><br></pre></td></tr></tbody></table></figure>
 <p>设置优化质量，</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jpegoptim <span class="token parameter variable">--max</span><span class="token operator">=</span><span class="token number">80</span> image.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jpegoptim --max=80 image.jpg</span><br></pre></td></tr></tbody></table></figure>
 <p>这将将优化质量设置为 80，其中 80 是一个介于 0 和 100 之间的值。较低的值会产生更高的压缩率，但可能会降低图像质量。</p>
 
                 
@@ -925,7 +925,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

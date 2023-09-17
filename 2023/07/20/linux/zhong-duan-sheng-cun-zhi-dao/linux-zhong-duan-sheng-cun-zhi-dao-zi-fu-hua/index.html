@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -321,7 +321,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    262
+                    265
                 </div>
                 
 
@@ -353,62 +353,14 @@
             <div id="articleContent">
                 <p>生成字符画,我最常用的两个命令就是 <code>figlet</code> 和 <code>toilet</code>。具体使用可以通过ChatGPT进行学习。<br>
 下面是最最最基本的用法。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&gt;</span> figlet Demo
- ____
-<span class="token operator">|</span>  _ <span class="token punctuation">\</span>  ___ _ __ ___   ___
-<span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span>/ _ <span class="token punctuation">\</span> '_ ` _ <span class="token punctuation">\</span> / _ <span class="token punctuation">\</span>
-<span class="token operator">|</span> <span class="token operator">|</span>_<span class="token operator">|</span> <span class="token operator">|</span>  __/ <span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span> <span class="token operator">|</span> <span class="token punctuation">(</span>_<span class="token punctuation">)</span> <span class="token operator">|</span>
-<span class="token operator">|</span>____/ <span class="token punctuation">\</span>___<span class="token operator">|</span>_<span class="token operator">|</span> <span class="token operator">|</span>_<span class="token operator">|</span> <span class="token operator">|</span>_<span class="token operator">|</span><span class="token punctuation">\</span>___/
-
-<span class="token operator">&gt;</span> toilet Demo
-
- mmmm
- <span class="token comment">#   "m  mmm   mmmmm   mmm</span>
- <span class="token comment">#    # #"  #  # # #  #" "#</span>
- <span class="token comment">#    # #""""  # # #  #   #</span>
- <span class="token comment">#mmm"  "#mm"  # # #  "#m#"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight shell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">figlet Demo</span></span><br><span class="line"> ____</span><br><span class="line">|  _ \  ___ _ __ ___   ___</span><br><span class="line">| | | |/ _ \ '_ ` _ \ / _ \</span><br><span class="line">| |_| |  __/ | | | | | (_) |</span><br><span class="line">|____/ \___|_| |_| |_|\___/</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">toilet Demo</span></span><br><span class="line"></span><br><span class="line"> mmmm</span><br><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">  <span class="string">"m  mmm   mmmmm   mmm</span></span></span><br><span class="line"><span class="meta prompt_"> # </span><span class="language-bash"><span class="string">   # #"</span>  <span class="comment">#  # # #  #" "#</span></span></span><br><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">   <span class="comment"># #""""  # # #  #   #</span></span></span><br><span class="line"><span class="meta prompt_"> #</span><span class="language-bash">mmm<span class="string">"  "</span><span class="comment">#mm"  # # #  "#m#"</span></span></span><br></pre></td></tr></tbody></table></figure>
 <p>还有针对图片生成字符画的工具,我常用的也是俩 <code>jp2a</code> 和 <code>img2txt</code></p>
 <center>
   <img src="/2023/07/20/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-zi-fu-hua/logo.png">
 </center>
 转换后
-<pre class="line-numbers language-none"><code class="language-none">&gt; jp2a --width=40 logo.png
-
-    .                            .
-   l0kc                        :OdK
-   d0  ko                    lK  lN
-   d0    :x.               od    lN
-   d0 .x.  ;k;;:clooll:;;do  .dc lN
-   d0 .WWO                  dNWc lN
-   d0                            lN
-   d0         c.       c.        lN
-   d0                            lN
-   .Wc::::::.             :::::::Xc
-     oN;    X;           0'   .X0
-       od.   Oo        .N    lk
-         ,x'  :O      lO  .oc
-           '0; .Xkkkk0o .kc
-              0c.NWWW.lO.
-                XNWWWX.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<pre class="line-numbers language-none"><code class="language-none">&gt; img2txt -H 20 -W 35 logo.png
-
-
-   tXX                     %Xt
-   t  X%                 .@  t
-   t    X.              S    t
-   t  8  XS% @;.:.:@ @X.  X  t
-   t  ttS                tt  t
-   t  :                   t  t
-   t                         t
-   t        t       :        t
-   t%                        t
-    %X    S           S;   Xt
-     :X    S         S    8%
-       XX   S       t   :8
-         XS  S    S%  ;X
-           Xt @ttt%  S
-            t%:%ttSX
-              :ttt@<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&gt; jp2a --width=40 logo.png</span><br><span class="line"></span><br><span class="line">    .                            .</span><br><span class="line">   l0kc                        :OdK</span><br><span class="line">   d0  ko                    lK  lN</span><br><span class="line">   d0    :x.               od    lN</span><br><span class="line">   d0 .x.  ;k;;:clooll:;;do  .dc lN</span><br><span class="line">   d0 .WWO                  dNWc lN</span><br><span class="line">   d0                            lN</span><br><span class="line">   d0         c.       c.        lN</span><br><span class="line">   d0                            lN</span><br><span class="line">   .Wc::::::.             :::::::Xc</span><br><span class="line">     oN;    X;           0'   .X0</span><br><span class="line">       od.   Oo        .N    lk</span><br><span class="line">         ,x'  :O      lO  .oc</span><br><span class="line">           '0; .Xkkkk0o .kc</span><br><span class="line">              0c.NWWW.lO.</span><br><span class="line">                XNWWWX.</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&gt; img2txt -H 20 -W 35 logo.png</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">   tXX                     %Xt</span><br><span class="line">   t  X%                 .@  t</span><br><span class="line">   t    X.              S    t</span><br><span class="line">   t  8  XS% @;.:.:@ @X.  X  t</span><br><span class="line">   t  ttS                tt  t</span><br><span class="line">   t  :                   t  t</span><br><span class="line">   t                         t</span><br><span class="line">   t        t       :        t</span><br><span class="line">   t%                        t</span><br><span class="line">    %X    S           S;   Xt</span><br><span class="line">     :X    S         S    8%</span><br><span class="line">       XX   S       t   :8</span><br><span class="line">         XS  S    S%  ;X</span><br><span class="line">           Xt @ttt%  S</span><br><span class="line">            t%:%ttSX</span><br><span class="line">              :ttt@</span><br></pre></td></tr></tbody></table></figure>
 <p>还有终端显示图片的工具 imgcat<br>
 安装 <code>wget https://iterm2.com/utilities/imgcat |bash</code><br>
 然后 把 imgcat 移动到 目录 <code>/usr/local/bin</code> 这样就可以全局访问了。</p>
@@ -830,12 +782,12 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Hexo/">
-                        <span class="chip bg-color">Hexo</span>
-                    </a>
-                    
                     <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
                         <span class="chip bg-color">工具控</span>
+                    </a>
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
                     </a>
                     
                 </div>
@@ -994,7 +946,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -344,11 +344,11 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>设置 DNS 命令</p>
-<pre class="line-numbers language-none"><code class="language-none">networksetup -setdnsservers Wi-Fi xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">networksetup -setdnsservers Wi-Fi xxx</span><br></pre></td></tr></tbody></table></figure>
 <p>查看 DNS</p>
-<pre class="line-numbers language-none"><code class="language-none">networksetup -getdnsservers Wi-Fi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">networksetup -getdnsservers Wi-Fi</span><br></pre></td></tr></tbody></table></figure>
 <p>刷新 DNS 缓存</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> dscacheutil <span class="token parameter variable">-flushcache</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dscacheutil -flushcache</span><br></pre></td></tr></tbody></table></figure>
 <p>这是一个用于刷新 DNS 缓存的命令。在计算机上访问网站时，DNS（域名系统）被用于将网站域名转换为相应的 IP 地址。为了加快访问速度，计算机会将最近访问的 DNS 查询结果缓存在本地。然而，有时 DNS 缓存可能过期或者出现问题，导致无法正确解析域名。这个命令可以强制刷新计算机的 DNS 缓存。通过执行该命令，计算机将清除存储在缓存中的 DNS 查询结果，并尝试重新解析所有域名。这样一来，它会从新的源（如 DNS 服务器）获取最新的 IP 地址，从而解决一些与 DNS 相关的访问问题。</p>
 
                 
@@ -913,7 +913,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

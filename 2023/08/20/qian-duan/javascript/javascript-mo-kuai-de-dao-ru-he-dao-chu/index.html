@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -313,7 +313,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    934
+                    936
                 </div>
                 
 
@@ -361,44 +361,11 @@
 <p>一个模块可以使用 default 关键字导出一个默认的值，并且默认的导出在导入时可以随意命名。如果使用默认导出，可以在一个模块中只导出一个默认功能。当一个模块只需要导出一个功能时，可以使用默认导出。使用默认导出时，在导入该功能时可以就不用加{}了。{} 属于命名导出，其本质是解构语法。否则idea也会有提示。<br>
 <img src="/2023/08/20/qian-duan/javascript/javascript-mo-kuai-de-dao-ru-he-dao-chu/image.png"></p>
 <p>例子：</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导出默认值</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">addNumbers</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 导入默认值</span>
-<span class="token keyword">import</span> add <span class="token keyword">from</span> <span class="token string">'./math.js'</span><span class="token punctuation">;</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：3</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出默认值</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">addNumbers</span>(<span class="params">a, b</span>) {</span><br><span class="line">  <span class="keyword">return</span> a + b;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导入默认值</span></span><br><span class="line"><span class="keyword">import</span> add <span class="keyword">from</span> <span class="string">'./math.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>)); <span class="comment">// 输出：3</span></span><br></pre></td></tr></tbody></table></figure>
 <h2 id="命名导出"><a class="markdownIt-Anchor" href="#命名导出"></a> 命名导出</h2>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导出变量</span>
-<span class="token keyword">export</span> <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token string">'John'</span><span class="token punctuation">;</span>
-<span class="token keyword">export</span> <span class="token keyword">let</span> age <span class="token operator">=</span> <span class="token number">25</span><span class="token punctuation">;</span>
-
-<span class="token comment">// 导出函数</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-
-<span class="token comment">// 导出类</span>
-<span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
-  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> age</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导出变量</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> name = <span class="string">'John'</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> age = <span class="number">25</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">function</span> <span class="title function_">sayHello</span>(<span class="params"></span>) {</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'Hello!'</span>);</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 导出类</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Person</span> {</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name, age</span>) {</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span> = age;</span><br><span class="line">  }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>导入：使用 import 关键字引入其他模块导出的变量、函数或类。导入的内容可以通过解构赋值的方式进行引用。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 导入变量、函数、类</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> name<span class="token punctuation">,</span> age<span class="token punctuation">,</span> sayHello<span class="token punctuation">,</span> Person <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./example.js'</span><span class="token punctuation">;</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：'John'</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：25</span>
-
-<span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：'Hello!'</span>
-
-<span class="token keyword">const</span> person <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Alice'</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：'Alice'</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出：30</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入变量、函数、类</span></span><br><span class="line"><span class="keyword">import</span> { name, age, sayHello, <span class="title class_">Person</span> } <span class="keyword">from</span> <span class="string">'./example.js'</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name); <span class="comment">// 输出：'John'</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(age); <span class="comment">// 输出：25</span></span><br><span class="line"></span><br><span class="line"><span class="title function_">sayHello</span>(); <span class="comment">// 输出：'Hello!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">'Alice'</span>, <span class="number">30</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>); <span class="comment">// 输出：'Alice'</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">age</span>); <span class="comment">// 输出：30</span></span><br></pre></td></tr></tbody></table></figure>
 <p>需要注意的是，模块的导入和导出只能在 ES6 模块系统的环境中使用，如在现代浏览器中、Node.js 中或使用一些支持 ES6 的构建工具中。对于较旧的 JavaScript 运行环境，可以使用 Babel 等编译工具将 ES6 代码转换为可兼容的 JavaScript 代码。</p>
 
                 
@@ -955,7 +922,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

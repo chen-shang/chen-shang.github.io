@@ -52,7 +52,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -359,11 +359,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="line-numbers language-text" data-language="text"><code class="language-text"> ____                      _          _ _
-| __ )  __ _ ___  ___  ___| |__   ___| | |
-|  _ \ / _` / __|/ _ \/ __| '_ \ / _ \ | |
-| |_) | (_| \__ \  __/\__ \ | | |  __/ | |
-|____/ \__,_|___/\___||___/_| |_|\___|_|_|<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> ____                      _          _ _</span><br><span class="line">| __ )  __ _ ___  ___  ___| |__   ___| | |</span><br><span class="line">|  _ \ / _` / __|/ _ \/ __| '_ \ / _ \ | |</span><br><span class="line">| |_) | (_| \__ \  __/\__ \ | | |  __/ | |</span><br><span class="line">|____/ \__,_|___/\___||___/_| |_|\___|_|_|</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="项目地址"><a class="markdownIt-Anchor" href="#项目地址"></a> 项目地址</h1>
 <blockquote>
 <p><a target="_blank" rel="noopener" href="https://github.com/chen-shang/BaseShell">https://github.com/chen-shang/BaseShell</a></p>
@@ -374,200 +370,34 @@
 </center>
 <h1 id="环境准备"><a class="markdownIt-Anchor" href="#环境准备"></a> 环境准备</h1>
 <p>本Shell框架是以bash为标准,在Mac OS 10.14上进行验证。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ sw_vers
-ProductName:	Mac OS X
-ProductVersion:	<span class="token number">10.14</span>
-chenshang@chenshangMacBo    ok-Pro:~$ <span class="token function">uname</span> <span class="token parameter variable">-a</span>
-BuildVersion:	18A391Darwin chenshangMacBook-Pro.local <span class="token number">18.0</span>.0 Darwin Kernel Version <span class="token number">18.0</span>.0: Wed Aug <span class="token number">22</span> <span class="token number">20</span>:13:40 PDT <span class="token number">2018</span><span class="token punctuation">;</span> root:xnu-4903.201.2~1/RELEASE_X86_64 x86_64
-chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token variable">$0</span>
-<span class="token parameter variable">-bash</span>
-chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token environment constant">SHELL</span>}</span>
-/usr/local/bin/bash
-chenshang@chenshangMacBook-Pro:~$ <span class="token function">bash</span> <span class="token parameter variable">-version</span>
-GNU bash, version <span class="token number">5.0</span>.2<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>-release <span class="token punctuation">(</span>x86_64-apple-darwin18.2.0<span class="token punctuation">)</span>
-Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> <span class="token number">2019</span> Free Software Foundation, Inc.
-License GPLv3+: GNU GPL version <span class="token number">3</span> or later <span class="token operator">&lt;</span>http://gnu.org/licenses/gpl.html<span class="token operator">&gt;</span>
-
-This is <span class="token function">free</span> software<span class="token punctuation">;</span> you are <span class="token function">free</span> to change and redistribute it.
-There is NO WARRANTY, to the extent permitted by law.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">chenshang@chenshangMacBook-Pro:~$ sw_vers</span><br><span class="line">ProductName:	Mac OS X</span><br><span class="line">ProductVersion:	10.14</span><br><span class="line">chenshang@chenshangMacBo    ok-Pro:~$ <span class="built_in">uname</span> -a</span><br><span class="line">BuildVersion:	18A391Darwin chenshangMacBook-Pro.<span class="built_in">local</span> 18.0.0 Darwin Kernel Version 18.0.0: Wed Aug 22 20:13:40 PDT 2018; root:xnu-4903.201.2~1/RELEASE_X86_64 x86_64</span><br><span class="line">chenshang@chenshangMacBook-Pro:~$ <span class="built_in">echo</span> <span class="variable">$0</span></span><br><span class="line">-bash</span><br><span class="line">chenshang@chenshangMacBook-Pro:~$ <span class="built_in">echo</span> <span class="variable">${SHELL}</span></span><br><span class="line">/usr/local/bin/bash</span><br><span class="line">chenshang@chenshangMacBook-Pro:~$ bash -version</span><br><span class="line">GNU bash, version 5.0.2(1)-release (x86_64-apple-darwin18.2.0)</span><br><span class="line">Copyright (C) 2019 Free Software Foundation, Inc.</span><br><span class="line">License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;</span><br><span class="line"></span><br><span class="line">This is free software; you are free to change and redistribute it.</span><br><span class="line">There is NO WARRANTY, to the extent permitted by law.</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="配套工具安装"><a class="markdownIt-Anchor" href="#配套工具安装"></a> 配套工具安装</h1>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew <span class="token function">install</span> jq
-brew <span class="token function">install</span> terminal-notifier
-brew <span class="token function">install</span> <span class="token function">shellcheck</span>
-brew <span class="token function">install</span> coreutils
-brew <span class="token function">install</span> <span class="token function">bc</span>
-brew <span class="token function">install</span> lolcat
-brew <span class="token function">install</span> bashdb
-brew <span class="token function">install</span> flock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">brew install jq</span><br><span class="line">brew install terminal-notifier</span><br><span class="line">brew install shellcheck</span><br><span class="line">brew install coreutils</span><br><span class="line">brew install bc</span><br><span class="line">brew install lolcat</span><br><span class="line">brew install bashdb</span><br><span class="line">brew install flock</span><br></pre></td></tr></tbody></table></figure>
 <p>我写这套框架的初衷在于丰富自己的shell脚本库，以期在写一些简单脚本辅助开发时候能够像使用Java类库一样方便。同时为了写出类Java的工具类，这会强迫自己深入学习Java的源代码。<br>
 所以Java是我的第一语言,Scala作为第二语言,忠实的Shell粉,但不排斥其他编程语言。这是我对编程语言的态度。<br>
 BaseShell类似于Java语言的SDK是为Shell脚本语言提供的一套工具库,涵盖多种类Java工具的实现</p>
-<pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">.
-├── Annotation                          #入参检查脚本
-│&nbsp;&nbsp; └── BaseAnnotation.sh
-├── Collection                          #集合工具脚本
-│&nbsp;&nbsp; ├── BaseArrayList.sh
-│&nbsp;&nbsp; ├── BaseHasMap.sh
-│&nbsp;&nbsp; └── BaseMap.sh
-├── Color                               #颜色工具脚本
-│&nbsp;&nbsp; └── BaseColor.sh
-├── Concurrent                          #并发工具脚本
-│&nbsp;&nbsp; ├── BaseLock.sh                       #锁工具
-│&nbsp;&nbsp; ├── BaseThreadPool.sh                 #仿线程池工具
-│&nbsp;&nbsp; └── BaseThreadPoolExecutor.sh         #仿线程池工具
-├── Constant                            #常量定义脚本
-│&nbsp;&nbsp; └── BaseConstant.sh
-├── Cursor                              #光标控制脚本
-│&nbsp;&nbsp; ├── BaseCursor.sh
-│&nbsp;&nbsp; ├── BaseKeyboard.sh
-│&nbsp;&nbsp; └── BaseKeyboardEvent.sh
-├── Date                                #日期工具脚本
-│&nbsp;&nbsp; ├── BaseLocalDate.sh
-│&nbsp;&nbsp; ├── BaseLocalDateTime.sh
-│&nbsp;&nbsp; ├── BaseLocalTime.sh
-│&nbsp;&nbsp; ├── BaseMonth.sh
-│&nbsp;&nbsp; ├── BaseTimeUnit.sh
-│&nbsp;&nbsp; ├── BaseTimestamp.sh
-│&nbsp;&nbsp; └── BaseWeek.sh
-├── File                                #文件工具脚本
-│&nbsp;&nbsp; ├── BaseFile.sh
-│&nbsp;&nbsp; ├── BaseTable.sh
-│&nbsp;&nbsp; └── BaseTableGen.sh
-├── Json                                #Json工具脚本
-│&nbsp;&nbsp; └── BaseJson.sh
-├── Lang                                #基础工具脚本
-│&nbsp;&nbsp; ├── BaseMath.sh
-│&nbsp;&nbsp; ├── BaseObject.sh
-│&nbsp;&nbsp; └── BaseString.sh
-├── Log                                 #日志工具脚本
-│&nbsp;&nbsp; └── BaseLog.sh
-├── Redis                               #Redis工具脚本
-│&nbsp;&nbsp; └── BaseRedis.sh
-├── Ssh                                 #ssh工具脚本
-│&nbsp;&nbsp; └── BaseSsh.sh
-├── Starter                             #导包管理脚本
-│&nbsp;&nbsp; ├── BaseDateTimeStarter.sh
-│&nbsp;&nbsp; ├── BaseEnd.sh
-│&nbsp;&nbsp; ├── BaseHeader.sh
-│&nbsp;&nbsp; ├── BaseStarter.sh
-│&nbsp;&nbsp; ├── BaseTestEnd.sh
-│&nbsp;&nbsp; └── BaseTestHeader.sh
-├── Test                                #单元测试脚本-里面有每个工具包的使用示例
-│&nbsp;&nbsp; ├── BaseAnnotationTest.sh
-│&nbsp;&nbsp; ├── BaseArrayListTest.sh
-│&nbsp;&nbsp; ├── BaseFileTest.sh
-│&nbsp;&nbsp; ├── BaseJsonTest.sh
-│&nbsp;&nbsp; ├── BaseLocalDateTest.sh
-│&nbsp;&nbsp; ├── BaseLocalDateTimeTest.sh
-│&nbsp;&nbsp; ├── BaseLocalTimeTest.sh
-│&nbsp;&nbsp; ├── BaseLockTest.sh
-│&nbsp;&nbsp; ├── BaseLogTest.sh
-│&nbsp;&nbsp; ├── BaseMapTest.sh
-│&nbsp;&nbsp; ├── BaseMathTest.sh
-│&nbsp;&nbsp; ├── BaseMiniTest.sh
-│&nbsp;&nbsp; ├── BaseObjectTest.sh
-│&nbsp;&nbsp; ├── BaseRandomTest.sh
-│&nbsp;&nbsp; ├── BaseStringTest.sh
-│&nbsp;&nbsp; ├── BaseTableGenTest.sh
-│&nbsp;&nbsp; ├── BaseTableTest.sh
-│&nbsp;&nbsp; ├── BaseThreadPoolExecutorTest.sh
-│&nbsp;&nbsp; ├── BaseThreadPoolTest.sh
-│&nbsp;&nbsp; ├── BaseUuidTest.sh
-│&nbsp;&nbsp; ├── TableDao.sh
-│&nbsp;&nbsp; └── table
-├── Utils                                #工具类
-│&nbsp;&nbsp; ├── BaseCodec.sh                        #编码工具
-│&nbsp;&nbsp; ├── BaseRandom.sh                       #随机数工具
-│&nbsp;&nbsp; └── BaseUuid.sh                         #Uuid工具
-├── Banner                               #项目头图
-├── BaseShellMini.sh                     #里面涵盖常用的最小工具包可单独导入使用减少项目依赖
-├── config.sh                            #项目配置文件
-├── init.sh                              #项目初始化脚本
-├── mini.sh                              #常用最小引入脚本
-└── readme.md                            #项目介绍<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── Annotation                          #入参检查脚本</span><br><span class="line">│&nbsp;&nbsp; └── BaseAnnotation.sh</span><br><span class="line">├── Collection                          #集合工具脚本</span><br><span class="line">│&nbsp;&nbsp; ├── BaseArrayList.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseHasMap.sh</span><br><span class="line">│&nbsp;&nbsp; └── BaseMap.sh</span><br><span class="line">├── Color                               #颜色工具脚本</span><br><span class="line">│&nbsp;&nbsp; └── BaseColor.sh</span><br><span class="line">├── Concurrent                          #并发工具脚本</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLock.sh                       #锁工具</span><br><span class="line">│&nbsp;&nbsp; ├── BaseThreadPool.sh                 #仿线程池工具</span><br><span class="line">│&nbsp;&nbsp; └── BaseThreadPoolExecutor.sh         #仿线程池工具</span><br><span class="line">├── Constant                            #常量定义脚本</span><br><span class="line">│&nbsp;&nbsp; └── BaseConstant.sh</span><br><span class="line">├── Cursor                              #光标控制脚本</span><br><span class="line">│&nbsp;&nbsp; ├── BaseCursor.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseKeyboard.sh</span><br><span class="line">│&nbsp;&nbsp; └── BaseKeyboardEvent.sh</span><br><span class="line">├── Date                                #日期工具脚本</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLocalDate.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLocalDateTime.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLocalTime.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseMonth.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseTimeUnit.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseTimestamp.sh</span><br><span class="line">│&nbsp;&nbsp; └── BaseWeek.sh</span><br><span class="line">├── File                                #文件工具脚本</span><br><span class="line">│&nbsp;&nbsp; ├── BaseFile.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseTable.sh</span><br><span class="line">│&nbsp;&nbsp; └── BaseTableGen.sh</span><br><span class="line">├── Json                                #Json工具脚本</span><br><span class="line">│&nbsp;&nbsp; └── BaseJson.sh</span><br><span class="line">├── Lang                                #基础工具脚本</span><br><span class="line">│&nbsp;&nbsp; ├── BaseMath.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseObject.sh</span><br><span class="line">│&nbsp;&nbsp; └── BaseString.sh</span><br><span class="line">├── Log                                 #日志工具脚本</span><br><span class="line">│&nbsp;&nbsp; └── BaseLog.sh</span><br><span class="line">├── Redis                               #Redis工具脚本</span><br><span class="line">│&nbsp;&nbsp; └── BaseRedis.sh</span><br><span class="line">├── Ssh                                 #ssh工具脚本</span><br><span class="line">│&nbsp;&nbsp; └── BaseSsh.sh</span><br><span class="line">├── Starter                             #导包管理脚本</span><br><span class="line">│&nbsp;&nbsp; ├── BaseDateTimeStarter.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseEnd.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseHeader.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseStarter.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseTestEnd.sh</span><br><span class="line">│&nbsp;&nbsp; └── BaseTestHeader.sh</span><br><span class="line">├── Test                                #单元测试脚本-里面有每个工具包的使用示例</span><br><span class="line">│&nbsp;&nbsp; ├── BaseAnnotationTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseArrayListTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseFileTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseJsonTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLocalDateTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLocalDateTimeTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLocalTimeTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLockTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseLogTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseMapTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseMathTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseMiniTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseObjectTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseRandomTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseStringTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseTableGenTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseTableTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseThreadPoolExecutorTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseThreadPoolTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── BaseUuidTest.sh</span><br><span class="line">│&nbsp;&nbsp; ├── TableDao.sh</span><br><span class="line">│&nbsp;&nbsp; └── table</span><br><span class="line">├── Utils                                #工具类</span><br><span class="line">│&nbsp;&nbsp; ├── BaseCodec.sh                        #编码工具</span><br><span class="line">│&nbsp;&nbsp; ├── BaseRandom.sh                       #随机数工具</span><br><span class="line">│&nbsp;&nbsp; └── BaseUuid.sh                         #Uuid工具</span><br><span class="line">├── Banner                               #项目头图</span><br><span class="line">├── BaseShellMini.sh                     #里面涵盖常用的最小工具包可单独导入使用减少项目依赖</span><br><span class="line">├── config.sh                            #项目配置文件</span><br><span class="line">├── init.sh                              #项目初始化脚本</span><br><span class="line">├── mini.sh                              #常用最小引入脚本</span><br><span class="line">└── readme.md                            #项目介绍</span><br></pre></td></tr></tbody></table></figure>
 <p>目前还在完善当中。旨在简化shell脚本的编写、提高shell脚本的健壮性。丰富的脚本库可以大大减少shell脚本编写的难度，其类Java的实现方式可以使得面向对象范式的程序员很快的理解并使用。与之相配套的我会出一篇《Shell编程规约》,以期规范Shell脚本程序员的书写习惯。</p>
 <h2 id="初始化项目"><a class="markdownIt-Anchor" href="#初始化项目"></a> 初始化项目</h2>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> ~
-<span class="token function">mkdir</span> shell <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> shell <span class="token comment">#新建一个script目录用于存放所有的脚本</span>
-<span class="token function">git</span> clone https://github.com/chen-shang/BaseShell.git
-<span class="token function">sh</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>/BaseShell/init.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> shell &amp;&amp; <span class="built_in">cd</span> shell <span class="comment">#新建一个script目录用于存放所有的脚本</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/chen-shang/BaseShell.git</span><br><span class="line">sh $(<span class="built_in">pwd</span>)/BaseShell/init.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>或者 脚本后面跟着项目目录</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> ~
-<span class="token function">mkdir</span> shell <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> shell <span class="token comment">#新建一个script目录用于存放所有的脚本</span>
-<span class="token function">git</span> clone https://github.com/chen-shang/BaseShell.git
-<span class="token function">sh</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">pwd</span><span class="token variable">)</span></span>/BaseShell/init.sh com.base.shell<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~</span><br><span class="line"><span class="built_in">mkdir</span> shell &amp;&amp; <span class="built_in">cd</span> shell <span class="comment">#新建一个script目录用于存放所有的脚本</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/chen-shang/BaseShell.git</span><br><span class="line">sh $(<span class="built_in">pwd</span>)/BaseShell/init.sh com.base.shell</span><br></pre></td></tr></tbody></table></figure>
 <p>根据提示输入 project[项目目录] 或者 module[模块名称]<br>
 看到如下输出,则新建项目成功</p>
-<pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">&gt; sh $(pwd)/BaseShell/init.sh
-project[项目目录]:com.baseshell.learn
-module[模块名称]:Script
-./../../com.baseshell.learn
-├── BaseShell -&gt; /Users/chenshang/shell/BaseShell
-└── Script
-    ├── Resources
-    ├── Service
-    |&nbsp;&nbsp; └── Main.sh
-    ├── Test
-    ├── Utils
-    ├── config.sh
-    └── readme.md
-
-6 directories, 3 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt; sh $(pwd)/BaseShell/init.sh</span><br><span class="line">project[项目目录]:com.baseshell.learn</span><br><span class="line">module[模块名称]:Script</span><br><span class="line">./../../com.baseshell.learn</span><br><span class="line">├── BaseShell -&gt; /Users/chenshang/shell/BaseShell</span><br><span class="line">└── Script</span><br><span class="line">    ├── Resources</span><br><span class="line">    ├── Service</span><br><span class="line">    |&nbsp;&nbsp; └── Main.sh</span><br><span class="line">    ├── Test</span><br><span class="line">    ├── Utils</span><br><span class="line">    ├── config.sh</span><br><span class="line">    └── readme.md</span><br><span class="line"></span><br><span class="line">6 directories, 3 files</span><br></pre></td></tr></tbody></table></figure>
 <h2 id="运行项目"><a class="markdownIt-Anchor" href="#运行项目"></a> 运行项目</h2>
 <p>【强制】运行shell脚本要到脚本目录下执行</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> com.baseshell.learn/Script/Controller
-<span class="token function">sh</span> Main.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> com.baseshell.learn/Script/Controller</span><br><span class="line">sh Main.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>看到如下输出,说明项目运行ok,之后可以愉快的写脚本了</p>
-<pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal"> ____                 ____  _          _ _
-| __ )  __ _ ___  ___/ ___|| |__   ___| | |
-|  _ \ / _` / __|/ _ \___ \| '_ \ / _ \ | |
-| |_) | (_| \__ \  __/___) | | | |  __/ | |
-|____/ \__,_|___/\___|____/|_| |_|\___|_|_|
-hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> ____                 ____  _          _ _</span><br><span class="line">| __ )  __ _ ___  ___/ ___|| |__   ___| | |</span><br><span class="line">|  _ \ / _` / __|/ _ \___ \| '_ \ / _ \ | |</span><br><span class="line">| |_) | (_| \__ \  __/___) | | | |  __/ | |</span><br><span class="line">|____/ \__,_|___/\___|____/|_| |_|\___|_|_|</span><br><span class="line">hello world</span><br></pre></td></tr></tbody></table></figure>
 <h1 id="目录结构"><a class="markdownIt-Anchor" href="#目录结构"></a> 目录结构</h1>
-<pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">./../../com.baseshell.learn                         项目目录
-├── BaseShell -&gt; /Users/chenshang/shell/BaseShell   BaseShell的源码软链
-└── Script                                          模块目录：一般建议大写,代表一个Shell模块,里面专门是针对某个模块儿的脚本
-    ├── Controller                                  控制层：可执行的对外的脚本建议写在这里
-    │&nbsp;&nbsp; └── Main.sh
-    ├── Service                                     业务层：项目相关脚本所在的文件,如果想要写一些辅助的脚本,建议与Service同级创建一个文件夹来写
-    │&nbsp;&nbsp; └── DemoService.sh
-    ├── Test                                        测试层：对脚本中的函数进行单元测试的脚本
-    │&nbsp;&nbsp; └── DemoServiceTest.sh
-    ├── Utils                                       工具层：工具类
-    ├── Enum                                        枚举层：枚举或常量
-    ├── Profile                                     环境层：生产环境还是测试环境
-    │&nbsp;&nbsp; ├── dev
-    │&nbsp;&nbsp; │&nbsp;&nbsp; └── application.sh
-    │&nbsp;&nbsp; └── prod
-    │&nbsp;&nbsp;     └── application.sh
-    ├── Resources                                   资源目录：资源目录: 一般放一些文本文件、图片、csv等非脚本文件
-    ├── config.sh                                   配置文件：项目的配置文件包括 头图、日志级别等以及一些项目中用到的配置项
-    └── readme.md                                   描述文件：项目名称、项目介绍等等
-6 directories, 3 files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">./../../com.baseshell.learn                         项目目录</span><br><span class="line">├── BaseShell -&gt; /Users/chenshang/shell/BaseShell   BaseShell的源码软链</span><br><span class="line">└── Script                                          模块目录：一般建议大写,代表一个Shell模块,里面专门是针对某个模块儿的脚本</span><br><span class="line">    ├── Controller                                  控制层：可执行的对外的脚本建议写在这里</span><br><span class="line">    │&nbsp;&nbsp; └── Main.sh</span><br><span class="line">    ├── Service                                     业务层：项目相关脚本所在的文件,如果想要写一些辅助的脚本,建议与Service同级创建一个文件夹来写</span><br><span class="line">    │&nbsp;&nbsp; └── DemoService.sh</span><br><span class="line">    ├── Test                                        测试层：对脚本中的函数进行单元测试的脚本</span><br><span class="line">    │&nbsp;&nbsp; └── DemoServiceTest.sh</span><br><span class="line">    ├── Utils                                       工具层：工具类</span><br><span class="line">    ├── Enum                                        枚举层：枚举或常量</span><br><span class="line">    ├── Profile                                     环境层：生产环境还是测试环境</span><br><span class="line">    │&nbsp;&nbsp; ├── dev</span><br><span class="line">    │&nbsp;&nbsp; │&nbsp;&nbsp; └── application.sh</span><br><span class="line">    │&nbsp;&nbsp; └── prod</span><br><span class="line">    │&nbsp;&nbsp;     └── application.sh</span><br><span class="line">    ├── Resources                                   资源目录：资源目录: 一般放一些文本文件、图片、csv等非脚本文件</span><br><span class="line">    ├── config.sh                                   配置文件：项目的配置文件包括 头图、日志级别等以及一些项目中用到的配置项</span><br><span class="line">    └── readme.md                                   描述文件：项目名称、项目介绍等等</span><br><span class="line">6 directories, 3 files</span><br></pre></td></tr></tbody></table></figure>
 <p>BaseShell相当于Java的JDK.<br>
 配置文件:<br>
 【推荐】<a target="_blank" rel="noopener" href="http://config.sh">config.sh</a> 脚本中尽量只定义变量,不要定义函数或可执行命令,类比Java项目中的properties</p>
 <h1 id="功能介绍"><a class="markdownIt-Anchor" href="#功能介绍"></a> 功能介绍</h1>
 <p>脚本应该怎么写-示例</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
-<span class="token comment"># shellcheck disable=SC1091,SC2155</span>
-<span class="token comment">#===============================================================</span>
-<span class="token assign-left variable">import</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span> .sh<span class="token variable">)</span></span>_<span class="token variable">$$</span>"</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">eval</span> <span class="token builtin class-name">echo</span> <span class="token string">'$'</span><span class="token string">"<span class="token variable">${import}</span>"</span><span class="token variable">)</span></span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">return</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
-<span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable">${import}</span>=0"</span>
-<span class="token comment">#===============================================================</span>
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseHeader.sh
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/config.sh
-<span class="token comment">#导入工具包</span>
-<span class="token comment">#===============================================================================</span>
-<span class="token comment">#业务代码</span>
-<span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token builtin class-name">echo</span> <span class="token string">"hello world"</span>
-<span class="token punctuation">}</span>
-<span class="token comment">#===============================================================================</span>
-<span class="token builtin class-name">source</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseEnd.sh
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># shellcheck disable=SC1091,SC2155</span></span><br><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line">import=<span class="string">"<span class="subst">$(basename <span class="string">"<span class="variable">${BASH_SOURCE[0]}</span>"</span> .sh)</span>_$$"</span></span><br><span class="line"><span class="keyword">if</span> [[ $(<span class="built_in">eval</span> <span class="built_in">echo</span> <span class="string">'$'</span><span class="string">"<span class="variable">${import}</span>"</span>) == 0 ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">${import}</span>=0"</span></span><br><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Starter/BaseHeader.sh</span><br><span class="line"><span class="built_in">source</span> ./../config.sh</span><br><span class="line"><span class="comment">#导入工具包</span></span><br><span class="line"><span class="comment">#===============================================================================</span></span><br><span class="line"><span class="comment">#业务代码</span></span><br><span class="line"><span class="function"><span class="title">main</span></span>(){</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"hello world"</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">#===============================================================================</span></span><br><span class="line"><span class="built_in">source</span> ../../BaseShell/Starter/BaseEnd.sh</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <ol>
 <li>解释器声明<br>
 对应上面示例脚本第一行 【推荐】首行写法 <code>#!/usr/bin/env bash</code></li>
@@ -576,36 +406,24 @@ hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 <li>防止循环引用代码段<br>
 对应上面示例脚本3-7行</li>
 </ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#===============================================================</span>
-<span class="token assign-left variable">import</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span> .sh<span class="token variable">)</span></span>_<span class="token variable">$$</span>"</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">eval</span> <span class="token builtin class-name">echo</span> <span class="token string">'$'</span><span class="token string">"<span class="token variable">${import}</span>"</span><span class="token variable">)</span></span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">return</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
-<span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable">${import}</span>=0"</span>
-<span class="token comment">#===============================================================</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line">import=<span class="string">"<span class="subst">$(basename <span class="string">"<span class="variable">${BASH_SOURCE[0]}</span>"</span> .sh)</span>_$$"</span></span><br><span class="line"><span class="keyword">if</span> [[ $(<span class="built_in">eval</span> <span class="built_in">echo</span> <span class="string">'$'</span><span class="string">"<span class="variable">${import}</span>"</span>) == 0 ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">${import}</span>=0"</span></span><br><span class="line"><span class="comment">#===============================================================</span></span><br></pre></td></tr></tbody></table></figure>
 <p>这段代码的作用是为了预防 像 A脚本引用B脚本,B脚本又引用A脚本导致的循环引用问题。其原理是以文件名定义一个变量,引用过之后变量的值设置为0,再次引用的时候直接return,注意再次引用的时候是直接return不是exit. 详细用法,后面会有展开。<br>
 这段代码目前是我能想到的最精简的方式,不排除以后有更优的方案。</p>
 <ol start="4">
 <li>引用各种工具类,类似于Java中的import</li>
 </ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#===============================================================</span>
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseHeader.sh
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/config.sh
-<span class="token comment">#导入工具包</span>
-<span class="token comment">#===============================================================================</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Starter/BaseHeader.sh</span><br><span class="line"><span class="built_in">source</span> ./../config.sh</span><br><span class="line"><span class="comment">#导入工具包</span></span><br><span class="line"><span class="comment">#===============================================================================</span></span><br></pre></td></tr></tbody></table></figure>
 <p>引用第三方脚本使用source命令,相当于Java的import关键字<br>
 <code>source ./../../BaseShell/Starter/BaseHeader.sh</code>,<code>source ./../config.sh</code>这两个是必须要引用的,且放在所有引用的开头。<br>
 <code>source ./../config.sh</code> 则是为了因为当前项目的配置文件,我们对项目的全局配置变量都在这里面定义<br>
 <code>source ./../../BaseShell/Starter/BaseHeader.sh</code> 目的是引入BaseShell框架. 相当于引用下面四个包</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Lang/BaseObject.sh
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Log/BaseLog.sh
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Annotation/BaseAnnotation.sh
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Lang/BaseString.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ./../../BaseShell/Lang/BaseObject.sh</span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Log/BaseLog.sh</span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Annotation/BaseAnnotation.sh</span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Lang/BaseString.sh</span><br></pre></td></tr></tbody></table></figure>
 <ol start="5">
 <li>接下来是main入口函数和业务代码<br>
 【推荐】Controller包中的业务代码都推荐写入main</li>
 <li>写在最后</li>
 </ol>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment">#===============================================================================</span>
-<span class="token builtin class-name">source</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseEnd.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#===============================================================================</span></span><br><span class="line"><span class="built_in">source</span> ../../BaseShell/Starter/BaseEnd.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>这样直接执行脚本的时候,会先寻找脚本里面的main函数去执行,类似运行一个Java Class类中的main方法</p>
 <h2 id="如何引用包"><a class="markdownIt-Anchor" href="#如何引用包"></a> 如何引用包</h2>
 <p>我们规定项目目录最大深度为2层,也就是不允许在Service同级的目录下在创建目录然后在里面写脚本</p>
@@ -620,9 +438,7 @@ hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span
   <img src="/2019/08/28/linux/baseshell/baseshell-shi-yong-jiao-cheng/api.gif">
 </center>
 <h2 id="入参检查脚本annotation"><a class="markdownIt-Anchor" href="#入参检查脚本annotation"></a> 入参检查脚本【Annotation】</h2>
-<pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">.
-├── Annotation                         #入参检查脚本
-|&nbsp;&nbsp; └── BaseAnnotation.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── Annotation                         #入参检查脚本</span><br><span class="line">|&nbsp;&nbsp; └── BaseAnnotation.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>默认自动引入,此包下的工具是用来进行函数参数校验的,类似Spring中的Validate的功能。一旦参数校验没有通过则会终止函数的执行。 所有方法都是以 <code>_</code> 开头的,类似于Java中的<code>@</code>,曾想用@开头,但发现@在shell中属于特殊字符,不允许出现在函数命中,斟酌再三选择了<code>_</code></p>
 <table>
 <thead>
@@ -656,16 +472,10 @@ hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 </tbody>
 </table>
 <p>示例</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># ssh登录前检查</span>
-<span class="token keyword">function</span> <span class="token function-name function">ssh_checkLogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> _NotBlank <span class="token string">"<span class="token variable">$1</span>"</span> <span class="token string">"ip can not be null"</span> <span class="token operator">&amp;&amp;</span> _NotBlank <span class="token string">"<span class="token variable">$2</span>"</span> <span class="token string">"port can not be null"</span> <span class="token operator">&amp;&amp;</span> _NotBlank <span class="token string">"<span class="token variable">$3</span>"</span> <span class="token string">"user can not bull"</span> <span class="token operator">&amp;&amp;</span> _NotBlank <span class="token string">"<span class="token variable">$4</span>"</span> <span class="token string">"pass can not bull"</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">ip</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">port</span><span class="token operator">=</span><span class="token variable">$2</span> <span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">user</span><span class="token operator">=</span><span class="token variable">$3</span> <span class="token punctuation">;</span><span class="token builtin class-name">local</span> <span class="token assign-left variable">pass</span><span class="token operator">=</span><span class="token variable">$4</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ssh登录前检查</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">ssh_checkLogin</span></span>(){ _NotBlank <span class="string">"<span class="variable">$1</span>"</span> <span class="string">"ip can not be null"</span> &amp;&amp; _NotBlank <span class="string">"<span class="variable">$2</span>"</span> <span class="string">"port can not be null"</span> &amp;&amp; _NotBlank <span class="string">"<span class="variable">$3</span>"</span> <span class="string">"user can not bull"</span> &amp;&amp; _NotBlank <span class="string">"<span class="variable">$4</span>"</span> <span class="string">"pass can not bull"</span></span><br><span class="line">  <span class="built_in">local</span> ip=<span class="variable">$1</span> ;<span class="built_in">local</span> port=<span class="variable">$2</span> ;<span class="built_in">local</span> user=<span class="variable">$3</span> ;<span class="built_in">local</span> pass=<span class="variable">$4</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>一般函数的参数校验,我一般和函数也在一行上,第二行用具体的变量名接收参数。上面的函数如果有某个参数没有传,函数会异常退出,下面的代码也不会执行。</p>
 <h2 id="集合工具脚本collection"><a class="markdownIt-Anchor" href="#集合工具脚本collection"></a> 集合工具脚本【Collection】</h2>
-<pre class="line-numbers language-terminal" data-language="terminal"><code class="language-terminal">├── Collection
-|&nbsp;&nbsp; ├── BaseArrayList.sh
-|&nbsp;&nbsp; ├── BaseHasMap.sh
-|&nbsp;&nbsp; └── BaseMap.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">├── Collection</span><br><span class="line">|&nbsp;&nbsp; ├── BaseArrayList.sh</span><br><span class="line">|&nbsp;&nbsp; ├── BaseHasMap.sh</span><br><span class="line">|&nbsp;&nbsp; └── BaseMap.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>默认不自动引入,如要使用需单据引入 <code>source ./../../BaseShell/Collection/BaseArrayList.sh</code><br>
 此包下的工具是用来对 集合 和 Map 进行操作的。</p>
 <h3 id="basearraylistsh"><a class="markdownIt-Anchor" href="#basearraylistsh"></a> <a target="_blank" rel="noopener" href="http://BaseArrayList.sh">BaseArrayList.sh</a></h3>
@@ -827,20 +637,10 @@ hello world<span aria-hidden="true" class="line-numbers-rows"><span></span><span
 </tr>
 </tbody>
 </table>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 支持固定文本</span>
-log_debug <span class="token string">"要记录的日志内容"</span>
-<span class="token comment"># 支持字符串插值</span>
-log_debug <span class="token string">"要记录的日志内容. key=<span class="token variable">${key}</span>,value=<span class="token variable">${value}</span>"</span>
-<span class="token comment"># 支持多参数</span>
-log_debug <span class="token string">"要记录的日志内容."</span> <span class="token string">"1=<span class="token variable">$1</span>"</span> <span class="token string">"2=<span class="token variable">$2</span>"</span>
-<span class="token comment"># 支持函数</span>
-log_debug <span class="token string">"要记录的日志内容."</span> <span class="token string">"now=<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span><span class="token variable">)</span></span>"</span> <span class="token string">"index=<span class="token variable"><span class="token variable">$((</span>i<span class="token operator">++</span><span class="token variable">))</span></span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 支持固定文本</span></span><br><span class="line">log_debug <span class="string">"要记录的日志内容"</span></span><br><span class="line"><span class="comment"># 支持字符串插值</span></span><br><span class="line">log_debug <span class="string">"要记录的日志内容. key=<span class="variable">${key}</span>,value=<span class="variable">${value}</span>"</span></span><br><span class="line"><span class="comment"># 支持多参数</span></span><br><span class="line">log_debug <span class="string">"要记录的日志内容."</span> <span class="string">"1=<span class="variable">$1</span>"</span> <span class="string">"2=<span class="variable">$2</span>"</span></span><br><span class="line"><span class="comment"># 支持函数</span></span><br><span class="line">log_debug <span class="string">"要记录的日志内容."</span> <span class="string">"now=<span class="subst">$(date)</span>"</span> <span class="string">"index=<span class="subst">$((i++)</span>)"</span></span><br></pre></td></tr></tbody></table></figure>
 <h3 id="默认配置"><a class="markdownIt-Anchor" href="#默认配置"></a> 默认配置</h3>
 <p>两个系统默认配置,在 <code>config.sh</code> 配置文件中,用户可根据自己的意愿在自己的项目目录下修改</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 日志记录位置</span>
-<span class="token assign-left variable">LOG_DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${<span class="token environment constant">HOME</span>}</span>/.baseshell"</span>
-<span class="token comment"># 日志级别</span>
-<span class="token assign-left variable">LOG_LEVEL</span><span class="token operator">=</span>SYSTEM<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 日志记录位置</span></span><br><span class="line">LOG_DIR=<span class="string">"<span class="variable">${HOME}</span>/.baseshell"</span></span><br><span class="line"><span class="comment"># 日志级别</span></span><br><span class="line">LOG_LEVEL=SYSTEM</span><br></pre></td></tr></tbody></table></figure>
 <h3 id="输出示例"><a class="markdownIt-Anchor" href="#输出示例"></a> 输出示例</h3>
 <p>执行Test下的测试用例,输出如下</p>
 <center>
@@ -862,82 +662,18 @@ log_debug <span class="token string">"要记录的日志内容."</span> <span cl
 <h2 id="工具包utils"><a class="markdownIt-Anchor" href="#工具包utils"></a> 工具包【Utils】</h2>
 <h2 id="测试utils"><a class="markdownIt-Anchor" href="#测试utils"></a> 测试【Utils】</h2>
 <p>单元测试的写法</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
-<span class="token comment"># shellcheck disable=SC1091,SC2155</span>
-<span class="token comment">#===============================================================</span>
-<span class="token comment"># 第一步:引入测试工具包头部</span>
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseTestHeader.sh
-<span class="token comment">#===============================================================</span>
-<span class="token comment"># 第二步:引入待测试的工具类</span>
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Annotation/BaseAnnotation.sh
-<span class="token comment">#===============================================================</span>
-<span class="token comment"># 第三步:开始针对某个函数系写单元测试</span>
-<span class="token comment"># 例如</span>
-<span class="token function-name function">test-_Min</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  _Min <span class="token string">"2"</span> <span class="token string">"3"</span> <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
-  assertTrue <span class="token string">"<span class="token variable">$?</span>"</span>
-  _Min <span class="token string">"2"</span> <span class="token string">"1"</span> <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
-  assertFalse <span class="token string">"<span class="token variable">$?</span>"</span>
-  _Min <span class="token string">"2"</span> <span class="token string">"2"</span> <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
-  assertFalse <span class="token string">"<span class="token variable">$?</span>"</span>
-<span class="token punctuation">}</span>
-<span class="token comment">#===============================================================</span>
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseTestEnd.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># shellcheck disable=SC1091,SC2155</span></span><br><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line"><span class="comment"># 第一步:引入测试工具包头部</span></span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Starter/BaseTestHeader.sh</span><br><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line"><span class="comment"># 第二步:引入待测试的工具类</span></span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Annotation/BaseAnnotation.sh</span><br><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line"><span class="comment"># 第三步:开始针对某个函数系写单元测试</span></span><br><span class="line"><span class="comment"># 例如</span></span><br><span class="line"><span class="built_in">test</span>-<span class="function"><span class="title">_Min</span></span>(){</span><br><span class="line">  _Min <span class="string">"2"</span> <span class="string">"3"</span> &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">  assertTrue <span class="string">"$?"</span></span><br><span class="line">  _Min <span class="string">"2"</span> <span class="string">"1"</span> &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">  assertFalse <span class="string">"$?"</span></span><br><span class="line">  _Min <span class="string">"2"</span> <span class="string">"2"</span> &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">  assertFalse <span class="string">"$?"</span></span><br><span class="line">}</span><br><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Starter/BaseTestEnd.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>第一步:引入测试工具包头部</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseTestHeader.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ./../../BaseShell/Starter/BaseTestHeader.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>第二步:引入待测试的工具类</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Annotation/BaseAnnotation.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ./../../BaseShell/Annotation/BaseAnnotation.sh</span><br></pre></td></tr></tbody></table></figure>
 <p>第三步:开始针对某个函数系写单元测试. 我们开始测试脚本中的 <code>_Min</code> 函数</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 例如</span>
-<span class="token function-name function">test-_Min</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  _Min <span class="token string">"2"</span> <span class="token string">"3"</span> <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
-  assertTrue <span class="token string">"<span class="token variable">$?</span>"</span>
-  _Min <span class="token string">"2"</span> <span class="token string">"1"</span> <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
-  assertFalse <span class="token string">"<span class="token variable">$?</span>"</span>
-  _Min <span class="token string">"2"</span> <span class="token string">"2"</span> <span class="token operator">&gt;</span>/dev/null <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span><span class="token file-descriptor important">&amp;1</span>
-  assertFalse <span class="token string">"<span class="token variable">$?</span>"</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 例如</span></span><br><span class="line"><span class="built_in">test</span>-<span class="function"><span class="title">_Min</span></span>(){</span><br><span class="line">  _Min <span class="string">"2"</span> <span class="string">"3"</span> &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">  assertTrue <span class="string">"$?"</span></span><br><span class="line">  _Min <span class="string">"2"</span> <span class="string">"1"</span> &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">  assertFalse <span class="string">"$?"</span></span><br><span class="line">  _Min <span class="string">"2"</span> <span class="string">"2"</span> &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">  assertFalse <span class="string">"$?"</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>本Shell规约规定<br>
 【强制】单元测试函数以 test- 开头<br>
 【强制】若想跳过某个单元测试，可以在函数后面打上 <code>#ignore</code> 标记</p>
 <p>我们使用 <code>assert</code> 系列函数对我们的预期结果进行判断。我们看一下 <a target="_blank" rel="noopener" href="http://BaseTestHeader.sh">BaseTestHeader.sh</a> 脚本中</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
-<span class="token comment"># shellcheck disable=SC1091,SC2155</span>
-<span class="token comment">#===============================================================</span>
-<span class="token assign-left variable">import</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">basename</span> <span class="token string">"<span class="token variable">${<span class="token environment constant">BASH_SOURCE</span><span class="token punctuation">[</span>0<span class="token punctuation">]</span>}</span>"</span> .sh<span class="token variable">)</span></span>_<span class="token variable">$$</span>"</span>
-<span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">eval</span> <span class="token builtin class-name">echo</span> <span class="token string">'$'</span><span class="token string">"<span class="token variable">${import}</span>"</span><span class="token variable">)</span></span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token keyword">then</span> <span class="token builtin class-name">return</span><span class="token punctuation">;</span> <span class="token keyword">fi</span>
-<span class="token builtin class-name">eval</span> <span class="token string">"<span class="token variable">${import}</span>=0"</span>
-<span class="token comment">#===============================================================</span>
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/config.sh
-<span class="token builtin class-name">source</span> ./<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/BaseShell/Starter/BaseStarter.sh
-<span class="token comment">#===============================================================================</span>
-<span class="token comment"># 这种没有实现的函数类似接口,在对应的xxEnd.sh中必有实现</span>
-<span class="token keyword">function</span> <span class="token function-name function">assertEquals</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token builtin class-name">:</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">sourceValue</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token comment">#测试结果</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">targetValue</span><span class="token operator">=</span><span class="token variable">$2</span> <span class="token comment">#预期结果</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">description</span><span class="token operator">=</span><span class="token variable">$3</span> <span class="token comment">#描述</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function-name function">assertNotBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token builtin class-name">:</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">sourceValue</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token comment">#测试结果</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">targetValue</span><span class="token operator">=</span><span class="token variable">$2</span> <span class="token comment">#预期结果</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">description</span><span class="token operator">=</span><span class="token variable">$3</span> <span class="token comment">#描述</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function-name function">assertBlank</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token builtin class-name">:</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">sourceValue</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token comment">#测试结果</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">targetValue</span><span class="token operator">=</span><span class="token variable">$2</span> <span class="token comment">#预期结果</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">description</span><span class="token operator">=</span><span class="token variable">$3</span> <span class="token comment">#描述</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function-name function">assertTrue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token builtin class-name">:</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">sourceValue</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token comment">#测试结果</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">description</span><span class="token operator">=</span><span class="token variable">$2</span> <span class="token comment">#描述</span>
-<span class="token punctuation">}</span>
-<span class="token keyword">function</span> <span class="token function-name function">assertFalse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token builtin class-name">:</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">sourceValue</span><span class="token operator">=</span><span class="token variable">$1</span> <span class="token comment">#测试结果</span>
-  <span class="token builtin class-name">local</span> <span class="token assign-left variable">description</span><span class="token operator">=</span><span class="token variable">$2</span> <span class="token comment">#描述</span>
-<span class="token punctuation">}</span>
-<span class="token function-name function">mock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token builtin class-name">:</span>
-
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># shellcheck disable=SC1091,SC2155</span></span><br><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line">import=<span class="string">"<span class="subst">$(basename <span class="string">"<span class="variable">${BASH_SOURCE[0]}</span>"</span> .sh)</span>_$$"</span></span><br><span class="line"><span class="keyword">if</span> [[ $(<span class="built_in">eval</span> <span class="built_in">echo</span> <span class="string">'$'</span><span class="string">"<span class="variable">${import}</span>"</span>) == 0 ]]; <span class="keyword">then</span> <span class="built_in">return</span>; <span class="keyword">fi</span></span><br><span class="line"><span class="built_in">eval</span> <span class="string">"<span class="variable">${import}</span>=0"</span></span><br><span class="line"><span class="comment">#===============================================================</span></span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/config.sh</span><br><span class="line"><span class="built_in">source</span> ./../../BaseShell/Starter/BaseStarter.sh</span><br><span class="line"><span class="comment">#===============================================================================</span></span><br><span class="line"><span class="comment"># 这种没有实现的函数类似接口,在对应的xxEnd.sh中必有实现</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">assertEquals</span></span>(){ :</span><br><span class="line">  <span class="built_in">local</span> sourceValue=<span class="variable">$1</span> <span class="comment">#测试结果</span></span><br><span class="line">  <span class="built_in">local</span> targetValue=<span class="variable">$2</span> <span class="comment">#预期结果</span></span><br><span class="line">  <span class="built_in">local</span> description=<span class="variable">$3</span> <span class="comment">#描述</span></span><br><span class="line">}</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">assertNotBlank</span></span>(){ :</span><br><span class="line">  <span class="built_in">local</span> sourceValue=<span class="variable">$1</span> <span class="comment">#测试结果</span></span><br><span class="line">  <span class="built_in">local</span> targetValue=<span class="variable">$2</span> <span class="comment">#预期结果</span></span><br><span class="line">  <span class="built_in">local</span> description=<span class="variable">$3</span> <span class="comment">#描述</span></span><br><span class="line">}</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">assertBlank</span></span>(){ :</span><br><span class="line">  <span class="built_in">local</span> sourceValue=<span class="variable">$1</span> <span class="comment">#测试结果</span></span><br><span class="line">  <span class="built_in">local</span> targetValue=<span class="variable">$2</span> <span class="comment">#预期结果</span></span><br><span class="line">  <span class="built_in">local</span> description=<span class="variable">$3</span> <span class="comment">#描述</span></span><br><span class="line">}</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">assertTrue</span></span>(){ :</span><br><span class="line">  <span class="built_in">local</span> sourceValue=<span class="variable">$1</span> <span class="comment">#测试结果</span></span><br><span class="line">  <span class="built_in">local</span> description=<span class="variable">$2</span> <span class="comment">#描述</span></span><br><span class="line">}</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">assertFalse</span></span>(){ :</span><br><span class="line">  <span class="built_in">local</span> sourceValue=<span class="variable">$1</span> <span class="comment">#测试结果</span></span><br><span class="line">  <span class="built_in">local</span> description=<span class="variable">$2</span> <span class="comment">#描述</span></span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="title">mock</span></span>(){ :</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>上面有很多函数只有名字没有实现。这样做的目的其实是为了先定义函数,然后可以很好的利用idea的代码提示功能。那必然有实现，实现在 <code>source ./../../BaseShell/Starter/BaseTestEnd.sh</code> 里面，这也就是为甚么单元测试的相关函数要写到 start 和 end 之间的缘故。</p>
 
                 
@@ -1595,7 +1331,7 @@ log_debug <span class="token string">"要记录的日志内容."</span> <span cl
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             

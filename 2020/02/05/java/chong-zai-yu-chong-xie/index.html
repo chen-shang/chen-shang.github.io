@@ -50,7 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.3.0">
+<meta name="generator" content="Hexo 7.0.0-rc2">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
@@ -347,38 +347,13 @@
 <h1 id="重载"><a class="markdownIt-Anchor" href="#重载"></a> 重载</h1>
 <p>重载指的是在同一个类中，方法同名但参数不同，这个参数的不同足以另Jvm虚拟机根据参数的个数或参数的类型来区分究竟该调用哪个方法,在调用的时候Jvm总是倾向于调用方法更明确的那个<br>
 如下</p>
-<pre class="line-numbers language-none"><code class="language-none">public class Son {
-  public String print(Object o) {
-    return "111";
-  }
-
-  public String print(String o) {
-    return o;
-  }
-
-  public static void main(String[] args) {
-    new Son().print("12345");
-    new Son().print(args);
-  }
-
-}
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class Son {</span><br><span class="line">  public String print(Object o) {</span><br><span class="line">    return "111";</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  public String print(String o) {</span><br><span class="line">    return o;</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) {</span><br><span class="line">    new Son().print("12345");</span><br><span class="line">    new Son().print(args);</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
 <p>注意下面两个方法是不能共存的，因为在调用的时候没有办法区分</p>
-<pre class="line-numbers language-none"><code class="language-none">public String print(Object o) {
-    return "111";
-  }
-
-public &lt;T&gt; T print(T o) {
-  return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public String print(Object o) {</span><br><span class="line">    return "111";</span><br><span class="line">  }</span><br><span class="line"></span><br><span class="line">public &lt;T&gt; T print(T o) {</span><br><span class="line">  return o;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>理由是泛型的类型擦除</p>
-<pre class="line-numbers language-none"><code class="language-none">public &lt;T&gt; T print(T o) {
-  return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public &lt;T&gt; T print(T o) {</span><br><span class="line">  return o;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>这个方法和</p>
-<pre class="line-numbers language-none"><code class="language-none">public Object  print(o o) {
-  return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Object  print(o o) {</span><br><span class="line">  return o;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
 <p>方法无异</p>
 <h1 id="重写"><a class="markdownIt-Anchor" href="#重写"></a> 重写</h1>
 <p>重写就是重新一份，这个新写的一份是有条件的</p>
@@ -947,7 +922,7 @@ public &lt;T&gt; T print(T o) {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.4k</span>
+                        class="white-color">143.1k</span>
             
             
             
