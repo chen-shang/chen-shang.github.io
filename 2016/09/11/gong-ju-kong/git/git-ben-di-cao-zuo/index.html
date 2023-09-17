@@ -314,7 +314,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-05
+                    2023-09-17
                 </div>
                 
 
@@ -478,9 +478,9 @@ $ <span class="token function">git</span> revert  <span class="token operator">&
 <span class="token comment"># 撤销某次提交的某个文件的内容(Revert a specific file from a previous commit)</span>
 $ <span class="token function">git</span> checkout <span class="token operator">&lt;</span>commit<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>file<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="git-pull"><a class="markdownIt-Anchor" href="#git-pull"></a> git pull</h2>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">git</span> pull <span class="token parameter variable">-p</span> <span class="token comment"># 等同于下面的命令</span>
-$ <span class="token function">git</span> fetch <span class="token parameter variable">--prune</span> origin
-$ <span class="token function">git</span> fetch <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> pull <span class="token parameter variable">-p</span> <span class="token comment"># 等同于下面的命令</span>
+<span class="token function">git</span> fetch <span class="token parameter variable">--prune</span> origin
+<span class="token function">git</span> fetch <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="git-分支对比"><a class="markdownIt-Anchor" href="#git-分支对比"></a> git 分支对比</h2>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看 dev 有，而 master 中没有的：</span>
 $ <span class="token function">git</span> log dev ^master

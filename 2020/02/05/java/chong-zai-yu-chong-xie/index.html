@@ -306,7 +306,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-23
+                    2023-09-17
                 </div>
                 
 
@@ -347,38 +347,38 @@
 <h1 id="重载"><a class="markdownIt-Anchor" href="#重载"></a> 重载</h1>
 <p>重载指的是在同一个类中，方法同名但参数不同，这个参数的不同足以另Jvm虚拟机根据参数的个数或参数的类型来区分究竟该调用哪个方法,在调用的时候Jvm总是倾向于调用方法更明确的那个<br>
 如下</p>
-<pre class="line-numbers language-none"><code class="language-none">public class Son {
-  public String print(Object o) {
-    return "111";
-  }
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Son</span> <span class="token punctuation">{</span>
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">"111"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  public String print(String o) {
-    return o;
-  }
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">String</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-  public static void main(String[] args) {
-    new Son().print("12345");
-    new Son().print(args);
-  }
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"12345"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-}
+<span class="token punctuation">}</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>注意下面两个方法是不能共存的，因为在调用的时候没有办法区分</p>
-<pre class="line-numbers language-none"><code class="language-none">public String print(Object o) {
-    return "111";
-  }
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token string">"111"</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
 
-public &lt;T&gt; T print(T o) {
-  return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">public</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token class-name">T</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">T</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>理由是泛型的类型擦除</p>
-<pre class="line-numbers language-none"><code class="language-none">public &lt;T&gt; T print(T o) {
-  return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token class-name">T</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">T</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>这个方法和</p>
-<pre class="line-numbers language-none"><code class="language-none">public Object  print(o o) {
-  return o;
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">Object</span>  <span class="token function">print</span><span class="token punctuation">(</span>o o<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> o<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>方法无异</p>
 <h1 id="重写"><a class="markdownIt-Anchor" href="#重写"></a> 重写</h1>
 <p>重写就是重新一份，这个新写的一份是有条件的</p>

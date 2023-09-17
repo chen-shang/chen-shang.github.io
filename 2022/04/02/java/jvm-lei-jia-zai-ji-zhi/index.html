@@ -5,12 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="JVM类加载机制, IT,技术,总结">
-    <meta name="description" content="
-
-Java的类加载过程是什么样子的?Java类的生命周期是什么样子的。
+    <meta name="description" content=" Java的类加载过程是什么样子的?Java类的生命周期是什么样子的
 分成357,3个阶段,5个步骤,7个小结
 可以看成三个阶段: 加载-&amp;gt;连接-&amp;gt;初始化
-5个步骤,其中因为 连接可以分成:验证-&amp;gt;准备-&amp;gt;解析。">
+5个步骤,其中因为 连接可以分成:验证-&amp;gt;准备-&amp;gt;解析。所以">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -311,7 +309,7 @@ Java的类加载过程是什么样子的?Java类的生命周期是什么样子�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-23
+                    2023-09-17
                 </div>
                 
 
@@ -348,38 +346,24 @@ Java的类加载过程是什么样子的?Java类的生命周期是什么样子�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li>
-<p>Java的类加载过程是什么样子的?Java类的生命周期是什么样子的。<br>
-分成357,3个阶段,5个步骤,7个小结<br>
+                <h1 id="java的类加载过程是什么样子的java类的生命周期是什么样子的"><a class="markdownIt-Anchor" href="#java的类加载过程是什么样子的java类的生命周期是什么样子的"></a> Java的类加载过程是什么样子的?Java类的生命周期是什么样子的</h1>
+<p>分成357,3个阶段,5个步骤,7个小结<br>
 可以看成三个阶段: 加载-&gt;连接-&gt;初始化<br>
 5个步骤,其中因为 连接可以分成:验证-&gt;准备-&gt;解析。所以加上 前面的加载和后面的初始化，就是 加载-验证-准备-解析-初始化<br>
 7个小结,初始化之后还需要使用和卸载。因此就是  加载-验证-准备-解析-初始化-使用-卸载</p>
-</li>
-<li>
-<p>每个阶段都是干啥的<br>
-加载: 首先第一件是事情就是把 .class文件放到内存里面<br>
+<h2 id="每个阶段都是干啥的"><a class="markdownIt-Anchor" href="#每个阶段都是干啥的"></a> 每个阶段都是干啥的</h2>
+<p>加载: 首先第一件是事情就是把 .class文件放到内存里面<br>
 所为连接，连接的就是 .class 和 Class 的过程，连接完成了，Class也就放到内存里面了。所以 .class 加载到内存里面了，得先看看 这个class文件写的对不对，也就是验证，如果写的不对，那就直接报错就好了，如果写的没问题，接下来就是在方法区里面分配空间了,因为马上就要创建Class了,得先准备准备吧，准备好了就是解析了，解析的目的就是把能把符号引用转换成直接引用的地方都转换成直接引用。<br>
 初始化其实就是赋值的过程，按照顺序执行静态变量的赋值过程和静态代码块儿的代码。到此一个对象的DNA就好了。<br>
 使用就是new<br>
 卸载就是这个类不在使用的时候从方法区里面移除的过程，不过这个移除的过程比较苛刻。</p>
-</li>
-<li>
-<p>什么是双亲委派</p>
-</li>
-<li>
-<p>如何打破双亲委派<br>
-只要继承ClassLoader类,然后重写findClass 和 loadClass 就行。如果只重写findClass就是为了接入双亲委派。</p>
-</li>
-<li>
-<p>为什么要打破双亲委派</p>
-</li>
-<li>
-<p>Tomcat 要求应用之间隔离</p>
-</li>
-<li>
-<p>热部署 要求一个类变了之后需要重新加载</p>
-</li>
+<h2 id="什么是双亲委派"><a class="markdownIt-Anchor" href="#什么是双亲委派"></a> 什么是双亲委派</h2>
+<h2 id="如何打破双亲委派"><a class="markdownIt-Anchor" href="#如何打破双亲委派"></a> 如何打破双亲委派</h2>
+<p>只要继承ClassLoader类,然后重写findClass 和 loadClass 就行。如果只重写findClass就是为了接入双亲委派。</p>
+<h2 id="为什么要打破双亲委派"><a class="markdownIt-Anchor" href="#为什么要打破双亲委派"></a> 为什么要打破双亲委派</h2>
+<ol>
+<li>Tomcat 要求应用之间隔离</li>
+<li>热部署 要求一个类变了之后需要重新加载</li>
 </ol>
 
                 

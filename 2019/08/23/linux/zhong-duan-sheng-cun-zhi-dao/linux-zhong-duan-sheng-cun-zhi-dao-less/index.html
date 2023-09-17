@@ -322,7 +322,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-05
+                    2023-09-17
                 </div>
                 
 
@@ -365,18 +365,14 @@ less [参数] 文件名…</p>
 <h2 id="参数"><a class="markdownIt-Anchor" href="#参数"></a> 参数</h2>
 <p>直接输入 q 退出</p>
 <h2 id="qa"><a class="markdownIt-Anchor" href="#qa"></a> QA</h2>
-<ol>
-<li>带颜色文件如何显示?<br>
-例如 ESC[32m[2019-08-22T20:34:06][60217 60295][SUCCESS]: test ok[100%],hit [TRUE]ESC[0m 这行文本中 ESC[32m 和 ESC[0m 中间包裹的字在linux中应该表示绿色</li>
-</ol>
+<h3 id="带颜色文件如何显示"><a class="markdownIt-Anchor" href="#带颜色文件如何显示"></a> 带颜色文件如何显示?</h3>
+<p>例如 ESC[32m[2019-08-22T20:34:06][60217 60295][SUCCESS]: test ok[100%],hit [TRUE]ESC[0m 这行文本中 ESC[32m 和 ESC[0m 中间包裹的字在linux中应该表示绿色</p>
 <blockquote>
 <p>用 less -r 文件名 的方式查看</p>
 </blockquote>
-<ol start="2">
-<li>如何浏览多文件?如何切换?<br>
-例如我们查看日志文件的时候,不确定信息打印到了 error.log 还是 info.log 的时候,我们一般打开两个文件,现在一个文件里面搜索,在到另一个文件里面搜索。<br>
-或者两个文件都有我们关心的日志的时候,我么可能来回两个文件一起查看或对比查看来排查问题</li>
-</ol>
+<h3 id="如何浏览多文件如何切换"><a class="markdownIt-Anchor" href="#如何浏览多文件如何切换"></a> 如何浏览多文件?如何切换?</h3>
+<p>例如我们查看日志文件的时候,不确定信息打印到了 error.log 还是 info.log 的时候,我们一般打开两个文件,现在一个文件里面搜索,在到另一个文件里面搜索。<br>
+或者两个文件都有我们关心的日志的时候,我么可能来回两个文件一起查看或对比查看来排查问题</p>
 <blockquote>
 <p>用 less [参数] 文件1 文件2 的方式查看<br>
 输入 :n 浏览下一文件<br>
