@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-17T14:09:56.469Z</updated>
+  <updated>2023-09-17T14:47:46.010Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac总是生成.DS_Store</title>
+    <link href="https://chen-shang.github.io/2023/09/17/gong-ju-kong/mac/mac-zong-shi-sheng-cheng-ds-store/"/>
+    <id>https://chen-shang.github.io/2023/09/17/gong-ju-kong/mac/mac-zong-shi-sheng-cheng-ds-store/</id>
+    <published>2023-09-17T14:46:10.000Z</published>
+    <updated>2023-09-17T14:47:46.010Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;.DS_Store是Mac OS保存文件夹的自定义属性的隐藏文件，如文件的图标位置或背景色，相当于Windows的desktop.ini。&lt;/p&gt;
+&lt;h1 id=&quot;禁止ds_store生成&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>吾日三省</title>
@@ -611,37 +643,6 @@
     <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
     <category term="计算机基础" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>flex布局学习笔记</title>
-    <link href="https://chen-shang.github.io/2023/08/27/qian-duan/vue/flex-bu-ju-xue-xi-bi-ji/"/>
-    <id>https://chen-shang.github.io/2023/08/27/qian-duan/vue/flex-bu-ju-xue-xi-bi-ji/</id>
-    <published>2023-08-27T06:06:56.000Z</published>
-    <updated>2023-09-05T14:31:35.080Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;现在最流行的前端布局技术之一是弹性布局（Flexbox）。Flexbox提供了一种简单而强大的方式来创建自适应和灵活的布局。它可以轻松地实现水平和垂直居中、等高列布局、自适应网格等常见布局需求。Flexbox还具有简洁的语法和强大的控制能力，使得布局变得更加直观和易于理解。</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Vue" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
     
   </entry>
   

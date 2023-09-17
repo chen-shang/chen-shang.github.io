@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>mac总是生成.DS_Store</title>
+      <link href="/2023/09/17/gong-ju-kong/mac/mac-zong-shi-sheng-cheng-ds-store/"/>
+      <url>/2023/09/17/gong-ju-kong/mac/mac-zong-shi-sheng-cheng-ds-store/</url>
+      
+        <content type="html"><![CDATA[<p>.DS_Store是Mac OS保存文件夹的自定义属性的隐藏文件，如文件的图标位置或背景色，相当于Windows的desktop.ini。</p><h1 id="禁止ds_store生成"><a class="markdownIt-Anchor" href="#禁止ds_store生成"></a> 禁止.DS_store生成</h1><p>打开 “终端” ，复制黏贴下面的命令，回车执行，重启Mac即可生效。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">defaults <span class="token function">write</span> com.apple.desktopservices DSDontWriteNetworkStores <span class="token parameter variable">-bool</span> TRUE<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="恢复ds_store生成"><a class="markdownIt-Anchor" href="#恢复ds_store生成"></a> 恢复.DS_store生成</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">defaults delete com.apple.desktopservices DSDontWriteNetworkStores<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 工具控 </tag>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>吾日三省</title>
       <link href="/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/"/>
       <url>/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/</url>
