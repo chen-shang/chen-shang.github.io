@@ -394,10 +394,10 @@ chenshangMacBook-Pro%<span aria-hidden="true" class="line-numbers-rows"><span></
 <p>总之,Shell脚本中的坑很多,林林总总,写脚本的时候一定要小心,否则脚本的移植性堪忧。这也就是为什么Shell不适合开发大型应用的原因之一。但辅助开发还是绰绰有余的。尤其是在运维服务器和对文本处理的过程中,与linux的亲和性让它占尽了优势。</p>
 <p>本Shell规约是以bash为标准,在Mac OS 10.14上进行验证。所有命令和脚本都是依托bash这个解释器来执行的,我用bash的原因主要就是因为bash是发展比较早的解释器,后续发展的各种解释器如 zsh\csh 多多少少都兼容bash。不过,同时也无法使用其他Shell的高级特性。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@chenshangMacBook-Pro:~$ sw_vers
-ProductName:	Mac OS X
-ProductVersion:	<span class="token number">10.14</span>
+ProductName: Mac OS X
+ProductVersion: <span class="token number">10.14</span>
 chenshang@chenshangMacBo    ok-Pro:~$ <span class="token function">uname</span> <span class="token parameter variable">-a</span>
-BuildVersion:	18A391Darwin chenshangMacBook-Pro.local <span class="token number">18.0</span>.0 Darwin Kernel Version <span class="token number">18.0</span>.0: Wed Aug <span class="token number">22</span> <span class="token number">20</span>:13:40 PDT <span class="token number">2018</span><span class="token punctuation">;</span> root:xnu-4903.201.2~1/RELEASE_X86_64 x86_64
+BuildVersion: 18A391Darwin chenshangMacBook-Pro.local <span class="token number">18.0</span>.0 Darwin Kernel Version <span class="token number">18.0</span>.0: Wed Aug <span class="token number">22</span> <span class="token number">20</span>:13:40 PDT <span class="token number">2018</span><span class="token punctuation">;</span> root:xnu-4903.201.2~1/RELEASE_X86_64 x86_64
 chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token variable">$0</span>
 <span class="token parameter variable">-bash</span>
 chenshang@chenshangMacBook-Pro:~$ <span class="token builtin class-name">echo</span> <span class="token variable">${<span class="token environment constant">SHELL</span>}</span>
@@ -517,7 +517,7 @@ https://www.shellcheck.net/wiki/SC2128 -- Expanding an array without an ind...<s
 </blockquote>
 <p>如果使用Intellij IDEA 也会提示 <code>add shebang line</code></p>
 <p>当你点击 <code>Add shebangline</code> 的时候它会自动添加 <code>#!/usr/bin/env bash</code> ,这也是为什么本Shell规约推荐使用 <code>#!/usr/bin/env bash</code> 的原因之一。</p>
-<p><strong>shebang 维基百科</strong></p>
+<h3 id="shebang-维基百科"><a class="markdownIt-Anchor" href="#shebang-维基百科"></a> shebang 维基百科</h3>
 <blockquote>
 <p>在计算机科学中,Shebang（也称为 Hashbang ）是一个由井号和叹号构成的字符序列 #! ,其出现在文本文件的第一行的前两个字符。 在文件中存在 Shebang 的情况下,类 Unix 操作系统的程序载入器会分析 Shebang 后的内容,将这些内容作为解释器指令,并调用该指令,并将载有 Shebang 的文件路径作为该解释器的参数[1]。\n<br>
 例如,以指令<code>#!/bin/sh</code>开头的文件在执行时会实际调用 <code>/bin/sh</code> 程序（通常是 Bourne Shell 或兼容的 Shell,例如 bash、dash 等）来执行。这行内容也是 Shell 脚本的标准起始行。</p>
@@ -1036,11 +1036,11 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="使用方法"><a class="markdownIt-Anchor" href="#使用方法"></a> <code>()、(())、[]、[[]]、{}</code> 使用方法</h1>
 <h2 id="的用法"><a class="markdownIt-Anchor" href="#的用法"></a> ( ) 的用法</h2>
-<h3 id="命令组"><a class="markdownIt-Anchor" href="#命令组"></a> 命令组。</h3>
+<h3 id="命令组"><a class="markdownIt-Anchor" href="#命令组"></a> 命令组</h3>
 <p>括号中的命令将会新开一个子shell顺序执行,所以括号中的变量不能够被脚本余下的部分使用。括号中多个命令之间用分号’;'隔开,最后一个命令可以没有分号,各命令和括号之间不必有空格。</p>
-<h3 id="命令替换"><a class="markdownIt-Anchor" href="#命令替换"></a> 命令替换。</h3>
+<h3 id="命令替换"><a class="markdownIt-Anchor" href="#命令替换"></a> 命令替换</h3>
 <p>等同于 `command`,shell扫描一遍命令行,发现了<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mi>c</mi><mi>o</mi><mi>m</mi><mi>m</mi><mi>a</mi><mi>n</mi><mi>d</mi><mo stretchy="false">)</mo><mtext>结构</mtext><mo separator="true">,</mo><mtext>便将</mtext></mrow><annotation encoding="application/x-tex">(command)结构,便将</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal">c</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">d</span><span class="mclose">)</span><span class="mord cjk_fallback">结</span><span class="mord cjk_fallback">构</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord cjk_fallback">便</span><span class="mord cjk_fallback">将</span></span></span></span>(command)中的command执行一次,得到其标准输出,再将此输出放到原来命令。</p>
-<h3 id="用于初始化数组"><a class="markdownIt-Anchor" href="#用于初始化数组"></a> 用于初始化数组。</h3>
+<h3 id="用于初始化数组"><a class="markdownIt-Anchor" href="#用于初始化数组"></a> 用于初始化数组</h3>
 <p>如：array=(a b c d e f)</p>
 <h2 id="的用法-2"><a class="markdownIt-Anchor" href="#的用法-2"></a> (( )) 的用法</h2>
 <ol>
