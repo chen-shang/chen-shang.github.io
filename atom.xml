@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-19T15:36:53.544Z</updated>
+  <updated>2023-09-24T11:04:53.401Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,133 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计算机中的时间</title>
+    <link href="https://chen-shang.github.io/2023/09/24/ji-suan-ji/ji-suan-ji-ji-chu/ji-suan-ji-zhong-de-shi-jian/"/>
+    <id>https://chen-shang.github.io/2023/09/24/ji-suan-ji/ji-suan-ji-ji-chu/ji-suan-ji-zhong-de-shi-jian/</id>
+    <published>2023-09-24T10:45:32.000Z</published>
+    <updated>2023-09-24T11:04:53.401Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我们每个人的时间都是一样的么?这里我们不上升到什么哲学啊，什么量子力学相对论啥的。就谈谈计算机中的时间。&lt;/p&gt;
+&lt;p&gt;本来一开始是没有时间的，但是因为有了地球自转,于是有了白天和黑夜,因此人们在感官上有了时间,人为的把一天分成了24小时,把一小时分成了60分钟,把一分钟分</summary>
+        
+      
+    
+    
+    
+    <category term="计算机" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机基础" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="计算机基础" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScritp中数组常用操作</title>
+    <link href="https://chen-shang.github.io/2023/09/23/qian-duan/javascript/javascritp-zhong-shu-zu-chang-yong-cao-zuo/"/>
+    <id>https://chen-shang.github.io/2023/09/23/qian-duan/javascript/javascritp-zhong-shu-zu-chang-yong-cao-zuo/</id>
+    <published>2023-09-23T14:48:11.000Z</published>
+    <updated>2023-09-23T17:37:19.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;JavaScript 中的数组有点类似于 Java 中的 List 但是又比Java中的List更加灵活，JavaScript中的数组还有点双端队列的意思，因为可以pop和push元素等操作。&lt;/p&gt;
+&lt;h1 id=&quot;定义数组&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
+    
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScritp中Date常用操作</title>
+    <link href="https://chen-shang.github.io/2023/09/23/qian-duan/javascript/javascritp-zhong-date-chang-yong-cao-zuo/"/>
+    <id>https://chen-shang.github.io/2023/09/23/qian-duan/javascript/javascritp-zhong-date-chang-yong-cao-zuo/</id>
+    <published>2023-09-23T14:48:02.000Z</published>
+    <updated>2023-09-24T10:44:38.958Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;时间类型的相关教程参考 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
+    
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vue中ref()和reactive()的作用、区别、使用场景</title>
+    <link href="https://chen-shang.github.io/2023/09/23/qian-duan/vue/vue-zhong-ref-he-reactive-de-zuo-yong-qu-bie-shi-yong-chang-jing/"/>
+    <id>https://chen-shang.github.io/2023/09/23/qian-duan/vue/vue-zhong-ref-he-reactive-de-zuo-yong-qu-bie-shi-yong-chang-jing/</id>
+    <published>2023-09-23T14:47:15.000Z</published>
+    <updated>2023-09-23T17:40:23.806Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;vue的官网当中有详细的介绍,但描述的实在太官方了,你要读懂它估计要反复阅读好几遍&lt;br&gt;
+&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
+    
+  </entry>
   
   <entry>
     <title>一次随领导接待客户回顾</title>
@@ -113,7 +240,7 @@
     <link href="https://chen-shang.github.io/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/"/>
     <id>https://chen-shang.github.io/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/</id>
     <published>2023-09-17T10:27:55.000Z</published>
-    <updated>2023-09-17T14:09:56.469Z</updated>
+    <updated>2023-09-23T16:58:47.614Z</updated>
     
     
       
@@ -521,126 +648,6 @@
     <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
     
     <category term="Spring" scheme="https://chen-shang.github.io/tags/Spring/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Markdown使用笔记</title>
-    <link href="https://chen-shang.github.io/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/"/>
-    <id>https://chen-shang.github.io/2023/09/02/gong-ju-kong/markdown/markdown-shi-yong-bi-ji/</id>
-    <published>2023-09-02T02:40:08.000Z</published>
-    <updated>2023-09-02T09:26:10.661Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;跳转到目标网站&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#跳转到目标网站&quot;&gt;&lt;/a&gt; 跳转到目标网站&lt;/h1&gt;
-&lt;p&gt;语法 : [链接文本](链接URL)&lt;/p&gt;
-&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Markdown" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Markdown/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>npm使用笔记</title>
-    <link href="https://chen-shang.github.io/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/"/>
-    <id>https://chen-shang.github.io/2023/09/02/gou-jian-gong-ju/npm/npm-shi-yong-bi-ji/</id>
-    <published>2023-09-02T02:20:05.000Z</published>
-    <updated>2023-09-05T14:24:48.111Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;npm-是啥&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#npm-是啥&quot;&gt;&lt;/a&gt; npm 是啥&lt;/h1&gt;
-&lt;p&gt;npm是Node Package</summary>
-        
-      
-    
-    
-    
-    <category term="构建工具" scheme="https://chen-shang.github.io/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="NPM" scheme="https://chen-shang.github.io/categories/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/NPM/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="构建工具" scheme="https://chen-shang.github.io/tags/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"/>
-    
-    <category term="NPM" scheme="https://chen-shang.github.io/tags/NPM/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux终端生存之道-查看开放端口</title>
-    <link href="https://chen-shang.github.io/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/"/>
-    <id>https://chen-shang.github.io/2023/09/01/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-cha-kan-kai-fang-duan-kou/</id>
-    <published>2023-09-01T14:21:54.000Z</published>
-    <updated>2023-09-17T14:21:40.453Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;telnet-nc-查看开放端口号&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#telnet-nc-查看开放端口号&quot;&gt;&lt;/a&gt; telnet、nc 查看开放端口号&lt;/h2&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mysql用户、权限基操</title>
-    <link href="https://chen-shang.github.io/2023/08/29/shu-ju-ku/mysql-yong-hu-quan-xian-ji-cao/"/>
-    <id>https://chen-shang.github.io/2023/08/29/shu-ju-ku/mysql-yong-hu-quan-xian-ji-cao/</id>
-    <published>2023-08-29T13:57:11.000Z</published>
-    <updated>2023-09-05T14:33:10.473Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;初始话安装 mysql</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
