@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-24T11:04:53.401Z</updated>
+  <updated>2023-09-28T09:48:11.279Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,96 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mysql中binlog的相关操作</title>
+    <link href="https://chen-shang.github.io/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/"/>
+    <id>https://chen-shang.github.io/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/</id>
+    <published>2023-09-28T08:23:47.000Z</published>
+    <updated>2023-09-28T09:48:11.279Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;检查是否启用了-binlog-功能&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#检查是否启用了-binlog-功能&quot;&gt;&lt;/a&gt; 检查是否启用了 binlog 功能&lt;/h1&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Packet for query is too large</title>
+    <link href="https://chen-shang.github.io/2023/09/28/shu-ju-ku/packet-for-query-is-too-large/"/>
+    <id>https://chen-shang.github.io/2023/09/28/shu-ju-ku/packet-for-query-is-too-large/</id>
+    <published>2023-09-28T01:57:11.000Z</published>
+    <updated>2023-09-28T09:48:32.657Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;数据库在批量插入的时候报了下面的错误&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-txt&quot; data-language=&quot;txt&quot;&gt;&lt;code class=&quot;language-txt&quot;&gt;You can change this value</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>element表格常用的render集锦</title>
+    <link href="https://chen-shang.github.io/2023/09/25/qian-duan/vue/element-biao-ge-chang-yong-de-render-ji-jin/"/>
+    <id>https://chen-shang.github.io/2023/09/25/qian-duan/vue/element-biao-ge-chang-yong-de-render-ji-jin/</id>
+    <published>2023-09-25T01:50:48.000Z</published>
+    <updated>2023-09-28T09:50:25.729Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;判断字段值&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#判断字段值&quot;&gt;&lt;/a&gt; 判断字段值&lt;/h1&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机中的时间</title>
@@ -556,98 +646,6 @@
     <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
     
     <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Jrebel激活</title>
-    <link href="https://chen-shang.github.io/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/"/>
-    <id>https://chen-shang.github.io/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/</id>
-    <published>2023-09-04T15:37:45.000Z</published>
-    <updated>2023-09-05T14:59:23.283Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近因为升级了Jrebel插件导致的激活失败问题–那就暂时先不要升级了,先降级回支持的版本再说,网上本地激活的方式暂时没有尝试，后续实在受不了低版本了在尝试吧。&lt;/p&gt;
-&lt;p&gt;一键地址直接使用:</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/tags/Intellij-IDEA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于认证、授权、ACL、RBAC、OAuth、SSO的理解</title>
-    <link href="https://chen-shang.github.io/2023/09/04/ji-suan-ji/ji-suan-ji-an-quan/guan-yu-ren-zheng-shou-quan-acl-rbac-oauth-sso-de-li-jie/"/>
-    <id>https://chen-shang.github.io/2023/09/04/ji-suan-ji/ji-suan-ji-an-quan/guan-yu-ren-zheng-shou-quan-acl-rbac-oauth-sso-de-li-jie/</id>
-    <published>2023-09-03T16:42:39.000Z</published>
-    <updated>2023-09-04T15:46:55.606Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;认证&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#认证&quot;&gt;&lt;/a&gt; 认证&lt;/h1&gt;
-&lt;p&gt;认证是指验证实体（如用户、设备）的身份是否真实和有效。认证通常要求提供凭据（如用户名和密码）或使用其他身份验证方（如生物特征识别）。所以我理解</summary>
-        
-      
-    
-    
-    
-    <category term="计算机" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机安全" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机安全" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Spring Security学习笔记</title>
-    <link href="https://chen-shang.github.io/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/"/>
-    <id>https://chen-shang.github.io/2023/09/03/java/spring/spring-security-xue-xi-bi-ji/</id>
-    <published>2023-09-03T02:01:05.000Z</published>
-    <updated>2023-09-04T16:07:57.445Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;a href=&quot;/2023/09/04/guan-yu-ren-zheng-shou-quan-acl-rbac-oauth-sso-de-li-jie&quot;&gt;关于认证、授权、ACL、RBAC、OAuth、SSO的理解&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="Spring" scheme="https://chen-shang.github.io/categories/JAVA/Spring/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
-    
-    <category term="Spring" scheme="https://chen-shang.github.io/tags/Spring/"/>
     
   </entry>
   

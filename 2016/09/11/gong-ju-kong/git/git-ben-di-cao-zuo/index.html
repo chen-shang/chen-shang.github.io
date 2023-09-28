@@ -38,7 +38,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -258,10 +260,12 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -314,21 +318,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-17
+                    2023-09-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.3k
+                    2.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    9 分
                 </div>
                 
 
@@ -490,6 +494,20 @@ $ <span class="token function">git</span> log master<span class="token punctuati
 <span class="token function">git</span> log dev<span class="token punctuation">..</span>.master
 <span class="token comment"># 在上述情况下，再显示出每个提交是在哪个分支上</span>
 <span class="token function">git</span> log --left-right dev<span class="token punctuation">..</span>.master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="git-移除原来的远程地址并添加新的远程地址"><a class="markdownIt-Anchor" href="#git-移除原来的远程地址并添加新的远程地址"></a> git 移除原来的远程地址并添加新的远程地址</h2>
+<p>要移除现有的远程仓库地址并切换到另一个远程仓库，你可以按照以下步骤操作：</p>
+<ol>
+<li>首先，使用以下命令查看当前已配置的远程仓库地址：<br>
+git remote -v</li>
+<li>确认你要移除的远程仓库的名称。假设你要移除的远程仓库名称为"origin"。</li>
+<li>使用以下命令移除现有的远程仓库地址：<br>
+git remote remove origin</li>
+<li>接下来，添加新的远程仓库地址。假设你要添加的远程仓库地址为"<a target="_blank" rel="noopener" href="https://github.com/example/new-repo.git%22%EF%BC%8C%E5%B9%B6%E5%B0%86%E5%85%B6%E5%91%BD%E5%90%8D%E4%B8%BA%22new-origin%22%EF%BC%9A">https://github.com/example/new-repo.git"，并将其命名为"new-origin"：</a><br>
+git remote add new-origin <a target="_blank" rel="noopener" href="https://github.com/example/new-repo.git">https://github.com/example/new-repo.git</a></li>
+<li>确认新的远程仓库地址已成功添加：<br>
+git remote -v<br>
+现在你已经成功移除了现有的远程仓库地址并切换到新的远程仓库地址。</li>
+</ol>
 
                 
             </div>
@@ -924,35 +942,35 @@ $ <span class="token function">git</span> log master<span class="token punctuati
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/">
+                <a href="/2016/04/28/gong-ju-kong/intellij-idea/idea-mei-ri-tip-9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="作画">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Idea-Tips-9">
                         
-                        <span class="card-title">作画</span>
+                        <span class="card-title">Idea-Tips-9</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            枯叶落,宣纸留,似蝴蝶吻你手。杯中酒,心上秋,只恐画中人消瘦。
+                            在查找和替换两个功能之间切换是很容易的
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2016-09-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2016-04-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/" class="post-category">
-                                    墨香纸笺
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
+                                    工具控
                                 </a>
                             
-                            <a href="/categories/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/" class="post-category">
-                                    我的诗词
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/" class="post-category">
+                                    Intellij IDEA
                                 </a>
                             
                             
@@ -966,12 +984,16 @@ $ <span class="token function">git</span> log master<span class="token punctuati
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/">
-                        <span class="chip bg-color">墨香纸笺</span>
+                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
+                        <span class="chip bg-color">工具控</span>
                     </a>
                     
-                    <a href="/tags/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/">
-                        <span class="chip bg-color">我的诗词</span>
+                    <a href="/tags/Intellij-IDEA/">
+                        <span class="chip bg-color">Intellij IDEA</span>
+                    </a>
+                    
+                    <a href="/tags/Idea-Tips/">
+                        <span class="chip bg-color">Idea-Tips</span>
                     </a>
                     
                 </div>
@@ -1047,6 +1069,87 @@ $ <span class="token function">git</span> log master<span class="token punctuati
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -1069,7 +1172,7 @@ $ <span class="token function">git</span> log master<span class="token punctuati
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">150.9k</span>
+                        class="white-color">151.8k</span>
             
             
             
