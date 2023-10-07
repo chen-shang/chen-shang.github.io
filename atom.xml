@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-09-28T09:48:11.279Z</updated>
+  <updated>2023-10-07T13:20:34.200Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git rebase和git merge的区别</title>
+    <link href="https://chen-shang.github.io/2023/10/07/gong-ju-kong/git/git-rebase-he-git-merge-de-qu-bie/"/>
+    <id>https://chen-shang.github.io/2023/10/07/gong-ju-kong/git/git-rebase-he-git-merge-de-qu-bie/</id>
+    <published>2023-10-07T08:52:23.000Z</published>
+    <updated>2023-10-07T13:20:34.200Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;今天在CSDN上看到一篇关于 git rebase 和 git merge 的用法的文章，感觉很好，值得收藏一下 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Git" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/"/>
+    
+    
+    <category term="Git" scheme="https://chen-shang.github.io/tags/Git/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql中binlog的相关操作</title>
@@ -614,38 +643,6 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无法访问此网站</title>
-    <link href="https://chen-shang.github.io/2023/09/06/gong-ju-kong/mac/wu-fa-fang-wen-ci-wang-zhan/"/>
-    <id>https://chen-shang.github.io/2023/09/06/gong-ju-kong/mac/wu-fa-fang-wen-ci-wang-zhan/</id>
-    <published>2023-09-05T16:43:19.000Z</published>
-    <updated>2023-09-05T16:46:36.058Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天遇到内网服务访问显示无法访问的问题，纠结了半天，结果谜底就在谜面上，顺着chrome 给出的提示就可以解决。&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
     
   </entry>
   
