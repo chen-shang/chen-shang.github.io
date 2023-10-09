@@ -314,14 +314,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-24
+                    2023-10-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    252
+                    318
                 </div>
                 
 
@@ -377,6 +377,15 @@ nodejs：<a target="_blank" rel="noopener" href="https://day.nodejs.cn/">https:/
 date-fns：<a target="_blank" rel="noopener" href="https://date-fns.org/">https://date-fns.org/</a><br>
 js-joda：<a target="_blank" rel="noopener" href="https://js-joda.github.io/js-joda/">https://js-joda.github.io/js-joda/</a><br>
 不用库，JavaScript 一直有一个 Date 对象可以使用。</p>
+<h1 id="常用的时间操作"><a class="markdownIt-Anchor" href="#常用的时间操作"></a> 常用的时间操作</h1>
+<h2 id="生成utc格式的时间"><a class="markdownIt-Anchor" href="#生成utc格式的时间"></a> 生成utc格式的时间</h2>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 创建当前时间的 UTC 时间</span>
+<span class="token keyword">const</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> utcNow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> now<span class="token punctuation">.</span><span class="token function">getTimezoneOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 创建指定时间的 UTC 时间</span>
+<span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'2022-01-01T00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> utcDate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> date<span class="token punctuation">.</span><span class="token function">getTimezoneOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -956,7 +965,7 @@ js-joda：<a target="_blank" rel="noopener" href="https://js-joda.github.io/js-j
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">155.9k</span>
+                        class="white-color">156k</span>
             
             
             
