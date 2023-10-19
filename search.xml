@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>java: java.lang.OutOfMemoryError: GC overhead limit exceeded </title>
+      <link href="/2023/10/17/java-java-lang-outofmemoryerror-gc-overhead-limit-exceeded/"/>
+      <url>/2023/10/17/java-java-lang-outofmemoryerror-gc-overhead-limit-exceeded/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>git rebase和git merge的区别</title>
       <link href="/2023/10/07/gong-ju-kong/git/git-rebase-he-git-merge-de-qu-bie/"/>
       <url>/2023/10/07/gong-ju-kong/git/git-rebase-he-git-merge-de-qu-bie/</url>
@@ -186,7 +207,7 @@
       <link href="/2023/09/23/qian-duan/javascript/javascritp-zhong-date-chang-yong-cao-zuo/"/>
       <url>/2023/09/23/qian-duan/javascript/javascritp-zhong-date-chang-yong-cao-zuo/</url>
       
-        <content type="html"><![CDATA[<p>时间类型的相关教程参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date</a></p><h1 id="初始化日期"><a class="markdownIt-Anchor" href="#初始化日期"></a> 初始化日期</h1><p>有四种方式</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 当前日期和时间</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>milliseconds<span class="token punctuation">)</span> <span class="token comment">//返回从 1970 年 1 月 1 日至今的毫秒数</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>dateString<span class="token punctuation">)</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> day<span class="token punctuation">,</span> hours<span class="token punctuation">,</span> minutes<span class="token punctuation">,</span> seconds<span class="token punctuation">,</span> milliseconds<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>上面的参数大多数都是可选的，在不指定的情况下，默认参数是0。</p><h1 id="日期比较"><a class="markdownIt-Anchor" href="#日期比较"></a> 日期比较</h1><p>直接用&gt;、&lt;、=进行比较</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> x<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>x<span class="token punctuation">.</span><span class="token function">setFullYear</span><span class="token punctuation">(</span><span class="token number">2100</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> today <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token operator">&gt;</span>today<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"今天是2100年1月14日之前"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"今天是2100年1月14日之后"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="日期时间库"><a class="markdownIt-Anchor" href="#日期时间库"></a> 日期/时间库</h1><p>现在只要一百度，就是推荐 Moment.js。但是这个工具 =已经不再推荐使用了，可以参考官网 <a href="http://momentjs.cn/docs/">http://momentjs.cn/docs/</a> 的原话.好的是人家给出了一些替代工具</p><p>luxon：<a href="https://moment.github.io/luxon/#/">https://moment.github.io/luxon/#/</a><br>nodejs：<a href="https://day.nodejs.cn/">https://day.nodejs.cn/</a><br>date-fns：<a href="https://date-fns.org/">https://date-fns.org/</a><br>js-joda：<a href="https://js-joda.github.io/js-joda/">https://js-joda.github.io/js-joda/</a><br>不用库，JavaScript 一直有一个 Date 对象可以使用。</p><h1 id="常用的时间操作"><a class="markdownIt-Anchor" href="#常用的时间操作"></a> 常用的时间操作</h1><h2 id="生成utc格式的时间"><a class="markdownIt-Anchor" href="#生成utc格式的时间"></a> 生成utc格式的时间</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 创建当前时间的 UTC 时间</span><span class="token keyword">const</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">const</span> utcNow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> now<span class="token punctuation">.</span><span class="token function">getTimezoneOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 创建指定时间的 UTC 时间</span><span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'2022-01-01T00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">const</span> utcDate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> date<span class="token punctuation">.</span><span class="token function">getTimezoneOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<p>时间类型的相关教程参考 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date</a></p><h1 id="初始化日期"><a class="markdownIt-Anchor" href="#初始化日期"></a> 初始化日期</h1><p>有四种方式</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 当前日期和时间</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>milliseconds<span class="token punctuation">)</span> <span class="token comment">//返回从 1970 年 1 月 1 日至今的毫秒数</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>dateString<span class="token punctuation">)</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> day<span class="token punctuation">,</span> hours<span class="token punctuation">,</span> minutes<span class="token punctuation">,</span> seconds<span class="token punctuation">,</span> milliseconds<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>上面的参数大多数都是可选的，在不指定的情况下，默认参数是0。</p><h1 id="日期比较"><a class="markdownIt-Anchor" href="#日期比较"></a> 日期比较</h1><p>直接用&gt;、&lt;、=进行比较</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> x<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>x<span class="token punctuation">.</span><span class="token function">setFullYear</span><span class="token punctuation">(</span><span class="token number">2100</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">14</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">var</span> today <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token operator">&gt;</span>today<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"今天是2100年1月14日之前"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>  <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"今天是2100年1月14日之后"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="日期时间库"><a class="markdownIt-Anchor" href="#日期时间库"></a> 日期/时间库</h1><p>现在只要一百度，就是推荐 Moment.js。但是这个工具 =已经不再推荐使用了，可以参考官网 <a href="http://momentjs.cn/docs/">http://momentjs.cn/docs/</a> 的原话.好的是人家给出了一些替代工具</p><p>luxon：<a href="https://moment.github.io/luxon/#/">https://moment.github.io/luxon/#/</a><br>nodejs：<a href="https://day.nodejs.cn/">https://day.nodejs.cn/</a><br>date-fns：<a href="https://date-fns.org/">https://date-fns.org/</a><br>js-joda：<a href="https://js-joda.github.io/js-joda/">https://js-joda.github.io/js-joda/</a><br>不用库，JavaScript 一直有一个 Date 对象可以使用。</p><h1 id="常用的时间操作"><a class="markdownIt-Anchor" href="#常用的时间操作"></a> 常用的时间操作</h1><h2 id="生成utc格式的时间"><a class="markdownIt-Anchor" href="#生成utc格式的时间"></a> 生成utc格式的时间</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 创建当前时间的 UTC 时间</span><span class="token keyword">const</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">const</span> utcNow <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>now<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> now<span class="token punctuation">.</span><span class="token function">getTimezoneOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">// 创建指定时间的 UTC 时间</span><span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token string">'2022-01-01T00:00:00'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">const</span> utcDate <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> date<span class="token punctuation">.</span><span class="token function">getTimezoneOffset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">60000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="生成北京时间"><a class="markdownIt-Anchor" href="#生成北京时间"></a> 生成北京时间</h2><p>2023/10/9 18:14:22</p><pre class="line-numbers language-none"><code class="language-none">const now = new Date();const beijingTime = now.toLocaleString("zh-CN", { timeZone: "Asia/Shanghai" });console.log(beijingTime);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>上面生成的时间中 月、日 都不是两位数</p><pre class="line-numbers language-none"><code class="language-none">const now = new Date();const options = { timeZone: "Asia/Shanghai", year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };const beijingTime = now.toLocaleString("zh-CN", options);console.log(beijingTime);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>去掉符号</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token literal-property property">timeZone</span><span class="token operator">:</span> <span class="token string">"Asia/Shanghai"</span><span class="token punctuation">,</span> <span class="token literal-property property">year</span><span class="token operator">:</span> <span class="token string">'numeric'</span><span class="token punctuation">,</span> <span class="token literal-property property">month</span><span class="token operator">:</span> <span class="token string">'2-digit'</span><span class="token punctuation">,</span> <span class="token literal-property property">day</span><span class="token operator">:</span> <span class="token string">'2-digit'</span><span class="token punctuation">,</span> <span class="token literal-property property">hour</span><span class="token operator">:</span> <span class="token string">'2-digit'</span><span class="token punctuation">,</span> <span class="token literal-property property">minute</span><span class="token operator">:</span> <span class="token string">'2-digit'</span><span class="token punctuation">,</span> <span class="token literal-property property">second</span><span class="token operator">:</span> <span class="token string">'2-digit'</span> <span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token keyword">const</span> beijingTime <span class="token operator">=</span> now<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"zh-CN"</span><span class="token punctuation">,</span> options<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\/\s:]</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span><span class="token punctuation">;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>beijingTime<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="生成时间字符串"><a class="markdownIt-Anchor" href="#生成时间字符串"></a> 生成时间字符串</h2><p>生成形如 2023100909594504</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">const</span> now <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">const</span> beijingTime <span class="token operator">=</span> now<span class="token punctuation">.</span><span class="token function">toLocaleString</span><span class="token punctuation">(</span><span class="token string">"zh-CN"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> timeZone<span class="token operator">:</span> <span class="token string">"Asia/Shanghai"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">const</span> currentDateTime <span class="token operator">=</span> beijingTime<span class="token punctuation">.</span><span class="token function">toISOString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token operator">/</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token class-name">T</span><span class="token operator">:</span><span class="token punctuation">.</span>Z<span class="token punctuation">]</span><span class="token operator">/</span>g<span class="token punctuation">,</span> ''<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -631,7 +652,7 @@
       <link href="/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/"/>
       <url>/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/</url>
       
-        <content type="html"><![CDATA[<p>最近因为升级了Jrebel插件导致的激活失败问题–那就暂时先不要升级了,先降级回支持的版本再说,网上本地激活的方式暂时没有尝试，后续实在受不了低版本了在尝试吧。</p><p>一键地址直接使用: <code>https://jrebel.qekang.com/cd61166e-caf3-4415-bd50-b44ef3031a43</code></p><p>方法：降低IDEA 的 jrebel版本为 2022.4.1</p><ol><li>删掉用户名下的.jrebel文件夹，否则降级idea或降级jrebel都不管用都激活失败</li><li>不要升级idea到2022.3 因为其内置的jrebel是最新版的2022.4.2 这个版本的jrebel应该是更改了激活方式 qekang方式激活不成功</li><li>如果升级了idea到2022.3，则需要手动把jrebel降低到2022.4.1，然后最好删掉.jrebel文件夹，再激活。</li></ol>]]></content>
+        <content type="html"><![CDATA[<p>最近因为升级了 Jrebel 热部署插件导致的激活失败问题–那就暂时先不要升级了,先降级回支持的版本再说,网上本地激活的方式暂时没有尝试，后续实在受不了低版本了在尝试吧。</p><p>一键地址直接使用: <code>https://jrebel.qekang.com/cd61166e-caf3-4415-bd50-b44ef3031a43</code></p><p>方法：降低IDEA 的 Jrebel 版本为 2022.4.1</p><ol><li>删掉用户名下的.jrebel文件夹，否则降级idea或降级jrebel都不管用都激活失败</li><li>不要升级idea到2022.3 因为其内置的jrebel是最新版的2022.4.2 这个版本的jrebel应该是更改了激活方式 qekang方式激活不成功</li><li>如果升级了idea到2022.3，则需要手动把jrebel降低到2022.4.1，然后最好删掉.jrebel文件夹，再激活。</li></ol><p>IDEA 的 插件地址 : <a href="https://plugins.jetbrains.com/">https://plugins.jetbrains.com/</a><br>Jrebel 的插件地址: <a href="https://plugins.jetbrains.com/plugin/4441-jrebel-and-xrebel/versions">https://plugins.jetbrains.com/plugin/4441-jrebel-and-xrebel/versions</a></p>]]></content>
       
       
       <categories>
@@ -1798,9 +1819,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -2210,9 +2231,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2390,11 +2411,11 @@
             
             <tag> 原创 </tag>
             
+            <tag> 未完待续 </tag>
+            
             <tag> Linux </tag>
             
             <tag> Java </tag>
-            
-            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2570,9 +2591,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             
@@ -2659,9 +2680,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -2690,9 +2711,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -2781,9 +2802,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -2874,9 +2895,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2988,9 +3009,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -3159,9 +3180,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -3851,9 +3872,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> BaseShell </tag>
             
@@ -3915,9 +3936,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -3948,9 +3969,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -4008,9 +4029,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -4072,9 +4093,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             
@@ -4132,9 +4153,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             
@@ -4414,37 +4435,6 @@
     
     
     <entry>
-      <title>作画</title>
-      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
-      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
-      
-        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 墨香纸笺 </category>
-          
-          <category> 我的诗词 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> 墨香纸笺 </tag>
-            
-            <tag> 我的诗词 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Git万能后悔药</title>
       <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
       <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
@@ -4530,6 +4520,37 @@
             <tag> Git </tag>
             
             <tag> 工具控 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>作画</title>
+      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
+      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
+      
+        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 墨香纸笺 </category>
+          
+          <category> 我的诗词 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 墨香纸笺 </tag>
+            
+            <tag> 我的诗词 </tag>
             
         </tags>
       
