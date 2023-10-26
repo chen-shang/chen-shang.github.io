@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-10-19T21:07:57.772Z</updated>
+  <updated>2023-10-26T14:29:38.663Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,71 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux终端生存之道-时间处理</title>
+    <link href="https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-shi-jian-chu-li/"/>
+    <id>https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-shi-jian-chu-li/</id>
+    <published>2023-10-26T14:13:50.000Z</published>
+    <updated>2023-10-26T14:29:38.663Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;mac 下的 date 函数有是有有些表现形式跟我们搜到的一些资料不用，因此建议使用 gdate ,我们只需要 brew install gdate 就行。&lt;/p&gt;
+&lt;h1 id=&quot;日期处理&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="终端生存之道" scheme="https://chen-shang.github.io/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux终端生存之道-du、df</title>
+    <link href="https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-du-df/"/>
+    <id>https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-du-df/</id>
+    <published>2023-10-26T14:09:47.000Z</published>
+    <updated>2023-10-26T14:28:08.909Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;du&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#du&quot;&gt;&lt;/a&gt; du&lt;/h1&gt;
+&lt;p&gt;du命令用来查看目录或文件所占用磁盘空间的大小。常用选项组合为：du -sh&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;du&lt;/code&gt; reports</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="终端生存之道" scheme="https://chen-shang.github.io/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
+    
+  </entry>
   
   <entry>
     <title>java: java.lang.OutOfMemoryError: GC overhead limit exceeded</title>
@@ -221,9 +286,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
-    
     <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
     
   </entry>
   
@@ -252,9 +317,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
-    
     <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
     
   </entry>
   
@@ -581,68 +646,6 @@
     <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
     
     <category term="Vim" scheme="https://chen-shang.github.io/tags/Vim/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux终端生存之道-图片压缩</title>
-    <link href="https://chen-shang.github.io/2023/09/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-tu-pian-ya-suo/"/>
-    <id>https://chen-shang.github.io/2023/09/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-tu-pian-ya-suo/</id>
-    <published>2023-09-08T14:26:56.000Z</published>
-    <updated>2023-09-08T14:38:22.924Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在访问自己网站的时候发现有些请求比较耗时，观察得出是某个图片实在太大了导致加载的时间比较久。于是想要压缩这些背景图片，发现了一款在linux终端就能压缩图片的工具–jpegoptim&lt;br&gt;
-&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>brew跳过某个软件不升级</title>
-    <link href="https://chen-shang.github.io/2023/09/08/gong-ju-kong/mac/brew-tiao-guo-mou-ge-ruan-jian-bu-sheng-ji/"/>
-    <id>https://chen-shang.github.io/2023/09/08/gong-ju-kong/mac/brew-tiao-guo-mou-ge-ruan-jian-bu-sheng-ji/</id>
-    <published>2023-09-08T01:56:53.000Z</published>
-    <updated>2023-09-08T14:05:43.541Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;有时候执行&lt;code&gt;brew upgrade&lt;/code&gt;的时候会卡在某个软件一直下载不下来，这时候可以先把这个软件给跳过，先更新其他的软件再说。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;brew update</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
     
   </entry>
   
