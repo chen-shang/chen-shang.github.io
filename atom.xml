@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-10-26T14:29:38.663Z</updated>
+  <updated>2023-10-28T14:02:23.281Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>打包压缩大文件或者大量文件</title>
+    <link href="https://chen-shang.github.io/2023/10/28/da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/"/>
+    <id>https://chen-shang.github.io/2023/10/28/da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/</id>
+    <published>2023-10-28T14:00:31.000Z</published>
+    <updated>2023-10-28T14:02:23.281Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;要加快zip命令的打包速度，您可以尝试以下几种方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用更高级的压缩算法：zip命令默认使用的是Deflate算法，您可以尝试使用更高级的压缩算法，如bzip2或xz。例如，使用bzip2算法可以使用以下命令进行打包：&lt;br&gt;
+zip</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux终端生存之道-时间处理</title>
@@ -53,16 +82,15 @@
     <link href="https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-du-df/"/>
     <id>https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-du-df/</id>
     <published>2023-10-26T14:09:47.000Z</published>
-    <updated>2023-10-26T14:28:08.909Z</updated>
+    <updated>2023-10-28T13:37:56.192Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;du&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#du&quot;&gt;&lt;/a&gt; du&lt;/h1&gt;
-&lt;p&gt;du命令用来查看目录或文件所占用磁盘空间的大小。常用选项组合为：du -sh&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;du&lt;/code&gt; reports</summary>
+    <summary type="html">&lt;p&gt;查看文件夹下的文件所占空间的大小&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;du -h -s * | sort -h&lt;span aria-hidden=&quot;true&quot;</summary>
         
       
     
@@ -286,9 +314,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
     <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
+    
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -317,9 +345,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
     <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
+    
+    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
@@ -452,7 +480,7 @@
     <link href="https://chen-shang.github.io/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/"/>
     <id>https://chen-shang.github.io/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/</id>
     <published>2023-09-17T10:27:55.000Z</published>
-    <updated>2023-09-23T16:58:47.614Z</updated>
+    <updated>2023-10-26T14:36:54.253Z</updated>
     
     
       
@@ -606,46 +634,6 @@
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vim常用操作</title>
-    <link href="https://chen-shang.github.io/2023/09/15/gong-ju-kong/vim/vim-chang-yong-cao-zuo/"/>
-    <id>https://chen-shang.github.io/2023/09/15/gong-ju-kong/vim/vim-chang-yong-cao-zuo/</id>
-    <published>2023-09-14T16:41:38.000Z</published>
-    <updated>2023-09-19T12:03:35.165Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;移动光标：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;h：向左移动光标&lt;/li&gt;
-&lt;li&gt;j：向下移动光标&lt;/li&gt;
-&lt;li&gt;k：向上移动光标&lt;/li&gt;
-&lt;li&gt;l：向右移动光标&lt;/li&gt;
-&lt;li&gt;w：跳到下一个单词的开头&lt;/li&gt;
-&lt;li&gt;b：跳到上一个单词的开头&lt;/</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Vim" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Vim/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Vim" scheme="https://chen-shang.github.io/tags/Vim/"/>
     
   </entry>
   

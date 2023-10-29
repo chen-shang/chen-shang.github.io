@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>打包压缩大文件或者大量文件</title>
+      <link href="/2023/10/28/da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/"/>
+      <url>/2023/10/28/da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/</url>
+      
+        <content type="html"><![CDATA[<p>要加快zip命令的打包速度，您可以尝试以下几种方法：</p><ol><li><p>使用更高级的压缩算法：zip命令默认使用的是Deflate算法，您可以尝试使用更高级的压缩算法，如bzip2或xz。例如，使用bzip2算法可以使用以下命令进行打包：<br>zip -r archive.zip folder/ -9 -Z bzip2<br>这将使用bzip2算法进行打包，并使用最高压缩级别（-9）。</p></li><li><p>禁用压缩：如果您只是想将文件打包成一个压缩文件，而不需要进行实际的压缩操作，您可以尝试禁用压缩。使用以下命令进行打包：<br>zip -r archive.zip folder/ -0<br>这将禁用压缩操作，从而提高打包速度。</p></li><li><p>使用并行压缩工具：某些第三方工具可以并行处理多个文件，从而加快打包速度。例如，您可以尝试使用pigz工具代替zip命令，它支持多线程压缩。使用以下命令进行打包：<br>zip -r - folder/ | pigz &gt; archive.zip<br>这将使用pigz工具进行多线程压缩，从而提高打包速度。</p></li></ol><p>请注意，压缩速度还受到计算机硬件性能和文件大小的影响。因此，如果您的文件较大或计算机性能较低，可能无法显著提高打包速度。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux终端生存之道-时间处理</title>
       <link href="/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-shi-jian-chu-li/"/>
       <url>/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-shi-jian-chu-li/</url>
@@ -39,7 +60,7 @@
       <link href="/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-du-df/"/>
       <url>/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-du-df/</url>
       
-        <content type="html"><![CDATA[<h1 id="du"><a class="markdownIt-Anchor" href="#du"></a> du</h1><p>du命令用来查看目录或文件所占用磁盘空间的大小。常用选项组合为：du -sh</p><p><code>du</code> reports the amount of disk space used by the specified files and for each subdirectory (of directory arguments). with no arguments,<code>du</code> reports the disk space for the current directory。<br>很明显，与df不同，它用来查看文件或目录所占用的磁盘空间的大小。</p><ol><li><p>-h：以人类可读的方式显示</p></li><li><p>-a：显示目录占用的磁盘空间大小，还要显示其下目录和文件占用磁盘空间的大小</p></li><li><p>-s：显示目录占用的磁盘空间大小，不要显示其下子目录和文件占用的磁盘空间大小</p></li><li><p>-c：显示几个目录或文件占用的磁盘空间大小，还要统计它们的总和</p></li><li><p>–apparent-size：显示目录或文件自身的大小</p></li><li><p>-l ：统计硬链接占用磁盘空间的大小</p></li><li><p>-L：统计符号链接所指向的文件占用的磁盘空间大小</p></li><li><p>du -h：这个就不多说了。</p></li><li><p>du -a：使用此选项时，显示目录和目录下子目录和文件占用磁盘空间的大小。</p></li><li><p>du&nbsp;-s：使用此选项时，du只显示目录所占用磁盘空间的大小，而不显示其下子目录和文件占用磁盘空间的信息。<br>默认情况下，du不显示目录下文件占用磁盘空间的信息，但它会显示其下子目录占用磁盘空间的信息；而使用-s选项以后，只显示xx目录占用磁盘空间的大小。</p></li></ol><p>du：查询文件或文件夹的磁盘使用空间<br>&nbsp;&nbsp;&nbsp; 如果当前目录下文件和文件夹很多，使用不带参数du的命令，可以循环列出所有文件和文件夹所使用的空间。这对查看究竟是那个地方过大是不利的，所以得指定深入目录的层数，参数：–max-depth=，这是个极为有用的参数！如下，注意使用“*”，可以得到文件的使用空间大小.<br>&nbsp;&nbsp;&nbsp;&nbsp;提醒：一向命令比linux复杂的FreeBSD，它的du命令指定深入目录的层数却是比linux简化，为 -d。</p><h1 id="df"><a class="markdownIt-Anchor" href="#df"></a> df</h1><p>df可以查看一级文件夹大小、使用比例、档案系统及其挂入点，但对文件却无能为力。 du可以查看文件及文件夹的大小。<br>df命令可以显示目前所有文件系统的可用空间及使用情形，</p><p>参数 -h 表示使用「Human-readable」的输出，也就是在档案系统大小使用 GB、MB 等易读的格式。</p><ul><li>df命令用于显示文件系统磁盘空间的使用情况。<ul><li>基本语法： df [选项] [文件或目录]</li><li>常用选项：<ul><li>-h ：以人类可读的格式显示磁盘空间使用情况。</li><li>-T ：显示文件系统类型。</li></ul></li><li>示例：<ul><li>df -h ：显示所有挂载的文件系统的磁盘空间使用情况，以人类可读的格式。</li><li>df -Th ：显示所有挂载的文件系统的磁盘空间使用情况和文件系统类型。</li></ul></li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<p>查看文件夹下的文件所占空间的大小</p><pre class="line-numbers language-none"><code class="language-none">du -h -s * | sort -h<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="du"><a class="markdownIt-Anchor" href="#du"></a> du</h1><p>du命令用来查看目录或文件所占用磁盘空间的大小。常用选项组合为：du -sh</p><p><code>du</code> reports the amount of disk space used by the specified files and for each subdirectory (of directory arguments). with no arguments,<code>du</code> reports the disk space for the current directory。<br>很明显，与df不同，它用来查看文件或目录所占用的磁盘空间的大小。</p><ol><li><p>-h：以人类可读的方式显示</p></li><li><p>-a：显示目录占用的磁盘空间大小，还要显示其下目录和文件占用磁盘空间的大小</p></li><li><p>-s：显示目录占用的磁盘空间大小，不要显示其下子目录和文件占用的磁盘空间大小</p></li><li><p>-c：显示几个目录或文件占用的磁盘空间大小，还要统计它们的总和</p></li><li><p>–apparent-size：显示目录或文件自身的大小</p></li><li><p>-l ：统计硬链接占用磁盘空间的大小</p></li><li><p>-L：统计符号链接所指向的文件占用的磁盘空间大小</p></li><li><p>du -h：这个就不多说了。</p></li><li><p>du -a：使用此选项时，显示目录和目录下子目录和文件占用磁盘空间的大小。</p></li><li><p>du&nbsp;-s：使用此选项时，du只显示目录所占用磁盘空间的大小，而不显示其下子目录和文件占用磁盘空间的信息。<br>默认情况下，du不显示目录下文件占用磁盘空间的信息，但它会显示其下子目录占用磁盘空间的信息；而使用-s选项以后，只显示xx目录占用磁盘空间的大小。</p></li></ol><p>du：查询文件或文件夹的磁盘使用空间<br>&nbsp;&nbsp;&nbsp; 如果当前目录下文件和文件夹很多，使用不带参数du的命令，可以循环列出所有文件和文件夹所使用的空间。这对查看究竟是那个地方过大是不利的，所以得指定深入目录的层数，参数：–max-depth=，这是个极为有用的参数！如下，注意使用“*”，可以得到文件的使用空间大小.<br>&nbsp;&nbsp;&nbsp;&nbsp;提醒：一向命令比linux复杂的FreeBSD，它的du命令指定深入目录的层数却是比linux简化，为 -d。</p><h1 id="df"><a class="markdownIt-Anchor" href="#df"></a> df</h1><p>df可以查看一级文件夹大小、使用比例、档案系统及其挂入点，但对文件却无能为力。 du可以查看文件及文件夹的大小。<br>df命令可以显示目前所有文件系统的可用空间及使用情形，</p><p>参数 -h 表示使用「Human-readable」的输出，也就是在档案系统大小使用 GB、MB 等易读的格式。</p><ul><li>df命令用于显示文件系统磁盘空间的使用情况。<ul><li>基本语法： df [选项] [文件或目录]</li><li>常用选项：<ul><li>-h ：以人类可读的格式显示磁盘空间使用情况。</li><li>-T ：显示文件系统类型。</li></ul></li><li>示例：<ul><li>df -h ：显示所有挂载的文件系统的磁盘空间使用情况，以人类可读的格式。</li><li>df -Th ：显示所有挂载的文件系统的磁盘空间使用情况和文件系统类型。</li></ul></li></ul></li></ul>]]></content>
       
       
       <categories>
@@ -260,9 +281,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 前端 </tag>
-            
             <tag> JavaScript </tag>
+            
+            <tag> 前端 </tag>
             
         </tags>
       
@@ -291,9 +312,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 前端 </tag>
-            
             <tag> JavaScript </tag>
+            
+            <tag> 前端 </tag>
             
         </tags>
       
@@ -426,7 +447,7 @@
       <link href="/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/"/>
       <url>/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/</url>
       
-        <content type="html"><![CDATA[<div class="card-container"><div class="card back">  <p>互联网的强大足以让我们查找到我们想要学习的资料。</p></div><div class="card back">说话做事前一定要先想一下这话该不该说，这事儿该不该做。一定要弄明白你自己的目的，说了做了能不能达到你想要的。说错了或者是做错了会有什么样的后果。若想清楚了还是一定要说或者是做，之后就是想该怎么说怎么做了。</div><div class="card back">别人说话做事的时候一定要想他为什么这么说，他为什么这样做，他这样说或是做的目的是什么，你拦不住别人怎么说怎么做，但一定要想清楚他这么做对你的利弊，如是有利则听之认之，若是不利则要考虑如何应对。</div><div class="card back">养成良好的生活习惯，做事有规律，例如东西放置的位置尽量记住和有规律，到了这个时间就该洗澡，一定要坚持，千万不能有惰性。</div><div class="card back">可以对比，但不可以攀比，对比知道自己的不足，攀比暴露自己的不足。</div><div class="card back">要确保自己不仅知道而起能说出来。</div><div class="card back">注重积累数据，用数据说话更具有说服力。</div><div class="card back">说话要抑扬顿挫显得有底气。</div><div class="card back">养成多琢磨的习惯，主要思考事情的来龙去脉，前因后果。比如说话，思考别人为什么这样说，这样说对他有什么好处，如果这样对他有好处以后也可以用他的方法来得到自己想要的好处。</div><div class="card back">人难免会有情绪，但是你的情绪只能针对这一件事有情绪，永远不要吧情绪牵连到其他的事情或人身上，否则其他的事情也都做不好了。</div></div><style>.card-container {  display: flex;  justify-content: space-between;  flex-wrap: wrap;}.card {  flex-basis: calc(33.33% - 20px);  background-color: #f9f9f9;  border-radius: 10px;  padding: 20px;  margin-bottom: 20px;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  transition: background-color 0.3s ease;}/*在小屏幕设备上的样式*/@media screen and (max-width: 768px) {  .card {    /*小屏幕样式*/    flex-basis: calc(100%);    background-color: #f9f9f9;    border-radius: 10px;    padding: 20px;    margin-bottom: 20px;    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);    transition: background-color 0.3s ease;  }}.card p {  font-size: 16px;  color: #333;}</style><script>// 获取卡片容器const cardContainer = document.querySelector('.card-container');// 获取所有卡片元素const cards = Array.from(cardContainer.querySelectorAll('.card'));// 随机排序卡片顺序cards.sort(() => Math.random() - 0.5);// 清空卡片容器cardContainer.innerHTML = '';// 将排序后的卡片重新添加到容器中cards.forEach(card => {  cardContainer.appendChild(card);});function getRandomColor() {  var letters = '0123456789ABCDEF';  var color = '#';  do {    for (var i = 0; i < 6; i++) {      color += letters[Math.floor(Math.random() * 16)];    }  } while (color === '#00FF00' || color === '#00FF80' || color === '#00FFBF' || color === '#00FFFF' || color === '#00BFFF'); // 排除绿色系列  return color;}function isColorTooDark(color) {  var hex = color.replace('#', '');  var r = parseInt(hex.substring(0, 2), 16);  var g = parseInt(hex.substring(2, 4), 16);  var b = parseInt(hex.substring(4, 6), 16);  var brightness = (r *299 + g* 587 + b * 114) / 1000;  return brightness < 128;}var backCards = document.getElementsByClassName('back');for (var i = 0; i < backCards.length; i++) {  var randomColor1 = getRandomColor();  var randomColor2 = getRandomColor();  while (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    randomColor1 = getRandomColor();    randomColor2 = getRandomColor();  }  backCards[i].style.background = 'linear-gradient(to right, ' + randomColor1 + ', ' + randomColor2 + ')';  if (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    backCards[i].style.color = '#333';  }}</script>]]></content>
+        <content type="html"><![CDATA[<div class="card-container"><div class="card back">  <p>互联网的强大足以让我们查找到我们想要学习的资料。</p></div><div class="card back">说话做事前一定要先想一下这话该不该说，这事儿该不该做。一定要弄明白你自己的目的，说了做了能不能达到你想要的。说错了或者是做错了会有什么样的后果。若想清楚了还是一定要说或者是做，之后就是想该怎么说怎么做了。</div><div class="card back">别人说话做事的时候一定要想他为什么这么说，他为什么这样做，他这样说或是做的目的是什么，你拦不住别人怎么说怎么做，但一定要想清楚他这么做对你的利弊，如是有利则听之认之，若是不利则要考虑如何应对。</div><div class="card back">养成良好的生活习惯，做事有规律，例如东西放置的位置尽量记住和有规律，到了这个时间就该洗澡，一定要坚持，千万不能有惰性。</div><div class="card back">可以对比，但不可以攀比，对比知道自己的不足，攀比暴露自己的不足。</div><div class="card back">要确保自己不仅知道而起能说出来。</div><div class="card back">注重积累数据，用数据说话更具有说服力。</div><div class="card back">说话要抑扬顿挫显得有底气。</div><div class="card back">养成多琢磨的习惯，主要思考事情的来龙去脉，前因后果。比如说话，思考别人为什么这样说，这样说对他有什么好处，如果这样对他有好处以后也可以用他的方法来得到自己想要的好处。</div><div class="card back">人难免会有情绪，但是你的情绪只能针对这一件事有情绪，永远不要吧情绪牵连到其他的事情或人身上，否则其他的事情也都做不好了。</div><div class="card back">多思考总是好的</div><div class="card back">提前制定计划，有时候计划赶不上变化，那就想想当时制定计划的时候为什么没有把变化考虑进去。</div></div><style>.card-container {  display: flex;  justify-content: space-between;  flex-wrap: wrap;}.card {  flex-basis: calc(33.33% - 20px);  background-color: #f9f9f9;  border-radius: 10px;  padding: 20px;  margin-bottom: 20px;  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  transition: background-color 0.3s ease;}/*在小屏幕设备上的样式*/@media screen and (max-width: 768px) {  .card {    /*小屏幕样式*/    flex-basis: calc(100%);    background-color: #f9f9f9;    border-radius: 10px;    padding: 20px;    margin-bottom: 20px;    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);    transition: background-color 0.3s ease;  }}.card p {  font-size: 16px;  color: #333;}</style><script>// 获取卡片容器const cardContainer = document.querySelector('.card-container');// 获取所有卡片元素const cards = Array.from(cardContainer.querySelectorAll('.card'));// 随机排序卡片顺序cards.sort(() => Math.random() - 0.5);// 清空卡片容器cardContainer.innerHTML = '';// 将排序后的卡片重新添加到容器中cards.forEach(card => {  cardContainer.appendChild(card);});function getRandomColor() {  var letters = '0123456789ABCDEF';  var color = '#';  do {    for (var i = 0; i < 6; i++) {      color += letters[Math.floor(Math.random() * 16)];    }  } while (color === '#00FF00' || color === '#00FF80' || color === '#00FFBF' || color === '#00FFFF' || color === '#00BFFF'); // 排除绿色系列  return color;}function isColorTooDark(color) {  var hex = color.replace('#', '');  var r = parseInt(hex.substring(0, 2), 16);  var g = parseInt(hex.substring(2, 4), 16);  var b = parseInt(hex.substring(4, 6), 16);  var brightness = (r *299 + g* 587 + b * 114) / 1000;  return brightness < 128;}var backCards = document.getElementsByClassName('back');for (var i = 0; i < backCards.length; i++) {  var randomColor1 = getRandomColor();  var randomColor2 = getRandomColor();  while (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    randomColor1 = getRandomColor();    randomColor2 = getRandomColor();  }  backCards[i].style.background = 'linear-gradient(to right, ' + randomColor1 + ', ' + randomColor2 + ')';  if (isColorTooDark(randomColor1) || isColorTooDark(randomColor2)) {    backCards[i].style.color = '#333';  }}</script>]]></content>
       
       
       <categories>
@@ -2299,9 +2320,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2479,11 +2500,11 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
             
             <tag> Linux </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2963,9 +2984,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -3248,9 +3269,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -4534,11 +4555,11 @@
     
     
     <entry>
-      <title>Git忽略已经commit的文件</title>
-      <link href="/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/"/>
-      <url>/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/</url>
+      <title>Git万能后悔药</title>
+      <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
+      <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
       
-        <content type="html"><![CDATA[<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p><h1 id="方式一"><a class="markdownIt-Anchor" href="#方式一"></a> 方式一</h1><ol><li><code>git rm --cached logs/xx.log</code></li><li>然后更新 .gitignore 忽略掉目标文件，</li><li><code>git commit -m "We really don't want Git to track this anymore!"</code></li></ol><h1 id="方式二"><a class="markdownIt-Anchor" href="#方式二"></a> 方式二</h1><p>每个clone下来的仓库中手动设置不要检查特定文件的更改情况。<br><code>git update-index --assume-unchanged PATH    #在PATH处输入要忽略的文件。</code></p><h1 id="方式三"><a class="markdownIt-Anchor" href="#方式三"></a> 方式三</h1><p>另外 git 还提供了另一种 exclude 的方式来做同样的事情，不同的是 .gitignore 这个文件本身会提交到版本库中去。用来保存的是公共的需要排除的文件。而 .git/info/exclude 这里设置的则是你自己本地需要排除的文件。 他不会影响到其他人。也不会提交到版本库中去。</p>]]></content>
+        <content type="html"><![CDATA[<p><code>git reset --hard</code>往往用来移动 HEAD 指针,但这样会导致 commit 的内容被删除,往往后悔不已。</p><p>可以通过reflog来进行恢复，前提是丢失的分支或commit信息没有被git gc清除,一般情况下gc对那些无用的object会保留很长时间后才清除的</p><p>可以使用<code>git reflog</code>或<code>git log -g</code>命令来看到所有的操作日志。你执行的每一条git指令都有迹可循，而且可以回退到任意一步。可谓回滚操作中的万能钥匙了。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@bogon:~/learn/gitk <span class="token punctuation">[</span>master<span class="token punctuation">]</span>$ <span class="token function">git</span> reflogbaf1722 HEAD@<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span>: reset: moving to baf1722add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>: reset: moving to HEAD^f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span>: reset: moving to HEAD^^baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">}</span>: reset: moving to baf1722f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span>: reset: moving to HEAD^^baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.0f02b7a HEAD@<span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>: merge feture/f1: Merge made by the <span class="token string">'recursive'</span> strategy.f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master3e54d52 HEAD@<span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">}</span>: commit: <span class="token number">5</span><span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to feture/f20f4153e HEAD@<span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>: commit: <span class="token number">4</span>add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">11</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f1f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">12</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">}</span>: merge feture/f1: Fast-forward1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">14</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master<span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">15</span><span class="token punctuation">}</span>: commit: <span class="token number">3</span>1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">16</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f21195d28 HEAD@<span class="token punctuation">{</span><span class="token number">17</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to masteradd2e4e HEAD@<span class="token punctuation">{</span><span class="token number">18</span><span class="token punctuation">}</span>: commit: <span class="token number">2</span>1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">19</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f11195d28 HEAD@<span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span>: commit: <span class="token number">1</span>9cb291d HEAD@<span class="token punctuation">{</span><span class="token number">21</span><span class="token punctuation">}</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>恢复的过程很简单</p><ol><li>通过<code>git log -g</code>或<code>git reflog</code> 命令来找到需要恢复的信息对应的 commitid，可以通过提交的时间和日期来辨别,</li><li>找到对应的commitid</li><li>通过 <code>git branch recover_branch commitid</code> 来建立一个新的分支</li></ol><p>这样，就把到commitid为止的代码、各种提交记录等信息都恢复到了recover_branch分支上了。</p>]]></content>
       
       
       <categories>
@@ -4565,11 +4586,11 @@
     
     
     <entry>
-      <title>Git万能后悔药</title>
-      <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
-      <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
+      <title>Git忽略已经commit的文件</title>
+      <link href="/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/"/>
+      <url>/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/</url>
       
-        <content type="html"><![CDATA[<p><code>git reset --hard</code>往往用来移动 HEAD 指针,但这样会导致 commit 的内容被删除,往往后悔不已。</p><p>可以通过reflog来进行恢复，前提是丢失的分支或commit信息没有被git gc清除,一般情况下gc对那些无用的object会保留很长时间后才清除的</p><p>可以使用<code>git reflog</code>或<code>git log -g</code>命令来看到所有的操作日志。你执行的每一条git指令都有迹可循，而且可以回退到任意一步。可谓回滚操作中的万能钥匙了。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@bogon:~/learn/gitk <span class="token punctuation">[</span>master<span class="token punctuation">]</span>$ <span class="token function">git</span> reflogbaf1722 HEAD@<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span>: reset: moving to baf1722add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>: reset: moving to HEAD^f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span>: reset: moving to HEAD^^baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">}</span>: reset: moving to baf1722f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span>: reset: moving to HEAD^^baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.0f02b7a HEAD@<span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>: merge feture/f1: Merge made by the <span class="token string">'recursive'</span> strategy.f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master3e54d52 HEAD@<span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">}</span>: commit: <span class="token number">5</span><span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to feture/f20f4153e HEAD@<span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>: commit: <span class="token number">4</span>add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">11</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f1f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">12</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">}</span>: merge feture/f1: Fast-forward1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">14</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master<span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">15</span><span class="token punctuation">}</span>: commit: <span class="token number">3</span>1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">16</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f21195d28 HEAD@<span class="token punctuation">{</span><span class="token number">17</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to masteradd2e4e HEAD@<span class="token punctuation">{</span><span class="token number">18</span><span class="token punctuation">}</span>: commit: <span class="token number">2</span>1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">19</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f11195d28 HEAD@<span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span>: commit: <span class="token number">1</span>9cb291d HEAD@<span class="token punctuation">{</span><span class="token number">21</span><span class="token punctuation">}</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>恢复的过程很简单</p><ol><li>通过<code>git log -g</code>或<code>git reflog</code> 命令来找到需要恢复的信息对应的 commitid，可以通过提交的时间和日期来辨别,</li><li>找到对应的commitid</li><li>通过 <code>git branch recover_branch commitid</code> 来建立一个新的分支</li></ol><p>这样，就把到commitid为止的代码、各种提交记录等信息都恢复到了recover_branch分支上了。</p>]]></content>
+        <content type="html"><![CDATA[<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p><h1 id="方式一"><a class="markdownIt-Anchor" href="#方式一"></a> 方式一</h1><ol><li><code>git rm --cached logs/xx.log</code></li><li>然后更新 .gitignore 忽略掉目标文件，</li><li><code>git commit -m "We really don't want Git to track this anymore!"</code></li></ol><h1 id="方式二"><a class="markdownIt-Anchor" href="#方式二"></a> 方式二</h1><p>每个clone下来的仓库中手动设置不要检查特定文件的更改情况。<br><code>git update-index --assume-unchanged PATH    #在PATH处输入要忽略的文件。</code></p><h1 id="方式三"><a class="markdownIt-Anchor" href="#方式三"></a> 方式三</h1><p>另外 git 还提供了另一种 exclude 的方式来做同样的事情，不同的是 .gitignore 这个文件本身会提交到版本库中去。用来保存的是公共的需要排除的文件。而 .git/info/exclude 这里设置的则是你自己本地需要排除的文件。 他不会影响到其他人。也不会提交到版本库中去。</p>]]></content>
       
       
       <categories>
