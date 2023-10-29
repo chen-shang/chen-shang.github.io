@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="打包压缩大文件或者大量文件, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="description" content="使用更高级的压缩算法、禁用压缩、使用并行压缩工具">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -38,7 +38,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -230,7 +232,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -258,10 +260,12 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -274,14 +278,23 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -297,7 +310,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-10-28
+                    2023-10-29
                 </div>
                 
 
@@ -335,24 +348,18 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>要加快zip命令的打包速度，您可以尝试以下几种方法：</p>
-<ol>
-<li>
-<p>使用更高级的压缩算法：zip命令默认使用的是Deflate算法，您可以尝试使用更高级的压缩算法，如bzip2或xz。例如，使用bzip2算法可以使用以下命令进行打包：<br>
-zip -r archive.zip folder/ -9 -Z bzip2<br>
-这将使用bzip2算法进行打包，并使用最高压缩级别（-9）。</p>
-</li>
-<li>
-<p>禁用压缩：如果您只是想将文件打包成一个压缩文件，而不需要进行实际的压缩操作，您可以尝试禁用压缩。使用以下命令进行打包：<br>
-zip -r archive.zip folder/ -0<br>
-这将禁用压缩操作，从而提高打包速度。</p>
-</li>
-<li>
-<p>使用并行压缩工具：某些第三方工具可以并行处理多个文件，从而加快打包速度。例如，您可以尝试使用pigz工具代替zip命令，它支持多线程压缩。使用以下命令进行打包：<br>
-zip -r - folder/ | pigz &gt; archive.zip<br>
-这将使用pigz工具进行多线程压缩，从而提高打包速度。</p>
-</li>
-</ol>
-<p>请注意，压缩速度还受到计算机硬件性能和文件大小的影响。因此，如果您的文件较大或计算机性能较低，可能无法显著提高打包速度。</p>
+<h1 id="使用更高级的压缩算法"><a class="markdownIt-Anchor" href="#使用更高级的压缩算法"></a> 使用更高级的压缩算法</h1>
+<p>zip命令默认使用的是Deflate算法，您可以尝试使用更高级的压缩算法，如bzip2或xz。例如，使用bzip2算法可以使用以下命令进行打包：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token parameter variable">-r</span> archive.zip folder/ <span class="token parameter variable">-9</span> <span class="token parameter variable">-Z</span> <span class="token function">bzip2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这将使用bzip2算法进行打包，并使用最高压缩级别（-9）。</p>
+<h1 id="禁用压缩"><a class="markdownIt-Anchor" href="#禁用压缩"></a> 禁用压缩</h1>
+<p>如果您只是想将文件打包成一个压缩文件，而不需要进行实际的压缩操作，您可以尝试禁用压缩。使用以下命令进行打包：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token parameter variable">-r</span> archive.zip folder/ <span class="token parameter variable">-0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这将禁用压缩操作，从而提高打包速度。</p>
+<h1 id="使用并行压缩工具"><a class="markdownIt-Anchor" href="#使用并行压缩工具"></a> 使用并行压缩工具</h1>
+<p>某些第三方工具可以并行处理多个文件，从而加快打包速度。例如，您可以尝试使用pigz工具代替zip命令，它支持多线程压缩。使用以下命令进行打包：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">zip</span> <span class="token parameter variable">-r</span> - folder/ <span class="token operator">|</span> pigz <span class="token operator">&gt;</span> archive.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这将使用pigz工具进行多线程压缩，从而提高打包速度。请注意，压缩速度还受到计算机硬件性能和文件大小的影响。因此，如果您的文件较大或计算机性能较低，可能无法显著提高打包速度。</p>
 
                 
             </div>
@@ -371,8 +378,8 @@ zip -r - folder/ | pigz &gt; archive.zip<br>
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -718,39 +725,45 @@ zip -r - folder/ | pigz &gt; archive.zip<br>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/10/28/da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/">
+                <a href="/2023/10/29/linux/shell/shell-bian-liang-mo-ren-zhi-fu-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="打包压缩大文件或者大量文件">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Shell变量默认值赋值">
                         
-                        <span class="card-title">打包压缩大文件或者大量文件</span>
+                        <span class="card-title">Shell变量默认值赋值</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            ${变量名:=默认值}、${变量名:-默认值}、${变量名:+替代值}、${变量名:?错误消息}
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-10-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-10-29
+                        </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            陈尚
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            <a href="/categories/Linux/Shell/" class="post-category">
+                                    Shell
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -758,8 +771,12 @@ zip -r - folder/ | pigz &gt; archive.zip<br>
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
+                    </a>
+                    
+                    <a href="/tags/Shell/">
+                        <span class="chip bg-color">Shell</span>
                     </a>
                     
                 </div>
@@ -896,6 +913,87 @@ zip -r - folder/ | pigz &gt; archive.zip<br>
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -918,7 +1016,7 @@ zip -r - folder/ | pigz &gt; archive.zip<br>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.2k</span>
+                        class="white-color">159.4k</span>
             
             
             
