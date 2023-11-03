@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>vim插件管理</title>
+      <link href="/2023/11/03/gong-ju-kong/vim/vim-cha-jian-guan-li/"/>
+      <url>/2023/11/03/gong-ju-kong/vim/vim-cha-jian-guan-li/</url>
+      
+        <content type="html"><![CDATA[<p>下载 Vundle<br>复制 Vundle 的 GitHub 仓库地址:<br>git clone <a href="https://github.com/VundleVim/Vundle.vim.git">https://github.com/VundleVim/Vundle.vim.git</a> ~/.vim/bundle/Vundle.vim</p><pre class="line-numbers language-text" data-language="text"><code class="language-text">"vim 配置syntax onset cursorlineset hlsearchset nu"输入的命令显示出来set showcmd"光标控制"set mouse=a"文件修改之后自动载入set autoread          " 随着键入即时搜索  set incsearch  "set showmatch"set rulerset clipboard=unnamedset guioptions-=Tnmap &lt;Leader&gt;q :q&lt;CR&gt;nmap &lt;Leader&gt;Q :qa!&lt;CR&gt;" 启用vundle来管理vim插件set rtp+=~/.vim/bundle/Vundle.vimcall vundle#begin()"安装插件写在这之后Plugin 'VundleVim/Vundle.vim'Plugin 'scrooloose/nerdtree'Plugin 'Xuyuanp/nerdtree-git-plugin'Plugin 'suan/vim-instant-markdown'Plugin 'vim-syntastic/syntastic'Plugin 'bling/vim-airline'Plugin 'vim-airline/vim-airline-themes'"代码片段"Plugin 'honza/vim-snippets'Plugin 'johngrib/vim-game-code-break'Plugin 'neovim/neovim'"Plugin 'vim-scripts/bash-support.vim'Plugin 'Lokaltog/powerline'Plugin 'Color-Sampler-Pack'Plugin 'txt.vim'Plugin 'mru.vim'Plugin 'tpope/vim-surround.git'Plugin 'DoxygenToolkit.vim'Plugin 'tczengming/headerGatesAdd.vim'Plugin 'godlygeek/tabular' Plugin 'mzlogin/vim-markdown-toc' "必要插件，安装在vim-markdown前面"Plugin 'plasticboy/vim-markdown'Plugin 'iamcco/markdown-preview.nvim'"Plugin '907th/vim-auto-save'"Plugin 'maralla/completor.vim'"Plugin 'Valloric/YouCompleteMe'"Plugin 'Lokaltog/vim-powerline'"安装插件写在这之前call vundle#end()filetype plugin on"常用命令":PluginList       - 查看已经安装的插件":PluginInstall    - 安装插件":PluginUpdate     - 更新插件":PluginSearch     - 搜索插件，例如 :PluginSearch xml就能搜到xml相关的插件":PluginClean      - 删除插件，把安装插件对应行删除，然后执行这个命令即可map &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;set statusline+=%#warningmsg#set statusline+=%{SyntasticStatuslineFlag()}set statusline+=%*let g:syntastic_always_populate_loc_list = 1let g:syntastic_auto_loc_list = 1let g:syntastic_check_on_open = 1let g:syntastic_check_on_wq = 0let g:syntastic_loc_list_height = 4let g:autoformat_autoindent = 1let g:autoformat_retab = 0let g:autoformat_remove_trailing_spaces = 0set guifont=Inconsolata\ for\ Powerline:h15let g:Powerline_symbols = 'fancy'set encoding=utf-8set t_Co=256set fillchars+=stl:\ ,stlnc:\set term=xterm-256colorset termencoding=utf-8set rtp+=/usr/local/opt/fzflet g:vim_markdown_math = 3"enable AutoSave on Vim startuplet g:auto_save = 1  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Vim </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 工具控 </tag>
+            
+            <tag> Vim </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>windows中的linux子系统如何访问windows上的磁盘文件</title>
       <link href="/2023/11/03/linux/windows-zhong-de-linux-zi-xi-tong-ru-he-fang-wen-windows-shang-de-ci-pan-wen-jian/"/>
       <url>/2023/11/03/linux/windows-zhong-de-linux-zi-xi-tong-ru-he-fang-wen-windows-shang-de-ci-pan-wen-jian/</url>
@@ -1972,9 +2003,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -2212,9 +2243,9 @@
             
             <tag> 思考 </tag>
             
-            <tag> 经济学 </tag>
-            
             <tag> 不良资产 </tag>
+            
+            <tag> 经济学 </tag>
             
         </tags>
       
@@ -2384,9 +2415,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2564,11 +2595,11 @@
             
             <tag> 原创 </tag>
             
+            <tag> 未完待续 </tag>
+            
             <tag> Linux </tag>
             
             <tag> Java </tag>
-            
-            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2744,9 +2775,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             
@@ -2833,9 +2864,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -2864,9 +2895,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -2955,9 +2986,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -3048,9 +3079,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -3088,11 +3119,11 @@
     
     
     <entry>
-      <title>重写设计模式-用λ实现工厂模式</title>
-      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/"/>
-      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/</url>
+      <title>重写设计模式-用λ实现单例模式</title>
+      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/"/>
+      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/</url>
       
-        <content type="html"><![CDATA[<p>创建型设计模式一共有4中,分别叫 工厂、单例、构建、原型。创建型设计模式的目标是创建对象实例,其中我认为最简单的当属工厂设计模式。工厂设计模式的宗旨是把对象实例化的过程收集到一处来。</p><p>其中工厂模式还可以细分，分别是 简单工厂也叫静态工厂、工厂方法和抽象工厂，其中简单工厂也叫静态工厂是工厂方法的特例，工厂方法是抽象工厂的特例。<br>工厂方法的目的就是生产对象，也就是封装new的过程。只要你把某个对象的new过程封装到某个类或者某个方法中广义上我们都可以叫工厂方法<br>例如</p><pre class="line-numbers language-none"><code class="language-none">public static Object convert() {    return new Object();}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>一般简单工厂就是构造一个工厂类，里面写一个方法获取某个基类对象,至于最后如何生成具体子类的实例，则在该方法内部实现.这就是简单工厂的雏形</p><div width="100%"><div style="float:left; width:49%;"><h1>简单工厂普通写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">UserFactory</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">User</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> <span class="token class-name">UserFactory</span><span class="token punctuation">.</span><span class="token function">getUser</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>    <div style="float:left;height:50px; width:0px;border-left:solid white;border-right:1px solid white"></div>    <div style="float:left; width:49%;"><h1>简单工厂尝试λ写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> userFactory <span class="token operator">=</span> code <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> userFactory<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div><h1 id="工厂方法"><a class="markdownIt-Anchor" href="#工厂方法"></a> 工厂方法</h1><p>工厂方法和抽象工厂方法也类似，只是换成λ表达式即可。因为λ表达式本质上是一个函数一个方法，所以必然依托于出现在某个类中。</p></div>]]></content>
+        <content type="html"><![CDATA[<p>DCL 单例 用λ表达式来实现</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">import java.util.Optional;public class Singleton{  //1. 构造方法私有化  //2. 持有自身的静态引用  //3. 提供获取自身静态引用的公有静态方法  private Singleton(){}  private static volatile Singleton singleton;  public static Singleton getInstance(){     return Optional.ofNullable(singleton).orElseGet(()-&gt;{       synchronized(Singleton.class){         return Optional.ofNullable(singleton).orElse(new Singleton());       }     });  }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -3115,11 +3146,11 @@
     
     
     <entry>
-      <title>重写设计模式-用λ实现单例模式</title>
-      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/"/>
-      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/</url>
+      <title>重写设计模式-用λ实现工厂模式</title>
+      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/"/>
+      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/</url>
       
-        <content type="html"><![CDATA[<p>DCL 单例 用λ表达式来实现</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">import java.util.Optional;public class Singleton{  //1. 构造方法私有化  //2. 持有自身的静态引用  //3. 提供获取自身静态引用的公有静态方法  private Singleton(){}  private static volatile Singleton singleton;  public static Singleton getInstance(){     return Optional.ofNullable(singleton).orElseGet(()-&gt;{       synchronized(Singleton.class){         return Optional.ofNullable(singleton).orElse(new Singleton());       }     });  }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<p>创建型设计模式一共有4中,分别叫 工厂、单例、构建、原型。创建型设计模式的目标是创建对象实例,其中我认为最简单的当属工厂设计模式。工厂设计模式的宗旨是把对象实例化的过程收集到一处来。</p><p>其中工厂模式还可以细分，分别是 简单工厂也叫静态工厂、工厂方法和抽象工厂，其中简单工厂也叫静态工厂是工厂方法的特例，工厂方法是抽象工厂的特例。<br>工厂方法的目的就是生产对象，也就是封装new的过程。只要你把某个对象的new过程封装到某个类或者某个方法中广义上我们都可以叫工厂方法<br>例如</p><pre class="line-numbers language-none"><code class="language-none">public static Object convert() {    return new Object();}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>一般简单工厂就是构造一个工厂类，里面写一个方法获取某个基类对象,至于最后如何生成具体子类的实例，则在该方法内部实现.这就是简单工厂的雏形</p><div width="100%"><div style="float:left; width:49%;"><h1>简单工厂普通写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">UserFactory</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">User</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> <span class="token class-name">UserFactory</span><span class="token punctuation">.</span><span class="token function">getUser</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>    <div style="float:left;height:50px; width:0px;border-left:solid white;border-right:1px solid white"></div>    <div style="float:left; width:49%;"><h1>简单工厂尝试λ写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> userFactory <span class="token operator">=</span> code <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> userFactory<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div><h1 id="工厂方法"><a class="markdownIt-Anchor" href="#工厂方法"></a> 工厂方法</h1><p>工厂方法和抽象工厂方法也类似，只是换成λ表达式即可。因为λ表达式本质上是一个函数一个方法，所以必然依托于出现在某个类中。</p></div>]]></content>
       
       
       <categories>
@@ -3162,9 +3193,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -3333,9 +3364,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -4025,9 +4056,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> BaseShell </tag>
             
@@ -4089,9 +4120,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -4122,9 +4153,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -4182,9 +4213,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -4246,9 +4277,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             
@@ -4306,9 +4337,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             
