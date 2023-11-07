@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-11-03T10:25:11.656Z</updated>
+  <updated>2023-11-07T15:39:24.764Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,166 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何查看登录用户列表</title>
+    <link href="https://chen-shang.github.io/2023/11/07/linux/jie-jue-fang-an/ru-he-cha-kan-deng-lu-yong-hu-lie-biao/"/>
+    <id>https://chen-shang.github.io/2023/11/07/linux/jie-jue-fang-an/ru-he-cha-kan-deng-lu-yong-hu-lie-biao/</id>
+    <published>2023-11-06T17:19:19.000Z</published>
+    <updated>2023-11-07T15:39:24.764Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;ubuntu&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ubuntu&quot;&gt;&lt;/a&gt; ubuntu&lt;/h4&gt;
+&lt;h5 id=&quot;列出系统中的所有用户&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何在文件中查找与替换</title>
+    <link href="https://chen-shang.github.io/2023/11/06/linux/jie-jue-fang-an/ru-he-zai-wen-jian-zhong-cha-zhao-yu-ti-huan/"/>
+    <id>https://chen-shang.github.io/2023/11/06/linux/jie-jue-fang-an/ru-he-zai-wen-jian-zhong-cha-zhao-yu-ti-huan/</id>
+    <published>2023-11-06T14:20:35.000Z</published>
+    <updated>2023-11-07T15:38:47.908Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;vim-系列&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vim-系列&quot;&gt;&lt;/a&gt; vim 系列&lt;/h1&gt;
+&lt;p&gt;vim 适合用在我们手动去替换,但是每次都需要登录机器，打开文件，输入替换指令，然后回车。&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何查看计算机系统的具体版本</title>
+    <link href="https://chen-shang.github.io/2023/11/06/linux/jie-jue-fang-an/ru-he-cha-kan-ji-suan-ji-xi-tong-de-ju-ti-ban-ben/"/>
+    <id>https://chen-shang.github.io/2023/11/06/linux/jie-jue-fang-an/ru-he-cha-kan-ji-suan-ji-xi-tong-de-ju-ti-ban-ben/</id>
+    <published>2023-11-06T09:23:41.000Z</published>
+    <updated>2023-11-07T15:32:27.839Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Linux 系列 如 Ubuntu 、Centos 基本一样. Mac 系列不太一样，大部分通过读文件的方式实现的功能在Mac上都行不通。&lt;/p&gt;
+&lt;h1 id=&quot;ubuntu&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何计算文件的哈希</title>
+    <link href="https://chen-shang.github.io/2023/11/06/linux/jie-jue-fang-an/ru-he-ji-suan-wen-jian-de-ha-xi/"/>
+    <id>https://chen-shang.github.io/2023/11/06/linux/jie-jue-fang-an/ru-he-ji-suan-wen-jian-de-ha-xi/</id>
+    <published>2023-11-06T02:24:23.000Z</published>
+    <updated>2023-11-07T15:36:48.917Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;windows&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#windows&quot;&gt;&lt;/a&gt; windows&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;certutil -hashfile &amp;lt;文件路径&amp;gt;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ubuntu 安装必备开发环境</title>
+    <link href="https://chen-shang.github.io/2023/11/03/linux/ubuntu-an-zhuang-bi-bei-kai-fa-huan-jing/"/>
+    <id>https://chen-shang.github.io/2023/11/03/linux/ubuntu-an-zhuang-bi-bei-kai-fa-huan-jing/</id>
+    <published>2023-11-03T10:32:44.000Z</published>
+    <updated>2023-11-07T15:40:27.654Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;vim-插件管理工具&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vim-插件管理工具&quot;&gt;&lt;/a&gt; vim 插件管理工具&lt;/h1&gt;
+&lt;p&gt;vim 是方便编辑文件用&lt;br&gt;
+参考 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>vim插件管理</title>
@@ -50,11 +210,11 @@ git clone &lt;a</summary>
   </entry>
   
   <entry>
-    <title>windows中的linux子系统如何访问windows上的磁盘文件</title>
-    <link href="https://chen-shang.github.io/2023/11/03/linux/windows-zhong-de-linux-zi-xi-tong-ru-he-fang-wen-windows-shang-de-ci-pan-wen-jian/"/>
-    <id>https://chen-shang.github.io/2023/11/03/linux/windows-zhong-de-linux-zi-xi-tong-ru-he-fang-wen-windows-shang-de-ci-pan-wen-jian/</id>
+    <title>如何在windows的linux子系统中访问磁盘</title>
+    <link href="https://chen-shang.github.io/2023/11/03/linux/jie-jue-fang-an/ru-he-zai-windows-de-linux-zi-xi-tong-zhong-fang-wen-ci-pan/"/>
+    <id>https://chen-shang.github.io/2023/11/03/linux/jie-jue-fang-an/ru-he-zai-windows-de-linux-zi-xi-tong-zhong-fang-wen-ci-pan/</id>
     <published>2023-11-03T08:55:35.000Z</published>
-    <updated>2023-11-03T09:40:26.092Z</updated>
+    <updated>2023-11-07T15:39:01.346Z</updated>
     
     
       
@@ -71,10 +231,14 @@ git clone &lt;a</summary>
     
     <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
     
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
   </entry>
   
@@ -112,11 +276,11 @@ git clone &lt;a</summary>
   </entry>
   
   <entry>
-    <title>打包压缩大文件或者大量文件</title>
-    <link href="https://chen-shang.github.io/2023/10/28/linux/da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/"/>
-    <id>https://chen-shang.github.io/2023/10/28/linux/da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/</id>
+    <title>如何打包压缩大文件或者大量文件</title>
+    <link href="https://chen-shang.github.io/2023/10/28/linux/jie-jue-fang-an/ru-he-da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/"/>
+    <id>https://chen-shang.github.io/2023/10/28/linux/jie-jue-fang-an/ru-he-da-bao-ya-suo-da-wen-jian-huo-zhe-da-liang-wen-jian/</id>
     <published>2023-10-28T14:00:31.000Z</published>
-    <updated>2023-10-29T09:17:36.969Z</updated>
+    <updated>2023-11-07T15:32:13.905Z</updated>
     
     
       
@@ -132,10 +296,14 @@ git clone &lt;a</summary>
     
     <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
     
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
   </entry>
   
@@ -474,168 +642,6 @@ git clone &lt;a</summary>
     <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
     <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一次随领导接待客户回顾</title>
-    <link href="https://chen-shang.github.io/2023/09/19/si-kao/yi-ci-sui-ling-dao-jie-dai-ke-hu-hui-gu/"/>
-    <id>https://chen-shang.github.io/2023/09/19/si-kao/yi-ci-sui-ling-dao-jie-dai-ke-hu-hui-gu/</id>
-    <published>2023-09-19T13:05:46.000Z</published>
-    <updated>2023-09-19T15:36:53.544Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天正在办公写代码的时候,突然被领导叫去开会。自己也是受宠若惊，当同事叫我过去开会，我还再三确认了一下：“领导叫我？确定叫我开会”，同事说：“是的，别墨迹了，赶紧开会”，于是我战战兢兢的就进到会议室了。刚进到会议室，我都不知道要干啥，慌的很。此时眼睛也不知道看什么，大脑在飞</summary>
-        
-      
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据安全相关法律法规</title>
-    <link href="https://chen-shang.github.io/2023/09/18/ji-suan-ji/ji-suan-ji-an-quan/shu-ju-an-quan-xiang-guan-fa-lu-fa-gui/"/>
-    <id>https://chen-shang.github.io/2023/09/18/ji-suan-ji/ji-suan-ji-an-quan/shu-ju-an-quan-xiang-guan-fa-lu-fa-gui/</id>
-    <published>2023-09-18T06:34:53.000Z</published>
-    <updated>2023-09-19T12:03:45.153Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;数据安全相关法律法规&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#数据安全相关法律法规&quot;&gt;&lt;/a&gt; 数据安全相关法律法规&lt;/h1&gt;
-&lt;p&gt;JRT 0171-2020 《个人金融信息保护技术规范》&lt;br&gt;
-&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="计算机" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机安全" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机安全" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mac总是生成.DS_Store</title>
-    <link href="https://chen-shang.github.io/2023/09/17/gong-ju-kong/mac/mac-zong-shi-sheng-cheng-ds-store/"/>
-    <id>https://chen-shang.github.io/2023/09/17/gong-ju-kong/mac/mac-zong-shi-sheng-cheng-ds-store/</id>
-    <published>2023-09-17T14:46:10.000Z</published>
-    <updated>2023-09-19T15:36:02.027Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;.DS_Store是Mac OS保存文件夹的自定义属性的隐藏文件，如文件的图标位置或背景色，相当于Windows的desktop.ini。&lt;/p&gt;
-&lt;h1 id=&quot;禁止ds_store生成&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>吾日三省</title>
-    <link href="https://chen-shang.github.io/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/"/>
-    <id>https://chen-shang.github.io/2023/09/17/mo-xiang-zhi-jian/wu-ri-san-sheng/wu-ri-san-sheng/</id>
-    <published>2023-09-17T10:27:55.000Z</published>
-    <updated>2023-10-29T09:23:58.514Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;div class=&quot;card-container&quot;&gt;
-&lt;div class=&quot;card back&quot;&gt;
-  &lt;p&gt;互联网的强大足以让我们查找到我们想要学习的资料。&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;card</summary>
-        
-      
-    
-    
-    
-    <category term="墨香纸笺" scheme="https://chen-shang.github.io/categories/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/"/>
-    
-    <category term="吾日三省" scheme="https://chen-shang.github.io/categories/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/%E5%90%BE%E6%97%A5%E4%B8%89%E7%9C%81/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="墨香纸笺" scheme="https://chen-shang.github.io/tags/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/"/>
-    
-    <category term="吾日三省" scheme="https://chen-shang.github.io/tags/%E5%90%BE%E6%97%A5%E4%B8%89%E7%9C%81/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>唐诗宋词</title>
-    <link href="https://chen-shang.github.io/2023/09/17/mo-xiang-zhi-jian/tang-shi-song-ci/tang-shi-song-ci/"/>
-    <id>https://chen-shang.github.io/2023/09/17/mo-xiang-zhi-jian/tang-shi-song-ci/tang-shi-song-ci/</id>
-    <published>2023-09-16T17:43:08.000Z</published>
-    <updated>2023-09-17T12:26:17.553Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;div class=&quot;card-container&quot;&gt;
-  &lt;div class=&quot;card back&quot;&gt;
-    山亭夏日 唐·高骈
-    &lt;hr&gt;
-    &lt;p&gt;绿树荫浓夏日长，楼台倒影入池塘。&lt;/p&gt;
-    &lt;p&gt;水晶帘动微风起，满架蔷薇一院香。&lt;/p&gt;
- </summary>
-        
-      
-    
-    
-    
-    <category term="墨香纸笺" scheme="https://chen-shang.github.io/categories/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/"/>
-    
-    <category term="唐诗宋词" scheme="https://chen-shang.github.io/categories/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/%E5%94%90%E8%AF%97%E5%AE%8B%E8%AF%8D/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
