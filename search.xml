@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>maven常用操作</title>
+      <link href="/2023/11/08/gong-ju-kong/maven/maven-chang-yong-cao-zuo/"/>
+      <url>/2023/11/08/gong-ju-kong/maven/maven-chang-yong-cao-zuo/</url>
+      
+        <content type="html"><![CDATA[<h4 id="如何跳过测试"><a class="markdownIt-Anchor" href="#如何跳过测试"></a> 如何跳过测试</h4><p><code>-DskipTests</code></p><h4 id="如何指定配置profile"><a class="markdownIt-Anchor" href="#如何指定配置profile"></a> 如何指定配置Profile</h4><p><code>-PprofileName</code><br>例如: -Pdev -Ptest -Pprod 这样的</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Maven </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 工具控 </tag>
+            
+            <tag> Maven </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何查看登录用户列表</title>
       <link href="/2023/11/07/linux/jie-jue-fang-an/ru-he-cha-kan-deng-lu-yong-hu-lie-biao/"/>
       <url>/2023/11/07/linux/jie-jue-fang-an/ru-he-cha-kan-deng-lu-yong-hu-lie-biao/</url>
@@ -132,7 +163,7 @@
       <link href="/2023/11/03/linux/ubuntu-an-zhuang-bi-bei-kai-fa-huan-jing/"/>
       <url>/2023/11/03/linux/ubuntu-an-zhuang-bi-bei-kai-fa-huan-jing/</url>
       
-        <content type="html"><![CDATA[<h1 id="vim-插件管理工具"><a class="markdownIt-Anchor" href="#vim-插件管理工具"></a> vim 插件管理工具</h1><p>vim 是方便编辑文件用<br>参考 <a href="https://chen-shang.github.io/2023/11/03/gong-ju-kong/vim/vim-cha-jian-guan-li/">vim插件管理</a></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="tree-jq"><a class="markdownIt-Anchor" href="#tree-jq"></a> tree、jq</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> tree<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> jq<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h1 id="jdk"><a class="markdownIt-Anchor" href="#jdk"></a> jdk</h1>]]></content>
+        <content type="html"><![CDATA[<h1 id="vim-插件管理工具"><a class="markdownIt-Anchor" href="#vim-插件管理工具"></a> vim 插件管理工具</h1><p>vim 是方便编辑文件用<br>参考 <a href="https://chen-shang.github.io/2023/11/03/gong-ju-kong/vim/vim-cha-jian-guan-li/">vim插件管理</a></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="tree-jq"><a class="markdownIt-Anchor" href="#tree-jq"></a> tree、jq</h1><p><code>sudo apt-get install tree</code><br><code>sudo apt-get install jq</code></p><h1 id="jdk"><a class="markdownIt-Anchor" href="#jdk"></a> jdk</h1><p><code>sudo apt-get -y install openjdk-8-jdk</code><br>手动安装<br>jdk8下载地址 <a href="https://www.oracle.com/java/technologies/downloads/#java8">https://www.oracle.com/java/technologies/downloads/#java8</a></p><h1 id="node"><a class="markdownIt-Anchor" href="#node"></a> node</h1><p><code>sudo apt-get -y install nodejs</code><br><code>sudo apt-get -y install npm</code></p><h1 id="docker"><a class="markdownIt-Anchor" href="#docker"></a> docker</h1><p><code>sudo apt install docker.io</code></p><h1 id="ifconfig-系列"><a class="markdownIt-Anchor" href="#ifconfig-系列"></a> ifconfig 系列</h1><p><code>sudo apt install net-tools</code></p>]]></content>
       
       
       <categories>
@@ -146,9 +177,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -997,7 +1028,7 @@
       <link href="/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/"/>
       <url>/2023/09/04/gong-ju-kong/intellij-idea/jrebel-ji-huo/</url>
       
-        <content type="html"><![CDATA[<p>最近因为升级了 Jrebel 热部署插件导致的激活失败问题–那就暂时先不要升级了,先降级回支持的版本再说,网上本地激活的方式暂时没有尝试，后续实在受不了低版本了在尝试吧。</p><p>一键地址直接使用: <code>https://jrebel.qekang.com/cd61166e-caf3-4415-bd50-b44ef3031a43</code></p><p>方法：降低IDEA 的 Jrebel 版本为 2022.4.1</p><ol><li>删掉用户名下的.jrebel文件夹，否则降级idea或降级jrebel都不管用都激活失败</li><li>不要升级idea到2022.3 因为其内置的jrebel是最新版的2022.4.2 这个版本的jrebel应该是更改了激活方式 qekang方式激活不成功</li><li>如果升级了idea到2022.3，则需要手动把jrebel降低到2022.4.1，然后最好删掉.jrebel文件夹，再激活。</li></ol><p>IDEA 的 插件地址 : <a href="https://plugins.jetbrains.com/">https://plugins.jetbrains.com/</a><br>Jrebel 的插件地址: <a href="https://plugins.jetbrains.com/plugin/4441-jrebel-and-xrebel/versions">https://plugins.jetbrains.com/plugin/4441-jrebel-and-xrebel/versions</a></p>]]></content>
+        <content type="html"><![CDATA[<p>最近因为升级了 Jrebel 热部署插件导致的激活失败问题–那就暂时先不要升级了,先降级回支持的版本再说,网上本地激活的方式暂时没有尝试，后续实在受不了低版本了在尝试寻找破解方案吧。</p><h4 id="最新版激活方案"><a class="markdownIt-Anchor" href="#最新版激活方案"></a> 最新版激活方案</h4><p>最近找到了一个最新版的激活方案,测试可行,记录如下</p><p>JRebel&amp;XRebel激活<br>激活地址（路线1）<br><a href="http://jrebel.idoudou.me/3dc94350-bbd6-4ec7-aa95-57c3cdb61c87">http://jrebel.idoudou.me/3dc94350-bbd6-4ec7-aa95-57c3cdb61c87</a><br>激活地址（路线2）<br><a href="http://42.193.18.168:8088/6d0776cb-2524-4161-b840-7a0df27a656c">http://42.193.18.168:8088/6d0776cb-2524-4161-b840-7a0df27a656c</a><br>激活邮箱<br><a href="mailto:cj6ny@yahoo.com">cj6ny@yahoo.com</a></p><h4 id="旧版激活方案"><a class="markdownIt-Anchor" href="#旧版激活方案"></a> 旧版激活方案</h4><p>降低IDEA 的 Jrebel 版本为 2022.4.1</p><p>激活地址（路线1）<br><a href="https://jrebel.qekang.com/cd61166e-caf3-4415-bd50-b44ef3031a43">https://jrebel.qekang.com/cd61166e-caf3-4415-bd50-b44ef3031a43</a></p><p>IDEA 的 插件地址 : <a href="https://plugins.jetbrains.com/">https://plugins.jetbrains.com/</a><br>Jrebel 的插件地址: <a href="https://plugins.jetbrains.com/plugin/4441-jrebel-and-xrebel/versions">https://plugins.jetbrains.com/plugin/4441-jrebel-and-xrebel/versions</a></p>]]></content>
       
       
       <categories>
@@ -1407,27 +1438,6 @@
             <tag> Intellij IDEA </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2023/08/23/gong-ju-kong/maven/maven-pei-zhi/"/>
-      <url>/2023/08/23/gong-ju-kong/maven/maven-pei-zhi/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具控 </category>
-          
-          <category> Maven </category>
-          
-      </categories>
-      
       
     </entry>
     
@@ -2154,9 +2164,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -2566,9 +2576,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -2924,9 +2934,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             
@@ -3015,9 +3025,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 解决方案 </tag>
             
@@ -3048,9 +3058,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -3139,9 +3149,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -3232,9 +3242,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -3346,9 +3356,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -3517,9 +3527,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Java </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Java </tag>
             
         </tags>
       
@@ -4213,9 +4223,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> BaseShell </tag>
             
@@ -4277,9 +4287,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -4310,9 +4320,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> 终端生存之道 </tag>
             
@@ -4370,9 +4380,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Linux </tag>
             
             <tag> Shell </tag>
             
@@ -4434,9 +4444,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             
@@ -4494,9 +4504,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> Hexo </tag>
             
             <tag> 工具控 </tag>
             

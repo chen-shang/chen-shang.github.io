@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-11-07T15:39:24.764Z</updated>
+  <updated>2023-11-08T16:46:04.217Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>maven常用操作</title>
+    <link href="https://chen-shang.github.io/2023/11/08/gong-ju-kong/maven/maven-chang-yong-cao-zuo/"/>
+    <id>https://chen-shang.github.io/2023/11/08/gong-ju-kong/maven/maven-chang-yong-cao-zuo/</id>
+    <published>2023-11-08T01:26:51.000Z</published>
+    <updated>2023-11-08T16:46:04.217Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h4 id=&quot;如何跳过测试&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#如何跳过测试&quot;&gt;&lt;/a&gt; 如何跳过测试&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;-DskipTests&lt;/code&gt;&lt;/p&gt;
+&lt;h4 id=&quot;如何指定配置profile&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Maven" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Maven/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Maven" scheme="https://chen-shang.github.io/tags/Maven/"/>
+    
+  </entry>
   
   <entry>
     <title>如何查看登录用户列表</title>
@@ -150,7 +183,7 @@
     <link href="https://chen-shang.github.io/2023/11/03/linux/ubuntu-an-zhuang-bi-bei-kai-fa-huan-jing/"/>
     <id>https://chen-shang.github.io/2023/11/03/linux/ubuntu-an-zhuang-bi-bei-kai-fa-huan-jing/</id>
     <published>2023-11-03T10:32:44.000Z</published>
-    <updated>2023-11-07T15:40:27.654Z</updated>
+    <updated>2023-11-08T16:40:52.435Z</updated>
     
     
       
@@ -170,9 +203,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
   </entry>
   
@@ -610,38 +643,6 @@ git clone &lt;a</summary>
     <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
     
     <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue中ref()和reactive()的作用、区别、使用场景</title>
-    <link href="https://chen-shang.github.io/2023/09/23/qian-duan/vue/vue-zhong-ref-he-reactive-de-zuo-yong-qu-bie-shi-yong-chang-jing/"/>
-    <id>https://chen-shang.github.io/2023/09/23/qian-duan/vue/vue-zhong-ref-he-reactive-de-zuo-yong-qu-bie-shi-yong-chang-jing/</id>
-    <published>2023-09-23T14:47:15.000Z</published>
-    <updated>2023-09-23T17:40:23.806Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;vue的官网当中有详细的介绍,但描述的实在太官方了,你要读懂它估计要反复阅读好几遍&lt;br&gt;
-&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Vue" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
     
   </entry>
   
