@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ubuntu 安装必备开发环境, IT,技术,总结">
-    <meta name="description" content="ubuntu 安装必备开发环境">
+    <meta name="keywords" content="MyBatis Plus集成Spring Boot, IT,技术,总结">
+    <meta name="description" content="MyBatis Plus集成Spring Boot">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ubuntu 安装必备开发环境 | 涓涓细流</title>
+    <title>MyBatis Plus集成Spring Boot | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -38,9 +38,7 @@
 
 
 
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
-
 
 
 
@@ -245,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ubuntu 安装必备开发环境</h1>
+                    <h1 class="description center-align post-title">MyBatis Plus集成Spring Boot</h1>
                 </div>
             </div>
         </div>
@@ -260,12 +258,10 @@
 
 
 
-<main class="post-container content">
+<main class="container content">
 
     
-    <div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!-- 文章内容详情 -->
+    <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -282,10 +278,6 @@
                                 <span class="chip bg-color">未完待续</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -294,8 +286,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
+                            <a href="/categories/JAVA/" class="post-category">
+                                JAVA
                             </a>
                         
                     </div>
@@ -307,21 +299,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-11-03
+                    2023-11-11
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-09
+                    2023-11-11
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    101
+                    359
                 </div>
                 
 
@@ -351,24 +343,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="vim-插件管理工具"><a class="markdownIt-Anchor" href="#vim-插件管理工具"></a> vim 插件管理工具</h1>
-<p>vim 是方便编辑文件用<br>
-参考 <a href="https://chen-shang.github.io/2023/11/03/gong-ju-kong/vim/vim-cha-jian-guan-li/">vim插件管理</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h1 id="tree-jq"><a class="markdownIt-Anchor" href="#tree-jq"></a> tree、jq</h1>
-<p><code>sudo apt-get install tree</code><br>
-<code>sudo apt-get install jq</code></p>
-<h1 id="jdk"><a class="markdownIt-Anchor" href="#jdk"></a> jdk</h1>
-<p><code>sudo apt-get -y install openjdk-8-jdk</code><br>
-手动安装<br>
-jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/downloads/#java8">https://www.oracle.com/java/technologies/downloads/#java8</a></p>
-<h1 id="node"><a class="markdownIt-Anchor" href="#node"></a> node</h1>
-<p><code>sudo apt-get -y install nodejs</code><br>
-<code>sudo apt-get -y install npm</code></p>
-<h1 id="docker"><a class="markdownIt-Anchor" href="#docker"></a> docker</h1>
-<p><code>sudo apt install docker.io</code></p>
-<h1 id="ifconfig-系列"><a class="markdownIt-Anchor" href="#ifconfig-系列"></a> ifconfig 系列</h1>
-<p><code>sudo apt install net-tools</code></p>
+                <p>参考官方文档 <a target="_blank" rel="noopener" href="https://baomidou.com/pages/226c21/">https://baomidou.com/pages/226c21/</a></p>
+<p>关于多数据源的配置同样参考文档 <a target="_blank" rel="noopener" href="https://baomidou.com/pages/a61e1b/">https://baomidou.com/pages/a61e1b/</a></p>
+<p>我之前写过一篇关于 SpringBoot 多数据源配置的文章，里面写到了关于 Mybatis以及 Mybatis generator 的集成问题。参考<a href="https://chen-shang.github.io/2023/07/26/shu-ju-ku/springboot-duo-shu-ju-yuan-pei-zhi/">https://chen-shang.github.io/2023/07/26/shu-ju-ku/springboot-duo-shu-ju-yuan-pei-zhi/</a></p>
+<p>但是，这里用的是Mybatis Plus,情况有不一样了。官方的配置我没有试过，但是如果还是按照 Mybatis 那样的配置来配置Mybatis Plus 的话，虽然服务启动没有问题，但是服务启动后访问Mapper的时候依旧会提示</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>ibatis<span class="token punctuation">.</span>binding<span class="token punctuation">.</span></span>BindingException</span><span class="token operator">:</span> <span class="token class-name">Invalid</span> bound statement <span class="token punctuation">(</span>not found<span class="token punctuation">)</span><span class="token operator">:</span> <span class="token class-name"><span class="token namespace">com<span class="token punctuation">.</span>server<span class="token punctuation">.</span>dal<span class="token punctuation">.</span>mapper<span class="token punctuation">.</span>demo<span class="token punctuation">.</span></span>AccountMapper</span><span class="token punctuation">.</span>insertSelective<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>原因是</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span>basePackages <span class="token operator">=</span> <span class="token string">"com.server.dal.mapper.study"</span><span class="token punctuation">,</span> sqlSessionFactoryRef <span class="token operator">=</span> <span class="token string">"datasource2SqlSessionFactory"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Datasource2Config</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"datasource2DataSource"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.datasource.study"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">DataSource</span> <span class="token function">datasource2DataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">DataSourceBuilder</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">SqlSessionFactory</span> <span class="token function">datasource2SqlSessionFactory</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"datasource2DataSource"</span><span class="token punctuation">)</span> <span class="token class-name">DataSource</span> dataSource<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token class-name">SqlSessionFactoryBean</span> sessionFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SqlSessionFactoryBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sessionFactory<span class="token punctuation">.</span><span class="token function">setDataSource</span><span class="token punctuation">(</span>dataSource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sessionFactory<span class="token punctuation">.</span><span class="token function">setMapperLocations</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PathMatchingResourcePatternResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token string">"classpath:mapper/study/*.xml"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sessionFactory<span class="token punctuation">.</span><span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>中 的SqlSessionFactoryBean用的是 SqlSessionFactoryBean ，如果改成 MybatisSqlSessionFactoryBean 的话，问题就解决了，而且支持原来mybatis的一切配置，似的项目中利用mybatis-generator生成的代码和使用Mybatis Plus生成的Mapper啊，xml啊都可以共存。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@MapperScan</span><span class="token punctuation">(</span>basePackages <span class="token operator">=</span> <span class="token string">"com.server.dal.mapper.demo"</span><span class="token punctuation">,</span> sqlSessionFactoryRef <span class="token operator">=</span> <span class="token string">"demoSqlSessionFactory"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoDatasourceConfig</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token annotation punctuation">@Primary</span>
+    <span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"demoDatasource"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@ConfigurationProperties</span><span class="token punctuation">(</span>prefix <span class="token operator">=</span> <span class="token string">"spring.datasource.demo"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">DataSource</span> <span class="token function">demoDatasource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">DataSourceBuilder</span><span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Primary</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> <span class="token class-name">SqlSessionFactory</span> <span class="token function">demoSqlSessionFactory</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Qualifier</span><span class="token punctuation">(</span><span class="token string">"demoDatasource"</span><span class="token punctuation">)</span> <span class="token class-name">DataSource</span> dataSource<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+        <span class="token class-name">MybatisSqlSessionFactoryBean</span> sessionFactory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MybatisSqlSessionFactoryBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sessionFactory<span class="token punctuation">.</span><span class="token function">setDataSource</span><span class="token punctuation">(</span>dataSource<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        sessionFactory<span class="token punctuation">.</span><span class="token function">setMapperLocations</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">PathMatchingResourcePatternResolver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getResources</span><span class="token punctuation">(</span><span class="token string">"classpath:mapper/demo/*.xml"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> sessionFactory<span class="token punctuation">.</span><span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -389,10 +409,6 @@ jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/
                             
                                 <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
                                     <span class="chip bg-color">未完待续</span>
-                                </a>
-                            
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -738,45 +754,43 @@ jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/11/06/linux/jie-jue-fang-an/ru-he-ji-suan-wen-jian-de-ha-xi/">
+                <a href="/2023/11/11/java/mybatis-plus-ji-cheng-spring-boot/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="如何计算文件的哈希">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="MyBatis Plus集成Spring Boot">
                         
-                        <span class="card-title">如何计算文件的哈希</span>
+                        <span class="card-title">MyBatis Plus集成Spring Boot</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            certutil
+                            MyBatis Plus集成Spring Boot
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-11
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            <a href="/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-category">
-                                    解决方案
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -784,12 +798,8 @@ jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-                        <span class="chip bg-color">解决方案</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -803,24 +813,24 @@ jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/03/gong-ju-kong/vim/vim-cha-jian-guan-li/">
+                <a href="/2023/11/10/gong-ju-kong/maven/chou-feng-de-maven/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="vim插件管理">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="抽风的maven">
                         
-                        <span class="card-title">vim插件管理</span>
+                        <span class="card-title">抽风的maven</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            vim插件管理
+                            摘要
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-10
                             </span>
                         <span class="publish-author">
                             
@@ -830,8 +840,8 @@ jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/
                                     工具控
                                 </a>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Vim/" class="post-category">
-                                    Vim
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Maven/" class="post-category">
+                                    Maven
                                 </a>
                             
                             
@@ -845,12 +855,8 @@ jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
-                        <span class="chip bg-color">工具控</span>
-                    </a>
-                    
-                    <a href="/tags/Vim/">
-                        <span class="chip bg-color">Vim</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -926,87 +932,6 @@ jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/
 
 
 
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget card" style="background-color: white;">
-            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('1'),
-            headingSelector: 'h1, h2, h3, h4'
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
-        
-    });
-</script>
-
     
 
 </main>
@@ -1029,7 +954,7 @@ jdk8下载地址 <a target="_blank" rel="noopener" href="https://www.oracle.com/
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">158.6k</span>
+                        class="white-color">159.3k</span>
             
             
             

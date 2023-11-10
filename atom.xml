@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-11-08T16:46:04.217Z</updated>
+  <updated>2023-11-10T17:11:31.248Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,65 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MyBatis Plus集成Spring Boot</title>
+    <link href="https://chen-shang.github.io/2023/11/11/java/mybatis-plus-ji-cheng-spring-boot/"/>
+    <id>https://chen-shang.github.io/2023/11/11/java/mybatis-plus-ji-cheng-spring-boot/</id>
+    <published>2023-11-10T16:43:10.000Z</published>
+    <updated>2023-11-10T17:11:31.248Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;参考官方文档 &lt;a href=&quot;https://baomidou.com/pages/226c21/&quot;&gt;https://baomidou.com/pages/226c21/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;关于多数据源的配置同样参考文档 &lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>抽风的maven</title>
+    <link href="https://chen-shang.github.io/2023/11/10/gong-ju-kong/maven/chou-feng-de-maven/"/>
+    <id>https://chen-shang.github.io/2023/11/10/gong-ju-kong/maven/chou-feng-de-maven/</id>
+    <published>2023-11-10T08:37:42.000Z</published>
+    <updated>2023-11-10T17:04:34.018Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;使用IDEA有时候 maven 下载下来的jar包不是最新的，尤其是有 SNAPSHOT 版本包的时候，无论你刷新多少次都无济于事。&lt;/p&gt;
+&lt;p&gt;先按照 下面的方式 处理一下&lt;br&gt;
+&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Maven" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Maven/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>maven常用操作</title>
@@ -179,20 +238,19 @@
   </entry>
   
   <entry>
-    <title>ubuntu 安装必备开发环境</title>
-    <link href="https://chen-shang.github.io/2023/11/03/linux/ubuntu-an-zhuang-bi-bei-kai-fa-huan-jing/"/>
-    <id>https://chen-shang.github.io/2023/11/03/linux/ubuntu-an-zhuang-bi-bei-kai-fa-huan-jing/</id>
+    <title>如何安装必备的开发环境</title>
+    <link href="https://chen-shang.github.io/2023/11/03/linux/jie-jue-fang-an/ru-he-an-zhuang-bi-bei-de-kai-fa-huan-jing/"/>
+    <id>https://chen-shang.github.io/2023/11/03/linux/jie-jue-fang-an/ru-he-an-zhuang-bi-bei-de-kai-fa-huan-jing/</id>
     <published>2023-11-03T10:32:44.000Z</published>
-    <updated>2023-11-08T16:40:52.435Z</updated>
+    <updated>2023-11-10T16:56:38.144Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;vim-插件管理工具&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vim-插件管理工具&quot;&gt;&lt;/a&gt; vim 插件管理工具&lt;/h1&gt;
-&lt;p&gt;vim 是方便编辑文件用&lt;br&gt;
-参考 &lt;a</summary>
+    <summary type="html">&lt;p&gt;如论是Mac 还是 Linux 的某个发行版，我都是要配置下面这些东西的，方便自己开发&lt;/p&gt;
+&lt;h1 id=&quot;vim-插件管理工具&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vim-插件管理工具&quot;&gt;&lt;/a&gt; vim</summary>
         
       
     
@@ -200,10 +258,10 @@
     
     <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
     
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
@@ -580,69 +638,6 @@ git clone &lt;a</summary>
     <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
     <category term="计算机基础" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScritp中数组常用操作</title>
-    <link href="https://chen-shang.github.io/2023/09/23/qian-duan/javascript/javascritp-zhong-shu-zu-chang-yong-cao-zuo/"/>
-    <id>https://chen-shang.github.io/2023/09/23/qian-duan/javascript/javascritp-zhong-shu-zu-chang-yong-cao-zuo/</id>
-    <published>2023-09-23T14:48:11.000Z</published>
-    <updated>2023-09-23T17:37:19.432Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;JavaScript 中的数组有点类似于 Java 中的 List 但是又比Java中的List更加灵活，JavaScript中的数组还有点双端队列的意思，因为可以pop和push元素等操作。&lt;/p&gt;
-&lt;h1 id=&quot;定义数组&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
-    
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScritp中Date常用操作</title>
-    <link href="https://chen-shang.github.io/2023/09/23/qian-duan/javascript/javascritp-zhong-date-chang-yong-cao-zuo/"/>
-    <id>https://chen-shang.github.io/2023/09/23/qian-duan/javascript/javascritp-zhong-date-chang-yong-cao-zuo/</id>
-    <published>2023-09-23T14:48:02.000Z</published>
-    <updated>2023-10-09T10:19:09.090Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;时间类型的相关教程参考 &lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="JavaScript" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/JavaScript/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JavaScript" scheme="https://chen-shang.github.io/tags/JavaScript/"/>
-    
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
