@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-11-10T17:11:31.248Z</updated>
+  <updated>2023-11-15T14:54:34.890Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用了async再获取值的时候记得用await</title>
+    <link href="https://chen-shang.github.io/2023/11/14/qian-duan/yong-liao-async-zai-huo-qu-zhi-de-shi-hou-ji-de-yong-await/"/>
+    <id>https://chen-shang.github.io/2023/11/14/qian-duan/yong-liao-async-zai-huo-qu-zhi-de-shi-hou-ji-de-yong-await/</id>
+    <published>2023-11-14T03:17:59.000Z</published>
+    <updated>2023-11-15T14:54:34.890Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;如果你定义了一个async函数，然后在使用的时候使用一个变量来接收async函数的结果，你其实拿到的是一个空值，你不能立马使用这个值。在前端这个值的类型其实交 Promise ,也就是允诺的意思，类似与Java中的Future。&lt;/p&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何构造前端JSON</title>
+    <link href="https://chen-shang.github.io/2023/11/14/qian-duan/jie-jue-fang-an/ru-he-gou-zao-qian-duan-json/"/>
+    <id>https://chen-shang.github.io/2023/11/14/qian-duan/jie-jue-fang-an/ru-he-gou-zao-qian-duan-json/</id>
+    <published>2023-11-14T02:55:25.000Z</published>
+    <updated>2023-11-15T14:54:34.890Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;现在前后端数据交互用的比较多的就是实用JSON格式，JSON格式简单易懂，可读性强。&lt;/p&gt;
+&lt;p&gt;现在我们知道我们的Java中的一个类为&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-java&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>MyBatis Plus集成Spring Boot</title>
@@ -572,72 +627,6 @@ git clone &lt;a</summary>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>element表格常用的render集锦</title>
-    <link href="https://chen-shang.github.io/2023/09/25/qian-duan/vue/element-biao-ge-chang-yong-de-render-ji-jin/"/>
-    <id>https://chen-shang.github.io/2023/09/25/qian-duan/vue/element-biao-ge-chang-yong-de-render-ji-jin/</id>
-    <published>2023-09-25T01:50:48.000Z</published>
-    <updated>2023-09-28T09:50:25.729Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;判断字段值&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#判断字段值&quot;&gt;&lt;/a&gt; 判断字段值&lt;/h1&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Vue" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/Vue/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Vue" scheme="https://chen-shang.github.io/tags/Vue/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机中的时间</title>
-    <link href="https://chen-shang.github.io/2023/09/24/ji-suan-ji/ji-suan-ji-ji-chu/ji-suan-ji-zhong-de-shi-jian/"/>
-    <id>https://chen-shang.github.io/2023/09/24/ji-suan-ji/ji-suan-ji-ji-chu/ji-suan-ji-zhong-de-shi-jian/</id>
-    <published>2023-09-24T10:45:32.000Z</published>
-    <updated>2023-10-09T08:05:44.366Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我们每个人的时间都是一样的么?这里我们不上升到什么哲学啊，什么量子力学相对论啥的。就谈谈计算机中的时间。&lt;/p&gt;
-&lt;p&gt;本来一开始是没有时间的，但是因为有了地球自转,于是有了白天和黑夜,因此人们在感官上有了时间,人为的把一天分成了24小时,把一小时分成了60分钟,把一分钟分</summary>
-        
-      
-    
-    
-    
-    <category term="计算机" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机基础" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机基础" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
