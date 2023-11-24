@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-11-15T14:54:34.890Z</updated>
+  <updated>2023-11-24T00:36:04.315Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,95 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何通过命令行重启电脑</title>
+    <link href="https://chen-shang.github.io/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/"/>
+    <id>https://chen-shang.github.io/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/</id>
+    <published>2023-11-23T05:17:59.000Z</published>
+    <updated>2023-11-24T00:36:04.315Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;对于Windows系统，你可以使用以下命令来重启电脑：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot中Controller加上统一的请求前缀</title>
+    <link href="https://chen-shang.github.io/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/"/>
+    <id>https://chen-shang.github.io/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/</id>
+    <published>2023-11-17T03:44:12.000Z</published>
+    <updated>2023-11-18T12:17:23.919Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;基本写法&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;@RestController
+@RequestMapping(&quot;/service/demo&quot;)
+public</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="SpringBoot" scheme="https://chen-shang.github.io/categories/JAVA/SpringBoot/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
+    
+    <category term="SpringBoot" scheme="https://chen-shang.github.io/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>数据库ID需要提前获取</title>
+    <link href="https://chen-shang.github.io/2023/11/16/shu-ju-ku/shu-ju-ku-id-xu-yao-ti-qian-huo-qu/"/>
+    <id>https://chen-shang.github.io/2023/11/16/shu-ju-ku/shu-ju-ku-id-xu-yao-ti-qian-huo-qu/</id>
+    <published>2023-11-16T08:53:20.000Z</published>
+    <updated>2023-11-18T12:27:21.536Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;场景:</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>用了async再获取值的时候记得用await</title>
@@ -73,10 +162,10 @@
   
   <entry>
     <title>MyBatis Plus集成Spring Boot</title>
-    <link href="https://chen-shang.github.io/2023/11/11/java/mybatis-plus-ji-cheng-spring-boot/"/>
-    <id>https://chen-shang.github.io/2023/11/11/java/mybatis-plus-ji-cheng-spring-boot/</id>
+    <link href="https://chen-shang.github.io/2023/11/11/java/springboot/mybatis-plus-ji-cheng-spring-boot/"/>
+    <id>https://chen-shang.github.io/2023/11/11/java/springboot/mybatis-plus-ji-cheng-spring-boot/</id>
     <published>2023-11-10T16:43:10.000Z</published>
-    <updated>2023-11-10T17:11:31.248Z</updated>
+    <updated>2023-11-18T12:17:30.646Z</updated>
     
     
       
@@ -92,10 +181,14 @@
     
     <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
     
+    <category term="SpringBoot" scheme="https://chen-shang.github.io/categories/JAVA/SpringBoot/"/>
+    
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
+    
+    <category term="SpringBoot" scheme="https://chen-shang.github.io/tags/SpringBoot/"/>
     
   </entry>
   
@@ -519,10 +612,10 @@ git clone &lt;a</summary>
   
   <entry>
     <title>java: java.lang.OutOfMemoryError: GC overhead limit exceeded</title>
-    <link href="https://chen-shang.github.io/2023/10/20/java/java-java-lang-outofmemoryerror-gc-overhead-limit-exceeded/"/>
-    <id>https://chen-shang.github.io/2023/10/20/java/java-java-lang-outofmemoryerror-gc-overhead-limit-exceeded/</id>
+    <link href="https://chen-shang.github.io/2023/10/20/java/jie-jue-fang-an/java-java-lang-outofmemoryerror-gc-overhead-limit-exceeded/"/>
+    <id>https://chen-shang.github.io/2023/10/20/java/jie-jue-fang-an/java-java-lang-outofmemoryerror-gc-overhead-limit-exceeded/</id>
     <published>2023-10-19T21:03:28.000Z</published>
-    <updated>2023-10-19T21:07:57.772Z</updated>
+    <updated>2023-11-18T12:17:15.095Z</updated>
     
     
       
@@ -538,95 +631,12 @@ git clone &lt;a</summary>
     
     <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
     
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git rebase和git merge的区别</title>
-    <link href="https://chen-shang.github.io/2023/10/07/gong-ju-kong/git/git-rebase-he-git-merge-de-qu-bie/"/>
-    <id>https://chen-shang.github.io/2023/10/07/gong-ju-kong/git/git-rebase-he-git-merge-de-qu-bie/</id>
-    <published>2023-10-07T08:52:23.000Z</published>
-    <updated>2023-10-19T21:08:40.292Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天在CSDN上看到一篇关于 git rebase 和 git merge 的用法的文章，感觉很好，值得收藏一下 &lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Git" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/"/>
-    
-    
-    <category term="Git" scheme="https://chen-shang.github.io/tags/Git/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql中binlog的相关操作</title>
-    <link href="https://chen-shang.github.io/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/"/>
-    <id>https://chen-shang.github.io/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/</id>
-    <published>2023-09-28T08:23:47.000Z</published>
-    <updated>2023-09-28T09:48:11.279Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;检查是否启用了-binlog-功能&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#检查是否启用了-binlog-功能&quot;&gt;&lt;/a&gt; 检查是否启用了 binlog 功能&lt;/h1&gt;
-&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Packet for query is too large</title>
-    <link href="https://chen-shang.github.io/2023/09/28/shu-ju-ku/packet-for-query-is-too-large/"/>
-    <id>https://chen-shang.github.io/2023/09/28/shu-ju-ku/packet-for-query-is-too-large/</id>
-    <published>2023-09-28T01:57:11.000Z</published>
-    <updated>2023-09-28T09:48:32.657Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;数据库在批量插入的时候报了下面的错误&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-txt&quot; data-language=&quot;txt&quot;&gt;&lt;code class=&quot;language-txt&quot;&gt;You can change this value</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   

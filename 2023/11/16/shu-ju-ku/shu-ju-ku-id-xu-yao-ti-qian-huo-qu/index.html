@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="如何把json变成excel, IT,技术,总结">
-    <meta name="description" content="通过 jq 工具可以把 一段 json 数组 转换成 cvs , 然后就能用 excel 工具打开了。">
+    <meta name="keywords" content="数据库ID需要提前获取, IT,技术,总结">
+    <meta name="description" content="摘要">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>如何把json变成excel | 涓涓细流</title>
+    <title>数据库ID需要提前获取 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">如何把json变成excel</h1>
+                    <h1 class="description center-align post-title">数据库ID需要提前获取</h1>
                 </div>
             </div>
         </div>
@@ -274,12 +274,8 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/Linux/">
-                                <span class="chip bg-color">Linux</span>
-                            </a>
-                        
-                            <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-                                <span class="chip bg-color">解决方案</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
                             </a>
                         
                     </div>
@@ -290,12 +286,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Linux/" class="post-category">
-                                Linux
-                            </a>
-                        
-                            <a href="/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-category">
-                                解决方案
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
                             </a>
                         
                     </div>
@@ -307,21 +299,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-08-22
+                    2023-11-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-07
+                    2023-11-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    82
+                    398
                 </div>
                 
 
@@ -351,24 +343,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>通过 jq 工具可以把 一段 json 数组 转换成 cvs , 然后就能用 excel 工具打开了。</p>
-<p>参考 <a target="_blank" rel="noopener" href="https://jqlang.github.io/jq/manual/">https://jqlang.github.io/jq/manual/</a></p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">[</span>
-    <span class="token punctuation">{</span>
-        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Alice"</span><span class="token punctuation">,</span>
-        <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
-        <span class="token property">"location"</span><span class="token operator">:</span> <span class="token string">"City A"</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token punctuation">{</span>
-        <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Bob"</span><span class="token punctuation">,</span>
-        <span class="token property">"age"</span><span class="token operator">:</span> <span class="token number">30</span><span class="token punctuation">,</span>
-        <span class="token property">"location"</span><span class="token operator">:</span> <span class="token string">"City B"</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>保存到文件  data.json 中</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">jq <span class="token parameter variable">-r</span> <span class="token string">'.[] | [.name, .age, .location] | @csv'</span> data.json <span class="token operator">&gt;</span> output.csv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>或者</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> text.json  <span class="token operator">|</span> jq <span class="token parameter variable">-r</span> <span class="token string">'.[] | [.name, .age] | @csv'</span> <span class="token operator">&gt;</span> output.csv<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>场景: 批量插入一些数据之后需要获取每一个数据对应的自增id。此时无论是mybatis还是mybatisplus生成的mapper都没有提供这样可以批量插入同时还能获取到批量插入数据后对应的逐渐id的。那在这种情况下，我们可能会再查询一遍数据库，把刚才插入的数据在查出来，比如按照时间限定、按照某些唯一的数据标识进行过滤查询出来，但这样又显得很麻烦和多余。</p>
+<p>例如 插入的数据是 (“a”,“aone”),(“b”,“two”) 期望获取到的是 (1,“a”,“aone”),(2,“b”,“two”)。但是我们往往获取到的是 [1,2] 但并不能知道1对应的是a ,2对应的是b .因为 mysql 并没有保证批量插入的时候返回的id是按照书写的顺序返回的。万一是乱着的，那我们就会获取到错误的数据。</p>
+<p>我同事今天想到一个解决方案，我觉得值得记录一下。那就是摒弃自增id,转而自定义主键或者使用一个自定义的唯一键来进行关联。也就是说，我们在插入数据库的时候就提前生成一个唯一的标记。比如用一个uuid 。这样其他表关联和使用的时候就不在使用主键id .而是使用这个uuid 了。<br>
+比如 (“a”,“aone”),(“b”,“two”)  就直接再入库的时候就写成 (“一”,“a”,“aone”),(“二”,“b”,“two”) 后面就都用 “一”,“二” 进行关联了。</p>
+
                 
             </div>
             <hr/>
@@ -386,12 +365,8 @@
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/Linux/">
-                                    <span class="chip bg-color">Linux</span>
-                                </a>
-                            
-                                <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-                                    <span class="chip bg-color">解决方案</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
                                 </a>
                             
                         </div>
@@ -741,35 +716,35 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/08/24/gong-ju-kong/intellij-idea/idea-da-kai-properties-wen-jian-xian-shi-zhong-wen-luan-ma-jie-jue-fang-an/">
+                <a href="/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Idea打开properties文件显示中文乱码解决方案">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="SpringBoot中Controller加上统一的请求前缀">
                         
-                        <span class="card-title">Idea打开properties文件显示中文乱码解决方案</span>
+                        <span class="card-title">SpringBoot中Controller加上统一的请求前缀</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            打开设置,找到路径:File | Settings | Editor | File Encodings
+                            摘要
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
-                                    工具控
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
                                 </a>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/" class="post-category">
-                                    Intellij IDEA
+                            <a href="/categories/JAVA/SpringBoot/" class="post-category">
+                                    SpringBoot
                                 </a>
                             
                             
@@ -783,12 +758,12 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
-                        <span class="chip bg-color">工具控</span>
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
-                    <a href="/tags/Intellij-IDEA/">
-                        <span class="chip bg-color">Intellij IDEA</span>
+                    <a href="/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
                     </a>
                     
                 </div>
@@ -802,35 +777,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/08/21/gong-ju-kong/git/git-cang-ku-shi-yong-bu-tong-yong-hu-xia-zai-dai-ma/">
+                <a href="/2023/11/14/qian-duan/yong-liao-async-zai-huo-qu-zhi-de-shi-hou-ji-de-yong-await/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="git clone 凭据缓存问题">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="用了async再获取值的时候记得用await">
                         
-                        <span class="card-title">git clone 凭据缓存问题</span>
+                        <span class="card-title">用了async再获取值的时候记得用await</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            凭据缓存问题 导致 remote: HTTP Basic: Access denied
+                            用了async再获取值的时候记得用await
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-11-14
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
-                                    工具控
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    前端
                                 </a>
                             
                             
@@ -842,14 +813,6 @@
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
-                        <span class="chip bg-color">工具控</span>
                     </a>
                     
                 </div>
@@ -947,7 +910,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">159.8k</span>
+                        class="white-color">161k</span>
             
             
             
