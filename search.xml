@@ -4,12 +4,80 @@
   
     
     <entry>
+      <title>Shell获取变量的指定行的数据</title>
+      <link href="/2023/11/25/linux/shell/shell-huo-qu-bian-liang-de-zhi-ding-xing-de-shu-ju/"/>
+      <url>/2023/11/25/linux/shell/shell-huo-qu-bian-liang-de-zhi-ding-xing-de-shu-ju/</url>
+      
+        <content type="html"><![CDATA[<p>现在有一个变量result或者有一个文件file内容如下</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">name,age,locationAlice,25,City ABob,30,City B<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>想要获取这个变量或文件的第一行、第二行、第三行的数据，该怎么写?我们可以是使用 awk 命令来实现</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">local</span> <span class="token assign-left variable">line0</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${result}</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'NR==1'</span><span class="token variable">)</span></span><span class="token builtin class-name">local</span> <span class="token assign-left variable">line1</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${result}</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'NR==2'</span><span class="token variable">)</span></span><span class="token builtin class-name">local</span> <span class="token assign-left variable">line2</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${result}</span>"</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'NR==3'</span><span class="token variable">)</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> Shell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Shell </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Shell中while循环作用域</title>
+      <link href="/2023/11/24/linux/shell/shell-zhong-while-xun-huan-zuo-yong-yu/"/>
+      <url>/2023/11/24/linux/shell/shell-zhong-while-xun-huan-zuo-yong-yu/</url>
+      
+        <content type="html"><![CDATA[<p>我们知道使用while循环一行一行的处理变量中的数据的写法是这样的</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">local</span> <span class="token assign-left variable">result</span><span class="token operator">=</span><span class="token string">""</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${result}</span>"</span> <span class="token operator">|</span><span class="token keyword">while</span> <span class="token builtin class-name">read</span> line<span class="token punctuation">;</span><span class="token keyword">do</span>    <span class="token punctuation">..</span>.<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>比如下面这个</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token string">""</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${result}</span>"</span> <span class="token operator">|</span><span class="token keyword">while</span> <span class="token builtin class-name">read</span> line<span class="token punctuation">;</span><span class="token keyword">do</span>    tmp <span class="token operator">=</span> <span class="token string">"<span class="token variable">${result}</span>|<span class="token variable">${line}</span>"</span><span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>其实我们期望的是把result中的每一行读取出来，然后使用竖线分隔的。但是上面的写法是有问题的，tmp最终根本不会得到想要的结果的。<br>这里这种写法while循环中无论怎么改变外面变量的值，只要一旦代码执行到循环外边，对tmp的更变都会消失，或者说在循环内部的变量是无法影响循环外边的变量的。如果想要改变循环外面数据的值，只需要加个括号，使while循环整体变成一个子shell</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">local</span> <span class="token assign-left variable">tmp</span><span class="token operator">=</span><span class="token string">""</span><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${result}</span>"</span> <span class="token operator">|</span> <span class="token punctuation">(</span>  <span class="token keyword">while</span> <span class="token builtin class-name">read</span> line<span class="token punctuation">;</span><span class="token keyword">do</span>    tmp <span class="token operator">=</span> <span class="token string">"<span class="token variable">${result}</span>|<span class="token variable">${line}</span>"</span>  <span class="token keyword">done</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> Shell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何通过命令行重启电脑</title>
       <link href="/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/"/>
       <url>/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/</url>
       
         <content type="html"><![CDATA[<p>对于Windows系统，你可以使用以下命令来重启电脑：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">shutdown</span> /r /t <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>对于Linux系统，你可以使用以下命令来重启电脑：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">reboot</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>对于Mac系统，你可以使用以下命令来重启电脑：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">shutdown</span> <span class="token parameter variable">-r</span> now<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>请注意，执行这些命令可能需要管理员权限。在执行这些命令之前，请确保保存了所有的工作，并关闭所有的应用程序。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 解决方案 </category>
+          
+      </categories>
       
       
         <tags>
@@ -27,11 +95,38 @@
     
     
     <entry>
+      <title>Shell中的循环</title>
+      <link href="/2023/11/18/linux/shell/shell-zhong-de-xun-huan/"/>
+      <url>/2023/11/18/linux/shell/shell-zhong-de-xun-huan/</url>
+      
+        <content type="html"><![CDATA[<p>shell中循环的一般写法如下</p><h1 id="fori"><a class="markdownIt-Anchor" href="#fori"></a> fori</h1><p>shell for 循环默认是按照空格进行分隔的</p><pre class="line-numbers language-none"><code class="language-none">for (( i = 0; i &lt; n; i++ )); do    :done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h1 id="for-in"><a class="markdownIt-Anchor" href="#for-in"></a> for in</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> a b c <span class="token punctuation">;</span> <span class="token keyword">do</span><span class="token punctuation">..</span>.        <span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="变量"><a class="markdownIt-Anchor" href="#变量"></a> 变量</h2><p>但是如果我们需要循环的数据在某个变量里面,例如 list=“a b c”,此时我们是写成 <code>for i in ${list}</code> 呢?还是写成 <code>for i in "${list}"</code> 呢。主要是有引号和没有引号的区别。虽然推荐读取变量的时候要求尽量用引号包裹，但这里如果用引号包裹了结果就会是错误的。</p><p>结论是我们不能在使用引号了，如果使用引号，那么就会把 ${list} 当成一个整体进行处理了</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> a b c <span class="token punctuation">;</span> <span class="token keyword">do</span><span class="token punctuation">..</span>.        <span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h2 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h2><pre class="line-numbers language-none"><code class="language-none">fruits=("apple" "banana" "orange")for fruit in "${fruits[@]}"do  echo "I like $fruit"done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="数字"><a class="markdownIt-Anchor" href="#数字"></a> 数字</h2><pre class="line-numbers language-none"><code class="language-none">for i in {1..5}do  echo "Number: $i"done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h1 id="until"><a class="markdownIt-Anchor" href="#until"></a> until</h1><pre class="line-numbers language-none"><code class="language-none">count=0until [ $count -eq 5 ]do  echo "Count: $count"  count=$((count + 1))done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="while"><a class="markdownIt-Anchor" href="#while"></a> while</h1><h2 id="while-2"><a class="markdownIt-Anchor" href="#while-2"></a> while []</h2><pre class="line-numbers language-none"><code class="language-none">count=0while [ $count -lt 5 ]do  echo "Count: $count"  count=$((count + 1))done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="逐行读文件"><a class="markdownIt-Anchor" href="#逐行读文件"></a> 逐行读文件</h2><pre class="line-numbers language-none"><code class="language-none">while IFS= read -r linedo  echo "Line: $line"done &lt; file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="逐行读变量"><a class="markdownIt-Anchor" href="#逐行读变量"></a> 逐行读变量</h2><pre class="line-numbers language-none"><code class="language-none">echo "${result}"|while read line;do  echo "Line: $line"done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这种写法有坑，参考</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> Shell </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringBoot中Controller加上统一的请求前缀</title>
       <link href="/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/"/>
       <url>/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/</url>
       
-        <content type="html"><![CDATA[<p>基本写法</p><pre class="line-numbers language-none"><code class="language-none">@RestController@RequestMapping("/service/demo")public class DemoController {    @PostMapping("/register")    @ApiOperation(value = "账户注册")    public Response&lt;Long&gt; register(@RequestBody @Validated AccountLoginRequest accountLoginRequest) {        return Response.success(1L);    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在 Controller 的类注解上使用 @RequestMapping 注解，这个注解中的 value 就可以使的当前Controller类下的请求地址都是 value 指明的前缀。这样写的好处是相同的配置只需要写一次，而且是统一的，看到这个路径就知道对应的是哪个Controller了。</p>]]></content>
+        <content type="html"><![CDATA[<p>基本写法</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span><span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/service/demo"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoController</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/register"</span><span class="token punctuation">)</span>    <span class="token annotation punctuation">@ApiOperation</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"账户注册"</span><span class="token punctuation">)</span>    <span class="token keyword">public</span> <span class="token class-name">Response</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token annotation punctuation">@Validated</span> <span class="token class-name">AccountLoginRequest</span> accountLoginRequest<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token class-name">Response</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token number">1L</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在 Controller 的类注解上使用 @RequestMapping 注解，这个注解中的 value 就可以使的当前Controller类下的请求地址都是 value 指明的前缀。这样写的好处是相同的配置只需要写一次，而且是统一的，看到这个路径就知道对应的是哪个Controller了。</p>]]></content>
       
       
       <categories>
@@ -114,7 +209,7 @@
       <link href="/2023/11/14/qian-duan/jie-jue-fang-an/ru-he-gou-zao-qian-duan-json/"/>
       <url>/2023/11/14/qian-duan/jie-jue-fang-an/ru-he-gou-zao-qian-duan-json/</url>
       
-        <content type="html"><![CDATA[<p>现在前后端数据交互用的比较多的就是实用JSON格式，JSON格式简单易懂，可读性强。</p><p>现在我们知道我们的Java中的一个类为</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Criteria</span> <span class="token punctuation">{</span>    <span class="token comment">/** default serialVersionUID */</span>    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token number">1L</span><span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">long</span> id<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">String</span> createdBy<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Criteria</span><span class="token punctuation">&gt;</span></span> _OR_<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Criteria</span><span class="token punctuation">&gt;</span></span> _AND_<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>可以看到，一个对象包含两个属性，一个是 <em>AND</em> 一个是 <em>OR</em> ,当然这种命名我们并不推崇，还是用驼峰命名的好。然后，这个 <em>AND</em> 和这个 <em>OR</em> 居然又是一个当前类的List类型。这种结构其实说白了就是一颗典型的树</p><p>那么前端在构造参数的时候就会大概写成这样<br>const criteria={<br>“id”:1,<br>“createdBy”:“chenshang”,<br>“<em>AND</em>”:{<br>…<br>},<br>“<em>OR</em>”:{<br>…<br>},<br>}</p><p>现在是有这样一个条件，无论这个条件是怎么样的，我们都要把这些条件作为一个整体在AND上一个默认条件。那我们应该怎么一步步写呢。<br>首先，我们要先构造一个对象<br>const newCriteria={}<br>然后，我们知道，我们这个对象必须使用一个_AND_连接当前条件和默认条件,此时考虑到_AND_是一个List类型,对于前端就写成数组就行,于是写成</p><pre class="line-numbers language-json" data-language="json"><code class="language-json">const newCriteris=<span class="token punctuation">{</span>  <span class="token property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>然后,我们知道_AND_的数组中是两个对象</p><pre class="line-numbers language-json" data-language="json"><code class="language-json">const newCriteris=<span class="token punctuation">{</span>  <span class="token property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>其中一个是 criteria 另一个是默认条件</p><pre class="line-numbers language-json" data-language="json"><code class="language-json">const newCriteris=<span class="token punctuation">{</span>  <span class="token property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span>...criteria<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>再写默认条件</p><pre class="line-numbers language-json" data-language="json"><code class="language-json">const newCriteris=<span class="token punctuation">{</span>  <span class="token property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span>...criteria<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>id<span class="token operator">:</span><span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<p>现在前后端数据交互用的比较多的就是实用JSON格式，JSON格式简单易懂，可读性强。</p><p>现在我们知道我们的Java中的一个类为</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Criteria</span> <span class="token punctuation">{</span>    <span class="token comment">/** default serialVersionUID */</span>    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token number">1L</span><span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">long</span> id<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">String</span> createdBy<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Criteria</span><span class="token punctuation">&gt;</span></span> _OR_<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Criteria</span><span class="token punctuation">&gt;</span></span> _AND_<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>可以看到，一个对象包含两个属性，一个是 <em>AND</em> 一个是 <em>OR</em> ,当然这种命名我们并不推崇，还是用驼峰命名的好。然后，这个 <em>AND</em> 和这个 <em>OR</em> 居然又是一个当前类的List类型。这种结构其实说白了就是一颗典型的树</p><p>那么前端在构造参数的时候就会大概写成这样</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> criteria<span class="token operator">=</span><span class="token punctuation">{</span>  <span class="token string-property property">"id"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>  <span class="token string-property property">"createdBy"</span><span class="token operator">:</span><span class="token string">"chenshang"</span><span class="token punctuation">,</span>  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">{</span>    <span class="token operator">...</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token string-property property">"_OR_"</span><span class="token operator">:</span><span class="token punctuation">{</span>    <span class="token operator">...</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>现在是有这样一个条件，无论这个条件是怎么样的，我们都要把这些条件作为一个整体在AND上一个默认条件。那我们应该怎么一步步写呢。<br>首先，我们要先构造一个对象</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteria<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>然后，我们知道，我们这个对象必须使用一个_AND_连接当前条件和默认条件,此时考虑到_AND_是一个List类型,对于前端就写成数组就行,于是写成</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteris<span class="token operator">=</span><span class="token punctuation">{</span>  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>然后,我们知道_AND_的数组中是两个对象</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteris<span class="token operator">=</span><span class="token punctuation">{</span>  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>其中一个是 criteria 另一个是默认条件</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteris<span class="token operator">=</span><span class="token punctuation">{</span>  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token operator">...</span>criteria<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>再写默认条件</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteris<span class="token operator">=</span><span class="token punctuation">{</span>  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token operator">...</span>criteria<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span><span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -763,9 +858,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> JavaScript </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -794,9 +889,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> JavaScript </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -2668,6 +2763,33 @@
     
     
     <entry>
+      <title>你是干什么的</title>
+      <link href="/2023/05/08/si-kao/ni-shi-gan-shi-me-de/"/>
+      <url>/2023/05/08/si-kao/ni-shi-gan-shi-me-de/</url>
+      
+        <content type="html"><![CDATA[<p>作为程序员,你是否经常被问及你是做什么工作的? 刚毕业那会儿,经常被问。于是就有了下面一段对话<br>“你现在在什么单位上班啊?是学校分配的么”<br>而且从对方的语气中听出,似乎只有包分配的学校才是好学校，读完大学还要自己费尽找工作的,那学校也不是什么好学校。<br>“哎呀,叔,现在哪还有包分配的学校啊?”<br>其实说这句话的时候,自己也不知道还有没有包分配工作的学校，但就是想告诉对方，我是自己找的工作，我也不比别人差，而且现在所有刚毕业的都是自己找工作。<br>还要补充到"您说的那都是什么年代的事情啦",<br>最后再强调一下"现在都是自己找工作,学校不管分配的"<br>“哦~,那你现在在什么单位啊”<br>“xxx网”<br>貌似没有听说过，好像只有想xxx电子场、xxx国家单位才入得了他们法眼<br>“那你干什么工作呢?”<br>“呃，软件开发工程师” 于是想把自己的职业说的高大上一点<br>对方似乎没听懂,但应该听清楚了工程师三个字<br>“哎呦,大工程师啊,不错!那个软件开发是什么?”<br>“就是写代码、写程序,我们这也叫程序员”<br>代码、程序没听懂<br>“哎呦,咱也不懂这些,那啥是代码、啥是程序啊”<br>然后就掉入到一个无底洞里面,为了解释一个名词就会引出另一名词。<br>“嗨,就是用编程语言控制电脑、手机实现人们想要的功能”<br>对方一脸懵逼<br>“您看你手机上用的 QQ、游戏 就是我们开发的”<br>对方一脸懵逼<br>“嗨,其实我们就是每天坐在电脑面前打字的”<br>自己也不想解释了…对方也不想问了,开始转换话题<br>永远逃不出4类话题，工作、工作地、挣多少、剩多少<br>“你们这一个月挣得挺多的吧”<br>“那你们一个月多少钱啊”<br>…</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 思考 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>财富积累的思考</title>
       <link href="/2023/05/08/si-kao/cai-fu-ji-lei-de-si-kao/"/>
       <url>/2023/05/08/si-kao/cai-fu-ji-lei-de-si-kao/</url>
@@ -3900,9 +4022,9 @@
       
         <tags>
             
-            <tag> 计算机 </tag>
-            
             <tag> 引用 </tag>
+            
+            <tag> 计算机 </tag>
             
             <tag> 计算机基础 </tag>
             
@@ -4985,37 +5107,6 @@
     
     
     <entry>
-      <title>作画</title>
-      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
-      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
-      
-        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 墨香纸笺 </category>
-          
-          <category> 我的诗词 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> 墨香纸笺 </tag>
-            
-            <tag> 我的诗词 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Git万能后悔药</title>
       <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
       <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
@@ -5101,6 +5192,37 @@
             <tag> Git </tag>
             
             <tag> 工具控 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>作画</title>
+      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
+      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
+      
+        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 墨香纸笺 </category>
+          
+          <category> 我的诗词 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 墨香纸笺 </tag>
+            
+            <tag> 我的诗词 </tag>
             
         </tags>
       

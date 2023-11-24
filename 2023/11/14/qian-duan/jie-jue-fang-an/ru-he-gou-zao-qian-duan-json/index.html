@@ -306,7 +306,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-15
+                    2023-11-25
                 </div>
                 
 
@@ -353,35 +353,35 @@
     <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Criteria</span><span class="token punctuation">&gt;</span></span> _OR_<span class="token punctuation">;</span>
     <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Criteria</span><span class="token punctuation">&gt;</span></span> _AND_<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>可以看到，一个对象包含两个属性，一个是 <em>AND</em> 一个是 <em>OR</em> ,当然这种命名我们并不推崇，还是用驼峰命名的好。然后，这个 <em>AND</em> 和这个 <em>OR</em> 居然又是一个当前类的List类型。这种结构其实说白了就是一颗典型的树</p>
-<p>那么前端在构造参数的时候就会大概写成这样<br>
-const criteria={<br>
-“id”:1,<br>
-“createdBy”:“chenshang”,<br>
-“<em>AND</em>”:{<br>
-…<br>
-},<br>
-“<em>OR</em>”:{<br>
-…<br>
-},<br>
-}</p>
+<p>那么前端在构造参数的时候就会大概写成这样</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> criteria<span class="token operator">=</span><span class="token punctuation">{</span>
+  <span class="token string-property property">"id"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"createdBy"</span><span class="token operator">:</span><span class="token string">"chenshang"</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string-property property">"_OR_"</span><span class="token operator">:</span><span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>现在是有这样一个条件，无论这个条件是怎么样的，我们都要把这些条件作为一个整体在AND上一个默认条件。那我们应该怎么一步步写呢。<br>
-首先，我们要先构造一个对象<br>
-const newCriteria={}<br>
-然后，我们知道，我们这个对象必须使用一个_AND_连接当前条件和默认条件,此时考虑到_AND_是一个List类型,对于前端就写成数组就行,于是写成</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">const newCriteris=<span class="token punctuation">{</span>
-  <span class="token property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+首先，我们要先构造一个对象</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteria<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后，我们知道，我们这个对象必须使用一个_AND_连接当前条件和默认条件,此时考虑到_AND_是一个List类型,对于前端就写成数组就行,于是写成</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteris<span class="token operator">=</span><span class="token punctuation">{</span>
+  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>然后,我们知道_AND_的数组中是两个对象</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">const newCriteris=<span class="token punctuation">{</span>
-  <span class="token property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteris<span class="token operator">=</span><span class="token punctuation">{</span>
+  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>其中一个是 criteria 另一个是默认条件</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">const newCriteris=<span class="token punctuation">{</span>
-  <span class="token property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span>...criteria<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteris<span class="token operator">=</span><span class="token punctuation">{</span>
+  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token operator">...</span>criteria<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>再写默认条件</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json">const newCriteris=<span class="token punctuation">{</span>
-  <span class="token property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span>...criteria<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span>id<span class="token operator">:</span><span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> newCriteris<span class="token operator">=</span><span class="token punctuation">{</span>
+  <span class="token string-property property">"_AND_"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token operator">...</span>criteria<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token literal-property property">id</span><span class="token operator">:</span><span class="token number">22</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
                 
@@ -942,7 +942,7 @@ const newCriteria={}<br>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">161k</span>
+                        class="white-color">162.1k</span>
             
             
             

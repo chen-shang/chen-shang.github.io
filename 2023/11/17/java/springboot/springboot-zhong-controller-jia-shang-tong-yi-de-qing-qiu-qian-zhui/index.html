@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="SpringBoot中Controller加上统一的请求前缀, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="description" content="\@RequestMapping(&#34;/service/demo&#34;)">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -314,7 +314,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-18
+                    2023-11-25
                 </div>
                 
 
@@ -352,16 +352,16 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>基本写法</p>
-<pre class="line-numbers language-none"><code class="language-none">@RestController
-@RequestMapping("/service/demo")
-public class DemoController {
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/service/demo"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoController</span> <span class="token punctuation">{</span>
 
-    @PostMapping("/register")
-    @ApiOperation(value = "账户注册")
-    public Response&lt;Long&gt; register(@RequestBody @Validated AccountLoginRequest accountLoginRequest) {
-        return Response.success(1L);
-    }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token string">"/register"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@ApiOperation</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"账户注册"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token class-name">Response</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Long</span><span class="token punctuation">&gt;</span></span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token annotation punctuation">@Validated</span> <span class="token class-name">AccountLoginRequest</span> accountLoginRequest<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">Response</span><span class="token punctuation">.</span><span class="token function">success</span><span class="token punctuation">(</span><span class="token number">1L</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>在 Controller 的类注解上使用 @RequestMapping 注解，这个注解中的 value 就可以使的当前Controller类下的请求地址都是 value 指明的前缀。这样写的好处是相同的配置只需要写一次，而且是统一的，看到这个路径就知道对应的是哪个Controller了。</p>
 
                 
@@ -736,29 +736,37 @@ public class DemoController {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/">
+                <a href="/2023/11/18/linux/shell/shell-zhong-de-xun-huan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="如何通过命令行重启电脑">
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Shell中的循环">
                         
-                        <span class="card-title">如何通过命令行重启电脑</span>
+                        <span class="card-title">Shell中的循环</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            如何通过命令行重启电脑
+                            摘要
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-23
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-11-18
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            陈尚
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            <a href="/categories/Linux/Shell/" class="post-category">
+                                    Shell
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -768,14 +776,6 @@ public class DemoController {
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
-                        <span class="chip bg-color">解决方案</span>
                     </a>
                     
                 </div>
@@ -801,7 +801,7 @@ public class DemoController {
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            批量插入一些数据之后需要获取每一个数据对应的自增id
                         
                     </div>
                     <div class="publish-info">
@@ -926,7 +926,7 @@ public class DemoController {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">161k</span>
+                        class="white-color">162.1k</span>
             
             
             

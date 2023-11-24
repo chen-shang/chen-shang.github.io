@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-11-24T00:36:04.315Z</updated>
+  <updated>2023-11-24T16:09:14.173Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,73 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Shell获取变量的指定行的数据</title>
+    <link href="https://chen-shang.github.io/2023/11/25/linux/shell/shell-huo-qu-bian-liang-de-zhi-ding-xing-de-shu-ju/"/>
+    <id>https://chen-shang.github.io/2023/11/25/linux/shell/shell-huo-qu-bian-liang-de-zhi-ding-xing-de-shu-ju/</id>
+    <published>2023-11-24T16:01:17.000Z</published>
+    <updated>2023-11-24T16:09:14.173Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;现在有一个变量result或者有一个文件file内容如下&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
+    
+    <category term="Shell" scheme="https://chen-shang.github.io/tags/Shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell中while循环作用域</title>
+    <link href="https://chen-shang.github.io/2023/11/24/linux/shell/shell-zhong-while-xun-huan-zuo-yong-yu/"/>
+    <id>https://chen-shang.github.io/2023/11/24/linux/shell/shell-zhong-while-xun-huan-zuo-yong-yu/</id>
+    <published>2023-11-23T16:17:20.000Z</published>
+    <updated>2023-11-24T16:27:17.436Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我们知道使用while循环一行一行的处理变量中的数据的写法是这样的&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何通过命令行重启电脑</title>
     <link href="https://chen-shang.github.io/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/"/>
     <id>https://chen-shang.github.io/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/</id>
     <published>2023-11-23T05:17:59.000Z</published>
-    <updated>2023-11-24T00:36:04.315Z</updated>
+    <updated>2023-11-24T00:36:24.879Z</updated>
     
     
       
@@ -35,6 +97,10 @@
     
     
     
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
@@ -45,11 +111,41 @@
   </entry>
   
   <entry>
+    <title>Shell中的循环</title>
+    <link href="https://chen-shang.github.io/2023/11/18/linux/shell/shell-zhong-de-xun-huan/"/>
+    <id>https://chen-shang.github.io/2023/11/18/linux/shell/shell-zhong-de-xun-huan/</id>
+    <published>2023-11-18T12:58:15.000Z</published>
+    <updated>2023-11-24T16:37:05.035Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;shell中循环的一般写法如下&lt;/p&gt;
+&lt;h1 id=&quot;fori&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#fori&quot;&gt;&lt;/a&gt; fori&lt;/h1&gt;
+&lt;p&gt;shell for 循环默认是按照空格进行分隔的&lt;/p&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>SpringBoot中Controller加上统一的请求前缀</title>
     <link href="https://chen-shang.github.io/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/"/>
     <id>https://chen-shang.github.io/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/</id>
     <published>2023-11-17T03:44:12.000Z</published>
-    <updated>2023-11-18T12:17:23.919Z</updated>
+    <updated>2023-11-24T16:14:50.574Z</updated>
     
     
       
@@ -57,9 +153,7 @@
         
         
     <summary type="html">&lt;p&gt;基本写法&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;@RestController
-@RequestMapping(&quot;/service/demo&quot;)
-public</summary>
+&lt;pre class=&quot;line-numbers language-java&quot; data-language=&quot;java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation</summary>
         
       
     
@@ -83,7 +177,7 @@ public</summary>
     <link href="https://chen-shang.github.io/2023/11/16/shu-ju-ku/shu-ju-ku-id-xu-yao-ti-qian-huo-qu/"/>
     <id>https://chen-shang.github.io/2023/11/16/shu-ju-ku/shu-ju-ku-id-xu-yao-ti-qian-huo-qu/</id>
     <published>2023-11-16T08:53:20.000Z</published>
-    <updated>2023-11-18T12:27:21.536Z</updated>
+    <updated>2023-11-24T16:15:52.774Z</updated>
     
     
       
@@ -136,7 +230,7 @@ public</summary>
     <link href="https://chen-shang.github.io/2023/11/14/qian-duan/jie-jue-fang-an/ru-he-gou-zao-qian-duan-json/"/>
     <id>https://chen-shang.github.io/2023/11/14/qian-duan/jie-jue-fang-an/ru-he-gou-zao-qian-duan-json/</id>
     <published>2023-11-14T02:55:25.000Z</published>
-    <updated>2023-11-15T14:54:34.890Z</updated>
+    <updated>2023-11-24T16:17:44.353Z</updated>
     
     
       
@@ -197,7 +291,7 @@ public</summary>
     <link href="https://chen-shang.github.io/2023/11/10/gong-ju-kong/maven/chou-feng-de-maven/"/>
     <id>https://chen-shang.github.io/2023/11/10/gong-ju-kong/maven/chou-feng-de-maven/</id>
     <published>2023-11-10T08:37:42.000Z</published>
-    <updated>2023-11-10T17:04:34.018Z</updated>
+    <updated>2023-11-24T16:19:29.433Z</updated>
     
     
       
@@ -543,100 +637,6 @@ git clone &lt;a</summary>
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
     <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux终端生存之道-时间处理</title>
-    <link href="https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-shi-jian-chu-li/"/>
-    <id>https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-shi-jian-chu-li/</id>
-    <published>2023-10-26T14:13:50.000Z</published>
-    <updated>2023-10-26T14:29:38.663Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;mac 下的 date 函数有是有有些表现形式跟我们搜到的一些资料不用，因此建议使用 gdate ,我们只需要 brew install gdate 就行。&lt;/p&gt;
-&lt;h1 id=&quot;日期处理&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux终端生存之道-du、df</title>
-    <link href="https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-du-df/"/>
-    <id>https://chen-shang.github.io/2023/10/26/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-du-df/</id>
-    <published>2023-10-26T14:09:47.000Z</published>
-    <updated>2023-10-28T13:37:56.192Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;查看文件夹下的文件所占空间的大小&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;du -h -s * | sort -h&lt;span aria-hidden=&quot;true&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/tags/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java: java.lang.OutOfMemoryError: GC overhead limit exceeded</title>
-    <link href="https://chen-shang.github.io/2023/10/20/java/jie-jue-fang-an/java-java-lang-outofmemoryerror-gc-overhead-limit-exceeded/"/>
-    <id>https://chen-shang.github.io/2023/10/20/java/jie-jue-fang-an/java-java-lang-outofmemoryerror-gc-overhead-limit-exceeded/</id>
-    <published>2023-10-19T21:03:28.000Z</published>
-    <updated>2023-11-18T12:17:15.095Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;尝试修改IDEA的配置,搜索 heap 找到下图位置, 将大小由700改大一点, 比如1024&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
     
   </entry>
   
