@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>mysql 的 case when 的一般用法</title>
+      <link href="/2023/12/02/shu-ju-ku/mysql-de-case-when-de-yi-ban-yong-fa/"/>
+      <url>/2023/12/02/shu-ju-ku/mysql-de-case-when-de-yi-ban-yong-fa/</url>
+      
+        <content type="html"><![CDATA[<p>一般语法</p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">CASE</span> <span class="token keyword">WHEN</span> condition1 <span class="token keyword">THEN</span> result1<span class="token keyword">WHEN</span> condition2 <span class="token keyword">THEN</span> result2<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token keyword">ELSE</span> resultN<span class="token keyword">END</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>举个例子</p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">CASE</span><span class="token keyword">WHEN</span> age <span class="token operator">&lt;</span> <span class="token number">18</span> <span class="token keyword">THEN</span> <span class="token string">'你好，小朋友'</span><span class="token keyword">WHEN</span> age <span class="token operator">BETWEEN</span> <span class="token number">18</span> <span class="token operator">AND</span> <span class="token number">60</span> <span class="token keyword">THEN</span> <span class="token string">'你好，先生/女士'</span><span class="token keyword">WHEN</span> age <span class="token operator">&gt;</span> <span class="token number">60</span> <span class="token keyword">THEN</span> <span class="token string">'你好，老先生/老太太'</span><span class="token keyword">ELSE</span> <span class="token string">"其他"</span><span class="token keyword">END</span> <span class="token keyword">AS</span> greeting<span class="token keyword">FROM</span> users<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果我们要想把某个字段也一并输出到结果里头呢?</p><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token keyword">CASE</span><span class="token keyword">WHEN</span> age <span class="token operator">&lt;</span> <span class="token number">18</span> <span class="token keyword">THEN</span> <span class="token string">'你好，小朋友'</span><span class="token keyword">WHEN</span> age <span class="token operator">BETWEEN</span> <span class="token number">18</span> <span class="token operator">AND</span> <span class="token number">60</span> <span class="token keyword">THEN</span> <span class="token string">'你好，先生/女士'</span><span class="token keyword">WHEN</span> age <span class="token operator">&gt;</span> <span class="token number">60</span> <span class="token keyword">THEN</span> <span class="token string">'你好，老先生/老太太'</span><span class="token keyword">ELSE</span> concat<span class="token punctuation">(</span>age<span class="token punctuation">,</span> <span class="token string">'其他'</span><span class="token punctuation">)</span><span class="token keyword">END</span> <span class="token keyword">AS</span> greeting<span class="token keyword">FROM</span> users<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>用 concat(age, ‘其他’) 把某个字段的值和其他值连接也行</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Transaction rolled back because it has been marked as rollback-only</title>
       <link href="/2023/12/02/java/spring/transaction-rolled-back-because-it-has-been-marked-as-rollback-only/"/>
       <url>/2023/12/02/java/spring/transaction-rolled-back-because-it-has-been-marked-as-rollback-only/</url>
