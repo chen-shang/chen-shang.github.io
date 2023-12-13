@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-12-02T15:30:15.727Z</updated>
+  <updated>2023-12-13T13:57:17.748Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mac常用配置</title>
+    <link href="https://chen-shang.github.io/2023/12/13/gong-ju-kong/mac/mac-chang-yong-pei-zhi/"/>
+    <id>https://chen-shang.github.io/2023/12/13/gong-ju-kong/mac/mac-chang-yong-pei-zhi/</id>
+    <published>2023-12-13T13:48:02.000Z</published>
+    <updated>2023-12-13T13:57:17.748Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;开关mac充电提示音&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#开关mac充电提示音&quot;&gt;&lt;/a&gt; 开关Mac充电提示音&lt;/h1&gt;
+&lt;p&gt;MBP插电的时候，和苹果手机声音效果一样，“叮”</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql 的 case when 的一般用法</title>
@@ -176,7 +204,7 @@
     <link href="https://chen-shang.github.io/2023/11/24/linux/shell/shell-zhong-while-xun-huan-zuo-yong-yu/"/>
     <id>https://chen-shang.github.io/2023/11/24/linux/shell/shell-zhong-while-xun-huan-zuo-yong-yu/</id>
     <published>2023-11-23T16:17:20.000Z</published>
-    <updated>2023-11-24T16:27:17.436Z</updated>
+    <updated>2023-12-13T14:35:25.441Z</updated>
     
     
       
@@ -238,7 +266,7 @@
     <link href="https://chen-shang.github.io/2023/11/18/linux/shell/shell-zhong-de-xun-huan/"/>
     <id>https://chen-shang.github.io/2023/11/18/linux/shell/shell-zhong-de-xun-huan/</id>
     <published>2023-11-18T12:58:15.000Z</published>
-    <updated>2023-11-24T16:37:05.035Z</updated>
+    <updated>2023-12-13T14:37:09.627Z</updated>
     
     
       
@@ -599,36 +627,6 @@
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
     <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何安装必备的开发环境</title>
-    <link href="https://chen-shang.github.io/2023/11/03/linux/jie-jue-fang-an/ru-he-an-zhuang-bi-bei-de-kai-fa-huan-jing/"/>
-    <id>https://chen-shang.github.io/2023/11/03/linux/jie-jue-fang-an/ru-he-an-zhuang-bi-bei-de-kai-fa-huan-jing/</id>
-    <published>2023-11-03T10:32:44.000Z</published>
-    <updated>2023-11-10T16:56:38.144Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如论是Mac 还是 Linux 的某个发行版，我都是要配置下面这些东西的，方便自己开发&lt;/p&gt;
-&lt;h1 id=&quot;vim-插件管理工具&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vim-插件管理工具&quot;&gt;&lt;/a&gt; vim</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
   </entry>
   

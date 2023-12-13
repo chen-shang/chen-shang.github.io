@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Shell中的循环, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="description" content="循环的几种写法">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -310,7 +310,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-11-25
+                    2023-12-13
                 </div>
                 
 
@@ -350,9 +350,9 @@
                 <p>shell中循环的一般写法如下</p>
 <h1 id="fori"><a class="markdownIt-Anchor" href="#fori"></a> fori</h1>
 <p>shell for 循环默认是按照空格进行分隔的</p>
-<pre class="line-numbers language-none"><code class="language-none">for (( i = 0; i &lt; n; i++ )); do
-    :
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token variable"><span class="token punctuation">((</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">))</span></span><span class="token punctuation">;</span> <span class="token keyword">do</span>
+    <span class="token builtin class-name">:</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h1 id="for-in"><a class="markdownIt-Anchor" href="#for-in"></a> for in</h1>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> a b c <span class="token punctuation">;</span> <span class="token keyword">do</span>
 <span class="token punctuation">..</span>.        
@@ -364,40 +364,40 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <span class="token punctuation">..</span>.        
 <span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h2 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h2>
-<pre class="line-numbers language-none"><code class="language-none">fruits=("apple" "banana" "orange")
-for fruit in "${fruits[@]}"
-do
-  echo "I like $fruit"
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">fruits</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token string">"apple"</span> <span class="token string">"banana"</span> <span class="token string">"orange"</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> <span class="token for-or-select variable">fruit</span> <span class="token keyword">in</span> <span class="token string">"<span class="token variable">${fruits<span class="token punctuation">[</span>@<span class="token punctuation">]</span>}</span>"</span>
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"I like <span class="token variable">$fruit</span>"</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="数字"><a class="markdownIt-Anchor" href="#数字"></a> 数字</h2>
-<pre class="line-numbers language-none"><code class="language-none">for i in {1..5}
-do
-  echo "Number: $i"
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">for</span> <span class="token for-or-select variable">i</span> <span class="token keyword">in</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">..</span><span class="token number">5</span><span class="token punctuation">}</span>
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"Number: <span class="token variable">$i</span>"</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="until"><a class="markdownIt-Anchor" href="#until"></a> until</h1>
-<pre class="line-numbers language-none"><code class="language-none">count=0
-until [ $count -eq 5 ]
-do
-  echo "Count: $count"
-  count=$((count + 1))
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">until</span> <span class="token punctuation">[</span> <span class="token variable">$count</span> <span class="token parameter variable">-eq</span> <span class="token number">5</span> <span class="token punctuation">]</span>
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"Count: <span class="token variable">$count</span>"</span>
+  <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="while"><a class="markdownIt-Anchor" href="#while"></a> while</h1>
 <h2 id="while-2"><a class="markdownIt-Anchor" href="#while-2"></a> while []</h2>
-<pre class="line-numbers language-none"><code class="language-none">count=0
-while [ $count -lt 5 ]
-do
-  echo "Count: $count"
-  count=$((count + 1))
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">while</span> <span class="token punctuation">[</span> <span class="token variable">$count</span> <span class="token parameter variable">-lt</span> <span class="token number">5</span> <span class="token punctuation">]</span>
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"Count: <span class="token variable">$count</span>"</span>
+  <span class="token assign-left variable">count</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token variable">))</span></span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="逐行读文件"><a class="markdownIt-Anchor" href="#逐行读文件"></a> 逐行读文件</h2>
-<pre class="line-numbers language-none"><code class="language-none">while IFS= read -r line
-do
-  echo "Line: $line"
-done &lt; file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">while</span> <span class="token assign-left variable"><span class="token environment constant">IFS</span></span><span class="token operator">=</span> <span class="token builtin class-name">read</span> <span class="token parameter variable">-r</span> line
+<span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"Line: <span class="token variable">$line</span>"</span>
+<span class="token keyword">done</span> <span class="token operator">&lt;</span> file.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="逐行读变量"><a class="markdownIt-Anchor" href="#逐行读变量"></a> 逐行读变量</h2>
-<pre class="line-numbers language-none"><code class="language-none">echo "${result}"|while read line;do
-  echo "Line: $line"
-done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${result}</span>"</span><span class="token operator">|</span><span class="token keyword">while</span> <span class="token builtin class-name">read</span> line<span class="token punctuation">;</span><span class="token keyword">do</span>
+  <span class="token builtin class-name">echo</span> <span class="token string">"Line: <span class="token variable">$line</span>"</span>
+<span class="token keyword">done</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>这种写法有坑，参考</p>
 
                 
@@ -1051,7 +1051,7 @@ done<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">166.7k</span>
+                        class="white-color">167.2k</span>
             
             
             
