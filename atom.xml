@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2023-12-13T13:57:17.748Z</updated>
+  <updated>2023-12-15T05:22:06.666Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux终端生存之道-sftp</title>
+    <link href="https://chen-shang.github.io/2023/12/15/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-sftp/"/>
+    <id>https://chen-shang.github.io/2023/12/15/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-sftp/</id>
+    <published>2023-12-15T05:19:14.000Z</published>
+    <updated>2023-12-15T05:22:06.666Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;登录的时候指定端口号,注意 &lt;code&gt;-P&lt;/code&gt; 一定要写在前面&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>Mac常用配置</title>
@@ -580,38 +604,6 @@
         
     <summary type="html">&lt;p&gt;Linux 系列 如 Ubuntu 、Centos 基本一样. Mac 系列不太一样，大部分通过读文件的方式实现的功能在Mac上都行不通。&lt;/p&gt;
 &lt;h1 id=&quot;ubuntu&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何计算文件的哈希</title>
-    <link href="https://chen-shang.github.io/2023/11/06/linux/jie-jue-fang-an/ru-he-ji-suan-wen-jian-de-ha-xi/"/>
-    <id>https://chen-shang.github.io/2023/11/06/linux/jie-jue-fang-an/ru-he-ji-suan-wen-jian-de-ha-xi/</id>
-    <published>2023-11-06T02:24:23.000Z</published>
-    <updated>2023-11-07T15:36:48.917Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;windows&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#windows&quot;&gt;&lt;/a&gt; windows&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;certutil -hashfile &amp;lt;文件路径&amp;gt;</summary>
         
       
     
