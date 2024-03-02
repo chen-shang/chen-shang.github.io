@@ -4,12 +4,107 @@
   
     
     <entry>
+      <title>项目管理的思考</title>
+      <link href="/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/"/>
+      <url>/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/</url>
+      
+        <content type="html"><![CDATA[<p>最近逐渐开始上手管理起公司的项目。我理解我的工作重心需要转移到对客户需求的推进落地上来，我也不知道我理解的对不对，在这里先做记录。</p><p>我期望的发开模式是所谓的敏捷的，能做到随时随地的修改和发布。</p><p>我个人觉得第一步就是要尽量的把需求拆分成一个个可独立执行，单独上线的小单元，这样才能做到敏捷。虽然不是第一次管理一个项目，但像整个公司这样的还没有实战过。</p><p>需求拆分细了，估时也比较准，而且可以单独测试验收，而且分配下去之后基本不会忘记。</p><p>最近用了redmine,发现其一些方法论啥的。</p><h3 id="用户提出问题我们解决问题"><a class="markdownIt-Anchor" href="#用户提出问题我们解决问题"></a> 用户提出问题,我们解决问题</h3><p>我们的客户提出的所有诉求，我们统一抽象称之为"问题",而我们的价值就在于能够帮用户解决"问题"。<br>这样，我先进行了第一层次的认知<br><img src="/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/iShot_2024-03-02_20.47.38.jpg" alt="alt text"></p><h3 id="问题的分类和转换"><a class="markdownIt-Anchor" href="#问题的分类和转换"></a> 问题的分类和转换</h3><p><img src="/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/iShot_2024-03-02_20.47.52.jpg" alt="alt text"></p><h3 id="简化用户的提问方式和习惯"><a class="markdownIt-Anchor" href="#简化用户的提问方式和习惯"></a> 简化用户的提问方式和习惯</h3><p><img src="/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/iShot_2024-03-02_20.53.43.jpg" alt="alt text"></p><p>产品应该关心什么<br>IT应该关心什么</p><h3 id="风险"><a class="markdownIt-Anchor" href="#风险"></a> 风险</h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+            <tag> 思考 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>xls批量转换pdf</title>
+      <link href="/2024/03/02/gong-ju-kong/excel/xls-pi-liang-zhuan-huan-pdf/"/>
+      <url>/2024/03/02/gong-ju-kong/excel/xls-pi-liang-zhuan-huan-pdf/</url>
+      
+        <content type="html"><![CDATA[<p><strong>安装LibreOffice：</strong></p><ol><li>访问LibreOffice的官方网站：<a href="https://www.libreoffice.org/download/download/%EF%BC%8C%E4%B8%8B%E8%BD%BD%E9%80%82%E7%94%A8%E4%BA%8EMac%E7%9A%84LibreOffice%E5%AE%89%E8%A3%85%E5%8C%85%E3%80%82">https://www.libreoffice.org/download/download/，下载适用于Mac的LibreOffice安装包。</a></li><li>双击下载的安装包（.dmg文件），将LibreOffice图标拖放到“应用程序”文件夹中，完成安装。</li><li>在“应用程序”文件夹中找到LibreOffice图标，双击打开LibreOffice。</li></ol><p><em>使用命令行工具进行批量转换：</em>*</p><ol><li>打开终端应用程序。</li><li>输入以下命令来批量将当前目录下的所有XLS文件转换为PDF：<br>bash<br>/Applications/LibreOffice.app/Contents/MacOS/soffice --headless --convert-to pdf *.xls<br>请确保替换命令中的路径为您系统中LibreOffice的实际安装路径。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Excel </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Markdown内容折叠显示更多功能</title>
+      <link href="/2024/03/02/gong-ju-kong/markdown/markdown-nei-rong-zhe-die-xian-shi-geng-duo-gong-neng/"/>
+      <url>/2024/03/02/gong-ju-kong/markdown/markdown-nei-rong-zhe-die-xian-shi-geng-duo-gong-neng/</url>
+      
+        <content type="html"><![CDATA[<p>Markdown语法支持折叠显示更多内容，您可以使用类似以下的语法来实现折叠显示功能：</p><h4 id="基础使用"><a class="markdownIt-Anchor" href="#基础使用"></a> 基础使用</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span><span class="token punctuation">&gt;</span></span>点击展开查看更多<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>这里是要折叠显示的内容。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这样就可以在Markdown中创建折叠显示更多内容的效果了。<br>效果如下:</p><details><summary>点击展开查看更多</summary>这里是要折叠显示的内容。</details><hr><p>当在Markdown中使用折叠显示更多功能时，可以通过一些HTML属性来进一步自定义按钮的样式、设置默认展开等。以下是一些常见的自定义设置：</p><h4 id="设置按钮的大小和颜色"><a class="markdownIt-Anchor" href="#设置按钮的大小和颜色"></a> 设置按钮的大小和颜色</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token property">font-size</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>点击展开查看更多<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>这里是要折叠显示的内容。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>在 <code>&lt;summary&gt;</code> 标签中，通过 <code>style</code> 属性可以设置按钮的颜色和大小。<br>效果如下:</p><details><summary style="color: blue; font-size: 20px;">点击展开查看更多</summary>这里是要折叠显示的内容。</details><h4 id="设置按钮的图标"><a class="markdownIt-Anchor" href="#设置按钮的图标"></a> 设置按钮的图标</h4><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> 点击展开查看更多<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>这里是要折叠显示的内容。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>在 <code>&lt;summary&gt;</code> 标签中，可以通过 <code>&lt;img&gt;</code> 标签插入图标，替代纯文本按钮。</p><h4 id="设置默认展开"><a class="markdownIt-Anchor" href="#设置默认展开"></a> 设置默认展开</h4><p>默认情况下，折叠内容是隐藏的，用户需要点击按钮才能展开。如果希望默认展开，可以使用 <code>open</code> 属性：</p><pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>details</span> <span class="token attr-name">open</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>summary</span><span class="token punctuation">&gt;</span></span>默认展开查看更多<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>summary</span><span class="token punctuation">&gt;</span></span>这里是默认展开的内容。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>details</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>在 <code>&lt;details&gt;</code> 标签中添加 <code>open</code> 属性，即可实现默认展开的效果。<br>效果如下:</p><details open=""> <summary>默认展开查看更多</summary><ol><li>这里是默认展开的内容。</li><li>这里是默认展开的内容。</li><li>这里是默认展开的内容。</li><li>这里是默认展开的内容。</li></ol></details>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux终端生存之道-sftp</title>
       <link href="/2023/12/15/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-sftp/"/>
       <url>/2023/12/15/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-sftp/</url>
       
         <content type="html"><![CDATA[<p>登录的时候指定端口号,注意 <code>-P</code> 一定要写在前面</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sftp</span> <span class="token parameter variable">-P</span> <span class="token number">2222</span> <span class="token variable">${userName}</span>@10.1.0.200<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>上传文件夹以及文件夹中的所有内容，注意一定要加 -r 参数。<br><code>put -r</code> 命令将递归地上传整个目录树</p><p>eg: put -r /Users/chenshang/Downloads/20231130</p>]]></content>
       
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 终端生存之道 </category>
+          
+      </categories>
       
       
         <tags>
@@ -4184,11 +4279,11 @@
       
         <tags>
             
+            <tag> 引用 </tag>
+            
             <tag> 计算机 </tag>
             
             <tag> 计算机基础 </tag>
-            
-            <tag> 引用 </tag>
             
         </tags>
       
@@ -5269,18 +5364,18 @@
     
     
     <entry>
-      <title>作画</title>
-      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
-      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
+      <title>Git万能后悔药</title>
+      <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
+      <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
       
-        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
+        <content type="html"><![CDATA[<p><code>git reset --hard</code>往往用来移动 HEAD 指针,但这样会导致 commit 的内容被删除,往往后悔不已。</p><p>可以通过reflog来进行恢复，前提是丢失的分支或commit信息没有被git gc清除,一般情况下gc对那些无用的object会保留很长时间后才清除的</p><p>可以使用<code>git reflog</code>或<code>git log -g</code>命令来看到所有的操作日志。你执行的每一条git指令都有迹可循，而且可以回退到任意一步。可谓回滚操作中的万能钥匙了。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@bogon:~/learn/gitk <span class="token punctuation">[</span>master<span class="token punctuation">]</span>$ <span class="token function">git</span> reflogbaf1722 HEAD@<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span>: reset: moving to baf1722add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>: reset: moving to HEAD^f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span>: reset: moving to HEAD^^baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">}</span>: reset: moving to baf1722f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span>: reset: moving to HEAD^^baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.0f02b7a HEAD@<span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>: merge feture/f1: Merge made by the <span class="token string">'recursive'</span> strategy.f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master3e54d52 HEAD@<span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">}</span>: commit: <span class="token number">5</span><span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to feture/f20f4153e HEAD@<span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>: commit: <span class="token number">4</span>add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">11</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f1f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">12</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">}</span>: merge feture/f1: Fast-forward1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">14</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master<span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">15</span><span class="token punctuation">}</span>: commit: <span class="token number">3</span>1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">16</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f21195d28 HEAD@<span class="token punctuation">{</span><span class="token number">17</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to masteradd2e4e HEAD@<span class="token punctuation">{</span><span class="token number">18</span><span class="token punctuation">}</span>: commit: <span class="token number">2</span>1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">19</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f11195d28 HEAD@<span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span>: commit: <span class="token number">1</span>9cb291d HEAD@<span class="token punctuation">{</span><span class="token number">21</span><span class="token punctuation">}</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>恢复的过程很简单</p><ol><li>通过<code>git log -g</code>或<code>git reflog</code> 命令来找到需要恢复的信息对应的 commitid，可以通过提交的时间和日期来辨别,</li><li>找到对应的commitid</li><li>通过 <code>git branch recover_branch commitid</code> 来建立一个新的分支</li></ol><p>这样，就把到commitid为止的代码、各种提交记录等信息都恢复到了recover_branch分支上了。</p>]]></content>
       
       
       <categories>
           
-          <category> 墨香纸笺 </category>
+          <category> 工具控 </category>
           
-          <category> 我的诗词 </category>
+          <category> Git </category>
           
       </categories>
       
@@ -5289,9 +5384,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 墨香纸笺 </tag>
+            <tag> Git </tag>
             
-            <tag> 我的诗词 </tag>
+            <tag> 工具控 </tag>
             
         </tags>
       
@@ -5300,11 +5395,11 @@
     
     
     <entry>
-      <title>Git万能后悔药</title>
-      <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
-      <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
+      <title>Git忽略已经commit的文件</title>
+      <link href="/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/"/>
+      <url>/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/</url>
       
-        <content type="html"><![CDATA[<p><code>git reset --hard</code>往往用来移动 HEAD 指针,但这样会导致 commit 的内容被删除,往往后悔不已。</p><p>可以通过reflog来进行恢复，前提是丢失的分支或commit信息没有被git gc清除,一般情况下gc对那些无用的object会保留很长时间后才清除的</p><p>可以使用<code>git reflog</code>或<code>git log -g</code>命令来看到所有的操作日志。你执行的每一条git指令都有迹可循，而且可以回退到任意一步。可谓回滚操作中的万能钥匙了。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">chenshang@bogon:~/learn/gitk <span class="token punctuation">[</span>master<span class="token punctuation">]</span>$ <span class="token function">git</span> reflogbaf1722 HEAD@<span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span>: reset: moving to baf1722add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">}</span>: reset: moving to HEAD^f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">2</span><span class="token punctuation">}</span>: reset: moving to HEAD^^baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">}</span>: reset: moving to baf1722f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">}</span>: reset: moving to HEAD^^baf1722 HEAD@<span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.0f02b7a HEAD@<span class="token punctuation">{</span><span class="token number">6</span><span class="token punctuation">}</span>: merge feture/f1: Merge made by the <span class="token string">'recursive'</span> strategy.f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">7</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master3e54d52 HEAD@<span class="token punctuation">{</span><span class="token number">8</span><span class="token punctuation">}</span>: commit: <span class="token number">5</span><span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">9</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to feture/f20f4153e HEAD@<span class="token punctuation">{</span><span class="token number">10</span><span class="token punctuation">}</span>: commit: <span class="token number">4</span>add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">11</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f1f6df0e4 HEAD@<span class="token punctuation">{</span><span class="token number">12</span><span class="token punctuation">}</span>: merge feture/f2: Merge made by the <span class="token string">'recursive'</span> strategy.add2e4e HEAD@<span class="token punctuation">{</span><span class="token number">13</span><span class="token punctuation">}</span>: merge feture/f1: Fast-forward1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">14</span><span class="token punctuation">}</span>: checkout: moving from feture/f2 to master<span class="token number">5465608</span> HEAD@<span class="token punctuation">{</span><span class="token number">15</span><span class="token punctuation">}</span>: commit: <span class="token number">3</span>1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">16</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f21195d28 HEAD@<span class="token punctuation">{</span><span class="token number">17</span><span class="token punctuation">}</span>: checkout: moving from feture/f1 to masteradd2e4e HEAD@<span class="token punctuation">{</span><span class="token number">18</span><span class="token punctuation">}</span>: commit: <span class="token number">2</span>1195d28 HEAD@<span class="token punctuation">{</span><span class="token number">19</span><span class="token punctuation">}</span>: checkout: moving from master to feture/f11195d28 HEAD@<span class="token punctuation">{</span><span class="token number">20</span><span class="token punctuation">}</span>: commit: <span class="token number">1</span>9cb291d HEAD@<span class="token punctuation">{</span><span class="token number">21</span><span class="token punctuation">}</span>: commit <span class="token punctuation">(</span>initial<span class="token punctuation">)</span>: <span class="token number">0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>恢复的过程很简单</p><ol><li>通过<code>git log -g</code>或<code>git reflog</code> 命令来找到需要恢复的信息对应的 commitid，可以通过提交的时间和日期来辨别,</li><li>找到对应的commitid</li><li>通过 <code>git branch recover_branch commitid</code> 来建立一个新的分支</li></ol><p>这样，就把到commitid为止的代码、各种提交记录等信息都恢复到了recover_branch分支上了。</p>]]></content>
+        <content type="html"><![CDATA[<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p><h1 id="方式一"><a class="markdownIt-Anchor" href="#方式一"></a> 方式一</h1><ol><li><code>git rm --cached logs/xx.log</code></li><li>然后更新 .gitignore 忽略掉目标文件，</li><li><code>git commit -m "We really don't want Git to track this anymore!"</code></li></ol><h1 id="方式二"><a class="markdownIt-Anchor" href="#方式二"></a> 方式二</h1><p>每个clone下来的仓库中手动设置不要检查特定文件的更改情况。<br><code>git update-index --assume-unchanged PATH    #在PATH处输入要忽略的文件。</code></p><h1 id="方式三"><a class="markdownIt-Anchor" href="#方式三"></a> 方式三</h1><p>另外 git 还提供了另一种 exclude 的方式来做同样的事情，不同的是 .gitignore 这个文件本身会提交到版本库中去。用来保存的是公共的需要排除的文件。而 .git/info/exclude 这里设置的则是你自己本地需要排除的文件。 他不会影响到其他人。也不会提交到版本库中去。</p>]]></content>
       
       
       <categories>
@@ -5362,18 +5457,18 @@
     
     
     <entry>
-      <title>Git忽略已经commit的文件</title>
-      <link href="/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/"/>
-      <url>/2016/09/11/gong-ju-kong/git/git-hu-lue-yi-jing-commit-de-wen-jian/</url>
+      <title>作画</title>
+      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
+      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
       
-        <content type="html"><![CDATA[<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p><h1 id="方式一"><a class="markdownIt-Anchor" href="#方式一"></a> 方式一</h1><ol><li><code>git rm --cached logs/xx.log</code></li><li>然后更新 .gitignore 忽略掉目标文件，</li><li><code>git commit -m "We really don't want Git to track this anymore!"</code></li></ol><h1 id="方式二"><a class="markdownIt-Anchor" href="#方式二"></a> 方式二</h1><p>每个clone下来的仓库中手动设置不要检查特定文件的更改情况。<br><code>git update-index --assume-unchanged PATH    #在PATH处输入要忽略的文件。</code></p><h1 id="方式三"><a class="markdownIt-Anchor" href="#方式三"></a> 方式三</h1><p>另外 git 还提供了另一种 exclude 的方式来做同样的事情，不同的是 .gitignore 这个文件本身会提交到版本库中去。用来保存的是公共的需要排除的文件。而 .git/info/exclude 这里设置的则是你自己本地需要排除的文件。 他不会影响到其他人。也不会提交到版本库中去。</p>]]></content>
+        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
       
       
       <categories>
           
-          <category> 工具控 </category>
+          <category> 墨香纸笺 </category>
           
-          <category> Git </category>
+          <category> 我的诗词 </category>
           
       </categories>
       
@@ -5382,9 +5477,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
+            <tag> 墨香纸笺 </tag>
             
-            <tag> 工具控 </tag>
+            <tag> 我的诗词 </tag>
             
         </tags>
       
