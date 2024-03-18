@@ -620,20 +620,20 @@ f1            <span class="token comment">#这里得先调用一下</span>
 <p>a 在函数外面定义,系全局作用域；在f1里面改变了a的值,同时定义了一个全局作用域的变量b ,和一个 函数作用域的变量c。 所以 b 在大括号外是可以被访问的,但是c却不能被访问。</p>
 <p>本shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【推荐】能缩小变量作用域的就缩小变量的作用域,也就是能用local的就用local修饰</font></p>
-</blockquote>
+<p><font color="#dd0000">【推荐】能缩小变量作用域的就缩小变量的作用域,也就是能用local的就用local修饰</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <h3 id="只读变量"><a class="markdownIt-Anchor" href="#只读变量"></a> 只读变量</h3>
 <p>使用 readonly 命令可以将变量定义为只读变量,只读变量的值不能被改变。</p>
 <p>本shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】认定为常量的必须用readonly修饰,相当于 Java 中的final</font></p>
-</blockquote>
+<p><font color="#dd0000">【强制】认定为常量的必须用readonly修饰,相当于 Java 中的final</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <h3 id="删除变量"><a class="markdownIt-Anchor" href="#删除变量"></a> 删除变量</h3>
 <p>使用 unset 命令可以删除变量,变量被删除后不能再次使用。unset 命令不能删除只读变量。</p>
 <p>本shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【推荐】删除变量能不用就不用,一般没什么应用场景</font></p>
-</blockquote>
+<p><font color="#dd0000">【推荐】删除变量能不用就不用,一般没什么应用场景</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <h2 id="关于注释"><a class="markdownIt-Anchor" href="#关于注释"></a> 关于注释</h2>
 <p>除脚本首行外,所有以 <code>#</code> 开头的语句都将成为注释。</p>
 <p>示例:</p>
@@ -657,18 +657,18 @@ f1            <span class="token comment">#这里得先调用一下</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】函数需有注释标识该函数的用途、入参变量、函数的返回值类型</font></p>
-</blockquote>
+<p><font color="#dd0000">【强制】函数需有注释标识该函数的用途、入参变量、函数的返回值类型</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
 <p><font color="#dd0000">【强制】函数的注释 <code>#</code> 顶格写, 井号后面紧跟一个空格<br>
-说明: 对于该格式的要求是为了最后生成函数的帮助文档是用的(markdown语法),然后是注释的内容,注释尽量简短且在一行,最后跟的是函数的类型。</font></p>
-</blockquote>
+说明: 对于该格式的要求是为了最后生成函数的帮助文档是用的(markdown语法),然后是注释的内容,注释尽量简短且在一行,最后跟的是函数的类型。</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
-<p><font color="#dd0000">【强制】函数内注释 <code>#</code> 与缩进格式对整齐</font></p>
-</blockquote>
+<p><font color="#dd0000">【强制】函数内注释 <code>#</code> 与缩进格式对整齐</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
-<p><font color="#dd0000">【强制】变量的注释紧跟在变量的后面,不推荐换行写注释</font></p>
-</blockquote>
+<p><font color="#dd0000">【强制】变量的注释紧跟在变量的后面,不推荐换行写注释</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <h2 id="关于函数"><a class="markdownIt-Anchor" href="#关于函数"></a> 关于函数</h2>
 <p>函数定义的形式是</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -682,14 +682,14 @@ f1            <span class="token comment">#这里得先调用一下</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000"> 【强制】认定为常函数的必须用readonly修饰,相当于 Java 中的final。</font></p>
-</blockquote>
+<p><font color="#dd0000"> 【强制】认定为常函数的必须用readonly修饰,相当于 Java 中的final。</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
-<p><font color="#dd0000"> 【推荐】使用关键字 <code>function</code> 显示定义的函数为 public 的函数,可以供 外部脚本以 <code>sh 脚本 函数 函数入参</code> 的形式调用,可以认为成Java当中的public的方法</font></p>
-</blockquote>
+<p><font color="#dd0000"> 【推荐】使用关键字 <code>function</code> 显示定义的函数为 public 的函数,可以供 外部脚本以 <code>sh 脚本 函数 函数入参</code> 的形式调用,可以认为成Java当中的public的方法</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
-<p><font color="#dd0000"> 【推荐】未使用关键字 <code>function</code> 显示定义的函数为 private 的函数, 仅供本脚本内部调用,可以认为成Java中的私有方法,注意这种private是人为规定的,并不是Shell的语法,不推荐以 &gt; <font color="#dd0000"> <code>sh 脚本 函数 函数入参</code> 的形式调用,注意是不推荐而不是不能。</font></font></p>
-</blockquote>
+<p><font color="#dd0000"> 【推荐】未使用关键字 <code>function</code> 显示定义的函数为 private 的函数, 仅供本脚本内部调用,可以认为成Java中的私有方法,注意这种private是人为规定的,并不是Shell的语法,不推荐以 &gt; <font color="#dd0000"> <code>sh 脚本 函数 函数入参</code> 的形式调用,注意是不推荐而不是不能。</font></font></p><font color="#dd0000"><font color="#dd0000">
+</font></font></blockquote><font color="#dd0000"><font color="#dd0000">
 <p>说明:本Shell规约这样做的目的就在于使脚本具有一定的封装性,看到 <code>function</code> 修饰的就知道这个函数能被外部调用, 没有被修饰的函数就仅供内部调用。你就知道如果你修改的函数的影响范围. 如果是 被function 修饰的函数,修改后可能影响到外部调用他的脚本, 而修改未被function修饰的函数的时候,仅仅影响本文件中其他函数。</p>
 <p>如 <a target="_blank" rel="noopener" href="http://core.sh">core.sh</a> 脚本内容如下是</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 重新设置DNS地址 []&lt;-()</span>
@@ -775,8 +775,8 @@ main                                       <span class="token comment">#在脚�
 </table>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000"> 【强制】 在函数内部首先使用有意义的变量名接受参数,然后在使用这些变量进行操作,禁止直接操作$1,$2等,除非这些变量只用一次</font></p>
-</blockquote>
+<p><font color="#dd0000"> 【强制】 在函数内部首先使用有意义的变量名接受参数,然后在使用这些变量进行操作,禁止直接操作$1,$2等,除非这些变量只用一次</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <h3 id="函数注释"><a class="markdownIt-Anchor" href="#函数注释"></a> 函数注释</h3>
 <p>函数类型的概念是从函数编程语言中的概念偷过来的,Shell函数的函数类型指的是函数的输入到函数的输入的映射关系</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 主函数 []&lt;-()                  &lt;-------函数注释这样写</span>
@@ -830,11 +830,11 @@ chenshang@chenshangMacBook-Pro:~$ pwd
 <p>注意这里不用 <code>version=$(check_version)</code> 这种形式获取结果,这样也是获取不到结果的</p>
 <p>本Shell规约规定:</p>
 <blockquote>
-<p><font color="#dd0000"> 【推荐】不推荐使用return方式返回,推荐使用echo方式返回结果</font></p>
-</blockquote>
+<p><font color="#dd0000"> 【推荐】不推荐使用return方式返回,推荐使用echo方式返回结果</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
-<p><font color="#dd0000"> 【推荐】返回结果类型是Boolean类型,也就是说函数的功能是起判断作用,返回结果是真或者假的时候使用才显示 return 返回结果</font></p>
-</blockquote>
+<p><font color="#dd0000"> 【推荐】返回结果类型是Boolean类型,也就是说函数的功能是起判断作用,返回结果是真或者假的时候使用才显示 return 返回结果</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <p>例如</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 检查网络 [Boolean]&lt;-()</span>
 <span class="token keyword">function</span> <span class="token function-name function">check_network</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
@@ -889,7 +889,7 @@ BODY_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span></
 <p>本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
-</font></blockquote>
+</font></blockquote><font color="#dd0000">
 <p>【强制】将HEAD_KEYWORD和初始化命令或者参数放在第一行；<br>
 【强制】将BODY_BEGIN同样放在第一行；<br>
 【强制】复合命令中的BODY部分以2个空格缩进；<br>
@@ -946,14 +946,14 @@ pattern <span class="token punctuation">)</span>
 <p>本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
-</font></blockquote>
+</font></blockquote><font color="#dd0000">
 <p>【强制】 if\while\until 后面的判断 使用 双中括号<code>[[]]</code></p>
 <h2 id="数学计算"><a class="markdownIt-Anchor" href="#数学计算"></a> 数学计算</h2>
 <p>注释 1:shell 的自加、自减操作符在使用上和 c 语言一样。-- 或者 ++ 出现在变量前面是前缀形式,先运算后赋值；-- 或者 ++ 出现在变量后面是后缀形式,先赋值后运算。<br>
 本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
-</font></blockquote>
+</font></blockquote><font color="#dd0000">
 <p>【推荐】明确知道变量是整数,计算使用$(())包裹计算,(())内对变量的操作不用$取值<br>
 正确 a=$((1+1))<br>
 反例 a=$(($a++))<br>
@@ -967,17 +967,17 @@ pattern <span class="token punctuation">)</span>
 <blockquote>
 <p><font color="#dd0000">【强制】脚本中变量、函数、文件的命名均不能以数字、下划线、$开头,也不能以下划线或者$结尾<br>
 反例: _name / __name / <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi><mi mathvariant="normal">/</mi><mi>n</mi><mi>a</mi><mi>m</mi><msub><mi>e</mi><mi mathvariant="normal">/</mi></msub><mi>n</mi><mi>a</mi><mi>m</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">name / name_ / name</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1052em;vertical-align:-0.3551999999999999em;"></span><span class="mord mathnormal">n</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span><span class="mord">/</span><span class="mord mathnormal">n</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">/</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span><span class="mord mathnormal">n</span><span class="mord mathnormal">a</span><span class="mord mathnormal">m</span><span class="mord mathnormal">e</span></span></span></span> / 5name<br>
-说明: $作为Shell语言的取值符号,其他命名约束参考Java规约。</font></p>
-</blockquote>
+说明: $作为Shell语言的取值符号,其他命名约束参考Java规约。</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
 <p><font color="#dd0000">【强制】代码中的命名严禁使用拼音与英文混合的方式,更不允许直接使用中文的方式。<br>
 正例:alibaba / taobao / youku / hangzhou 等国际通用的名称,可视同英文。<br>
-说明:正确的英文拼写和语法可以让阅读者易于理解,避免歧义。注意,即使纯拼音命名方式 也要避免采用。</font></p>
-</blockquote>
+说明:正确的英文拼写和语法可以让阅读者易于理解,避免歧义。注意,即使纯拼音命名方式 也要避免采用。</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
 <p><font color="#dd0000">【强制】参数名、局部变量都统一使用 lowerCamelCase 风格,必须遵从 驼峰形式。<br>
-正例: localValue / errMsg / userName</font></p>
-</blockquote>
+正例: localValue / errMsg / userName</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
 <p><font color="#dd0000">【推荐】使用下划线分割函数命名,都统一使用 lowerCamelCase 风格,必须遵从 驼峰形式。<br>
 正例:getUserName() / log_info() / map_add()<br>
@@ -985,31 +985,31 @@ pattern <span class="token punctuation">)</span>
 get_user_english_name()  vs getUserEnglishName()<br>
 log_info() vs logInfo()<br>
 map_add() vs mapAdd()<br>
-log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</code></font></p>
-</blockquote>
+log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</code></font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
 <p><font color="#dd0000">【强制】文件名 UpperCamelCase 风格,首字母大写的驼峰形式<br>
 正例:BaseLog.sh / <a target="_blank" rel="noopener" href="http://BaseString.sh">BaseString.sh</a><br>
 说明:类比Java的类,我们把相同功能的函数抽象到一个脚本文件中,留待后续其他脚本引用。随着我们写的脚本日渐增多<br>
-我们很有必要分门别类的将它们聚集到一个文本文件中,一是方便后续查阅,而是方便后续调用</font></p>
-</blockquote>
+我们很有必要分门别类的将它们聚集到一个文本文件中,一是方便后续查阅,而是方便后续调用</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
 <p><font color="#dd0000">【强制】常量命名全部大写,单词间用下划线隔开,力求语义表达完整清楚,不要嫌名字长。<br>
-正例:MAX_STOCK_COUNT 反例:MAX_COUNT</font></p>
-</blockquote>
+正例:MAX_STOCK_COUNT 反例:MAX_COUNT</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
 <p><font color="#dd0000">【推荐】文件夹名字大写<br>
 【强制】文件名以 .sh 结尾<br>
-说明:虽然不用.sh结尾或者以任何其他新式结尾都可以运行,但是以 .sh结尾可以一眼看出就是脚本文件</font></p>
-</blockquote>
+说明:虽然不用.sh结尾或者以任何其他新式结尾都可以运行,但是以 .sh结尾可以一眼看出就是脚本文件</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <p><a name="end"></a><br>
 本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】使用两个空格进行缩进,不适用tab缩进</font></p>
-</blockquote>
+<p><font color="#dd0000">【强制】使用两个空格进行缩进,不适用tab缩进</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <blockquote>
-<p><font color="#dd0000">【推荐】不在一行的时候使用 <code>\</code> 进行换行,使用 <code>\</code> 换行的原则是整齐美观</font></p>
-</blockquote>
+<p><font color="#dd0000">【推荐】不在一行的时候使用 <code>\</code> 进行换行,使用 <code>\</code> 换行的原则是整齐美观</font></p><font color="#dd0000">
+</font></blockquote><font color="#dd0000">
 <p>例子:</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/usr/bin/env bash</span>
 <span class="token comment"># 脚本使用帮助文档 []&lt;-()</span>
@@ -1088,7 +1088,7 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
 <li><code>${var/pattern1/pattern2}</code>表示将var字符串的第一个匹配的pattern1替换为另一个pattern2。</li>
 <li><code>${var//pattern1/pattern2}</code>表示将<code>var</code>字符串中的所有能匹配的pattern1替换为另一个pattern2。</li>
 </ol>
-
+</font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font></font>
                 
             </div>
             <hr/>
@@ -1752,7 +1752,7 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info("xxx")</cod
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">168.2k</span>
+                        class="white-color">169.3k</span>
             
             
             
