@@ -245,7 +245,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -372,8 +372,8 @@
 | datadir       | /usr/local/var/mysql/ |
 +---------------+-----------------------+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>或者用 <code>brew info mysql</code> 查看</p>
-<p><img src="/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/iShot_2023-09-28_17.00.50.jpg" alt></p>
-<p><img src="/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/iShot_2023-09-28_17.03.06.jpg" alt></p>
+<p><img src="/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/iShot_2023-09-28_17.00.50.jpg" alt=""></p>
+<p><img src="/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/iShot_2023-09-28_17.03.06.jpg" alt=""></p>
 <h1 id="查看当前数据库的binlog有哪些"><a class="markdownIt-Anchor" href="#查看当前数据库的binlog有哪些"></a> 查看当前数据库的binlog有哪些</h1>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">show</span> master logs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>或者</p>
@@ -408,9 +408,9 @@
 <h1 id="阅读binglog的内容"><a class="markdownIt-Anchor" href="#阅读binglog的内容"></a> 阅读binglog的内容</h1>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqlbinlog binlog<span class="token punctuation">.</span><span class="token number">000159</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>用这个命令可以看到binlog的内容，但是基本不可读<br>
-<img src="/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/iShot_2023-09-28_17.42.14.jpg" alt></p>
+<img src="/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/iShot_2023-09-28_17.42.14.jpg" alt=""></p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqlbinlog <span class="token comment">--base64-output=decode-rows -v binlog.000159</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/iShot_2023-09-28_17.42.58.jpg" alt></p>
+<p><img src="/2023/09/28/shu-ju-ku/mysql-zhong-binlog-de-xiang-guan-cao-zuo/iShot_2023-09-28_17.42.58.jpg" alt=""></p>
 
                 
             </div>
@@ -841,7 +841,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Packet for query is too large">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Packet for query is too large">
                         
                         <span class="card-title">Packet for query is too large</span>
                     </div>
