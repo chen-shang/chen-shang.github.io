@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>终端 bash_completion 报错</title>
+      <link href="/2024/03/20/linux/jie-jue-fang-an/zhong-duan-bash-completion-bao-cuo/"/>
+      <url>/2024/03/20/linux/jie-jue-fang-an/zhong-duan-bash-completion-bao-cuo/</url>
+      
+        <content type="html"><![CDATA[<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-bash: /usr/local/etc/bash_completion.d/onefetch: line <span class="token number">110</span>: conditional binary operator expected -bash: /usr/local/etc/bash_completion.d/onefetch: line <span class="token number">110</span>: syntax error near <span class="token variable"><span class="token variable">`</span><span class="token environment constant">IFS</span>' -bash: /usr/local/etc/bash_completion.d/onefetch: line <span class="token number">110</span>: <span class="token variable">`</span></span>                    <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token parameter variable">-v</span> <span class="token environment constant">IFS</span> <span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span> then' <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>虽然这个报错不影响使用,但是看着心里不舒服。通过询问chat，说可能是因为您的 Bash 版本不支持  -v  选项导致的。然后我就搜索<br><code>brew search completion</code> 看到 <code>bash-completion</code>  和 <code>bash-completion@2</code>. 果断卸载旧版的安装新版的,问题得到解决。但是git得代码补全又没了</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 解决方案 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> 解决方案 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>项目管理的思考</title>
       <link href="/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/"/>
       <url>/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/</url>
@@ -4279,9 +4310,9 @@
       
         <tags>
             
-            <tag> 引用 </tag>
-            
             <tag> 计算机 </tag>
+            
+            <tag> 引用 </tag>
             
             <tag> 计算机基础 </tag>
             
