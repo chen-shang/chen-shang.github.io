@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2024-03-23T19:58:08.364Z</updated>
+  <updated>2024-05-01T14:44:19.016Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,188 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>git中文乱码问题</title>
+    <link href="https://chen-shang.github.io/2024/05/01/gong-ju-kong/git/git-zhong-wen-luan-ma-wen-ti/"/>
+    <id>https://chen-shang.github.io/2024/05/01/gong-ju-kong/git/git-zhong-wen-luan-ma-wen-ti/</id>
+    <published>2024-05-01T14:27:01.000Z</published>
+    <updated>2024-05-01T14:44:19.016Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;git 输出中文乱码解决方案&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Git" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Git" scheme="https://chen-shang.github.io/tags/Git/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>去掉文本中的空行</title>
+    <link href="https://chen-shang.github.io/2024/05/01/qian-duan/qu-diao-wen-ben-zhong-de-kong-xing/"/>
+    <id>https://chen-shang.github.io/2024/05/01/qian-duan/qu-diao-wen-ben-zhong-de-kong-xing/</id>
+    <published>2024-04-30T23:14:42.000Z</published>
+    <updated>2024-04-30T23:19:19.854Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;vscodeintellij-idea-等工具支持正则&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vscodeintellij-idea-等工具支持正则&quot;&gt;&lt;/a&gt; VsCode&#92;IntelliJ Idea</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>字体对照表</title>
+    <link href="https://chen-shang.github.io/2024/04/24/qian-duan/zi-ti-dui-zhao-biao/"/>
+    <id>https://chen-shang.github.io/2024/04/24/qian-duan/zi-ti-dui-zhao-biao/</id>
+    <published>2024-04-24T01:45:11.000Z</published>
+    <updated>2024-04-30T23:13:51.660Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;宋体 (TrueType) = SIMSUN.TTF&lt;br&gt;
+黑体 (TrueType) = simhei.ttf&lt;br&gt;
+楷体_GB2312 (TrueType) = simkai.ttf&lt;br&gt;
+Arial 粗体 (TrueType) =</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Excel常用操作集锦</title>
+    <link href="https://chen-shang.github.io/2024/04/11/gong-ju-kong/excel/excel-chang-yong-cao-zuo-ji-jin/"/>
+    <id>https://chen-shang.github.io/2024/04/11/gong-ju-kong/excel/excel-chang-yong-cao-zuo-ji-jin/</id>
+    <published>2024-04-11T14:42:16.000Z</published>
+    <updated>2024-04-30T23:20:57.316Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;移动列或行&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#移动列或行&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Excel" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Excel/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>定期更新安装的一些软件</title>
+    <link href="https://chen-shang.github.io/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/"/>
+    <id>https://chen-shang.github.io/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/</id>
+    <published>2024-04-05T17:21:52.000Z</published>
+    <updated>2024-04-05T18:44:23.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;vim 插件更新&lt;br&gt;
+brew 案件的软件更新&lt;br&gt;
+node 服务更行&lt;br&gt;
+git clone</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Idea常用插件</title>
+    <link href="https://chen-shang.github.io/2024/03/25/gong-ju-kong/intellij-idea/idea-chang-yong-cha-jian/"/>
+    <id>https://chen-shang.github.io/2024/03/25/gong-ju-kong/intellij-idea/idea-chang-yong-cha-jian/</id>
+    <published>2024-03-25T02:19:12.000Z</published>
+    <updated>2024-05-01T14:21:53.936Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;center&gt; &lt;img src=&quot;/2024/03/25/gong-ju-kong/intellij-idea/idea-chang-yong-cha-jian/iShot_2024-05-01_07.22.12.png&quot;&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/tags/Intellij-IDEA/"/>
+    
+  </entry>
+  
+  <entry>
     <title>画布工具</title>
     <link href="https://chen-shang.github.io/2024/03/24/gong-ju-kong/excalidraw/hua-bu-gong-ju/"/>
     <id>https://chen-shang.github.io/2024/03/24/gong-ju-kong/excalidraw/hua-bu-gong-ju/</id>
     <published>2024-03-23T19:02:45.000Z</published>
-    <updated>2024-03-23T19:58:08.364Z</updated>
+    <updated>2024-04-05T18:39:14.000Z</updated>
     
     
       
@@ -43,8 +220,6 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
     <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
     
     <category term="Excalidraw" scheme="https://chen-shang.github.io/tags/Excalidraw/"/>
@@ -56,7 +231,7 @@
     <link href="https://chen-shang.github.io/2024/03/24/gong-ju-kong/localhost/ben-di-bu-shu-zi-ji-de-gong-ju-ji/"/>
     <id>https://chen-shang.github.io/2024/03/24/gong-ju-kong/localhost/ben-di-bu-shu-zi-ji-de-gong-ju-ji/</id>
     <published>2024-03-23T18:55:03.000Z</published>
-    <updated>2024-03-23T19:58:39.311Z</updated>
+    <updated>2024-04-05T18:41:07.000Z</updated>
     
     
       
@@ -77,8 +252,6 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
     <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
     
     <category term="localhost" scheme="https://chen-shang.github.io/tags/localhost/"/>
@@ -90,7 +263,7 @@
     <link href="https://chen-shang.github.io/2024/03/23/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-ls/"/>
     <id>https://chen-shang.github.io/2024/03/23/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-ls/</id>
     <published>2024-03-23T09:10:37.000Z</published>
-    <updated>2024-03-23T09:19:33.991Z</updated>
+    <updated>2024-04-05T18:43:40.000Z</updated>
     
     
       
@@ -120,7 +293,7 @@
     <link href="https://chen-shang.github.io/2024/03/20/linux/jie-jue-fang-an/zhong-duan-bash-completion-bao-cuo/"/>
     <id>https://chen-shang.github.io/2024/03/20/linux/jie-jue-fang-an/zhong-duan-bash-completion-bao-cuo/</id>
     <published>2024-03-20T14:23:37.000Z</published>
-    <updated>2024-03-20T14:54:05.901Z</updated>
+    <updated>2024-03-20T14:54:05.000Z</updated>
     
     
       
@@ -151,7 +324,7 @@
     <link href="https://chen-shang.github.io/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/"/>
     <id>https://chen-shang.github.io/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/</id>
     <published>2024-03-01T18:29:19.000Z</published>
-    <updated>2024-03-18T14:37:43.225Z</updated>
+    <updated>2024-03-18T14:37:43.000Z</updated>
     
     
       
@@ -181,7 +354,7 @@
     <link href="https://chen-shang.github.io/2024/03/02/gong-ju-kong/excel/xls-pi-liang-zhuan-huan-pdf/"/>
     <id>https://chen-shang.github.io/2024/03/02/gong-ju-kong/excel/xls-pi-liang-zhuan-huan-pdf/</id>
     <published>2024-03-01T18:29:05.000Z</published>
-    <updated>2024-03-02T18:08:44.792Z</updated>
+    <updated>2024-03-02T18:08:44.000Z</updated>
     
     
       
@@ -212,7 +385,7 @@
     <link href="https://chen-shang.github.io/2024/03/02/gong-ju-kong/markdown/markdown-nei-rong-zhe-die-xian-shi-geng-duo-gong-neng/"/>
     <id>https://chen-shang.github.io/2024/03/02/gong-ju-kong/markdown/markdown-nei-rong-zhe-die-xian-shi-geng-duo-gong-neng/</id>
     <published>2024-03-01T18:28:51.000Z</published>
-    <updated>2024-03-02T18:05:07.812Z</updated>
+    <updated>2024-03-02T18:05:07.000Z</updated>
     
     
       
@@ -243,7 +416,7 @@
     <link href="https://chen-shang.github.io/2023/12/15/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-sftp/"/>
     <id>https://chen-shang.github.io/2023/12/15/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-sftp/</id>
     <published>2023-12-15T05:19:14.000Z</published>
-    <updated>2023-12-15T05:22:47.597Z</updated>
+    <updated>2023-12-15T05:22:47.000Z</updated>
     
     
       
@@ -271,7 +444,7 @@
     <link href="https://chen-shang.github.io/2023/12/13/gong-ju-kong/mac/mac-chang-yong-pei-zhi/"/>
     <id>https://chen-shang.github.io/2023/12/13/gong-ju-kong/mac/mac-chang-yong-pei-zhi/</id>
     <published>2023-12-13T13:48:02.000Z</published>
-    <updated>2023-12-13T13:57:17.748Z</updated>
+    <updated>2023-12-13T13:57:17.000Z</updated>
     
     
       
@@ -299,7 +472,7 @@
     <link href="https://chen-shang.github.io/2023/12/02/shu-ju-ku/mysql-de-case-when-de-yi-ban-yong-fa/"/>
     <id>https://chen-shang.github.io/2023/12/02/shu-ju-ku/mysql-de-case-when-de-yi-ban-yong-fa/</id>
     <published>2023-12-02T15:26:03.000Z</published>
-    <updated>2023-12-02T15:30:15.727Z</updated>
+    <updated>2023-12-02T15:30:15.000Z</updated>
     
     
       
@@ -327,7 +500,7 @@
     <link href="https://chen-shang.github.io/2023/12/02/java/spring/transaction-rolled-back-because-it-has-been-marked-as-rollback-only/"/>
     <id>https://chen-shang.github.io/2023/12/02/java/spring/transaction-rolled-back-because-it-has-been-marked-as-rollback-only/</id>
     <published>2023-12-01T17:13:02.000Z</published>
-    <updated>2023-12-02T15:15:39.495Z</updated>
+    <updated>2023-12-02T15:15:39.000Z</updated>
     
     
       
@@ -355,7 +528,7 @@
     <link href="https://chen-shang.github.io/2023/11/30/si-kao/jing-ji-xue/shi-me-jiao-xian-jin-dai-chang-jing-dai/"/>
     <id>https://chen-shang.github.io/2023/11/30/si-kao/jing-ji-xue/shi-me-jiao-xian-jin-dai-chang-jing-dai/</id>
     <published>2023-11-30T01:03:30.000Z</published>
-    <updated>2023-12-01T16:25:18.742Z</updated>
+    <updated>2023-12-01T16:25:18.000Z</updated>
     
     
       
@@ -390,7 +563,7 @@
     <link href="https://chen-shang.github.io/2023/11/29/java/springboot/springboot-zhong-handlerinterceptor-zhu-ru-qi-ta-service-bao-cuo-xun-huan-yi-lai-wen-ti/"/>
     <id>https://chen-shang.github.io/2023/11/29/java/springboot/springboot-zhong-handlerinterceptor-zhu-ru-qi-ta-service-bao-cuo-xun-huan-yi-lai-wen-ti/</id>
     <published>2023-11-29T04:18:42.000Z</published>
-    <updated>2023-11-29T04:28:56.973Z</updated>
+    <updated>2023-11-29T04:28:56.000Z</updated>
     
     
       
@@ -422,7 +595,7 @@
     <link href="https://chen-shang.github.io/2023/11/25/linux/shell/shell-huo-qu-bian-liang-de-zhi-ding-xing-de-shu-ju/"/>
     <id>https://chen-shang.github.io/2023/11/25/linux/shell/shell-huo-qu-bian-liang-de-zhi-ding-xing-de-shu-ju/</id>
     <published>2023-11-24T16:01:17.000Z</published>
-    <updated>2023-11-24T16:09:14.173Z</updated>
+    <updated>2023-11-24T16:09:14.000Z</updated>
     
     
       
@@ -446,183 +619,6 @@
     <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
     
     <category term="Shell" scheme="https://chen-shang.github.io/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shell中while循环作用域</title>
-    <link href="https://chen-shang.github.io/2023/11/24/linux/shell/shell-zhong-while-xun-huan-zuo-yong-yu/"/>
-    <id>https://chen-shang.github.io/2023/11/24/linux/shell/shell-zhong-while-xun-huan-zuo-yong-yu/</id>
-    <published>2023-11-23T16:17:20.000Z</published>
-    <updated>2023-12-13T14:35:25.441Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;我们知道使用while循环一行一行的处理变量中的数据的写法是这样的&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何通过命令行重启电脑</title>
-    <link href="https://chen-shang.github.io/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/"/>
-    <id>https://chen-shang.github.io/2023/11/23/linux/jie-jue-fang-an/ru-he-tong-guo-ming-ling-xing-chong-qi-dian-nao/</id>
-    <published>2023-11-23T05:17:59.000Z</published>
-    <updated>2023-11-24T00:36:24.879Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;对于Windows系统，你可以使用以下命令来重启电脑：&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shell中的循环</title>
-    <link href="https://chen-shang.github.io/2023/11/18/linux/shell/shell-zhong-de-xun-huan/"/>
-    <id>https://chen-shang.github.io/2023/11/18/linux/shell/shell-zhong-de-xun-huan/</id>
-    <published>2023-11-18T12:58:15.000Z</published>
-    <updated>2023-12-13T14:37:09.627Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;shell中循环的一般写法如下&lt;/p&gt;
-&lt;h1 id=&quot;fori&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#fori&quot;&gt;&lt;/a&gt; fori&lt;/h1&gt;
-&lt;p&gt;shell for 循环默认是按照空格进行分隔的&lt;/p&gt;
-&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="Shell" scheme="https://chen-shang.github.io/categories/Linux/Shell/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringBoot中Controller加上统一的请求前缀</title>
-    <link href="https://chen-shang.github.io/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/"/>
-    <id>https://chen-shang.github.io/2023/11/17/java/springboot/springboot-zhong-controller-jia-shang-tong-yi-de-qing-qiu-qian-zhui/</id>
-    <published>2023-11-17T03:44:12.000Z</published>
-    <updated>2023-11-24T16:14:50.574Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;基本写法&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-java&quot; data-language=&quot;java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token annotation</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="SpringBoot" scheme="https://chen-shang.github.io/categories/JAVA/SpringBoot/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
-    
-    <category term="SpringBoot" scheme="https://chen-shang.github.io/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>数据库ID需要提前获取</title>
-    <link href="https://chen-shang.github.io/2023/11/16/shu-ju-ku/shu-ju-ku-id-xu-yao-ti-qian-huo-qu/"/>
-    <id>https://chen-shang.github.io/2023/11/16/shu-ju-ku/shu-ju-ku-id-xu-yao-ti-qian-huo-qu/</id>
-    <published>2023-11-16T08:53:20.000Z</published>
-    <updated>2023-11-24T16:15:52.774Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;场景:</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>用了async再获取值的时候记得用await</title>
-    <link href="https://chen-shang.github.io/2023/11/14/qian-duan/yong-liao-async-zai-huo-qu-zhi-de-shi-hou-ji-de-yong-await/"/>
-    <id>https://chen-shang.github.io/2023/11/14/qian-duan/yong-liao-async-zai-huo-qu-zhi-de-shi-hou-ji-de-yong-await/</id>
-    <published>2023-11-14T03:17:59.000Z</published>
-    <updated>2023-11-15T14:54:34.890Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如果你定义了一个async函数，然后在使用的时候使用一个变量来接收async函数的结果，你其实拿到的是一个空值，你不能立马使用这个值。在前端这个值的类型其实交 Promise ,也就是允诺的意思，类似与Java中的Future。&lt;/p&gt;
-&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
   </entry>
   
