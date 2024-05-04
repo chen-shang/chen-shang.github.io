@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Linux中切换Shell</title>
+      <link href="/2024/05/04/linux/jie-jue-fang-an/linux-zhong-qie-huan-shell/"/>
+      <url>/2024/05/04/linux/jie-jue-fang-an/linux-zhong-qie-huan-shell/</url>
+      
+        <content type="html"><![CDATA[<h1 id="etcshells-文件解释"><a class="markdownIt-Anchor" href="#etcshells-文件解释"></a> /etc/shells 文件解释</h1><p><code>/etc/shells</code> 文件是 UNIX 和类 UNIX 操作系统中的一个文本文件，它列出了系统上认为是合法的、用户可以选择的 shell 的完整路径。这个文件对于系统安全和用户环境配置很重要。<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p><p>以下是 <code>/etc/shells</code> 文件的几个用途：</p><ol><li>验证用户登录： 当用户尝试通过程序如 chsh（更改用户登录 shell 的命令）更改其登录 shell 时，程序会检查 /etc/shells 文件来确认用户选择的 shell 是否被系统列为合法的 shell。</li><li>FTP 访问控制： 一些 FTP 服务器（如 vsftpd）会检查 /etc/shells 文件以确定用户是否有权限使用 FTP 服务。通常只有那些拥有列出在 /etc/shells 文件中的 shell 的用户才被允许访问 FTP 服务。</li><li>Mail Transfer Agents（MTAs）： 某些 Mail Transfer Agents 程序会检查 /etc/shells 文件来确定一个用户是否拥有一个有效的 shell，基于这一信息来决定用户是否能够收发邮件。</li><li>限制 cron 作业： 某些系统用 /etc/shells 来确定一个用户是否可以安排 cron 作业。</li></ol><p>/etc/shells 文件的格式非常简单，由换行符分隔的 shell 路径列表组成。下面是一个典型的 /etc/shells 文件的示例：</p><pre class="line-numbers language-text" data-language="text"><code class="language-text"># List of acceptable shells for chpass(1).# Ftpd will not allow users to connect who are not using# one of these shells./bin/bash/bin/csh/bin/dash/bin/ksh/bin/sh/bin/tcsh/bin/zsh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>在上面的例子中，列出的每个路径都代表一个被系统认为合法的 shell。这意味着用户可以选择这些 shell 作为他们的默认登录 shell。管理员可以通过编辑 /etc/shells 文件来添加或是删除合法 shell，以符合安全政策或是用户需求。我由于使用brew重新安装了最新版本的bash，因此我向里面添加了 <code>/opt/homebrew/bin/bash</code></p><h1 id="查看shell"><a class="markdownIt-Anchor" href="#查看shell"></a> 查看shell</h1><p>macos 默认使用的 Shell 是 Bash。但是，自 mac0s Catalina （10.15 版本）起，mac0s 将默认 Shell 更改为 Zsh。[^2]</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 你可以使用以下命令来查看当前使用的默认 shell</span><span class="token builtin class-name">echo</span> <span class="token environment constant">$SHELL</span>＃该命令将显示当前默认 Shell 的路径。如果是 Bash，你将看到 /bin/bash， 如果是 Zsh，你将看到 /bin/zsh。＃你可以使用 <span class="token builtin class-name">echo</span> <span class="token variable">$0</span> 命令来查看当前正在运行的 shell（终端会话中的 shell）：<span class="token builtin class-name">echo</span> <span class="token variable">$0</span><span class="token comment"># 这将显示当前正在使用的 shell 的名称。</span><span class="token comment"># 如果你想更改默认 shell，你可以按照以下步骤：</span><span class="token comment"># 打开终端应用程序。</span><span class="token comment"># 运行以下命令来查看可用的 shell 列表</span><span class="token function">cat</span> /etc/shells＃这将列出可用的 Shell。你可以看到 Bash、 Zsh 和其他 shell 的路径。<span class="token comment"># 如果你希望更改默认 shell，可以运行以下命令：</span>＃切换到 Bash：chsh <span class="token parameter variable">-s</span> /bin/bash登录后您可以享受以下权益：<span class="token comment"># 切换到 Zsh：</span>chsh <span class="token parameter variable">-s</span> /bin/zsh<span class="token comment"># 更改后，你需要注销并重新登录或重启计算机，以使更改生效。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li id="fn1" class="footnote-item"><p><a href="https://www.cnblogs.com/Undefined443/p/17968904">https://www.cnblogs.com/Undefined443/p/17968904</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p></li></ol></section>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 解决方案 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 解决方案 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>git中文乱码问题</title>
       <link href="/2024/05/01/gong-ju-kong/git/git-zhong-wen-luan-ma-wen-ti/"/>
       <url>/2024/05/01/gong-ju-kong/git/git-zhong-wen-luan-ma-wen-ti/</url>
@@ -114,7 +143,7 @@
       <link href="/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/"/>
       <url>/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/</url>
       
-        <content type="html"><![CDATA[<p>vim 插件更新<br>brew 案件的软件更新<br>node 服务更行<br>git clone 的项目更新</p>]]></content>
+        <content type="html"><![CDATA[<p>vim 插件更新<br>brew 案件的软件更新<br>node 服务更行<br>git clone 的项目更新<br>博客主题更新<br>npm 更新<br>idea 插件更新<br>iterm2 更新</p>]]></content>
       
       
       <categories>
@@ -131,6 +160,10 @@
             <tag> 原创 </tag>
             
             <tag> 未完待续 </tag>
+            
+            <tag> 工具控 </tag>
+            
+            <tag> Mac </tag>
             
         </tags>
       
@@ -5619,37 +5652,6 @@
     
     
     <entry>
-      <title>作画</title>
-      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
-      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
-      
-        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 墨香纸笺 </category>
-          
-          <category> 我的诗词 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> 墨香纸笺 </tag>
-            
-            <tag> 我的诗词 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Linux终端生存之道-git别名</title>
       <link href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/"/>
       <url>/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/</url>
@@ -5675,6 +5677,37 @@
             <tag> Git </tag>
             
             <tag> 终端生存之道 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>作画</title>
+      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
+      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
+      
+        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 墨香纸笺 </category>
+          
+          <category> 我的诗词 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 墨香纸笺 </tag>
+            
+            <tag> 我的诗词 </tag>
             
         </tags>
       
