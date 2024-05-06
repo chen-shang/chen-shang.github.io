@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>Java时间入库后加了1s</title>
+      <link href="/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/"/>
+      <url>/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/iShot_2024-05-06_21.33.04.png" alt=""></p><p>这个时间虽然写的是 <code>2034-08-31 23:59:59</code>,而且系统打印也是<code>2034-08-31 23:59:59</code>。但是入库之后却是 <code>2034-09-01 00:00:00</code>。</p><p>我们注意到 fasttime 是 2040652799999。那么fasttime是干什么的呢？</p><p>fasttime 是 Date 类中的一个属性，用于表示从1970年1月1日00:00:00 GMT起的毫秒数。所以是毫秒时间戳，</p><p>这个毫秒时间戳转换成时间后其实是 <code>2034-08-31 23:59:59.999</code> 入库的时候其实传递的也是这个时间</p><p><img src="/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/iShot_2024-05-06_21.41.54.png" alt=""></p><p>而这个时间一旦入库，就会自动四舍五入成为<code>2034-09-01 00:00:00</code>。</p><p>所以遇到这个问题我就先手动设置时分秒吧</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">LocalDateTimeUtil</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>currentEndTime<span class="token punctuation">)</span>                 <span class="token punctuation">.</span><span class="token function">plusMonths</span><span class="token punctuation">(</span>approvalEndDuration<span class="token punctuation">)</span>                 <span class="token punctuation">.</span><span class="token keyword">with</span><span class="token punctuation">(</span><span class="token class-name">TemporalAdjusters</span><span class="token punctuation">.</span><span class="token function">lastDayOfMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                 <span class="token punctuation">.</span><span class="token function">withHour</span><span class="token punctuation">(</span><span class="token number">23</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">withMinute</span><span class="token punctuation">(</span><span class="token number">59</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">withSecond</span><span class="token punctuation">(</span><span class="token number">59</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>金融领域相关知识点</title>
       <link href="/2024/05/05/si-kao/jing-ji-xue/jin-rong-ling-yu-xiang-guan-zhi-shi-dian/"/>
       <url>/2024/05/05/si-kao/jing-ji-xue/jin-rong-ling-yu-xiang-guan-zhi-shi-dian/</url>
       
-        <content type="html"><![CDATA[<h1 id="认购和申购的区别"><a class="markdownIt-Anchor" href="#认购和申购的区别"></a> 认购和申购的区别</h1><p>区别在于：<br>认购指的是在首次公开发行时，投资者向发行人表示愿意购买其发行的新股票或债券，通常需要缴纳一部分认购款作为意向金。如果发行人同意认购，则投资者将最终购买这些证券。<br>申购则是指投资者向证券公司或基金公司申请购买证券或基金份额，通常不需要缴纳认购款。申购的对象可以是已经发行上市的股票、债券或基金。<br>总的来说，认购更多地用于新股票或债券的发行阶段，而申购更多地用于购买已经发行上市的证券或基金。</p><h1 id="什么叫现金贷-场景贷"><a class="markdownIt-Anchor" href="#什么叫现金贷-场景贷"></a> 什么叫现金贷、场景贷</h1><p>现金贷和场景贷是两种不同的贷款形式。</p><ol><li><p>现金贷（Cash Loan）：现金贷是指借款人通过在线平台或移动应用程序快速获得短期现金贷款的一种贷款形式。它通常具有简化的申请流程和快速的审批速度，借款人可以在短时间内获得所需的现金。现金贷款的特点是灵活、快速，但利率较高，需要借款人承担较高的利息费用。</p></li><li><p>场景贷（Scenario Loan）：场景贷是指根据借款人的特定需求或场景提供的贷款。它根据借款人的特定场景或目的设计贷款产品，以满足特定的融资需求。例如，购车贷款、装修贷款、教育贷款等都属于场景贷。场景贷款通常具有较长的贷款期限和较低的利率，适用于特定的消费场景。</p></li></ol><p>总的来说，现金贷注重快速、灵活的短期融资，适用于紧急资金需求；而场景贷注重根据特定场景提供的贷款，适用于满足特定消费需求。需要注意的是，无论是现金贷还是场景贷，借款人都应该谨慎选择，并根据自身的还款能力合理借款和使用贷款。</p><h1 id="非公开募集基金私募基金"><a class="markdownIt-Anchor" href="#非公开募集基金私募基金"></a> 非公开募集基金(私募基金)</h1><p>非公开募集基金通常也称为私募基金，指的是只向特定的被允许投资的有限数量的投资者募集资金的基金。私募基金不同于公开募集基金，不向广大公众发行，而是通过私下协商的方式向符合条件的投资者募集资金。私募基金通常具有更高的门槛和更灵活的投资策略，投资者一般需要符合一定的净资产要求或是具有一定的投资经验才能参与。</p><p>所谓非公开募集基金，又称私募基金，是指通过非公开方式，面向少数个人或机构投资者等特定对象募集资金而设立的投资基金。非公开募集基金是相对于受国家主管部门监管的公开募集基金而言的。2004年通过的证券投资基金法主要规范的是基金管理人以公开募集方式设立的基金，对采用非公开方式募集设立的基金未作规定。</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="认购和申购的区别"><a class="markdownIt-Anchor" href="#认购和申购的区别"></a> 认购和申购的区别</h1><p>区别在于：<br>认购指的是在首次公开发行时，投资者向发行人表示愿意购买其发行的新股票或债券，通常需要缴纳一部分认购款作为意向金。如果发行人同意认购，则投资者将最终购买这些证券。<br>申购则是指投资者向证券公司或基金公司申请购买证券或基金份额，通常不需要缴纳认购款。申购的对象可以是已经发行上市的股票、债券或基金。<br>总的来说，认购更多地用于新股票或债券的发行阶段，而申购更多地用于购买已经发行上市的证券或基金。</p><h1 id="什么叫现金贷-场景贷"><a class="markdownIt-Anchor" href="#什么叫现金贷-场景贷"></a> 什么叫现金贷、场景贷</h1><p>现金贷和场景贷是两种不同的贷款形式。</p><ol><li><p>现金贷（Cash Loan）：现金贷是指借款人通过在线平台或移动应用程序快速获得短期现金贷款的一种贷款形式。它通常具有简化的申请流程和快速的审批速度，借款人可以在短时间内获得所需的现金。现金贷款的特点是灵活、快速，但利率较高，需要借款人承担较高的利息费用。</p></li><li><p>场景贷（Scenario Loan）：场景贷是指根据借款人的特定需求或场景提供的贷款。它根据借款人的特定场景或目的设计贷款产品，以满足特定的融资需求。例如，购车贷款、装修贷款、教育贷款等都属于场景贷。场景贷款通常具有较长的贷款期限和较低的利率，适用于特定的消费场景。</p></li></ol><p>总的来说，现金贷注重快速、灵活的短期融资，适用于紧急资金需求；而场景贷注重根据特定场景提供的贷款，适用于满足特定消费需求。需要注意的是，无论是现金贷还是场景贷，借款人都应该谨慎选择，并根据自身的还款能力合理借款和使用贷款。</p><h1 id="非公开募集基金私募基金"><a class="markdownIt-Anchor" href="#非公开募集基金私募基金"></a> 非公开募集基金(私募基金)</h1><p>非公开募集基金通常也称为私募基金，指的是只向特定的被允许投资的有限数量的投资者募集资金的基金。私募基金不同于公开募集基金，不向广大公众发行，而是通过私下协商的方式向符合条件的投资者募集资金。私募基金通常具有更高的门槛和更灵活的投资策略，投资者一般需要符合一定的净资产要求或是具有一定的投资经验才能参与。</p><p>所谓非公开募集基金，又称私募基金，是指通过非公开方式，面向少数个人或机构投资者等特定对象募集资金而设立的投资基金。非公开募集基金是相对于受国家主管部门监管的公开募集基金而言的。2004年通过的证券投资基金法主要规范的是基金管理人以公开募集方式设立的基金，对采用非公开方式募集设立的基金未作规定。</p><h1 id="资金账户和证券账户的区别"><a class="markdownIt-Anchor" href="#资金账户和证券账户的区别"></a> 资金账户和证券账户的区别</h1><p>资金账户和证券账户是在证券交易中常见的两种账户类型。资金账户主要用于存放资金，用于证券交易时的资金结算和支付。证券账户则用于持有和交易证券，如股票、债券等。在进行证券交易时，资金账户和证券账户之间会进行资金的划转和结算，以完成交易过程。</p>]]></content>
       
       
       <categories>
@@ -68,11 +95,11 @@
     
     
     <entry>
-      <title>QDII基金相关概念</title>
-      <link href="/2024/05/05/si-kao/jing-ji-xue/qdii-ji-jin-xiang-guan-gai-nian/"/>
-      <url>/2024/05/05/si-kao/jing-ji-xue/qdii-ji-jin-xiang-guan-gai-nian/</url>
+      <title>QDII基金相关</title>
+      <link href="/2024/05/05/si-kao/jing-ji-xue/qdii-ji-jin-xiang-guan/"/>
+      <url>/2024/05/05/si-kao/jing-ji-xue/qdii-ji-jin-xiang-guan/</url>
       
-        <content type="html"><![CDATA[<p>全称： Qualified domestic institutional investor<br>百度百科</p><blockquote><p>QDII基金是指在一国境内设立，经该国有关部门批准从事境外证券市场的股票、债券等有价证券业务的证券投资基金。和QFII一样，它也是在货币没有实现完全可自由兑换、资本项目尚未开放的情况下，有限度地允许境内投资者投资境外证券市场的一项过渡性的制度安排。</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<p>全称： Qualified domestic institutional investor<br>百度百科</p><blockquote><p>QDII基金是指在一国境内设立，经该国有关部门批准从事境外证券市场的股票、债券等有价证券业务的证券投资基金。和QFII一样，它也是在货币没有实现完全可自由兑换、资本项目尚未开放的情况下，有限度地允许境内投资者投资境外证券市场的一项过渡性的制度安排。</p></blockquote><h1 id="qdii基金禁止投资行为包括哪些"><a class="markdownIt-Anchor" href="#qdii基金禁止投资行为包括哪些"></a> QDII基金禁止投资行为包括哪些？</h1><p>QDII基金禁止投资行为<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup></p><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li id="fn1" class="footnote-item"><p><a href="https://www.educity.cn/jjcy/5298666.html">https://www.educity.cn/jjcy/5298666.html</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p></li></ol></section>]]></content>
       
       
       <categories>
@@ -4662,11 +4689,11 @@
       
         <tags>
             
-            <tag> 引用 </tag>
-            
             <tag> 计算机 </tag>
             
             <tag> 计算机基础 </tag>
+            
+            <tag> 引用 </tag>
             
         </tags>
       
@@ -5714,39 +5741,6 @@
     
     
     <entry>
-      <title>Linux终端生存之道-git别名</title>
-      <link href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/"/>
-      <url>/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/</url>
-      
-        <content type="html"><![CDATA[<p>在Linux平台上,很多命令在我们按下<code>tab</code>键之后会自动补全该命令,在多次连续按下<code>tab</code>键之后会一次补全并切换匹配的命令。我们在使用git的过程中,也希望能够自动补全一些指令,比如 我想执行 <code>git status</code> 命令的时候,我只用输入 <code>git st</code> 然后按下<code>tab</code>键,就能输出 <code>git status</code>了。</p><p>在mac平台,使用HomeBrew安装Git <code>brew install git</code><br>我们会得到如下的输出(可以使用 <code>brew info git</code> 命令查看安装git时候的输出信息),我截取了最后几行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.Bash completion has been installed to:  /usr/local/etc/bash_completion.d<span class="token function">zsh</span> completions and functions have been installed to:  /usr/local/share/zsh/site-functionsEmacs Lisp files have been installed to:  /usr/local/share/emacs/site-lisp/git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>Bash completion has been installed to:</code> 这句话告诉我们git的自动补全脚本已经添加到了 <code>/usr/local/etc/</code> 目录下面的 <code>bash_completion.d</code>文件</p><p>我们所要做的就是,把它加到linux的补全功能中<br>我们首先进入 <code>/etc</code> 目录 ,使用管理员权限修改 <code>bashrc</code> 文件,在文件的最后一行加入下面一句话<br><code>[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] &amp;&amp; . /usr/local/etc/bash_completion.d/git-completion.bash</code><br>保存,重启终端即可</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Linux </category>
-          
-          <category> 终端生存之道 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> Linux </tag>
-            
-            <tag> Git </tag>
-            
-            <tag> 终端生存之道 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>作画</title>
       <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
       <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
@@ -5863,6 +5857,39 @@
             <tag> Git </tag>
             
             <tag> 工具控 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux终端生存之道-git别名</title>
+      <link href="/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/"/>
+      <url>/2016/09/11/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-git-bie-ming/</url>
+      
+        <content type="html"><![CDATA[<p>在Linux平台上,很多命令在我们按下<code>tab</code>键之后会自动补全该命令,在多次连续按下<code>tab</code>键之后会一次补全并切换匹配的命令。我们在使用git的过程中,也希望能够自动补全一些指令,比如 我想执行 <code>git status</code> 命令的时候,我只用输入 <code>git st</code> 然后按下<code>tab</code>键,就能输出 <code>git status</code>了。</p><p>在mac平台,使用HomeBrew安装Git <code>brew install git</code><br>我们会得到如下的输出(可以使用 <code>brew info git</code> 命令查看安装git时候的输出信息),我截取了最后几行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">..</span>.Bash completion has been installed to:  /usr/local/etc/bash_completion.d<span class="token function">zsh</span> completions and functions have been installed to:  /usr/local/share/zsh/site-functionsEmacs Lisp files have been installed to:  /usr/local/share/emacs/site-lisp/git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>Bash completion has been installed to:</code> 这句话告诉我们git的自动补全脚本已经添加到了 <code>/usr/local/etc/</code> 目录下面的 <code>bash_completion.d</code>文件</p><p>我们所要做的就是,把它加到linux的补全功能中<br>我们首先进入 <code>/etc</code> 目录 ,使用管理员权限修改 <code>bashrc</code> 文件,在文件的最后一行加入下面一句话<br><code>[ -f /usr/local/etc/bash_completion.d/git-completion.bash ] &amp;&amp; . /usr/local/etc/bash_completion.d/git-completion.bash</code><br>保存,重启终端即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 终端生存之道 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> Git </tag>
+            
+            <tag> 终端生存之道 </tag>
             
         </tags>
       
