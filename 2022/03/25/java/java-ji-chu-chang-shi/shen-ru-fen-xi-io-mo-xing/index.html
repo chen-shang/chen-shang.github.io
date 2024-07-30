@@ -1,0 +1,1279 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="深入分析I/O模型, IT,技术,总结">
+    <meta name="description" content="我们要讲IO模型,我不像网上的一些文章,上来就讲 阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO等的原理，也不讲 同步、异步、阻塞、非阻塞 的区别和联系,更不想讲 多路复用IO中 select、poll、epoll 的三种实现。虽然后面都会讲到。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>深入分析I/O模型 | 涓涓细流</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">涓涓细流</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+<!--
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+-->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">涓涓细流</div>
+        <div class="logo-desc">
+            
+            无限可能
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">深入分析I/O模型</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                <span class="chip bg-color">原创</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
+                            </a>
+                        
+                            <a href="/tags/JAVA/">
+                                <span class="chip bg-color">JAVA</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/JAVA/" class="post-category">
+                                JAVA
+                            </a>
+                        
+                            <a href="/categories/JAVA/Java%E5%9F%BA%E7%A1%80%E5%B8%B8%E8%AF%86/" class="post-category">
+                                Java基础常识
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-03-25
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2024-07-30
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.3k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    21 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>这篇文章我为什么叫做深入分析I/O模型呢,并不是因为我分析的有多深入,而是因为为了研究清楚这个I/O模型,我确实花了很多时间,查了很多资料。我想大多数人对这一块儿也有疑问,而且网上那些文章看过一遍又一遍之后又会有新的问题,甚至有些文章讲的都是错的还被抄来抄去。我也不确定我写的能否给大家讲明白,姑且先记下来吧。以下都是基于我个人的理解，不代表权威观点，如有疑问可以讨论。</p>
+<p>我们要讲I/O模型,我不像网上的一些文章,上来就讲 阻塞IO、非阻塞IO、信号驱动IO、多路复用IO、异步IO等的原理，也不讲 同步、异步、阻塞、非阻塞 的区别及联系, 更不想讲 多路复用IO中 select、poll、epoll 的三种实现,虽然后面都会讲到。这里我用我写文章惯用的手法，先从字面意思入手，逐渐逐渐引出一些新的概念来。</p>
+<h1 id="啥叫io"><a class="markdownIt-Anchor" href="#啥叫io"></a> 啥叫I/O</h1>
+<p>先上维基百科</p>
+<blockquote>
+<p>I/O（英语：Input/Output），即输入／输出，通常指数据在存储器（内部和外部）或其他周边设备之间的输入和输出，</p>
+</blockquote>
+<p>I/O 指的就是数据在设备上的读写。那这里的设备都有哪些呢？我们初步想一下，磁盘、内存、显卡、网卡、声卡、CPU 等等很多设备我们都可以进行数据的读写或者叫存取。这些设备都或多或少都有一块存储空间可以存取数据，也就是存取我们的0或者1组成的序列。</p>
+<p>那研究如何在这些设备上进行读写，就是我们的I/O模型要讲的东西。I/O 模型就是研究I/O操作具体实现方案的理论。换句话说，I/O模型就是对设备读写的不同方式的实现，不同的实现就对应不同的IO模型。</p>
+<h1 id="设备不是想调想调就能调"><a class="markdownIt-Anchor" href="#设备不是想调想调就能调"></a> 设备不是想调，想调就能调</h1>
+<p>我们从什么设备进行读写就叫什么IO,例如 从磁盘读写数据我们就叫磁盘IO,磁盘上存的大部分都是以文件的形式,所以我们也叫文件IO.从内存读写数据我们就叫内存IO,从网卡设备读写数据我们就叫做网卡IO,说的更通俗一点也叫网络IO,也就是我们研究的那个Socket这个东东。</p>
+<p>但是这些设备不是你想使用你就能使用的，对于计算机来说想 cpu啊、内存、磁盘、显卡啊这些计算机统统视其为资源，这些资源是计算机的宝贵财富，所以要好好保护起来才行，不是你想使用就能使用的。</p>
+<p>要想使计算机运行起来，我们必须要安装一个超大型的软件，叫做操作系统才行，所以操作系统其实是一个软件，这个软件内部有一个核心模块，我们简称为内核(内部的核心代码嘛)。</p>
+<p>一开始我想的很简单,无非就是直接往某个设备的地址里面写入0或1,或者把某个设备的存储空间里面的0或1搬移到另一个设备的存储空间,这不就实现了数据的读写么。但是我这个理解从宏观上看是没错的，但是深入到系统底层来看就行不通了。首先，前面说的 直接 往某个设备的地址里面写0或1 是实现不了的，因为操作系统不允许，或者说操作系统的内核不允许。像 磁盘、网卡、显卡、声卡、CPU 这些硬件设备，不是说你想调就能调用的，我们把这些都看做是操作系统的资源，这些资源之间通过总线连接，通过总线传输数据，数据从一个位置转移(拷贝)到另一个位置，总要有一定的通路才行，不然隔空是传输不了数据的，在计算机内部，通路就是导线，这些导线可能是铜的的也可能是金的，但这些线总起来我们就叫做总线。总线分为 数据总线(主管数据的),控制总线(主管命令的),地址总线(主管位置的)，不在本篇的讨论范畴。</p>
+<p>上面说的这些硬件资源不是你想控制就能控制的，所以说是受保护的。那是受谁保护的呢？谁有这么大的权力呢？这个家伙叫内核，内核是操作系统内的核心(简称内核，哈哈)，而操作系统是一个软件，内核更是一个软件，操作系统可以理解为一个大大的进程，或者说第一个进程，0号进程或者1号进程，随便你怎么叫吧。内核怎么保护这些设备呢，如果你自己要控制某个硬件，比如使蜂鸣器响3下，比如关闭键盘背光灯，至少到目前按照我的理解，必须调用内核提供的接口才可以操作，就跟你调用一个http接口post数据一样，你得调用内核的接口，内核在调用具体的硬件的驱动去控制具体的硬件。那你调用内核的时候，cpu就开始执行内核的代码了，这其中我们就叫做陷落到了内核，或者叫内核切换，内核执行自己的接口的时候，肯定也是需要占用一定空间的，他调用cpu执行方法的时候也是需要保存一些中间数据的，所以内核也是需要一部分内存空间的。这部分内存空间，我们叫做内核空间，注意内核空间依然是受保护的，因为除了内核这部分内存地址谁也访问不了，这里的谁特指的是内核之外的用户，我们叫用户进程，用户进程用的空间我们叫用户空间。这里特意说一点我的理解，我认为，用户进程调用内核接口发起内核调用之后并没有发生进程的切换，还应该是在一个进程上下文当中，内核依然可以访问用户空间的数据，cpu并没有让出进程的控制权，也没有保存进程上下问，更没有进程上下文数据的切换。但发起系统调用有一点比较麻烦，就是内核会校验传入数据和操作的安全性，例如你发起一个系统调用，告诉内核给我把操作系统删除掉，汗，这其实是不允许的。然后每发起一次系统调用就进行一次数据校验等巴拉啦一大推校验工作（具体我也不知道是啥）。所以，用户进程其实都很讨厌发起系统调用，因为发起系统调用后，要么等，要么等，要么等，等他一坨没有必要的校验工作(当然这是用户进程的想法)，还不如我直接控制来的爽。就好像你写了个函数，里面会校验入参是不是为空，但我调用的时候明明知道自己不会给函数传空，但是每次调用时候又不得不浪费一点判断参数是否为空的时间，一次两次还好，如果我调用10000次这个函数呢?</p>
+<h1 id="我们怎才能读设备里面的数据"><a class="markdownIt-Anchor" href="#我们怎才能读设备里面的数据"></a> 我们怎才能读设备里面的数据</h1>
+<p>这里我们以读数据为例子，这个设备我假设为磁盘，而我要读取的数据静静的躺在磁盘上的某个文件中。我要把这个文件的内容赋值给我定义个一个字符串变量。如果要让我自己设计一套实现方案，我可能想到的就是直接把磁盘上的数据通过cpu一点一点地搬移到我的用户空间的内存中，然后继续执行后面的代码。 这样何其简单啊。</p>
+<p>但是可是可但是，从磁盘读取数据到内存特别的慢，而且如果一个文件要读取多次，则慢上加慢。所以操作系统并不是这么干的，一般遇到这种存取速度不匹配的情况，例如 cpu比内存快，内存比磁盘快的情况，我们一般是搞一个中间层缓存，类比如 redis 和mysql . mysql 很慢(相对于redis来说)，我们就用redis来屏蔽这种差异。那操作系统怎么做的呢?</p>
+<p>第一种方式叫 缓存IO,又叫Buffer IO. 可以理解为在内核空间中申请一部分空间，作为底层磁盘这种慢介质的缓存，有了缓存，我们先从缓存读取，如果有则很快返回，如果没有我们再去磁盘读取，注意这里和redis+mysql 不同，redis+mysql 是先读取到用户空间，在回写redis，因为是用户进程去读mysql而不是redis去读mysql的. 但是在操作系统层面，是内核发起磁盘读取而不是用户发起磁盘读取的，所以数据是先到内核空间，然后用户进程才来读取数据的。所以但凡是这这种形式，在用户进程和存储介质中内核明目张胆的加了一个缓存层的都可以叫做缓存IO，这个阶段你还拿内核没有办法，这是最开始操作系统读写文件方式，因而已经成为一种标准，故这种方式也叫标准IO. 所以说缓存IO,Buffer IO,标准IO 都是一个意思。我们要把数据从一个地方搬移到另一个地方，中间是需要经过cpu一点一点搬移的，你可以理解为，cpu一会执行一点指令，把数据拷贝到cpu的缓存，在把cpu缓存中的数据转移到指定的位置，就完成了一次文件的读写操作。</p>
+<p>注意这里说的缓存IO或者Buffer IO 或者标准IO，并不是Linux 的IO模型。IO模型要从同步、异步、阻塞和非阻塞的角度去说，这中只能叫读取设备的方式，方式就是加了一个缓存层。那加了这个缓存层肯定有好有坏，好就好在它是一份缓存嘛，屏蔽了内存和磁盘操作的速度差异嘛。为什么加了一层缓存就屏蔽了这个速度差异呢?如果第一次查询没有命中缓存，你是不是还得去底层磁盘查询，底层磁盘还是很慢，所以第一次查询没有命中缓存这个速度差异是屏蔽不掉的，该慢还是慢。但是下一次查询呢，不就快了么。不过我既然已经读到我用户空间了，为什么还要费劲再去磁盘查询一下呢,这不是多此一举么。所以这个二次查询的优势其实也不算太优势，如果你在程序中把一个文件的内容读到了一个file中，你每次读取的时候拿难道都从磁盘在读取一遍么。那样太蠢了。那它肯定还有另外的显著的优势，就在于内核读取磁盘缓存的时候其实并不是只读你想要读取的那个空间的内容，而是把你想读的空间的内容附近的内容也都读出来，这样下次你读取该空间附近的空间的时候就可以直接命中缓存了，这样做是根据了一个叫做局部性原理的原理来设计的。所以才能显著提高访问速度，其底层就是把多次内核向磁盘读取数据的IO变成了一次磁盘IO。</p>
+<p>但是我觉得这根本不成立，因为用户进程和内核的速度差异是屏蔽了，但是内核和磁盘读写还是有速度差异啊，还是很慢吧，所以我认为这个好处并不成立。我理解他的好处就和redis一样，你之后读取的时候会很快，但是这一点我也觉得不算是太大的有点，因为我既然都已经读取到用户空间了，我干嘛还要在单独读一遍内核空间中的缓存呢，我直接操作我用户空间内存不行么。</p>
+<p>缓存 I/O 使用了操作系统内核缓冲区，在一定程度上分离了应用程序空间和实际的物理设备。 我也不觉得这种区分有什么好的。<br>
+缓存 I/O 可以减少读盘的次数，从而提高性能。这一点我还是同意的，下次在调用的时候确实不用再读取一遍磁盘了。</p>
+<p>未完待续，明天再写…</p>
+<p>鉴于buffer io ,还要搞一个内核缓冲区，数据需要从磁盘先拷贝到内核缓冲区，然后在拷贝到用户缓冲区，这其中就要经历两次拷贝，而且两次拷贝中存储的数据都是一样的。</p>
+<h2 id="dma-直接存储器访问"><a class="markdownIt-Anchor" href="#dma-直接存储器访问"></a> DMA （直接存储器访问）</h2>
+<p>百度百科</p>
+<blockquote>
+<p>DMA(Direct Memory Access，直接存储器访问) 是所有现代电脑的重要特色，它允许不同速度的硬件装置来沟通，而不需要依赖于 CPU 的大量中断负载。否则，CPU 需要从来源把每一片段的资料复制到暂存器，然后把它们再次写回到新的地方。在这个时间中，CPU 对于其他的工作来说就无法使用。</p>
+</blockquote>
+<p>可以想象MDA方式中有另一个cpu,专门负责数据的拷贝转移，这样cpu就可以空闲出来了嘛</p>
+<h1 id="linux-io-与-java-io"><a class="markdownIt-Anchor" href="#linux-io-与-java-io"></a> Linux IO 与 Java IO</h1>
+<p>Linux IO 其实指的是更为底层的IO, 而Java IO更多的是指应用层的IO,所以说Java 的IO 模型的实现其实是依赖底层的Linux IO的实现的。<br>
+Linux IO 有5种,分别叫 阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO. 但java只支持其中的三种，Java IO的分类分别叫 BIO、NIO、AIO<br>
+其中 <code>BIO</code> 对应 Linux IO 中的<code>阻塞IO</code>实现; <code>NIO</code>对应的其实是 Linux IO中的<code>多路复用IO</code>;<code>AIO</code> 则对应LINUX IO中的<code>异步IO</code>,这一点一定要记清楚,否则后面的概念容易混淆。</p>
+<h1 id="linux-io-模型"><a class="markdownIt-Anchor" href="#linux-io-模型"></a> Linux IO 模型</h1>
+<p>上面说到 Linux IO 有5种,分别叫 阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO。我们思考一下几个问题<br>
+服务器如何读取网络上传递过来的一条消息的-&gt;首先两台服务器之间进行3次握手建立连接,你可以想象,你的计算机上运行着一个叫tcp的软件,这个软件呢可以打开某个端口,所谓打开端口,就是说可以通过这个端口接收到网络上定向发送给该端口的0101的数据。当网络上的数据通过该端口发送过来消息的时候，其实就是当第一个高电平传输过来的时候,这个tcp软件就会被cpu叫醒,cpu为什么去叫醒tcp软件是因为高电平传过来的时候给了操作系统一个信号中断,然后这个tcp软件发现有数据到达,于是在计算机上申请一块儿内存用于记录通过该端口传过来的数据,这块儿内存其实就是一个socket,他像个插座一样连接你的应用程序和网络上的数据,同时为了表示一个socket我们像上面提到的文件系统申请了一个文件描述符,文件描述符表面上像一个数字，其实背地里它代表一种数据结构的。而我们的应用程序要读取到网路中传输过来的数据，其实就是从这个socket中读取数据。但是我们在向socket读取数据读不到的时候采取什么样的策略决定了我们属于什么模型。</p>
+<h2 id="阻塞io"><a class="markdownIt-Anchor" href="#阻塞io"></a> 阻塞IO</h2>
+<p>我们从头捋一遍我们应用程序从启动到接收数据的过程,首先我们应用程序先调用系统方法去监听某个接口，所谓监听其实就是告诉操作系统当有数据从我监听的端口经过的时候，你通知我这个应用程序而不是其他的应用程序，这就是为什么我们一个应用占用一个端口的时候其他应用是无法再继续监听该端口的，会报出端口冲突的异常。当有连接进来的时候，操作系统会响应中断，然后进而去通知我们的server，说有链接来了，你可以继续执行了。于是我们的应用server就会开始准备去读数据，这时候你会发现从流中读数据的时候，又发生了一次阻塞，我们的应用程序就阻塞在哪里等着数据的到来，其实也是跟操作系统说，我现在要读数据了，不过系统说好的那你等着吧，我准备好了告诉你，这时候客户端的数据一点一点到达服务器，等最后一个数据包到达后，我们的操作系统就把数据返回给我们的server,然后server就可以继续执行了。 这种模式就叫阻塞IO, 在阻塞IO中我们的server阻塞了两次，一次在listen的时候（accept 的时候方法内部最后会调用litsent）等着链接的到来，一次在 read数据的时候，从流中读数据的时候会发起系统调用也会阻塞一次。</p>
+<p>阻塞IO最符合我们人类的思维习惯。这里的阻塞IO全称应该叫做同步阻塞IO。</p>
+<h2 id="非阻塞io"><a class="markdownIt-Anchor" href="#非阻塞io"></a> 非阻塞IO</h2>
+<p>非阻塞IO ,这里指的非阻塞是第二次我们从InputSteam里面读数据的时候，不阻塞。也就是我们发起系统调用用InputStream中读取数据的时候，操作系统说好的，我知道了，但是现在没办法给你数据，你在后面慢慢准备，你该干啥干啥去，至于什么时候准备好，你自己一会来看吧。于是我么应用程序每隔一会儿就得询问一下操作系统，数据准备好了没有，如果好了，那就直接取到了，如果没有准备好，我们就再做会儿其他的事情，过一会儿再来看看，但是这个间隔隔多久呢，就要你自己负责了，隔得久了取数据不及时，隔得短了，数据还没准备好，总之很纠结，要是为了这个场景在开发出一个动态获取数据的时间间隔的算法又有点得不偿失了。<br>
+这就是非阻塞IO,非阻塞IO,就是告诉操作系统你去给我准备数据吧，然后自己可以干一点其他的事情，利用率稍微有点提高，但是不够及时。全称应该叫同步非阻塞IO。</p>
+<h2 id="信号驱动io"><a class="markdownIt-Anchor" href="#信号驱动io"></a> 信号驱动IO</h2>
+<p>信号驱动IO,其实应该是非阻塞IO的变动版本，就是获取数据的时候，同样是非阻塞，但是但是不用时不时的取轮询获取是否准备好了，因为一旦数据准备好了，就会通过信号的方式通知应用线程，应用线程下次切换回来的时候就会发现自己信号列表有个信号，先响应这个信号，发现是数据准备好了，于是就去取数据，把轮询交给了操作系统的系统调度的时候做。这就是信号驱动的读取数据的过程。信号驱动也是同步的，全称应该叫同步信号驱动IO</p>
+<h2 id="多路复用io"><a class="markdownIt-Anchor" href="#多路复用io"></a> 多路复用IO</h2>
+<p>上面无论是阻塞IO还是非阻塞IO，都是一个线程既负责管理链接到来的事情，又要负责数据读取的事情，一条道走到黑，为了多连接，那就得多个线程。但是我们知道线程可不是越多越好。于是人们先要我们能不能让一个线程来处理多个链接呢？也就是能不能复用这线程，这里的多路复用指的就是多路数据读取线程复用一个链接管理线程。因为好多时候，我们的链接后并不一定就发送数据，用阻塞IO还是非阻塞IO，都得等。要是能在数据准备好的时候或者链接准备好的时候，在告诉我们好了，那就好了，这样处理问题就连起来了，你告诉操作系统，有链接的时候你叫我，我先去干别的事情，有数据的时候教我，我先去干别的事情，我很忙的。于是就变成了，这样一种方式，我们有一个线程，每来一个链接我们往我的一个数组里面放，然后我会在数据准备好的时候，扫描一下所有的数组，把所有的准备好的链接或者数据返给应用，应有就可以继续处理了，这样就用一个线程管理了多个线程，其实就是有链接的时候先链接，然后记录下来，在后面某个时刻触发一下一次性吧准备好的数据返回，规避了应用反复发起系统调用的情况。但是多路复用还是会有阻塞的，会阻塞在selector的select方法。只不过这个select可以返回多个还准备好的链接，对于没有准备好的，是不会返回的。</p>
+<p>跟传统的阻塞IO不同，IO复用可以阻塞在多个socket文件描述符上。当其中任何一个socket有数据可读的时候（或者超时），IO复用的函数(select, poll，epoll)才会返回。然后进程可以逐一处理可读的socket文件描述符。</p>
+<p>多路复用也是同步的，所以全称应该叫做 同步多路复用IO。多路复用</p>
+<h2 id="异步io"><a class="markdownIt-Anchor" href="#异步io"></a> 异步IO</h2>
+<p>异步IO才是真正的异步，因为发起系统调用后，告诉操作系统，你给我准备数据，准备好之后，你调用的某某方法处理数据。自己完全不管了。这就是真正的异步IO，全称应该叫异步非阻塞IO。 那异步阻塞IO呢？没有人会有异步阻塞IO这种方式的，那不是傻么。明明可以去干点其他时候，愣子在那儿等着。数据也不需要你自己处理，你等着干啥，还不如直接退出呢。</p>
+<h1 id="多路复用的-select-poll-epoll-实现"><a class="markdownIt-Anchor" href="#多路复用的-select-poll-epoll-实现"></a> 多路复用的 select、poll、epoll 实现</h1>
+<p>select 对文件描述符的大小有限制，poll打破了这种限制的上线，但是文件描述符需要来回在用户空间和内核空间拷贝，epoll更是没有上限，但是比poll多的功能就是把感兴趣的事情给你分好了类，而且减少了拷贝。</p>
+<h1 id="java-io-模型-与linux-io-模型的对应关系"><a class="markdownIt-Anchor" href="#java-io-模型-与linux-io-模型的对应关系"></a> Java IO 模型 与Linux IO 模型的对应关系</h1>
+<p>Java 的IO 模型肯定不是自己独创的，他一定依赖操作系统提供的能力！<br>
+JavaIO 模型只有三种<br>
+BIO 阻塞IO,对应linux的阻塞IO实现<br>
+NIO 对应Linux 的多路复用IO<br>
+AIO 对应Linux 的异步IO</p>
+<h1 id="同步-异步-阻塞-非阻塞"><a class="markdownIt-Anchor" href="#同步-异步-阻塞-非阻塞"></a> 同步、异步、阻塞、非阻塞</h1>
+<p>上面说了 linux IO 里面除了 异步IO 是真正的异步外，其他都是同步，因为请求完成后，数据是有应用线程自己取的，这就是同步的概念，只要数据不是操作系统自己送过来，那就是同步的，只要是操作系统自己主动的送过来，而自己不需要关心，只关心通知操作系统说我要数据，那就是真正的异步了。</p>
+<p>阻塞和非阻塞就看自己跟操作系统要数据之后，是不是在哪儿等，无论是因为操作系统没准好无法返回导致的我们等，还是因为选择的在哪儿等，只要有等的动作那就是阻塞的，否则就是非阻塞，无论数据好没有，被调用这立马返回说我知道了，那即是非阻塞的。</p>
+<p>都是定义不必死记。</p>
+<h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                    <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
+                                </a>
+                            
+                                <a href="/tags/JAVA/">
+                                    <span class="chip bg-color">JAVA</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zpykYxqrLC4qVar5tL3t0MAL-gzGzoHsz',
+        appKey: '3LhmIMSf9HYX5VXhD21hiPPG',
+        serverURLs: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/03/28/java/java-ji-chu-chang-shi/jdk-dong-tai-dai-li-vs-cglib-dong-tai-dai-li/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="JDK动态代理 VS Cglib动态代理">
+                        
+                        <span class="card-title">JDK动态代理 VS Cglib动态代理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Cglib不是更强么，为什么有了Cglib还要有JDK动态代理存在的必要
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-03-28
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/Java%E5%9F%BA%E7%A1%80%E5%B8%B8%E8%AF%86/" class="post-category">
+                                    Java基础常识
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/03/22/ji-suan-ji/ji-suan-ji-ji-chu/wei-shi-me-shuo-32-wei-cao-zuo-xi-tong-de-zui-da-xun-zhi-kong-jian-shi-4g/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/25.png" class="responsive-img" alt="为什么说32位操作系统的最大寻址空间是4G">
+                        
+                        <span class="card-title">为什么说32位操作系统的最大寻址空间是4G</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            为什么说32位操作系统的最大寻址空间是4G？而64位操作系统的最大寻址空间是8G呢？
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-03-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                    计算机
+                                </a>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    计算机基础
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
+                        <span class="chip bg-color">计算机</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">计算机基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('300')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 涓涓细流<br />'
+            + '文章作者: 陈尚<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2024</span>
+            
+            <a href="/about" target="_blank">陈尚</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">197.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chen-shang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2414973330@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2414973330" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2414973330" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+	<span id="jinrishici-sentence"></span>
+        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f34c6ca18e751cd090a8864b66dda7fd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>

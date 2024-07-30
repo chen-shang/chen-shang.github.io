@@ -4,6 +4,251 @@
   
     
     <entry>
+      <title>关于codereview的思考</title>
+      <link href="/2024/07/27/si-kao/guan-yu-codereview-de-si-kao/"/>
+      <url>/2024/07/27/si-kao/guan-yu-codereview-de-si-kao/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于团队合作的思考</title>
+      <link href="/2024/07/26/si-kao/guan-yu-tuan-dui-he-zuo-de-si-kao/"/>
+      <url>/2024/07/26/si-kao/guan-yu-tuan-dui-he-zuo-de-si-kao/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关于AMC不良资产处置行业的思考</title>
+      <link href="/2024/07/26/si-kao/guan-yu-amc-bu-liang-zi-chan-chu-zhi-xing-ye-de-si-kao/"/>
+      <url>/2024/07/26/si-kao/guan-yu-amc-bu-liang-zi-chan-chu-zhi-xing-ye-de-si-kao/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 思考 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Java8 Collectors.toMap注意事项</title>
+      <link href="/2024/07/01/java/jie-jue-fang-an/java8-collectors-tomap-zhu-yi-shi-xiang/"/>
+      <url>/2024/07/01/java/jie-jue-fang-an/java8-collectors-tomap-zhu-yi-shi-xiang/</url>
+      
+        <content type="html"><![CDATA[<h1 id="duplicate-key-说明tomap的时候有重复的key程序也不知道该取哪个了"><a class="markdownIt-Anchor" href="#duplicate-key-说明tomap的时候有重复的key程序也不知道该取哪个了"></a> Duplicate key 说明toMap的时候有重复的key，程序也不知道该取哪个了</h1><pre class="line-numbers language-text" data-language="text"><code class="language-text">Exception in thread "main" java.lang.IllegalStateException: Duplicate key User(id=1, name=null, role=null) at java.util.stream.Collectors.lambda$throwingMerger$0(Collectors.java:133) at java.util.HashMap.merge(HashMap.java:1255) at java.util.stream.Collectors.lambda$toMap$58(Collectors.java:1320) at java.util.stream.ReduceOps$3ReducingSink.accept(ReduceOps.java:169) at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1384) at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482) at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472) at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708) at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:566) at com.seed.server.utils.SftpUtilTest.main(SftpUtilTest.java:44)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>解决办法，根据业务需要，如果不允许出现这样的数据，那就直接抛出异常。如果对于key重复的，根据实际业务人为决定取拿一个，一般要么去第一个要么去最后一个。</p><h1 id="nullpointerexception-说明tomap的时候有的key是null"><a class="markdownIt-Anchor" href="#nullpointerexception-说明tomap的时候有的key是null"></a> NullPointerException 说明toMap的时候有的key是null</h1><pre class="line-numbers language-none"><code class="language-none">Exception in thread "main" java.lang.NullPointerException at java.util.HashMap.merge(HashMap.java:1226) at java.util.stream.Collectors.lambda$toMap$58(Collectors.java:1320) at java.util.stream.ReduceOps$3ReducingSink.accept(ReduceOps.java:169) at java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1384) at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:482) at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:472) at java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:708) at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234) at java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:566) at com.seed.server.utils.SftpUtilTest.main(SftpUtilTest.java:44)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>解决办法，根据业务需要，如果不允许出现这样的数据，那就直接抛出异常。如果对于key为null的不进行处理，那就先filter在toMap</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> 解决方案 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>遇到的异常以及处理方法</title>
+      <link href="/2024/06/23/java/jie-jue-fang-an/yu-dao-de-yi-chang-yi-ji-chu-li-fang-fa/"/>
+      <url>/2024/06/23/java/jie-jue-fang-an/yu-dao-de-yi-chang-yi-ji-chu-li-fang-fa/</url>
+      
+        <content type="html"><![CDATA[<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Caused</span> by<span class="token operator">:</span> <span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>lang<span class="token punctuation">.</span></span>IllegalArgumentException</span><span class="token operator">:</span> <span class="token class-name">Could</span> not resolve placeholder 'attachmentId' in value <span class="token string">"/download/file/${attachmentId}"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>原因: 在定义 <code>@GetMapping("/download/file/${id}") 的时候，路径变量用 </code>{}<code>不用</code>${}`的形式，那是Shell的语法，弄串了</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/download/file/${id}"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> <span class="token function">downloadFle</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> <span class="token class-name">String</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> 解决方案 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Idea的代码自动补全功能</title>
+      <link href="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/"/>
+      <url>/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/</url>
+      
+        <content type="html"><![CDATA[<p>在使用IDEA编写代码的过程中,我们会发现一些比较快捷的写法. 例如有一个变量 <code>x</code>  我输入 <code>x.sout</code> 那么就会自动帮我们生成<br><code>System.out.println(x)</code> 这样形式的代码<br><img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/iShot_2024-06-23_11.54.39.gif" alt=""></p><p>这个功能是怎么设置的呢？以及我们怎么自定义自己的一些快捷操作呢？</p><p>首先要安装插件 <code>Custom Postfix Templates</code> <a href="https://plugins.jetbrains.com/plugin/9862-custom-postfix-templates">官网地址</a><br><img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image.png" alt=""></p><p>安装完成之后，搜索 <code>Postfix Template</code> 能看到如下菜单</p><p><img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-1.png" alt=""></p><p>其中 Settings | Editor | General | Postfix Completion 也是用来控制快捷生成代码的，但是不支持<code>变量.</code>这种形式。</p><p>我们要配置的是 Settings | Editor | Custom Postfix Templates 这个路径下的插件。</p><p>我们现在本地某个目录下新建一个叫 <code>postfix.postfixTemplates</code> 的文件，内容可以先不写。</p><p>我们点击这个+号，然后创建一个Java的代码补全规范<br><img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-2.png" alt=""></p><p>我们有几种方式来创建<br><img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-3.png" alt=""></p><p>一般我们是在本地电脑上或者在github等平台上发布一份我们自定义的文件。文件的命名有个规范必须叫 xxx.postfixTemplates , 已 <code>postfixTemplates</code>  后缀结尾才行。</p><p>然后就是编写 postfixTemplates 文件了，其语法可以参考其他的文件的写法</p><pre class="line-numbers language-text" data-language="text"><code class="language-text">.check : Preconditions.checkArgument java.lang.Object       →  Preconditions.checkArgument($expr$ $END$); java.lang.Inter       →  Preconditions.checkArgument($expr$ $END$); java.lang.Long           →  Preconditions.checkArgument($expr$ $END$); java.lang.Boolean       →  Preconditions.checkArgument($expr$ $END$);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Intellij IDEA </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Spring中@Resource和@Autowired注解的使用说明</title>
+      <link href="/2024/06/19/java/spring/spring-zhong-resource-he-autowired-zhu-jie-de-shi-yong-shuo-ming/"/>
+      <url>/2024/06/19/java/spring/spring-zhong-resource-he-autowired-zhu-jie-de-shi-yong-shuo-ming/</url>
+      
+        <content type="html"><![CDATA[<p>首先这@Resource @Autowired这两个注解都是Spring生态里去实现Bean的依赖注入（在springmvc项目和springboot项目中都可以使用）</p><p>下面我在说一下这个注解的区别</p><h1 id="autowired"><a class="markdownIt-Anchor" href="#autowired"></a> @Autowired</h1><p>@Autowired是Spring里面提供的一个注解，它默认是根据类型来实现Bean的依赖注入；</p><p>@Autowired里面有一个required属性，默认值是true 表示强制要求bean实例的一个注入，在应用启动的时候，如果IOC容器中不存在对应类型的bean，那么启动就会报错；如果我们不希望实现依赖注入就可以把这个属性设置为false</p><p>其次如果Spring IOC容器中存在多个相同类型的bean实例，但是由于@Autowired是根据类型去进行注入的，所以Spring启动的时候就会提示一个错误，就是原本只能注入一个单实例Bean,但是现在Ioc容器存在多个，导致注入失败；针对这个问题，可以使用@Primary @Qualifier这两个注解来解决；</p><p>@Primary表示主要的Bean，当存在多个相同类型的Bean的时候，会优先使用声明了@Primary注解的一个Bean</p><p>@Qualifier 相当于条件筛选，可以根据Bean的名字可以去找到需要装配的目标Bean</p><h1 id="resource"><a class="markdownIt-Anchor" href="#resource"></a> @Resource</h1><p>接下来我再解释一下@Resource这个注解，@Resource是JDK中提供的一个注解，只不过Spring在实现上提供了这个注解的一个功能支持，它的使用方式和@Autowired类似，</p><p>最大的区别就是@Resource可以支持ByName 和 ByType两种注入方式;</p><p>如果使用name属性，spring会根据bean的名字来进行依赖注入；<br>如果使用type属性，spring会根据bean的类型来进行依赖注入，如果两个属性都没有进行设置，@Resource默认是根据定义的属性名字去容器中进行匹配，如果没有匹配成功，再根据类型来匹配；<br>如果两个都没有匹配到就会报错</p><p>引用 <a href="https://www.jb51.net/program/322508zge.htm">https://www.jb51.net/program/322508zge.htm</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> Spring </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 引用 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>为什么说Java是平台无关的</title>
+      <link href="/2024/06/14/java/java-ji-chu-chang-shi/wei-shi-me-shuo-java-shi-ping-tai-wu-guan-de/"/>
+      <url>/2024/06/14/java/java-ji-chu-chang-shi/wei-shi-me-shuo-java-shi-ping-tai-wu-guan-de/</url>
+      
+        <content type="html"><![CDATA[<h1 id="为什么说java是平台无关的"><a class="markdownIt-Anchor" href="#为什么说java是平台无关的"></a> 为什么说Java是平台无关的</h1><p>Java可以做到一次编写处处运行，主要归功于Java虚拟机（JVM）的设计。Java程序不是直接编译成特定平台的机器代码，而是编译成字节码。这些字节码是平台无关的，意味着它们可以在任何安装了Java虚拟机（JVM）的平台上运行。JVM的作用是将字节码解释成特定平台上的机器指令并执行。这个过程是动态的，所以Java被认为是一种解释型语言。1</p><p>编译阶段：Java编译器（javac）将.java源文件编译成.class字节码文件。这些字节码文件是平台无关的，因为它们不直接对应任何特定平台的机器代码。<br>解释执行阶段：JVM负责执行这些字节码文件。当JVM加载一个.class文件时，它会将字节码解释成特定平台上的机器指令并执行。这个过程是动态的，因此Java程序可以在不同的操作系统和硬件上无缝运行，而无需对代码进行修改。<br>Java的跨平台特性主要归功于JVM。JVM是一个抽象计算机，它提供了一种在各种操作系统和硬件上执行Java字节码的统一方式。由于字节码是平台无关的，因此只要在不同的平台上安装了相应的JVM（通常包含在JDK中），Java程序就可以在这些平台上运行。JDK（Java Development Kit）是Java开发工具包，它包含了Java编译器、JVM以及其他用于开发Java应用程序的工具和库。安装了JDK的系统就具备了运行Java程序的能力。</p><p>综上所述，Java的跨平台性并不是因为Java语言本身具有某种特殊的魔法，而是因为Java的设计者创建了一个能够在不同平台上运行Java字节码的抽象计算机——JVM。这使得Java程序能够“一次编写,到处运行”。</p><h1 id="那什么语言是平台相关的"><a class="markdownIt-Anchor" href="#那什么语言是平台相关的"></a> 那什么语言是平台相关的</h1><p>有些语言是平台相关的，即它们的代码在特定的操作系统或硬件平台上才能运行。例如：<br>Objective-C: 主要用于苹果公司的操作系统（如iOS和macOS），因此它是平台相关的语言。</p><h1 id="其他语言的平台相关性"><a class="markdownIt-Anchor" href="#其他语言的平台相关性"></a> 其他语言的平台相关性</h1><p>Python: Python 是平台无关的语言，因为它的解释器可以在多种操作系统上运行。</p><p>Bash: 虽然 Bash 本身是特定于 Unix-like 系统的，但由于大多数现代操作系统都支持 Bash 解释器，因此在实践中也可以被认为是部分平台无关的。</p><p>C 和 C++: C 和 C++ 是平台相关的语言。它们的代码可能会直接与操作系统或硬件进行交互，因此在不同的平台上可能需要进行修改才能正确编译和运行。</p><p>C#: C# 最初是为 Windows 平台设计的，虽然现在也有跨平台的支持（如 .NET Core），但在某些方面仍然与 Windows 紧密相关。</p><p>Visual Basic: Visual Basic 也是为 Windows 平台设计的，因此它是平台相关的语言。</p><p>汇编语言: 汇编语言是极其平台相关的。不同的处理器架构有不同的指令集，因此需要针对特定的架构编写不同的汇编代码。</p><p>Lisp: Lisp 的平台相关性取决于具体的实现。一些 Lisp 方言（如 Common Lisp）可以在多个平台上运行，而其他的可能更加限制在特定的环境中。</p><p>Scala: Scala 通常被认为是平台无关的，因为它可以在 Java 虚拟机（JVM）上运行，而 JVM 可以在多个操作系统上运行。</p><h1 id="怎样做到平台无关"><a class="markdownIt-Anchor" href="#怎样做到平台无关"></a> 怎样做到平台无关</h1><p>使用虚拟机或解释器: 像Java虚拟机（JVM）或Python解释器这样的平台提供了一个中间层，使得相同的代码可以在不同的操作系统上运行。这种方法允许开发者编写一次代码，多次运行。</p><p>前提就是有人替你提前写好了各个平台的解释器，你就不用关心了，只要单反有一个平台没有解释器，那这个语言写的源代码就移植不过去运行。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>前端下载文件</title>
+      <link href="/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/"/>
+      <url>/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="后端代码怎么写"><a class="markdownIt-Anchor" href="#后端代码怎么写"></a> 后端代码怎么写</h1><p>示例:<br>第一种写法</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/** * 下载文件的写法1 */</span><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/download/file/{id}"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token class-name">ResponseEntity</span><span class="token operator">&lt;</span><span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> <span class="token function">downloadFle</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> <span class="token class-name">String</span> id<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token comment">// 设置 HTTP 头信息</span>    <span class="token class-name">HttpHeaders</span> headers <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HttpHeaders</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    headers<span class="token punctuation">.</span><span class="token function">setContentType</span><span class="token punctuation">(</span><span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_OCTET_STREAM</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    headers<span class="token punctuation">.</span><span class="token function">setContentDispositionFormData</span><span class="token punctuation">(</span><span class="token string">"filename"</span><span class="token punctuation">,</span> <span class="token string">"xxx.csv"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token class-name">String</span> content <span class="token operator">=</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ResponseEntity</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span>content<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> headers<span class="token punctuation">,</span> <span class="token class-name">HttpStatus</span><span class="token punctuation">.</span><span class="token constant">OK</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意，返回 <code>ResponseEntity&lt;byte[]&gt;</code>,这里http响应返回的Body类型是<code>byte</code>数组，也就是我们写入到文件中的内容的字符数组表示。要想让浏览器知道我返回的内容你需要下载成文件给到访问者，就需要特定的告诉浏览器我返回的东西的格式是个文件而不是其他，这个是通过 <code>setContentType</code> 实现的。这个 ContentType 属性是 http 请求或响应的时候在 header 中携带的。如果是请求中携带，那就是告诉服务器我提交的数据的内容类型是什么，如果是响应中携带，那就是告诉浏览器我返回的数据的内容类型是什么。</p><p>如果不设置就会变成这样<br><img src="/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/image.png" alt="alt text"><br>设置之后，浏览器就知道你其实想要的是一个文件，而不是在浏览器中渲染了。<br><img src="/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/image-1.png" alt="alt text"></p><p>但是，我们下载下来的文件的名字好像不对。这个时候我们还需要告诉浏览器，下载的时候，文件的名字是什么呀<br>就是通过         headers.setContentDispositionFormData(“filename”, “xxx.csv”); 实现的<br>第二种写法，也是很久以前的写法</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/** * 下载文件的写法2 */</span><span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/download/file2/{id}"</span><span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">downloadFle2</span><span class="token punctuation">(</span><span class="token annotation punctuation">@PathVariable</span> <span class="token class-name">String</span> id<span class="token punctuation">,</span> <span class="token class-name">HttpServletResponse</span> httpServletResponse<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>    <span class="token comment">// 设置 HTTP 头信息</span>    <span class="token class-name">String</span> content <span class="token operator">=</span> <span class="token string">"Hello World!"</span><span class="token punctuation">;</span>    httpServletResponse<span class="token punctuation">.</span><span class="token function">addHeader</span><span class="token punctuation">(</span><span class="token string">"Content-Length"</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>content<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    httpServletResponse<span class="token punctuation">.</span><span class="token function">addHeader</span><span class="token punctuation">(</span><span class="token class-name">HttpHeaders</span><span class="token punctuation">.</span><span class="token constant">CONTENT_TYPE</span><span class="token punctuation">,</span> <span class="token class-name">MediaType</span><span class="token punctuation">.</span><span class="token constant">APPLICATION_OCTET_STREAM_VALUE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    httpServletResponse<span class="token punctuation">.</span><span class="token function">addHeader</span><span class="token punctuation">(</span><span class="token class-name">HttpHeaders</span><span class="token punctuation">.</span><span class="token constant">CONTENT_DISPOSITION</span><span class="token punctuation">,</span> <span class="token string">"attachment;filename=xxx.csv"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token class-name">BufferedOutputStream</span> bufferedOutputStream <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedOutputStream</span><span class="token punctuation">(</span>httpServletResponse<span class="token punctuation">.</span><span class="token function">getOutputStream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    bufferedOutputStream<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">(</span>content<span class="token punctuation">.</span><span class="token function">getBytes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    bufferedOutputStream<span class="token punctuation">.</span><span class="token function">flush</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="前端代码怎么写"><a class="markdownIt-Anchor" href="#前端代码怎么写"></a> 前端代码怎么写</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>解决swagger页面加载不出来</title>
       <link href="/2024/05/11/java/jie-jue-fang-an/jie-jue-swagger-ye-mian-jia-zai-bu-chu-lai/"/>
       <url>/2024/05/11/java/jie-jue-fang-an/jie-jue-swagger-ye-mian-jia-zai-bu-chu-lai/</url>
@@ -169,9 +414,9 @@
             
             <tag> 思考 </tag>
             
-            <tag> 经济学 </tag>
-            
             <tag> 引用 </tag>
+            
+            <tag> 经济学 </tag>
             
         </tags>
       
@@ -319,7 +564,7 @@
       <link href="/2024/04/11/gong-ju-kong/excel/excel-chang-yong-cao-zuo-ji-jin/"/>
       <url>/2024/04/11/gong-ju-kong/excel/excel-chang-yong-cao-zuo-ji-jin/</url>
       
-        <content type="html"><![CDATA[<h1 id="移动列或行"><a class="markdownIt-Anchor" href="#移动列或行"></a> 移动列或行</h1><p>方法一</p><ol><li>在电子表格中找到要移动的列。在该列的顶部，单击列字母，从而选择整个列。</li><li>使用鼠标或轨迹板将光标移动到列的边框处。这会将光标变成一个四箭头图标。</li><li>当光标为四箭头图标时，按住键盘上的Shift键。然后将该列拖动到电子表格中的新位置。</li></ol><p>方法二</p><ol><li>请在电子表格中找到要移动的列。右键单击此列顶部的字母，然后从菜单中选择“剪切”。你将在所选列周围看到一条动画虚线。这将确认你的列已成功剪切。</li><li>找到要放置所选列的列。Excel会将你的剪切列放置在此新列的左侧。右键单击此新列的字母，然后从菜单中选择“插入剪切单元格”。</li></ol>]]></content>
+        <content type="html"><![CDATA[<h1 id="移动列或行"><a class="markdownIt-Anchor" href="#移动列或行"></a> 移动列或行</h1><p>方法一</p><ol><li>在电子表格中找到要移动的列。在该列的顶部，单击列字母，从而选择整个列。</li><li>使用鼠标或轨迹板将光标移动到列的边框处。这会将光标变成一个四箭头图标。</li><li>当光标为四箭头图标时，按住键盘上的Shift键。然后将该列拖动到电子表格中的新位置。</li></ol><p>方法二</p><ol><li>请在电子表格中找到要移动的列。右键单击此列顶部的字母，然后从菜单中选择“剪切”。你将在所选列周围看到一条动画虚线。这将确认你的列已成功剪切。</li><li>找到要放置所选列的列。Excel会将你的剪切列放置在此新列的左侧。右键单击此新列的字母，然后从菜单中选择“插入剪切单元格”。</li></ol><h1 id="excel如何显示被隐藏的行列"><a class="markdownIt-Anchor" href="#excel如何显示被隐藏的行列"></a> Excel如何显示，被隐藏的行(列)</h1><p>在Excel中，你可以通过以下步骤显示被隐藏的行或列：</p><ol><li>选中你想要显示的行或列周围的行或列。</li><li>右键单击所选行或列的标头。</li><li>在弹出菜单中选择“显示”。</li></ol><p>这样就会显示被隐藏的行或列。</p>]]></content>
       
       
       <categories>
@@ -1863,6 +2108,27 @@
     
     
     <entry>
+      <title></title>
+      <link href="/2023/09/16/java/java-wa-keng-tian-keng/mavne-bu-ji-cheng-fu-pom-cha-jian/"/>
+      <url>/2023/09/16/java/java-wa-keng-tian-keng/mavne-bu-ji-cheng-fu-pom-cha-jian/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> Java挖坑填坑 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VsCode插件&amp;快捷键</title>
       <link href="/2023/09/16/gong-ju-kong/vscode/vscode-cha-jian-kuai-jie-jian/"/>
       <url>/2023/09/16/gong-ju-kong/vscode/vscode-cha-jian-kuai-jie-jian/</url>
@@ -2480,6 +2746,69 @@
             <tag> Intellij IDEA </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2023/08/23/java/java-wa-keng-tian-keng/mysql-shi-jian-chuo-cha-ru-hou-diu-shi-hao-miao/"/>
+      <url>/2023/08/23/java/java-wa-keng-tian-keng/mysql-shi-jian-chuo-cha-ru-hou-diu-shi-hao-miao/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> Java挖坑填坑 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2023/08/23/java/java-wa-keng-tian-keng/qing-shi-yong-source-8-huo-geng-gao-ban-ben-yi-qi-yong-lambda-biao-da-shi/"/>
+      <url>/2023/08/23/java/java-wa-keng-tian-keng/qing-shi-yong-source-8-huo-geng-gao-ban-ben-yi-qi-yong-lambda-biao-da-shi/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> Java挖坑填坑 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="/2023/08/23/java/java-wa-keng-tian-keng/gao-ban-ben-jdk-de-keng-classnotfound/"/>
+      <url>/2023/08/23/java/java-wa-keng-tian-keng/gao-ban-ben-jdk-de-keng-classnotfound/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> JAVA </category>
+          
+          <category> Java挖坑填坑 </category>
+          
+      </categories>
+      
       
     </entry>
     
@@ -3628,8 +3957,8 @@
     
     <entry>
       <title>Java一些技术题目</title>
-      <link href="/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/"/>
-      <url>/2022/07/22/java/java-yi-xie-ji-zhu-ti-mu/</url>
+      <link href="/2022/07/22/java/java-ji-chu-chang-shi/java-yi-xie-ji-zhu-ti-mu/"/>
+      <url>/2022/07/22/java/java-ji-chu-chang-shi/java-yi-xie-ji-zhu-ti-mu/</url>
       
         <content type="html"><![CDATA[<p>1.spring需要哪些配置完成类的初始化，对象初始化流程的是怎样的，稍微阐述下resource有什么用<br>2.json格式的http请求需要如何设置header，400是什么原因<br>3.是否使用过事务，哪些情况使编程式事务不生效<br>4.hashmap是否线程安全为什么<br>5.IO密集型和计算密集型的服务的区别是什么<br>6.对MySQL进行翻页查询的流程是怎样的<br>7.如果使用过springboot，稍微阐述下如果需要自己管理数据源需要怎么做<br>8.如果做过dubbo服务调用，稍微阐述如何实现多版本多实现的兼容<br>9.如果使用过redis，简单介绍下使用过哪些数据结构及场景<br>10.如果使用过缓存，稍微阐述下使用过哪些cache及如何实现线程安全<br>11.如果了解多线程，稍微讲一下threadpool的参数和用法<br>12.编程：判断一个字符串中有多少种AAB类型的子串，比如“好好学习，好好学习，天天向上”中有两种种AAB的句式，而不是三种。<br>此题解题逻辑说明，“好好学”是一种，“天天向”是一种，所以是两种，再比如“好好学学吧”可以看成“好好学”和“学学吧”，这种叠加情况要被排除，只认为是“好好学”这一种。</p><p>lru 缓存淘汰策略<br>编程范式,面向对象和函数编程的区别和联系<br>先删缓存还是先删除数据库呢，如果数据库删除成功，缓存删除失败呢<br>spring DI IOC 实现原理<br>面型对象的编程原则，6中，<br>java8 和 scala 的区别和相同点，<br>jvm 内存结构，堆栈，哪个可能oom<br>synchronized 怎么实现<br>锁升级流程<br>缓存一致性<br>负载均衡怎么做<br>ngix为什么能抗那么大的并发<br>服务发现怎么做，服务注册怎么实现</p><p>算法相关: 快速排序，反转链表<br>spring aop 实现原理<br>线程池怎么实现的<br>问了一下BaseShell 都提供了哪些功能。线程池怎么实现的<br>阻塞队列怎么设计实现。<br>threadLocal 原理<br>volatile 原理<br>设计一个秒杀系统<br>数据库事务，隔离级别<br>spring 的原理，mvc流程</p><p>git 用哪些命令<br>maven 和 gradle的区别<br>scala语言和java的区别<br>函数式是什么<br>数据库的锁，乐观锁和悲观锁<br>cas<br>juc中的包有哪些<br>aqs<br>锁升级过程，自旋</p><p>java8 中有哪些函数特性<br>hashmap 中java8之后有哪些变化<br>redies有哪些新的数据类型<br>缓存雪崩、缓存击穿、缓存穿透<br>数据库的分库分表</p><p>数据库索引的分类<br>服务治理框架的原理</p><p>如何排查oom<br>spring spring mvc springboot<br>git flow</p><h4 id="java-中的final关键字有哪些用法"><a class="markdownIt-Anchor" href="#java-中的final关键字有哪些用法"></a> Java 中的final关键字有哪些用法？</h4><p>(1)修饰类：表示该类不能被继承；<br>(2)修饰方法：表示方法不能被重写；<br>(3)修饰变量：表示变量只能一次赋值以后值不能被修改（常量）。</p><h4 id="阐述final-finally-finalize的区别"><a class="markdownIt-Anchor" href="#阐述final-finally-finalize的区别"></a> 阐述final、finally、finalize的区别</h4><p>答：</p><ul><li>final：修饰符（关键字）有三种用法：如果一个类被声明为final，意味着它不能再派生出新的子类，即不能被继承，因此它和abstract是反义词。将变量声明为final，可以保证它们在使用中不被改变，被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取不可修改。被声明为final的方法也同样只能使用，不能在子类中被重写。</li><li>finally：通常放在try…catch…的后面构造总是执行代码块，这就意味着程序无论正常执行还是发生异常，这里的代码只要JVM不关闭都能执行，可以将释放外部资源的代码写在finally块中。</li><li>finalize：Object类中定义的方法，Java中允许使用finalize()方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。这个方法是由垃圾收集器在销毁对象时调用的，通过重写finalize()方法可以整理系统资源或者执行其他清理工作。</li></ul><h3 id="常识"><a class="markdownIt-Anchor" href="#常识"></a> 常识</h3><h4 id="int-和-integer-有什么区别"><a class="markdownIt-Anchor" href="#int-和-integer-有什么区别"></a> int 和 Integer 有什么区别?</h4><p>分析:这个题目问的其实是基本数据类型和对应包装类相关问题。不一定单单说区别,可以把自己联想到的都说出来。<br>首先先回答这个问题,<br>int 是 Java 中的基本数据类型,Integer 是引用数据类型。<br>Integer 是 int 类型的包装类,在编译器中实现了自动拆装箱操作,<br>int 类型的数据不能有方法,但 Integer 类型的数据可以有自己的方法, 也就是可以变量名.XX() 方法出来。<br>这也反映出 Java 并不是纯粹的面向对象的语言,一门纯粹的面向对象的语言是不会有基本数据类型之说的,所有的类型都应该是对象,Java 之所以这样设计是考虑到这些基本设计类型是比较常用的,单独出来有利于优化代码的性能,比如他的存储位置啊,基本数据类型就是直接存储在栈中或方法区中的,而引用数据类型的实例则是存储在堆中的。包装类是对 Java 基本类型面向对象特性的补充,是为了弥补基本数据类型不是对象这一缺陷来的。而由于有自动拆装箱的操作,Java 还在方法区的静态存储区中设计了缓存,如 int 类型的-127-&gt;+127的数,这使得在拆装箱的过程中会出现一些诡异的问题,不建议使用。</p><h4 id="什么是函数式编程"><a class="markdownIt-Anchor" href="#什么是函数式编程"></a> 什么是函数式编程？</h4><p>用函数式思想来编程就是函数式编程,用面向对象的思想来编程就是面向对象编程,要想理解什么是函数式编程,要先知道什么是函数.函数式数学中的概念,从一个状态与另一个状态的对应关系,或者从一个状态到另一个状态的映射就是函数,y=f(x) 这个 f 就是函数。就像谈什么是面向对象一样,继承、封装、多态、抽象一样,谈什么函数式编程就要说函数式编程的特点,函数编程的特点有很多:函数式第一公民、高阶函数、模式匹配、无副作用、不变性<br>。</p><h4 id="创建对象时构造器的调用顺序是"><a class="markdownIt-Anchor" href="#创建对象时构造器的调用顺序是"></a> 创建对象时构造器的调用顺序是</h4><p>先初始化静态成员，然后调用父类构造器，再初始化非静态成员，最后调用自身构造器。</p><h3 id="冷门"><a class="markdownIt-Anchor" href="#冷门"></a> 冷门</h3><h4 id="比较一下java和javasciprt"><a class="markdownIt-Anchor" href="#比较一下java和javasciprt"></a> 比较一下Java和JavaSciprt</h4><p>JavaScript 与Java是两个公司开发的不同的两个产品。Java 是原Sun Microsystems公司推出的面向对象的程序设计语言，特别适合于互联网应用程序开发；而JavaScript是Netscape公司的产品，为了扩展Netscape浏览器的功能而开发的一种可以嵌入Web页面中运行的基于对象和事件驱动的解释性语言。JavaScript的前身是LiveScript；而Java的前身是Oak语言。<br>下面对两种语言间的异同作如下比较：</p><ul><li>基于对象和面向对象：Java是一种真正的面向对象的语言，即使是开发简单的程序，必须设计对象；JavaScript是种脚本语言，它可以用来制作与网络无关的，与用户交互作用的复杂软件。它是一种基于对象（Object-Based）和事件驱动（Event-Driven）的编程语言，因而它本身提供了非常丰富的内部对象供设计人员使用。</li><li>解释和编译：Java的源代码在执行之前，必须经过编译。JavaScript是一种解释性编程语言，其源代码不需经过编译，由浏览器解释执行。（目前的浏览器几乎都使用了JIT（即时编译）技术来提升JavaScript的运行效率）</li><li>强类型变量和类型弱变量：Java采用强类型变量检查，即所有变量在编译之前必须作声明；JavaScript中变量是弱类型的，甚至在使用变量前可以不作声明，JavaScript的解释器在运行时检查推断其数据类型。</li><li>代码格式不一样。</li></ul><p>补充：上面列出的四点是网上流传的所谓的标准答案。其实Java和JavaScript最重要的区别是一个是静态语言，一个是动态语言。目前的编程语言的发展趋势是函数式语言和动态语言。在Java中类（class）是一等公民，而JavaScript中函数（function）是一等公民，因此JavaScript支持函数式编程，可以使用Lambda函数和闭包（closure），当然Java 8也开始支持函数式编程，提供了对Lambda表达式以及函数式接口的支持。对于这类问题，在面试的时候最好还是用自己的语言回答会更加靠谱，不要背网上所谓的标准答案。</p><p>理解面向对象编程思想，理解代码复用和接口的可扩展，有良好熟悉Java Core和开源框架，如SpringMVC, MyBatis, JUnit等的编码风格和文档能力<br>熟悉Web Service，Restful， TCP/UDP, 多线程等知识<br>熟悉JVM的内存机制，了解Java性能优化<br>熟悉数据库基本原理，熟悉MySQL或Oracle数据库，了解SQL的性能优化<br>熟练使用Linux操作系统，能熟练编写Shell脚本<br>具有扎实的java基础，熟悉分布式、<br>熟悉使用Tomcat、Nginx等应用服务器软件；</p><p>良好的故障分析以及快速解决能力<br>了解网络基本技术，熟悉TCP/IP协议工作原理<br>熟练使用linux下各种常用命令，能独立编写Shell/Perl/Python等脚本更好<br>熟悉UML及建模工具；<br>了解redis，memcached，mongodb等NoSQL数据库的使用；<br>熟悉HTTP、TCP/IP、面向对象及MVC、 ORM和对象缓存技术等相关知识；<br>精通spring/mybatis等框架，能够脱离IDE手写代码<br>精通nio、多线程</p><p>熟悉Java Core和开源框架，如SpringMVC, MyBatis, JUnit等</p><ol><li>ArrayList和LinkedList区别？</li><li>Spring实现注解方式？</li><li>解释下Spring中AOP和IOC？</li><li>Struts和Ibatis的区别？</li><li>Springmvc的xml配置文件中有哪些常见标签？</li><li>Bean标签实例化的方式？</li><li>怎样实现外部接口？</li><li>解释一下递归。使用递归需要注意什么？</li><li>数据库中什么叫事物？索引有什么用？</li></ol><p>StringBuffer 与 StringBuilder 的区别? 与 String 互转?<br>StringBuffer 复写了 Object 的 toString 方法, 一个 StringBuffer 类型的对象直接调用 toString()方法即可转换为 String 类型的数据,记住 toString 是一个 Override 的一个方法,小括号<code>()</code>不能少。</p><p>ConcurrentHashMap为何不支持null键和null值</p>]]></content>
       
@@ -3637,6 +3966,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -3727,8 +4058,8 @@
     
     <entry>
       <title>JVM类加载机制</title>
-      <link href="/2022/04/02/java/jvm-lei-jia-zai-ji-zhi/"/>
-      <url>/2022/04/02/java/jvm-lei-jia-zai-ji-zhi/</url>
+      <link href="/2022/04/02/java/java-ji-chu-chang-shi/jvm-lei-jia-zai-ji-zhi/"/>
+      <url>/2022/04/02/java/java-ji-chu-chang-shi/jvm-lei-jia-zai-ji-zhi/</url>
       
         <content type="html"><![CDATA[<h1 id="java的类加载过程是什么样子的java类的生命周期是什么样子的"><a class="markdownIt-Anchor" href="#java的类加载过程是什么样子的java类的生命周期是什么样子的"></a> Java的类加载过程是什么样子的?Java类的生命周期是什么样子的</h1><p>分成357,3个阶段,5个步骤,7个小结<br>可以看成三个阶段: 加载-&gt;连接-&gt;初始化<br>5个步骤,其中因为 连接可以分成:验证-&gt;准备-&gt;解析。所以加上 前面的加载和后面的初始化，就是 加载-验证-准备-解析-初始化<br>7个小结,初始化之后还需要使用和卸载。因此就是  加载-验证-准备-解析-初始化-使用-卸载</p><h2 id="每个阶段都是干啥的"><a class="markdownIt-Anchor" href="#每个阶段都是干啥的"></a> 每个阶段都是干啥的</h2><p>加载: 首先第一件是事情就是把 .class文件放到内存里面<br>所为连接，连接的就是 .class 和 Class 的过程，连接完成了，Class也就放到内存里面了。所以 .class 加载到内存里面了，得先看看 这个class文件写的对不对，也就是验证，如果写的不对，那就直接报错就好了，如果写的没问题，接下来就是在方法区里面分配空间了,因为马上就要创建Class了,得先准备准备吧，准备好了就是解析了，解析的目的就是把能把符号引用转换成直接引用的地方都转换成直接引用。<br>初始化其实就是赋值的过程，按照顺序执行静态变量的赋值过程和静态代码块儿的代码。到此一个对象的DNA就好了。<br>使用就是new<br>卸载就是这个类不在使用的时候从方法区里面移除的过程，不过这个移除的过程比较苛刻。</p><h2 id="什么是双亲委派"><a class="markdownIt-Anchor" href="#什么是双亲委派"></a> 什么是双亲委派</h2><h2 id="如何打破双亲委派"><a class="markdownIt-Anchor" href="#如何打破双亲委派"></a> 如何打破双亲委派</h2><p>只要继承ClassLoader类,然后重写findClass 和 loadClass 就行。如果只重写findClass就是为了接入双亲委派。</p><h2 id="为什么要打破双亲委派"><a class="markdownIt-Anchor" href="#为什么要打破双亲委派"></a> 为什么要打破双亲委派</h2><ol><li>Tomcat 要求应用之间隔离</li><li>热部署 要求一个类变了之后需要重新加载</li></ol>]]></content>
       
@@ -3736,6 +4067,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -3781,8 +4114,8 @@
     
     <entry>
       <title>JDK动态代理 VS Cglib动态代理</title>
-      <link href="/2022/03/28/java/jdk-dong-tai-dai-li-vs-cglib-dong-tai-dai-li/"/>
-      <url>/2022/03/28/java/jdk-dong-tai-dai-li-vs-cglib-dong-tai-dai-li/</url>
+      <link href="/2022/03/28/java/java-ji-chu-chang-shi/jdk-dong-tai-dai-li-vs-cglib-dong-tai-dai-li/"/>
+      <url>/2022/03/28/java/java-ji-chu-chang-shi/jdk-dong-tai-dai-li-vs-cglib-dong-tai-dai-li/</url>
       
         <content type="html"><![CDATA[<p>Cglib不是更强么，为什么有了Cglib还要有JDK动态代理存在的必要?</p><ol><li>final Class 不支持, 因为CGLIB是生成子类来实现 AOP,所以final Class自然无法支持了.</li><li></li></ol><p>JDK动态代理<br>优点</p><ol><li>JAVA自带,JDK原生的,到哪儿都能用。Cglib则需要额外的包来支持。</li><li>支持final类的代理，因为是基于接口的，跟被代理对象是不是final的没有关系。Cglib 不能代理final类，因为Cglib是基于继承来实现的，final类无法被继承，不然String这个类就可以被改来改去了。<br>局限</li><li>一定要有接口,它是基于接口+反射实现的。Cglib不要接口,有个类就能代理。</li><li>速度慢，效率低，因为是基于反射的，所以效率不高。</li></ol><p>Cglib动态代理<br>优点</p><ol><li>不一定需要接口，只要不是final类，就能代理。</li><li>速度快，都这么说，因为没有用反射，而是用字节码增强技术，咱也不知道字节码增强技术为啥这么快。</li></ol><p>局限</p><ol><li>不是JAVA自带的，需要用户自己引入 Cglib的依赖</li><li>不能代理final类。</li></ol>]]></content>
       
@@ -3790,6 +4123,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -3808,8 +4143,8 @@
     
     <entry>
       <title>深入分析I/O模型</title>
-      <link href="/2022/03/25/java/shen-ru-fen-xi-io-mo-xing/"/>
-      <url>/2022/03/25/java/shen-ru-fen-xi-io-mo-xing/</url>
+      <link href="/2022/03/25/java/java-ji-chu-chang-shi/shen-ru-fen-xi-io-mo-xing/"/>
+      <url>/2022/03/25/java/java-ji-chu-chang-shi/shen-ru-fen-xi-io-mo-xing/</url>
       
         <content type="html"><![CDATA[<p>这篇文章我为什么叫做深入分析I/O模型呢,并不是因为我分析的有多深入,而是因为为了研究清楚这个I/O模型,我确实花了很多时间,查了很多资料。我想大多数人对这一块儿也有疑问,而且网上那些文章看过一遍又一遍之后又会有新的问题,甚至有些文章讲的都是错的还被抄来抄去。我也不确定我写的能否给大家讲明白,姑且先记下来吧。以下都是基于我个人的理解，不代表权威观点，如有疑问可以讨论。</p><p>我们要讲I/O模型,我不像网上的一些文章,上来就讲 阻塞IO、非阻塞IO、信号驱动IO、多路复用IO、异步IO等的原理，也不讲 同步、异步、阻塞、非阻塞 的区别及联系, 更不想讲 多路复用IO中 select、poll、epoll 的三种实现,虽然后面都会讲到。这里我用我写文章惯用的手法，先从字面意思入手，逐渐逐渐引出一些新的概念来。</p><h1 id="啥叫io"><a class="markdownIt-Anchor" href="#啥叫io"></a> 啥叫I/O</h1><p>先上维基百科</p><blockquote><p>I/O（英语：Input/Output），即输入／输出，通常指数据在存储器（内部和外部）或其他周边设备之间的输入和输出，</p></blockquote><p>I/O 指的就是数据在设备上的读写。那这里的设备都有哪些呢？我们初步想一下，磁盘、内存、显卡、网卡、声卡、CPU 等等很多设备我们都可以进行数据的读写或者叫存取。这些设备都或多或少都有一块存储空间可以存取数据，也就是存取我们的0或者1组成的序列。</p><p>那研究如何在这些设备上进行读写，就是我们的I/O模型要讲的东西。I/O 模型就是研究I/O操作具体实现方案的理论。换句话说，I/O模型就是对设备读写的不同方式的实现，不同的实现就对应不同的IO模型。</p><h1 id="设备不是想调想调就能调"><a class="markdownIt-Anchor" href="#设备不是想调想调就能调"></a> 设备不是想调，想调就能调</h1><p>我们从什么设备进行读写就叫什么IO,例如 从磁盘读写数据我们就叫磁盘IO,磁盘上存的大部分都是以文件的形式,所以我们也叫文件IO.从内存读写数据我们就叫内存IO,从网卡设备读写数据我们就叫做网卡IO,说的更通俗一点也叫网络IO,也就是我们研究的那个Socket这个东东。</p><p>但是这些设备不是你想使用你就能使用的，对于计算机来说想 cpu啊、内存、磁盘、显卡啊这些计算机统统视其为资源，这些资源是计算机的宝贵财富，所以要好好保护起来才行，不是你想使用就能使用的。</p><p>要想使计算机运行起来，我们必须要安装一个超大型的软件，叫做操作系统才行，所以操作系统其实是一个软件，这个软件内部有一个核心模块，我们简称为内核(内部的核心代码嘛)。</p><p>一开始我想的很简单,无非就是直接往某个设备的地址里面写入0或1,或者把某个设备的存储空间里面的0或1搬移到另一个设备的存储空间,这不就实现了数据的读写么。但是我这个理解从宏观上看是没错的，但是深入到系统底层来看就行不通了。首先，前面说的 直接 往某个设备的地址里面写0或1 是实现不了的，因为操作系统不允许，或者说操作系统的内核不允许。像 磁盘、网卡、显卡、声卡、CPU 这些硬件设备，不是说你想调就能调用的，我们把这些都看做是操作系统的资源，这些资源之间通过总线连接，通过总线传输数据，数据从一个位置转移(拷贝)到另一个位置，总要有一定的通路才行，不然隔空是传输不了数据的，在计算机内部，通路就是导线，这些导线可能是铜的的也可能是金的，但这些线总起来我们就叫做总线。总线分为 数据总线(主管数据的),控制总线(主管命令的),地址总线(主管位置的)，不在本篇的讨论范畴。</p><p>上面说的这些硬件资源不是你想控制就能控制的，所以说是受保护的。那是受谁保护的呢？谁有这么大的权力呢？这个家伙叫内核，内核是操作系统内的核心(简称内核，哈哈)，而操作系统是一个软件，内核更是一个软件，操作系统可以理解为一个大大的进程，或者说第一个进程，0号进程或者1号进程，随便你怎么叫吧。内核怎么保护这些设备呢，如果你自己要控制某个硬件，比如使蜂鸣器响3下，比如关闭键盘背光灯，至少到目前按照我的理解，必须调用内核提供的接口才可以操作，就跟你调用一个http接口post数据一样，你得调用内核的接口，内核在调用具体的硬件的驱动去控制具体的硬件。那你调用内核的时候，cpu就开始执行内核的代码了，这其中我们就叫做陷落到了内核，或者叫内核切换，内核执行自己的接口的时候，肯定也是需要占用一定空间的，他调用cpu执行方法的时候也是需要保存一些中间数据的，所以内核也是需要一部分内存空间的。这部分内存空间，我们叫做内核空间，注意内核空间依然是受保护的，因为除了内核这部分内存地址谁也访问不了，这里的谁特指的是内核之外的用户，我们叫用户进程，用户进程用的空间我们叫用户空间。这里特意说一点我的理解，我认为，用户进程调用内核接口发起内核调用之后并没有发生进程的切换，还应该是在一个进程上下文当中，内核依然可以访问用户空间的数据，cpu并没有让出进程的控制权，也没有保存进程上下问，更没有进程上下文数据的切换。但发起系统调用有一点比较麻烦，就是内核会校验传入数据和操作的安全性，例如你发起一个系统调用，告诉内核给我把操作系统删除掉，汗，这其实是不允许的。然后每发起一次系统调用就进行一次数据校验等巴拉啦一大推校验工作（具体我也不知道是啥）。所以，用户进程其实都很讨厌发起系统调用，因为发起系统调用后，要么等，要么等，要么等，等他一坨没有必要的校验工作(当然这是用户进程的想法)，还不如我直接控制来的爽。就好像你写了个函数，里面会校验入参是不是为空，但我调用的时候明明知道自己不会给函数传空，但是每次调用时候又不得不浪费一点判断参数是否为空的时间，一次两次还好，如果我调用10000次这个函数呢?</p><h1 id="我们怎才能读设备里面的数据"><a class="markdownIt-Anchor" href="#我们怎才能读设备里面的数据"></a> 我们怎才能读设备里面的数据</h1><p>这里我们以读数据为例子，这个设备我假设为磁盘，而我要读取的数据静静的躺在磁盘上的某个文件中。我要把这个文件的内容赋值给我定义个一个字符串变量。如果要让我自己设计一套实现方案，我可能想到的就是直接把磁盘上的数据通过cpu一点一点地搬移到我的用户空间的内存中，然后继续执行后面的代码。 这样何其简单啊。</p><p>但是可是可但是，从磁盘读取数据到内存特别的慢，而且如果一个文件要读取多次，则慢上加慢。所以操作系统并不是这么干的，一般遇到这种存取速度不匹配的情况，例如 cpu比内存快，内存比磁盘快的情况，我们一般是搞一个中间层缓存，类比如 redis 和mysql . mysql 很慢(相对于redis来说)，我们就用redis来屏蔽这种差异。那操作系统怎么做的呢?</p><p>第一种方式叫 缓存IO,又叫Buffer IO. 可以理解为在内核空间中申请一部分空间，作为底层磁盘这种慢介质的缓存，有了缓存，我们先从缓存读取，如果有则很快返回，如果没有我们再去磁盘读取，注意这里和redis+mysql 不同，redis+mysql 是先读取到用户空间，在回写redis，因为是用户进程去读mysql而不是redis去读mysql的. 但是在操作系统层面，是内核发起磁盘读取而不是用户发起磁盘读取的，所以数据是先到内核空间，然后用户进程才来读取数据的。所以但凡是这这种形式，在用户进程和存储介质中内核明目张胆的加了一个缓存层的都可以叫做缓存IO，这个阶段你还拿内核没有办法，这是最开始操作系统读写文件方式，因而已经成为一种标准，故这种方式也叫标准IO. 所以说缓存IO,Buffer IO,标准IO 都是一个意思。我们要把数据从一个地方搬移到另一个地方，中间是需要经过cpu一点一点搬移的，你可以理解为，cpu一会执行一点指令，把数据拷贝到cpu的缓存，在把cpu缓存中的数据转移到指定的位置，就完成了一次文件的读写操作。</p><p>注意这里说的缓存IO或者Buffer IO 或者标准IO，并不是Linux 的IO模型。IO模型要从同步、异步、阻塞和非阻塞的角度去说，这中只能叫读取设备的方式，方式就是加了一个缓存层。那加了这个缓存层肯定有好有坏，好就好在它是一份缓存嘛，屏蔽了内存和磁盘操作的速度差异嘛。为什么加了一层缓存就屏蔽了这个速度差异呢?如果第一次查询没有命中缓存，你是不是还得去底层磁盘查询，底层磁盘还是很慢，所以第一次查询没有命中缓存这个速度差异是屏蔽不掉的，该慢还是慢。但是下一次查询呢，不就快了么。不过我既然已经读到我用户空间了，为什么还要费劲再去磁盘查询一下呢,这不是多此一举么。所以这个二次查询的优势其实也不算太优势，如果你在程序中把一个文件的内容读到了一个file中，你每次读取的时候拿难道都从磁盘在读取一遍么。那样太蠢了。那它肯定还有另外的显著的优势，就在于内核读取磁盘缓存的时候其实并不是只读你想要读取的那个空间的内容，而是把你想读的空间的内容附近的内容也都读出来，这样下次你读取该空间附近的空间的时候就可以直接命中缓存了，这样做是根据了一个叫做局部性原理的原理来设计的。所以才能显著提高访问速度，其底层就是把多次内核向磁盘读取数据的IO变成了一次磁盘IO。</p><p>但是我觉得这根本不成立，因为用户进程和内核的速度差异是屏蔽了，但是内核和磁盘读写还是有速度差异啊，还是很慢吧，所以我认为这个好处并不成立。我理解他的好处就和redis一样，你之后读取的时候会很快，但是这一点我也觉得不算是太大的有点，因为我既然都已经读取到用户空间了，我干嘛还要在单独读一遍内核空间中的缓存呢，我直接操作我用户空间内存不行么。</p><p>缓存 I/O 使用了操作系统内核缓冲区，在一定程度上分离了应用程序空间和实际的物理设备。 我也不觉得这种区分有什么好的。<br>缓存 I/O 可以减少读盘的次数，从而提高性能。这一点我还是同意的，下次在调用的时候确实不用再读取一遍磁盘了。</p><p>未完待续，明天再写…</p><p>鉴于buffer io ,还要搞一个内核缓冲区，数据需要从磁盘先拷贝到内核缓冲区，然后在拷贝到用户缓冲区，这其中就要经历两次拷贝，而且两次拷贝中存储的数据都是一样的。</p><h2 id="dma-直接存储器访问"><a class="markdownIt-Anchor" href="#dma-直接存储器访问"></a> DMA （直接存储器访问）</h2><p>百度百科</p><blockquote><p>DMA(Direct Memory Access，直接存储器访问) 是所有现代电脑的重要特色，它允许不同速度的硬件装置来沟通，而不需要依赖于 CPU 的大量中断负载。否则，CPU 需要从来源把每一片段的资料复制到暂存器，然后把它们再次写回到新的地方。在这个时间中，CPU 对于其他的工作来说就无法使用。</p></blockquote><p>可以想象MDA方式中有另一个cpu,专门负责数据的拷贝转移，这样cpu就可以空闲出来了嘛</p><h1 id="linux-io-与-java-io"><a class="markdownIt-Anchor" href="#linux-io-与-java-io"></a> Linux IO 与 Java IO</h1><p>Linux IO 其实指的是更为底层的IO, 而Java IO更多的是指应用层的IO,所以说Java 的IO 模型的实现其实是依赖底层的Linux IO的实现的。<br>Linux IO 有5种,分别叫 阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO. 但java只支持其中的三种，Java IO的分类分别叫 BIO、NIO、AIO<br>其中 <code>BIO</code> 对应 Linux IO 中的<code>阻塞IO</code>实现; <code>NIO</code>对应的其实是 Linux IO中的<code>多路复用IO</code>;<code>AIO</code> 则对应LINUX IO中的<code>异步IO</code>,这一点一定要记清楚,否则后面的概念容易混淆。</p><h1 id="linux-io-模型"><a class="markdownIt-Anchor" href="#linux-io-模型"></a> Linux IO 模型</h1><p>上面说到 Linux IO 有5种,分别叫 阻塞IO、非阻塞IO、多路复用IO、信号驱动IO、异步IO。我们思考一下几个问题<br>服务器如何读取网络上传递过来的一条消息的-&gt;首先两台服务器之间进行3次握手建立连接,你可以想象,你的计算机上运行着一个叫tcp的软件,这个软件呢可以打开某个端口,所谓打开端口,就是说可以通过这个端口接收到网络上定向发送给该端口的0101的数据。当网络上的数据通过该端口发送过来消息的时候，其实就是当第一个高电平传输过来的时候,这个tcp软件就会被cpu叫醒,cpu为什么去叫醒tcp软件是因为高电平传过来的时候给了操作系统一个信号中断,然后这个tcp软件发现有数据到达,于是在计算机上申请一块儿内存用于记录通过该端口传过来的数据,这块儿内存其实就是一个socket,他像个插座一样连接你的应用程序和网络上的数据,同时为了表示一个socket我们像上面提到的文件系统申请了一个文件描述符,文件描述符表面上像一个数字，其实背地里它代表一种数据结构的。而我们的应用程序要读取到网路中传输过来的数据，其实就是从这个socket中读取数据。但是我们在向socket读取数据读不到的时候采取什么样的策略决定了我们属于什么模型。</p><h2 id="阻塞io"><a class="markdownIt-Anchor" href="#阻塞io"></a> 阻塞IO</h2><p>我们从头捋一遍我们应用程序从启动到接收数据的过程,首先我们应用程序先调用系统方法去监听某个接口，所谓监听其实就是告诉操作系统当有数据从我监听的端口经过的时候，你通知我这个应用程序而不是其他的应用程序，这就是为什么我们一个应用占用一个端口的时候其他应用是无法再继续监听该端口的，会报出端口冲突的异常。当有连接进来的时候，操作系统会响应中断，然后进而去通知我们的server，说有链接来了，你可以继续执行了。于是我们的应用server就会开始准备去读数据，这时候你会发现从流中读数据的时候，又发生了一次阻塞，我们的应用程序就阻塞在哪里等着数据的到来，其实也是跟操作系统说，我现在要读数据了，不过系统说好的那你等着吧，我准备好了告诉你，这时候客户端的数据一点一点到达服务器，等最后一个数据包到达后，我们的操作系统就把数据返回给我们的server,然后server就可以继续执行了。 这种模式就叫阻塞IO, 在阻塞IO中我们的server阻塞了两次，一次在listen的时候（accept 的时候方法内部最后会调用litsent）等着链接的到来，一次在 read数据的时候，从流中读数据的时候会发起系统调用也会阻塞一次。</p><p>阻塞IO最符合我们人类的思维习惯。这里的阻塞IO全称应该叫做同步阻塞IO。</p><h2 id="非阻塞io"><a class="markdownIt-Anchor" href="#非阻塞io"></a> 非阻塞IO</h2><p>非阻塞IO ,这里指的非阻塞是第二次我们从InputSteam里面读数据的时候，不阻塞。也就是我们发起系统调用用InputStream中读取数据的时候，操作系统说好的，我知道了，但是现在没办法给你数据，你在后面慢慢准备，你该干啥干啥去，至于什么时候准备好，你自己一会来看吧。于是我么应用程序每隔一会儿就得询问一下操作系统，数据准备好了没有，如果好了，那就直接取到了，如果没有准备好，我们就再做会儿其他的事情，过一会儿再来看看，但是这个间隔隔多久呢，就要你自己负责了，隔得久了取数据不及时，隔得短了，数据还没准备好，总之很纠结，要是为了这个场景在开发出一个动态获取数据的时间间隔的算法又有点得不偿失了。<br>这就是非阻塞IO,非阻塞IO,就是告诉操作系统你去给我准备数据吧，然后自己可以干一点其他的事情，利用率稍微有点提高，但是不够及时。全称应该叫同步非阻塞IO。</p><h2 id="信号驱动io"><a class="markdownIt-Anchor" href="#信号驱动io"></a> 信号驱动IO</h2><p>信号驱动IO,其实应该是非阻塞IO的变动版本，就是获取数据的时候，同样是非阻塞，但是但是不用时不时的取轮询获取是否准备好了，因为一旦数据准备好了，就会通过信号的方式通知应用线程，应用线程下次切换回来的时候就会发现自己信号列表有个信号，先响应这个信号，发现是数据准备好了，于是就去取数据，把轮询交给了操作系统的系统调度的时候做。这就是信号驱动的读取数据的过程。信号驱动也是同步的，全称应该叫同步信号驱动IO</p><h2 id="多路复用io"><a class="markdownIt-Anchor" href="#多路复用io"></a> 多路复用IO</h2><p>上面无论是阻塞IO还是非阻塞IO，都是一个线程既负责管理链接到来的事情，又要负责数据读取的事情，一条道走到黑，为了多连接，那就得多个线程。但是我们知道线程可不是越多越好。于是人们先要我们能不能让一个线程来处理多个链接呢？也就是能不能复用这线程，这里的多路复用指的就是多路数据读取线程复用一个链接管理线程。因为好多时候，我们的链接后并不一定就发送数据，用阻塞IO还是非阻塞IO，都得等。要是能在数据准备好的时候或者链接准备好的时候，在告诉我们好了，那就好了，这样处理问题就连起来了，你告诉操作系统，有链接的时候你叫我，我先去干别的事情，有数据的时候教我，我先去干别的事情，我很忙的。于是就变成了，这样一种方式，我们有一个线程，每来一个链接我们往我的一个数组里面放，然后我会在数据准备好的时候，扫描一下所有的数组，把所有的准备好的链接或者数据返给应用，应有就可以继续处理了，这样就用一个线程管理了多个线程，其实就是有链接的时候先链接，然后记录下来，在后面某个时刻触发一下一次性吧准备好的数据返回，规避了应用反复发起系统调用的情况。但是多路复用还是会有阻塞的，会阻塞在selector的select方法。只不过这个select可以返回多个还准备好的链接，对于没有准备好的，是不会返回的。</p><p>跟传统的阻塞IO不同，IO复用可以阻塞在多个socket文件描述符上。当其中任何一个socket有数据可读的时候（或者超时），IO复用的函数(select, poll，epoll)才会返回。然后进程可以逐一处理可读的socket文件描述符。</p><p>多路复用也是同步的，所以全称应该叫做 同步多路复用IO。多路复用</p><h2 id="异步io"><a class="markdownIt-Anchor" href="#异步io"></a> 异步IO</h2><p>异步IO才是真正的异步，因为发起系统调用后，告诉操作系统，你给我准备数据，准备好之后，你调用的某某方法处理数据。自己完全不管了。这就是真正的异步IO，全称应该叫异步非阻塞IO。 那异步阻塞IO呢？没有人会有异步阻塞IO这种方式的，那不是傻么。明明可以去干点其他时候，愣子在那儿等着。数据也不需要你自己处理，你等着干啥，还不如直接退出呢。</p><h1 id="多路复用的-select-poll-epoll-实现"><a class="markdownIt-Anchor" href="#多路复用的-select-poll-epoll-实现"></a> 多路复用的 select、poll、epoll 实现</h1><p>select 对文件描述符的大小有限制，poll打破了这种限制的上线，但是文件描述符需要来回在用户空间和内核空间拷贝，epoll更是没有上限，但是比poll多的功能就是把感兴趣的事情给你分好了类，而且减少了拷贝。</p><h1 id="java-io-模型-与linux-io-模型的对应关系"><a class="markdownIt-Anchor" href="#java-io-模型-与linux-io-模型的对应关系"></a> Java IO 模型 与Linux IO 模型的对应关系</h1><p>Java 的IO 模型肯定不是自己独创的，他一定依赖操作系统提供的能力！<br>JavaIO 模型只有三种<br>BIO 阻塞IO,对应linux的阻塞IO实现<br>NIO 对应Linux 的多路复用IO<br>AIO 对应Linux 的异步IO</p><h1 id="同步-异步-阻塞-非阻塞"><a class="markdownIt-Anchor" href="#同步-异步-阻塞-非阻塞"></a> 同步、异步、阻塞、非阻塞</h1><p>上面说了 linux IO 里面除了 异步IO 是真正的异步外，其他都是同步，因为请求完成后，数据是有应用线程自己取的，这就是同步的概念，只要数据不是操作系统自己送过来，那就是同步的，只要是操作系统自己主动的送过来，而自己不需要关心，只关心通知操作系统说我要数据，那就是真正的异步了。</p><p>阻塞和非阻塞就看自己跟操作系统要数据之后，是不是在哪儿等，无论是因为操作系统没准好无法返回导致的我们等，还是因为选择的在哪儿等，只要有等的动作那就是阻塞的，否则就是非阻塞，无论数据好没有，被调用这立马返回说我知道了，那即是非阻塞的。</p><p>都是定义不必死记。</p><h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>]]></content>
       
@@ -3817,6 +4152,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -3868,8 +4205,8 @@
     
     <entry>
       <title>ThreadLocal究竟为什么诞生</title>
-      <link href="/2022/03/22/java/threadlocal-jiu-jing-wei-shi-me-dan-sheng/"/>
-      <url>/2022/03/22/java/threadlocal-jiu-jing-wei-shi-me-dan-sheng/</url>
+      <link href="/2022/03/22/java/java-bing-fa-bian-cheng/threadlocal-jiu-jing-wei-shi-me-dan-sheng/"/>
+      <url>/2022/03/22/java/java-bing-fa-bian-cheng/threadlocal-jiu-jing-wei-shi-me-dan-sheng/</url>
       
         <content type="html"><![CDATA[<p>我们都知道Java中有一个ThreadLocal类,但是你知道它为什么会被设计出来么,那它究竟解决了什么问题,在什么场景下使用呢?</p><p>首先我们先设想一个问题<br>我在a方法中有一个变量,我想在b方法中打印，我该怎么做</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token class-name">String</span> uuid<span class="token operator">=</span><span class="token string">"02ED1C90-F75B-4A06-89E7-EE0451F4BABC"</span><span class="token punctuation">;</span>  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] a 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token class-name">String</span> uuid<span class="token operator">=</span><span class="token punctuation">;</span> <span class="token comment">//这里我改怎么获取到a方法中的变量uuid呢</span>  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] b 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>于是我们想到了第一种解决方案<br>a 方法调用b 方法，然后把这个变量传进去嘛<br>于是就大概就编程了这样</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token class-name">String</span> uuid<span class="token operator">=</span><span class="token string">"02ED1C90-F75B-4A06-89E7-EE0451F4BABC"</span><span class="token punctuation">;</span>  <span class="token function">b</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span>  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] a 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token class-name">String</span> uuidFromA<span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token class-name">String</span> uuid<span class="token operator">=</span>uuidFromA<span class="token punctuation">;</span> <span class="token comment">//这里我改怎么获取到a方法中的变量name呢</span>  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] b 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>问题解决了么,当然。那如果 c ,d ,f 等函数也要做这样的操作呢,你怎么做，每个方法都加一个参数么，而且这个参数很可能是跟业务无关的。<br>然后你就会发现你的getUserNameById(String uuid,int id) 里面多了一个叫 uuid的业务无关的传参,是不是很别扭呢。而且调用的地方也不一定就能获取到这个参数,会让调用者很困惑，明明只需要一个id字段就好了，而且你的函数名也写的是ById,干嘛还要我传一个无关的 uuid 过去，设计一点都不专业啊。</p><p>那好，于是我们就产生了第二种解决方案<br>全局变量</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">String</span> uuid<span class="token operator">=</span><span class="token string">"02ED1C90-F75B-4A06-89E7-EE0451F4BABC"</span><span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">a</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] a 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">public</span> statis <span class="token keyword">void</span> <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"[{}] b 方法执行了"</span><span class="token punctuation">,</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>是不是感觉清爽多了，问题解决了么,当然！但是，可是，可但是，只要用到全局的静态变量，就要很小心，你要看看这个静态变量是不是在其他的类中或者其他service中也会是使用，如果是就要设置为 public 如果不是就要设置为 private，另外还要关注这个变量是不是能被其他地方修改，还是只是被读取，而不会并发修改等等之类的问题。此外你还要注意，这个static 的全局的变量一旦初始化就会永久留在内存中，注意是永久，除非你手动的释放，否则gc也很难回收它，至少我到目前学到的jvm没有回收静态变量的，因为静态变量是跟随类实例化而产生，跟随类的消亡而消亡的，我还没见哪个类加载之后过一点时间还会销毁的。</p><p>好，现在问题升级，如果这个uuid 要随线程产生而产生，随线程消亡而释放(节约空间吗，只在线程中使用，不会永久驻留在内存中)。如何来解决上面提到的问题。</p><p>于是自然而然的我们想到只需要在线程初始化的时候,在线程对象里面(没错，线程也是一个对象，而且是一个占用空间不小的对象，Java中特意封装了一个类叫Thread用以映射操作系统的一个线程，其实说到底还是进程)保存一个变量，这个变量可用在线程的任何地方都访问到。<br>于是我又灵光一闪，想到了一个方案，我可以改写 Thread 类，然后让Thread类里面包含一个 HashMap 结构，用来存储我先搞在线程上线文中传递的变量，于是就变成了这样的设计。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ContextThread</span> <span class="token keyword">extends</span> <span class="token class-name">Thread</span> <span class="token punctuation">{</span> <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Object</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">&gt;</span></span> locals <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">public</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token class-name">Runnable</span> target<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token keyword">super</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">putLocal</span><span class="token punctuation">(</span><span class="token class-name">Object</span> k<span class="token punctuation">,</span> <span class="token class-name">Object</span> v<span class="token punctuation">)</span> <span class="token punctuation">{</span>  locals<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>k<span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">getLocal</span><span class="token punctuation">(</span><span class="token class-name">Object</span> k<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token keyword">return</span> locals<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>k<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Main2</span> <span class="token punctuation">{</span> <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">Object</span> uuid <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token class-name">ContextThread</span> uuid0 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>   <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  uuid0<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token class-name">ContextThread</span> uuid1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>   <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345222222"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  uuid1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token class-name">Object</span> uuid <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getLocal</span><span class="token punctuation">(</span><span class="token string">"uuid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>我上面自定义的 ContextThread ,也能实现保存变量的目的, 然后 每个变量也只在 当前线程的上下文中有效。为什么JDK的作者们不在Thread里面放一个HashMap呢？你要说HashMap 不够线程安全，那可以用ConcurrentHashMap呀。重点就在于这样设计的话，如法做到变量的隔离，因为我们还可以写出这样的代码</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Main2</span> <span class="token punctuation">{</span> <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token class-name">Object</span> uuid <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token class-name">ContextThread</span> uuid0 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>   <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  uuid0<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token class-name">ContextThread</span> uuid1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>   <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345222222"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  uuid1<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//注意这里</span>  <span class="token class-name">ContextThread</span> uuid3 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ContextThread</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>   <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"12345222222"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   uuid0<span class="token punctuation">.</span><span class="token function">putLocal</span><span class="token punctuation">(</span>uuid<span class="token punctuation">,</span> <span class="token string">"1234"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  uuid3<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span> <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token class-name">Object</span> uuid <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">ContextThread</span><span class="token punctuation">)</span><span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getLocal</span><span class="token punctuation">(</span><span class="token string">"uuid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>uuid<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意 <code>ContextThread uuid3 = ...</code> 这个线程里面居然改动了 uuid0线程里面的uuid的值，变量不隔离了。而且我们不得不写putLocal(k,v)这样丑陋的代码。</p><p>那就只能在换个方式设计了，要求也就更明确了</p><ol><li>本地变量必须做到线程隔离，也就是另个线程看不到其他线程里面同名的变量值。</li><li>本地变量的写法必须的优雅，语义必须得明确</li><li>要能保证线程安全，因为已经线程隔离了，就不会共享，自然就线程安全了。</li></ol><p>所以Java的开发大牛们就提前在设计Thread类的时候设计出来了这个变量。所以，ThreadLocal就是解决这个问题。目的就是为了在各自的线程里面共享一个变量或几个变量，你要共享几个，你就创建几个ThreadLocal对象，这样的好处就是避免了创建一个线程外的对象所要考虑的并发问题了，因为threadLocal都只是某一个线程里面自己的变量了，随便你怎么取值，怎么修改都不会影响其他的线程里面的值。</p><p>我们看Thread 中 本地变量的实现代码的时候，我们先看这个地方，大概在181行</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"> <span class="token comment">/* ThreadLocal values pertaining to this thread. This map is maintained     * by the ThreadLocal class. */</span><span class="token class-name">ThreadLocal<span class="token punctuation">.</span>ThreadLocalMap</span> threadLocals <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>我们发现他是一个叫做ThreadLocal.ThreadLocalMap的一个数据类型，我们先不着急进到 ThreadLocal.ThreadLocalMap 这个类里面，我们先看一下这个变量threadLocals我们就知道，原来在每一个线程里面还有一个隐藏的私有变量叫 threadLocal ，他的类型是 一个类似map的东西。我们要在脑海中构建出这样一个常见，一个线程，里面有一个map。</p><p>然后我们在进入到ThreadLocal类。重点去看他的api 中的 get方法和set方法，至于为什么先看这个（也是别人教我的，没有为什么）</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/**     * Sets the current thread's copy of this thread-local variable     * to the specified value.  Most subclasses will have no need to     * override this method, relying solely on the {@link #initialValue}     * method to set the values of thread-locals.     *     * @param value the value to be stored in the current thread's copy of     *        this thread-local.     */</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token class-name">T</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token class-name">Thread</span> t <span class="token operator">=</span> <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">ThreadLocalMap</span> map <span class="token operator">=</span> <span class="token function">getMap</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>map <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            map<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>            <span class="token function">createMap</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>很明显，先获取当前线程，Thread.currentThread(); 这里获取到的是当前应用上下文所在的线程的对象实例，就是原原本本的当前线程。<br>然后 getMap(t) ，把当前线程t当参数传递进去了，获取的是当前线程，也就是上面我们脑海中构建的那个map结构。这里是关键，因为获取的是当前线程的，那么每次set的时候，其实都是操作的自己线程的map，而不会影响其他线程里面的map. 因为线程是隔离的，那线程里面的变量自然也是隔离的。<br>如果map没有实例化就实例化一个，如果实例化了，就把 k=this 和 v=value 添加到那个数组里面。回头取的时候，也一定是取当前线程的当前map中按照k=this取。<br>这里的this指的第我们自己定义的那个ThreadLocal 变量,不是线程也不是其他，这一点要注意一下。</p><p>所以我们可以想象一下，实际上根本不是 threadLocal这个对象里面存储了某个value，其实你操作的还是线程的一个内部对象，这个对象是一个map.底层是KV结构。而threadLocal 仅仅是在充当一个key 罢了，所以我们完全可以自己设计实现一个对象也同样实现类似的功能，然后放到我们自定义的线程对象中去。</p><p>所以，get方法，闭着眼睛也能想到，肯定是先获取当前线程对象，然后获取当前线程对象map,然后把threalLocal对象的应用作为key去map中查找，找到就返回，没有找到要么异常，要么返回为空，肯定跑不了。</p><p>我们去看一下get方法的实现</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">T</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token class-name">Thread</span> t <span class="token operator">=</span> <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token class-name">ThreadLocalMap</span> map <span class="token operator">=</span> <span class="token function">getMap</span><span class="token punctuation">(</span>t<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>map <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token class-name">ThreadLocalMap<span class="token punctuation">.</span>Entry</span> e <span class="token operator">=</span> map<span class="token punctuation">.</span><span class="token function">getEntry</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>e <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                <span class="token annotation punctuation">@SuppressWarnings</span><span class="token punctuation">(</span><span class="token string">"unchecked"</span><span class="token punctuation">)</span>                <span class="token class-name">T</span> result <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">T</span><span class="token punctuation">)</span>e<span class="token punctuation">.</span>value<span class="token punctuation">;</span>                <span class="token keyword">return</span> result<span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>        <span class="token keyword">return</span> <span class="token function">setInitialValue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>果然，无出其右。其他逻辑像 setInitialValue 就自己看吧，不在主流程里面。</p><p>这个是最基本的ThreadLocal. 如果细心一点我们可以看到 ThreadLocal 是有很多子类的，既然有继承了，那肯定不同的子类都实现不同的ThreadLocal的一些方法，他们之间是有差异的，例如 TerminatingThreadLocal 、InheritableThreadLocal 等等，说实话我只知道InheritableThreadLocal用在父子类继承上，没有实际用过，以后再研究吧。</p><h1 id="threadlocal-内部实现"><a class="markdownIt-Anchor" href="#threadlocal-内部实现"></a> ThreadLocal 内部实现</h1><p>ThreadLocalMap 和HashMap的功能类似，但是实现上却有很大的不同：</p><ol><li><code>HashMap 的数据结构是数组+链表</code> but <code>ThreadLocalMap的数据结构仅仅是数组</code></li><li><code>HashMap 是通过链地址法解决hash 冲突的问题</code> but <code>ThreadLocalMap 是通过开放地址法来解决hash 冲突的问题</code></li><li><code>HashMap 里面的Entry 内部类的引用都是强引用</code> but <code>ThreadLocalMap里面的Entry 内部类中的key 是弱引用，value 是强引用</code></li></ol><p>ThreadLocalMap的数据结构仅仅是数组的原因是因为其解决Hash冲突的方法决定的，采用的叫开发地址发的冲突解决方案。如果用拉链法，才会在遇到冲突的会后采用链表的结构，其他解决冲突的手段一般都是用数组。<br>解决冲突的手段包括 拉链法、开放地址发、再哈希 等。其实在hash也算是开放地址法的一种。就是我遇到冲突的时候我在hash一把，直到找到一个能够盛放值的位置位置。</p><p>为什么ThreadLocalMap 采用开放地址法来解决哈希冲突?<br>jdk 中大多数的类都是采用了链地址法来解决hash 冲突，为什么ThreadLocalMap 采用开放地址法来解决哈希冲突呢？首先我们来看看这两种不同的方式</p><p>链地址法</p><blockquote><p>这种方法的基本思想是将所有哈希地址为i的元素构成一个称为同义词链的单链表，并将单链表的头指针存在哈希表的第i个单元中，因而查找、插入和删除主要在同义词链中进行。</p></blockquote><p>开放地址法</p><blockquote><p>这种方法的基本思想是一旦发生了冲突，就去寻找下一个空的散列地址(这非常重要，源码都是根据这个特性，必须理解这里才能往下走)，只要散列表足够大，空的散列地址总能找到，并将记录存入。</p></blockquote><h2 id="链地址法和开放地址法的优缺点"><a class="markdownIt-Anchor" href="#链地址法和开放地址法的优缺点"></a> 链地址法和开放地址法的优缺点</h2><h3 id="链式地址法hashmap"><a class="markdownIt-Anchor" href="#链式地址法hashmap"></a> 链式地址法（HashMap)</h3><p>优点：<br>  处理冲突简单，且无堆积现象，平均查找长度短；也就是说遇到冲突我就网链表的头上添加，因此简单，只要hash函数设计合理，那就不会出现堆积，因此查找速度也快。<br>  链表中的结点是动态申请的，适合构造表不能确定长度的情况；如果不停的向map里面存值，只是冲突越来越多，但是只要往链表里面加就行。</p><p>缺点：<br>  指针占用较大空间时，会造成空间浪费。</p><h3 id="开放地址法threadlocalmap"><a class="markdownIt-Anchor" href="#开放地址法threadlocalmap"></a> 开放地址法：(ThreadLocalMap)</h3><p>优点：<br>  当节点规模较少，或者装载因子较少的时候，使用开放地址法较为节省空间。</p><p>缺点：<br>  容易产生堆积问题；<br>  不适于大规模的数据存储；<br>  插入时可能会出现多次冲突的现象，删除的元素是多个冲突元素中的一个，需要对后面的元素作处理，实现较复杂；</p><p>总体来说拉链法比较简单因此Java中大都用此手段，但是在本地变量这种场景下，JDK的先辈们考虑的可能跟深远吧。</p><p>ThreadLocalMap 采用开放地址法原因</p><ol><li>ThreadLocal 中看到一个属性 HASH_INCREMENT = 0x61c88647 ，0x61c88647 是一个神奇的数字，让哈希码能均匀的分布在2的N次方的数组里, 即 Entry[] table，关于这个神奇的数字google 有很多解析，这里就不重复说了</li><li>ThreadLocal 往往存放的数据量不会特别大（而且key 是弱引用又会被垃圾回收，及时让数据量更小），这个时候开放地址法简单的结构会显得更省空间，同时数组的查询效率也是非常高，加上第一点的保障，冲突概率也低</li></ol><p>ThreadLocalMap的Entity为什么要集成WeekReference,使其key被弱引用对象指向。</p>]]></content>
       
@@ -3877,6 +4214,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java并发编程 </category>
           
       </categories>
       
@@ -3895,8 +4234,8 @@
     
     <entry>
       <title>StackOverFlow vs OutOfMemeroy</title>
-      <link href="/2022/03/21/java/stackoverflow-vs-outofmemeroy/"/>
-      <url>/2022/03/21/java/stackoverflow-vs-outofmemeroy/</url>
+      <link href="/2022/03/21/java/java-ji-chu-chang-shi/stackoverflow-vs-outofmemeroy/"/>
+      <url>/2022/03/21/java/java-ji-chu-chang-shi/stackoverflow-vs-outofmemeroy/</url>
       
         <content type="html"><![CDATA[<p>StackOverFlow , 叫做 栈溢出， 从名字就可以看出来，明显跟 栈 这种数据结构有关。</p><p>我们知道 Java 是运行在 JVM 上的，JVM 又是基于栈 的虚拟机，这里为什么说JVM 是基于栈的呢，那就是因为，JVM 在运行的时候会给每一个Java线程分配独立的栈空间，或者说每个Java线程在创建的时候会向JVM申请自己的栈空间。所谓栈就是一个先进先出的数据结构，其实就是一块单独的空间，我们规定这个空间里的数据只能先进先出，后进后出而已。这个栈，是有一个个的栈帧组成的，你可以理解为，有一个空间，空间有一堆大小固定的格子，这格子你先不管盛的是啥，总之这些格子就组成了一个栈空间。每一个格子就代表这一个方法，格子的入栈和出栈就代表这一个方法的进入和返回。方法的执行就是对这个格子里面存储的空间进行读写的过程。栈帧里面存放着 局部变量表、操作数栈、动态链接、方法的返回地址。这里面的操作数栈就是方法运行过程中存放临时变量的地方，就是所谓 JVM 是基于栈 的虚拟机。那肯定有不是基于栈的JVM，比如 android 系统用到的 Dalvik 就是基于寄存器的，在这类JVM中也是一个线程单独分配一个栈空间，但是这个占空间里面没有操作数栈，而是几个寄存器，所有的操作结果都会写回对应的寄存器而不是栈。</p><p>StackOverFlow 栈溢出指的是JVM给线程分配的这个线程栈的溢出，注意操作数栈是不会溢出的，因为操作数栈的大小在你写完方法的时候就已经确定需要多少了。如果一个线程的线程栈，不停的被压栈，比如递归，你会发现最后一个栈帧进不去了，因为这个栈的大小是一定的，盛不开了，那就只能溢出了。</p><p>OutOfMemeroy，叫做内存不足，从名字就可以看出出来，明显是跟 内存 有关的。我们的程序总是要想操作系统申请空间的，如果申请空间的时候，操作系统告诉你空间不够了，那就叫 OutOfMemeroy。</p><p>所以对于内存不足的时候是抛出 栈溢出还是 内存不足，首先要看 内存不足的地方是不是栈，如果不是栈，那一定不会是栈溢出，一定是oom。如果是栈，那再看这个栈空间是不是支持动态扩展，如果不支持动态扩展，然后栈不够用了，那就是stackoverflow，如果支持动态扩展，但是在向操作系统申请的时候，操作系统说没有了，那也不叫栈溢出，而叫内存不足，如果支持动态扩展，但是已经扩展到分配的最大值了，但这时候栈还是不够用，那就叫栈溢出了。</p>]]></content>
       
@@ -3904,6 +4243,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -4230,8 +4571,8 @@
     
     <entry>
       <title>Jvm垃圾回收</title>
-      <link href="/2021/05/25/java/jvm-la-ji-hui-shou/"/>
-      <url>/2021/05/25/java/jvm-la-ji-hui-shou/</url>
+      <link href="/2021/05/25/java/java-ji-chu-chang-shi/jvm-la-ji-hui-shou/"/>
+      <url>/2021/05/25/java/java-ji-chu-chang-shi/jvm-la-ji-hui-shou/</url>
       
         <content type="html"><![CDATA[<h1 id="垃圾回收要解决的根本问题"><a class="markdownIt-Anchor" href="#垃圾回收要解决的根本问题"></a> 垃圾回收要解决的根本问题</h1><p>这里我们先不区分编程语言,单说垃圾回收。这里涉及三个问题,哪些区域的垃圾需要回收,这些区域的垃圾如何识别,这些区域的垃圾如何回收。</p><p>一个对象只有被认定为垃圾之后才能被回收,否则决不能动它,因为一旦移动或者删除就会发生找不值或者找到错误的值的情况。试想一下,一块内存区域本来你在使用着,后来被垃圾回收了(所谓垃圾回收就是指这块内存区域被高(低)电平覆盖,要么全0要么全1,然后这块地址可以继续被用来存放其他的变量的值了)等你在用的时候,发现值没了或者变了,这时候程序就要出错了。</p><h1 id="垃圾回收的历史"><a class="markdownIt-Anchor" href="#垃圾回收的历史"></a> 垃圾回收的历史</h1><p>但是细想一下为什么我们需要垃圾回收呢?为什么c语言就没有垃圾回收机制呢？</p><p>一开始人们发明编程语言的时候,受限于当时的硬件和软件理论的限制。觉得程序员就应该自己管理内存,无论向操作系统申请内存还是把内存归还给操作系统（c语言就是这个想法,所以他没有垃圾回收器,加上垃圾回收器之后就变身C++了）,而且你用完一块儿内存空间之后,你就应该及时释放掉,注意这里的及时,就是说你越快释放越好,因为那时候的内存空间是很有限的啊,你不及时释放,后面的代码逻辑就可能执行不了啊。所以人们并没有垃圾回收的概念。 后来随着硬件的提高,内存容量的增大,以及软件理论的更新,人们发现我在写代码的时候有大量的申请内存、释放内存的动作,这是重复的行为啊,有程序员就受不了了,代码中应该杜绝重复的代码,如果有重复的代码,那一定是代码写的不够好,不够好怎么办呢?我就要分层、抽象,巴拉巴拉各种软件设计理论就来了。于是人们觉得我们应该吧这些重复的代码抽象出来,最后人们想到,释放内存的逻辑应该交给程序来做,程序员不应该关心内存的释放,当然申请你还是需要关心的。不过释放的工作我放到另外一层来做,这一层就是所谓的垃圾回收器。</p><p>垃圾回收器的历史远远比Java语言要早,甚至比c语言还要早,要知道垃圾回收的思想是从Lisp语言开始的,:isp语言也算一一门神奇的语言了,在1956年发明,因为他是一门走在时代前言的编程语言,它当时提出的垃圾回收思想对后世的影响还是很深刻的,甚至第一个垃圾识别算法–引用计数法就是它最先提出来的。</p><p>从有无垃圾收集器来区分,编程语言其实可以分成两大阵营,一大阵营是有垃圾回收器的语言,一类是没有垃圾回收器的语言。</p><blockquote><p>有垃圾回收器的说自己简单,不用手动写释放内存的样板代码,不会存在内存泄漏,自诩安全系数高。<br>没有垃圾回收器的语言就说自己灵活,可以手动控制内存的分配与释放,自诩效率高。</p></blockquote><p>那有没有一种语言既没有垃圾回收器又不用需要关心内存的回收问题呢？有没有这么两全其美的语言呢。</p><p>还真有,有一门新的语言叫 Rust 语言的,它既没有垃圾回收器,也不需要手动写代码释放内存。它的实现比较另类。是在编译的时候帮你把释放内存的代码插入到了代码之间。所以看起来不需要你手动释放代码,也没有垃圾收集器,但按照我的理解,其实它还是应该归为有垃圾收集的语言。</p><h1 id="java的垃圾回收"><a class="markdownIt-Anchor" href="#java的垃圾回收"></a> Java的垃圾回收</h1><p>一门语言一旦决定归到垃圾回收器阵营,例如Java,那它就必须要实现一套垃圾回收器来负责回收垃圾,也就是说它运行的时候,后台默默地还会启动一个线程或进程来扫描所使用的内存,而垃圾收集器的目的就是要高效的回收内存以供新的代码使用。要高效的回收可并不容易啊。所以人们针对这个高效的问题提出了一个又一个的解决方案,而每一个方案又会产生一系列新的问题,然后又在下一代的方案中解决。对此我们衍生了很多很多的垃圾回收算法。不同的算法对应不同的垃圾收集器。</p><h2 id="第一个问题哪些区域的垃圾需要回收"><a class="markdownIt-Anchor" href="#第一个问题哪些区域的垃圾需要回收"></a> 第一个问题,哪些区域的垃圾需要回收？</h2><p>要想确定哪些区域需要回收,就首先要知道有哪些区域。然后才能说哪些区域需要回收,哪些区域不需要回收。一个Java进程想要回收人家QQ的内存空间,这是不可能的!所以,我们要先搞清楚Java运行的时候,到底管理着哪些内存空间,也就是另一个知识点: JVM 的运行时数据区域。这个知识点也比较繁杂,这里简单说一下。JAVA是基于JVM的跨平台实现了所谓的一次编译到处执行的宏伟目标的。因此在各个平台开发对应的JVM的时候一定有一个标准,我们称作JVM标准。其中针对运行时数据区域的划分就有规定,规定称要实现JVM必须将内存划分为5个区域:程序计数器、方法栈、本地方法栈、方法区、堆</p><p>那既然知道有上面5部分区域了,那哪些区域是需要被回收的呢？理论上只要是空间只要不用我就应该回收掉。要想了解这个问题就要知道每个区域到底存的是啥。</p><p>由上面的 程序计数器、方法栈、本地方法栈 随着线程而生随线程而灭,因此线程退出的时候,空间自动释放。其中程序计数器是一块很小的内存,小到只需要存下一个内存地址就行,每个线程独占一块儿程序计数器,用来指示本线程执行到了代码的哪一行；方法栈、本地方法栈里面是一个个的方法栈帧,对应着方法的调用,入栈之后代表方法运行,运行完毕后自动弹出栈顶,空间就自动释放了,所以垃圾回收器不用操心这三块区域。因此我们需要关心的其实就剩方法区和堆栈了,方法区中本来存放的一些类信息、方法信息等等静态的东西,那么对于类信息在一个类不使用的时候就应该自动释放不在占着内存,方法去里面还有可能存放一些常量,我们叫做常量池,也是需要释放内存的。堆就不用说了,对象分配的地方,用完自然要释放,因此垃圾回收的主战场就是堆了,此外还有方法区。不过随着JVM的发展,这个所谓的方法区也逐渐逐渐归还给堆了,因为方法区本来就是堆得一部分,只不过因为要存一些类信息、静态变量等信息而强行划分出来的,HotSopt虚拟机为了和JRokit虚拟机的一些优秀特性合并,在Java8中已经将方法区中的字符串池、静态变量等移到堆中了。</p><h2 id="第二个问题这些区域的垃圾如何识别"><a class="markdownIt-Anchor" href="#第二个问题这些区域的垃圾如何识别"></a> 第二个问题,这些区域的垃圾如何识别</h2><p>人们最先想到的就是引用计数,引用计数就是一个对象被引用了,引用计数器就+1,一个对象的引用被断开了,引用计数器就-1,实现起来非常简单,前面说过了,甚至第一个垃圾识别算法–引用计数法就是List最先提出来的。但是引用计数无法解决循环引用的问题,为了解决循环引用的问题,人们发明了弱引用的弥补方式,但是只能应用于简单场景,所以一些脚本语言在设计垃圾回收器的时候就选择了引用计数的实现方式。例如 js,python。人们为了解决引用计数的老大难问题：循环引用,又发明了一种方法叫可达性分析法,java 采用了后者。</p><h2 id="第三个问题这些区域的垃圾如何回收"><a class="markdownIt-Anchor" href="#第三个问题这些区域的垃圾如何回收"></a> 第三个问题,这些区域的垃圾如何回收</h2><p>既然JAVA选择了可达性分析,我们知道可达性分析是依赖于根对象的,所以必须知道根对象在哪儿。这需要我们了解一下JVM的内存分布,或者叫内存布局,官方名字叫运行时数据区域,也就是JVM在于行的时候数据所在的区域。这可以看我的另一篇文章 《Java-运行时数据区》。这里我们只说一下跟对象存在的地方。</p><ol><li>栈<br>栈里面存的是栈帧,栈帧里面存了对象的引用,这些引用就是根对象</li><li>本地方法栈<br>栈里面存的是栈帧,本地方法在执行的时候,会把对象的引用在传递到本地方法栈的栈帧里面,栈帧里面存了对象的引用,这些引用就是根对象</li><li>方法区：静态引用、常量池中的引用<br>方法区中村的静态引用和常量池中的应用,这些引用就是根对象</li></ol><h2 id="标记清除算法"><a class="markdownIt-Anchor" href="#标记清除算法"></a> 标记清除算法</h2><h2 id="复制算法"><a class="markdownIt-Anchor" href="#复制算法"></a> 复制算法</h2><h2 id="标记整理算法"><a class="markdownIt-Anchor" href="#标记整理算法"></a> 标记整理算法</h2><h2 id="分代垃圾回收算法"><a class="markdownIt-Anchor" href="#分代垃圾回收算法"></a> 分代垃圾回收算法</h2><p>直到统计理论的引入,才开始分代回收</p><h1 id="java的垃圾回收器"><a class="markdownIt-Anchor" href="#java的垃圾回收器"></a> Java的垃圾回收器</h1><p>垃圾收集器按照代分为两种,新生代一种、老年代一种,这样做的目的是为了让新生代和老年代的垃圾收集器可以随意组合,但事与愿违,有些回收器之间是不可以随意组合的。<br>一开始为了简单,只有串行的 serial 收集器,因为那个年代计算机可用的内存本来就很小,只有几十兆几百兆,那供JVM可用的内存就更少,因此产生的垃圾也就少,用串行回收器足够了,回收速度很快,用户根本感知不到,相当于运行10s就回收个10ms。但是随着计算机的发展,JVM可控的内存越来越多,产生的来及也就越来越多,用串行回收器不够了,因为产生的垃圾多了,在回收速度一定的情况下,回收时间自然就变长了,长到用户开始感知了,运行10s就回收了1s,于是JAVA不能忍了,这阶段的主要目标就是提高垃圾回收的速度,缩短垃圾回收的时间,而这时候真多核处理技术的发展使得真多线程成为现实,因此为了提高垃圾回收的速度,自然而然的就想到了用多线程来回收,这样就搞出了parNew,现在新生代试试水,所以parNew 诞生的时候老年代还是只有serial old这一种串行的垃圾回收器。但是随着内存的继续发展,达到GB了,这时候即使多线程也不行了,因为用户还是能感到明显的停顿。可能运行了20s就有一次1s的垃圾回收了。所以这时候人们并不是要求垃圾回收的速度越来越快了,而是要求用户最好不要感知到垃圾回收,我们知道 回收时间=垃圾量/垃圾回收速度 ,刚才说到了,我们已经用多线程垃圾回收的方式实现了垃圾回收速度的最大化,这时候回收速度我们优化不了了,为了缩短回收时间,我们只能减少垃圾量的产生,为了减少垃圾量的产生,我们需要让程序运行的时间短一会儿,这样产生的垃圾就少,但是这样垃圾回收的频率就会上来,可是用户无感知了呀,原来10s中回收1s,现在每3s就回收3ms,3ms的时间用户也感知不到,实际上用户程序是暂停了的,这样人么就要求能控制运行多久就执行一次多久的垃圾回收,于是 parell scaveng 诞生,可以控制吞吐率了,人们一看效果不过,于是应用到老年代 parell old 诞生。这时候老年代已经有两种垃圾回收器了。但是到现在,无论如何用户程序都得暂停,人们的胃口越来越大,期望用户程序不暂停,你还得给我管理垃圾回收,于是cms诞生,这个是并行垃圾回收器的第一次尝试,但是老年代会产生内存碎片啊,于是G1诞生,但是G1有效率问题啊,于是ZGC诞生。可以看到GC垃圾收集器的发明过程,就是人类欲望的膨胀过程。</p><h2 id="serial-收集器-serial-old-收集器"><a class="markdownIt-Anchor" href="#serial-收集器-serial-old-收集器"></a> serial 收集器 &amp; serial old 收集器</h2><h2 id="parnew-收集器"><a class="markdownIt-Anchor" href="#parnew-收集器"></a> parNew 收集器</h2><h2 id="parell-scaveng-收集器-parell-old-收集器"><a class="markdownIt-Anchor" href="#parell-scaveng-收集器-parell-old-收集器"></a> parell scaveng 收集器 &amp; parell old 收集器</h2><h2 id="cms-收集器"><a class="markdownIt-Anchor" href="#cms-收集器"></a> CMS 收集器</h2><h2 id="g1-收集器"><a class="markdownIt-Anchor" href="#g1-收集器"></a> G1 收集器</h2><h2 id="zgc-收集器"><a class="markdownIt-Anchor" href="#zgc-收集器"></a> ZGC 收集器</h2>]]></content>
       
@@ -4239,6 +4580,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -4577,8 +4920,8 @@
     
     <entry>
       <title>为什么尾递归能优化</title>
-      <link href="/2020/04/13/java/wei-shi-me-wei-di-gui-neng-you-hua/"/>
-      <url>/2020/04/13/java/wei-shi-me-wei-di-gui-neng-you-hua/</url>
+      <link href="/2020/04/13/java/java-ji-chu-chang-shi/wei-shi-me-wei-di-gui-neng-you-hua/"/>
+      <url>/2020/04/13/java/java-ji-chu-chang-shi/wei-shi-me-wei-di-gui-neng-you-hua/</url>
       
         <content type="html"><![CDATA[<p>要知道一个道理，计算机特别讨厌递归程序，特别讨厌。因为处理不好，内存就被吃光了。</p><h1 id="递归"><a class="markdownIt-Anchor" href="#递归"></a> 递归</h1><p>百度百科</p><blockquote><p>程序调用自身的编程技巧称为递归（ recursion）。递归做为一种算法在程序设计语言中广泛应用。 一个过程或函数在其定义或说明中有直接或间接调用自身的一种方法，它通常把一个大型复杂的问题层层转化为一个与原问题相似的规模较小的问题来求解，递归策略只需少量的程序就可描述出解题过程所需要的多次重复计算，大大地减少了程序的代码量。递归的能力在于用有限的语句来定义对象的无限集合。一般来说，递归需要有边界条件、递归前进段和递归返回段。当边界条件不满足时，递归前进；当边界条件满足时，递归返回。</p></blockquote><p>构成递归需具备的条件：</p><ol><li>子问题须与原始问题为同样的事，且更为简单；</li><li>不能无限制地调用本身，须有个出口，化简为非递归状况处理。</li></ol><p>所以综上所述,函数自己调用自己就是递归了么?不是,函数自己调用自己只是递归的一个先决条件,还有一个条件是,需要有函数的终止条件。否则递归就是一个死循环。</p><h1 id="尾递归"><a class="markdownIt-Anchor" href="#尾递归"></a> 尾递归</h1><p>百度百科</p><blockquote><p>如果一个函数中所有递归形式的调用都出现在函数的末尾，我们称这个递归函数是尾递归的。当递归调用是整个函数体中最后执行的语句且它的返回值不属于表达式的一部分时，这个递归调用就是尾递归。尾递归函数的特点是在回归过程中不用做任何操作，这个特性很重要，因为大多数现代的编译器会利用这种特点自动生成优化的代码。</p></blockquote><p>我们可以这样理解尾递归</p><ol><li>所有递归形式的调用都出现在函数的末尾</li><li>递归调用是整个函数体中最后执行的语句且它的返回值不属于表达式的一部分</li></ol><h1 id="递归是咋调用的呢"><a class="markdownIt-Anchor" href="#递归是咋调用的呢"></a> 递归是咋调用的呢</h1><p>递归就是自身调用自身，而自身是一个函数，一个函数在执行的时候一定要吧这个函数压入栈中，执行的时候在出栈。所以一个函数在执行的时候先把遇到的函数压入栈中，那入栈的时候就要申请空间嘛，这个空间可以裂解为就是存放函数的一个空间，如果递归的层次特别多，那么就要申请特别多的占空间来存放一个函数的各种参数，久而久之就OOM了</p><h1 id="为什么尾递归能优化"><a class="markdownIt-Anchor" href="#为什么尾递归能优化"></a> 为什么尾递归能优化</h1><blockquote><p>当编译器检测到一个函数调用是尾递归的时候，它就覆盖当前的活动记录而不是在栈中去创建一个新的。编译器可以做到这点，因为递归调用是当前活跃期内最后一条待执行的语句，于是当这个调用返回时栈帧中并没有其他事情可做，因此也就没有保存栈帧的必要了。通过覆盖当前的栈帧而不是在其之上重新添加一个，这样所使用的栈空间就大大缩减了，这使得实际的运行效率会变得更高。</p></blockquote><h1 id="尾递归优化了什么"><a class="markdownIt-Anchor" href="#尾递归优化了什么"></a> 尾递归优化了什么</h1><p>通过上面的描述，我们知道，尾递归和普通递归的区别就在一，<code>它就覆盖当前的活动记录而不是在栈中去创建一个新的</code> 这句话怎么理解呢。就是尾递归只是复用了当前的函数栈而不是重新压入一个栈。所以尾递归的优化点就在这儿。</p><h1 id="为什么普通递归就不能优化"><a class="markdownIt-Anchor" href="#为什么普通递归就不能优化"></a> 为什么普通递归就不能优化</h1><p>为什么普通递归函数无法像尾递归函数一样优化呢?明明都是递归函数,怎们普通递归就不能再编译阶段优化成循环的形式呢?</p><p>就想上面说的当编译器检测到一个函数调用是尾递归的时候，它就覆盖当前的活动记录而不是在栈中去创建一个新的。普通递归调用则实现不了,因为普通递归调用必须等待上一个函数的完整执行和返回,因此上一个函数必须入栈才行。</p><h1 id="java-vs-scala-尾递归优化"><a class="markdownIt-Anchor" href="#java-vs-scala-尾递归优化"></a> Java Vs Scala 尾递归优化</h1><p>Java 没有实现尾递归优化，Scala有实现</p><ul><li>未完待续</li></ul>]]></content>
       
@@ -4586,6 +4929,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -4606,8 +4951,8 @@
     
     <entry>
       <title>Java内部类</title>
-      <link href="/2020/04/09/java/java-nei-bu-lei/"/>
-      <url>/2020/04/09/java/java-nei-bu-lei/</url>
+      <link href="/2020/04/09/java/java-ji-chu-chang-shi/java-nei-bu-lei/"/>
+      <url>/2020/04/09/java/java-ji-chu-chang-shi/java-nei-bu-lei/</url>
       
         <content type="html"><![CDATA[<p>内部类就是类里面的类，形式上大概是这样</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Outer</span><span class="token punctuation">{</span>  <span class="token keyword">class</span> <span class="token class-name">Inner</span><span class="token punctuation">{</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>你可以把内部类和这个外部类的某一个成员变量和成员方法看成同一个级别。例如</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Outer</span><span class="token punctuation">{</span>  <span class="token keyword">private</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>  <span class="token class-name">String</span> name<span class="token punctuation">;</span>  <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span>  <span class="token punctuation">}</span>  <span class="token keyword">class</span> <span class="token class-name">Inner</span><span class="token punctuation">{</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这里 这个 Inner 就和成员变量和成员函数也叫成员方法一样，都属于这个类的一个属性而已。<br>另外既然和外部类的属性和方法属于同一级别，那也就可以被 访问限制修饰符来修饰，访问限制修饰符指的就是 private 、public 啊还有一个就是static .<br>private 和 public 就限制了一个内部类是不是能被外部访问，就像private修饰的变量 age 一样，只能被类内部使用，除非你在暴露接口扩大其访问权限。例如你写pubulic 的get set 方法。那内部类也一样，如果你用private修饰，那你在这个外部类的其他类你就不能创建一个Inner类了，因为他是private的嘛，要求只能在内部类里面使用。而这个使用指的就是创建实例，因为类的作用就是new一个个的对象出来嘛。private了就是不允许外部new对象了。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Outer</span><span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Inner</span><span class="token punctuation">{</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Mian</span><span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>     <span class="token comment">//想要创建内部类必须先有外部类</span>     <span class="token class-name">Outer</span> outer<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Outer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//因为这里是public的内部类，所以可以直接这样写</span>     <span class="token comment">//但要单独引用包 import xxxx.xx.Outer.Inner;</span>     <span class="token class-name">Inner</span> inner<span class="token operator">=</span>outer<span class="token punctuation">.</span><span class="token keyword">new</span> <span class="token class-name">Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//也可以这样写，表明这个内部类的外部类是Outer 下的Inner ,这样写更明确</span>     <span class="token class-name">Outer<span class="token punctuation">.</span>Inner</span> inner2<span class="token operator">=</span>outer<span class="token punctuation">.</span><span class="token keyword">new</span> <span class="token class-name">Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token comment">//但如果这里是private的内部类，上面两行代码立马报错</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果一个内部类被static修饰了，就成了类级别的了，和外部类的实例对象就无关了，成了所有实例对象共享的一部分代码，这部分代码全局都只此一份。被static修饰的内部类有一个专门的名称叫，静态内部类。静态内部类和静态类一样，我们不用创建实例对象就可以访问里面的静态方法，注意是静态方法，对于费静态方法，我们还是得老老实实创建对象的。内部类都静态了，那她就和静态类一样，在用到他的时候他才会初始化，这就给我们安全的创造单例模式提供了方便,static的作用就是变成类相关的，而类的加载机制有保证了累得加载是惰性加载，也就是用到这个类的时候才会初始化类相关的变量，如果用不到那它就是一坨文本文件，静静的躺在磁盘上而已。</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Outer</span><span class="token punctuation">{</span>  <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Inner</span><span class="token punctuation">{</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token comment">//要想创建内部类的实例，我们不需要外部类的实例，所以可以直接通过下面的方式new</span>    <span class="token class-name">Outer<span class="token punctuation">.</span>Inner</span> inner<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Outer<span class="token punctuation">.</span>Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token class-name">Inner</span> inner<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 当然如果 内部类被private 修饰，那么上面两行代码立马报错</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="为啥要有内部类"><a class="markdownIt-Anchor" href="#为啥要有内部类"></a> 为啥要有内部类</h1><p>把一个类写成一个单独的类怎么了，怎么了呢，非要搞这么复杂干啥呢?其实还是因为Java当前吹过的牛逼，那就是Java觉得只要单根继承就好，它根本不想去解决菱形问题或者叫钻石问题，为此他就丧失的多继承的优越性，为了弥补单根继承的缺陷，它发明了内部类。</p><p>那单根继承有什么缺点呢？单根继承的确定就单根继承，这不废话么，说白了就是扩展不方便，我想把两个类的方法集于一身，你说怎么办吧？你会发现你在java里面怎么写都别扭，我implements吧，我还得写一遍实现，我用abstract 吧，我只能继承一次，那我就级联继承吧 A extents B ,B extents C ,那A不就有了B和C的功能了么，但你会发现 B继承C 更别扭，因为没有儿子继承妈妈，妈妈在继承爸爸一说，因为B和C 在语意上就应该是并列的。</p><p>那内部类为什么就能弥补呢?因为Java规定了内部类可以访问外部的成员变量，甚至包括 private的，其实这个甚至不应该强调，因为一强调，我们就会重点去关注了，其实你想想内部类和内部的成员变量和成员方法一个级别，我在里面能访问和我同一个别的属性有什么问题么？没有问题！！！我就应该有权限。</p><p>那能访问有怎么了呢，这样我们就可以引入不用的内部类分别继承我们想要多继承的类，然后我们就可以控制我们自己列的行为啦！类似这样</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Son</span><span class="token punctuation">{</span>  <span class="token keyword">private</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>  <span class="token keyword">private</span> <span class="token class-name">String</span> <span class="token function">say</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">return</span> <span class="token string">"你好"</span>  <span class="token punctuation">}</span>  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Father</span><span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>      <span class="token keyword">return</span> name    <span class="token punctuation">}</span>  <span class="token punctuation">}</span>  <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Mom</span><span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>      <span class="token keyword">return</span> name    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>那怎么实现的呢，我也不用反编译什么的，直接告诉你，因为内部类在实例化的时候，编译器通过构造函数偷偷的吧外部类实例的引用注入到了内部类中。</p>]]></content>
       
@@ -4615,6 +4960,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -4727,35 +5074,6 @@
     
     
     <entry>
-      <title>高版本JDK的坑-ClassNotFound</title>
-      <link href="/2020/03/18/java/java-tian-keng/gao-ban-ben-jdk-de-keng-classnotfound/"/>
-      <url>/2020/03/18/java/java-tian-keng/gao-ban-ben-jdk-de-keng-classnotfound/</url>
-      
-        <content type="html"><![CDATA[<p>如果使用高版本的JDK启动jar包的时候,可能会遇到一些莫名其妙的问题,所以Java当前吹的永远向前兼容的牛逼算是吹破了。今天我就遇到了.<br>一开我使用java -jar xxxxx.jar 启动的时候会报出一些JVM启动参数问题，觉得莫名其妙，命名本地可以启动，为什么到了服务器上就启动不了呢？<br>于是第一时间想到了查看一下java的版本</p><pre class="line-numbers language-none"><code class="language-none">root@xr-travelse-arm-vm01:~# java -versionopenjdk version "11.0.4" 2019-07-16OpenJDK Runtime Environment (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3)OpenJDK 64-Bit Server VM (build 11.0.4+11-post-Ubuntu-1ubuntu218.04.3, mixed mode)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>结果发现居然装的是java 11. 这个版本我们生产环境从未用过，本想正重装Java8来解决，但是难道以后都不升级了么，所以这个问题一定要弄明白，于是乎goole了一下发现java8 以后的jvm虚拟机去掉了好几个jvm配置参数，那是因为jdk8以后版本的jvm开始做减法了，去掉了一些功能.例如 配置</p><pre class="line-numbers language-none"><code class="language-none">#local JVM_HEAP="-XX:NewRatio=1 -XX:SurvivorRatio=8 -XX:MetaspaceSize=64m -XX:MaxMetaspaceSize=64m -XX:+HeapDumpOnOutOfMemoryError -XX:ReservedCodeCacheSize=64m -XX:InitialCodeCacheSize=64m"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>配置这些在java8中是没问题的，但是配置在java11中会导致服务启动不了。因为有些参数已经废弃掉了，或者改用了其他的方式来配置。</p><p>另外，还会出现一个现象，就是引用启动没有问题，但是程序就是运行不了，而且不打印异常堆栈信息，这你怎么排查！！！我没办法只要远程调试，断点执行，才发现一个异常。<br>最后还是使用java8吧先，有时间在研究java11.</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> JAVA </category>
-          
-          <category> Java填坑 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> Java </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>秒懂 QPS、TPS、PV、UV、GMV、IP、RPS！</title>
       <link href="/2020/03/18/ji-suan-ji/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/"/>
       <url>/2020/03/18/ji-suan-ji/ji-suan-ji-ji-chu/qps-tps-pv-uv-gmv-ip-rps/</url>
@@ -4820,43 +5138,18 @@
     
     
     <entry>
-      <title>mavne不继承父pom插件</title>
-      <link href="/2020/02/12/java/java-tian-keng/mavne-bu-ji-cheng-fu-pom-cha-jian/"/>
-      <url>/2020/02/12/java/java-tian-keng/mavne-bu-ji-cheng-fu-pom-cha-jian/</url>
-      
-        <content type="html"><![CDATA[<pre class="line-numbers language-none"><code class="language-none">&lt;configuration&gt;    &lt;skip&gt;true&lt;/skip&gt;&lt;/configuration&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> JAVA </category>
-          
-          <category> Java填坑 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Java配置文件变量替换</title>
-      <link href="/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/"/>
-      <url>/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/</url>
+      <link href="/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/"/>
+      <url>/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/</url>
       
-        <content type="html"><![CDATA[<p>由于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow></mrow><mtext>方式会被</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mtext>处理。如果你</mtext><mi>p</mi><mi>o</mi><mi>m</mi><mtext>继承了</mtext><mi>s</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>−</mo><mi>b</mi><mi>o</mi><mi>o</mi><mi>t</mi><mo>−</mo><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>e</mi><mi>r</mi><mo>−</mo><mi>p</mi><mi>a</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>，</mtext><mi>S</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>B</mi><mi>o</mi><mi>o</mi><mi>t</mi><mtext>已经将</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mo>−</mo><mi>r</mi><mi>e</mi><mi>s</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>c</mi><mi>e</mi><mi>s</mi><mo>−</mo><mi>p</mi><mi>l</mi><mi>u</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>s</mi><mtext>默认的</mtext></mrow><annotation encoding="application/x-tex">{}方式会被maven处理。如果你pom继承了spring-boot-starter-parent，Spring Boot已经将maven-resources-plugins默认的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"></span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">式</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">被</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">处</span><span class="mord cjk_fallback">理</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">你</span><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord cjk_fallback">继</span><span class="mord cjk_fallback">承</span><span class="mord cjk_fallback">了</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">，</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">经</span><span class="mord cjk_fallback">将</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">c</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">默</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">的</span></span></span></span>{}方式改为了@@方式，如@version@</p><center>  <img src="/2020/02/11/java/java-pei-zhi-wen-jian-bian-liang-ti-huan/show.jpg"></center>]]></content>
+        <content type="html"><![CDATA[<p>由于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow></mrow><mtext>方式会被</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mtext>处理。如果你</mtext><mi>p</mi><mi>o</mi><mi>m</mi><mtext>继承了</mtext><mi>s</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>−</mo><mi>b</mi><mi>o</mi><mi>o</mi><mi>t</mi><mo>−</mo><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>e</mi><mi>r</mi><mo>−</mo><mi>p</mi><mi>a</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>，</mtext><mi>S</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>B</mi><mi>o</mi><mi>o</mi><mi>t</mi><mtext>已经将</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mo>−</mo><mi>r</mi><mi>e</mi><mi>s</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>c</mi><mi>e</mi><mi>s</mi><mo>−</mo><mi>p</mi><mi>l</mi><mi>u</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>s</mi><mtext>默认的</mtext></mrow><annotation encoding="application/x-tex">{}方式会被maven处理。如果你pom继承了spring-boot-starter-parent，Spring Boot已经将maven-resources-plugins默认的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"></span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">式</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">被</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">处</span><span class="mord cjk_fallback">理</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">你</span><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord cjk_fallback">继</span><span class="mord cjk_fallback">承</span><span class="mord cjk_fallback">了</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">，</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">经</span><span class="mord cjk_fallback">将</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">c</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">默</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">的</span></span></span></span>{}方式改为了@@方式，如@version@</p><center>  <img src="/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/show.jpg"></center>]]></content>
       
       
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java挖坑填坑 </category>
           
       </categories>
       
@@ -4875,8 +5168,8 @@
     
     <entry>
       <title></title>
-      <link href="/2020/02/11/java/java-suo/"/>
-      <url>/2020/02/11/java/java-suo/</url>
+      <link href="/2020/02/11/java/java-ji-chu-chang-shi/java-suo/"/>
+      <url>/2020/02/11/java/java-ji-chu-chang-shi/java-suo/</url>
       
         <content type="html"><![CDATA[<h1 id="为什么需要锁"><a class="markdownIt-Anchor" href="#为什么需要锁"></a> 为什么需要锁</h1><p>我们把多个线程竞争处理的资源称为临界资源（代码块、方法体等），当一个线程获得了临界资源的使用权以后，为了保证临界资源在同一时间只能由一个线程获得，其它线程必须等这个线程处理完以后才能通过竞争再次尝试获得临界资源的使用权。</p><p>追问：为什么要保证临界资源在同一时间只能由一个线程使用?<br>首先肯定是有这样的场景存在，多个线程同时操作临界资源会导致数据的不一致。</p><p>追问：什么叫数据的不一致?<br>就是你本来期望是一个结果，但是偏偏变成了另一个结果，本来不应该出现的情况，但是偏偏出现了，就叫数据不一致了。</p><p>追问：所以归根结底是为了解决临界资源在并发使用过程中可能出现的数据不一致性问题才必须保证临界资源在同一时间只能由一个线程获得?<br>是的。因为并发会导致数据不一致，那干脆在使用临界资源的时候不要并发了，多么简单暴力啊。</p><p>追问：说了半天还是没有说到锁啊?<br>那我们如何实现上面说的 必须保证临界资源在同一时间只能由一个线程获得呢？答案就是大家对向某个人提出申请，这个人必须足够公正，能保证在同一时间只能有一个人获得申请，而且要保证获得申请的人不撤销申请其他人即使再申请也不会获得申请，这个人就是锁，要知道这个人一旦被看作锁，那么他也将变成临界资源，申请锁的这个动作在多线程里必须也得能保证数据一致，也就是线程安全，貌似陷入死循环了。但这个保证是操作系统保证的，更确切的说是操作系统的内核保证的，操作系统毕竟还是一个软件，内核要保证线程安全本质上是通过硬件完成的，其实就是锁总线。</p><p>锁的分类<br>锁并不是某个语言特有的，c语言也有锁，c++也是，包括一些后现代的编程语言例如scala、groovy等都有锁，操作系统更需要锁，redis有锁，数据库有锁，分布式系统有分布式锁。锁你可以理解为一个工具类，使用这个工具类可以保证临界资源在同一时间只能由一个线程获得。锁的种类有很多，真的很多，有悲观锁、乐观锁，有互斥锁、共享锁，有可重入锁、不可重入锁，数据库有行锁、表锁、页锁，分布式有分布式锁，可以用redis实现可以用zookeeper实现。按照我的理解和记忆方案，不见得是对的，但在这里提出来，大家一起讨论一下。</p><p>我认为只要是锁一定都是悲观锁，因为乐观锁虽然叫锁，但是其实并不是锁，只是后人为了区分而强加的概念。乐观锁的实现原理逃不出CAS，悲观锁的原理逃不出互斥量。所以Java中所有叫锁的都是悲观锁包括 synchornized。</p><p>然后就是锁的几个特性，比如 公平不公平啊、可重入不可重入啊、独享啊还是共享啊。每个锁必然有这三个特性。</p><p>锁分类<br>悲观锁/乐观锁<br>重点讲两类锁的思想区别 和 cas</p><p>锁特性<br>公平性/非公平性、公平锁/非公平锁<br>公平锁是指多个线程按照申请锁的顺序来获取锁。</p><p>非公平锁不按照申请顺序，后申请的可能会先获得锁。</p><p>对于Java的ReentranLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。</p><p>ReentranLock中有一个内部类：Sync。FairSync、NonFairSync继承了Sync，公平与不公平在源码体现在【!hasQueuedPredecessors()】这句代码，公平的话：如果前面有等待节点，那就不去获得锁；不公平就是抢占；具体看：<a href="https://blog.csdn.net/lsgqjh/article/details/63685058">https://blog.csdn.net/lsgqjh/article/details/63685058</a></p><p>对于 Synchonized而言，也是一种非公平锁，由于其不像 ReentrantLock是通过AQS实现的，所以没办法变成公平锁。</p><p>可重入性/不可重入性、可重入锁/不可重入锁<br>可重入锁又名递归锁，是指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁，不会因为之前已经获取过还没释放而阻塞。</p><p>Java中ReentrantLock和synchronized都是可重入锁，可重入锁的一个优点是可一定程度避免死锁。</p><p>到目前为止我还没有遇到过不可重入的锁，也想象不到不可重入锁的使用场景，因为不可重入锁大概率会出现死锁情况，所以貌似没有人会去实现不可重入锁。</p><p>独占性/共享性、互斥锁/读写锁<br>独享锁是指该锁一次只能被一个线程所持有。共享锁是指该锁可被多个线程所持有。这里主要是为了把一个操作掰成两个操作，一个读一个写，分别加不同粒度的锁，目的是实现在只有读的场景下的最大并发。</p><p>独享锁也叫互斥锁，读写锁等同于一个独享锁+一个共享锁，也叫一个写锁+读锁。读锁的共享锁可保证并发读是非常高效的，读写，写读，写写的过程是互斥的。</p><p>对于Java ReentrantLock而言，其是独享锁。但是对于Lock的另一个实现类ReadWriteLock，其读锁是共享锁，其写锁是独享锁。</p><p>对于Synchronized而言，当然是独享锁。</p><p>另外在synchronizd关键字的优化相关知识里面，会碰到 诸如 偏向锁/轻量级锁/自旋锁/适应性自旋锁/重量级锁 的概念，这些都是锁升级中的某些状态，除了重量级锁是锁外，其它要么不是锁，要么就是在成为锁的路上，这里不过多讨论，只需要记住只要是锁一定有上面三个特性就好。所以synchronized的全称应该叫 非公平的可重入的互斥悲观锁。同理，ReentrantLock 默认也是非公平的可重入的互斥悲观锁，当然ReentrantLock也可以实现 公平的可重入的互斥悲观锁。</p>]]></content>
       
@@ -4884,6 +5177,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -4902,15 +5197,15 @@
     
     <entry>
       <title>mybatis-generator自定义swagger-doc插件扩展</title>
-      <link href="/2020/02/11/java/mybatis-generator-zi-ding-yi-swagger-doc-cha-jian-kuo-zhan/"/>
-      <url>/2020/02/11/java/mybatis-generator-zi-ding-yi-swagger-doc-cha-jian-kuo-zhan/</url>
+      <link href="/2020/02/11/shu-ju-ku/mybatis-generator-zi-ding-yi-swagger-doc-cha-jian-kuo-zhan/"/>
+      <url>/2020/02/11/shu-ju-ku/mybatis-generator-zi-ding-yi-swagger-doc-cha-jian-kuo-zhan/</url>
       
         <content type="html"><![CDATA[<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>project</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>  <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>modelVersion</span><span class="token punctuation">&gt;</span></span>4.0.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>modelVersion</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>com.chenshang.plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>mybatis-swagger<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.0-SNAPSHOT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>packaging</span><span class="token punctuation">&gt;</span></span>jar<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>packaging</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.mybatis.generator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>mybatis-generator-core<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>1.3.7<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-compiler-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>source</span><span class="token punctuation">&gt;</span></span>8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>source</span><span class="token punctuation">&gt;</span></span>          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>target</span><span class="token punctuation">&gt;</span></span>8<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>target</span><span class="token punctuation">&gt;</span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>java</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">package com.chenshang.plugin;import java.util.List;import org.mybatis.generator.api.IntrospectedColumn;import org.mybatis.generator.api.IntrospectedTable;import org.mybatis.generator.api.Plugin;import org.mybatis.generator.api.PluginAdapter;import org.mybatis.generator.api.dom.java.Field;import org.mybatis.generator.api.dom.java.TopLevelClass;public class MybatisSwaggerDoc extends PluginAdapter {  @Override  public boolean validate(List&lt;String&gt; warnings) {    return true;  }  @Override  public boolean modelFieldGenerated(Field field, TopLevelClass topLevelClass, IntrospectedColumn introspectedColumn, IntrospectedTable introspectedTable, Plugin.ModelClassType modelClassType) {    String classAnnotation = "@ApiModel(value=\"" + topLevelClass.getType().getShortName() + "\")";    if (!topLevelClass.getAnnotations().contains(classAnnotation)) {      topLevelClass.addAnnotation(classAnnotation);    }    String apiModelAnnotationPackage = properties.getProperty("apiModelAnnotationPackage");    String apiModelPropertyAnnotationPackage = properties.getProperty("apiModelPropertyAnnotationPackage");    if (null == apiModelAnnotationPackage) {      apiModelAnnotationPackage = "io.swagger.annotations.ApiModel";    }    if (null == apiModelPropertyAnnotationPackage) {      apiModelPropertyAnnotationPackage = "io.swagger.annotations.ApiModelProperty";    }    topLevelClass.addImportedType(apiModelAnnotationPackage);    topLevelClass.addImportedType(apiModelPropertyAnnotationPackage);    field.addAnnotation("@ApiModelProperty(value=\"" + introspectedColumn.getRemarks() +      "\",name=\"" + introspectedColumn.getJavaProperty() +      "\",dataType=\"" + introspectedColumn.getFullyQualifiedJavaType().getShortName() +      "\")");    return super.modelFieldGenerated(field, topLevelClass, introspectedColumn, introspectedTable, modelClassType);  }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
           
-          <category> JAVA </category>
+          <category> 数据库 </category>
           
       </categories>
       
@@ -4929,8 +5224,8 @@
     
     <entry>
       <title>没有主属性清单</title>
-      <link href="/2020/02/10/java/java-tian-keng/mei-you-zhu-shu-xing-qing-dan/"/>
-      <url>/2020/02/10/java/java-tian-keng/mei-you-zhu-shu-xing-qing-dan/</url>
+      <link href="/2020/02/10/java/java-wa-keng-tian-keng/mei-you-zhu-shu-xing-qing-dan/"/>
+      <url>/2020/02/10/java/java-wa-keng-tian-keng/mei-you-zhu-shu-xing-qing-dan/</url>
       
         <content type="html"><![CDATA[<p>异常: *.jar中没有主清单属性</p><p>原因:<br>查看了MANIFEST.MF，发现没有Main-Class属性，我想了一下，就试着去SpringBoot的官方文档上找找，果然有讲这一部分，spring-boot-maven-plugin的打包过程与直接使用maven-jar-plugin不同，所以我们在使用spring-boot-maven-plugin时需要指定的执行项，或者我们在打包时指定，使用 mvn package spring-boot:repackage来打包也可以执行。</p><p>解决方法:</p><pre class="line-numbers language-none"><code class="language-none">&lt;build&gt;    &lt;plugins&gt;      &lt;plugin&gt;        &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;        &lt;artifactId&gt;spring-boot-maven-plugin&lt;/artifactId&gt;        &lt;executions&gt;          &lt;execution&gt;            &lt;goals&gt;              &lt;goal&gt;repackage&lt;/goal&gt;            &lt;/goals&gt;          &lt;/execution&gt;        &lt;/executions&gt;      &lt;/plugin&gt;    &lt;/plugins&gt;&lt;/build&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
@@ -4939,34 +5234,7 @@
           
           <category> JAVA </category>
           
-          <category> Java填坑 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>请使用-source=8或更高版本以启用lambda表达式</title>
-      <link href="/2020/02/10/java/java-tian-keng/qing-shi-yong-source-8-huo-geng-gao-ban-ben-yi-qi-yong-lambda-biao-da-shi/"/>
-      <url>/2020/02/10/java/java-tian-keng/qing-shi-yong-source-8-huo-geng-gao-ban-ben-yi-qi-yong-lambda-biao-da-shi/</url>
-      
-        <content type="html"><![CDATA[<p>异常:[ERROR] (请使用 -source 8 或更高版本以启用 lambda 表达式)<br>解决方法: 在项目的pom.xml指定1.8</p><pre class="line-numbers language-none"><code class="language-none">&lt;build&gt;    &lt;plugins&gt;      &lt;plugin&gt;        &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;        &lt;artifactId&gt;maven-compiler-plugin&lt;/artifactId&gt;        &lt;version&gt;3.8.1&lt;/version&gt;        &lt;configuration&gt;          &lt;source&gt;1.8&lt;/source&gt;          &lt;target&gt;1.8&lt;/target&gt;        &lt;/configuration&gt;      &lt;/plugin&gt;    &lt;/plugins&gt;&lt;/build&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> JAVA </category>
-          
-          <category> Java填坑 </category>
+          <category> Java挖坑填坑 </category>
           
       </categories>
       
@@ -4983,8 +5251,8 @@
     
     <entry>
       <title>重载与重写</title>
-      <link href="/2020/02/05/java/chong-zai-yu-chong-xie/"/>
-      <url>/2020/02/05/java/chong-zai-yu-chong-xie/</url>
+      <link href="/2020/02/05/java/java-ji-chu-chang-shi/chong-zai-yu-chong-xie/"/>
+      <url>/2020/02/05/java/java-ji-chu-chang-shi/chong-zai-yu-chong-xie/</url>
       
         <content type="html"><![CDATA[<p>记住重载是同一个类中的行为，重写是父子类继承中的行为。他们都是多态的表现形式。其实说白了多台就是为了最大限度的兼容和少写代码。试想我写一个方法就可以传递100中不同的类型的参数，是不是就可以少些99个方法么。</p><h1 id="重载"><a class="markdownIt-Anchor" href="#重载"></a> 重载</h1><p>重载指的是在同一个类中，方法同名但参数不同，这个参数的不同足以另Jvm虚拟机根据参数的个数或参数的类型来区分究竟该调用哪个方法,在调用的时候Jvm总是倾向于调用方法更明确的那个<br>如下</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Son</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">return</span> <span class="token string">"111"</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span>  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">String</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">return</span> o<span class="token punctuation">;</span>  <span class="token punctuation">}</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"12345"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">new</span> <span class="token class-name">Son</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>注意下面两个方法是不能共存的，因为在调用的时候没有办法区分</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">Object</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">return</span> <span class="token string">"111"</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token class-name">T</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">T</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token keyword">return</span> o<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>理由是泛型的类型擦除</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">T</span><span class="token punctuation">&gt;</span></span> <span class="token class-name">T</span> <span class="token function">print</span><span class="token punctuation">(</span><span class="token class-name">T</span> o<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token keyword">return</span> o<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这个方法和</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">Object</span>  <span class="token function">print</span><span class="token punctuation">(</span>o o<span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token keyword">return</span> o<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>方法无异</p><h1 id="重写"><a class="markdownIt-Anchor" href="#重写"></a> 重写</h1><p>重写就是重新一份，这个新写的一份是有条件的</p><ol><li>方法名必须一模一样</li><li>方法签名必须一模一样，无论参数的个数还是类型</li><li>方法的返回值必须是父类方法的同类型或子类</li><li>方法限定条件不能比父类更严格，如果父类方法是public 那子类重写方法必须是public.如果父类方法是protected 那子类可以是就不可以小于protected的限定也就是不能是default和private的。这样做的目的其实还是为了在调用的时候知道该掉用那个方法。如果违背了这个条件，比如在弗雷中可以调用但是实际类型是子类，会导致抛出异常的，因为子类方法无法调用。这也违背了设计原则中的里氏代换原则</li></ol>]]></content>
       
@@ -4992,6 +5260,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -5067,36 +5337,9 @@
     
     
     <entry>
-      <title>mysql 时间戳插入后丢失毫秒</title>
-      <link href="/2019/11/28/java/java-tian-keng/mysql-shi-jian-chuo-cha-ru-hou-diu-shi-hao-miao/"/>
-      <url>/2019/11/28/java/java-tian-keng/mysql-shi-jian-chuo-cha-ru-hou-diu-shi-hao-miao/</url>
-      
-        <content type="html"><![CDATA[<p>今天遇到一个问题,就是数据库中某个字段定义成了timestamp类型,当我向数据库中该字段赋值一个时间戳的时候,发现存入的值和我预期的值不同,我本来打算存储的是 1574978582234 但存入数据库中居然变成了 1574978582000 也就是后三位都变成000了，我称之为都是毫秒计数。</p><p>解决方法是在定义mysql的 DDL 的时候该字段的类型定义成 timestamp(3)即可</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> JAVA </category>
-          
-          <category> Java填坑 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>HashMap new 时赋值</title>
-      <link href="/2019/11/23/java/hashmap-new-shi-fu-zhi/"/>
-      <url>/2019/11/23/java/hashmap-new-shi-fu-zhi/</url>
+      <link href="/2019/11/23/java/java-ji-chu-chang-shi/hashmap-new-shi-fu-zhi/"/>
+      <url>/2019/11/23/java/java-ji-chu-chang-shi/hashmap-new-shi-fu-zhi/</url>
       
         <content type="html"><![CDATA[<p>Java 中hashMap 怎么在新建的时候赋值</p><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token punctuation">{</span>        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"one"</span><span class="token punctuation">,</span> <span class="token string">"1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"two"</span><span class="token punctuation">,</span> <span class="token string">"2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这种写法建议在只在测试的时候使用,其实是一种偷懒的写法,目前Java还没有优化这方面的打算。</p>]]></content>
       
@@ -5104,6 +5347,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -5184,8 +5429,8 @@
     
     <entry>
       <title>Java字符串拼接VS</title>
-      <link href="/2019/09/19/java/java-zi-fu-chuan-pin-jie-vs/"/>
-      <url>/2019/09/19/java/java-zi-fu-chuan-pin-jie-vs/</url>
+      <link href="/2019/09/19/java/java-ji-chu-chang-shi/java-zi-fu-chuan-pin-jie-vs/"/>
+      <url>/2019/09/19/java/java-ji-chu-chang-shi/java-zi-fu-chuan-pin-jie-vs/</url>
       
         <content type="html"><![CDATA[<p><img src="https://github.com/chen-shang/Picture/raw/master/java/String.jpg" alt=""><br>看到上面的提示时是不是有点疑问,对于初学Java的人来说，在学习String的时候，肯定有无数个人和我们讲过，“尽量不要使用+拼接字符串，效率不好，应该使用append，你自己循环拼接个十万次自己瞧瞧就知道了” 为什么这里连IDEA都提醒我们可以用+来代替append呢。</p><p>结论:<br>Java中+拼接字符串并不是人们口中所说的那样臭名昭著，人们口中所说的效率低下指的是在循环中的+拼接，只是不知道从哪天开始完全变了味。如果你能保证在一条语句中把字符串或者字符串变量全部拼接完而不断开，那+拼接根本没有任何缺点，编译器还会有一些优化，如果拼接的全是字符串字面量，那效果更好，它们直接就变成了一个完整的字符串。并且+书写简洁方便，可读性强。直接用StringBuilder的append也没有问题，只是不要append()和+混合使用。</p><p>如果用+拼接字符串中间不断,那么用+拼接的效率与StringBuffer或StringBuilder使用append的效率相当,甚至在编译器的优化下效率反而会更高。因为第一次遇到+拼接的时候,编译器会自动创new 一个 StringBuilder 然后只要+不断就会一路append下去。</p><p>String采用连接运算符(+)效率低下，都是上述循环、大批量数据情况造成的，每做一次"+"就产生个StringBuilder对象，然后append后就扔掉。下次循环再到达时重新产生个StringBuilder对象，然后append字符串，如此循环直至结束。如果我们直接采用StringBuilder对象进行append的话，我们可以节省创建和销毁对象的时间。如果只是简单的字面量拼接或者很少的字符串拼接，性能都是差不多的。</p><p>参考: <a href="https://blog.csdn.net/m0_37589327/article/details/78605268">Java中对于+和append拼接字符串效率的误解</a></p>]]></content>
       
@@ -5193,6 +5438,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -5244,8 +5491,8 @@
     
     <entry>
       <title>JAVA的值传递和引用传递</title>
-      <link href="/2019/09/17/java/java-de-zhi-chuan-di-he-yin-yong-chuan-di/"/>
-      <url>/2019/09/17/java/java-de-zhi-chuan-di-he-yin-yong-chuan-di/</url>
+      <link href="/2019/09/17/java/java-ji-chu-chang-shi/java-de-zhi-chuan-di-he-yin-yong-chuan-di/"/>
+      <url>/2019/09/17/java/java-ji-chu-chang-shi/java-de-zhi-chuan-di-he-yin-yong-chuan-di/</url>
       
         <content type="html"><![CDATA[<pre class="line-numbers language-text" data-language="text"><code class="language-text">值传递(pass by value):传递的是值的拷贝引用传递(pass by reference):传递的是引用值的拷贝<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>讨论这个问题的意义在于分析当一个变量传递给一个含参函数之后,在函数内部改变形参变量的值,会不会影响实参变量。也就是说这个函数有没有副作用。这个问题的说法不一。个人觉得，无论将Java的参数传递归类为是值传递还是引用传递，都是将栈内存中的内容复制一份出来，由于对于基本数据类型来说，其值是直接存在栈内存中的，因此复制出来的就是其值，所以叫值传递；对于普通对象来说，由于栈内存中存储的是该对象的引用，因此复制出来的也就是其引用，所以叫引用传递。但从另一方面说，这个引用也是一个值，所以有的人也说Java只有值传递。</p><p>至于将外部变量传递到方法内部后，什么情况下会改变外部变量的值，这个要视情况而定了。对于基本数据类型来说，由于行参拷贝的是实参的值，对行参的操作并不影响实参的值，除非将返回结果在赋值给实参。对于普通对象来说，如果在函数内部一开始改变了引用的指向，无论如何改变引用对象的值都不会影响实参的变化，但是如果直接就改变行参引用指向的对象的值是会改变实参的值的。</p>]]></content>
       
@@ -5253,6 +5500,8 @@
       <categories>
           
           <category> JAVA </category>
+          
+          <category> Java基础常识 </category>
           
       </categories>
       

@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2024-05-11T15:11:13.559Z</updated>
+  <updated>2024-07-30T05:30:27.286Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,233 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于codereview的思考</title>
+    <link href="https://chen-shang.github.io/2024/07/27/si-kao/guan-yu-codereview-de-si-kao/"/>
+    <id>https://chen-shang.github.io/2024/07/27/si-kao/guan-yu-codereview-de-si-kao/</id>
+    <published>2024-07-27T14:34:50.000Z</published>
+    <updated>2024-07-30T05:30:27.286Z</updated>
+    
+    
+    
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于团队合作的思考</title>
+    <link href="https://chen-shang.github.io/2024/07/26/si-kao/guan-yu-tuan-dui-he-zuo-de-si-kao/"/>
+    <id>https://chen-shang.github.io/2024/07/26/si-kao/guan-yu-tuan-dui-he-zuo-de-si-kao/</id>
+    <published>2024-07-26T00:46:17.000Z</published>
+    <updated>2024-07-26T01:00:54.014Z</updated>
+    
+    
+    
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于AMC不良资产处置行业的思考</title>
+    <link href="https://chen-shang.github.io/2024/07/26/si-kao/guan-yu-amc-bu-liang-zi-chan-chu-zhi-xing-ye-de-si-kao/"/>
+    <id>https://chen-shang.github.io/2024/07/26/si-kao/guan-yu-amc-bu-liang-zi-chan-chu-zhi-xing-ye-de-si-kao/</id>
+    <published>2024-07-26T00:45:41.000Z</published>
+    <updated>2024-07-26T01:00:56.635Z</updated>
+    
+    
+    
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java8 Collectors.toMap注意事项</title>
+    <link href="https://chen-shang.github.io/2024/07/01/java/jie-jue-fang-an/java8-collectors-tomap-zhu-yi-shi-xiang/"/>
+    <id>https://chen-shang.github.io/2024/07/01/java/jie-jue-fang-an/java8-collectors-tomap-zhu-yi-shi-xiang/</id>
+    <published>2024-07-01T13:43:12.000Z</published>
+    <updated>2024-07-30T05:38:26.497Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;duplicate-key-说明tomap的时候有重复的key程序也不知道该取哪个了&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#duplicate-key-说明tomap的时候有重复的key程序也不知道该取哪个了&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>遇到的异常以及处理方法</title>
+    <link href="https://chen-shang.github.io/2024/06/23/java/jie-jue-fang-an/yu-dao-de-yi-chang-yi-ji-chu-li-fang-fa/"/>
+    <id>https://chen-shang.github.io/2024/06/23/java/jie-jue-fang-an/yu-dao-de-yi-chang-yi-ji-chu-li-fang-fa/</id>
+    <published>2024-06-23T05:38:59.000Z</published>
+    <updated>2024-07-30T05:37:44.390Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-java&quot; data-language=&quot;java&quot;&gt;&lt;code class=&quot;language-java&quot;&gt;&lt;span class=&quot;token class-name&quot;&gt;Caused&lt;/span&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Idea的代码自动补全功能</title>
+    <link href="https://chen-shang.github.io/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/"/>
+    <id>https://chen-shang.github.io/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/</id>
+    <published>2024-06-23T03:03:22.000Z</published>
+    <updated>2024-07-30T05:37:00.311Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在使用IDEA编写代码的过程中,我们会发现一些比较快捷的写法. 例如有一个变量 &lt;code&gt;x&lt;/code&gt;  我输入 &lt;code&gt;x.sout&lt;/code&gt; 那么就会自动帮我们生成&lt;br&gt;
+&lt;code&gt;System.out.println(x)&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring中@Resource和@Autowired注解的使用说明</title>
+    <link href="https://chen-shang.github.io/2024/06/19/java/spring/spring-zhong-resource-he-autowired-zhu-jie-de-shi-yong-shuo-ming/"/>
+    <id>https://chen-shang.github.io/2024/06/19/java/spring/spring-zhong-resource-he-autowired-zhu-jie-de-shi-yong-shuo-ming/</id>
+    <published>2024-06-18T16:03:01.000Z</published>
+    <updated>2024-07-30T05:36:15.235Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;首先这@Resource @Autowired这两个注解都是Spring生态里去实现Bean的依赖注入（在springmvc项目和springboot项目中都可以使用）&lt;/p&gt;
+&lt;p&gt;下面我在说一下这个注解的区别&lt;/p&gt;
+&lt;h1 id=&quot;autowired&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="Spring" scheme="https://chen-shang.github.io/categories/JAVA/Spring/"/>
+    
+    
+    <category term="引用" scheme="https://chen-shang.github.io/tags/%E5%BC%95%E7%94%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>为什么说Java是平台无关的</title>
+    <link href="https://chen-shang.github.io/2024/06/14/java/java-ji-chu-chang-shi/wei-shi-me-shuo-java-shi-ping-tai-wu-guan-de/"/>
+    <id>https://chen-shang.github.io/2024/06/14/java/java-ji-chu-chang-shi/wei-shi-me-shuo-java-shi-ping-tai-wu-guan-de/</id>
+    <published>2024-06-13T16:45:44.000Z</published>
+    <updated>2024-07-30T05:00:57.898Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;为什么说java是平台无关的&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#为什么说java是平台无关的&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="Java基础常识" scheme="https://chen-shang.github.io/categories/JAVA/Java%E5%9F%BA%E7%A1%80%E5%B8%B8%E8%AF%86/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端下载文件</title>
+    <link href="https://chen-shang.github.io/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/"/>
+    <id>https://chen-shang.github.io/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/</id>
+    <published>2024-05-15T15:25:25.000Z</published>
+    <updated>2024-07-15T18:01:09.206Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;后端代码怎么写&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#后端代码怎么写&quot;&gt;&lt;/a&gt; 后端代码怎么写&lt;/h1&gt;
+&lt;p&gt;示例:&lt;br&gt;
+第一种写法&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>解决swagger页面加载不出来</title>
@@ -189,9 +416,9 @@
     
     <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
-    <category term="经济学" scheme="https://chen-shang.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
     <category term="引用" scheme="https://chen-shang.github.io/tags/%E5%BC%95%E7%94%A8/"/>
+    
+    <category term="经济学" scheme="https://chen-shang.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
     
   </entry>
   
@@ -336,293 +563,6 @@ Arial 粗体 (TrueType) =</summary>
     
     <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
     
-    
-  </entry>
-  
-  <entry>
-    <title>Excel常用操作集锦</title>
-    <link href="https://chen-shang.github.io/2024/04/11/gong-ju-kong/excel/excel-chang-yong-cao-zuo-ji-jin/"/>
-    <id>https://chen-shang.github.io/2024/04/11/gong-ju-kong/excel/excel-chang-yong-cao-zuo-ji-jin/</id>
-    <published>2024-04-11T14:42:16.000Z</published>
-    <updated>2024-04-30T23:20:57.316Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;移动列或行&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#移动列或行&quot;&gt;&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Excel" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Excel/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>定期更新安装的一些软件</title>
-    <link href="https://chen-shang.github.io/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/"/>
-    <id>https://chen-shang.github.io/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/</id>
-    <published>2024-04-05T17:21:52.000Z</published>
-    <updated>2024-05-04T15:37:51.124Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;vim 插件更新&lt;br&gt;
-brew 案件的软件更新&lt;br&gt;
-node 服务更行&lt;br&gt;
-git clone 的项目更新&lt;br&gt;
-博客主题更新&lt;br&gt;
-npm 更新&lt;br&gt;
-idea 插件更新&lt;br&gt;
-iterm2</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Idea常用插件</title>
-    <link href="https://chen-shang.github.io/2024/03/25/gong-ju-kong/intellij-idea/idea-chang-yong-cha-jian/"/>
-    <id>https://chen-shang.github.io/2024/03/25/gong-ju-kong/intellij-idea/idea-chang-yong-cha-jian/</id>
-    <published>2024-03-25T02:19:12.000Z</published>
-    <updated>2024-05-01T14:21:53.936Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;center&gt; &lt;img src=&quot;/2024/03/25/gong-ju-kong/intellij-idea/idea-chang-yong-cha-jian/iShot_2024-05-01_07.22.12.png&quot;&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/tags/Intellij-IDEA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>画布工具</title>
-    <link href="https://chen-shang.github.io/2024/03/24/gong-ju-kong/excalidraw/hua-bu-gong-ju/"/>
-    <id>https://chen-shang.github.io/2024/03/24/gong-ju-kong/excalidraw/hua-bu-gong-ju/</id>
-    <published>2024-03-23T19:02:45.000Z</published>
-    <updated>2024-05-05T08:24:34.722Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;使用画布工具的初衷:&lt;br&gt;
-工作过程中有时需要快速绘制流程草图或者记录一些笔记(文字可能不够直观),此时如果有一款工具通过简单的拖拽操作，可以轻松创建分支结构、添加文字说明来快速记录和表达想&lt;br&gt;
-就再好不过了。</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Excalidraw" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Excalidraw/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Excalidraw" scheme="https://chen-shang.github.io/tags/Excalidraw/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>本地部署自己的工具集</title>
-    <link href="https://chen-shang.github.io/2024/03/24/gong-ju-kong/localhost/ben-di-bu-shu-zi-ji-de-gong-ju-ji/"/>
-    <id>https://chen-shang.github.io/2024/03/24/gong-ju-kong/localhost/ben-di-bu-shu-zi-ji-de-gong-ju-ji/</id>
-    <published>2024-03-23T18:55:03.000Z</published>
-    <updated>2024-04-05T18:41:07.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;就像这样,使用自己的本地域名(在本地起一个有意义的名字),这样玩至少不花钱。更进阶一点可以搞个nginx做的代理,这样端口号也不用记了。&lt;br&gt;
-&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="localhost" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/localhost/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="localhost" scheme="https://chen-shang.github.io/tags/localhost/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux终端生存之道-ls</title>
-    <link href="https://chen-shang.github.io/2024/03/23/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-ls/"/>
-    <id>https://chen-shang.github.io/2024/03/23/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-ls/</id>
-    <published>2024-03-23T09:10:37.000Z</published>
-    <updated>2024-04-05T18:43:40.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如何只展示当前文件夹下的目录&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>终端 bash_completion 报错</title>
-    <link href="https://chen-shang.github.io/2024/03/20/linux/jie-jue-fang-an/zhong-duan-bash-completion-bao-cuo/"/>
-    <id>https://chen-shang.github.io/2024/03/20/linux/jie-jue-fang-an/zhong-duan-bash-completion-bao-cuo/</id>
-    <published>2024-03-20T14:23:37.000Z</published>
-    <updated>2024-03-20T14:54:05.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;-bash: /usr/local/etc/bash_completion.d/onefetch:</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>项目管理的思考</title>
-    <link href="https://chen-shang.github.io/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/"/>
-    <id>https://chen-shang.github.io/2024/03/02/si-kao/xiang-mu-guan-li-de-si-kao/</id>
-    <published>2024-03-01T18:29:19.000Z</published>
-    <updated>2024-03-18T14:37:43.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近逐渐开始上手管理起公司的项目。我理解我的工作重心需要转移到对客户需求的落地上来，重点关注项目实施过中的风险，积极推动项目的进展。我也不知道我理解的对不对，在这里先做一些记录。&lt;/p&gt;
-&lt;p&gt;我期望的发开模式是所谓的敏捷开发，能做到随时随地的修改和发布，起到快速响应客户的</summary>
-        
-      
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xls批量转换pdf</title>
-    <link href="https://chen-shang.github.io/2024/03/02/gong-ju-kong/excel/xls-pi-liang-zhuan-huan-pdf/"/>
-    <id>https://chen-shang.github.io/2024/03/02/gong-ju-kong/excel/xls-pi-liang-zhuan-huan-pdf/</id>
-    <published>2024-03-01T18:29:05.000Z</published>
-    <updated>2024-03-02T18:08:44.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;安装LibreOffice：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;访问LibreOffice的官方网站：&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Excel" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Excel/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
