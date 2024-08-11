@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2024-07-30T05:30:27.286Z</updated>
+  <updated>2024-08-04T08:57:24.889Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,16 +17,159 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>关于codereview的思考</title>
-    <link href="https://chen-shang.github.io/2024/07/27/si-kao/guan-yu-codereview-de-si-kao/"/>
-    <id>https://chen-shang.github.io/2024/07/27/si-kao/guan-yu-codereview-de-si-kao/</id>
-    <published>2024-07-27T14:34:50.000Z</published>
-    <updated>2024-07-30T05:30:27.286Z</updated>
+    <title>mysql排序null值排在最后</title>
+    <link href="https://chen-shang.github.io/2024/08/04/shu-ju-ku/mysql-pai-xu-null-zhi-pai-zai-zui-hou/"/>
+    <id>https://chen-shang.github.io/2024/08/04/shu-ju-ku/mysql-pai-xu-null-zhi-pai-zai-zui-hou/</id>
+    <published>2024-08-04T02:29:29.000Z</published>
+    <updated>2024-08-04T08:57:24.889Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在MySQL中，可以使用ORDER BY语句结合IS NULL来实现将NULL值排在后面的排序。具体做法是，在ORDER BY子句中使用IS NULL函数，并为其赋予一个较大的排序值，确保NULL值被排序在非NULL值之后。&lt;/p&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>微服务间调用异常、日志思考</title>
+    <link href="https://chen-shang.github.io/2024/08/03/java/java-wa-keng-tian-keng/wei-fu-wu-jian-diao-yong-yi-chang-ri-zhi-si-kao/"/>
+    <id>https://chen-shang.github.io/2024/08/03/java/java-wa-keng-tian-keng/wei-fu-wu-jian-diao-yong-yi-chang-ri-zhi-si-kao/</id>
+    <published>2024-08-02T16:54:58.000Z</published>
+    <updated>2024-08-06T16:45:17.923Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;返回结果尽量使用状态码-提示信息形式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#返回结果尽量使用状态码-提示信息形式&quot;&gt;&lt;/a&gt; 返回结果尽量使用状态码、提示信息形式&lt;/h1&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="Java挖坑填坑" scheme="https://chen-shang.github.io/categories/JAVA/Java%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>git分支图怎么看</title>
+    <link href="https://chen-shang.github.io/2024/08/03/gong-ju-kong/git/git-fen-zhi-tu-zen-me-kan/"/>
+    <id>https://chen-shang.github.io/2024/08/03/gong-ju-kong/git/git-fen-zhi-tu-zen-me-kan/</id>
+    <published>2024-08-02T16:01:56.000Z</published>
+    <updated>2024-08-06T16:41:01.524Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;平时在工作中，遇到过同事的代码被合并到了master分支但是我们并没有review过的情况，而且我看过提交历史后还是没有追溯并还原他当时是怎么操作的。因此我学习并研究了一下git的这个分支树图，特此记录。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Git" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ThreadPoolTaskExecutor</title>
+    <link href="https://chen-shang.github.io/2024/08/01/java/java-bing-fa-bian-cheng/threadpooltaskexecutor/"/>
+    <id>https://chen-shang.github.io/2024/08/01/java/java-bing-fa-bian-cheng/threadpooltaskexecutor/</id>
+    <published>2024-08-01T00:46:42.000Z</published>
+    <updated>2024-08-02T16:02:28.756Z</updated>
     
     
     
     
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="Java并发编程" scheme="https://chen-shang.github.io/categories/JAVA/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java单元测试</title>
+    <link href="https://chen-shang.github.io/2024/07/31/java/java-dan-yuan-ce-shi/java-dan-yuan-ce-shi/"/>
+    <id>https://chen-shang.github.io/2024/07/31/java/java-dan-yuan-ce-shi/java-dan-yuan-ce-shi/</id>
+    <published>2024-07-31T04:14:58.000Z</published>
+    <updated>2024-07-31T04:30:02.135Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;什么是单元测试&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#什么是单元测试&quot;&gt;&lt;/a&gt; 什么是单元测试&lt;/h1&gt;
+&lt;h1 id=&quot;单元测试的意义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="Java单元测试" scheme="https://chen-shang.github.io/categories/JAVA/Java%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>代码bad case</title>
+    <link href="https://chen-shang.github.io/2024/07/31/java/jie-jue-fang-an/dai-ma-bad-case/"/>
+    <id>https://chen-shang.github.io/2024/07/31/java/jie-jue-fang-an/dai-ma-bad-case/</id>
+    <published>2024-07-30T16:05:49.000Z</published>
+    <updated>2024-08-09T17:36:59.062Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;任何抛开场景对设计进行的评价都是愚蠢的。一个方案只要能实现目的都叫解决方案，解决方案没有对错，但是有好坏，我这里会总结一些我们在开发过程中所做的一些不好的设计、编码，包括管理方面愚蠢的举动。我会对入围的bad</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -74,11 +217,38 @@
   </entry>
   
   <entry>
+    <title>关于codereview的思考</title>
+    <link href="https://chen-shang.github.io/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/"/>
+    <id>https://chen-shang.github.io/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/</id>
+    <published>2024-07-01T13:43:12.000Z</published>
+    <updated>2024-08-07T16:06:02.262Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;前言一些感想&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言一些感想&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java8 Collectors.toMap注意事项</title>
     <link href="https://chen-shang.github.io/2024/07/01/java/jie-jue-fang-an/java8-collectors-tomap-zhu-yi-shi-xiang/"/>
     <id>https://chen-shang.github.io/2024/07/01/java/jie-jue-fang-an/java8-collectors-tomap-zhu-yi-shi-xiang/</id>
     <published>2024-07-01T13:43:12.000Z</published>
-    <updated>2024-07-30T05:38:26.497Z</updated>
+    <updated>2024-08-07T15:53:01.712Z</updated>
     
     
       
@@ -128,11 +298,11 @@
   </entry>
   
   <entry>
-    <title>Idea的代码自动补全功能</title>
+    <title>Custom Postfix Templates插件自定义代码提示</title>
     <link href="https://chen-shang.github.io/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/"/>
     <id>https://chen-shang.github.io/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/</id>
     <published>2024-06-23T03:03:22.000Z</published>
-    <updated>2024-07-30T05:37:00.311Z</updated>
+    <updated>2024-08-03T01:48:51.101Z</updated>
     
     
       
@@ -388,181 +558,6 @@
     <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
     
     <category term="经济学" scheme="https://chen-shang.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>非公开募集基金(私募基金)</title>
-    <link href="https://chen-shang.github.io/2024/05/05/si-kao/jing-ji-xue/fei-gong-kai-mu-ji-ji-jin-si-mu-ji-jin/"/>
-    <id>https://chen-shang.github.io/2024/05/05/si-kao/jing-ji-xue/fei-gong-kai-mu-ji-ji-jin-si-mu-ji-jin/</id>
-    <published>2024-05-05T08:16:43.000Z</published>
-    <updated>2024-05-06T13:44:16.995Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;非公开募集基金(私募基金) &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn1&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="引用" scheme="https://chen-shang.github.io/tags/%E5%BC%95%E7%94%A8/"/>
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>QDII基金相关</title>
-    <link href="https://chen-shang.github.io/2024/05/05/si-kao/jing-ji-xue/qdii-ji-jin-xiang-guan/"/>
-    <id>https://chen-shang.github.io/2024/05/05/si-kao/jing-ji-xue/qdii-ji-jin-xiang-guan/</id>
-    <published>2024-05-05T06:57:30.000Z</published>
-    <updated>2024-05-06T13:43:58.028Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;全称： Qualified domestic institutional</summary>
-        
-      
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux中切换Shell</title>
-    <link href="https://chen-shang.github.io/2024/05/04/linux/jie-jue-fang-an/linux-zhong-qie-huan-shell/"/>
-    <id>https://chen-shang.github.io/2024/05/04/linux/jie-jue-fang-an/linux-zhong-qie-huan-shell/</id>
-    <published>2024-05-04T15:20:10.000Z</published>
-    <updated>2024-05-04T15:36:59.141Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;etcshells-文件解释&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#etcshells-文件解释&quot;&gt;&lt;/a&gt; /etc/shells 文件解释&lt;/h1&gt;
-&lt;p&gt;&lt;code&gt;/etc/shells&lt;/code&gt; 文件是 UNIX</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/tags/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git中文乱码问题</title>
-    <link href="https://chen-shang.github.io/2024/05/01/gong-ju-kong/git/git-zhong-wen-luan-ma-wen-ti/"/>
-    <id>https://chen-shang.github.io/2024/05/01/gong-ju-kong/git/git-zhong-wen-luan-ma-wen-ti/</id>
-    <published>2024-05-01T14:27:01.000Z</published>
-    <updated>2024-05-01T14:44:19.016Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;git 输出中文乱码解决方案&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Git" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Git" scheme="https://chen-shang.github.io/tags/Git/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>去掉文本中的空行</title>
-    <link href="https://chen-shang.github.io/2024/05/01/qian-duan/qu-diao-wen-ben-zhong-de-kong-xing/"/>
-    <id>https://chen-shang.github.io/2024/05/01/qian-duan/qu-diao-wen-ben-zhong-de-kong-xing/</id>
-    <published>2024-04-30T23:14:42.000Z</published>
-    <updated>2024-04-30T23:19:19.854Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;vscodeintellij-idea-等工具支持正则&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#vscodeintellij-idea-等工具支持正则&quot;&gt;&lt;/a&gt; VsCode&#92;IntelliJ Idea</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>字体对照表</title>
-    <link href="https://chen-shang.github.io/2024/04/24/qian-duan/zi-ti-dui-zhao-biao/"/>
-    <id>https://chen-shang.github.io/2024/04/24/qian-duan/zi-ti-dui-zhao-biao/</id>
-    <published>2024-04-24T01:45:11.000Z</published>
-    <updated>2024-04-30T23:13:51.660Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;宋体 (TrueType) = SIMSUN.TTF&lt;br&gt;
-黑体 (TrueType) = simhei.ttf&lt;br&gt;
-楷体_GB2312 (TrueType) = simkai.ttf&lt;br&gt;
-Arial 粗体 (TrueType) =</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
     
   </entry>
   
