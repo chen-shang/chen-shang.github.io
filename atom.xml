@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2024-08-04T08:57:24.889Z</updated>
+  <updated>2024-08-13T17:27:51.026Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kibana搜索技巧</title>
+    <link href="https://chen-shang.github.io/2024/08/14/gong-ju-kong/kibana/kibana-sou-suo-ji-qiao/"/>
+    <id>https://chen-shang.github.io/2024/08/14/gong-ju-kong/kibana/kibana-sou-suo-ji-qiao/</id>
+    <published>2024-08-13T16:23:50.000Z</published>
+    <updated>2024-08-13T17:27:51.026Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Kibana 是干什么用的呢？官网如下描述&lt;br&gt;
+&lt;img src=&quot;/2024/08/14/gong-ju-kong/kibana/kibana-sou-suo-ji-qiao/image.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Kibana" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Kibana/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql排序null值排在最后</title>
@@ -183,8 +211,16 @@
     <link href="https://chen-shang.github.io/2024/07/26/si-kao/guan-yu-tuan-dui-he-zuo-de-si-kao/"/>
     <id>https://chen-shang.github.io/2024/07/26/si-kao/guan-yu-tuan-dui-he-zuo-de-si-kao/</id>
     <published>2024-07-26T00:46:17.000Z</published>
-    <updated>2024-07-26T01:00:54.014Z</updated>
+    <updated>2024-08-13T18:14:56.841Z</updated>
     
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;会有此思考是因为我们部门需要做年中汇报，汇报需要准备一个PPT。我们领导制定了一个汇报的大纲，这个大纲其实是领导先拟定了一个方向，在他的引导下整个团队成员逐渐发言后总结出来的。因为最终需要输出一个PPT给到领导，好让他上台讲解，因此领导将做PPT的任务拆解下去:</summary>
+        
+      
     
     
     
@@ -192,8 +228,6 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
@@ -525,39 +559,6 @@
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>金融领域相关知识点</title>
-    <link href="https://chen-shang.github.io/2024/05/05/si-kao/jing-ji-xue/jin-rong-ling-yu-xiang-guan-zhi-shi-dian/"/>
-    <id>https://chen-shang.github.io/2024/05/05/si-kao/jing-ji-xue/jin-rong-ling-yu-xiang-guan-zhi-shi-dian/</id>
-    <published>2024-05-05T08:18:00.000Z</published>
-    <updated>2024-05-08T15:44:23.949Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;认购和申购的区别&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#认购和申购的区别&quot;&gt;&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
     
   </entry>
   
