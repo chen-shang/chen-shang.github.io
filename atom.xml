@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2024-08-13T17:27:51.026Z</updated>
+  <updated>2024-09-11T03:22:10.696Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,179 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Fix your permissions</title>
+    <link href="https://chen-shang.github.io/2024/09/11/linux/jie-jue-fang-an/fix-your-permissions/"/>
+    <id>https://chen-shang.github.io/2024/09/11/linux/jie-jue-fang-an/fix-your-permissions/</id>
+    <published>2024-09-11T03:16:19.000Z</published>
+    <updated>2024-09-11T03:22:10.696Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-text&quot; data-language=&quot;text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Removing: /opt/homebrew/Cellar/mysql/9.0.1... (319</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Excecl如何设置单元格格式</title>
+    <link href="https://chen-shang.github.io/2024/08/26/gong-ju-kong/excel/excecl-ru-he-she-zhi-dan-yuan-ge-ge-shi/"/>
+    <id>https://chen-shang.github.io/2024/08/26/gong-ju-kong/excel/excecl-ru-he-she-zhi-dan-yuan-ge-ge-shi/</id>
+    <published>2024-08-26T01:06:30.000Z</published>
+    <updated>2024-09-03T14:53:54.510Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/08/26/gong-ju-kong/excel/excecl-ru-he-she-zhi-dan-yuan-ge-ge-shi/iShot_2024-09-01_23.51.58.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;video</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Excel" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Excel/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CompletableFuture</title>
+    <link href="https://chen-shang.github.io/2024/08/21/java/java-bing-fa-bian-cheng/completablefuture/"/>
+    <id>https://chen-shang.github.io/2024/08/21/java/java-bing-fa-bian-cheng/completablefuture/</id>
+    <published>2024-08-21T14:33:24.000Z</published>
+    <updated>2024-09-01T15:57:06.639Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/08/21/java/java-bing-fa-bian-cheng/completablefuture/image-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果第二步我们发现需要异步，你会怎么办&lt;br&gt;
+&lt;code&gt;new</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="Java并发编程" scheme="https://chen-shang.github.io/categories/JAVA/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vscode如何关闭点击文件直接在当前标签页打开</title>
+    <link href="https://chen-shang.github.io/2024/08/18/gong-ju-kong/vscode/vscode-ru-he-guan-bi-dian-ji-wen-jian-zhi-jie-zai-dang-qian-biao-qian-ye-da-kai/"/>
+    <id>https://chen-shang.github.io/2024/08/18/gong-ju-kong/vscode/vscode-ru-he-guan-bi-dian-ji-wen-jian-zhi-jie-zai-dang-qian-biao-qian-ye-da-kai/</id>
+    <published>2024-08-18T08:39:58.000Z</published>
+    <updated>2024-08-18T08:49:16.492Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近也不知道怎么设置滴，vscode点击文件直接在当前标签页打开，而不再新的tab页打开了。这很不方便，找了半天才找到在哪里设置&lt;br&gt;
+&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="VsCode" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/VsCode/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EasyPoi踩坑记录</title>
+    <link href="https://chen-shang.github.io/2024/08/17/java/java-wa-keng-tian-keng/easypoi-cai-keng-ji-lu/"/>
+    <id>https://chen-shang.github.io/2024/08/17/java/java-wa-keng-tian-keng/easypoi-cai-keng-ji-lu/</id>
+    <published>2024-08-17T09:22:08.000Z</published>
+    <updated>2024-09-08T23:06:42.696Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Exception in thread “main” com.alibaba.excel.exception.ExcelCommonException: Convert excel format exception.You can try specifying the</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="Java挖坑填坑" scheme="https://chen-shang.github.io/categories/JAVA/Java%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java文件相关操作最佳实践</title>
+    <link href="https://chen-shang.github.io/2024/08/15/java/java-ji-chu-chang-shi/java-wen-jian-xiang-guan-cao-zuo-zui-jia-shi-jian/"/>
+    <id>https://chen-shang.github.io/2024/08/15/java/java-ji-chu-chang-shi/java-wen-jian-xiang-guan-cao-zuo-zui-jia-shi-jian/</id>
+    <published>2024-08-15T14:15:22.000Z</published>
+    <updated>2024-09-01T15:57:46.357Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;springboot 上传&lt;br&gt;
+springboot</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="Java基础常识" scheme="https://chen-shang.github.io/categories/JAVA/Java%E5%9F%BA%E7%A1%80%E5%B8%B8%E8%AF%86/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>Kibana搜索技巧</title>
@@ -255,7 +428,7 @@
     <link href="https://chen-shang.github.io/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/"/>
     <id>https://chen-shang.github.io/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/</id>
     <published>2024-07-01T13:43:12.000Z</published>
-    <updated>2024-08-07T16:06:02.262Z</updated>
+    <updated>2024-09-07T12:09:16.887Z</updated>
     
     
       
@@ -272,8 +445,6 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
@@ -385,180 +556,6 @@
     
     
     <category term="引用" scheme="https://chen-shang.github.io/tags/%E5%BC%95%E7%94%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>为什么说Java是平台无关的</title>
-    <link href="https://chen-shang.github.io/2024/06/14/java/java-ji-chu-chang-shi/wei-shi-me-shuo-java-shi-ping-tai-wu-guan-de/"/>
-    <id>https://chen-shang.github.io/2024/06/14/java/java-ji-chu-chang-shi/wei-shi-me-shuo-java-shi-ping-tai-wu-guan-de/</id>
-    <published>2024-06-13T16:45:44.000Z</published>
-    <updated>2024-07-30T05:00:57.898Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;为什么说java是平台无关的&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#为什么说java是平台无关的&quot;&gt;&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="Java基础常识" scheme="https://chen-shang.github.io/categories/JAVA/Java%E5%9F%BA%E7%A1%80%E5%B8%B8%E8%AF%86/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端下载文件</title>
-    <link href="https://chen-shang.github.io/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/"/>
-    <id>https://chen-shang.github.io/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/</id>
-    <published>2024-05-15T15:25:25.000Z</published>
-    <updated>2024-07-15T18:01:09.206Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;后端代码怎么写&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#后端代码怎么写&quot;&gt;&lt;/a&gt; 后端代码怎么写&lt;/h1&gt;
-&lt;p&gt;示例:&lt;br&gt;
-第一种写法&lt;/p&gt;
-&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>解决swagger页面加载不出来</title>
-    <link href="https://chen-shang.github.io/2024/05/11/java/jie-jue-fang-an/jie-jue-swagger-ye-mian-jia-zai-bu-chu-lai/"/>
-    <id>https://chen-shang.github.io/2024/05/11/java/jie-jue-fang-an/jie-jue-swagger-ye-mian-jia-zai-bu-chu-lai/</id>
-    <published>2024-05-11T06:22:26.000Z</published>
-    <updated>2024-05-11T15:11:13.559Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/05/11/java/jie-jue-fang-an/jie-jue-swagger-ye-mian-jia-zai-bu-chu-lai/iShot_2024-05-11_22.54.59.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Js处理小数</title>
-    <link href="https://chen-shang.github.io/2024/05/10/qian-duan/js-chu-li-xiao-shu/"/>
-    <id>https://chen-shang.github.io/2024/05/10/qian-duan/js-chu-li-xiao-shu/</id>
-    <published>2024-05-10T08:41:13.000Z</published>
-    <updated>2024-05-11T15:11:59.080Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;code&gt;decimal.js&lt;/code&gt; 官网地址 &lt;a href=&quot;https://mikemcl.github.io/decimal.js/&quot;&gt;https://mikemcl.github.io/decimal.js/&lt;/a&gt;&lt;/p&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="前端" scheme="https://chen-shang.github.io/categories/%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="前端" scheme="https://chen-shang.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>我捡了一个蜗牛</title>
-    <link href="https://chen-shang.github.io/2024/05/10/si-kao/wo-jian-liao-yi-ge-gua-niu/"/>
-    <id>https://chen-shang.github.io/2024/05/10/si-kao/wo-jian-liao-yi-ge-gua-niu/</id>
-    <published>2024-05-10T08:38:50.000Z</published>
-    <updated>2024-05-11T14:49:17.116Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;2岁的时候，陈卓捡了一个蜗牛壳，对念念(陈卓的玩伴)爷爷说：“我捡了一个蜗牛，但是蜗牛出去了逛超市了”。听到陈卓母亲如是描述后，我一方面欣慰于陈卓的纯真，一方面感叹于他的想象。彼时的他对死亡还没有概念，不懂得离开的含义，也不晓得失去意味着什么。他的话对于本就天性凉薄的我居然</summary>
-        
-      
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java时间入库后加了1s</title>
-    <link href="https://chen-shang.github.io/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/"/>
-    <id>https://chen-shang.github.io/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/</id>
-    <published>2024-05-06T13:34:03.000Z</published>
-    <updated>2024-05-06T13:49:07.310Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/iShot_2024-05-06_21.33.04.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这个时间虽然写的是</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
   </entry>
   
