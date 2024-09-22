@@ -50,7 +50,7 @@
     <link href="https://chen-shang.github.io/2024/08/26/gong-ju-kong/excel/excecl-ru-he-she-zhi-dan-yuan-ge-ge-shi/"/>
     <id>https://chen-shang.github.io/2024/08/26/gong-ju-kong/excel/excecl-ru-he-she-zhi-dan-yuan-ge-ge-shi/</id>
     <published>2024-08-26T01:06:30.000Z</published>
-    <updated>2024-09-21T15:37:19.256Z</updated>
+    <updated>2024-09-21T15:38:30.695Z</updated>
     
     
       
@@ -108,14 +108,14 @@
     <link href="https://chen-shang.github.io/2024/08/18/gong-ju-kong/vscode/vscode-ru-he-guan-bi-dian-ji-wen-jian-zhi-jie-zai-dang-qian-biao-qian-ye-da-kai/"/>
     <id>https://chen-shang.github.io/2024/08/18/gong-ju-kong/vscode/vscode-ru-he-guan-bi-dian-ji-wen-jian-zhi-jie-zai-dang-qian-biao-qian-ye-da-kai/</id>
     <published>2024-08-18T08:39:58.000Z</published>
-    <updated>2024-08-18T08:49:16.492Z</updated>
+    <updated>2024-09-21T15:42:47.279Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;最近也不知道怎么设置滴，vscode点击文件直接在当前标签页打开，而不再新的tab页打开了。这很不方便，找了半天才找到在哪里设置&lt;br&gt;
+    <summary type="html">&lt;p&gt;最近也不知道怎么设置滴，vscode点击文件直接在当前标签页打开，而不再在新的tab页打开了。这很不方便，找了半天才找到在哪里设置&lt;br&gt;
 &lt;img</summary>
         
       
@@ -427,7 +427,7 @@ springboot</summary>
     <link href="https://chen-shang.github.io/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/"/>
     <id>https://chen-shang.github.io/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/</id>
     <published>2024-07-01T13:43:12.000Z</published>
-    <updated>2024-09-21T15:18:52.988Z</updated>
+    <updated>2024-09-22T06:33:25.427Z</updated>
     
     
       
@@ -452,14 +452,16 @@ springboot</summary>
     <link href="https://chen-shang.github.io/2024/07/01/java/jie-jue-fang-an/java8-collectors-tomap-zhu-yi-shi-xiang/"/>
     <id>https://chen-shang.github.io/2024/07/01/java/jie-jue-fang-an/java8-collectors-tomap-zhu-yi-shi-xiang/</id>
     <published>2024-07-01T13:43:12.000Z</published>
-    <updated>2024-08-07T15:53:01.712Z</updated>
+    <updated>2024-09-21T15:45:57.136Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;duplicate-key-说明tomap的时候有重复的key程序也不知道该取哪个了&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#duplicate-key-说明tomap的时候有重复的key程序也不知道该取哪个了&quot;&gt;&lt;/a&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;duplicate-key&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#duplicate-key&quot;&gt;&lt;/a&gt; Duplicate key&lt;/h1&gt;
+&lt;p&gt;说明toMap的时候有重复的key，程序也不知道该取哪个了&lt;/p&gt;
+&lt;pre</summary>
         
       
     
