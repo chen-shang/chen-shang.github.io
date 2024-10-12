@@ -4,11 +4,96 @@
   
     
     <entry>
+      <title>定期更新/升级安装的软件</title>
+      <link href="/2024/10/12/gong-ju-kong/mac/ding-qi-geng-xin-sheng-ji-an-zhuang-de-ruan-jian/"/>
+      <url>/2024/10/12/gong-ju-kong/mac/ding-qi-geng-xin-sheng-ji-an-zhuang-de-ruan-jian/</url>
+      
+        <content type="html"><![CDATA[<h1 id="brew安装的软件更新"><a class="markdownIt-Anchor" href="#brew安装的软件更新"></a> brew安装的软件更新</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew upgrade brew update <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h1 id="vim-插件更新"><a class="markdownIt-Anchor" href="#vim-插件更新"></a> vim 插件更新</h1><p><code>:PluginUpdate</code></p><p><img src="/2024/10/12/gong-ju-kong/mac/ding-qi-geng-xin-sheng-ji-an-zhuang-de-ruan-jian/image.png" alt=""></p><h1 id="git项目更新"><a class="markdownIt-Anchor" href="#git项目更新"></a> git项目更新</h1><p>定义一个函数，并执行 <code>pull</code></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">pull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token function">ls</span> <span class="token parameter variable">-d</span> */ <span class="token operator">|</span><span class="token keyword">while</span> <span class="token builtin class-name">read</span> <span class="token function">dir</span><span class="token punctuation">;</span><span class="token keyword">do</span>    <span class="token builtin class-name">cd</span> <span class="token variable">${dir}</span>      <span class="token builtin class-name">echo</span> <span class="token string">"==========<span class="token variable">${dir}</span>==========="</span>   <span class="token function">git</span> gc<span class="token punctuation">;</span> <span class="token function">git</span> pull -p<span class="token punctuation">;</span> <span class="token function">git</span> clean <span class="token parameter variable">-f</span> *.flattened-pom.xml<span class="token punctuation">;</span> <span class="token function">git</span> status<span class="token punctuation">;</span>   <span class="token builtin class-name">cd</span> -  <span class="token keyword">done</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="博客主题更新"><a class="markdownIt-Anchor" href="#博客主题更新"></a> 博客主题更新</h1><h1 id="node-服务更新"><a class="markdownIt-Anchor" href="#node-服务更新"></a> node 服务更新</h1><h1 id="npm-更新"><a class="markdownIt-Anchor" href="#npm-更新"></a> npm 更新</h1><h1 id="idea-插件更新"><a class="markdownIt-Anchor" href="#idea-插件更新"></a> idea 插件更新</h1><h1 id="iterm2-更新"><a class="markdownIt-Anchor" href="#iterm2-更新"></a> iterm2 更新</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Mac </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 工具控 </tag>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Mysql锁表</title>
+      <link href="/2024/10/08/shu-ju-ku/mysql-suo-biao/"/>
+      <url>/2024/10/08/shu-ju-ku/mysql-suo-biao/</url>
+      
+        <content type="html"><![CDATA[<p>最近服务操作一直报 <code>The MySQL server is running with the LOCK_WRITE_GROWTH option so it cannot execute this statement</code></p><p><img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/image.png" alt=""></p><pre class="line-numbers language-text" data-language="text"><code class="language-text">### Error updating database. Cause: java.sql.SQLException: The MySQL server is running with theLOCK WRITE GROWTH option so it cannot execute this statement ### The error may exist in cn/flydiy/cloud/runtime/infrastructure/mapper/AccountHistoryMapper.java (best quess) ### The error may involve cn.flydiy.cloud.runtime.infrastructure.mapper.AccountHistoryMapper.insert-Inline ### The error occurred while setting parameters ### SQL: INSERT INTO t account history (id, tenant_id, user _id, type, dentity, credentials, primary_salt, secondary salt, extend json, created by, created date, last modified _by, last modified date ) VALUES (?, ?, ?, ?, ?. ?. ?. ?. ?. ?. ?.?. ?) ### Cause: java.sal.SQLException: The MySQL server is running with the LOCK WRITE_GROWTH option so it cannot execute this statement ; uncategorized SQLException; SQL state [HY000]; error code [1290]; The MySQL server is running with the LOCK WRITE GROWTH option so it cannot execute this statement; nested exception is java.sql.SQLException: The MySQL server is running with the LOCK_WRITE_GROWTH option so it cannot execute this statement<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>根本原因在于 <code>空间不足</code><br><img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/WechatIMG5270.jpg" alt=""><br>阿里的解释是<br><img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/image-1.png" alt=""></p><p>因此查找出可以清理数据的库表清理一波数据或者直接磁盘扩容即可。<br>但是遇到空间不足，对于小厂的我们一般优先想到的是清理那些真的根本不在使用的数据腾出空间而不是优先考虑扩容，因为业务并不紧急，扩容还需要花钱。但是如果业务很紧急，我可以先优先考虑扩容，因为排查清理数据需要花费的时间可能比较久，用户等不起，但扩容确比较简单一键操作即可，问题解决了，在慢慢排查清理数据。虽然扩容后，如果程序存在问题磁盘还是有可能会被打满，但至少用户可以操作，用户的损失会降到最低，也给后续清理数据留出喘息的时间。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>如何查看数据库表中最大的库表</title>
+      <link href="/2024/10/08/shu-ju-ku/ru-he-cha-kan-shu-ju-ku-biao-zhong-zui-da-de-ku-biao/"/>
+      <url>/2024/10/08/shu-ju-ku/ru-he-cha-kan-shu-ju-ku-biao-zhong-zui-da-de-ku-biao/</url>
+      
+        <content type="html"><![CDATA[<p>最近服务数据库服务器由于空间不足导致数据库锁表无法操作需要分析到底是哪个库表占据的空间最大。</p><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">SELECT table_schema                                           AS 'Database',       table_name                                             AS 'Table',       round(((data_length + index_length) / 1024 / 1024), 3) AS 'Size in MB'FROM information_schema.TABLESORDER BY (data_length + index_length) DESC<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>会输出如下数据: 告诉你哪个库的哪个表对应的数据数据量有多大</p><table><thead><tr><th style="text-align:left">Database</th><th style="text-align:left">Table</th><th style="text-align:left">Size in MB</th></tr></thead><tbody><tr><td style="text-align:left">duxiaoman</td><td style="text-align:left">cash_loan</td><td style="text-align:left">4565.734</td></tr><tr><td style="text-align:left">vxlink_business_agent_server</td><td style="text-align:left">cash_loan</td><td style="text-align:left">3575.000</td></tr><tr><td style="text-align:left">vxlink_registration_server</td><td style="text-align:left">uc_contact</td><td style="text-align:left">2778.766</td></tr><tr><td style="text-align:left">vxlink_registration_server</td><td style="text-align:left">ta_case_info</td><td style="text-align:left">1903.531</td></tr><tr><td style="text-align:left">vxlink_registration_server</td><td style="text-align:left">uc_privacy</td><td style="text-align:left">1503.750</td></tr><tr><td style="text-align:left">duxiaoman</td><td style="text-align:left">cash_loan_rate</td><td style="text-align:left">1371.000</td></tr><tr><td style="text-align:left">standard_process</td><td style="text-align:left">ACT_GE_BYTEARRAY</td><td style="text-align:left">899.672</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Fix your permissions</title>
       <link href="/2024/09/11/linux/jie-jue-fang-an/fix-your-permissions/"/>
       <url>/2024/09/11/linux/jie-jue-fang-an/fix-your-permissions/</url>
       
-        <content type="html"><![CDATA[<pre class="line-numbers language-text" data-language="text"><code class="language-text">Removing: /opt/homebrew/Cellar/mysql/9.0.1... (319 files, 309.8MB)Warning: Permission denied @ apply2files - /opt/homebrew/Cellar/mysql/9.0.1/bin/mysqlbinlog==&gt; This operation has freed approximately 309.8MB of disk space.Error: Could not cleanup old kegs! Fix your permissions on:  /opt/homebrew/Cellar/mysql/9.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果您发现某些文件的权限不正确，可以使用  chmod  命令更改权限。例如，您可以将所有者更改为当前用户：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">whoami</span><span class="token variable">)</span></span> /opt/homebrew/Cellar/mysql/9.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><code>sudo chown -R $(whoami)</code>  这是一个技巧，积累一下</p>]]></content>
+        <content type="html"><![CDATA[<pre class="line-numbers language-text" data-language="text"><code class="language-text">Removing: /opt/homebrew/Cellar/mysql/9.0.1... (319 files, 309.8MB)Warning: Permission denied @ apply2files - /opt/homebrew/Cellar/mysql/9.0.1/bin/mysqlbinlog==&gt; This operation has freed approximately 309.8MB of disk space.Error: Could not cleanup old kegs! Fix your permissions on:  /opt/homebrew/Cellar/mysql/9.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>如果您发现某些文件的权限不正确，可以使用  chown  命令更改权限。例如，您可以将所有者更改为当前用户：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">whoami</span><span class="token variable">)</span></span> /opt/homebrew/Cellar/mysql/9.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><code>sudo chown -R $(whoami)</code>  这是一个技巧，积累一下</p>]]></content>
       
       
       <categories>
@@ -938,39 +1023,6 @@
             <tag> 原创 </tag>
             
             <tag> 未完待续 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>定期更新安装的一些软件</title>
-      <link href="/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/"/>
-      <url>/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/</url>
-      
-        <content type="html"><![CDATA[<h1 id="vim-插件更新"><a class="markdownIt-Anchor" href="#vim-插件更新"></a> vim 插件更新</h1><p><img src="/2024/04/06/gong-ju-kong/mac/ding-qi-geng-xin-an-zhuang-de-yi-xie-ruan-jian/image.png" alt=""></p><h1 id="brew以及安装的软件更新"><a class="markdownIt-Anchor" href="#brew以及安装的软件更新"></a> brew以及安装的软件更新</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew upgrade brew update <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>node 服务更新</p><h1 id="git项目更新"><a class="markdownIt-Anchor" href="#git项目更新"></a> git项目更新</h1><p>定义一个函数，并执行 <code>pull</code></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">pull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token function">ls</span> <span class="token parameter variable">-d</span> */ <span class="token operator">|</span><span class="token keyword">while</span> <span class="token builtin class-name">read</span> <span class="token function">dir</span><span class="token punctuation">;</span><span class="token keyword">do</span>    <span class="token builtin class-name">cd</span> <span class="token variable">${dir}</span>      <span class="token builtin class-name">echo</span> <span class="token string">"==========<span class="token variable">${dir}</span>==========="</span>   <span class="token function">git</span> gc<span class="token punctuation">;</span> <span class="token function">git</span> pull -p<span class="token punctuation">;</span> <span class="token function">git</span> clean <span class="token parameter variable">-f</span> *.flattened-pom.xml<span class="token punctuation">;</span> <span class="token function">git</span> status<span class="token punctuation">;</span>   <span class="token builtin class-name">cd</span> -  <span class="token keyword">done</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="博客主题更新"><a class="markdownIt-Anchor" href="#博客主题更新"></a> 博客主题更新</h1><h1 id="npm-更新"><a class="markdownIt-Anchor" href="#npm-更新"></a> npm 更新</h1><h1 id="idea-插件更新"><a class="markdownIt-Anchor" href="#idea-插件更新"></a> idea 插件更新</h1><h1 id="iterm2-更新"><a class="markdownIt-Anchor" href="#iterm2-更新"></a> iterm2 更新</h1>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具控 </category>
-          
-          <category> Mac </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> 未完待续 </tag>
-            
-            <tag> 工具控 </tag>
-            
-            <tag> Mac </tag>
             
         </tags>
       
@@ -4048,9 +4100,9 @@
             
             <tag> 思考 </tag>
             
-            <tag> 经济学 </tag>
-            
             <tag> 不良资产 </tag>
+            
+            <tag> 经济学 </tag>
             
         </tags>
       
@@ -4994,11 +5046,11 @@
     
     
     <entry>
-      <title>重写设计模式-用λ实现工厂模式</title>
-      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/"/>
-      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/</url>
+      <title>重写设计模式-用λ实现单例模式</title>
+      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/"/>
+      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/</url>
       
-        <content type="html"><![CDATA[<p>创建型设计模式一共有4中,分别叫 工厂、单例、构建、原型。创建型设计模式的目标是创建对象实例,其中我认为最简单的当属工厂设计模式。工厂设计模式的宗旨是把对象实例化的过程收集到一处来。</p><p>其中工厂模式还可以细分，分别是 简单工厂也叫静态工厂、工厂方法和抽象工厂，其中简单工厂也叫静态工厂是工厂方法的特例，工厂方法是抽象工厂的特例。<br>工厂方法的目的就是生产对象，也就是封装new的过程。只要你把某个对象的new过程封装到某个类或者某个方法中广义上我们都可以叫工厂方法<br>例如</p><pre class="line-numbers language-none"><code class="language-none">public static Object convert() {    return new Object();}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>一般简单工厂就是构造一个工厂类，里面写一个方法获取某个基类对象,至于最后如何生成具体子类的实例，则在该方法内部实现.这就是简单工厂的雏形</p><div width="100%"><div style="float:left; width:49%;"><h1>简单工厂普通写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">UserFactory</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">User</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> <span class="token class-name">UserFactory</span><span class="token punctuation">.</span><span class="token function">getUser</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>    <div style="float:left;height:50px; width:0px;border-left:solid white;border-right:1px solid white"></div>    <div style="float:left; width:49%;"><h1>简单工厂尝试λ写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> userFactory <span class="token operator">=</span> code <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> userFactory<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div><h1 id="工厂方法"><a class="markdownIt-Anchor" href="#工厂方法"></a> 工厂方法</h1><p>工厂方法和抽象工厂方法也类似，只是换成λ表达式即可。因为λ表达式本质上是一个函数一个方法，所以必然依托于出现在某个类中。</p></div>]]></content>
+        <content type="html"><![CDATA[<p>DCL 单例 用λ表达式来实现</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">import java.util.Optional;public class Singleton{  //1. 构造方法私有化  //2. 持有自身的静态引用  //3. 提供获取自身静态引用的公有静态方法  private Singleton(){}  private static volatile Singleton singleton;  public static Singleton getInstance(){     return Optional.ofNullable(singleton).orElseGet(()-&gt;{       synchronized(Singleton.class){         return Optional.ofNullable(singleton).orElse(new Singleton());       }     });  }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
       
       
       <categories>
@@ -5021,11 +5073,11 @@
     
     
     <entry>
-      <title>重写设计模式-用λ实现单例模式</title>
-      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/"/>
-      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-dan-li-mo-shi/</url>
+      <title>重写设计模式-用λ实现工厂模式</title>
+      <link href="/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/"/>
+      <url>/2020/08/10/java/java-she-ji-mo-shi/chong-xie-she-ji-mo-shi-yong-lshi-xian-gong-han-mo-shi/</url>
       
-        <content type="html"><![CDATA[<p>DCL 单例 用λ表达式来实现</p><pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">import java.util.Optional;public class Singleton{  //1. 构造方法私有化  //2. 持有自身的静态引用  //3. 提供获取自身静态引用的公有静态方法  private Singleton(){}  private static volatile Singleton singleton;  public static Singleton getInstance(){     return Optional.ofNullable(singleton).orElseGet(()-&gt;{       synchronized(Singleton.class){         return Optional.ofNullable(singleton).orElse(new Singleton());       }     });  }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+        <content type="html"><![CDATA[<p>创建型设计模式一共有4中,分别叫 工厂、单例、构建、原型。创建型设计模式的目标是创建对象实例,其中我认为最简单的当属工厂设计模式。工厂设计模式的宗旨是把对象实例化的过程收集到一处来。</p><p>其中工厂模式还可以细分，分别是 简单工厂也叫静态工厂、工厂方法和抽象工厂，其中简单工厂也叫静态工厂是工厂方法的特例，工厂方法是抽象工厂的特例。<br>工厂方法的目的就是生产对象，也就是封装new的过程。只要你把某个对象的new过程封装到某个类或者某个方法中广义上我们都可以叫工厂方法<br>例如</p><pre class="line-numbers language-none"><code class="language-none">public static Object convert() {    return new Object();}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>一般简单工厂就是构造一个工厂类，里面写一个方法获取某个基类对象,至于最后如何生成具体子类的实例，则在该方法内部实现.这就是简单工厂的雏形</p><div width="100%"><div style="float:left; width:49%;"><h1>简单工厂普通写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">UserFactory</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">User</span> <span class="token function">getUser</span><span class="token punctuation">(</span><span class="token keyword">int</span> code<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> <span class="token class-name">UserFactory</span><span class="token punctuation">.</span><span class="token function">getUser</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div>    <div style="float:left;height:50px; width:0px;border-left:solid white;border-right:1px solid white"></div>    <div style="float:left; width:49%;"><h1>简单工厂尝试λ写法</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Student</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">class</span> <span class="token class-name">Teacher</span> <span class="token keyword">extends</span> <span class="token class-name">User</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Function</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">User</span><span class="token punctuation">&gt;</span></span> userFactory <span class="token operator">=</span> code <span class="token operator">-&gt;</span> <span class="token punctuation">{</span>    <span class="token keyword">switch</span> <span class="token punctuation">(</span>code<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">case</span> <span class="token number">2</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Student</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token keyword">default</span><span class="token operator">:</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Teacher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">;</span>  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token class-name">User</span> student <span class="token operator">=</span> userFactory<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></div><h1 id="工厂方法"><a class="markdownIt-Anchor" href="#工厂方法"></a> 工厂方法</h1><p>工厂方法和抽象工厂方法也类似，只是换成λ表达式即可。因为λ表达式本质上是一个函数一个方法，所以必然依托于出现在某个类中。</p></div>]]></content>
       
       
       <categories>
@@ -5496,18 +5548,18 @@
     
     
     <entry>
-      <title>Java配置文件变量替换</title>
-      <link href="/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/"/>
-      <url>/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/</url>
+      <title></title>
+      <link href="/2020/02/11/java/java-ji-chu-chang-shi/java-suo/"/>
+      <url>/2020/02/11/java/java-ji-chu-chang-shi/java-suo/</url>
       
-        <content type="html"><![CDATA[<p>由于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow></mrow><mtext>方式会被</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mtext>处理。如果你</mtext><mi>p</mi><mi>o</mi><mi>m</mi><mtext>继承了</mtext><mi>s</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>−</mo><mi>b</mi><mi>o</mi><mi>o</mi><mi>t</mi><mo>−</mo><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>e</mi><mi>r</mi><mo>−</mo><mi>p</mi><mi>a</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>，</mtext><mi>S</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>B</mi><mi>o</mi><mi>o</mi><mi>t</mi><mtext>已经将</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mo>−</mo><mi>r</mi><mi>e</mi><mi>s</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>c</mi><mi>e</mi><mi>s</mi><mo>−</mo><mi>p</mi><mi>l</mi><mi>u</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>s</mi><mtext>默认的</mtext></mrow><annotation encoding="application/x-tex">{}方式会被maven处理。如果你pom继承了spring-boot-starter-parent，Spring Boot已经将maven-resources-plugins默认的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"></span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">式</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">被</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">处</span><span class="mord cjk_fallback">理</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">你</span><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord cjk_fallback">继</span><span class="mord cjk_fallback">承</span><span class="mord cjk_fallback">了</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">，</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">经</span><span class="mord cjk_fallback">将</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">c</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">默</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">的</span></span></span></span>{}方式改为了@@方式，如@version@</p><center>  <img src="/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/show.jpg"></center>]]></content>
+        <content type="html"><![CDATA[<h1 id="为什么需要锁"><a class="markdownIt-Anchor" href="#为什么需要锁"></a> 为什么需要锁</h1><p>我们把多个线程竞争处理的资源称为临界资源（代码块、方法体等），当一个线程获得了临界资源的使用权以后，为了保证临界资源在同一时间只能由一个线程获得，其它线程必须等这个线程处理完以后才能通过竞争再次尝试获得临界资源的使用权。</p><p>追问：为什么要保证临界资源在同一时间只能由一个线程使用?<br>首先肯定是有这样的场景存在，多个线程同时操作临界资源会导致数据的不一致。</p><p>追问：什么叫数据的不一致?<br>就是你本来期望是一个结果，但是偏偏变成了另一个结果，本来不应该出现的情况，但是偏偏出现了，就叫数据不一致了。</p><p>追问：所以归根结底是为了解决临界资源在并发使用过程中可能出现的数据不一致性问题才必须保证临界资源在同一时间只能由一个线程获得?<br>是的。因为并发会导致数据不一致，那干脆在使用临界资源的时候不要并发了，多么简单暴力啊。</p><p>追问：说了半天还是没有说到锁啊?<br>那我们如何实现上面说的 必须保证临界资源在同一时间只能由一个线程获得呢？答案就是大家对向某个人提出申请，这个人必须足够公正，能保证在同一时间只能有一个人获得申请，而且要保证获得申请的人不撤销申请其他人即使再申请也不会获得申请，这个人就是锁，要知道这个人一旦被看作锁，那么他也将变成临界资源，申请锁的这个动作在多线程里必须也得能保证数据一致，也就是线程安全，貌似陷入死循环了。但这个保证是操作系统保证的，更确切的说是操作系统的内核保证的，操作系统毕竟还是一个软件，内核要保证线程安全本质上是通过硬件完成的，其实就是锁总线。</p><p>锁的分类<br>锁并不是某个语言特有的，c语言也有锁，c++也是，包括一些后现代的编程语言例如scala、groovy等都有锁，操作系统更需要锁，redis有锁，数据库有锁，分布式系统有分布式锁。锁你可以理解为一个工具类，使用这个工具类可以保证临界资源在同一时间只能由一个线程获得。锁的种类有很多，真的很多，有悲观锁、乐观锁，有互斥锁、共享锁，有可重入锁、不可重入锁，数据库有行锁、表锁、页锁，分布式有分布式锁，可以用redis实现可以用zookeeper实现。按照我的理解和记忆方案，不见得是对的，但在这里提出来，大家一起讨论一下。</p><p>我认为只要是锁一定都是悲观锁，因为乐观锁虽然叫锁，但是其实并不是锁，只是后人为了区分而强加的概念。乐观锁的实现原理逃不出CAS，悲观锁的原理逃不出互斥量。所以Java中所有叫锁的都是悲观锁包括 synchornized。</p><p>然后就是锁的几个特性，比如 公平不公平啊、可重入不可重入啊、独享啊还是共享啊。每个锁必然有这三个特性。</p><p>锁分类<br>悲观锁/乐观锁<br>重点讲两类锁的思想区别 和 cas</p><p>锁特性<br>公平性/非公平性、公平锁/非公平锁<br>公平锁是指多个线程按照申请锁的顺序来获取锁。</p><p>非公平锁不按照申请顺序，后申请的可能会先获得锁。</p><p>对于Java的ReentranLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。</p><p>ReentranLock中有一个内部类：Sync。FairSync、NonFairSync继承了Sync，公平与不公平在源码体现在【!hasQueuedPredecessors()】这句代码，公平的话：如果前面有等待节点，那就不去获得锁；不公平就是抢占；具体看：<a href="https://blog.csdn.net/lsgqjh/article/details/63685058">https://blog.csdn.net/lsgqjh/article/details/63685058</a></p><p>对于 Synchonized而言，也是一种非公平锁，由于其不像 ReentrantLock是通过AQS实现的，所以没办法变成公平锁。</p><p>可重入性/不可重入性、可重入锁/不可重入锁<br>可重入锁又名递归锁，是指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁，不会因为之前已经获取过还没释放而阻塞。</p><p>Java中ReentrantLock和synchronized都是可重入锁，可重入锁的一个优点是可一定程度避免死锁。</p><p>到目前为止我还没有遇到过不可重入的锁，也想象不到不可重入锁的使用场景，因为不可重入锁大概率会出现死锁情况，所以貌似没有人会去实现不可重入锁。</p><p>独占性/共享性、互斥锁/读写锁<br>独享锁是指该锁一次只能被一个线程所持有。共享锁是指该锁可被多个线程所持有。这里主要是为了把一个操作掰成两个操作，一个读一个写，分别加不同粒度的锁，目的是实现在只有读的场景下的最大并发。</p><p>独享锁也叫互斥锁，读写锁等同于一个独享锁+一个共享锁，也叫一个写锁+读锁。读锁的共享锁可保证并发读是非常高效的，读写，写读，写写的过程是互斥的。</p><p>对于Java ReentrantLock而言，其是独享锁。但是对于Lock的另一个实现类ReadWriteLock，其读锁是共享锁，其写锁是独享锁。</p><p>对于Synchronized而言，当然是独享锁。</p><p>另外在synchronizd关键字的优化相关知识里面，会碰到 诸如 偏向锁/轻量级锁/自旋锁/适应性自旋锁/重量级锁 的概念，这些都是锁升级中的某些状态，除了重量级锁是锁外，其它要么不是锁，要么就是在成为锁的路上，这里不过多讨论，只需要记住只要是锁一定有上面三个特性就好。所以synchronized的全称应该叫 非公平的可重入的互斥悲观锁。同理，ReentrantLock 默认也是非公平的可重入的互斥悲观锁，当然ReentrantLock也可以实现 公平的可重入的互斥悲观锁。</p>]]></content>
       
       
       <categories>
           
           <category> JAVA </category>
           
-          <category> Java挖坑填坑 </category>
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -5525,18 +5577,18 @@
     
     
     <entry>
-      <title></title>
-      <link href="/2020/02/11/java/java-ji-chu-chang-shi/java-suo/"/>
-      <url>/2020/02/11/java/java-ji-chu-chang-shi/java-suo/</url>
+      <title>Java配置文件变量替换</title>
+      <link href="/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/"/>
+      <url>/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/</url>
       
-        <content type="html"><![CDATA[<h1 id="为什么需要锁"><a class="markdownIt-Anchor" href="#为什么需要锁"></a> 为什么需要锁</h1><p>我们把多个线程竞争处理的资源称为临界资源（代码块、方法体等），当一个线程获得了临界资源的使用权以后，为了保证临界资源在同一时间只能由一个线程获得，其它线程必须等这个线程处理完以后才能通过竞争再次尝试获得临界资源的使用权。</p><p>追问：为什么要保证临界资源在同一时间只能由一个线程使用?<br>首先肯定是有这样的场景存在，多个线程同时操作临界资源会导致数据的不一致。</p><p>追问：什么叫数据的不一致?<br>就是你本来期望是一个结果，但是偏偏变成了另一个结果，本来不应该出现的情况，但是偏偏出现了，就叫数据不一致了。</p><p>追问：所以归根结底是为了解决临界资源在并发使用过程中可能出现的数据不一致性问题才必须保证临界资源在同一时间只能由一个线程获得?<br>是的。因为并发会导致数据不一致，那干脆在使用临界资源的时候不要并发了，多么简单暴力啊。</p><p>追问：说了半天还是没有说到锁啊?<br>那我们如何实现上面说的 必须保证临界资源在同一时间只能由一个线程获得呢？答案就是大家对向某个人提出申请，这个人必须足够公正，能保证在同一时间只能有一个人获得申请，而且要保证获得申请的人不撤销申请其他人即使再申请也不会获得申请，这个人就是锁，要知道这个人一旦被看作锁，那么他也将变成临界资源，申请锁的这个动作在多线程里必须也得能保证数据一致，也就是线程安全，貌似陷入死循环了。但这个保证是操作系统保证的，更确切的说是操作系统的内核保证的，操作系统毕竟还是一个软件，内核要保证线程安全本质上是通过硬件完成的，其实就是锁总线。</p><p>锁的分类<br>锁并不是某个语言特有的，c语言也有锁，c++也是，包括一些后现代的编程语言例如scala、groovy等都有锁，操作系统更需要锁，redis有锁，数据库有锁，分布式系统有分布式锁。锁你可以理解为一个工具类，使用这个工具类可以保证临界资源在同一时间只能由一个线程获得。锁的种类有很多，真的很多，有悲观锁、乐观锁，有互斥锁、共享锁，有可重入锁、不可重入锁，数据库有行锁、表锁、页锁，分布式有分布式锁，可以用redis实现可以用zookeeper实现。按照我的理解和记忆方案，不见得是对的，但在这里提出来，大家一起讨论一下。</p><p>我认为只要是锁一定都是悲观锁，因为乐观锁虽然叫锁，但是其实并不是锁，只是后人为了区分而强加的概念。乐观锁的实现原理逃不出CAS，悲观锁的原理逃不出互斥量。所以Java中所有叫锁的都是悲观锁包括 synchornized。</p><p>然后就是锁的几个特性，比如 公平不公平啊、可重入不可重入啊、独享啊还是共享啊。每个锁必然有这三个特性。</p><p>锁分类<br>悲观锁/乐观锁<br>重点讲两类锁的思想区别 和 cas</p><p>锁特性<br>公平性/非公平性、公平锁/非公平锁<br>公平锁是指多个线程按照申请锁的顺序来获取锁。</p><p>非公平锁不按照申请顺序，后申请的可能会先获得锁。</p><p>对于Java的ReentranLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。</p><p>ReentranLock中有一个内部类：Sync。FairSync、NonFairSync继承了Sync，公平与不公平在源码体现在【!hasQueuedPredecessors()】这句代码，公平的话：如果前面有等待节点，那就不去获得锁；不公平就是抢占；具体看：<a href="https://blog.csdn.net/lsgqjh/article/details/63685058">https://blog.csdn.net/lsgqjh/article/details/63685058</a></p><p>对于 Synchonized而言，也是一种非公平锁，由于其不像 ReentrantLock是通过AQS实现的，所以没办法变成公平锁。</p><p>可重入性/不可重入性、可重入锁/不可重入锁<br>可重入锁又名递归锁，是指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁，不会因为之前已经获取过还没释放而阻塞。</p><p>Java中ReentrantLock和synchronized都是可重入锁，可重入锁的一个优点是可一定程度避免死锁。</p><p>到目前为止我还没有遇到过不可重入的锁，也想象不到不可重入锁的使用场景，因为不可重入锁大概率会出现死锁情况，所以貌似没有人会去实现不可重入锁。</p><p>独占性/共享性、互斥锁/读写锁<br>独享锁是指该锁一次只能被一个线程所持有。共享锁是指该锁可被多个线程所持有。这里主要是为了把一个操作掰成两个操作，一个读一个写，分别加不同粒度的锁，目的是实现在只有读的场景下的最大并发。</p><p>独享锁也叫互斥锁，读写锁等同于一个独享锁+一个共享锁，也叫一个写锁+读锁。读锁的共享锁可保证并发读是非常高效的，读写，写读，写写的过程是互斥的。</p><p>对于Java ReentrantLock而言，其是独享锁。但是对于Lock的另一个实现类ReadWriteLock，其读锁是共享锁，其写锁是独享锁。</p><p>对于Synchronized而言，当然是独享锁。</p><p>另外在synchronizd关键字的优化相关知识里面，会碰到 诸如 偏向锁/轻量级锁/自旋锁/适应性自旋锁/重量级锁 的概念，这些都是锁升级中的某些状态，除了重量级锁是锁外，其它要么不是锁，要么就是在成为锁的路上，这里不过多讨论，只需要记住只要是锁一定有上面三个特性就好。所以synchronized的全称应该叫 非公平的可重入的互斥悲观锁。同理，ReentrantLock 默认也是非公平的可重入的互斥悲观锁，当然ReentrantLock也可以实现 公平的可重入的互斥悲观锁。</p>]]></content>
+        <content type="html"><![CDATA[<p>由于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow></mrow><mtext>方式会被</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mtext>处理。如果你</mtext><mi>p</mi><mi>o</mi><mi>m</mi><mtext>继承了</mtext><mi>s</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>−</mo><mi>b</mi><mi>o</mi><mi>o</mi><mi>t</mi><mo>−</mo><mi>s</mi><mi>t</mi><mi>a</mi><mi>r</mi><mi>t</mi><mi>e</mi><mi>r</mi><mo>−</mo><mi>p</mi><mi>a</mi><mi>r</mi><mi>e</mi><mi>n</mi><mi>t</mi><mtext>，</mtext><mi>S</mi><mi>p</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mi>B</mi><mi>o</mi><mi>o</mi><mi>t</mi><mtext>已经将</mtext><mi>m</mi><mi>a</mi><mi>v</mi><mi>e</mi><mi>n</mi><mo>−</mo><mi>r</mi><mi>e</mi><mi>s</mi><mi>o</mi><mi>u</mi><mi>r</mi><mi>c</mi><mi>e</mi><mi>s</mi><mo>−</mo><mi>p</mi><mi>l</mi><mi>u</mi><mi>g</mi><mi>i</mi><mi>n</mi><mi>s</mi><mtext>默认的</mtext></mrow><annotation encoding="application/x-tex">{}方式会被maven处理。如果你pom继承了spring-boot-starter-parent，Spring Boot已经将maven-resources-plugins默认的</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"></span><span class="mord cjk_fallback">方</span><span class="mord cjk_fallback">式</span><span class="mord cjk_fallback">会</span><span class="mord cjk_fallback">被</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord cjk_fallback">处</span><span class="mord cjk_fallback">理</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">如</span><span class="mord cjk_fallback">果</span><span class="mord cjk_fallback">你</span><span class="mord mathnormal">p</span><span class="mord mathnormal">o</span><span class="mord mathnormal">m</span><span class="mord cjk_fallback">继</span><span class="mord cjk_fallback">承</span><span class="mord cjk_fallback">了</span><span class="mord mathnormal">s</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.69841em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">t</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">，</span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal">o</span><span class="mord mathnormal">o</span><span class="mord mathnormal">t</span><span class="mord cjk_fallback">已</span><span class="mord cjk_fallback">经</span><span class="mord cjk_fallback">将</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mord mathnormal">e</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">c</span><span class="mord mathnormal">e</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mord cjk_fallback">默</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">的</span></span></span></span>{}方式改为了@@方式，如@version@</p><center>  <img src="/2020/02/11/java/java-wa-keng-tian-keng/java-pei-zhi-wen-jian-bian-liang-ti-huan/show.jpg"></center>]]></content>
       
       
       <categories>
           
           <category> JAVA </category>
           
-          <category> Java基础常识 </category>
+          <category> Java挖坑填坑 </category>
           
       </categories>
       
@@ -6520,6 +6572,37 @@
     
     
     <entry>
+      <title>作画</title>
+      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
+      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
+      
+        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 墨香纸笺 </category>
+          
+          <category> 我的诗词 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 墨香纸笺 </tag>
+            
+            <tag> 我的诗词 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git万能后悔药</title>
       <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
       <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
@@ -6605,37 +6688,6 @@
             <tag> Git </tag>
             
             <tag> 工具控 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>作画</title>
-      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
-      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
-      
-        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 墨香纸笺 </category>
-          
-          <category> 我的诗词 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> 墨香纸笺 </tag>
-            
-            <tag> 我的诗词 </tag>
             
         </tags>
       

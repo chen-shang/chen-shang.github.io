@@ -310,7 +310,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-09-21
+                    2024-10-13
                 </div>
                 
 
@@ -352,7 +352,7 @@ Warning: Permission denied @ apply2files - /opt/homebrew/Cellar/mysql/9.0.1/bin/
 ==&gt; This operation has freed approximately 309.8MB of disk space.
 Error: Could not cleanup old kegs! Fix your permissions on:
   /opt/homebrew/Cellar/mysql/9.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>如果您发现某些文件的权限不正确，可以使用  chmod  命令更改权限。例如，您可以将所有者更改为当前用户：</p>
+<p>如果您发现某些文件的权限不正确，可以使用  chown  命令更改权限。例如，您可以将所有者更改为当前用户：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">chown</span> <span class="token parameter variable">-R</span> <span class="token variable"><span class="token variable">$(</span><span class="token function">whoami</span><span class="token variable">)</span></span> /opt/homebrew/Cellar/mysql/9.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><code>sudo chown -R $(whoami)</code>  这是一个技巧，积累一下</p>
 
@@ -720,47 +720,41 @@ Error: Could not cleanup old kegs! Fix your permissions on:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/09/11/linux/jie-jue-fang-an/fix-your-permissions/">
+                <a href="/2024/10/08/shu-ju-ku/ru-he-cha-kan-shu-ju-ku-biao-zhong-zui-da-de-ku-biao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Fix your permissions">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="如何查看数据库表中最大的库表">
                         
-                        <span class="card-title">Fix your permissions</span>
+                        <span class="card-title">如何查看数据库表中最大的库表</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            `sudo chown -R $(whoami)`  这是一个技巧，积累一下. Error: Could not cleanup old kegs! Fix your permissions on. 
+                            最近服务数据库服务器由于空间不足导致数据库锁表无法操作需要分析到底是哪个库表占据的空间最大
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-09-11
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-10-08
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                            
-                            <a href="/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-category">
-                                    解决方案
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -920,7 +914,7 @@ Error: Could not cleanup old kegs! Fix your permissions on:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">210.5k</span>
+                        class="white-color">211.1k</span>
             
             
             
