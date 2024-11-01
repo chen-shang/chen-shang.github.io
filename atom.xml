@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2024-10-19T14:59:10.783Z</updated>
+  <updated>2024-11-01T16:32:06.846Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,73 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SpringCloud配置nacos为配置中心</title>
+    <link href="https://chen-shang.github.io/2024/10/22/java/springboot/springcloud-pei-zhi-nacos-wei-pei-zhi-zhong-xin/"/>
+    <id>https://chen-shang.github.io/2024/10/22/java/springboot/springcloud-pei-zhi-nacos-wei-pei-zhi-zhong-xin/</id>
+    <published>2024-10-22T09:44:06.000Z</published>
+    <updated>2024-11-01T16:32:06.846Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;先在pom中引入包&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-markup&quot; data-language=&quot;markup&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&lt;span class=&quot;token</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="SpringBoot" scheme="https://chen-shang.github.io/categories/JAVA/SpringBoot/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
+    
+    <category term="SpringBoot" scheme="https://chen-shang.github.io/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Feign如何配置超时</title>
+    <link href="https://chen-shang.github.io/2024/10/22/java/jie-jue-fang-an/feign-ru-he-pei-zhi-chao-shi/"/>
+    <id>https://chen-shang.github.io/2024/10/22/java/jie-jue-fang-an/feign-ru-he-pei-zhi-chao-shi/</id>
+    <published>2024-10-22T09:43:06.000Z</published>
+    <updated>2024-11-01T16:19:07.571Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;微服务间调用我们尝尝使用Feign定义一个公共类，这样可以快速的发起http请求。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2024/10/22/java/jie-jue-fang-an/feign-ru-he-pei-zhi-chao-shi/image.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>在本地如何设置自己的域名访问服务</title>
     <link href="https://chen-shang.github.io/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/"/>
     <id>https://chen-shang.github.io/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/</id>
     <published>2024-10-19T09:18:31.000Z</published>
-    <updated>2024-10-19T14:59:10.783Z</updated>
+    <updated>2024-11-01T16:08:38.548Z</updated>
     
     
       
@@ -523,50 +585,6 @@ springboot</summary>
         
         
     <summary type="html">&lt;p&gt;会有此思考是因为我们部门需要做年中汇报，汇报需要准备一个PPT。我们领导制定了一个汇报的大纲，这个大纲其实是领导先拟定了一个方向，在他的引导下整个团队成员逐渐发言后总结出来的。因为最终需要输出一个PPT给到领导，好让他上台讲解，因此领导将做PPT的任务拆解下去:</summary>
-        
-      
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于AMC不良资产处置行业的思考</title>
-    <link href="https://chen-shang.github.io/2024/07/26/si-kao/guan-yu-amc-bu-liang-zi-chan-chu-zhi-xing-ye-de-si-kao/"/>
-    <id>https://chen-shang.github.io/2024/07/26/si-kao/guan-yu-amc-bu-liang-zi-chan-chu-zhi-xing-ye-de-si-kao/</id>
-    <published>2024-07-26T00:45:41.000Z</published>
-    <updated>2024-07-26T01:00:56.635Z</updated>
-    
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于codereview的思考</title>
-    <link href="https://chen-shang.github.io/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/"/>
-    <id>https://chen-shang.github.io/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/</id>
-    <published>2024-07-01T13:43:12.000Z</published>
-    <updated>2024-09-22T06:33:25.427Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;前言一些感想&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#前言一些感想&quot;&gt;&lt;/a&gt;</summary>
         
       
     
