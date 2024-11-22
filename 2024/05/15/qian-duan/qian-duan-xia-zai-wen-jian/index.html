@@ -278,6 +278,10 @@
                                 <span class="chip bg-color">未完待续</span>
                             </a>
                         
+                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">前端</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -306,7 +310,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-07-16
+                    2024-11-23
                 </div>
                 
 
@@ -360,9 +364,9 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>注意，返回 <code>ResponseEntity&lt;byte[]&gt;</code>,这里http响应返回的Body类型是<code>byte</code>数组，也就是我们写入到文件中的内容的字符数组表示。要想让浏览器知道我返回的内容你需要下载成文件给到访问者，就需要特定的告诉浏览器我返回的东西的格式是个文件而不是其他，这个是通过 <code>setContentType</code> 实现的。这个 ContentType 属性是 http 请求或响应的时候在 header 中携带的。如果是请求中携带，那就是告诉服务器我提交的数据的内容类型是什么，如果是响应中携带，那就是告诉浏览器我返回的数据的内容类型是什么。</p>
 <p>如果不设置就会变成这样<br>
-<img src="/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/image.png" alt="alt text"><br>
+<img src="/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/image.png" alt=""><br>
 设置之后，浏览器就知道你其实想要的是一个文件，而不是在浏览器中渲染了。<br>
-<img src="/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/image-1.png" alt="alt text"></p>
+<img src="/2024/05/15/qian-duan/qian-duan-xia-zai-wen-jian/image-1.png" alt=""></p>
 <p>但是，我们下载下来的文件的名字好像不对。这个时候我们还需要告诉浏览器，下载的时候，文件的名字是什么呀<br>
 就是通过         headers.setContentDispositionFormData(“filename”, “xxx.csv”); 实现的<br>
 第二种写法，也是很久以前的写法</p>
@@ -402,6 +406,10 @@
                             
                                 <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
                                     <span class="chip bg-color">未完待续</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">前端</span>
                                 </a>
                             
                         </div>
@@ -953,7 +961,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">213.2k</span>
+                        class="white-color">217.2k</span>
             
             
             

@@ -230,7 +230,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -310,21 +310,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-07-31
+                    2024-11-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    70
+                    1.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -348,12 +348,46 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="什么是单元测试"><a class="markdownIt-Anchor" href="#什么是单元测试"></a> 什么是单元测试</h1>
+<p>单元测试是指对软件中最小可测试单元，如函数、方法、类或模块等，进行独立的、可重复的、自动化的测试，以验证其功能是否符合预期，从而提高代码质量、促进重构、便于团队协作及支持持续集成和交付等，编写时需确定目标、选框架、写用例及运行调试。</p>
 <h1 id="单元测试的意义"><a class="markdownIt-Anchor" href="#单元测试的意义"></a> 单元测试的意义</h1>
 <h1 id="怎么写单元测试"><a class="markdownIt-Anchor" href="#怎么写单元测试"></a> 怎么写单元测试</h1>
+<p>怎么写单元测试依照经验而论，我们写出来得单元测试应该尽可能得看起来那么优雅，如果不能写出优雅的单元测试，大概率就是我们被测试的目标写的太复杂了。比如我们在写单元测试的时候发现怎么这一个单元测试类里头要mock的service有20多个，我们就要反思一下我们得目标类里面是不是注入了太多的其他service，别犟，你说我就是应该注入这些service呀，不然没法调用啦。这个时候请反思一下这个类的是不是符合单一职责原则，是不是干了太多的事情了，看看这个service得代码是不是超过500行了，这时候想都不用想，这个service需要拆分了。比如我们在写单元测试的时候发现怎么不同的方法写出来的单元测试这么像呢，请看下你得目标函数是不是copy了代码，写了差不多的业务逻辑，请把公共的方法抽取出来。</p>
+<p>我觉得 阿里规约里头有些规范还是挺好的。至少那几个强制的条目还算不错。我们写单测得时候基本都需要遵守。<br>
+1.&nbsp;【强制】好的单元测试必须遵守&nbsp;AIR&nbsp;原则。<br>
+说明：单元测试在线上运行时，感觉像空气（AIR）一样感觉不到，但在测试质量的保障上，却是非常关键的。好的单元测试宏观上来说，具有自动化、独立性、可重复执行的特点。<br>
+⚫&nbsp;A：Automatic（自动化）<br>
+⚫&nbsp;I：Independent（独立性）<br>
+⚫&nbsp;R：Repeatable（可重复）<br>
+2.&nbsp;【强制】单元测试应该是全自动执行的，并且非交互式的。测试用例通常是被定期执行的，执行过程必须完全自动化才有意义。输出结果需要人工检查的测试不是一个好的单元测试。单元测试中不准使用&nbsp;System.out&nbsp;来进行人肉验证，必须使用&nbsp;assert&nbsp;来验证。<br>
+3.&nbsp;【强制】保持单元测试的独立性。为了保证单元测试稳定可靠且便于维护，单元测试用例之间决不能互相调用，也不能依赖执行的先后次序。<br>
+反例：method2&nbsp;需要依赖&nbsp;method1&nbsp;的执行，将执行结果作为&nbsp;method2&nbsp;的输入。<br>
+4.&nbsp;【强制】单元测试是可以重复执行的，不能受到外界环境的影响。<br>
+说明：单元测试通常会被放到持续集成中，每次有代码&nbsp;check&nbsp;in&nbsp;时单元测试都会被执行。如果单测对外部环境（网络、服务、中间件等）有依赖，容易导致持续集成机制的不可用。正例：为了不受外界环境影响，要求设计代码时就把&nbsp;SUT&nbsp;的依赖改成注入，在测试时用&nbsp; spring&nbsp;这样的&nbsp;DI框架注入一个本地（内存）实现或者&nbsp;Mock&nbsp;实现。<br>
+5.&nbsp;【强制】对于单元测试，要保证测试粒度足够小，有助于精确定位问题。单测粒度至多是类级别，一般是方法级别。<br>
+说明：只有测试粒度小才能在出错时尽快定位到出错位置。单测不负责检查跨类或者跨系统的交互逻辑，那是集成测试的领域。</p>
+<p>7.&nbsp;【强制】单元测试代码必须写在如下工程目录：src/test/java，不允许写在业务代码目录下。<br>
+说明：源码编译时会跳过此目录，而单元测试框架默认是扫描此目录。</p>
+<p>6.&nbsp;【强制】核心业务、核心应用、核心模块的增量代码确保单元测试通过。<br>
+说明：新增代码及时补充单元测试，如果新增代码影响了原有单元测试，请及时修正。</p>
+<p>这几条关于数据库的测试规约我不太认同</p>
+<pre class="line-numbers language-none"><code class="language-none">10.【推荐】对于数据库相关的查询，更新，删除等操作，不能假设数据库里的数据是存在的，或者直接操作数据库把数据插入进去，请使用程序插入或者导入数据的方式来准备数据。
+反例：删除某一行数据的单元测试，在数据库中，先直接手动增加一行作为删除目标，但是这一行新增数据并不符合业务插入规则，导致测试结果异常。
+11.【推荐】和数据库相关的单元测试，可以设定自动回滚机制，不给数据库造成脏数据。或者对单元测试产生的数据有明确的前后缀标识。
+正例：在阿里巴巴企业智能事业部的内部单元测试中，使用&nbsp;ENTERPRISE_INTELLIGENCE&nbsp; _UNIT_TEST_的前缀来标识单元测试相关代码。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>我理解数据库层应该是我们mock得层，也就是mapper对象应该是一个mock对象，我们应该mock他们的增删改查的函数，那你说这些改怎么测呢，这些应该再测试环境进行业务测试，或者直接进行集成测试，如果是mapper层的问题，再那个时候就会暴露出来，不应该是单元测试该干得事情。单元测试页不应该频繁的操作读写数据库，哪怕是测试环境，不然还得惦记着新增数据、删除数据、事务等等，如果这一层直接mock不测试，而是由业务逻辑来测试会简单一点，再加上现在大多数框架都是自动生层的sql层语句，基本上可以完全信任。</p>
+<p>15.【参考】为了更方便地进行单元测试，业务代码应避免以下情况：<br>
+⚫&nbsp;构造方法中做的事情过多。<br>
+⚫&nbsp;存在过多的全局变量和静态方法。<br>
+⚫&nbsp;存在过多的外部依赖。<br>
+⚫&nbsp;存在过多的条件语句。<br>
+说明：多层条件语句建议使用卫语句、策略模式、状态模式等方式重构。<br>
+16.【参考】不要对单元测试存在如下误解：<br>
+⚫&nbsp;那是测试同学干的事情。本文是开发手册，凡是本文内容都是与开发同学强相关的。⚫&nbsp;单元测试代码是多余的。系统的整体功能与各单元部件的测试正常与否是强相关的。⚫&nbsp;单元测试代码不需要维护。一年半载后，那么单元测试几乎处于废弃状态。⚫&nbsp;单元测试与线上故障没有辩证关系。好的单元测试能够最大限度地规避线上故障。</p>
 <h2 id="异常怎么测试"><a class="markdownIt-Anchor" href="#异常怎么测试"></a> 异常怎么测试</h2>
 <h2 id="静态类怎么测试"><a class="markdownIt-Anchor" href="#静态类怎么测试"></a> 静态类怎么测试</h2>
 <h2 id="私有方法怎么测试"><a class="markdownIt-Anchor" href="#私有方法怎么测试"></a> 私有方法怎么测试</h2>
-<h2 id="遇到了threadlocal怎"><a class="markdownIt-Anchor" href="#遇到了threadlocal怎"></a> 遇到了ThreadLocal怎</h2>
+<p>千万不要为了方便写私有方法的单元测试，而强行把一个本该是私有的方法扩大为public的。</p>
+<h2 id="遇到了threadlocal怎么测试"><a class="markdownIt-Anchor" href="#遇到了threadlocal怎么测试"></a> 遇到了ThreadLocal怎么测试</h2>
 <h2 id="怎么mock私有方法"><a class="markdownIt-Anchor" href="#怎么mock私有方法"></a> 怎么mock私有方法</h2>
 <h2 id="怎么mock静态方法"><a class="markdownIt-Anchor" href="#怎么mock静态方法"></a> 怎么mock静态方法</h2>
 <h2 id="怎么mock一个类的new方法"><a class="markdownIt-Anchor" href="#怎么mock一个类的new方法"></a> 怎么mock一个类的new方法</h2>
@@ -738,7 +772,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            有些异步线程场景，需要我们获取主线程对应的上下文信息，否则无法进行逻辑处理
                         
                     </div>
                     <div class="publish-info">
@@ -787,35 +821,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/07/31/java/jie-jue-fang-an/dai-ma-bad-case/">
+                <a href="/2024/07/26/si-kao/guan-yu-tuan-dui-he-zuo-de-si-kao/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="代码bad case">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="关于团队合作的思考">
                         
-                        <span class="card-title">代码bad case</span>
+                        <span class="card-title">关于团队合作的思考</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            梳理设计、编码、开发、管理过程中的不太好的案例
+                            团队的力量还是伟大的，大家一起做好过一个人单干
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JAVA/" class="post-category">
-                                    JAVA
-                                </a>
-                            
-                            <a href="/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-category">
-                                    解决方案
+                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
+                                    思考
                                 </a>
                             
                             
@@ -827,10 +857,6 @@
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -928,7 +954,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">213.2k</span>
+                        class="white-color">217.2k</span>
             
             
             

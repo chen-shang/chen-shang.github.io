@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于AMC不良资产处置行业的思考, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="keywords" content="iterm2 通过指令使得窗口最大化, IT,技术,总结">
+    <meta name="description" content="使用AppleScript或者一些键盘快捷键来实现最大化。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于AMC不良资产处置行业的思考 | 涓涓细流</title>
+    <title>iterm2 通过指令使得窗口最大化 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -230,7 +230,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关于AMC不良资产处置行业的思考</h1>
+                    <h1 class="description center-align post-title">iterm2 通过指令使得窗口最大化</h1>
                 </div>
             </div>
         </div>
@@ -274,10 +274,6 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -286,8 +282,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
-                                思考
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
+                                工具控
+                            </a>
+                        
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/" class="post-category">
+                                Mac
                             </a>
                         
                     </div>
@@ -299,21 +299,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2024-07-26
+                    2024-11-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-07-26
+                    2024-11-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    189
                 </div>
                 
 
@@ -343,7 +343,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>在iTerm2中，没有直接的命令可以使窗口最大化。但是，您可以使用AppleScript或者一些键盘快捷键来实现最大化。使用AppleScript的方法如下：</p>
+<h1 id="添加-integration"><a class="markdownIt-Anchor" href="#添加-integration"></a> 添加 Integration</h1>
+<p>打开一个iTerm2窗口。使用快捷键 ⌘+ 打开一个新的标签页。 在顶部菜单栏选择 “iTerm2” &gt; “Install Shell Integration”，然后重启iTerm2。</p>
+<h1 id="添加一个自定义脚本"><a class="markdownIt-Anchor" href="#添加一个自定义脚本"></a> 添加一个自定义脚本</h1>
+<p>在你的 ~/.bash_profile 或 ~/.zshrc 文件中添加以下AppleScript命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token keyword">function</span> <span class="token function-name function">max</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    osascript <span class="token parameter variable">-e</span> <span class="token string">'tell application "iTerm2" to set bounds of front window to {0, 0, 1920, 1080}'</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这里的坐标 {0, 0, 1920, 1080} 需要替换为您屏幕的分辨率。使用 source ~/.bash_profile 或 source ~/.zshrc 来使改动生效。在终端中输入 max 并回车，当前的iTerm2窗口将会最大化。</p>
+<p><img src="/2024/11/13/gong-ju-kong/mac/iterm2-tong-guo-zhi-ling-shi-de-chuang-kou-zui-da-hua/iShot_2024-11-17_14.56.36.gif" alt=""></p>
+
                 
             </div>
             <hr/>
@@ -359,10 +369,6 @@
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
                                 </a>
                             
                         </div>
@@ -712,31 +718,35 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2024/07/26/si-kao/guan-yu-tuan-dui-he-zuo-de-si-kao/">
+                <a href="/2024/11/17/java/jie-jue-fang-an/dai-ma-bad-case/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="关于团队合作的思考">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="代码bad case">
                         
-                        <span class="card-title">关于团队合作的思考</span>
+                        <span class="card-title">代码bad case</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            团队的力量还是伟大的，大家一起做好过一个人单干
+                            梳理设计、编码、开发、管理过程中的不太好的案例
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-07-26
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-11-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
-                                    思考
+                            <a href="/categories/JAVA/" class="post-category">
+                                    JAVA
+                                </a>
+                            
+                            <a href="/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-category">
+                                    解决方案
                                 </a>
                             
                             
@@ -750,6 +760,10 @@
                         <span class="chip bg-color">原创</span>
                     </a>
                     
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -761,31 +775,35 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2024/07/01/si-kao/guan-yu-codereview-de-si-kao/">
+                <a href="/2024/11/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-find/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="关于codereview的思考">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Linux终端生存之道-find">
                         
-                        <span class="card-title">关于codereview的思考</span>
+                        <span class="card-title">Linux终端生存之道-find</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            衡量代码质量的唯一有效标准就是CodeReview过程中WTF/min
+                            查找文件
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2024-07-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-11-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
-                                    思考
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            <a href="/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/" class="post-category">
+                                    终端生存之道
                                 </a>
                             
                             
@@ -797,6 +815,10 @@
                     
                     <a href="/tags/%E5%8E%9F%E5%88%9B/">
                         <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -894,7 +916,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">213.2k</span>
+                        class="white-color">217.2k</span>
             
             
             
