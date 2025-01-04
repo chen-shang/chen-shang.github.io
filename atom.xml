@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2024-11-17T06:53:45.622Z</updated>
+  <updated>2025-01-04T19:48:22.904Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,97 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>dify镜像下载EOF</title>
+    <link href="https://chen-shang.github.io/2025/01/03/gong-ju-kong/dokcer/dify-jing-xiang-xia-zai-eof/"/>
+    <id>https://chen-shang.github.io/2025/01/03/gong-ju-kong/dokcer/dify-jing-xiang-xia-zai-eof/</id>
+    <published>2025-01-02T20:40:17.000Z</published>
+    <updated>2025-01-04T19:48:22.904Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;添加镜像源，目前下面这些是有效的，不知道以后会怎样，先用这个撑一段时间吧&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2025/01/03/gong-ju-kong/dokcer/dify-jing-xiang-xia-zai-eof/image.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Dokcer" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Dokcer/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Dokcer" scheme="https://chen-shang.github.io/tags/Dokcer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SFTP链接不上</title>
+    <link href="https://chen-shang.github.io/2024/12/31/za-qi-za-ba/sftp-lian-jie-bu-shang/"/>
+    <id>https://chen-shang.github.io/2024/12/31/za-qi-za-ba/sftp-lian-jie-bu-shang/</id>
+    <published>2024-12-31T02:33:28.000Z</published>
+    <updated>2025-01-04T19:58:42.265Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;关于&lt;code&gt;HostkeyAlgorithms +ssh-rsa&lt;/code&gt;和&lt;code&gt;PubkeyAcceptedKeyTypes +ssh-rsa&lt;/code&gt;配置&lt;/p&gt;
+&lt;p&gt;含义：</summary>
+        
+      
+    
+    
+    
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>限流</title>
+    <link href="https://chen-shang.github.io/2024/12/01/java/jie-jue-fang-an/xian-liu/"/>
+    <id>https://chen-shang.github.io/2024/12/01/java/jie-jue-fang-an/xian-liu/</id>
+    <published>2024-12-01T07:50:02.000Z</published>
+    <updated>2024-12-01T08:24:40.223Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在服务中需要通过企微的接口向指定的群发送消息。但是企业微信对接口的调用有频率限制，超过这个限制之后它默认就把消息给丢弃了。微信这么做是出于自保，防止自己的接口被无限制的调用，从而导致资源被消耗殆尽。而我们的业务现实是，再短时间内可能会突发大量的消息需要发送，但是不能因为这些</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+  </entry>
   
   <entry>
     <title>代码bad case</title>
@@ -506,88 +597,6 @@ springboot</summary>
     <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
     
     <category term="Kibana" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Kibana/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mysql排序null值排在最后</title>
-    <link href="https://chen-shang.github.io/2024/08/04/shu-ju-ku/mysql-pai-xu-null-zhi-pai-zai-zui-hou/"/>
-    <id>https://chen-shang.github.io/2024/08/04/shu-ju-ku/mysql-pai-xu-null-zhi-pai-zai-zui-hou/</id>
-    <published>2024-08-04T02:29:29.000Z</published>
-    <updated>2024-08-04T08:57:24.889Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在MySQL中，可以使用ORDER BY语句结合IS NULL来实现将NULL值排在后面的排序。具体做法是，在ORDER BY子句中使用IS NULL函数，并为其赋予一个较大的排序值，确保NULL值被排序在非NULL值之后。&lt;/p&gt;
-&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微服务间调用异常、日志思考</title>
-    <link href="https://chen-shang.github.io/2024/08/03/java/java-wa-keng-tian-keng/wei-fu-wu-jian-diao-yong-yi-chang-ri-zhi-si-kao/"/>
-    <id>https://chen-shang.github.io/2024/08/03/java/java-wa-keng-tian-keng/wei-fu-wu-jian-diao-yong-yi-chang-ri-zhi-si-kao/</id>
-    <published>2024-08-02T16:54:58.000Z</published>
-    <updated>2024-08-06T16:45:17.923Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;返回结果尽量使用状态码-提示信息形式&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#返回结果尽量使用状态码-提示信息形式&quot;&gt;&lt;/a&gt; 返回结果尽量使用状态码、提示信息形式&lt;/h1&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="Java挖坑填坑" scheme="https://chen-shang.github.io/categories/JAVA/Java%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>git分支图怎么看</title>
-    <link href="https://chen-shang.github.io/2024/08/03/gong-ju-kong/git/git-fen-zhi-tu-zen-me-kan/"/>
-    <id>https://chen-shang.github.io/2024/08/03/gong-ju-kong/git/git-fen-zhi-tu-zen-me-kan/</id>
-    <published>2024-08-02T16:01:56.000Z</published>
-    <updated>2024-08-06T16:41:01.524Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;平时在工作中，遇到过同事的代码被合并到了master分支但是我们并没有review过的情况，而且我看过提交历史后还是没有追溯并还原他当时是怎么操作的。因此我学习并研究了一下git的这个分支树图，特此记录。&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Git" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
