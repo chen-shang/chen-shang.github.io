@@ -306,14 +306,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-11-23
+                    2025-01-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    95
+                    220
                 </div>
                 
 
@@ -370,6 +370,12 @@
 <span class="token keyword">from</span> vxlink_registration_server<span class="token punctuation">.</span>tc_case_transaction tct
 <span class="token keyword">where</span> SUBSTRING<span class="token punctuation">(</span>created_date<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">'2024-10-11'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>这种字符串还能用于范围查询，大于、小于都可以。</p>
+<h1 id="mysql排序null值排在最后"><a class="markdownIt-Anchor" href="#mysql排序null值排在最后"></a> mysql排序null值排在最后</h1>
+<p>在MySQL中，可以使用ORDER BY语句结合IS NULL来实现将NULL值排在后面的排序。具体做法是，在ORDER BY子句中使用IS NULL函数，并为其赋予一个较大的排序值，确保NULL值被排序在非NULL值之后。</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> your_table <span class="token keyword">ORDER</span> <span class="token keyword">BY</span> <span class="token punctuation">(</span>your_column <span class="token operator">IS</span> <span class="token boolean">NULL</span><span class="token punctuation">)</span><span class="token punctuation">,</span> your_column <span class="token keyword">ASC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h1 id="查询某个字段包含空格-首尾包含空格"><a class="markdownIt-Anchor" href="#查询某个字段包含空格-首尾包含空格"></a> 查询某个字段包含空格、首尾包含空格</h1>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">from</span> vxlink_channel<span class="token punctuation">.</span>dm_collection_agency dca <span class="token keyword">where</span> collection_agency_name <span class="token operator">like</span> <span class="token string">'% %'</span> <span class="token operator">and</span> is_deleted <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> vxlink_channel<span class="token punctuation">.</span>dm_collection_agency dca <span class="token keyword">WHERE</span> TRIM<span class="token punctuation">(</span>BOTH <span class="token string">' '</span> <span class="token keyword">FROM</span> collection_agency_name<span class="token punctuation">)</span> <span class="token operator">!=</span> collection_agency_name <span class="token operator">and</span> is_deleted <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -941,7 +947,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">218.6k</span>
+                        class="white-color">219.3k</span>
             
             
             
