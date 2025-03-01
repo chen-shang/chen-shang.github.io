@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title>那些年玩过的AI</title>
+      <link href="/2025/03/01/ai/na-xie-nian-wan-guo-de-ai/"/>
+      <url>/2025/03/01/ai/na-xie-nian-wan-guo-de-ai/</url>
+      
+        <content type="html"><![CDATA[<h1 id="anything-llm"><a class="markdownIt-Anchor" href="#anything-llm"></a> Anything LLM</h1><p><img src="/2025/03/01/ai/na-xie-nian-wan-guo-de-ai/iShot_2025-03-01_22.14.52.png" alt=""></p><p><img src="/2025/03/01/ai/na-xie-nian-wan-guo-de-ai/iShot_2025-03-01_22.14.42.png" alt=""></p><p>我是因为后来发现了 openwebui 然后才不在使用它了。我还是倾向于不安装本地化的软件而是使用网页版本的。</p><h1 id=""><a class="markdownIt-Anchor" href="#"></a> </h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 未完待续 </tag>
+            
+            <tag> AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>dify 部署填坑</title>
+      <link href="/2025/02/28/ai/dify-bu-shu-tian-keng/"/>
+      <url>/2025/02/28/ai/dify-bu-shu-tian-keng/</url>
+      
+        <content type="html"><![CDATA[<h1 id="dify镜像下载eof"><a class="markdownIt-Anchor" href="#dify镜像下载eof"></a> dify镜像下载EOF</h1><p><img src="/2025/02/28/ai/dify-bu-shu-tian-keng/image.png" alt=""></p><p>添加镜像源，目前下面这些是有效的，不知道以后会怎样，先用这个撑一段时间吧</p><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>  <span class="token property">"builder"</span><span class="token operator">:</span> <span class="token punctuation">{</span>    <span class="token property">"gc"</span><span class="token operator">:</span> <span class="token punctuation">{</span>      <span class="token property">"defaultKeepStorage"</span><span class="token operator">:</span> <span class="token string">"20GB"</span><span class="token punctuation">,</span>      <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token property">"experimental"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>  <span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span>    <span class="token string">"https://9cpn8tt6.mirror.aliyuncs.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://registry.docker-cn.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.ccs.tencentyun.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.1panel.live"</span><span class="token punctuation">,</span>    <span class="token string">"https://2a6bf1988cb6428c877f723ec7530dbc.mirror.swr.myhuaweicloud.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.m.daocloud.io"</span><span class="token punctuation">,</span>    <span class="token string">"https://hub-mirror.c.163.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.baidubce.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://your_preferred_mirror"</span><span class="token punctuation">,</span>    <span class="token string">"https://dockerhub.icu"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.registry.cyou"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker-cf.registry.cyou"</span><span class="token punctuation">,</span>    <span class="token string">"https://dockercf.jsdelivr.fyi"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.jsdelivr.fyi"</span><span class="token punctuation">,</span>    <span class="token string">"https://dockertest.jsdelivr.fyi"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.aliyuncs.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://dockerproxy.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.baidubce.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.m.daocloud.io"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.nju.edu.cn"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.mirrors.sjtug.sjtu.edu.cn"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.mirrors.ustc.edu.cn"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.iscas.ac.cn"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.rainbond.cc"</span>  <span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h1 id="not-shared-from-the-host-and-is-not-known-to-docker"><a class="markdownIt-Anchor" href="#not-shared-from-the-host-and-is-not-known-to-docker"></a> not shared from the host and is not known to Docker</h1><pre class="line-numbers language-text" data-language="text"><code class="language-text">Error response from daemon: Mounts denied:The path /opt/dify/docker/volumes/db/data is not shared from the host and is not known to Docker.You can configure shared paths from Docker -&gt; Preferences... -&gt; Resources -&gt; File Sharing.See https://docs.docker.com/desktop/mac for more info.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h1 id="dify-想添加本地-ollama-下载安装的模型"><a class="markdownIt-Anchor" href="#dify-想添加本地-ollama-下载安装的模型"></a> dify 想添加本地 ollama 下载安装的模型</h1><p><img src="/2025/02/28/ai/dify-bu-shu-tian-keng/iShot_2025-03-01_07.42.21.png" alt=""></p><p><a href="https://docs.dify.ai/zh-hans/development/models-integration/ollama">参考官网</a></p><p>如果你使用 Docker 部署 Dify 和 Ollama，你可能会遇到以下错误:</p><pre class="line-numbers language-none"><code class="language-none">httpconnectionpool (host=127.0.0.1, port=11434): max retries exceeded with url:/cpi/chat (Caused by NewConnectionError ('&lt;urllib3.connection.HTTPConnection object at 0x7f8562812c20&gt;: fail to establish a new connection:[Errno 111] Connection refused'))httpconnectionpool (host=localhost, port=11434): max retries exceeded with url:/cpi/chat (Caused by NewConnectionError ('&lt;urllib3.connection.HTTPConnection object at 0x7f8562812c20&gt;: fail to establish a new connection:[Errno 111] Connection refused'))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>这个错误是因为 Docker 容器无法访问 Ollama 服务。localhost 通常指的是容器本身，而不是主机或其他容器。要解决此问题，你需要将 Ollama 服务暴露给网络。</p><h1 id="在-mac-上设置环境变量"><a class="markdownIt-Anchor" href="#在-mac-上设置环境变量"></a> 在 Mac 上设置环境变量</h1><p>如果 Ollama 作为 macOS 应用程序运行，则应使用以下命令设置环境变量 <code>launchctl</code></p><blockquote><p>通过调用 launchctl setenv 设置环境变量：<code>launchctl setenv OLLAMA_HOST "0.0.0.0"</code></p><p>重启 Ollama 应用程序。</p></blockquote><p>如果以上步骤无效，可以使用以下方法：</p><blockquote><p>问题是在 docker 内部，你应该连接到 <code>host.docker.internal</code>，才能访问 docker 的主机，所以将 localhost 替换为 <code>host.docker.internal</code> 服务就可以生效了：</p><p><code>http://host.docker.internal:11434</code></p></blockquote><h2 id="name不存在"><a class="markdownIt-Anchor" href="#name不存在"></a> name不存在</h2><p><img src="/2025/02/28/ai/dify-bu-shu-tian-keng/iShot_2025-03-01_21.47.00.png" alt=""><br>这个是因为我们写的模型的名称不对， 得跟 <code>ollama list</code> 显示的名字一样才行<br><img src="/2025/02/28/ai/dify-bu-shu-tian-keng/image-03.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> AI </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>excel跨表查询</title>
       <link href="/2025/01/06/gong-ju-kong/excel/excel-kua-biao-cha-xun/"/>
       <url>/2025/01/06/gong-ju-kong/excel/excel-kua-biao-cha-xun/</url>
@@ -23,37 +79,6 @@
         <tags>
             
             <tag> 原创 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>dify镜像下载EOF</title>
-      <link href="/2025/01/03/gong-ju-kong/dokcer/dify-jing-xiang-xia-zai-eof/"/>
-      <url>/2025/01/03/gong-ju-kong/dokcer/dify-jing-xiang-xia-zai-eof/</url>
-      
-        <content type="html"><![CDATA[<p>添加镜像源，目前下面这些是有效的，不知道以后会怎样，先用这个撑一段时间吧</p><p><img src="/2025/01/03/gong-ju-kong/dokcer/dify-jing-xiang-xia-zai-eof/image.png" alt=""></p><pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">{</span>  <span class="token property">"builder"</span><span class="token operator">:</span> <span class="token punctuation">{</span>    <span class="token property">"gc"</span><span class="token operator">:</span> <span class="token punctuation">{</span>      <span class="token property">"defaultKeepStorage"</span><span class="token operator">:</span> <span class="token string">"20GB"</span><span class="token punctuation">,</span>      <span class="token property">"enabled"</span><span class="token operator">:</span> <span class="token boolean">true</span>    <span class="token punctuation">}</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token property">"experimental"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>  <span class="token property">"registry-mirrors"</span><span class="token operator">:</span> <span class="token punctuation">[</span>    <span class="token string">"https://9cpn8tt6.mirror.aliyuncs.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://registry.docker-cn.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.ccs.tencentyun.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.1panel.live"</span><span class="token punctuation">,</span>    <span class="token string">"https://2a6bf1988cb6428c877f723ec7530dbc.mirror.swr.myhuaweicloud.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.m.daocloud.io"</span><span class="token punctuation">,</span>    <span class="token string">"https://hub-mirror.c.163.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.baidubce.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://your_preferred_mirror"</span><span class="token punctuation">,</span>    <span class="token string">"https://dockerhub.icu"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.registry.cyou"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker-cf.registry.cyou"</span><span class="token punctuation">,</span>    <span class="token string">"https://dockercf.jsdelivr.fyi"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.jsdelivr.fyi"</span><span class="token punctuation">,</span>    <span class="token string">"https://dockertest.jsdelivr.fyi"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.aliyuncs.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://dockerproxy.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.baidubce.com"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.m.daocloud.io"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.nju.edu.cn"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.mirrors.sjtug.sjtu.edu.cn"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.mirrors.ustc.edu.cn"</span><span class="token punctuation">,</span>    <span class="token string">"https://mirror.iscas.ac.cn"</span><span class="token punctuation">,</span>    <span class="token string">"https://docker.rainbond.cc"</span>  <span class="token punctuation">]</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具控 </category>
-          
-          <category> Dokcer </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> 工具控 </tag>
-            
-            <tag> Dokcer </tag>
             
         </tags>
       
@@ -1212,9 +1237,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -2384,9 +2409,9 @@
       
         <tags>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -3460,9 +3485,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -3808,15 +3833,13 @@
     
     <entry>
       <title>gpt-3.5-turbo-16k-0613 跟 gpt-3.5-turbo-0613 有什么区别</title>
-      <link href="/2023/08/10/gong-ju-kong/ai/gpt-3-5-turbo-16k-0613-gen-gpt-3-5-turbo-0613-you-shi-me-qu-bie/"/>
-      <url>/2023/08/10/gong-ju-kong/ai/gpt-3-5-turbo-16k-0613-gen-gpt-3-5-turbo-0613-you-shi-me-qu-bie/</url>
+      <link href="/2023/08/10/ai/gpt-3-5-turbo-16k-0613-gen-gpt-3-5-turbo-0613-you-shi-me-qu-bie/"/>
+      <url>/2023/08/10/ai/gpt-3-5-turbo-16k-0613-gen-gpt-3-5-turbo-0613-you-shi-me-qu-bie/</url>
       
         <content type="html"><![CDATA[<p>“gpt-3.5-turbo-16k-0613” 和 “gpt-3.5-turbo-0613” 是 OpenAI 的两个不同的语言模型版本。</p><p>区别在于模型的大小。 “gpt-3.5-turbo-16k-0613” 使用了更大的模型，具有大约16,000个标记，而 “gpt-3.5-turbo-0613” 使用了较小的模型，具有大约3550个标记。这意味着 “gpt-3.5-turbo-16k-0613” 拥有更多的参数和更高的容量，可以生成更长、更具上下文的回答。</p><p>因此，如果您需要处理更复杂的任务或需要更详细的回答，您可能会选择使用"gpt-3.5-turbo-16k-0613"。但请注意，使用更大的模型可能需要更多的时间和计算资源。如果您只需要对简单问题进行回答，那么"gpt-3.5-turbo-0613" 可能已经足够满足您的需求了。</p>]]></content>
       
       
       <categories>
-          
-          <category> 工具控 </category>
           
           <category> AI </category>
           
@@ -3825,9 +3848,9 @@
       
         <tags>
             
-            <tag> 工具控 </tag>
-            
             <tag> AI </tag>
+            
+            <tag> 工具控 </tag>
             
         </tags>
       
@@ -4009,9 +4032,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -4162,9 +4185,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -4936,9 +4959,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -4969,9 +4992,9 @@
             
             <tag> 未完待续 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -5027,9 +5050,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -6495,9 +6518,9 @@
             
             <tag> 未完待续 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -6555,9 +6578,9 @@
             
             <tag> 未完待续 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -6892,9 +6915,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -6923,9 +6946,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -6954,9 +6977,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
