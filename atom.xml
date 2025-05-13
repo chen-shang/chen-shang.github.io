@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2025-03-01T14:17:42.125Z</updated>
+  <updated>2025-05-13T01:33:23.670Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,94 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>广州、顺德、深圳之行</title>
+    <link href="https://chen-shang.github.io/2025/05/12/si-kao/guang-zhou-shun-de-shen-zhen-zhi-xing/"/>
+    <id>https://chen-shang.github.io/2025/05/12/si-kao/guang-zhou-shun-de-shen-zhen-zhi-xing/</id>
+    <published>2025-05-11T22:42:37.000Z</published>
+    <updated>2025-05-13T01:33:23.670Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;乙巳孟夏，丁巳迄戊午，某幸随领导巡行广州、顺德、深圳诸邑，先后造访融山科技、前海宏泰、深圳资产。此行遍历三城，周旋数企，广聆高论，深察机宜，所获良多。此次冯董、柴总、王总皆在列，阵容之盛，诚为可观。柴总属予作文以记之，敢不恭录见闻？&lt;/p&gt;
+&lt;h1 id=&quot;启程&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>cd 目录增强</title>
+    <link href="https://chen-shang.github.io/2025/03/13/linux/zhong-duan-sheng-cun-zhi-dao/cd-mu-lu-zeng-qiang/"/>
+    <id>https://chen-shang.github.io/2025/03/13/linux/zhong-duan-sheng-cun-zhi-dao/cd-mu-lu-zeng-qiang/</id>
+    <published>2025-03-13T08:59:56.000Z</published>
+    <updated>2025-05-11T22:45:40.104Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用命令通过 VS Code 打开文件/文件夹</title>
+    <link href="https://chen-shang.github.io/2025/03/13/linux/zhong-duan-sheng-cun-zhi-dao/shi-yong-ming-ling-tong-guo-vs-code-da-kai-wen-jian-wen-jian-jia/"/>
+    <id>https://chen-shang.github.io/2025/03/13/linux/zhong-duan-sheng-cun-zhi-dao/shi-yong-ming-ling-tong-guo-vs-code-da-kai-wen-jian-wen-jian-jia/</id>
+    <published>2025-03-13T08:51:25.000Z</published>
+    <updated>2025-03-13T08:57:38.585Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;如果遇到 “command not found”，需要先安装 VS Code 命令行工具：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-text&quot; data-language=&quot;text&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
+    
+    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
     <title>那些年玩过的AI</title>
     <link href="https://chen-shang.github.io/2025/03/01/ai/na-xie-nian-wan-guo-de-ai/"/>
     <id>https://chen-shang.github.io/2025/03/01/ai/na-xie-nian-wan-guo-de-ai/</id>
     <published>2025-02-28T22:44:13.000Z</published>
-    <updated>2025-03-01T14:17:42.125Z</updated>
+    <updated>2025-03-01T14:20:45.732Z</updated>
     
     
       
@@ -511,94 +594,6 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CompletableFuture</title>
-    <link href="https://chen-shang.github.io/2024/08/21/java/java-bing-fa-bian-cheng/completablefuture/"/>
-    <id>https://chen-shang.github.io/2024/08/21/java/java-bing-fa-bian-cheng/completablefuture/</id>
-    <published>2024-08-21T14:33:24.000Z</published>
-    <updated>2024-09-01T15:57:06.639Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2024/08/21/java/java-bing-fa-bian-cheng/completablefuture/image-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;如果第二步我们发现需要异步，你会怎么办&lt;br&gt;
-&lt;code&gt;new</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="Java并发编程" scheme="https://chen-shang.github.io/categories/JAVA/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vscode如何关闭点击文件直接在当前标签页打开</title>
-    <link href="https://chen-shang.github.io/2024/08/18/gong-ju-kong/vscode/vscode-ru-he-guan-bi-dian-ji-wen-jian-zhi-jie-zai-dang-qian-biao-qian-ye-da-kai/"/>
-    <id>https://chen-shang.github.io/2024/08/18/gong-ju-kong/vscode/vscode-ru-he-guan-bi-dian-ji-wen-jian-zhi-jie-zai-dang-qian-biao-qian-ye-da-kai/</id>
-    <published>2024-08-18T08:39:58.000Z</published>
-    <updated>2024-09-21T15:42:47.279Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近也不知道怎么设置滴，vscode点击文件直接在当前标签页打开，而不再在新的tab页打开了。这很不方便，找了半天才找到在哪里设置&lt;br&gt;
-&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="VsCode" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/VsCode/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>EasyPoi踩坑记录</title>
-    <link href="https://chen-shang.github.io/2024/08/17/java/java-wa-keng-tian-keng/easypoi-cai-keng-ji-lu/"/>
-    <id>https://chen-shang.github.io/2024/08/17/java/java-wa-keng-tian-keng/easypoi-cai-keng-ji-lu/</id>
-    <published>2024-08-17T09:22:08.000Z</published>
-    <updated>2024-09-08T23:06:42.696Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Exception in thread “main” com.alibaba.excel.exception.ExcelCommonException: Convert excel format exception.You can try specifying the</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="Java挖坑填坑" scheme="https://chen-shang.github.io/categories/JAVA/Java%E6%8C%96%E5%9D%91%E5%A1%AB%E5%9D%91/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
