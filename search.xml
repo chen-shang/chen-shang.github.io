@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>pdf转文字工具</title>
+      <link href="/2025/05/19/linux/zhong-duan-sheng-cun-zhi-dao/pdf-zhuan-wen-zi-gong-ju/"/>
+      <url>/2025/05/19/linux/zhong-duan-sheng-cun-zhi-dao/pdf-zhuan-wen-zi-gong-ju/</url>
+      
+        <content type="html"><![CDATA[<h5 id="poppler-pdftotext"><a class="markdownIt-Anchor" href="#poppler-pdftotext"></a> poppler &gt; pdftotext</h5><ol><li>首先安装 Poppler 工具，在终端中输入：<code>brew install poppler</code>。</li><li>安装完成后，使用以下命令将 PDF 转换为文本：<code>pdftotext -enc UTF-8 input.pdf</code>。其中，input.pdf是你要转换的 PDF 文件名。</li></ol><p>如果需要指定输出文件名，可以在命令后加上输出文件名，如<code>pdftotext -enc UTF-8 input.pdf output.txt</code>。<br>此外，还可以通过参数指定页面范围等，例如<code>pdftotext -f 1 -l 10 -enc UTF-8 input.pdf</code>表示只转换 PDF 的第 1 页到第 10 页。</p><p>Poppler 是一个用于呈现可移植文档格式（PDF）文档的免费软件实用程序库</p><blockquote><p>命令行工具</p></blockquote><p>pdfdetach：从 PDF 中提取嵌入式文档。<br>pdffonts：列出 PDF 中使用的字体。<br>pdfimages：从 PDF 中以原始分辨率提取所有嵌入式图像。<br>pdfinfo：列出 PDF 的所有信息。<br>pdfseparate：从 PDF 中提取单个页面。<br>pdftocairo：使用 Cairo 将单页从 PDF 转换为矢量或位图格式。<br>pdftohtml：将 PDF 转换为保留格式的 HTML。<br>pdftoppm：将 PDF 页面转换为位图。<br>pdftops：将 PDF 转换为可打印的 PS 格式。<br>pdftotext：从 PDF 中提取所有文本。<br>pdfunite：合并几个 PDF。</p><h5 id="pdfgrep"><a class="markdownIt-Anchor" href="#pdfgrep"></a> pdfgrep</h5><p>在 macOS 系统中，可以使用 Homebrew 包管理工具进行安装，命令为：brew install pdfgrep。</p><p>基本的搜索命令：<code>pdfgrep "search_text" file.pdf</code>，这将在file.pdf文件中搜索包含search_text的内容，并输出结果。<br>使用正则表达式搜索：<code>pdfgrep -E "[0-9]{4}-[0-9]{2}-[0-9]{2}" file.pdf</code>，此命令用于搜索file.pdf中符合YYYY-MM-DD格式的日期。<br>在多个文件中搜索：<code>pdfgrep "search_text" file1.pdf file2.pdf file3.pdf</code>，这样可以同时在file1.pdf、file2.pdf和file3.pdf三个文件中搜索search_text。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 终端生存之道 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>广州、顺德、深圳之行</title>
       <link href="/2025/05/12/si-kao/guang-zhou-shun-de-shen-zhen-zhi-xing/"/>
       <url>/2025/05/12/si-kao/guang-zhou-shun-de-shen-zhen-zhi-xing/</url>
@@ -1318,9 +1345,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -2490,9 +2517,9 @@
       
         <tags>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -3566,9 +3593,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -4113,9 +4140,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -4266,9 +4293,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -5011,9 +5038,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -5044,9 +5071,9 @@
             
             <tag> 未完待续 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -5102,9 +5129,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -6570,9 +6597,9 @@
             
             <tag> 未完待续 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -6630,9 +6657,9 @@
             
             <tag> 未完待续 </tag>
             
-            <tag> Hexo </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -6916,6 +6943,37 @@
     
     
     <entry>
+      <title>作画</title>
+      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
+      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
+      
+        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 墨香纸笺 </category>
+          
+          <category> 我的诗词 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 墨香纸笺 </tag>
+            
+            <tag> 我的诗词 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git万能后悔药</title>
       <link href="/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/"/>
       <url>/2016/09/11/gong-ju-kong/git/git-wan-neng-hou-hui-yao/</url>
@@ -6936,9 +6994,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -6967,9 +7025,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -6998,40 +7056,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Git </tag>
-            
             <tag> 工具控 </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>作画</title>
-      <link href="/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/"/>
-      <url>/2016/09/11/mo-xiang-zhi-jian/wo-de-shi-ci/zuo-hua/</url>
-      
-        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 墨香纸笺 </category>
-          
-          <category> 我的诗词 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> 墨香纸笺 </tag>
-            
-            <tag> 我的诗词 </tag>
+            <tag> Git </tag>
             
         </tags>
       
