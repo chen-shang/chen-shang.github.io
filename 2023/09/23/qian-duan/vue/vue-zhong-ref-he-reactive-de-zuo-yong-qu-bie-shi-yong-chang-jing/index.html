@@ -361,7 +361,7 @@
 <h1 id="响应式-和-非响应式"><a class="markdownIt-Anchor" href="#响应式-和-非响应式"></a> 响应式 和 非响应式</h1>
 <p>我个人理解，所谓响应式，就是一个地方变化了之后，其他依赖这个地方的地方也跟着相应的变化，这就是响应式的，反之就是不响应式的。<br>
 比如，页面上有好多个地方都引用了一个变量，要是我在某个时刻改变了这个变量的值，这时如果这个页面上引用这个变量的地方的都跟着变化了，那这就叫响应式的。<br>
-<img src="/2023/09/23/qian-duan/vue/vue-zhong-ref-he-reactive-de-zuo-yong-qu-bie-shi-yong-chang-jing/iShot_2023-09-23_23.34.23.jpg" alt=""></p>
+<img src="/2023/09/23/qian-duan/vue/vue-zhong-ref-he-reactive-de-zuo-yong-qu-bie-shi-yong-chang-jing/iShot_2023-09-23_23.34.23.jpg" alt></p>
 <p>再比如</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
@@ -413,7 +413,7 @@ villagers<span class="token punctuation">.</span><span class="token function">fi
 </div>
 <h1 id="小例子"><a class="markdownIt-Anchor" href="#小例子"></a> 小例子</h1>
 <p>想要实现下面的效果<br>
-<video src="iShot_2023-09-24_00.06.24.mp4" controls="" title="Title" width="100%"></video><br>
+<video src="iShot_2023-09-24_00.06.24.mp4" controls title="Title" width="100%"></video><br>
 最终的代码如下，但是一开始的各种错误写法导致一直无法实现这样的效果，找原因找了好久，主要就是 ref() 和 reactive() 使用的问题. 这次彻底了解了一下这俩货的用途。</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
     <span class="token operator">&lt;</span>el<span class="token operator">-</span>form <span class="token operator">:</span>model<span class="token operator">=</span><span class="token string">"form"</span> <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">"el-form"</span><span class="token operator">&gt;</span>
@@ -1176,7 +1176,7 @@ villagers<span class="token punctuation">.</span><span class="token function">fi
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">226.7k</span>
+                        class="white-color">232.9k</span>
             
             
             

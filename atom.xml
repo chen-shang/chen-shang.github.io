@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2025-05-20T21:52:33.338Z</updated>
+  <updated>2025-07-26T23:42:58.294Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,286 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>光明顶会议</title>
+    <link href="https://chen-shang.github.io/2025/07/27/si-kao/guang-ming-ding-hui-yi/"/>
+    <id>https://chen-shang.github.io/2025/07/27/si-kao/guang-ming-ding-hui-yi/</id>
+    <published>2025-07-26T23:42:58.000Z</published>
+    <updated>2025-07-26T23:42:58.294Z</updated>
+    
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>无法打开jdk.app，因为Apple无法检查其是否包含恶意软件</title>
+    <link href="https://chen-shang.github.io/2025/07/26/za-qi-za-ba/wu-fa-da-kai-jdk-app-yin-wei-apple-wu-fa-jian-cha-qi-shi-fou-bao-han-e-yi-ruan-jian/"/>
+    <id>https://chen-shang.github.io/2025/07/26/za-qi-za-ba/wu-fa-da-kai-jdk-app-yin-wei-apple-wu-fa-jian-cha-qi-shi-fou-bao-han-e-yi-ruan-jian/</id>
+    <published>2025-07-25T16:07:14.000Z</published>
+    <updated>2025-07-25T16:11:43.417Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;sudo xattr -r -d com.apple.quarantine</summary>
+        
+      
+    
+    
+    
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>年折现率</title>
+    <link href="https://chen-shang.github.io/2025/07/24/si-kao/jing-ji-xue/nian-zhe-xian-lu/"/>
+    <id>https://chen-shang.github.io/2025/07/24/si-kao/jing-ji-xue/nian-zhe-xian-lu/</id>
+    <published>2025-07-24T15:13:11.000Z</published>
+    <updated>2025-07-25T16:11:23.407Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;“年折现率”是财务管理和投资决策中的核心概念，用于衡量资金的时间价值，将未来的现金流折算为当前价值（现值）。以下从定义、作用、计算逻辑等方面详细解释：&lt;/p&gt;
+&lt;h3 id=&quot;一-核心定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="经济学" scheme="https://chen-shang.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sk-learn学习</title>
+    <link href="https://chen-shang.github.io/2025/07/20/ai/sk-learn-xue-xi/"/>
+    <id>https://chen-shang.github.io/2025/07/20/ai/sk-learn-xue-xi/</id>
+    <published>2025-07-19T21:06:42.000Z</published>
+    <updated>2025-07-25T16:12:12.912Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;System:
+    python: 3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 17.0.0</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pip</title>
+    <link href="https://chen-shang.github.io/2025/07/20/python/pip/"/>
+    <id>https://chen-shang.github.io/2025/07/20/python/pip/</id>
+    <published>2025-07-19T21:01:53.000Z</published>
+    <updated>2025-07-25T16:13:39.646Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;code&gt;pip freeze&lt;/code&gt; 是 Python 包管理工具 &lt;code&gt;pip&lt;/code&gt; 提供的一个核心命令，用于&lt;strong&gt;导出当前环境中已安装的第三方库及其精确版本信息&lt;/strong&gt;，输出内容通常被保存到</summary>
+        
+      
+    
+    
+    
+    <category term="Python" scheme="https://chen-shang.github.io/categories/Python/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Python" scheme="https://chen-shang.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python虚拟环境</title>
+    <link href="https://chen-shang.github.io/2025/07/20/python/python-xu-ni-huan-jing/"/>
+    <id>https://chen-shang.github.io/2025/07/20/python/python-xu-ni-huan-jing/</id>
+    <published>2025-07-19T20:50:19.000Z</published>
+    <updated>2025-07-25T16:13:12.756Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;code&gt;python venv&lt;/code&gt; 是 Python 3.3 及以上版本内置的&lt;strong&gt;虚拟环境工具&lt;/strong&gt;，用于创建独立的 Python 运行环境，避免不同项目之间的依赖冲突。它是 Python</summary>
+        
+      
+    
+    
+    
+    <category term="Python" scheme="https://chen-shang.github.io/categories/Python/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="Python" scheme="https://chen-shang.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>pip、pip3、pipx 和 conda</title>
+    <link href="https://chen-shang.github.io/2025/07/19/python/pip-he-conda/"/>
+    <id>https://chen-shang.github.io/2025/07/19/python/pip-he-conda/</id>
+    <published>2025-07-19T09:57:57.000Z</published>
+    <updated>2025-07-25T16:14:34.891Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;pip 和 conda 是 Python 生态中最常用的包管理工具，但两者在设计目标、适用场景和功能上有显著区别。以下是详细对比和使用建议：&lt;br&gt;
+一、核心区别&lt;br&gt;
+维度	pip	conda&lt;br&gt;
+本质	Python 官方推荐的包管理器，仅管理 Python</summary>
+        
+      
+    
+    
+    
+    <category term="Python" scheme="https://chen-shang.github.io/categories/Python/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+    <category term="AI问答" scheme="https://chen-shang.github.io/tags/AI%E9%97%AE%E7%AD%94/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AI学习</title>
+    <link href="https://chen-shang.github.io/2025/07/12/ai/ai-xue-xi/"/>
+    <id>https://chen-shang.github.io/2025/07/12/ai/ai-xue-xi/</id>
+    <published>2025-07-11T19:17:48.000Z</published>
+    <updated>2025-07-25T16:15:13.940Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Embedding 模型&lt;br&gt;
+Rerank 模型&lt;br&gt;
+语音转文本模型&lt;br&gt;
+文本转语音模型&lt;/p&gt;
+&lt;p&gt;128k context window 是指大语言模型的上下文窗口大小为 128,000</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>卸载creative cloud报错无法卸载解决方法</title>
+    <link href="https://chen-shang.github.io/2025/06/21/gong-ju-kong/phtopshop/xie-zai-creative-cloud-bao-cuo-wu-fa-xie-zai-jie-jue-fang-fa/"/>
+    <id>https://chen-shang.github.io/2025/06/21/gong-ju-kong/phtopshop/xie-zai-creative-cloud-bao-cuo-wu-fa-xie-zai-jie-jue-fang-fa/</id>
+    <published>2025-06-21T05:42:41.000Z</published>
+    <updated>2025-07-07T04:02:24.932Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;参考官网&lt;/p&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Phtopshop" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Phtopshop/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Phtopshop" scheme="https://chen-shang.github.io/tags/Phtopshop/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>必须先更改系统设置，然后才能运行 Microsoft AutoUpdate.</title>
+    <link href="https://chen-shang.github.io/2025/06/09/za-qi-za-ba/bi-xu-xian-geng-gai-xi-tong-she-zhi-ran-hou-cai-neng-yun-xing-microsoft-autoupdate/"/>
+    <id>https://chen-shang.github.io/2025/06/09/za-qi-za-ba/bi-xu-xian-geng-gai-xi-tong-she-zhi-ran-hou-cai-neng-yun-xing-microsoft-autoupdate/</id>
+    <published>2025-06-09T03:34:33.000Z</published>
+    <updated>2025-07-07T04:17:08.800Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>pdf转文字工具</title>
@@ -163,7 +443,7 @@
     <link href="https://chen-shang.github.io/2025/02/28/ai/dify-bu-shu-tian-keng/"/>
     <id>https://chen-shang.github.io/2025/02/28/ai/dify-bu-shu-tian-keng/</id>
     <published>2025-02-27T21:06:57.000Z</published>
-    <updated>2025-03-01T14:03:29.181Z</updated>
+    <updated>2025-07-07T04:18:18.167Z</updated>
     
     
       
@@ -191,7 +471,7 @@
     <link href="https://chen-shang.github.io/2025/01/06/gong-ju-kong/excel/excel-kua-biao-cha-xun/"/>
     <id>https://chen-shang.github.io/2025/01/06/gong-ju-kong/excel/excel-kua-biao-cha-xun/</id>
     <published>2025-01-06T08:57:56.000Z</published>
-    <updated>2025-01-13T15:15:05.006Z</updated>
+    <updated>2025-07-07T04:18:44.412Z</updated>
     
     
       
@@ -213,6 +493,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Excel" scheme="https://chen-shang.github.io/tags/Excel/"/>
+    
   </entry>
   
   <entry>
@@ -220,7 +504,7 @@
     <link href="https://chen-shang.github.io/2024/12/31/za-qi-za-ba/sftp-lian-jie-bu-shang/"/>
     <id>https://chen-shang.github.io/2024/12/31/za-qi-za-ba/sftp-lian-jie-bu-shang/</id>
     <published>2024-12-31T02:33:28.000Z</published>
-    <updated>2025-01-04T19:58:42.265Z</updated>
+    <updated>2025-07-07T04:19:04.225Z</updated>
     
     
       
@@ -295,302 +579,6 @@
     <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
     
     <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iterm2 通过指令使得窗口最大化</title>
-    <link href="https://chen-shang.github.io/2024/11/13/gong-ju-kong/mac/iterm2-tong-guo-zhi-ling-shi-de-chuang-kou-zui-da-hua/"/>
-    <id>https://chen-shang.github.io/2024/11/13/gong-ju-kong/mac/iterm2-tong-guo-zhi-ling-shi-de-chuang-kou-zui-da-hua/</id>
-    <published>2024-11-13T00:55:19.000Z</published>
-    <updated>2024-11-22T16:17:18.866Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在iTerm2中，没有直接的命令可以使窗口最大化。但是，您可以使用AppleScript或者一些键盘快捷键来实现最大化。使用AppleScript的方法如下：&lt;/p&gt;
-&lt;h1 id=&quot;添加-integration&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Linux终端生存之道-find</title>
-    <link href="https://chen-shang.github.io/2024/11/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-find/"/>
-    <id>https://chen-shang.github.io/2024/11/08/linux/zhong-duan-sheng-cun-zhi-dao/linux-zhong-duan-sheng-cun-zhi-dao-find/</id>
-    <published>2024-11-08T13:55:48.000Z</published>
-    <updated>2024-11-22T16:28:56.163Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;find-的基本语法&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#find-的基本语法&quot;&gt;&lt;/a&gt; find 的基本语法&lt;/h1&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="终端生存之道" scheme="https://chen-shang.github.io/categories/Linux/%E7%BB%88%E7%AB%AF%E7%94%9F%E5%AD%98%E4%B9%8B%E9%81%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sql语句冷门使用技巧</title>
-    <link href="https://chen-shang.github.io/2024/11/08/shu-ju-ku/sql-yu-ju-leng-men-shi-yong-ji-qiao/"/>
-    <id>https://chen-shang.github.io/2024/11/08/shu-ju-ku/sql-yu-ju-leng-men-shi-yong-ji-qiao/</id>
-    <published>2024-11-08T05:55:36.000Z</published>
-    <updated>2025-01-13T15:04:28.940Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;数据库中存储的是时间如何快速筛选某一天的数据&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#数据库中存储的是时间如何快速筛选某一天的数据&quot;&gt;&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SpringCloud配置nacos为配置中心</title>
-    <link href="https://chen-shang.github.io/2024/10/22/java/springboot/springcloud-pei-zhi-nacos-wei-pei-zhi-zhong-xin/"/>
-    <id>https://chen-shang.github.io/2024/10/22/java/springboot/springcloud-pei-zhi-nacos-wei-pei-zhi-zhong-xin/</id>
-    <published>2024-10-22T09:44:06.000Z</published>
-    <updated>2024-11-01T16:32:06.846Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;先在pom中引入包&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-markup&quot; data-language=&quot;markup&quot;&gt;&lt;code class=&quot;language-markup&quot;&gt;&lt;span class=&quot;token</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="SpringBoot" scheme="https://chen-shang.github.io/categories/JAVA/SpringBoot/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
-    
-    <category term="SpringBoot" scheme="https://chen-shang.github.io/tags/SpringBoot/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Feign如何配置超时</title>
-    <link href="https://chen-shang.github.io/2024/10/22/java/jie-jue-fang-an/feign-ru-he-pei-zhi-chao-shi/"/>
-    <id>https://chen-shang.github.io/2024/10/22/java/jie-jue-fang-an/feign-ru-he-pei-zhi-chao-shi/</id>
-    <published>2024-10-22T09:43:06.000Z</published>
-    <updated>2024-11-01T16:19:07.571Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;微服务间调用我们尝尝使用Feign定义一个公共类，这样可以快速的发起http请求。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/2024/10/22/java/jie-jue-fang-an/feign-ru-he-pei-zhi-chao-shi/image.png&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>在本地如何设置自己的域名访问服务</title>
-    <link href="https://chen-shang.github.io/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/"/>
-    <id>https://chen-shang.github.io/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/</id>
-    <published>2024-10-19T09:18:31.000Z</published>
-    <updated>2024-11-01T16:08:38.548Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;如下图所示，想要访问一个自己的域名 &lt;code&gt;http://www.chen-shang.blog/&lt;/code&gt; 就能自动访问自己本地部署的博客服务。&lt;br&gt;
-&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="localhost" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/localhost/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="localhost" scheme="https://chen-shang.github.io/tags/localhost/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>定期更新/升级安装的软件</title>
-    <link href="https://chen-shang.github.io/2024/10/12/gong-ju-kong/mac/ding-qi-geng-xin-sheng-ji-an-zhuang-de-ruan-jian/"/>
-    <id>https://chen-shang.github.io/2024/10/12/gong-ju-kong/mac/ding-qi-geng-xin-sheng-ji-an-zhuang-de-ruan-jian/</id>
-    <published>2024-10-12T15:57:38.000Z</published>
-    <updated>2025-01-29T14:15:07.025Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;brew安装的软件更新&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#brew安装的软件更新&quot;&gt;&lt;/a&gt; brew安装的软件更新&lt;/h1&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mysql锁表</title>
-    <link href="https://chen-shang.github.io/2024/10/08/shu-ju-ku/mysql-suo-biao/"/>
-    <id>https://chen-shang.github.io/2024/10/08/shu-ju-ku/mysql-suo-biao/</id>
-    <published>2024-10-08T09:39:43.000Z</published>
-    <updated>2024-10-12T16:26:43.403Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近服务操作一直报 &lt;code&gt;The MySQL server is running with the LOCK_WRITE_GROWTH option so it cannot execute this statement&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何查看数据库表中最大的库表</title>
-    <link href="https://chen-shang.github.io/2024/10/08/shu-ju-ku/ru-he-cha-kan-shu-ju-ku-biao-zhong-zui-da-de-ku-biao/"/>
-    <id>https://chen-shang.github.io/2024/10/08/shu-ju-ku/ru-he-cha-kan-shu-ju-ku-biao-zhong-zui-da-de-ku-biao/</id>
-    <published>2024-10-08T01:37:07.000Z</published>
-    <updated>2024-10-12T16:08:19.912Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近服务数据库服务器由于空间不足导致数据库锁表无法操作需要分析到底是哪个库表占据的空间最大。&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-mysql&quot; data-language=&quot;mysql&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Fix your permissions</title>
-    <link href="https://chen-shang.github.io/2024/09/11/linux/jie-jue-fang-an/fix-your-permissions/"/>
-    <id>https://chen-shang.github.io/2024/09/11/linux/jie-jue-fang-an/fix-your-permissions/</id>
-    <published>2024-09-11T03:16:19.000Z</published>
-    <updated>2024-10-12T16:27:34.847Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;pre class=&quot;line-numbers language-text&quot; data-language=&quot;text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Removing: /opt/homebrew/Cellar/mysql/9.0.1... (319</summary>
-        
-      
-    
-    
-    
-    <category term="Linux" scheme="https://chen-shang.github.io/categories/Linux/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/Linux/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>

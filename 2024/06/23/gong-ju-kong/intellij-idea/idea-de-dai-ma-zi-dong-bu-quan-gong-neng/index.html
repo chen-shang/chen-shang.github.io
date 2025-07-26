@@ -345,19 +345,19 @@
             <div id="articleContent">
                 <p>在使用IDEA编写代码的过程中,我们会发现一些比较快捷的写法. 例如有一个变量 <code>x</code>  我输入 <code>x.sout</code> 那么就会自动帮我们生成<br>
 <code>System.out.println(x)</code> 这样形式的代码<br>
-<img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/iShot_2024-06-23_11.54.39.gif" alt=""></p>
+<img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/iShot_2024-06-23_11.54.39.gif" alt></p>
 <p>这个功能是怎么设置的呢？以及我们怎么自定义自己的一些快捷操作呢？</p>
 <p>首先要安装插件 <code>Custom Postfix Templates</code> <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/9862-custom-postfix-templates">官网地址</a><br>
-<img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image.png" alt=""></p>
+<img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image.png" alt></p>
 <p>安装完成之后，搜索 <code>Postfix Template</code> 能看到如下菜单</p>
-<p><img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-1.png" alt=""></p>
+<p><img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-1.png" alt></p>
 <p>其中 Settings | Editor | General | Postfix Completion 也是用来控制快捷生成代码的，但是不支持<code>变量.</code>这种形式。</p>
 <p>我们要配置的是 Settings | Editor | Custom Postfix Templates 这个路径下的插件。</p>
 <p>我们现在本地某个目录下新建一个叫 <code>postfix.postfixTemplates</code> 的文件，内容可以先不写。</p>
 <p>我们点击这个+号，然后创建一个Java的代码补全规范<br>
-<img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-2.png" alt=""></p>
+<img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-2.png" alt></p>
 <p>我们有几种方式来创建<br>
-<img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-3.png" alt=""></p>
+<img src="/2024/06/23/gong-ju-kong/intellij-idea/idea-de-dai-ma-zi-dong-bu-quan-gong-neng/image-3.png" alt></p>
 <p>一般我们是在本地电脑上或者在github等平台上发布一份我们自定义的文件。文件的命名有个规范必须叫 xxx.postfixTemplates , 已 <code>postfixTemplates</code>  后缀结尾才行。</p>
 <p>然后就是编写 postfixTemplates 文件了，其语法可以参考其他的文件的写法</p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">.check : Preconditions.checkArgument
@@ -920,7 +920,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">226.7k</span>
+                        class="white-color">232.9k</span>
             
             
             
