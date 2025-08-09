@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2025-07-26T23:42:58.294Z</updated>
+  <updated>2025-08-09T18:03:09.316Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,14 +17,167 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>nslookup、ping、telnet</title>
+    <link href="https://chen-shang.github.io/2025/08/07/ji-suan-ji/ji-suan-ji-tong-xin/nslookup-ping-telnet/"/>
+    <id>https://chen-shang.github.io/2025/08/07/ji-suan-ji/ji-suan-ji-tong-xin/nslookup-ping-telnet/</id>
+    <published>2025-08-07T15:22:43.000Z</published>
+    <updated>2025-08-09T18:03:09.316Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;一-基础网络连接检测主机是否可达&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-基础网络连接检测主机是否可达&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mac技巧</title>
+    <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-ji-qiao/"/>
+    <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-ji-qiao/</id>
+    <published>2025-08-03T13:50:20.000Z</published>
+    <updated>2025-08-03T13:50:47.496Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;3.搜索关于搜索，mac上自带的有spotlight (ctr/cmd + 空格)可以实现全局搜索，但有时候没有正确的工作，而且如果我们想精确一个范围呢？输入 mdfind + 文件名， 实现全局搜索输入 mdfind -onlyin 文件大的路径 该路径下的某个文件名</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mac 登陆 去掉 其他用户</title>
+    <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-deng-lu-qu-diao-qi-ta-yong-hu/"/>
+    <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-deng-lu-qu-diao-qi-ta-yong-hu/</id>
+    <published>2025-08-03T13:47:43.000Z</published>
+    <updated>2025-08-03T13:50:41.416Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;打开 终端 复制粘贴回车&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;sudo defaults write</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开启Mac充电提示音</title>
+    <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/kai-qi-mac-chong-dian-ti-shi-yin/"/>
+    <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/kai-qi-mac-chong-dian-ti-shi-yin/</id>
+    <published>2025-08-03T13:46:37.000Z</published>
+    <updated>2025-08-03T13:47:13.989Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;MBP插电的时候，和苹果手机声音效果一样，“叮” 还是“咚”的一声。&lt;br&gt;
+开启：&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;defaults write</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>调整Launchpad应用图标大小</title>
+    <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/diao-zheng-launchpad-ying-yong-tu-biao-da-xiao/"/>
+    <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/diao-zheng-launchpad-ying-yong-tu-biao-da-xiao/</id>
+    <published>2025-08-03T13:43:51.000Z</published>
+    <updated>2025-08-03T13:47:24.608Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;觉得MacLaunchpad里面系统默认的应用程序图标太大，所以想让它变小，如果你也有这样的想法，不妨看看这个用终端调整Launchpad应用图标大小的技巧：Launchpad中的应用程序图标默认5行7列显示，如果要改变图标大小，就得改变其显示的行列数。&lt;br&gt;
+￼&lt;br&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
+    
+  </entry>
+  
+  <entry>
     <title>光明顶会议</title>
     <link href="https://chen-shang.github.io/2025/07/27/si-kao/guang-ming-ding-hui-yi/"/>
     <id>https://chen-shang.github.io/2025/07/27/si-kao/guang-ming-ding-hui-yi/</id>
     <published>2025-07-26T23:42:58.000Z</published>
-    <updated>2025-07-26T23:42:58.294Z</updated>
+    <updated>2025-07-26T23:43:55.734Z</updated>
     
     
     
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -435,155 +588,6 @@ Rerank 模型&lt;br&gt;
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
     <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>dify 部署填坑</title>
-    <link href="https://chen-shang.github.io/2025/02/28/ai/dify-bu-shu-tian-keng/"/>
-    <id>https://chen-shang.github.io/2025/02/28/ai/dify-bu-shu-tian-keng/</id>
-    <published>2025-02-27T21:06:57.000Z</published>
-    <updated>2025-07-07T04:18:18.167Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;dify镜像下载eof&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#dify镜像下载eof&quot;&gt;&lt;/a&gt; dify镜像下载EOF&lt;/h1&gt;
-&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>excel跨表查询</title>
-    <link href="https://chen-shang.github.io/2025/01/06/gong-ju-kong/excel/excel-kua-biao-cha-xun/"/>
-    <id>https://chen-shang.github.io/2025/01/06/gong-ju-kong/excel/excel-kua-biao-cha-xun/</id>
-    <published>2025-01-06T08:57:56.000Z</published>
-    <updated>2025-07-07T04:18:44.412Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/2025/01/06/gong-ju-kong/excel/excel-kua-biao-cha-xun/image.png&quot; alt=&quot;alt text&quot;&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;使用 VLOOKUP</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Excel" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Excel/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Excel" scheme="https://chen-shang.github.io/tags/Excel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SFTP链接不上</title>
-    <link href="https://chen-shang.github.io/2024/12/31/za-qi-za-ba/sftp-lian-jie-bu-shang/"/>
-    <id>https://chen-shang.github.io/2024/12/31/za-qi-za-ba/sftp-lian-jie-bu-shang/</id>
-    <published>2024-12-31T02:33:28.000Z</published>
-    <updated>2025-07-07T04:19:04.225Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;关于&lt;code&gt;HostkeyAlgorithms +ssh-rsa&lt;/code&gt;和&lt;code&gt;PubkeyAcceptedKeyTypes +ssh-rsa&lt;/code&gt;配置&lt;/p&gt;
-&lt;p&gt;含义：</summary>
-        
-      
-    
-    
-    
-    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>限流</title>
-    <link href="https://chen-shang.github.io/2024/12/01/java/jie-jue-fang-an/xian-liu/"/>
-    <id>https://chen-shang.github.io/2024/12/01/java/jie-jue-fang-an/xian-liu/</id>
-    <published>2024-12-01T07:50:02.000Z</published>
-    <updated>2024-12-01T08:24:40.223Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在服务中需要通过企微的接口向指定的群发送消息。但是企业微信对接口的调用有频率限制，超过这个限制之后它默认就把消息给丢弃了。微信这么做是出于自保，防止自己的接口被无限制的调用，从而导致资源被消耗殆尽。而我们的业务现实是，再短时间内可能会突发大量的消息需要发送，但是不能因为这些</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>代码bad case</title>
-    <link href="https://chen-shang.github.io/2024/11/17/java/jie-jue-fang-an/dai-ma-bad-case/"/>
-    <id>https://chen-shang.github.io/2024/11/17/java/jie-jue-fang-an/dai-ma-bad-case/</id>
-    <published>2024-11-16T16:05:49.000Z</published>
-    <updated>2024-11-17T06:53:45.622Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;任何抛开场景对设计进行的评价都是愚蠢的。一个方案只要能实现目的都叫解决方案，解决方案没有对错，但是有好坏，我这里会总结一些我们在开发过程中所做的一些不好的设计、编码，包括管理方面愚蠢的举动。我会对入围的bad</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   

@@ -345,12 +345,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/iShot_2024-05-06_21.33.04.png" alt></p>
+                <p><img src="/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/iShot_2024-05-06_21.33.04.png" alt=""></p>
 <p>这个时间虽然写的是 <code>2034-08-31 23:59:59</code>,而且系统打印也是<code>2034-08-31 23:59:59</code>。但是入库之后却是 <code>2034-09-01 00:00:00</code>。</p>
 <p>我们注意到 fasttime 是 2040652799999。那么fasttime是干什么的呢？</p>
 <p>fasttime 是 Date 类中的一个属性，用于表示从1970年1月1日00:00:00 GMT起的毫秒数。所以是毫秒时间戳，</p>
 <p>这个毫秒时间戳转换成时间后其实是 <code>2034-08-31 23:59:59.999</code> 入库的时候其实传递的也是这个时间</p>
-<p><img src="/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/iShot_2024-05-06_21.41.54.png" alt></p>
+<p><img src="/2024/05/06/shu-ju-ku/java-shi-jian-ru-ku-hou-jia-liao-1s/iShot_2024-05-06_21.41.54.png" alt=""></p>
 <p>而这个时间一旦入库，就会自动四舍五入成为<code>2034-09-01 00:00:00</code>。</p>
 <p>所以遇到这个问题我就先手动设置时分秒吧</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">LocalDateTimeUtil</span><span class="token punctuation">.</span><span class="token function">of</span><span class="token punctuation">(</span>currentEndTime<span class="token punctuation">)</span>
@@ -928,7 +928,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">232.9k</span>
+                        class="white-color">235.9k</span>
             
             
             

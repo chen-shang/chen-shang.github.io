@@ -344,7 +344,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>最近服务操作一直报 <code>The MySQL server is running with the LOCK_WRITE_GROWTH option so it cannot execute this statement</code></p>
-<p><img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/image.png" alt></p>
+<p><img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/image.png" alt=""></p>
 <pre class="line-numbers language-text" data-language="text"><code class="language-text">### Error updating database. Cause: java.sql.SQLException: The MySQL server is running with the
 LOCK WRITE GROWTH option so it cannot execute this statement ### The error may exist in cn/flydiy/cloud/runtime/infrastructure/mapper/
 AccountHistoryMapper.java (best quess) ### The error may involve cn.flydiy.cloud.runtime.infrastructure.mapper.AccountHistoryMapper.insert-Inline ### 
@@ -354,9 +354,9 @@ Cause: java.sal.SQLException: The MySQL server is running with the LOCK WRITE_GR
 SQLException; SQL state [HY000]; error code [1290]; The MySQL server is running with the LOCK WRITE GROWTH option so it cannot execute this statement; 
 nested exception is java.sql.SQLException: The MySQL server is running with the LOCK_WRITE_GROWTH option so it cannot execute this statement<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>根本原因在于 <code>空间不足</code><br>
-<img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/WechatIMG5270.jpg" alt><br>
+<img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/WechatIMG5270.jpg" alt=""><br>
 阿里的解释是<br>
-<img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/image-1.png" alt></p>
+<img src="/2024/10/08/shu-ju-ku/mysql-suo-biao/image-1.png" alt=""></p>
 <p>因此查找出可以清理数据的库表清理一波数据或者直接磁盘扩容即可。<br>
 但是遇到空间不足，对于小厂的我们一般优先想到的是清理那些真的根本不在使用的数据腾出空间而不是优先考虑扩容，因为业务并不紧急，扩容还需要花钱。但是如果业务很紧急，我可以先优先考虑扩容，因为排查清理数据需要花费的时间可能比较久，用户等不起，但扩容确比较简单一键操作即可，问题解决了，在慢慢排查清理数据。虽然扩容后，如果程序存在问题磁盘还是有可能会被打满，但至少用户可以操作，用户的损失会降到最低，也给后续清理数据留出喘息的时间。</p>
 
@@ -926,7 +926,7 @@ nested exception is java.sql.SQLException: The MySQL server is running with the 
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">232.9k</span>
+                        class="white-color">235.9k</span>
             
             
             

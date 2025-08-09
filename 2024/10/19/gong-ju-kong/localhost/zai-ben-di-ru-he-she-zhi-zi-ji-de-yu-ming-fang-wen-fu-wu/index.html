@@ -352,20 +352,20 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>如下图所示，想要访问一个自己的域名 <code>http://www.chen-shang.blog/</code> 就能自动访问自己本地部署的博客服务。<br>
-<img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image.png" alt></p>
+<img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image.png" alt=""></p>
 <p>我们主要修改我们的host文件，然后在配置一下nginx即可</p>
 <p>hosts 修改如下</p>
-<p><img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image-4.png" alt><br>
+<p><img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image-4.png" alt=""><br>
 核心是这句</p>
 <pre class="line-numbers language-txt" data-language="txt"><code class="language-txt">127.0.0.1 www.chen-shang.blog<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>这句话的意思就是说 当浏览器遇到这个域名<code>www.chen-shang.blog</code>的时候，你就访问<code>127.0.0.1</code>这个ip,而这个ip就是我们的本地ip地址，也就是 <code>localhost</code>。</p>
 <p>此时我们在浏览器反问 <code>www.chen-shang.blog:4000</code> 和 访问 <code>127.0.0.1:4000</code> 本质上是一样的都是<code>localhost:4000</code>。 而 <code>localhost:4000</code>恰好是我的博客的服务。此时我访问<code>www.chen-shang.blog:4000</code> 也是能访问到我的博客网站的。<br>
-<img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image-1.png" alt></p>
+<img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image-1.png" alt=""></p>
 <p>但是有时候我们记住域名还好，在记住端口就有点难了，所以当我们访问<code>www.chen-shang.blog</code>的时候，其实我们期望的时候访问的<code>www.chen-shang.blog:4000</code>但是我们的浏览器在访问<code>www.chen-shang.blog</code>的时候默认使用的端口是80，也就是<code>www.chen-shang.blog:80</code> 所以我们必须在某个地方配置一下，当浏览器访问<code>www.chen-shang.blog:80</code> 的时候我们要能转发到<code>4000</code>端口，这时候工具有很多，我选择的是<code>nginx</code>这个老工具。</p>
 <p>首先先下载安装 <code>nginx</code> 用 <code>brew</code> 进行安装就行。然后找到 nginx 的配置文件</p>
-<p><img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image-2.png" alt></p>
+<p><img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image-2.png" alt=""></p>
 <p>然后加入以下配置</p>
-<p><img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image-3.png" alt></p>
+<p><img src="/2024/10/19/gong-ju-kong/localhost/zai-ben-di-ru-he-she-zhi-zi-ji-de-yu-ming-fang-wen-fu-wu/image-3.png" alt=""></p>
 <p>核心是这句</p>
 <pre class="line-numbers language-json" data-language="json"><code class="language-json">server <span class="token punctuation">{</span>
         listen       <span class="token number">80</span>;
@@ -961,7 +961,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">232.9k</span>
+                        class="white-color">235.9k</span>
             
             
             

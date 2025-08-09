@@ -1,0 +1,1430 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="nslookup、ping、telnet, IT,技术,总结">
+    <meta name="description" content="摘要">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>nslookup、ping、telnet | 涓涓细流</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">涓涓细流</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+<!--
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+-->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">涓涓细流</div>
+        <div class="logo-desc">
+            
+            无限可能
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">nslookup、ping、telnet</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                <span class="chip bg-color">原创</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-08-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-08-10
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h3 id="一-基础网络连接检测主机是否可达"><a class="markdownIt-Anchor" href="#一-基础网络连接检测主机是否可达"></a> <strong>一、基础网络连接检测（主机是否可达）</strong></h3>
+<p><strong>核心命令：<code>ping</code></strong></p>
+<h4 id="典型现象"><a class="markdownIt-Anchor" href="#典型现象"></a> <strong>典型现象</strong></h4>
+<ul>
+<li>浏览器打开任何网页均提示“无法连接到服务器”</li>
+<li>微信、QQ等软件显示“网络未连接”</li>
+<li>本地设备连接WiFi后，路由器后台显示“设备离线”</li>
+</ul>
+<h4 id="工具使用与解读"><a class="markdownIt-Anchor" href="#工具使用与解读"></a> <strong>工具使用与解读</strong></h4>
+<ul>
+<li>执行 <code>ping 192.168.1.1</code>（网关IP）：
+<ul>
+<li>若<strong>无响应</strong>（Request timed out）：本地到网关的链路故障（如网线松动、网卡禁用）。</li>
+<li>若<strong>丢包率高</strong>（丢失&gt;30%）：WiFi信号弱、路由器负载过高或硬件故障。</li>
+</ul>
+</li>
+<li>执行 <code>ping 8.8.8.8</code>（公共IP）：
+<ul>
+<li>若失败但 <code>ping 网关</code> 成功：网关到外网的链路故障（如路由器拨号失败）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决办法"><a class="markdownIt-Anchor" href="#解决办法"></a> <strong>解决办法</strong></h4>
+<ul>
+<li>链路故障：重新插拔网线/重启网卡（Windows：禁用后启用；Linux：<code>sudo ip link set eth0 up</code>）。</li>
+<li>网关故障：重启路由器/光猫，检查WAN口是否获取公网IP（登录路由器管理页查看）。</li>
+<li>外网故障：联系运营商确认宽带是否欠费或线路故障。</li>
+</ul>
+<h3 id="二-dns解析问题域名无法转化为ip"><a class="markdownIt-Anchor" href="#二-dns解析问题域名无法转化为ip"></a> <strong>二、DNS解析问题（域名无法转化为IP）</strong></h3>
+<p><strong>核心命令：<code>nslookup</code>、<code>dig</code>（Linux/macOS）</strong></p>
+<h4 id="典型现象-2"><a class="markdownIt-Anchor" href="#典型现象-2"></a> <strong>典型现象</strong></h4>
+<ul>
+<li>输入 <code>www.baidu.com</code> 提示“无法解析域名”，但直接输入 <code>180.101.50.242</code>（百度IP）可打开网页</li>
+<li>电脑能ping通IP（如 <code>ping 114.114.114.114</code>），但ping域名时提示“未知主机”</li>
+</ul>
+<h4 id="工具使用与解读-2"><a class="markdownIt-Anchor" href="#工具使用与解读-2"></a> <strong>工具使用与解读</strong></h4>
+<ul>
+<li>执行 <code>nslookup www.baidu.com</code>：
+<ul>
+<li>若显示 <code>Non-existent domain</code>：域名不存在或DNS服务器无该记录（可能是拼写错误）。</li>
+<li>若显示 <code>DNS request timed out</code>：本地DNS服务器不可用（如路由器DNS配置错误）。</li>
+</ul>
+</li>
+<li>执行 <code>dig @8.8.8.8 www.baidu.com</code>（指定谷歌DNS）：
+<ul>
+<li>若成功解析：本地默认DNS服务器故障，需更换DNS。</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决办法-2"><a class="markdownIt-Anchor" href="#解决办法-2"></a> <strong>解决办法</strong></h4>
+<ul>
+<li>清除DNS缓存：
+<ul>
+<li>Windows：<code>ipconfig /flushdns</code></li>
+<li>Linux：<code>sudo systemctl restart nscd</code></li>
+<li>macOS：<code>sudo dscacheutil -flushcache</code></li>
+</ul>
+</li>
+<li>更换DNS服务器：手动配置为114.114.114.114（国内）或223.5.5.5（阿里）（通过网卡属性或路由器设置）。</li>
+</ul>
+<h3 id="三-端口连通性检测服务是否开放"><a class="markdownIt-Anchor" href="#三-端口连通性检测服务是否开放"></a> <strong>三、端口连通性检测（服务是否开放）</strong></h3>
+<p><strong>核心命令：<code>telnet</code>、<code>nc</code>、<code>test-netconnection</code></strong></p>
+<h4 id="典型现象-3"><a class="markdownIt-Anchor" href="#典型现象-3"></a> <strong>典型现象</strong></h4>
+<ul>
+<li>访问公司OA系统（端口8080）提示“连接被拒绝”，但能ping通服务器IP</li>
+<li>远程连接服务器（SSH 22端口）时提示“端口未开放”</li>
+<li>本地启动服务后，其他设备无法通过端口访问（如Tomcat的8080端口）</li>
+</ul>
+<h4 id="工具使用与解读-3"><a class="markdownIt-Anchor" href="#工具使用与解读-3"></a> <strong>工具使用与解读</strong></h4>
+<ul>
+<li>执行 <code>telnet 192.168.1.100 8080</code>（目标IP+端口）：
+<ul>
+<li>若提示“无法连接”：端口未开放或被防火墙拦截。</li>
+<li>若连接后黑屏：端口正常开放，问题可能在服务本身（如服务未启动）。</li>
+</ul>
+</li>
+<li>执行 <code>nc -zv 192.168.1.100 22</code>（Linux）：
+<ul>
+<li>显示 <code>Connection refused</code>：端口明确未开放；显示 <code>succeeded</code>：端口正常。</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决办法-3"><a class="markdownIt-Anchor" href="#解决办法-3"></a> <strong>解决办法</strong></h4>
+<ul>
+<li>开放端口：
+<ul>
+<li>Windows：防火墙“入站规则”添加端口允许（如8080）。</li>
+<li>Linux：<code>sudo ufw allow 22/tcp</code>（UFW防火墙）或 <code>sudo firewall-cmd --add-port=8080/tcp</code>。</li>
+</ul>
+</li>
+<li>重启服务：若端口开放但服务无响应，重启对应服务（如 <code>sudo systemctl restart sshd</code>）。</li>
+<li>端口映射：若目标在局域网内，需在路由器配置“端口映射”（公网端口→内网IP:端口）。</li>
+</ul>
+<h3 id="四-本地网络配置查看ip-网关-dns等"><a class="markdownIt-Anchor" href="#四-本地网络配置查看ip-网关-dns等"></a> <strong>四、本地网络配置查看（IP、网关、DNS等）</strong></h3>
+<p><strong>核心命令：<code>ipconfig</code>（Windows）、<code>ip addr</code>（Linux）</strong></p>
+<h4 id="典型现象-4"><a class="markdownIt-Anchor" href="#典型现象-4"></a> <strong>典型现象</strong></h4>
+<ul>
+<li>电脑连接网络后，右下角提示“无网络访问权限”</li>
+<li>手动设置IP后能上内网，但无法访问外网</li>
+<li>局域网内设备互相ping不通（如电脑ping手机失败）</li>
+</ul>
+<h4 id="工具使用与解读-4"><a class="markdownIt-Anchor" href="#工具使用与解读-4"></a> <strong>工具使用与解读</strong></h4>
+<ul>
+<li>执行 <code>ipconfig /all</code>（Windows）或 <code>ip addr</code>（Linux）：
+<ul>
+<li>若IP为 <code>169.254.x.x</code>：DHCP服务器未分配IP（路由器DHCP功能未启用）。</li>
+<li>若网关为空或错误（如网关设为192.168.1.255）：无法访问外网。</li>
+<li>若DNS服务器为 <code>0.0.0.0</code>：域名解析会失败。</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决办法-4"><a class="markdownIt-Anchor" href="#解决办法-4"></a> <strong>解决办法</strong></h4>
+<ul>
+<li>DHCP问题：释放并重新获取IP（Windows：<code>ipconfig /release &amp;&amp; ipconfig /renew</code>；Linux：<code>sudo dhclient -r &amp;&amp; sudo dhclient</code>）。</li>
+<li>手动配置错误：修改IP、网关、DNS为正确值（如IP：192.168.1.100，网关：192.168.1.1，DNS：114.114.114.114）。</li>
+<li>IP冲突：在路由器中绑定IP与MAC地址（防止重复分配），或手动修改IP为未占用地址。</li>
+</ul>
+<h3 id="五-网络路径追踪定位中间节点故障"><a class="markdownIt-Anchor" href="#五-网络路径追踪定位中间节点故障"></a> <strong>五、网络路径追踪（定位中间节点故障）</strong></h3>
+<p><strong>核心命令：<code>tracert</code>（Windows）、<code>traceroute</code>（Linux）</strong></p>
+<h4 id="典型现象-5"><a class="markdownIt-Anchor" href="#典型现象-5"></a> <strong>典型现象</strong></h4>
+<ul>
+<li>访问国外网站（如GitHub）时提示“超时”，但国内网站正常</li>
+<li>游戏延迟极高（&gt;500ms），且同网络其他设备也有类似问题</li>
+</ul>
+<h4 id="工具使用与解读-5"><a class="markdownIt-Anchor" href="#工具使用与解读-5"></a> <strong>工具使用与解读</strong></h4>
+<ul>
+<li>执行 <code>tracert www.github.com</code>：
+<ul>
+<li>若某一跳（如第5跳）开始持续显示 <code>* * *</code>：该节点到下一跳的链路中断（如运营商骨干网故障）。</li>
+<li>若某一跳延迟骤增（如从50ms升至500ms）：该节点负载过高或路由拥堵。</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决办法-5"><a class="markdownIt-Anchor" href="#解决办法-5"></a> <strong>解决办法</strong></h4>
+<ul>
+<li>节点故障：记录故障节点IP（如 <code>203.0.113.xx</code>），反馈给运营商（如电信10000）排查。</li>
+<li>路由拥堵：尝试切换网络（如手机热点），或修改本地DNS为运营商专用DNS（提升解析速度）。</li>
+</ul>
+<h3 id="六-网络连接与端口占用查询"><a class="markdownIt-Anchor" href="#六-网络连接与端口占用查询"></a> <strong>六、网络连接与端口占用查询</strong></h3>
+<p><strong>核心命令：<code>netstat</code>、<code>ss</code>（Linux）、<code>lsof</code>（Linux/macOS）</strong></p>
+<h4 id="典型现象-6"><a class="markdownIt-Anchor" href="#典型现象-6"></a> <strong>典型现象</strong></h4>
+<ul>
+<li>启动Tomcat时提示“Address already in use: 8080端口被占用”</li>
+<li>电脑后台有不明进程占用大量带宽，导致网络卡顿</li>
+<li>怀疑有恶意程序连接外部IP（如挖矿程序）</li>
+</ul>
+<h4 id="工具使用与解读-6"><a class="markdownIt-Anchor" href="#工具使用与解读-6"></a> <strong>工具使用与解读</strong></h4>
+<ul>
+<li>执行 <code>netstat -ano | findstr "8080"</code>（Windows）：
+<ul>
+<li>输出中 <code>LISTENING</code> 状态的PID表示占用端口的进程，通过任务管理器结束该进程。</li>
+</ul>
+</li>
+<li>执行 <code>ss -tulnp | grep "22"</code>（Linux）：
+<ul>
+<li>显示 <code>ssh 1234 root</code>：22端口被SSH服务（PID 1234）占用，属正常现象。</li>
+</ul>
+</li>
+<li>执行 <code>lsof -i :80</code>（Linux/macOS）：
+<ul>
+<li>若显示不明进程（如 <code>unknown 5678</code>）：可能是恶意程序，需终止并查杀。</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决办法-6"><a class="markdownIt-Anchor" href="#解决办法-6"></a> <strong>解决办法</strong></h4>
+<ul>
+<li>端口占用：终止占用进程（Windows：任务管理器结束PID；Linux：<code>sudo kill -9 PID</code>），或修改服务端口（如Tomcat改8081）。</li>
+<li>异常连接：通过 <code>netstat -an</code> 查看ESTABLISHED状态的外部IP，若为陌生IP，用防火墙拦截该IP。</li>
+</ul>
+<h3 id="七-路由表与网关配置跨网段通信问题"><a class="markdownIt-Anchor" href="#七-路由表与网关配置跨网段通信问题"></a> <strong>七、路由表与网关配置（跨网段通信问题）</strong></h3>
+<p><strong>核心命令：<code>route</code>（Windows）、<code>ip route</code>（Linux）</strong></p>
+<h4 id="典型现象-7"><a class="markdownIt-Anchor" href="#典型现象-7"></a> <strong>典型现象</strong></h4>
+<ul>
+<li>能访问192.168.1.x网段（本地局域网），但无法访问192.168.2.x网段（另一个子网）</li>
+<li>手动配置IP后，内网互通正常，但外网访问失败</li>
+</ul>
+<h4 id="工具使用与解读-7"><a class="markdownIt-Anchor" href="#工具使用与解读-7"></a> <strong>工具使用与解读</strong></h4>
+<ul>
+<li>执行 <code>route print</code>（Windows）或 <code>ip route show</code>（Linux）：
+<ul>
+<li>若缺省路由（0.0.0.0）未指向网关（如指向192.168.1.255）：无法访问外网。</li>
+<li>若目标网段（如192.168.2.0）无路由条目：无法跨网段通信。</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决办法-7"><a class="markdownIt-Anchor" href="#解决办法-7"></a> <strong>解决办法</strong></h4>
+<ul>
+<li>修复缺省路由：
+<ul>
+<li>Windows：<code>route add 0.0.0.0 mask 0.0.0.0 192.168.1.1 -p</code>（<code>-p</code> 永久生效）。</li>
+<li>Linux：<code>sudo ip route add default via 192.168.1.1</code>，并写入 <code>/etc/netplan/*.yaml</code> 配置文件。</li>
+</ul>
+</li>
+<li>添加跨网段路由：
+<ul>
+<li>访问192.168.2.0网段需通过网关192.168.1.254：
+<ul>
+<li>Windows：<code>route add 192.168.2.0 mask 255.255.255.0 192.168.1.254 -p</code>。</li>
+<li>Linux：<code>sudo ip route add 192.168.2.0/24 via 192.168.1.254</code>。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="八-高级网络诊断与抓包"><a class="markdownIt-Anchor" href="#八-高级网络诊断与抓包"></a> <strong>八、高级网络诊断与抓包</strong></h3>
+<p><strong>核心命令：<code>tcpdump</code>（Linux/macOS）、<code>wireshark</code>（跨系统）</strong></p>
+<h4 id="典型现象-8"><a class="markdownIt-Anchor" href="#典型现象-8"></a> <strong>典型现象</strong></h4>
+<ul>
+<li>网络频繁断连，但基础命令（ping、telnet）检测正常</li>
+<li>传输文件时速度骤降，且无明显带宽占用</li>
+<li>浏览器访问特定网站时提示“SSL证书错误”或“连接重置”</li>
+</ul>
+<h4 id="工具使用与解读-8"><a class="markdownIt-Anchor" href="#工具使用与解读-8"></a> <strong>工具使用与解读</strong></h4>
+<ul>
+<li>执行 <code>tcpdump -i eth0 port 443</code>（抓取HTTPS流量）：
+<ul>
+<li>若大量出现 <code>RST</code> 包：服务器主动关闭连接（如网站防火墙拦截）。</li>
+<li>若出现 <code>Duplicate ACK</code> 包：网络丢包导致数据重传，需排查链路稳定性。</li>
+</ul>
+</li>
+<li>使用Wireshark过滤 <code>tcp.flags.reset==1</code>：
+<ul>
+<li>定位发送RST包的IP，判断是本地防火墙还是目标服务器拦截。</li>
+</ul>
+</li>
+</ul>
+<h4 id="解决办法-8"><a class="markdownIt-Anchor" href="#解决办法-8"></a> <strong>解决办法</strong></h4>
+<ul>
+<li>丢包问题：更换网线、升级路由器固件（修复硬件兼容性bug）。</li>
+<li>拦截问题：关闭本地防火墙（临时测试），或在目标服务器白名单中添加本地IP。</li>
+<li>SSL错误：清除浏览器缓存，或检查系统时间是否同步（证书依赖时间验证）。</li>
+</ul>
+<h3 id="总结现象工具解决办法流程图"><a class="markdownIt-Anchor" href="#总结现象工具解决办法流程图"></a> <strong>总结：现象→工具→解决办法流程图</strong></h3>
+<ol>
+<li><strong>任何网络都不通</strong> → <code>ping 网关</code> → 检查链路/重启网关</li>
+<li><strong>域名不通但IP通</strong> → <code>nslookup</code> → 清缓存/换DNS</li>
+<li><strong>IP通但服务不通</strong> → <code>telnet/nc</code> → 开端口/重启服务</li>
+<li><strong>本地配置异常</strong> → <code>ipconfig/ip addr</code> → 修复IP/网关/DNS</li>
+<li><strong>跨网延迟/中断</strong> → <code>tracert</code> → 反馈运营商/切换路由</li>
+<li><strong>端口被占/异常连接</strong> → <code>netstat/ss</code> → 杀进程/封IP</li>
+<li><strong>复杂问题（如丢包/重置）</strong> → <code>tcpdump/Wireshark</code> → 抓包分析链路/拦截原因</li>
+</ol>
+<p>按此流程操作，可逐步定位并解决90%以上的网络故障。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                    <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zpykYxqrLC4qVar5tL3t0MAL-gzGzoHsz',
+        appKey: '3LhmIMSf9HYX5VXhD21hiPPG',
+        serverURLs: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2025/08/07/ji-suan-ji/ji-suan-ji-tong-xin/nslookup-ping-telnet/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="nslookup、ping、telnet">
+                        
+                        <span class="card-title">nslookup、ping、telnet</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            摘要
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-08-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            陈尚
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/08/03/gong-ju-kong/mac/mac-ji-qiao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="mac技巧">
+                        
+                        <span class="card-title">mac技巧</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            摘要
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-08-03
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
+                                    工具控
+                                </a>
+                            
+                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/" class="post-category">
+                                    Mac
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
+                        <span class="chip bg-color">工具控</span>
+                    </a>
+                    
+                    <a href="/tags/Mac/">
+                        <span class="chip bg-color">Mac</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('300')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 涓涓细流<br />'
+            + '文章作者: 陈尚<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2025</span>
+            
+            <a href="/about" target="_blank">陈尚</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">235.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chen-shang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2414973330@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2414973330" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2414973330" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+	<span id="jinrishici-sentence"></span>
+        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f34c6ca18e751cd090a8864b66dda7fd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>
