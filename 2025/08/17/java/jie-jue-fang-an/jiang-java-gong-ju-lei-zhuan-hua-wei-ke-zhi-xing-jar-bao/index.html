@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="光明顶会议, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="keywords" content="将Java工具类转化为可执行jar包, IT,技术,总结">
+    <meta name="description" content="如何将这些Java工具类标准化封装，使其成为像 `ls`、`curl`一样可全局调用的Shell指令，提升开发效率。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>光明顶会议 | 涓涓细流</title>
+    <title>将Java工具类转化为可执行jar包 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -38,7 +38,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -230,7 +232,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -243,12 +245,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">光明顶会议</h1>
+                    <h1 class="description center-align post-title">将Java工具类转化为可执行jar包</h1>
                 </div>
             </div>
         </div>
@@ -258,10 +260,12 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -274,8 +278,12 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                <span class="chip bg-color">未完待续</span>
+                            <a href="/tags/JAVA/">
+                                <span class="chip bg-color">JAVA</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+                                <span class="chip bg-color">解决方案</span>
                             </a>
                         
                     </div>
@@ -286,8 +294,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
-                                思考
+                            <a href="/categories/JAVA/" class="post-category">
+                                JAVA
+                            </a>
+                        
+                            <a href="/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-category">
+                                解决方案
                             </a>
                         
                     </div>
@@ -299,28 +311,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-07-27
+                    2025-08-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-07-27
+                    2025-08-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    865
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
 
@@ -343,7 +355,96 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>在日常开发中，我们经常会编写各种Java工具类（如时间转换、数据加密、日志解析等），这些工具能帮我们解决重复工作，但每次通过IDE运行却很繁琐。本文就来分享如何将这些Java工具类标准化封装，使其成为像 <code>ls</code>、<code>curl</code>一样可全局调用的Shell指令，提升开发效率。</p>
+<h3 id="一-通用化前提让工具类具备命令行友好的特征"><a class="markdownIt-Anchor" href="#一-通用化前提让工具类具备命令行友好的特征"></a> 一、通用化前提：让工具类具备“命令行友好”的特征</h3>
+<p>无论是什么工具类，要封装为Shell指令，需先保证它能通过命令行接收参数并输出结果，核心改造如下：</p>
+<ol>
+<li>
+<p><strong>标准化入口：<code>main</code>方法的参数设计</strong></p>
+<ul>
+<li>工具类必须包含 <code>public static void main(String[] args)</code>方法，作为命令行入口。</li>
+<li>参数通过 <code>args</code>数组接收（如时间转换工具的 <code>待转换时间</code>、<code>原格式</code>、<code>目标格式</code>）；</li>
+</ul>
+</li>
+<li>
+<p><strong>输出规范化：结果与日志分离</strong></p>
+<ul>
+<li>工具的核心结果（如转换后的时间、加密后的字符串）通过 <code>System.out.println</code>输出（方便Shell捕获结果，例如 <code>result=$(timeconv ...)</code>）；</li>
+<li>错误信息（如参数错误、格式异常）通过 <code>System.err.println</code>输出（避免干扰正常结果）。</li>
+</ul>
+</li>
+</ol>
+<h3 id="二-将工具类打包为可执行jar"><a class="markdownIt-Anchor" href="#二-将工具类打包为可执行jar"></a> 二、将工具类打包为“可执行JAR”</h3>
+<p>JAR包是Java程序的标准分发格式，可执行JAR需指定 <code>main</code>方法所在的类，确保 <code>java -jar</code>能直接运行。</p>
+<h4 id="手动打包适合简单工具"><a class="markdownIt-Anchor" href="#手动打包适合简单工具"></a> <strong>手动打包（适合简单工具）</strong></h4>
+<ol>
+<li>
+<p>编译工具类：<code>javac ToolClass.java</code>（生成 <code>ToolClass.class</code>）；</p>
+</li>
+<li>
+<p>创建 <code>MANIFEST.MF</code>文件（指定主类）：</p>
+<pre class="line-numbers language-manifest" data-language="manifest"><code class="language-manifest">Manifest-Version: 1.0
+Main-Class: ToolClass  # 工具类的全类名（若有包，需加包路径，如com.util.TimeConv）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>打包为JAR：<code>jar cvfm tool.jar MANIFEST.MF ToolClass.class</code>。</p>
+</li>
+</ol>
+<h5 id="mavengradle打包适合复杂工具推荐"><a class="markdownIt-Anchor" href="#mavengradle打包适合复杂工具推荐"></a> <strong>Maven/Gradle打包（适合复杂工具，推荐）</strong></h5>
+<p>若工具依赖第三方库（如 <code>commons-lang3</code>），用构建工具自动处理依赖：</p>
+<ol>
+<li>
+<p>在 <code>pom.xml</code>中配置插件（以Maven为例）：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>build</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugins</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>plugin</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.apache.maven.plugins<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>maven-assembly-plugin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">&gt;</span></span>3.4.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>descriptorRefs</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>descriptorRef</span><span class="token punctuation">&gt;</span></span>jar-with-dependencies<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>descriptorRef</span><span class="token punctuation">&gt;</span></span> <span class="token comment">&lt;!-- 打包所有依赖 --&gt;</span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>descriptorRefs</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>archive</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>manifest</span><span class="token punctuation">&gt;</span></span>
+                        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mainClass</span><span class="token punctuation">&gt;</span></span>com.util.TimeConv<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mainClass</span><span class="token punctuation">&gt;</span></span> <span class="token comment">&lt;!-- 主类全路径 --&gt;</span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>manifest</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>archive</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>executions</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>execution</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>phase</span><span class="token punctuation">&gt;</span></span>package<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>phase</span><span class="token punctuation">&gt;</span></span>
+                    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goals</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>goal</span><span class="token punctuation">&gt;</span></span>single<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goal</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>goals</span><span class="token punctuation">&gt;</span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>execution</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>executions</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugin</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>plugins</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>build</span><span class="token punctuation">&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li>
+<p>执行打包：<code>mvn package</code>，在 <code>target</code>目录生成含所有依赖的“胖JAR”（如 <code>timeconv-1.0-jar-with-dependencies.jar</code>）。</p>
+</li>
+</ol>
+<h3 id="三-通用问题排查封装过程中常见坑点解决"><a class="markdownIt-Anchor" href="#三-通用问题排查封装过程中常见坑点解决"></a> 三、通用问题排查：封装过程中常见坑点解决</h3>
+<ol>
+<li>
+<p><strong>“找不到主类”错误</strong></p>
+<ul>
+<li>检查JAR包的 <code>MANIFEST.MF</code>中 <code>Main-Class</code>是否正确（包名+类名是否完整）；</li>
+<li>确保打包时包含了工具类的 <code>.class</code>文件（手动打包时注意路径，Maven打包需确认 <code>src/main/java</code>目录正确）。</li>
+</ul>
+</li>
+<li>
+<p><strong>依赖缺失（“找不到符号”）</strong></p>
+<ul>
+<li>手动打包时，通过 <code>java -cp "tool.jar:lib/*" 主类名</code>补充依赖；</li>
+<li>推荐用Maven的 <code>assembly</code>插件打包“胖JAR”，一次性包含所有依赖。</li>
+</ul>
+</li>
+</ol>
+<h3 id="四-总结让工具类成为基础设施"><a class="markdownIt-Anchor" href="#四-总结让工具类成为基础设施"></a> 四、总结：让工具类成为“基础设施”</h3>
+<p>通过以上流程，任何Java工具类都能被封装为Shell指令，从此告别“打开IDE运行工具”的低效方式。无论是个人日常开发，还是团队内部共享工具，这种方式都能显著提升效率——毕竟，好的工具就该像系统命令一样“随叫随到”。</p>
+
                 
             </div>
             <hr/>
@@ -361,8 +462,12 @@
                                     <span class="chip bg-color">原创</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                                    <span class="chip bg-color">未完待续</span>
+                                <a href="/tags/JAVA/">
+                                    <span class="chip bg-color">JAVA</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+                                    <span class="chip bg-color">解决方案</span>
                                 </a>
                             
                         </div>
@@ -712,86 +817,25 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/08/03/gong-ju-kong/mac/diao-zheng-launchpad-ying-yong-tu-biao-da-xiao/">
+                <a href="/2025/08/17/za-qi-za-ba/docker-kong-jian-qing-li/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="调整Launchpad应用图标大小">
+                        <img src="/medias/featureimages/25.png" class="responsive-img" alt="docker空间清理">
                         
-                        <span class="card-title">调整Launchpad应用图标大小</span>
+                        <span class="card-title">docker空间清理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            居然发现可以释放50多G的磁盘空间 `docker system prune -a -f --volumes`
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-08-03
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-08-17
                         </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
-                                    工具控
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/" class="post-category">
-                                    Mac
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
-                        <span class="chip bg-color">原创</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
-                        <span class="chip bg-color">工具控</span>
-                    </a>
-                    
-                    <a href="/tags/Mac/">
-                        <span class="chip bg-color">Mac</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2025/07/26/za-qi-za-ba/wu-fa-da-kai-jdk-app-yin-wei-apple-wu-fa-jian-cha-qi-shi-fou-bao-han-e-yi-ruan-jian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="无法打开jdk.app，因为Apple无法检查其是否包含恶意软件">
-                        
-                        <span class="card-title">无法打开jdk.app，因为Apple无法检查其是否包含恶意软件</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            sudo xattr -r -d com.apple.quarantine /opt/elasticsearch-8.13.2/jdk.app
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-07-26
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -813,6 +857,67 @@
                     
                     <a href="/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/">
                         <span class="chip bg-color">杂七杂八</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/08/07/ji-suan-ji/ji-suan-ji-tong-xin/nslookup-ping-telnet/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="nslookup、ping、telnet">
+                        
+                        <span class="card-title">nslookup、ping、telnet</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            nslookup、ping、telnet
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-08-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                    计算机
+                                </a>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1/" class="post-category">
+                                    计算机通信
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
+                        <span class="chip bg-color">计算机</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1/">
+                        <span class="chip bg-color">计算机通信</span>
                     </a>
                     
                 </div>
@@ -888,6 +993,87 @@
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -910,7 +1096,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">236.8k</span>
+                        class="white-color">240k</span>
             
             
             

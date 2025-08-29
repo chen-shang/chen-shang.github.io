@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2025-08-16T17:55:05.260Z</updated>
+  <updated>2025-08-27T14:45:18.165Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,44 +17,93 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>将Java工具类转化为可执行jar包</title>
-    <link href="https://chen-shang.github.io/2025/08/17/jiang-java-gong-ju-lei-zhuan-hua-wei-ke-zhi-xing-jar-bao/"/>
-    <id>https://chen-shang.github.io/2025/08/17/jiang-java-gong-ju-lei-zhuan-hua-wei-ke-zhi-xing-jar-bao/</id>
-    <published>2025-08-16T17:45:00.000Z</published>
-    <updated>2025-08-16T17:55:05.260Z</updated>
+    <title>Excel数据透视图</title>
+    <link href="https://chen-shang.github.io/2025/08/20/gong-ju-kong/excel/excel-shu-ju-tou-shi-tu/"/>
+    <id>https://chen-shang.github.io/2025/08/20/gong-ju-kong/excel/excel-shu-ju-tou-shi-tu/</id>
+    <published>2025-08-19T16:48:14.000Z</published>
+    <updated>2025-08-27T14:45:18.165Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;在日常开发中，我们经常会编写各种Java工具类（如时间转换、数据加密、日志解析等），这些工具能帮我们解决重复工作，但每次通过IDE运行或手动输入&lt;code&gt;java&lt;/code&gt;命令调用却很繁琐。本文就来分享如何将这些Java工具类标准化封装，使其成为像&lt;code&gt;ls&lt;/</summary>
+    <summary type="html">&lt;p&gt;在 Excel 中，存在一列或多列数值数据（如成绩、年龄、销售额等），需要统计其中落在&lt;strong&gt;特定数值区间&lt;/strong&gt;内的数据个数。例如，统计成绩在 60-80 分之间的人数、年龄在 20-30 岁之间的用户数等。&lt;/p&gt;
+&lt;h3 id=&quot;解决方案&quot;&gt;&lt;a</summary>
         
       
     
     
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Excel" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Excel/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Excel" scheme="https://chen-shang.github.io/tags/Excel/"/>
     
   </entry>
   
   <entry>
-    <title>Excel透视图</title>
-    <link href="https://chen-shang.github.io/2025/08/11/excel-tou-shi-tu/"/>
-    <id>https://chen-shang.github.io/2025/08/11/excel-tou-shi-tu/</id>
-    <published>2025-08-11T07:26:49.000Z</published>
-    <updated>2025-08-11T07:26:49.886Z</updated>
+    <title>docker空间清理</title>
+    <link href="https://chen-shang.github.io/2025/08/17/za-qi-za-ba/docker-kong-jian-qing-li/"/>
+    <id>https://chen-shang.github.io/2025/08/17/za-qi-za-ba/docker-kong-jian-qing-li/</id>
+    <published>2025-08-16T19:25:53.000Z</published>
+    <updated>2025-08-27T14:48:21.285Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;code&gt;docker system prune -a -f --volumes&lt;/code&gt; 居然发现可以释放50多G的磁盘空间&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker system prune -a -f --volumes&lt;/code&gt; 是 Docker</summary>
+        
+      
     
     
     
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>将Java工具类转化为可执行jar包</title>
+    <link href="https://chen-shang.github.io/2025/08/17/java/jie-jue-fang-an/jiang-java-gong-ju-lei-zhuan-hua-wei-ke-zhi-xing-jar-bao/"/>
+    <id>https://chen-shang.github.io/2025/08/17/java/jie-jue-fang-an/jiang-java-gong-ju-lei-zhuan-hua-wei-ke-zhi-xing-jar-bao/</id>
+    <published>2025-08-16T17:45:00.000Z</published>
+    <updated>2025-08-16T18:08:34.005Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在日常开发中，我们经常会编写各种Java工具类（如时间转换、数据加密、日志解析等），这些工具能帮我们解决重复工作，但每次通过IDE运行却很繁琐。本文就来分享如何将这些Java工具类标准化封装，使其成为像</summary>
+        
+      
+    
+    
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
   </entry>
   
@@ -63,7 +112,7 @@
     <link href="https://chen-shang.github.io/2025/08/07/ji-suan-ji/ji-suan-ji-tong-xin/nslookup-ping-telnet/"/>
     <id>https://chen-shang.github.io/2025/08/07/ji-suan-ji/ji-suan-ji-tong-xin/nslookup-ping-telnet/</id>
     <published>2025-08-07T15:22:43.000Z</published>
-    <updated>2025-08-09T18:22:26.551Z</updated>
+    <updated>2025-08-16T18:08:16.051Z</updated>
     
     
       
@@ -94,14 +143,15 @@
     <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-ji-qiao/"/>
     <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-ji-qiao/</id>
     <published>2025-08-03T13:50:20.000Z</published>
-    <updated>2025-08-03T13:50:47.496Z</updated>
+    <updated>2025-08-27T14:56:26.012Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;3.搜索关于搜索，mac上自带的有spotlight (ctr/cmd + 空格)可以实现全局搜索，但有时候没有正确的工作，而且如果我们想精确一个范围呢？输入 mdfind + 文件名， 实现全局搜索输入 mdfind -onlyin 文件大的路径 该路径下的某个文件名</summary>
+    <summary type="html">&lt;ol&gt;
+&lt;li&gt;搜索关于搜索，mac上自带的有spotlight (ctr/cmd + 空格)可以实现全局搜索，但有时候没有正确的工作，而且如果我们想精确一个范围呢？输入 mdfind + 文件名， 实现全局搜索输入 mdfind -onlyin 文件大的路径</summary>
         
       
     
@@ -155,7 +205,7 @@
     <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/kai-qi-mac-chong-dian-ti-shi-yin/"/>
     <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/kai-qi-mac-chong-dian-ti-shi-yin/</id>
     <published>2025-08-03T13:46:37.000Z</published>
-    <updated>2025-08-03T13:47:13.989Z</updated>
+    <updated>2025-08-27T14:58:52.188Z</updated>
     
     
       
@@ -164,7 +214,7 @@
         
     <summary type="html">&lt;p&gt;MBP插电的时候，和苹果手机声音效果一样，“叮” 还是“咚”的一声。&lt;br&gt;
 开启：&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;defaults write</summary>
+&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code</summary>
         
       
     
@@ -188,7 +238,7 @@
     <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/diao-zheng-launchpad-ying-yong-tu-biao-da-xiao/"/>
     <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/diao-zheng-launchpad-ying-yong-tu-biao-da-xiao/</id>
     <published>2025-08-03T13:43:51.000Z</published>
-    <updated>2025-08-03T13:47:24.608Z</updated>
+    <updated>2025-08-27T14:58:27.170Z</updated>
     
     
       
@@ -212,25 +262,6 @@
     <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
     
     <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>光明顶会议</title>
-    <link href="https://chen-shang.github.io/2025/07/27/si-kao/guang-ming-ding-hui-yi/"/>
-    <id>https://chen-shang.github.io/2025/07/27/si-kao/guang-ming-ding-hui-yi/</id>
-    <published>2025-07-26T23:42:58.000Z</published>
-    <updated>2025-07-26T23:43:55.734Z</updated>
-    
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
     
   </entry>
   
@@ -401,9 +432,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
-    
     <category term="AI问答" scheme="https://chen-shang.github.io/tags/AI%E9%97%AE%E7%AD%94/"/>
+    
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
     
   </entry>
   

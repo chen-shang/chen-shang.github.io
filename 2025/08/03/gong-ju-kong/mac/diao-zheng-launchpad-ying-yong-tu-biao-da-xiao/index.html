@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="调整Launchpad应用图标大小, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="description" content="觉得MacLaunchpad里面系统默认的应用程序图标太大，所以想让它变小">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -314,7 +314,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-08-03
+                    2025-08-27
                 </div>
                 
 
@@ -354,16 +354,17 @@
                 <p>觉得MacLaunchpad里面系统默认的应用程序图标太大，所以想让它变小，如果你也有这样的想法，不妨看看这个用终端调整Launchpad应用图标大小的技巧：Launchpad中的应用程序图标默认5行7列显示，如果要改变图标大小，就得改变其显示的行列数。<br>
 ￼<br>
 改行数：打开终端，将下列代码复制粘贴到终端窗口中，按回车，我这里把行数改为6，所以int后面输入的是6；</p>
-<pre class="line-numbers language-none"><code class="language-none">defaults write com.apple.dock springboard-rows -int 6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">defaults <span class="token function">write</span> com.apple.dock springboard-rows <span class="token parameter variable">-int</span> <span class="token number">6</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>￼<br>
 改列数：复制粘贴以下代码，按回车，int后面的8代表8列；</p>
-<pre class="line-numbers language-none"><code class="language-none">defaults write com.apple.dock springboard-columns -int 8<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">defaults <span class="token function">write</span> com.apple.dock springboard-columns <span class="token parameter variable">-int</span> <span class="token number">8</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>￼<br>
 行数和列数都改好之后，需要重启dock才能看到修改后的效果，所以需要在终端输入killall Dock，然后敲回车，在Launchpad中就可以看到修改后的效果了。￼</p>
 <p>如果你想让Launchpad图标显示恢复系统默认，在终端运行以下代码即可。</p>
-<pre class="line-numbers language-none"><code class="language-none">defaults write com.apple.dock springboard-rows Default
-defaults write com.apple.dock springboard-columns Default
-killall Dock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">defaults <span class="token function">write</span> com.apple.dock springboard-rows Default
+defaults <span class="token function">write</span> com.apple.dock springboard-columns Default
+<span class="token function">killall</span> Dock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
                 
             </div>
             <hr/>
@@ -748,7 +749,7 @@ killall Dock<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            开启Mac充电提示音
                         
                     </div>
                     <div class="publish-info">
@@ -797,31 +798,31 @@ killall Dock<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/07/27/si-kao/guang-ming-ding-hui-yi/">
+                <a href="/2025/07/26/za-qi-za-ba/wu-fa-da-kai-jdk-app-yin-wei-apple-wu-fa-jian-cha-qi-shi-fou-bao-han-e-yi-ruan-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="光明顶会议">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="无法打开jdk.app，因为Apple无法检查其是否包含恶意软件">
                         
-                        <span class="card-title">光明顶会议</span>
+                        <span class="card-title">无法打开jdk.app，因为Apple无法检查其是否包含恶意软件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            sudo xattr -r -d com.apple.quarantine /opt/elasticsearch-8.13.2/jdk.app
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-07-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-07-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
-                                    思考
+                            <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" class="post-category">
+                                    杂七杂八
                                 </a>
                             
                             
@@ -835,8 +836,8 @@ killall Dock<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
-                        <span class="chip bg-color">未完待续</span>
+                    <a href="/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/">
+                        <span class="chip bg-color">杂七杂八</span>
                     </a>
                     
                 </div>
@@ -934,7 +935,7 @@ killall Dock<span aria-hidden="true" class="line-numbers-rows"><span></span><spa
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">236.8k</span>
+                        class="white-color">240k</span>
             
             
             

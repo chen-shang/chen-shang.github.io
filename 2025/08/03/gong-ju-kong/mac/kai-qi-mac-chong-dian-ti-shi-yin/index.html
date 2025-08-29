@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="开启Mac充电提示音, IT,技术,总结">
-    <meta name="description" content="摘要">
+    <meta name="description" content="开启Mac充电提示音">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -314,7 +314,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-08-03
+                    2025-08-27
                 </div>
                 
 
@@ -353,9 +353,9 @@
             <div id="articleContent">
                 <p>MBP插电的时候，和苹果手机声音效果一样，“叮” 还是“咚”的一声。<br>
 开启：</p>
-<pre class="line-numbers language-none"><code class="language-none">defaults write com.apple.PowerChime ChimeOnAllHardware -bool true; open /System/Library/CoreServices/PowerChime.app &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">defaults <span class="token function">write</span> com.apple.PowerChime ChimeOnAllHardware <span class="token parameter variable">-bool</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token function">open</span> /System/Library/CoreServices/PowerChime.app <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>关闭：</p>
-<pre class="line-numbers language-none"><code class="language-none">defaults write com.apple.PowerChime ChimeOnAllHardware -bool false;killall PowerChime<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">defaults <span class="token function">write</span> com.apple.PowerChime ChimeOnAllHardware <span class="token parameter variable">-bool</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span class="token function">killall</span> PowerChime<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
             </div>
@@ -798,7 +798,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            觉得MacLaunchpad里面系统默认的应用程序图标太大，所以想让它变小
                         
                     </div>
                     <div class="publish-info">
@@ -931,7 +931,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">236.8k</span>
+                        class="white-color">240k</span>
             
             
             
