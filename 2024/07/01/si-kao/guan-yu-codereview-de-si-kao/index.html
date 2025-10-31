@@ -306,21 +306,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-01-13
+                    2025-10-31
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.9k
+                    7.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    23 分
+                    25 分
                 </div>
                 
 
@@ -417,7 +417,7 @@
 反例：<code>feature/zhangsan</code>、<code>feature/123</code>、<code>feature/bugfix</code></p>
 <ol>
 <li>你的本地开发分支爱怎么叫怎么叫，但不规范的命名千万不要推到远程给别人看到。</li>
-<li>如果在创建分支的时候你是根据功能起的名字，那么你在开发的过程中就会倾向专注于某一个功能。例如你命名为 <code>feature/case-recovery-time</code> 的分支你大概率就会只开发和<strong>案件回收时间</strong>有关的功能，此时如果来了另一不相干的需求：在案件回收之后发送一个mq消息。此时你就不会倾向于把这个功能加到名为<code>feature/case-recovery-time</code>的分支，而是另起一个分支比如叫<code>feature/case-dispatch-mq</code>。但是如果你命名成为 <code>feature/case</code> 或者  <code>feature/zhangsan</code> 如果经验不足或者不是时刻惦记着，你很有可能就把本来可以独立开发、独立上线的两个功能耦合到了一个分支了。耦合到一起之后就出现我在文章开头 <code>《前言，一些感想》</code> 中说的的代码review的种种弊端了。</li>
+<li>如果在创建分支的时候你是根据功能起的名字，那么你在开发的过程中就会倾向专注于某一个功能。例如你命名为 <code>feature/case-recovery-time</code> 的分支你大概率就会只开发和<strong>案件回收时间</strong>有关的功能，此时如果来了另一不相干的需求：在案件回收之后发送一个mq消息。此时你就不会倾向于把这个功能加到名为 <code>feature/case-recovery-time</code>的分支，而是另起一个分支比如叫 <code>feature/case-dispatch-mq</code>。但是如果你命名成为 <code>feature/case</code> 或者  <code>feature/zhangsan</code> 如果经验不足或者不是时刻惦记着，你很有可能就把本来可以独立开发、独立上线的两个功能耦合到了一个分支了。耦合到一起之后就出现我在文章开头 <code>《前言，一些感想》</code> 中说的的代码review的种种弊端了。</li>
 </ol>
 <blockquote>
 <p>【强制】进行充分自测，保证代码可运行。代码必须合并到测试分支并发布一遍测试环境后才可以提起CR</p>
@@ -451,7 +451,7 @@
 </blockquote>
 <p>推荐以下几种工具或插件</p>
 <ul>
-<li>Alibaba Java Coding Guidelines​(XenoAmess TPM)​: 专注于Java代码检查，如果你的团队期望遵循阿里规约那么这个插件必装</li>
+<li>Alibaba Java Coding Guidelines(XenoAmess TPM): 专注于Java代码检查，如果你的团队期望遵循阿里规约那么这个插件必装</li>
 <li>CheckStyle-IDEA : 侧重检查编码格式和代码风格规范，如命名规范、Javadoc注释规范、空格规范、size度量（如过长的方法）、重复代码、多余Imports等，Checkstyle主要是文法层面的代码编写规范的分析，对bug几乎没什么发现能力。</li>
 </ul>
 <h1 id="拆分cr的原则和技巧"><a class="markdownIt-Anchor" href="#拆分cr的原则和技巧"></a> 拆分CR的原则和技巧</h1>
@@ -628,7 +628,37 @@ x <span class="token operator">=</span> x <span class="token operator">^</span> 
 y <span class="token operator">=</span> x <span class="token operator">^</span> y<span class="token punctuation">;</span>
 x <span class="token operator">=</span> x <span class="token operator">^</span> y<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h1 id="不该评审什么或者什么情况不用评审"><a class="markdownIt-Anchor" href="#不该评审什么或者什么情况不用评审"></a> 不该评审什么或者什么情况不用评审</h1>
-<p>理论上都应该评审</p>
+<p>理论上都应该评审。。。。。。</p>
+<p>不用review发起评审的场景</p>
+<blockquote>
+<p>[推荐]仅仅更改类名、把一个类挪动到另一个包、替换一个工具类等等。<br>
+这种即使改动行数特别多也不用占用特别多的时间，因为这种改动业务逻辑并没有改变或者改变很少，因此风险最小。</p>
+</blockquote>
+<blockquote>
+<p>[推荐]添加个枚举、添加一个工具类里面全是静态方法、约定一个接口(没有实现)等。<br>
+这种虽然涉及业务逻辑，但是对历史业务基本没有改变或者改变很少，因此风险较小。</p>
+</blockquote>
+<blockquote>
+<p>[推荐]相似或相同的业务逻辑review过一次之后可以不用再次review<br>
+例如，再Aservice中已经review过一次，然后Bservice又需要集成相似或相同的逻辑。当然重复代码不行。</p>
+</blockquote>
+<blockquote>
+<p>[推荐] 改个注释、格式化代码（统一一个格式化模版，允许部分差异化） 可以直接合并到master不用review</p>
+</blockquote>
+<blockquote>
+<p>[推荐] 打印个日志（我们目前不吝啬打印日志，但是日志一定要打规范、打准确）可以直接合并到master不用review。</p>
+</blockquote>
+<blockquote>
+<p>[推荐] RPC层对接核心系统三方服务暂不review代码<br>
+RPC层对接不允许包含业务逻辑，仅仅是对三方服务接口的封装。业务逻辑一定要抽取到service层或manager中进行编写。目前团队成员均已规范写法习惯，因此对接层代码可以不review。</p>
+</blockquote>
+<p>可以后置发起评审</p>
+<blockquote>
+<p>[推荐]新项目、新模块 首次编码可以先在master分支上开发功能测试，方便快速的发布。之后再拆分发起评审</p>
+<p>[推荐]hotfix 修改可结对编程，比用提pr直接上线</p>
+<p>[推荐] 通过idea或AI工具抽取的简单的私有方法，且要符合既定的代码规约。</p>
+<p>idea抽取的方法针对重复传参问题并不友好，不要无脑抽取。</p>
+</blockquote>
 <h1 id="书籍推荐"><a class="markdownIt-Anchor" href="#书籍推荐"></a> 书籍推荐</h1>
 <p>《编程原则( understanding software)》<br>
 《重构：改善既有代码的设计》<br>
@@ -1282,7 +1312,7 @@ x <span class="token operator">=</span> x <span class="token operator">^</span> 
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">240k</span>
+                        class="white-color">241.1k</span>
             
             
             
