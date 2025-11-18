@@ -314,21 +314,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-11-11
+                    2025-11-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.4k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    18 分
                 </div>
                 
 
@@ -363,6 +363,37 @@
 </blockquote>
 <p>修改方式之一:</p>
 <p><img src="/2024/11/17/java/jie-jue-fang-an/dai-ma-bad-case/image-1.png" alt=""></p>
+<h3 id="finally-当中抛出异常"><a class="markdownIt-Anchor" href="#finally-当中抛出异常"></a> finally 当中抛出异常</h3>
+<pre class="line-numbers language-none"><code class="language-none">public Boolean update( PmAssetUpdateLogicForm pmAsset) {
+        ResponseInfo&lt;Boolean&gt; responseInfo = null;
+        try {
+            FeignContext.setCustomHeader(CommonConstants.TENANT_HEADER, TenantContext.getTenantId());
+            responseInfo = assetInnerApi.update(pmAsset);
+            Preconditions.checkArgument(HttpStatus.HTTP_OK == responseInfo.getStatusCode(), ERR_MSG_PRE + responseInfo.getMessage());
+            return responseInfo.getData();
+        } catch (Exception e) {
+            throw new RuntimeException(ERR_MSG_PRE + e.getMessage(), e);
+        } finally {
+            log.info("更新资产包信息 assetInnerApi.update with PmAssetUpdateLogicForm:{} =&gt; update:{}", pmAsset, responseInfo.getData());
+        }
+    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在 Java 中，如果 finally 块中抛出异常，它会影响 catch 块中的异常处理方式。让我解释一下具体的行为：</p>
+<blockquote>
+<p>如果 try 块中没有抛出异常，但在 finally 块中抛出了异常，则该异常会向上传播，就像正常情况下一样。</p>
+</blockquote>
+<blockquote>
+<p>如果 try 块中抛出了异常，并且 catch 块捕获了该异常，但随后 finally 块也抛出了异常：</p>
+</blockquote>
+<blockquote>
+<blockquote>
+<p>finally 块中的异常会覆盖原来被 catch 块捕获的异常<br>
+原来的异常会被抑制(suppressed)，程序最终只会看到 finally 块抛出的异常</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>如果 catch 块本身又抛出了一个新的异常，而 finally 块也抛出异常：<br>
+同样地，finally 块中的异常会覆盖之前的所有异常</p>
+</blockquote>
 <h2 id="mysql-系列"><a class="markdownIt-Anchor" href="#mysql-系列"></a> mysql 系列</h2>
 <h3 id="java中自定义的sql有必要全部大写么"><a class="markdownIt-Anchor" href="#java中自定义的sql有必要全部大写么"></a> java中自定义的sql有必要全部大写么</h3>
 <p><img src="/2024/11/17/java/jie-jue-fang-an/dai-ma-bad-case/image-3.png" alt=""></p>
@@ -1373,7 +1404,7 @@ processor<span class="token punctuation">.</span><span class="token function">pr
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">245.7k</span>
+                        class="white-color">246k</span>
             
             
             
