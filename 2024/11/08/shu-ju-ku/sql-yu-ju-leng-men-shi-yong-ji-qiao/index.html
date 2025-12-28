@@ -306,14 +306,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-01-13
+                    2025-12-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    220
+                    367
                 </div>
                 
 
@@ -376,7 +376,31 @@
 <h1 id="查询某个字段包含空格-首尾包含空格"><a class="markdownIt-Anchor" href="#查询某个字段包含空格-首尾包含空格"></a> 查询某个字段包含空格、首尾包含空格</h1>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">from</span> vxlink_channel<span class="token punctuation">.</span>dm_collection_agency dca <span class="token keyword">where</span> collection_agency_name <span class="token operator">like</span> <span class="token string">'% %'</span> <span class="token operator">and</span> is_deleted <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> vxlink_channel<span class="token punctuation">.</span>dm_collection_agency dca <span class="token keyword">WHERE</span> TRIM<span class="token punctuation">(</span>BOTH <span class="token string">' '</span> <span class="token keyword">FROM</span> collection_agency_name<span class="token punctuation">)</span> <span class="token operator">!=</span> collection_agency_name <span class="token operator">and</span> is_deleted <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
+<h1 id="查看正在执行的慢sql"><a class="markdownIt-Anchor" href="#查看正在执行的慢sql"></a> 查看正在执行的慢sql</h1>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span>
+    <span class="token comment">-- 进程ID，用于终止慢SQL</span>
+    t<span class="token punctuation">.</span>ID<span class="token punctuation">,</span>
+    <span class="token comment">-- 执行SQL的用户</span>
+    t<span class="token punctuation">.</span><span class="token keyword">USER</span><span class="token punctuation">,</span>
+    <span class="token comment">-- 连接来源的IP和端口</span>
+    t<span class="token punctuation">.</span>HOST<span class="token punctuation">,</span>
+    <span class="token comment">-- 执行的数据库</span>
+    t<span class="token punctuation">.</span>DB<span class="token punctuation">,</span>
+    <span class="token comment">-- 执行状态（Sleep/Query等）</span>
+    t<span class="token punctuation">.</span>COMMAND<span class="token punctuation">,</span>
+    <span class="token comment">-- 已运行时间（单位：秒）</span>
+    t<span class="token punctuation">.</span><span class="token keyword">TIME</span><span class="token punctuation">,</span>
+    <span class="token comment">-- 正在执行的SQL语句</span>
+    t<span class="token punctuation">.</span>INFO
+<span class="token keyword">FROM</span> information_schema<span class="token punctuation">.</span>PROCESSLIST t
+<span class="token keyword">WHERE</span>
+  <span class="token comment">-- 筛选正在执行查询的会话（排除Sleep状态）</span>
+    t<span class="token punctuation">.</span>COMMAND <span class="token operator">=</span> <span class="token string">'Query'</span>
+  <span class="token comment">-- 筛选运行时间超过10秒的SQL（阈值可根据需求调整）</span>
+  <span class="token operator">AND</span> t<span class="token punctuation">.</span><span class="token keyword">TIME</span> <span class="token operator">&gt;</span> <span class="token number">10</span>
+  <span class="token comment">-- 排除系统库的内部操作</span>
+  <span class="token operator">AND</span> t<span class="token punctuation">.</span>DB <span class="token operator">IS</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span>
+<span class="token keyword">ORDER</span> <span class="token keyword">BY</span> t<span class="token punctuation">.</span><span class="token keyword">TIME</span> <span class="token keyword">DESC</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -947,7 +971,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">246.5k</span>
+                        class="white-color">253.6k</span>
             
             
             

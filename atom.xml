@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2025-11-21T16:30:32.944Z</updated>
+  <updated>2025-12-28T18:48:14.658Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,261 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>git怎么设置本地master分支禁止push到远程仓库</title>
+    <link href="https://chen-shang.github.io/2025/12/27/gong-ju-kong/git/git-zen-me-she-zhi-ben-di-master-fen-zhi-jin-zhi-push-dao-yuan-cheng-cang-ku/"/>
+    <id>https://chen-shang.github.io/2025/12/27/gong-ju-kong/git/git-zen-me-she-zhi-ben-di-master-fen-zhi-jin-zhi-push-dao-yuan-cheng-cang-ku/</id>
+    <published>2025-12-27T11:06:01.000Z</published>
+    <updated>2025-12-28T18:48:14.658Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;近期团队里头总是有人在本地master分支不小心提交代码到远程，很是恼火。&lt;/p&gt;
+&lt;p&gt;要设置 Git 本地 &lt;code&gt;master&lt;/code&gt; 分支 &lt;strong&gt;禁止 push&lt;/strong&gt; ，核心思路是利用 Git</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>重学傅里叶级数</title>
+    <link href="https://chen-shang.github.io/2025/12/21/ai/ji-qi-xue-xi/chong-xue-fu-li-xie-ji-shu/"/>
+    <id>https://chen-shang.github.io/2025/12/21/ai/ji-qi-xue-xi/chong-xue-fu-li-xie-ji-shu/</id>
+    <published>2025-12-20T16:30:31.000Z</published>
+    <updated>2025-12-28T18:51:54.463Z</updated>
+    
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>概率论vs统计学</title>
+    <link href="https://chen-shang.github.io/2025/12/21/ai/ji-qi-xue-xi/gai-lu-lun-vs-tong-ji-xue/"/>
+    <id>https://chen-shang.github.io/2025/12/21/ai/ji-qi-xue-xi/gai-lu-lun-vs-tong-ji-xue/</id>
+    <published>2025-12-20T16:21:28.000Z</published>
+    <updated>2025-12-28T18:56:32.068Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;我一开始以为这俩是一回事。大学学的课程叫《&lt;strong&gt;概率论与数理统计&lt;/strong&gt;》&lt;/p&gt;
+&lt;h3 id=&quot;一-核心区别研究逻辑完全相反&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-核心区别研究逻辑完全相反&quot;&gt;&lt;/a&gt; 一、</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习范式</title>
+    <link href="https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/ji-qi-xue-xi-fan-shi/"/>
+    <id>https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/ji-qi-xue-xi-fan-shi/</id>
+    <published>2025-12-20T14:42:53.000Z</published>
+    <updated>2025-12-28T18:56:32.068Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;首先数据库有个三大范式，起名字简单粗暴第一范式 (1NF)、第二范式 (2NF)、第三范式 (3NF)。 编程语言也有几个范式：面向对象、函数式、过程式、逻辑式等。机器学习中也学到一个范式名词，最近被这个分类折磨的不理解了。有的文章说 机器学习 分为</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>模型和算法是一回事么</title>
+    <link href="https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/mo-xing-he-suan-fa-shi-yi-hui-shi-me/"/>
+    <id>https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/mo-xing-he-suan-fa-shi-yi-hui-shi-me/</id>
+    <published>2025-12-20T14:21:57.000Z</published>
+    <updated>2025-12-28T18:56:32.068Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一开始我总以为机器学习里的 “模型” 和 “算法” 是一回事 ——</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>什么样的问题可以用机器学习技术解决</title>
+    <link href="https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/shi-me-yang-de-wen-ti-ke-yi-yong-ji-qi-xue-xi-ji-zhu-jie-jue/"/>
+    <id>https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/shi-me-yang-de-wen-ti-ke-yi-yong-ji-qi-xue-xi-ji-zhu-jie-jue/</id>
+    <published>2025-12-20T14:04:53.000Z</published>
+    <updated>2025-12-28T18:56:32.068Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;能够用机器学习机技术解决的问题称之为机器学习的&quot;适定问题&quot;。这个词我也是第一次听说，我理解适定就是适合的意思，也就是说机器学习适合什么样的问题，或者说什么样的问题能用机器学习解决。也就是在给机器学习下定义，而且跟解释什么是机器学习不用，这里用一个明确的范围来定义。&lt;/p&gt;
+</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>世纪、年代的计数规则</title>
+    <link href="https://chen-shang.github.io/2025/12/20/za-qi-za-ba/shi-ji-nian-dai-de-ji-shu-gui-ze/"/>
+    <id>https://chen-shang.github.io/2025/12/20/za-qi-za-ba/shi-ji-nian-dai-de-ji-shu-gui-ze/</id>
+    <published>2025-12-20T13:43:14.000Z</published>
+    <updated>2025-12-20T13:54:46.314Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一直以来都没有明确xx世纪xx年代到底指的是个什么时间范围。比如20世纪到底指的是二零几几年还是一九几几年呢？这里自己学习了一下，特此记录。正确答案应该是一九几几年。&lt;/p&gt;
+&lt;p&gt;因为，“世纪” 是从 1 开始计数的， &lt;strong&gt;1 个世纪 = 100</summary>
+        
+      
+    
+    
+    
+    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Mysql函数分类</title>
+    <link href="https://chen-shang.github.io/2025/12/19/shu-ju-ku/mysql-han-shu-fen-lei/"/>
+    <id>https://chen-shang.github.io/2025/12/19/shu-ju-ku/mysql-han-shu-fen-lei/</id>
+    <published>2025-12-19T02:31:02.000Z</published>
+    <updated>2025-12-21T13:29:08.052Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;函数大类&lt;/th&gt;
+&lt;th&gt;核心特性&lt;/th&gt;
+&lt;th&gt;典型函数&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;窗口函数&lt;/td&gt;
+&lt;td&gt;基于指定</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>mysql安全等于操作符&lt;=&gt;</title>
+    <link href="https://chen-shang.github.io/2025/12/07/shu-ju-ku/mysql-an-quan-deng-yu-cao-zuo-fu/"/>
+    <id>https://chen-shang.github.io/2025/12/07/shu-ju-ku/mysql-an-quan-deng-yu-cao-zuo-fu/</id>
+    <published>2025-12-07T01:49:40.000Z</published>
+    <updated>2025-12-20T13:54:46.314Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在 MySQL 中，&lt;code&gt;&amp;lt;=&amp;gt;&lt;/code&gt; 被称为  &lt;strong&gt;安全等于操作符&lt;/strong&gt; ，它的核心作用是 &lt;strong&gt;在判断两个值是否相等时，能够安全处理 &lt;code&gt;NULL&lt;/code&gt; 值&lt;/strong&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="数据库" scheme="https://chen-shang.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Sync ALL Maven Projects vs Reload AlL Maven Projects</title>
     <link href="https://chen-shang.github.io/2025/11/22/gong-ju-kong/intellij-idea/sync-all-maven-projects-vs-reload-all-maven-projects/"/>
     <id>https://chen-shang.github.io/2025/11/22/gong-ju-kong/intellij-idea/sync-all-maven-projects-vs-reload-all-maven-projects/</id>
     <published>2025-11-21T16:29:47.000Z</published>
-    <updated>2025-11-21T16:30:32.944Z</updated>
+    <updated>2025-11-21T16:31:32.380Z</updated>
     
     
       
@@ -33,6 +283,10 @@
       
     
     
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Intellij IDEA" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Intellij-IDEA/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -167,9 +421,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
     <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
   </entry>
   
@@ -328,269 +582,6 @@
     <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
     
     <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>无法打开jdk.app，因为Apple无法检查其是否包含恶意软件</title>
-    <link href="https://chen-shang.github.io/2025/07/26/za-qi-za-ba/wu-fa-da-kai-jdk-app-yin-wei-apple-wu-fa-jian-cha-qi-shi-fou-bao-han-e-yi-ruan-jian/"/>
-    <id>https://chen-shang.github.io/2025/07/26/za-qi-za-ba/wu-fa-da-kai-jdk-app-yin-wei-apple-wu-fa-jian-cha-qi-shi-fou-bao-han-e-yi-ruan-jian/</id>
-    <published>2025-07-25T16:07:14.000Z</published>
-    <updated>2025-07-25T16:11:43.417Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;sudo xattr -r -d com.apple.quarantine</summary>
-        
-      
-    
-    
-    
-    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="杂七杂八" scheme="https://chen-shang.github.io/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>年折现率</title>
-    <link href="https://chen-shang.github.io/2025/07/24/si-kao/jing-ji-xue/nian-zhe-xian-lu/"/>
-    <id>https://chen-shang.github.io/2025/07/24/si-kao/jing-ji-xue/nian-zhe-xian-lu/</id>
-    <published>2025-07-24T15:13:11.000Z</published>
-    <updated>2025-07-25T16:11:23.407Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;“年折现率”是财务管理和投资决策中的核心概念，用于衡量资金的时间价值，将未来的现金流折算为当前价值（现值）。以下从定义、作用、计算逻辑等方面详细解释：&lt;/p&gt;
-&lt;h3 id=&quot;一-核心定义&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    
-    <category term="经济学" scheme="https://chen-shang.github.io/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sk-learn学习</title>
-    <link href="https://chen-shang.github.io/2025/07/20/ai/sk-learn-xue-xi/"/>
-    <id>https://chen-shang.github.io/2025/07/20/ai/sk-learn-xue-xi/</id>
-    <published>2025-07-19T21:06:42.000Z</published>
-    <updated>2025-07-25T16:12:12.912Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;System:
-    python: 3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 17.0.0</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pip</title>
-    <link href="https://chen-shang.github.io/2025/07/20/python/pip/"/>
-    <id>https://chen-shang.github.io/2025/07/20/python/pip/</id>
-    <published>2025-07-19T21:01:53.000Z</published>
-    <updated>2025-07-25T16:13:39.646Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;code&gt;pip freeze&lt;/code&gt; 是 Python 包管理工具 &lt;code&gt;pip&lt;/code&gt; 提供的一个核心命令，用于&lt;strong&gt;导出当前环境中已安装的第三方库及其精确版本信息&lt;/strong&gt;，输出内容通常被保存到</summary>
-        
-      
-    
-    
-    
-    <category term="Python" scheme="https://chen-shang.github.io/categories/Python/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Python" scheme="https://chen-shang.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python虚拟环境</title>
-    <link href="https://chen-shang.github.io/2025/07/20/python/python-xu-ni-huan-jing/"/>
-    <id>https://chen-shang.github.io/2025/07/20/python/python-xu-ni-huan-jing/</id>
-    <published>2025-07-19T20:50:19.000Z</published>
-    <updated>2025-07-25T16:13:12.756Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;code&gt;python venv&lt;/code&gt; 是 Python 3.3 及以上版本内置的&lt;strong&gt;虚拟环境工具&lt;/strong&gt;，用于创建独立的 Python 运行环境，避免不同项目之间的依赖冲突。它是 Python</summary>
-        
-      
-    
-    
-    
-    <category term="Python" scheme="https://chen-shang.github.io/categories/Python/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="Python" scheme="https://chen-shang.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pip、pip3、pipx 和 conda</title>
-    <link href="https://chen-shang.github.io/2025/07/19/python/pip-he-conda/"/>
-    <id>https://chen-shang.github.io/2025/07/19/python/pip-he-conda/</id>
-    <published>2025-07-19T09:57:57.000Z</published>
-    <updated>2025-07-25T16:14:34.891Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;pip 和 conda 是 Python 生态中最常用的包管理工具，但两者在设计目标、适用场景和功能上有显著区别。以下是详细对比和使用建议：&lt;br&gt;
-一、核心区别&lt;br&gt;
-维度	pip	conda&lt;br&gt;
-本质	Python 官方推荐的包管理器，仅管理 Python</summary>
-        
-      
-    
-    
-    
-    <category term="Python" scheme="https://chen-shang.github.io/categories/Python/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
-    
-    <category term="AI问答" scheme="https://chen-shang.github.io/tags/AI%E9%97%AE%E7%AD%94/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AI学习</title>
-    <link href="https://chen-shang.github.io/2025/07/12/ai/ai-xue-xi/"/>
-    <id>https://chen-shang.github.io/2025/07/12/ai/ai-xue-xi/</id>
-    <published>2025-07-11T19:17:48.000Z</published>
-    <updated>2025-07-25T16:15:13.940Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Embedding 模型&lt;br&gt;
-Rerank 模型&lt;br&gt;
-语音转文本模型&lt;br&gt;
-文本转语音模型&lt;/p&gt;
-&lt;p&gt;128k context window 是指大语言模型的上下文窗口大小为 128,000</summary>
-        
-      
-    
-    
-    
-    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>卸载creative cloud报错无法卸载解决方法</title>
-    <link href="https://chen-shang.github.io/2025/06/21/gong-ju-kong/phtopshop/xie-zai-creative-cloud-bao-cuo-wu-fa-xie-zai-jie-jue-fang-fa/"/>
-    <id>https://chen-shang.github.io/2025/06/21/gong-ju-kong/phtopshop/xie-zai-creative-cloud-bao-cuo-wu-fa-xie-zai-jie-jue-fang-fa/</id>
-    <published>2025-06-21T05:42:41.000Z</published>
-    <updated>2025-07-07T04:02:24.932Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;参考官网&lt;/p&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Phtopshop" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Phtopshop/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Phtopshop" scheme="https://chen-shang.github.io/tags/Phtopshop/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>必须先更改系统设置，然后才能运行 Microsoft AutoUpdate.</title>
-    <link href="https://chen-shang.github.io/2025/06/09/za-qi-za-ba/bi-xu-xian-geng-gai-xi-tong-she-zhi-ran-hou-cai-neng-yun-xing-microsoft-autoupdate/"/>
-    <id>https://chen-shang.github.io/2025/06/09/za-qi-za-ba/bi-xu-xian-geng-gai-xi-tong-she-zhi-ran-hou-cai-neng-yun-xing-microsoft-autoupdate/</id>
-    <published>2025-06-09T03:34:33.000Z</published>
-    <updated>2025-07-07T04:17:08.800Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="杂七杂八" scheme="https://chen-shang.github.io/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
     
   </entry>
   

@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="AI学习, IT,技术,总结">
-    <meta name="description" content="常见名词，基础知识">
+    <meta name="keywords" content="什么样的问题可以用机器学习技术解决, IT,技术,总结">
+    <meta name="description" content="适定学习问题？机器学习的本质，就是通过经验提升任务性能的过程。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>AI学习 | 涓涓细流</title>
+    <title>什么样的问题可以用机器学习技术解决 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -248,7 +248,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">AI学习</h1>
+                    <h1 class="description center-align post-title">什么样的问题可以用机器学习技术解决</h1>
                 </div>
             </div>
         </div>
@@ -274,10 +274,6 @@
                                 <span class="chip bg-color">原创</span>
                             </a>
                         
-                            <a href="/tags/AI/">
-                                <span class="chip bg-color">AI</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -290,6 +286,10 @@
                                 AI
                             </a>
                         
+                            <a href="/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                机器学习
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -299,28 +299,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-07-12
+                    2025-12-20
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-07-26
+                    2025-12-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    316
+                    612
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -343,14 +343,55 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Embedding 模型<br>
-Rerank 模型<br>
-语音转文本模型<br>
-文本转语音模型</p>
-<p>128k context window 是指大语言模型的上下文窗口大小为 128,000 个令牌（token）。它是衡量模型长文本处理能力的重要指标。以下是具体介绍：</p>
-<p>含义：上下文窗口相当于模型的工作记忆，决定了模型在一次处理中能同时 “看到” 或 “记住” 的最大文本量。例如，GPT-4 Turbo、Llama 3.1 等模型就具备 128k 的上下文窗口，意味着它们可以处理最长达 128,000 个 token 的文本输入，能更好地处理长文档分析、多轮对话等任务。<br>
-作用：较大的上下文窗口使模型能够考虑更多的前文信息，从而生成更连贯、准确的回答，减少因遗忘前文导致的回答偏差。例如在处理长篇小说分析时，128k 的上下文窗口能让模型参考更多章节内容，给出更全面的分析。<br>
-影响：虽然增加上下文窗口大小有诸多好处，但也会带来计算资源需求的增加，导致成本上升，同时可能增加模型受对抗性攻击的风险。</p>
+                <p>能够用机器学习机技术解决的问题称之为机器学习的"适定问题"。这个词我也是第一次听说，我理解适定就是适合的意思，也就是说机器学习适合什么样的问题，或者说什么样的问题能用机器学习解决。也就是在给机器学习下定义，而且跟解释什么是机器学习不用，这里用一个明确的范围来定义。</p>
+<h1 id="well-posed-learning-problem"><a class="markdownIt-Anchor" href="#well-posed-learning-problem"></a> Well-posed Learning Problem</h1>
+<p>原文是：</p>
+<blockquote>
+<p>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</p>
+</blockquote>
+<p>译为 <strong>适定学习问题</strong> ，是机器学习领域的核心定义。这个概念由 Tom Mitchell 在经典教材《Machine Learning》中提出，奠定了机器学习的理论框架 —— <strong>机器学习的本质，就是通过经验提升任务性能的过程</strong> 。</p>
+<p><strong>通过经验提升任务性能的过程</strong> 。拆解为</p>
+<table>
+<thead>
+<tr>
+<th>要素</th>
+<th>英文</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任务</td>
+<td>T (Task)</td>
+<td>程序需要完成的具体目标</td>
+<td>图像分类、房价预测、语音识别</td>
+</tr>
+<tr>
+<td>性能指标</td>
+<td>P (Performance Measure)</td>
+<td>衡量任务完成好坏的标准</td>
+<td>分类准确率、预测误差的均方根</td>
+</tr>
+<tr>
+<td>经验</td>
+<td>E (Experience)</td>
+<td>程序用于学习的数据或交互信息</td>
+<td>标注好的图像数据集、用户的历史点击记录</td>
+</tr>
+</tbody>
+</table>
+<p>任务：就是你要干嘛</p>
+<p>经验：就是你从哪儿知道怎么干</p>
+<p>指标：就是你怎么知道你干的对不对或者好不好。</p>
+<p>这个定义明确了 <strong>什么样的问题可以用机器学习解决</strong> ：只有同时具备 T、P、E 三个要素，且性能能随经验提升的问题，才是 “适定” 的机器学习问题。</p>
+<p>比如 “用历史销售数据预测未来销量” 就是典型的适定问题，而 “生成一首无规则的诗” 若没有明确的性能指标 P，则不属于这个范畴。</p>
+<p>反例：为什么 “写一首诗” 不算典型的适定学习问题？</p>
+<ul>
+<li>任务 T：写一首诗 → 看似明确，但 “好诗” 的标准太主观</li>
+<li>性能指标 P：没法量化（有人觉得押韵就是好，有人觉得意境才重要，没有统一的 P）</li>
+<li>经验 E：就算给一堆诗当素材，程序写出来的诗也没法用一个指标判断 “变好” 了</li>
+</ul>
 
                 
             </div>
@@ -367,10 +408,6 @@ Rerank 模型<br>
                             
                                 <a href="/tags/%E5%8E%9F%E5%88%9B/">
                                     <span class="chip bg-color">原创</span>
-                                </a>
-                            
-                                <a href="/tags/AI/">
-                                    <span class="chip bg-color">AI</span>
                                 </a>
                             
                         </div>
@@ -720,31 +757,35 @@ Rerank 模型<br>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/07/19/python/pip-he-conda/">
+                <a href="/2025/12/20/ai/ji-qi-xue-xi/mo-xing-he-suan-fa-shi-yi-hui-shi-me/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="pip、pip3、pipx 和 conda">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="模型和算法是一回事么">
                         
-                        <span class="card-title">pip、pip3、pipx 和 conda</span>
+                        <span class="card-title">模型和算法是一回事么</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            生态中最常用的包管理工具
+                            一开始我总以为机器学习里的 “模型” 和 “算法” 是一回事 —— 不都是一个函数吗？
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-07-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-12-20
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            <a href="/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    机器学习
                                 </a>
                             
                             
@@ -758,12 +799,8 @@ Rerank 模型<br>
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/AI/">
-                        <span class="chip bg-color">AI</span>
-                    </a>
-                    
-                    <a href="/tags/AI%E9%97%AE%E7%AD%94/">
-                        <span class="chip bg-color">AI问答</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -777,35 +814,31 @@ Rerank 模型<br>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/06/21/gong-ju-kong/phtopshop/xie-zai-creative-cloud-bao-cuo-wu-fa-xie-zai-jie-jue-fang-fa/">
+                <a href="/2025/12/20/za-qi-za-ba/shi-ji-nian-dai-de-ji-shu-gui-ze/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="卸载creative cloud报错无法卸载解决方法">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="世纪、年代的计数规则">
                         
-                        <span class="card-title">卸载creative cloud报错无法卸载解决方法</span>
+                        <span class="card-title">世纪、年代的计数规则</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            卸载creative cloud报错无法卸载解决方法
+                            一直以来都没有明确xx世纪xx年代到底指的是个什么时间范围。比如20世纪到底指的是二零几几年还是一九几几年呢？
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-06-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-20
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/" class="post-category">
-                                    工具控
-                                </a>
-                            
-                            <a href="/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Phtopshop/" class="post-category">
-                                    Phtopshop
+                            <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" class="post-category">
+                                    杂七杂八
                                 </a>
                             
                             
@@ -819,12 +852,8 @@ Rerank 模型<br>
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
-                        <span class="chip bg-color">工具控</span>
-                    </a>
-                    
-                    <a href="/tags/Phtopshop/">
-                        <span class="chip bg-color">Phtopshop</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -922,7 +951,7 @@ Rerank 模型<br>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">246.5k</span>
+                        class="white-color">253.6k</span>
             
             
             

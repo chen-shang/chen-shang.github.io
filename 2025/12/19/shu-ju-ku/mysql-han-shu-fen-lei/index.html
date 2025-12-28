@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="sk-learn学习, IT,技术,总结">
-    <meta name="description" content="sk-learn学习">
+    <meta name="keywords" content="Mysql函数分类, IT,技术,总结">
+    <meta name="description" content="窗口函数、聚合函数、单行函数">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>sk-learn学习 | 涓涓细流</title>
+    <title>Mysql函数分类 | 涓涓细流</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">sk-learn学习</h1>
+                    <h1 class="description center-align post-title">Mysql函数分类</h1>
                 </div>
             </div>
         </div>
@@ -286,8 +286,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/AI/" class="post-category">
-                                AI
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
                             </a>
                         
                     </div>
@@ -299,28 +299,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-07-20
+                    2025-12-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-07-26
+                    2025-12-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    73
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -343,72 +343,32 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre class="line-numbers language-none"><code class="language-none">System:
-    python: 3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 17.0.0 (clang-1700.0.13.3)]
-executable: /Users/chenshang/Work/sklearn-env/bin/python
-   machine: macOS-15.5-arm64-arm-64bit-Mach-O
-
-Python dependencies:
-      sklearn: 1.7.1
-          pip: 25.1.1
-   setuptools: None
-        numpy: 2.3.1
-        scipy: 1.16.0
-       Cython: None
-       pandas: None
-   matplotlib: None
-       joblib: 1.5.1
-threadpoolctl: 3.6.0
-
-Built with OpenMP: True
-
-threadpoolctl info:
-       user_api: openmp
-   internal_api: openmp
-    num_threads: 11
-         prefix: libomp
-       filepath: /Users/chenshang/Work/sklearn-env/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib
-        version: None<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>怎么解读上面的</p>
-<p>上面的输出是<code>sklearn.show_versions()</code>函数返回的详细环境信息，主要用于排查scikit-learn（简称sklearn）运行时的依赖问题、系统兼容性等，可从以下几个部分解读：</p>
-<h3 id="一-system系统与python基础信息"><a class="markdownIt-Anchor" href="#一-system系统与python基础信息"></a> 一、System（系统与Python基础信息）</h3>
-<p>这部分展示当前运行环境的基础配置，核心信息包括：</p>
-<ul>
-<li><strong>python</strong>: 3.13.5（主版本号），括号内是编译信息（Clang编译器版本、编译时间等），说明当前使用的Python版本较新（截至2025年）。</li>
-<li><strong>executable</strong>: Python解释器的具体路径（<code>/Users/chenshang/Work/sklearn-env/bin/python</code>），从路径中的<code>sklearn-env</code>可推测这是一个专门为sklearn创建的虚拟环境（符合最佳实践，避免依赖冲突）。</li>
-<li><strong>machine</strong>: 系统信息（<code>macOS-15.5-arm64-arm-64bit-Mach-O</code>），说明运行在苹果的macOS系统（版本15.5），且是基于ARM架构的64位芯片（如M系列芯片）。</li>
-</ul>
-<h3 id="二-python-dependenciespython依赖库版本"><a class="markdownIt-Anchor" href="#二-python-dependenciespython依赖库版本"></a> 二、Python dependencies（Python依赖库版本）</h3>
-<p>这部分列出了与sklearn相关的核心依赖库版本，是排查兼容性问题的关键：</p>
-<ul>
-<li><strong>sklearn: 1.7.1</strong>: scikit-learn自身的版本，1.7.x属于较新的稳定版。</li>
-<li><strong>pip: 25.1.1</strong>: 包管理工具pip的版本，用于安装/管理库。</li>
-<li><strong>setuptools: None</strong>: 未安装setuptools（或未在当前环境中），但通常不影响sklearn基础功能。</li>
-<li><strong>numpy: 2.3.1</strong>: 科学计算基础库，sklearn的核心依赖（很多算法依赖numpy的数组运算），版本2.3.x是较新的稳定版。</li>
-<li><strong>scipy: 1.16.0</strong>: 科学计算扩展库（如线性代数、统计函数），sklearn的高级算法（如SVM、聚类）依赖它。</li>
-<li><strong>Cython: None</strong>: 未安装Cython（用于将Python代码编译为C扩展的工具），但sklearn已预编译，因此不影响使用（仅开发sklearn时需要）。</li>
-<li><strong>pandas: None / matplotlib: None</strong>: 未安装pandas（数据处理）和matplotlib（可视化），说明当前环境可能仅用于sklearn的算法训练，不涉及数据清洗或结果可视化。</li>
-<li><strong>joblib: 1.5.1</strong>: 用于并行计算和模型序列化（如<code>joblib.dump</code>保存模型），sklearn的并行化功能依赖它。</li>
-<li><strong>threadpoolctl: 3.6.0</strong>: 用于控制多线程（如OpenMP的线程数），sklearn的许多算法（如随机森林、线性回归）通过它实现并行加速。</li>
-</ul>
-<h3 id="三-built-with-openmp-true"><a class="markdownIt-Anchor" href="#三-built-with-openmp-true"></a> 三、Built with OpenMP: True</h3>
-<p>OpenMP是一种多线程并行编程技术，sklearn的很多算法（如决策树、聚类）会利用它加速计算。这里显示<code>True</code>，说明当前安装的sklearn是支持OpenMP的版本，可利用多核CPU提升效率。</p>
-<h3 id="四-threadpoolctl-info线程控制信息"><a class="markdownIt-Anchor" href="#四-threadpoolctl-info线程控制信息"></a> 四、threadpoolctl info（线程控制信息）</h3>
-<p>这部分具体说明OpenMP的配置：</p>
-<ul>
-<li><strong>user_api: openmp / internal_api: openmp</strong>: 确认使用OpenMP作为多线程接口。</li>
-<li><strong>num_threads: 11</strong>: 当前环境中，sklearn的并行算法会使用11个线程（通常与CPU核心数相关，M系列芯片可能有11个可用核心）。</li>
-<li><strong>filepath: …libomp.dylib</strong>: OpenMP动态链接库的路径，说明依赖正常加载。</li>
-<li><strong>version: None</strong>: 未显示具体版本，但不影响功能。</li>
-</ul>
-<h3 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h3>
-<p>这份信息表明：</p>
-<ol>
-<li>当前环境是一个干净的虚拟环境，专门用于运行scikit-learn 1.7.1，依赖库（numpy、scipy等）版本较新且兼容。</li>
-<li>系统为苹果M系列芯片的macOS，支持多线程加速（OpenMP启用），适合中等规模的机器学习任务。</li>
-<li>未安装pandas、matplotlib等工具，可能仅用于模型训练，而非完整的数据科学工作流。</li>
-</ol>
-<p>如果后续出现运行错误（如“缺少numpy”“无法并行计算”），可对照这份信息检查依赖是否缺失或版本不兼容。</p>
+                <table>
+<thead>
+<tr>
+<th>函数大类</th>
+<th>核心特性</th>
+<th>典型函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>窗口函数</td>
+<td>基于指定 “窗口”（行范围）计算，保留全行</td>
+<td><code>SUM() OVER()</code>、<code>ROW_NUMBER()</code>、<code>RANK()</code></td>
+</tr>
+<tr>
+<td>聚合函数</td>
+<td>基于分组计算，折叠结果集行数</td>
+<td><code>SUM()</code>、<code>COUNT()</code></td>
+</tr>
+<tr>
+<td>单行函数</td>
+<td>逐行独立计算，一行输出一行</td>
+<td><code>CONCAT()</code>、<code>ROUND()</code>、<code>IF()</code></td>
+</tr>
+</tbody>
+</table>
 
                 
             </div>
@@ -778,35 +738,31 @@ threadpoolctl info:
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/07/24/si-kao/jing-ji-xue/nian-zhe-xian-lu/">
+                <a href="/2025/12/20/za-qi-za-ba/shi-ji-nian-dai-de-ji-shu-gui-ze/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="年折现率">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="世纪、年代的计数规则">
                         
-                        <span class="card-title">年折现率</span>
+                        <span class="card-title">世纪、年代的计数规则</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            “年折现率”是财务管理和投资决策中的核心概念，用于衡量资金的时间价值
+                            一直以来都没有明确xx世纪xx年代到底指的是个什么时间范围。比如20世纪到底指的是二零几几年还是一九几几年呢？
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2025-07-24
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-12-20
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
-                                    思考
-                                </a>
-                            
-                            <a href="/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="post-category">
-                                    经济学
+                            <a href="/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/" class="post-category">
+                                    杂七杂八
                                 </a>
                             
                             
@@ -820,12 +776,8 @@ threadpoolctl info:
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/%E6%80%9D%E8%80%83/">
-                        <span class="chip bg-color">思考</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6/">
-                        <span class="chip bg-color">经济学</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -839,31 +791,31 @@ threadpoolctl info:
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/07/20/python/pip/">
+                <a href="/2025/12/07/shu-ju-ku/mysql-an-quan-deng-yu-cao-zuo-fu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="pip">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="mysql安全等于操作符&lt;=&gt;">
                         
-                        <span class="card-title">pip</span>
+                        <span class="card-title">mysql安全等于操作符&lt;=&gt;</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            是 Python 包管理工具
+                            在判断两个值是否相等时，能够安全处理 `NULL` 值
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-07-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Python/" class="post-category">
-                                    Python
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -877,8 +829,8 @@ threadpoolctl info:
                         <span class="chip bg-color">原创</span>
                     </a>
                     
-                    <a href="/tags/Python/">
-                        <span class="chip bg-color">Python</span>
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
                     </a>
                     
                 </div>
@@ -976,7 +928,7 @@ threadpoolctl info:
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">246.5k</span>
+                        class="white-color">253.6k</span>
             
             
             
