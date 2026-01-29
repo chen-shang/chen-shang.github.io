@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2025-12-28T18:48:14.658Z</updated>
+  <updated>2026-01-29T06:55:25.454Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,68 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>金融行业从业考试</title>
+    <link href="https://chen-shang.github.io/2026/01/29/si-kao/jing-ji-xue/jin-rong-xing-ye-cong-ye-kao-shi/"/>
+    <id>https://chen-shang.github.io/2026/01/29/si-kao/jing-ji-xue/jin-rong-xing-ye-cong-ye-kao-shi/</id>
+    <published>2026-01-29T06:52:21.000Z</published>
+    <updated>2026-01-29T06:55:25.454Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;证券从业、银行从业、基金从业、期货从业是四个独立的金融行业从业考试&lt;/p&gt;
+&lt;h3 id=&quot;一-核心区别速览表&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-核心区别速览表&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习算法无法保证百分百正确</title>
+    <link href="https://chen-shang.github.io/2025/12/29/ai/ji-qi-xue-xi/ji-qi-xue-xi-suan-fa-wu-fa-bao-zheng-bai-fen-bai-zheng-que/"/>
+    <id>https://chen-shang.github.io/2025/12/29/ai/ji-qi-xue-xi/ji-qi-xue-xi-suan-fa-wu-fa-bao-zheng-bai-fen-bai-zheng-que/</id>
+    <published>2025-12-28T19:14:11.000Z</published>
+    <updated>2025-12-28T19:17:18.387Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在机器学习领域， &lt;strong&gt;没有任何算法能保证 100% 不出错&lt;/strong&gt; ，这是由机器学习的 “数据驱动” 本质决定的 —— 模型学习的是数据中的统计规律，而非绝对的因果规律，你担心的 k-NN</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>git怎么设置本地master分支禁止push到远程仓库</title>
     <link href="https://chen-shang.github.io/2025/12/27/gong-ju-kong/git/git-zen-me-she-zhi-ben-di-master-fen-zhi-jin-zhi-push-dao-yuan-cheng-cang-ku/"/>
     <id>https://chen-shang.github.io/2025/12/27/gong-ju-kong/git/git-zen-me-she-zhi-ben-di-master-fen-zhi-jin-zhi-push-dao-yuan-cheng-cang-ku/</id>
     <published>2025-12-27T11:06:01.000Z</published>
-    <updated>2025-12-28T18:48:14.658Z</updated>
+    <updated>2025-12-28T18:56:52.282Z</updated>
     
     
       
@@ -34,6 +91,10 @@
       
     
     
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Git" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -62,11 +123,43 @@
   </entry>
   
   <entry>
+    <title>逼近论</title>
+    <link href="https://chen-shang.github.io/2025/12/21/ai/ji-qi-xue-xi/bi-jin-lun/"/>
+    <id>https://chen-shang.github.io/2025/12/21/ai/ji-qi-xue-xi/bi-jin-lun/</id>
+    <published>2025-12-20T16:26:11.000Z</published>
+    <updated>2025-12-28T19:17:25.805Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一、 逼近论（Approximation Theory）&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;逼近论&lt;/strong&gt;是数学的一个分支，核心任务是 &lt;strong&gt;用 “简单函数” 去近似替代 “复杂函数”&lt;/strong&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/categories/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>概率论vs统计学</title>
     <link href="https://chen-shang.github.io/2025/12/21/ai/ji-qi-xue-xi/gai-lu-lun-vs-tong-ji-xue/"/>
     <id>https://chen-shang.github.io/2025/12/21/ai/ji-qi-xue-xi/gai-lu-lun-vs-tong-ji-xue/</id>
     <published>2025-12-20T16:21:28.000Z</published>
-    <updated>2025-12-28T18:56:32.068Z</updated>
+    <updated>2025-12-28T19:17:29.697Z</updated>
     
     
       
@@ -87,6 +180,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
   </entry>
   
   <entry>
@@ -94,7 +191,7 @@
     <link href="https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/ji-qi-xue-xi-fan-shi/"/>
     <id>https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/ji-qi-xue-xi-fan-shi/</id>
     <published>2025-12-20T14:42:53.000Z</published>
-    <updated>2025-12-28T18:56:32.068Z</updated>
+    <updated>2025-12-28T19:17:51.036Z</updated>
     
     
       
@@ -114,6 +211,10 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
   </entry>
   
   <entry>
@@ -121,7 +222,7 @@
     <link href="https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/mo-xing-he-suan-fa-shi-yi-hui-shi-me/"/>
     <id>https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/mo-xing-he-suan-fa-shi-yi-hui-shi-me/</id>
     <published>2025-12-20T14:21:57.000Z</published>
-    <updated>2025-12-28T18:56:32.068Z</updated>
+    <updated>2025-12-28T19:17:43.941Z</updated>
     
     
       
@@ -141,7 +242,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -150,7 +253,7 @@
     <link href="https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/shi-me-yang-de-wen-ti-ke-yi-yong-ji-qi-xue-xi-ji-zhu-jie-jue/"/>
     <id>https://chen-shang.github.io/2025/12/20/ai/ji-qi-xue-xi/shi-me-yang-de-wen-ti-ke-yi-yong-ji-qi-xue-xi-ji-zhu-jie-jue/</id>
     <published>2025-12-20T14:04:53.000Z</published>
-    <updated>2025-12-28T18:56:32.068Z</updated>
+    <updated>2025-12-28T19:17:51.036Z</updated>
     
     
       
@@ -170,6 +273,10 @@
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+    <category term="机器学习" scheme="https://chen-shang.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -421,9 +528,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
-    
     <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    
+    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
     
   </entry>
   
@@ -472,101 +579,6 @@
         
     <summary type="html">&lt;ol&gt;
 &lt;li&gt;搜索关于搜索，mac上自带的有spotlight (ctr/cmd + 空格)可以实现全局搜索，但有时候没有正确的工作，而且如果我们想精确一个范围呢？输入 mdfind + 文件名， 实现全局搜索输入 mdfind -onlyin 文件大的路径</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mac 登陆 去掉 其他用户</title>
-    <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-deng-lu-qu-diao-qi-ta-yong-hu/"/>
-    <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-deng-lu-qu-diao-qi-ta-yong-hu/</id>
-    <published>2025-08-03T13:47:43.000Z</published>
-    <updated>2025-08-03T13:50:41.416Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;打开 终端 复制粘贴回车&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;sudo defaults write</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>开启Mac充电提示音</title>
-    <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/kai-qi-mac-chong-dian-ti-shi-yin/"/>
-    <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/kai-qi-mac-chong-dian-ti-shi-yin/</id>
-    <published>2025-08-03T13:46:37.000Z</published>
-    <updated>2025-08-27T14:58:52.188Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;MBP插电的时候，和苹果手机声音效果一样，“叮” 还是“咚”的一声。&lt;br&gt;
-开启：&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot; data-language=&quot;bash&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>调整Launchpad应用图标大小</title>
-    <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/diao-zheng-launchpad-ying-yong-tu-biao-da-xiao/"/>
-    <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/diao-zheng-launchpad-ying-yong-tu-biao-da-xiao/</id>
-    <published>2025-08-03T13:43:51.000Z</published>
-    <updated>2025-08-27T14:58:27.170Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;觉得MacLaunchpad里面系统默认的应用程序图标太大，所以想让它变小，如果你也有这样的想法，不妨看看这个用终端调整Launchpad应用图标大小的技巧：Launchpad中的应用程序图标默认5行7列显示，如果要改变图标大小，就得改变其显示的行列数。&lt;br&gt;
-￼&lt;br&gt;</summary>
         
       
     
