@@ -1,0 +1,1475 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="模型的指标, IT,技术,总结">
+    <meta name="description" content="ollama show 命令全解析">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>模型的指标 | 涓涓细流</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">涓涓细流</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+<!--
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+-->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">涓涓细流</div>
+        <div class="logo-desc">
+            
+            无限可能
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">模型的指标</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="container content">
+
+    
+    <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                <span class="chip bg-color">原创</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                <span class="chip bg-color">未完待续</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-01-31
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-01-31
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    10 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="ollama-show-命令全解析"><a class="markdownIt-Anchor" href="#ollama-show-命令全解析"></a> ollama <code>show</code> 命令全解析</h1>
+<p><code>ollama show</code> 是 Ollama 中用于<strong>查看模型元数据、配置信息、模板规则</strong>的核心命令，能直观获取模型的架构、能力、推理参数、Prompt 模板等关键信息，是调试模型、适配开发的必备命令，以下从<strong>命令使用方法</strong>和<strong>输出内容逐段详解</strong>两部分讲透，结合实际示例，零基础也能看懂。</p>
+<h2 id="一-ollama-show-核心使用方法"><a class="markdownIt-Anchor" href="#一-ollama-show-核心使用方法"></a> 一、<code>ollama show</code> 核心使用方法</h2>
+<h3 id="1-基础语法"><a class="markdownIt-Anchor" href="#1-基础语法"></a> 1. 基础语法</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ollama show <span class="token punctuation">[</span>模型名<span class="token punctuation">]</span> <span class="token punctuation">[</span>可选参数<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><strong>模型名</strong>：本地已拉取的模型（如 <code>qwen2.5-coder:7b</code>、<code>deepseek-r1:8b</code>、<code>llama3.1:8b-instruct</code>）；</li>
+<li><strong>可选参数</strong>：按需筛选输出内容，避免信息冗余，开发/调试常用。</li>
+</ul>
+<h3 id="2-常用参数高频实用"><a class="markdownIt-Anchor" href="#2-常用参数高频实用"></a> 2. 常用参数（高频实用）</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>示例</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无参数</td>
+<td>查看模型<strong>完整元数据</strong>（默认）</td>
+<td><code>ollama show qwen2.5-coder:7b</code></td>
+<td>全面了解模型配置</td>
+</tr>
+<tr>
+<td><code>--modelfile</code></td>
+<td>查看模型的<strong>Modelfile 构建配置</strong></td>
+<td><code>ollama show deepseek-r1:8b --modelfile</code></td>
+<td>自定义/修改模型配置时参考</td>
+</tr>
+<tr>
+<td><code>--parameters</code></td>
+<td>仅查看模型<strong>推理参数</strong>（stop/temp 等）</td>
+<td><code>ollama show llama3.1:8b-instruct --parameters</code></td>
+<td>调试推理参数、覆盖默认值</td>
+</tr>
+<tr>
+<td><code>--template</code></td>
+<td>仅查看模型的<strong>Prompt 模板</strong></td>
+<td><code>ollama show qwen2.5-coder:7b --template</code></td>
+<td>开发时适配模型的Prompt格式</td>
+</tr>
+<tr>
+<td><code>--system</code></td>
+<td>仅查看模型的<strong>默认系统提示词</strong></td>
+<td><code>ollama show qwen2.5-coder:7b --system</code></td>
+<td>自定义系统提示、修改模型人设</td>
+</tr>
+<tr>
+<td><code>--license</code></td>
+<td>仅查看模型的<strong>开源协议</strong></td>
+<td><code>ollama show deepseek-r1:8b --license</code></td>
+<td>确认商用/非商用权限</td>
+</tr>
+<tr>
+<td><code>-f/--format</code></td>
+<td>指定输出格式（<code>json</code>/<code>yaml</code>）</td>
+<td><code>ollama show qwen2.5-coder:7b -f json</code></td>
+<td>程序/脚本解析模型信息</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-实操示例"><a class="markdownIt-Anchor" href="#3-实操示例"></a> 3. 实操示例</h3>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 查看qwen2.5-coder:7b的完整信息（最常用）</span>
+ollama show qwen2.5-coder:7b
+
+<span class="token comment"># 仅查看deepseek-r1:8b的Prompt模板（开发对接必备）</span>
+ollama show deepseek-r1:8b <span class="token parameter variable">--template</span>
+
+<span class="token comment"># 以JSON格式输出llama3.1的参数，方便脚本解析</span>
+ollama show llama3.1:8b-instruct <span class="token parameter variable">--parameters</span> <span class="token parameter variable">-f</span> json<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-前置条件"><a class="markdownIt-Anchor" href="#4-前置条件"></a> 4. 前置条件</h3>
+<p>执行前需<strong>本地已拉取对应模型</strong>，若未拉取，先执行 <code>ollama pull 模型名</code>（如 <code>ollama pull qwen2.5-coder:7b</code>），否则会提示「model not found」。</p>
+<h2 id="二-ollama-show-输出内容逐段详细讲解"><a class="markdownIt-Anchor" href="#二-ollama-show-输出内容逐段详细讲解"></a> 二、<code>ollama show</code> 输出内容<strong>逐段详细讲解</strong></h2>
+<p>以你之前的实际输出（<code>deepseek-r1:8b</code> 和 <code>qwen2.5-coder:7b</code>）为基础，结合通用模型的输出结构，<strong>按模块拆解</strong>，每个字段的含义、作用、实操价值都讲清，所有 Ollama 模型的输出都遵循此结构。</p>
+<h3 id="模块1model-模型底层硬件架构核心信息"><a class="markdownIt-Anchor" href="#模块1model-模型底层硬件架构核心信息"></a> 模块1：<code>Model</code> - 模型<strong>底层硬件/架构核心信息</strong></h3>
+<p>这是模型的<strong>基础属性</strong>，决定模型的运行要求、核心能力上限，是部署/选型的关键依据，示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">Model
+  architecture        qwen3
+  parameters          8.2B
+  context length      131072
+  embedding length    4096
+  quantization        Q4_K_M<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>实操价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>architecture</code></td>
+<td>模型底层训练架构（如 qwen2/qwen3/llama3/mistral）</td>
+<td>决定模型的<strong>Prompt模板、推理逻辑、生态兼容</strong>，不同架构的Prompt格式不通用，开发时需匹配；</td>
+</tr>
+<tr>
+<td><code>parameters</code></td>
+<td>模型参数量（如 7.6B/8.2B/70B）</td>
+<td>参数量≈模型理解/推理能力，越大能力越强，但对硬件（内存/显卡）要求越高；8B级适合本地部署，70B级需高端显卡/服务器；</td>
+</tr>
+<tr>
+<td><code>context length</code></td>
+<td>上下文窗口（单位：Token）</td>
+<td>模型能<strong>记住/处理的最大文本长度</strong>，1Token≈0.75个中文字；131072（128k）可处理整份文档，32768（32k）适合日常对话/代码，是超长文本处理的核心指标；</td>
+</tr>
+<tr>
+<td><code>embedding length</code></td>
+<td>文本嵌入向量长度</td>
+<td>仅影响<strong>文本嵌入/检索场景</strong>（如把文字转向量做相似度匹配），日常对话/工具调用无需关注；</td>
+</tr>
+<tr>
+<td><code>quantization</code></td>
+<td>模型量化级别（如 Q4_K_M/Q5_K_M/Q8_0）</td>
+<td>平衡<strong>模型性能</strong>和<strong>硬件占用</strong>的关键：<code>&lt;br&gt;</code>✅ Q4_K_M（最常用）：本地部署首选，占用内存小（8B级约4-5G内存），推理速度快，精度损失小；<code>&lt;br&gt;</code>✅ Q5_K_M：精度更高，占用略大；<code>&lt;br&gt;</code>✅ Q8_0：接近原生精度，适合服务器，本地不推荐；</td>
+</tr>
+</tbody>
+</table>
+<h3 id="模块2capabilities-模型原生支持的核心功能最关键"><a class="markdownIt-Anchor" href="#模块2capabilities-模型原生支持的核心功能最关键"></a> 模块2：<code>Capabilities</code> - 模型<strong>原生支持的核心功能</strong>（最关键）</h3>
+<p>Ollama 对模型的<strong>功能硬限制</strong>，<strong>没有标注的能力，强制调用会直接报错</strong>（如你之前遇到的 <code>deepseek-r1:8b</code> 无 <code>tools</code> 导致工具调用失败），示例：</p>
+<pre class="line-numbers language-none"><code class="language-none"># deepseek-r1:8b
+Capabilities
+  completion
+  thinking
+
+# qwen2.5-coder:7b
+Capabilities
+  completion
+  tools
+  insert<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>能力值</th>
+<th>含义</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>completion</code></td>
+<td>基础文本补全能力</td>
+<td>所有大模型都支持，实现对话、写文案、补代码、生成文本等基础功能，是核心基础能力；</td>
+</tr>
+<tr>
+<td><code>tools</code></td>
+<td>工具/函数调用能力</td>
+<td>模型能识别需求，按指定格式生成工具调用指令（如调用API、查数据库、执行代码），是对接 Agent、LangChain、New API 的<strong>必备能力</strong>；无此字段则绝对无法调用工具；</td>
+</tr>
+<tr>
+<td><code>thinking</code></td>
+<td>分步推理/思考能力</td>
+<td>模型能拆解复杂问题、分步计算/分析（如数学题、逻辑推理、复杂任务拆解），适合推理型场景；</td>
+</tr>
+<tr>
+<td><code>insert</code></td>
+<td>文本/代码插入能力</td>
+<td>模型能在<strong>已有文本/代码的中间位置</strong>生成内容（而非仅在末尾补全），是代码开发的核心能力（如在代码中间补逻辑、在文案中间加段落）；</td>
+</tr>
+<tr>
+<td><code>embeddings</code></td>
+<td>文本嵌入能力</td>
+<td>模型能将文字转换为向量，用于文本检索、相似度匹配、知识库问答等场景；</td>
+</tr>
+</tbody>
+</table>
+<h3 id="模块3parameters-模型默认推理配置"><a class="markdownIt-Anchor" href="#模块3parameters-模型默认推理配置"></a> 模块3：<code>Parameters</code> - 模型<strong>默认推理配置</strong></h3>
+<p>模型生成内容时的<strong>默认行为参数</strong>，可在调用时（<code>ollama run</code>/API）通过参数覆盖，若模型未配置自定义参数，此字段会<strong>自动省略</strong>（如 qwen2.5-coder:7b），示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">Parameters
+  stop           "&lt;｜begin▁of▁sentence｜&gt;"
+  stop           "&lt;｜end▁of▁sentence｜&gt;"
+  stop           "&lt;｜User｜&gt;"
+  stop           "&lt;｜Assistant｜&gt;"
+  temperature    0.6
+  top_p          0.95<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+<th>可调范围</th>
+<th>实操价值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>stop</code></td>
+<td>停止符（可配置多个）</td>
+<td>自定义字符串</td>
+<td>模型生成内容时，<strong>遇到该字符立即停止</strong>，核心作用：<code>&lt;br&gt;</code>1. 避免生成冗余内容；<code>&lt;br&gt;</code>2. 适配模型的Prompt模板，保证输出格式规范；<code>&lt;br&gt;</code>3. 防止模型篡改角色（如助手冒充用户）；</td>
+</tr>
+<tr>
+<td><code>temperature</code></td>
+<td>生成随机性</td>
+<td>0 ~ 2</td>
+<td>0=输出完全固定（确定性高），1=随机性适中，2=高随机（内容多样但可能偏离主题）；<code>&lt;br&gt;</code>推理/代码场景设0.1-0.6，创意生成设0.8-1.2；</td>
+</tr>
+<tr>
+<td><code>top_p</code></td>
+<td>核采样阈值</td>
+<td>0 ~ 1</td>
+<td>和 <code>temperature</code> 配合控制随机性，通常设0.9-0.95，无需单独修改，随temperature调整即可；</td>
+</tr>
+<tr>
+<td><code>max_tokens</code></td>
+<td>单次最大生成Token数</td>
+<td>1 ~ 上下文窗口值</td>
+<td>限制模型单次回答的最大长度，避免生成过长内容；</td>
+</tr>
+<tr>
+<td><code>repeat_penalty</code></td>
+<td>重复生成惩罚</td>
+<td>1.0 ~ 2.0</td>
+<td>防止模型重复生成相同内容（如反复说一句话），值越大惩罚越重，通常设1.1-1.2；</td>
+</tr>
+</tbody>
+</table>
+<h3 id="模块4system-模型默认系统提示词"><a class="markdownIt-Anchor" href="#模块4system-模型默认系统提示词"></a> 模块4：<code>System</code> - 模型<strong>默认系统提示词</strong></h3>
+<p>模型的<strong>原生人设/基础指令</strong>，约束模型的回答风格、角色定位，若未配置，此字段会省略，示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">System
+  You are Qwen, created by Alibaba Cloud. You are a helpful assistant.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>作用</strong>：默认约束模型的行为（如“做一个有用的助手”“专业的代码工程师”）；</li>
+<li><strong>实操</strong>：调用模型时可通过 <code>--system</code> 参数<strong>自定义覆盖</strong>（如 <code>ollama run qwen2.5-coder:7b --system "你是一名资深Java工程师，回答简洁专业"</code>）。</li>
+</ul>
+<h3 id="模块5template-模型prompt-模板开发对接核心"><a class="markdownIt-Anchor" href="#模块5template-模型prompt-模板开发对接核心"></a> 模块5：<code>Template</code> - 模型<strong>Prompt 模板</strong>（开发对接<strong>核心</strong>）</h3>
+<p>模型的<strong>原生输入格式规则</strong>，Ollama 会自动将用户的对话转换为该模板格式传给模型，<strong>不同架构/模型的模板不通用</strong>，若手动写Prompt，必须遵循此格式，否则模型会回答异常，示例（qwen2 架构模板）：</p>
+<pre class="line-numbers language-none"><code class="language-none">Template
+  {%- if messages[0].role == 'system' -%}
+    {%- set system_message = messages[0].content -%}
+    {%- set messages = messages[1:] -%}
+  {%- else -%}
+    {%- set system_message = '' -%}
+  {%- endif -%}
+  {%- for message in messages %}
+    {%- if message.role == 'user' -%}
+      {{- '&lt;|im_start|&gt;user\n' + message.content + '&lt;|im_end|&gt;\n' -}}
+    {%- elif message.role == 'assistant' -%}
+      {{- '&lt;|im_start|&gt;assistant\n' + message.content + '&lt;|im_end|&gt;\n' -}}
+    {%- elif message.role == 'tool' -%}
+      {{- '&lt;|im_start|&gt;tool\n' + message.content + '&lt;|im_end|&gt;\n' -}}
+    {%- endif -%}
+  {%- endfor -%}
+  {{- '&lt;|im_start|&gt;assistant\n' -}}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>核心标识</strong>：如 qwen2 的 <code>&lt;|im_start|&gt;user</code>/<code>&lt;|im_start|&gt;assistant</code>，deepseek-r1:8b 的 <code>&lt;｜User｜&gt;</code>/<code>&lt;｜Assistant｜&gt;</code>；</li>
+<li><strong>实操价值</strong>：通过 <code>ollama show 模型名 --template</code> 查看模板，是<strong>代码对接Ollama API、自定义Prompt</strong>的必备步骤，确保模型能正确识别用户/助手/工具的角色。</li>
+</ul>
+<h3 id="模块6license-模型开源协议"><a class="markdownIt-Anchor" href="#模块6license-模型开源协议"></a> 模块6：<code>License</code> - 模型<strong>开源协议</strong></h3>
+<p>模型的<strong>使用权限说明</strong>，决定个人/企业能否免费使用、商用、二次开发，示例：</p>
+<pre class="line-numbers language-none"><code class="language-none">License
+  MIT License
+  Copyright (c) 2023 DeepSeek
+  ...<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><strong>常见友好协议</strong>：MIT、Apache 2.0（个人/企业可免费使用、商用，无授权限制）；</li>
+<li><strong>受限协议</strong>：非商业用途（仅个人使用，禁止商用）、需申请授权等；</li>
+<li><strong>实操价值</strong>：商用前必须查看，避免侵权。</li>
+</ul>
+<h2 id="三-关键补充不同模型输出差异的原因"><a class="markdownIt-Anchor" href="#三-关键补充不同模型输出差异的原因"></a> 三、关键补充：不同模型输出差异的原因</h2>
+<p>部分模型会<strong>省略某些模块</strong>（如 qwen2.5-coder:7b 省略 <code>Parameters</code>），并非模型没有该属性，而是<strong>Ollama的兜底机制</strong>：</p>
+<blockquote>
+<p>当模型的Modelfile中<strong>未配置自定义参数/系统提示</strong>时，Ollama会使用<strong>全局默认值</strong>，此时 <code>ollama show</code> 会省略对应模块，不影响模型使用，且所有默认值都能在调用时手动覆盖。</p>
+</blockquote>
+<p>例如：</p>
+<ul>
+<li>qwen2.5-coder:7b 未配置自定义 <code>Parameters</code> → 省略该模块，使用Ollama全局默认值（temperature=0.7、top_p=0.9、stop=<code>&lt;/s&gt;</code>）；</li>
+<li>deepseek-r1:8b 配置了自定义 <code>stop</code> 符 → 显示 <code>Parameters</code> 模块，使用自定义值。</li>
+</ul>
+<h2 id="四-ollama-show-核心使用场景总结"><a class="markdownIt-Anchor" href="#四-ollama-show-核心使用场景总结"></a> 四、<code>ollama show</code> 核心使用场景总结</h2>
+<ol>
+<li><strong>模型选型</strong>：通过 <code>Model</code> 模块看参数量、上下文窗口，<code>Capabilities</code> 看是否支持工具/推理，选择适配场景的模型；</li>
+<li><strong>开发对接</strong>：通过 <code>--template</code> 查看Prompt模板，<code>--capabilities</code> 确认工具调用能力，保证代码和模型兼容；</li>
+<li><strong>调试优化</strong>：通过 <code>--parameters</code> 查看默认推理参数，调用时覆盖（如调低temperature提升推理准确性）；</li>
+<li><strong>权限确认</strong>：通过 <code>--license</code> 查看开源协议，确认商用/二次开发权限；</li>
+<li><strong>自定义模型</strong>：通过 <code>--modelfile</code> 查看模型的构建配置，基于此修改并创建自定义模型（如添加stop符、修改系统提示）。</li>
+</ol>
+<h2 id="五-高频实操组合命令"><a class="markdownIt-Anchor" href="#五-高频实操组合命令"></a> 五、高频实操组合命令</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1. 快速查看模型是否支持工具调用（开发必备）</span>
+ollama show 模型名 <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-A</span> <span class="token number">5</span> Capabilities
+
+<span class="token comment"># 2. 查看模型的Prompt模板并保存到本地，方便开发参考</span>
+ollama show 模型名 <span class="token parameter variable">--template</span> <span class="token operator">&gt;</span> 模型名-template.txt
+
+<span class="token comment"># 3. 以JSON格式输出所有推理参数，供脚本/程序解析</span>
+ollama show 模型名 <span class="token parameter variable">--parameters</span> <span class="token parameter variable">-f</span> json <span class="token operator">&gt;</span> 模型名-params.json
+
+<span class="token comment"># 4. 一次性查看模型的模板+系统提示+能力，适配Agent开发</span>
+ollama show 模型名 <span class="token parameter variable">--template</span> <span class="token parameter variable">--system</span> <span class="token parameter variable">--capabilities</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                    <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                                    <span class="chip bg-color">未完待续</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zpykYxqrLC4qVar5tL3t0MAL-gzGzoHsz',
+        appKey: '3LhmIMSf9HYX5VXhD21hiPPG',
+        serverURLs: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2026/01/31/ai/shen-du-xue-xi/mo-xing-de-zhi-biao/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="模型的指标">
+                        
+                        <span class="card-title">模型的指标</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            ollama show 命令全解析
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            陈尚
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/01/29/si-kao/jing-ji-xue/jin-rong-xing-ye-cong-ye-kao-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="金融行业从业考试">
+                        
+                        <span class="card-title">金融行业从业考试</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            摘要
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%80%9D%E8%80%83/" class="post-category">
+                                    思考
+                                </a>
+                            
+                            <a href="/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="post-category">
+                                    经济学
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('300')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 涓涓细流<br />'
+            + '文章作者: 陈尚<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2026</span>
+            
+            <a href="/about" target="_blank">陈尚</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">258.4k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chen-shang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2414973330@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2414973330" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2414973330" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+	<span id="jinrishici-sentence"></span>
+        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f34c6ca18e751cd090a8864b66dda7fd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>

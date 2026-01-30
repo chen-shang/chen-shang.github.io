@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2026-01-29T06:55:25.454Z</updated>
+  <updated>2026-01-30T20:09:02.850Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>模型的指标</title>
+    <link href="https://chen-shang.github.io/2026/01/31/ai/shen-du-xue-xi/mo-xing-de-zhi-biao/"/>
+    <id>https://chen-shang.github.io/2026/01/31/ai/shen-du-xue-xi/mo-xing-de-zhi-biao/</id>
+    <published>2026-01-30T19:31:41.000Z</published>
+    <updated>2026-01-30T20:09:02.850Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;ollama-show-命令全解析&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ollama-show-命令全解析&quot;&gt;&lt;/a&gt; ollama &lt;code&gt;show&lt;/code&gt; 命令全解析&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;ollama</summary>
+        
+      
+    
+    
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
+  
+  <entry>
     <title>金融行业从业考试</title>
     <link href="https://chen-shang.github.io/2026/01/29/si-kao/jing-ji-xue/jin-rong-xing-ye-cong-ye-kao-shi/"/>
     <id>https://chen-shang.github.io/2026/01/29/si-kao/jing-ji-xue/jin-rong-xing-ye-cong-ye-kao-shi/</id>
     <published>2026-01-29T06:52:21.000Z</published>
-    <updated>2026-01-29T06:55:25.454Z</updated>
+    <updated>2026-01-29T06:56:36.019Z</updated>
     
     
       
@@ -34,6 +60,10 @@
       
     
     
+    
+    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
+    
+    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
     
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
@@ -528,9 +558,9 @@
     
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
     <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
+    
+    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
     
   </entry>
   
@@ -562,38 +592,6 @@
     <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
     <category term="计算机通信" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mac技巧</title>
-    <link href="https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-ji-qiao/"/>
-    <id>https://chen-shang.github.io/2025/08/03/gong-ju-kong/mac/mac-ji-qiao/</id>
-    <published>2025-08-03T13:50:20.000Z</published>
-    <updated>2025-08-27T14:56:26.012Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ol&gt;
-&lt;li&gt;搜索关于搜索，mac上自带的有spotlight (ctr/cmd + 空格)可以实现全局搜索，但有时候没有正确的工作，而且如果我们想精确一个范围呢？输入 mdfind + 文件名， 实现全局搜索输入 mdfind -onlyin 文件大的路径</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
     
   </entry>
   
