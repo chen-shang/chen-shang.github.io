@@ -310,21 +310,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-25
+                    2026-01-31
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.8k
+                    8.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    34 分
+                    35 分
                 </div>
                 
 
@@ -387,15 +387,9 @@
 <p>函数其实说到底是一个集合到另一集合的映射。函数有 N多个名字,在 java 的类中叫方法，在 scala 的类中叫函数，在 java 的方法参数中叫 lamda 这个 lamda 的类型叫函数接口，而这个 lamda 又有一个别名叫 匿名函数，在引用了外部环境变量的 lamda 中叫闭包 （js 中有这种叫法，不知道准不准），在 OC 中叫 block ，很像，像到我都不想去区分他们。</p>
 <h2 id="一些函数编程的特性"><a class="markdownIt-Anchor" href="#一些函数编程的特性"></a> 一些函数编程的特性</h2>
 <ol>
-<li>
-<p>函数是第一公民: 函数可以传递，这也是语言支持高阶函数的先决条件</p>
-</li>
-<li>
-<p>引用透明：函数式编程的一个特点就是变量状态不可变，无可变状态也就造成了函数的引用透明的特性，函数的引用透明指的是函数没有副作用。scala 还不算纯函数式编程语言，所以它有的函数是可以有副作用的。有一种说法说变量是万恶之源，因为不变的量就不用考虑多线程中线程间通信等问题了。</p>
-</li>
-<li>
-<p>模式匹配：模式可能出现的一个地方就是 模式匹配表达式(pattern matching expression)： 一个表达式 e ，后面跟着关键字 match 以及一个代码块，这个代码块包含了一些匹配样例； 而样例又包含了 case 关键字、模式、可选的 守卫分句(guard clause) ，以及最右边的代码块； 如果模式匹配成功，这个代码块就会执行。 写成代码，看起来会是下面这种样子：</p>
-</li>
+<li>函数是第一公民: 函数可以传递，这也是语言支持高阶函数的先决条件</li>
+<li>引用透明：函数式编程的一个特点就是变量状态不可变，无可变状态也就造成了函数的引用透明的特性，函数的引用透明指的是函数没有副作用。scala 还不算纯函数式编程语言，所以它有的函数是可以有副作用的。有一种说法说变量是万恶之源，因为不变的量就不用考虑多线程中线程间通信等问题了。</li>
+<li>模式匹配：模式可能出现的一个地方就是 模式匹配表达式(pattern matching expression)： 一个表达式 e ，后面跟着关键字 match 以及一个代码块，这个代码块包含了一些匹配样例； 而样例又包含了 case 关键字、模式、可选的 守卫分句(guard clause) ，以及最右边的代码块； 如果模式匹配成功，这个代码块就会执行。 写成代码，看起来会是下面这种样子：</li>
 </ol>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala">e <span class="token keyword">match</span> <span class="token punctuation">{</span>
   <span class="token keyword">case</span> Pattern1 <span class="token keyword">=&gt;</span> block1
@@ -424,13 +418,13 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </div>
 上述代码片段刨去关闭花括号的空行之后一共就4行，我们逐一分析。
-<p>第一行代码有点奇怪，object在这里表示单例类的声明，即ScalaMian是一个类，这个类只有一个实例，这个单一实例会在需要时由scala创建。</p>
-<p>第二行是main函数的函数声明，def表示声明函数，main是函数名，小括号中是函数的参数列表，这里只有一个参数args，args后面跟<code>:</code>和其数据类型，这里是String数组，这个函数没有返回值。</p>
-<p>第三行是给变量 variable 赋值,可见 scala 的变量声明使用 val/var 变量的类型紧跟变量名中间用<code>:</code>隔开。</p>
-<p>第四行代码中调用了一个内置函数println，这个函数输出了Hello World！字符串，这个语句后面没有分号，在scala中分号不是必须的，只有在一行中输入两个语句时才需要用分号分隔。同时可以看到字符串可以向某些脚本语言如 groovy、shell 一样使用<code>$</code>取值,这个用法叫做字符串插值。</p>
+<p>上述代码片段刨去关闭花括号的空行之后一共就4行，我们逐一分析。第一行代码有点奇怪，object在这里表示单例类的声明，即ScalaMian是一个类，这个类只有一个实例，这个单一实例会在需要时由scala创建。</p>
+<p>第二行是main函数的函数声明，def表示声明函数，main是函数名，小括号中是函数的参数列表，这里只有一个参数args，args后面跟 <code>:</code>和其数据类型，这里是String数组，这个函数没有返回值。</p>
+<p>第三行是给变量 variable 赋值,可见 scala 的变量声明使用 val/var 变量的类型紧跟变量名中间用 <code>:</code>隔开。</p>
+<p>第四行代码中调用了一个内置函数println，这个函数输出了Hello World！字符串，这个语句后面没有分号，在scala中分号不是必须的，只有在一行中输入两个语句时才需要用分号分隔。同时可以看到字符串可以向某些脚本语言如 groovy、shell 一样使用 <code>$</code>取值,这个用法叫做字符串插值。</p>
 <p>运行上面程序会输出经典的“Hello world!”。</p>
 </div>
-<p>你可能会有几个疑惑的点？为什么声明变量的时候用 var/val ? 为什么不用声明变量的类型呢？object 是个什么鬼?<br><br>
+<p>你可能会有几个疑惑的点？为什么声明变量的时候用 var/val ? 为什么不用声明变量的类型呢？object 是个什么鬼?<code>&lt;br/&gt;</code><br>
 答: scala 中声明变量用 var ,声明常量用 val 。var 代表该变量在以后的使用中可以改变其值，而 val 修饰的变量一经定义便不再允许修改。变量可以不用显示的声明类型，其类型有类型推导得来</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> x1<span class="token operator">=</span><span class="token string">"123"</span> <span class="token comment">//自认而然就认识他是字符串类型而不是整型</span>
 <span class="token keyword">val</span> x2<span class="token operator">:</span><span class="token builtin">String</span><span class="token operator">=</span><span class="token string">"123"</span> <span class="token comment">//也可显示表明数据类型</span>
@@ -549,7 +543,7 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 <p>上边我们已经自定义过object 单例对象了,它本质上也是定义了一个 class 然后实例化了一个类的对象出来,我们接下来看看 scala 面向对象的特性与 java的有那些写法上的不同。</p>
 <div width="100%">
   <div style="float:left; width:49%;"><p style="font-size: 20px">定义scala的简单类</p>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span><span class="token keyword">val</span> x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token keyword">val</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span><span class="token keyword">val</span> x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token keyword">val</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>注意用 val 声明的属相是没有 set 方法的,因为 val 修饰的变量属于常量不可以修改,所以其相当于 java 的类种没有 set 方法。</p>
 <p>上面一行代码就是一个scala类的定义：</p>
@@ -558,10 +552,10 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 <li>其后是类名 Point</li>
 <li>类名之后的括号中是构造函数的参数列表，这里相当于定义了对象的两个常量，其名称分别为x，y，类型都是Int</li>
 </ol>
-  </div>
+</div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>翻译成Java8</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaPoint</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaPoint</span> <span class="token punctuation">{</span>
    <span class="token keyword">public</span> <span class="token keyword">int</span> x<span class="token punctuation">;</span>
    <span class="token keyword">public</span> <span class="token keyword">int</span> y<span class="token punctuation">;</span>
 
@@ -578,7 +572,7 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
        <span class="token keyword">this</span><span class="token punctuation">.</span>y <span class="token operator">=</span> y<span class="token punctuation">;</span>
    <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
- </div>
+</div>
 </div>
 <p>把上面那个简单的 scala 写成传统形式是这样的</p>
 <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span>xArg<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> yArg<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -588,35 +582,35 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 <p>这个是不是和 java 的构造方法很像呢？没错,scala将类的主构造方法绑定到一块了,它认为这样做更简洁吧,但 scala 同样支持想 java那样定义类。</p>
 <div width="100%">
   <div style="float:left; width:49%;"><p style="font-size: 20px">带函数的 scala 类</p>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span><span class="token keyword">var</span> x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token keyword">var</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> Point <span class="token punctuation">(</span><span class="token keyword">var</span> x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> <span class="token keyword">var</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
     <span class="token comment">// 定义函数</span>
     <span class="token keyword">def</span> add<span class="token operator">=</span> x<span class="token operator">+</span>y
 
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-  </div>
+</div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>翻译成Java8</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaPoint</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JavaPoint</span> <span class="token punctuation">{</span>
   <span class="token comment">//省略上面的变量定义和 set/get 方法</span>
   <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> x <span class="token operator">+</span> y<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
- </div>
+</div>
 </div>
 <h2 id="继承"><a class="markdownIt-Anchor" href="#继承"></a> 继承</h2>
 <div width="100%">
   <div style="float:left; width:49%;"><p style="font-size: 20px">带继承的 scala 类</p>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> TalkPoint<span class="token punctuation">(</span>x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token keyword">extends</span> Point <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">class</span> TalkPoint<span class="token punctuation">(</span>x<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">,</span> y<span class="token operator">:</span><span class="token builtin">Int</span><span class="token punctuation">)</span> <span class="token keyword">extends</span> Point <span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">def</span> talk<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
     println<span class="token punctuation">(</span><span class="token string">"my position is ("</span><span class="token operator">+</span>x<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>y<span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>extends Point(x,y) 之后会自动调用基类的构造函数。不用像 java 一样还得显示的用 super(x,y).注意这里说的是显示,其实 scala 还是这么干了</p>
-  </div>
+</div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
-  <div style="float:left;width:49%;"><h3>翻译成Java8</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TalkPoint</span> extend <span class="token class-name">Point</span> <span class="token punctuation">{</span>
+<div style="float:left;width:49%;"><h3>翻译成Java8</h3>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TalkPoint</span> extend <span class="token class-name">Point</span> <span class="token punctuation">{</span>
   <span class="token comment">//省略上面的变量定义和 set/get 方法</span>
   <span class="token keyword">public</span> <span class="token class-name">TalkPoin</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">super</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span> y<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -626,14 +620,14 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
       <span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"my position is ("</span><span class="token operator">+</span>x<span class="token operator">+</span><span class="token string">","</span><span class="token operator">+</span>y<span class="token operator">+</span><span class="token string">")"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
- </div>
+</div>
 </div>
 <p>上面只是 scala 的 class 定义最基本的几种形式,大家可以自行学习一下 scala 的 class 在各种情况下翻译成对应的java 代码长什么样子?想要了解请<a href="www.baidu.com">点击这里</a></p>
 <h2 id="trait"><a class="markdownIt-Anchor" href="#trait"></a> Trait</h2>
 <p>面向对象的本质是抽象,对事物的抽象是对象,对象中行为的抽象就是接口,scala 中没有 interface 在样的关键字,取而代之的是 trait ,翻译成中文叫特性特质,实现 trait 不用 implement 而是用 extends ,过个 trait 用 with 相连标示一个整体,我们先来看一下</p>
 <div width="100%">
   <div style="float:left; width:49%;"><p style="font-size: 20px">Scala Trait(特征)</p>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">trait</span> Equal <span class="token punctuation">{</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">trait</span> Equal <span class="token punctuation">{</span>
   <span class="token keyword">def</span> isEqual<span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">Any</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Boolean</span>
 
   <span class="token keyword">def</span> isNotEqual<span class="token punctuation">(</span>x<span class="token operator">:</span> <span class="token builtin">Any</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token builtin">Boolean</span> <span class="token operator">=</span><span class="token punctuation">{</span>
@@ -644,10 +638,10 @@ public final class main.javavsscala.ScalaOBJ$ <span class="token punctuation">{<
 clase A <span class="token keyword">extends</span> Equal <span class="token keyword">with</span> TraitB<span class="token punctuation">{</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-  </div>
+</div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><h3>Java8 Interface(接口)</h3>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">interface</span> <span class="token class-name">Equal</span> <span class="token punctuation">{</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">interface</span> <span class="token class-name">Equal</span> <span class="token punctuation">{</span>
     <span class="token class-name">Boolean</span> <span class="token function">isEqual</span><span class="token punctuation">(</span><span class="token class-name">Object</span> x<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
     <span class="token keyword">default</span> <span class="token class-name">Boolean</span> <span class="token function">isNotEqual</span><span class="token punctuation">(</span><span class="token class-name">Object</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -658,8 +652,8 @@ clase A <span class="token keyword">extends</span> Equal <span class="token keyw
 <span class="token keyword">class</span> <span class="token class-name">A</span> implement <span class="token class-name">Equal</span><span class="token punctuation">,</span><span class="token class-name">InterfaceB</span><span class="token punctuation">{</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>java8 中的默认方法用 default 关键字声明<br></p>
- </div>
+<p>java8 中的默认方法用 default 关键字声明<code>&lt;br/&gt;</code></p>
+</div>
 </div>
 <h3 id="特征构造顺序"><a class="markdownIt-Anchor" href="#特征构造顺序"></a> 特征构造顺序</h3>
 <p>特征也可以有构造器，由字段的初始化和其他特征体中的语句构成。这些语句在任何混入该特征的对象在构造是都会被执行。<br>
@@ -706,8 +700,8 @@ clase A <span class="token keyword">extends</span> Equal <span class="token keyw
 <p>Scala 的基于混入的类构成（mixin class composition）体系是线性混入构成（linearmixin compostion）和对称的混入模块（mixin modules），以及traits这三者的融合。</p>
 </li>
 <li>
-<p>Scala是通过类的全序化(Class Linearization)，或称作类的线性化。线性化指出一个类的祖先类是一条线性路径的，包括超类(superclass)和特性(traits)。它通过两步来处理方法调用的问题:<br><br>
-① 使用右孩子优先的深度优先遍历搜索(right-first,depth-first search)算法进行搜索。<br><br>
+<p>Scala是通过类的全序化(Class Linearization)，或称作类的线性化。线性化指出一个类的祖先类是一条线性路径的，包括超类(superclass)和特性(traits)。它通过两步来处理方法调用的问题:<code>&lt;br/&gt;</code><br>
+① 使用右孩子优先的深度优先遍历搜索(right-first,depth-first search)算法进行搜索。<code>&lt;br/&gt;</code><br>
 ② 遍历得到的结构层次中，保留最后一个元素，其余删除。</p>
 </li>
 <li>
@@ -741,12 +735,12 @@ Hannah has a score of <span class="token number">95</span><span aria-hidden="tru
 <h2 id="for-表达式"><a class="markdownIt-Anchor" href="#for-表达式"></a> for 表达式</h2>
 <div width="100%">
   <div style="float:left; width:49%;"><p style="font-size: 20px">Scala 定义list</p>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> list01<span class="token operator">=</span> <span class="token number">1</span> to <span class="token number">10</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token keyword">val</span> list01<span class="token operator">=</span> <span class="token number">1</span> to <span class="token number">10</span>
 <span class="token keyword">val</span> list02<span class="token operator">=</span> <span class="token number">1</span> to <span class="token number">100</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-  </div>
+</div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><p style="font-size: 20px">Java8 定义 list</p>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list01 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list01 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> list02 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -754,9 +748,10 @@ Hannah has a score of <span class="token number">95</span><span aria-hidden="tru
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </div>
 上面先学会定义一个列表，而 for 主要用来处理循环的,一般应用在 list、seq 等数据类型或者用来解Future 等包装类,这个后面会说
+<p>上面先学会定义一个列表，而 for 主要用来处理循环的,一般应用在 list、seq 等数据类型或者用来解Future 等包装类,这个后面会说</p>
 <div width="100%">
   <div style="float:left; width:49%;"><p style="font-size: 20px">Scala for 表达式</p>
-  <pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token comment">//第一种:普通的 for 循环</span>
+<pre class="line-numbers language-scala" data-language="scala"><code class="language-scala"><span class="token comment">//第一种:普通的 for 循环</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span>x <span class="token keyword">&lt;-</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   println<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
@@ -780,10 +775,10 @@ Hannah has a score of <span class="token number">95</span><span aria-hidden="tru
  * • 当循环结束后, 会返回所有 yield 的值组成的集合.
  * • 返回集合的类型与被遍历的集合类型是一致的.
  */</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-  </div>
+</div>
   <div style="float:left;height:50px;width:2%;border-left:solid white;border-right:1px solid white"></div>
   <div style="float:left;width:49%;"><p style="font-size: 20px">Java8 for 语法糖</p>
-  <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//第一种</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//第一种</span>
 <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">Integer</span> x <span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
@@ -1689,7 +1684,7 @@ res3<span class="token operator">:</span> <span class="token punctuation">(</spa
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">258.4k</span>
+                        class="white-color">258.5k</span>
             
             
             

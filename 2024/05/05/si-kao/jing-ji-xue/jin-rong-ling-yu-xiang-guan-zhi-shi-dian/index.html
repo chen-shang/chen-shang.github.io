@@ -41,7 +41,9 @@
 
 
 
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
     <link rel="stylesheet" href="/css/post.css">
+
 
 
 
@@ -261,10 +263,12 @@
 
 
 
-<main class="container content">
+<main class="post-container content">
 
     
-    <!-- 文章内容详情 -->
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
         <div class="card-content article-info">
@@ -321,7 +325,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-05-08
+                    2026-01-31
                 </div>
                 
 
@@ -366,12 +370,8 @@
 <h1 id="什么叫现金贷-场景贷"><a class="markdownIt-Anchor" href="#什么叫现金贷-场景贷"></a> 什么叫现金贷、场景贷</h1>
 <p>现金贷和场景贷是两种不同的贷款形式。</p>
 <ol>
-<li>
-<p>现金贷（Cash Loan）：现金贷是指借款人通过在线平台或移动应用程序快速获得短期现金贷款的一种贷款形式。它通常具有简化的申请流程和快速的审批速度，借款人可以在短时间内获得所需的现金。现金贷款的特点是灵活、快速，但利率较高，需要借款人承担较高的利息费用。</p>
-</li>
-<li>
-<p>场景贷（Scenario Loan）：场景贷是指根据借款人的特定需求或场景提供的贷款。它根据借款人的特定场景或目的设计贷款产品，以满足特定的融资需求。例如，购车贷款、装修贷款、教育贷款等都属于场景贷。场景贷款通常具有较长的贷款期限和较低的利率，适用于特定的消费场景。</p>
-</li>
+<li>现金贷（Cash Loan）：现金贷是指借款人通过在线平台或移动应用程序快速获得短期现金贷款的一种贷款形式。它通常具有简化的申请流程和快速的审批速度，借款人可以在短时间内获得所需的现金。现金贷款的特点是灵活、快速，但利率较高，需要借款人承担较高的利息费用。</li>
+<li>场景贷（Scenario Loan）：场景贷是指根据借款人的特定需求或场景提供的贷款。它根据借款人的特定场景或目的设计贷款产品，以满足特定的融资需求。例如，购车贷款、装修贷款、教育贷款等都属于场景贷。场景贷款通常具有较长的贷款期限和较低的利率，适用于特定的消费场景。</li>
 </ol>
 <p>总的来说，现金贷注重快速、灵活的短期融资，适用于紧急资金需求；而场景贷注重根据特定场景提供的贷款，适用于满足特定消费需求。需要注意的是，无论是现金贷还是场景贷，借款人都应该谨慎选择，并根据自身的还款能力合理借款和使用贷款。</p>
 <h1 id="非公开募集基金私募基金"><a class="markdownIt-Anchor" href="#非公开募集基金私募基金"></a> 非公开募集基金(私募基金)</h1>
@@ -580,6 +580,7 @@ D项，债券基金的平均到期日常常会相对固定，债券基金所承�
     V --&gt; AA{避险策略}
     V --&gt; BB{绝对收益目标}
 </div>
+
 
                 
             </div>
@@ -1133,6 +1134,87 @@ D项，债券基金的平均到期日常常会相对固定，债券基金所承�
 
 
 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
     
 
 </main>
@@ -1155,7 +1237,7 @@ D项，债券基金的平均到期日常常会相对固定，债券基金所承�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">258.4k</span>
+                        class="white-color">258.5k</span>
             
             
             
