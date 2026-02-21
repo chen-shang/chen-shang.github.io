@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2026-01-30T20:26:46.855Z</updated>
+  <updated>2026-02-21T17:55:42.531Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何知道自己的服务器适合跑什么样的大模型</title>
+    <link href="https://chen-shang.github.io/2026/02/22/ai/ai-gong-ju-ji/ru-he-zhi-dao-zi-ji-de-fu-wu-qi-gua-he-pao-shi-me-yang-de-da-mo-xing/"/>
+    <id>https://chen-shang.github.io/2026/02/22/ai/ai-gong-ju-ji/ru-he-zhi-dao-zi-ji-de-fu-wu-qi-gua-he-pao-shi-me-yang-de-da-mo-xing/</id>
+    <published>2026-02-21T17:52:14.000Z</published>
+    <updated>2026-02-21T17:55:42.531Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;cargo install llmfit&lt;/p&gt;
+&lt;p&gt;一、llmfit 是什么&lt;br&gt;
+llmfit 是一款基于 Rust 开发的终端工具（TUI/CLI），核心定位是帮你快速匹配本地硬件（CPU/RAM/GPU/VRAM）与 LLM</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="AI工具集" scheme="https://chen-shang.github.io/categories/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>终端临时代理翻墙</title>
+    <link href="https://chen-shang.github.io/2026/02/18/gong-ju-kong/mac/zhong-duan-lin-shi-dai-li-fan-qiang/"/>
+    <id>https://chen-shang.github.io/2026/02/18/gong-ju-kong/mac/zhong-duan-lin-shi-dai-li-fan-qiang/</id>
+    <published>2026-02-18T00:41:49.000Z</published>
+    <updated>2026-02-21T15:52:18.851Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;如果遇到有些 工具包 下载不下来，可以用这一招&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;export</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Mac/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Mac" scheme="https://chen-shang.github.io/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>模型的指标</title>
@@ -534,68 +595,6 @@
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="杂七杂八" scheme="https://chen-shang.github.io/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>将Java工具类转化为可执行jar包</title>
-    <link href="https://chen-shang.github.io/2025/08/17/java/jie-jue-fang-an/jiang-java-gong-ju-lei-zhuan-hua-wei-ke-zhi-xing-jar-bao/"/>
-    <id>https://chen-shang.github.io/2025/08/17/java/jie-jue-fang-an/jiang-java-gong-ju-lei-zhuan-hua-wei-ke-zhi-xing-jar-bao/</id>
-    <published>2025-08-16T17:45:00.000Z</published>
-    <updated>2025-08-16T18:08:34.005Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在日常开发中，我们经常会编写各种Java工具类（如时间转换、数据加密、日志解析等），这些工具能帮我们解决重复工作，但每次通过IDE运行却很繁琐。本文就来分享如何将这些Java工具类标准化封装，使其成为像</summary>
-        
-      
-    
-    
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/categories/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/categories/JAVA/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="JAVA" scheme="https://chen-shang.github.io/tags/JAVA/"/>
-    
-    <category term="解决方案" scheme="https://chen-shang.github.io/tags/%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nslookup、ping、telnet</title>
-    <link href="https://chen-shang.github.io/2025/08/07/ji-suan-ji/ji-suan-ji-tong-xin/nslookup-ping-telnet/"/>
-    <id>https://chen-shang.github.io/2025/08/07/ji-suan-ji/ji-suan-ji-tong-xin/nslookup-ping-telnet/</id>
-    <published>2025-08-07T15:22:43.000Z</published>
-    <updated>2025-11-09T02:11:14.549Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;一-基础网络连接检测主机是否可达&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#一-基础网络连接检测主机是否可达&quot;&gt;&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="计算机" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机通信" scheme="https://chen-shang.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="计算机" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="计算机通信" scheme="https://chen-shang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E4%BF%A1/"/>
     
   </entry>
   
