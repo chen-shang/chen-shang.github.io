@@ -6,7 +6,7 @@
   <link href="https://chen-shang.github.io/atom.xml" rel="self"/>
   
   <link href="https://chen-shang.github.io/"/>
-  <updated>2026-02-21T17:55:42.531Z</updated>
+  <updated>2026-02-24T15:33:26.456Z</updated>
   <id>https://chen-shang.github.io/</id>
   
   <author>
@@ -15,6 +15,99 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac通过virtualbuddy安装了ubuntu虚拟机虚拟机和宿主机如何共享文件夹</title>
+    <link href="https://chen-shang.github.io/2026/02/24/gong-ju-kong/ubuntu/mac-tong-guo-virtualbuddy-an-zhuang-liao-ubuntu-xu-ni-ji-xu-ni-ji-he-su-zhu-ji-ru-he-gong-xiang-wen-jian-jia/"/>
+    <id>https://chen-shang.github.io/2026/02/24/gong-ju-kong/ubuntu/mac-tong-guo-virtualbuddy-an-zhuang-liao-ubuntu-xu-ni-ji-xu-ni-ji-he-su-zhu-ji-ru-he-gong-xiang-wen-jian-jia/</id>
+    <published>2026-02-24T14:17:31.000Z</published>
+    <updated>2026-02-24T15:33:26.456Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这玩意也是各种问题，通过问豆包、deepseak等都不好使。各种尝试，遇到了各种报错，最后终于试出来了。&lt;/p&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Ubuntu" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Ubuntu/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Ubuntu" scheme="https://chen-shang.github.io/tags/Ubuntu/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openclaw踩坑</title>
+    <link href="https://chen-shang.github.io/2026/02/24/ai/ai-gong-ju-ji/openclaw-cai-keng/"/>
+    <id>https://chen-shang.github.io/2026/02/24/ai/ai-gong-ju-ji/openclaw-cai-keng/</id>
+    <published>2026-02-24T02:22:26.000Z</published>
+    <updated>2026-02-24T15:33:59.785Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;听说这玩意会删除本地的东西，比如本地文件、比如你的数据库的数据，最近听说有人的飞书被爆破了（因为配置不当）导致个人的隐私信息泄漏了。所以我一直没敢碰这玩意。&lt;/p&gt;
+&lt;p&gt;而且你见过那个软件在安装的时候提示你下面这个的，直接就明说了，我这玩意是个实验性质的东西，没经验你别碰</summary>
+        
+      
+    
+    
+    
+    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
+    
+    <category term="AI工具集" scheme="https://chen-shang.github.io/categories/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    
+    <category term="AI工具集" scheme="https://chen-shang.github.io/tags/AI%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安装系统后要配置什么来提高效率</title>
+    <link href="https://chen-shang.github.io/2026/02/23/gong-ju-kong/ubuntu/an-zhuang-xi-tong-hou-yao-pei-zhi-shi-me-lai-ti-gao-xiao-lu/"/>
+    <id>https://chen-shang.github.io/2026/02/23/gong-ju-kong/ubuntu/an-zhuang-xi-tong-hou-yao-pei-zhi-shi-me-lai-ti-gao-xiao-lu/</id>
+    <published>2026-02-23T15:20:21.000Z</published>
+    <updated>2026-02-24T02:47:14.617Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;ubuntu&quot;&gt;&lt;a class=&quot;markdownIt-Anchor&quot; href=&quot;#ubuntu&quot;&gt;&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
+    
+    <category term="Ubuntu" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Ubuntu/"/>
+    
+    
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    
+  </entry>
   
   <entry>
     <title>如何知道自己的服务器适合跑什么样的大模型</title>
@@ -522,79 +615,6 @@ llmfit 是一款基于 Rust 开发的终端工具（TUI/CLI），核心定位是
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>查找一列中的值是否在另一列里面出现过</title>
-    <link href="https://chen-shang.github.io/2025/09/23/gong-ju-kong/excel/cha-zhao-yi-lie-zhong-de-zhi-shi-fou-zai-ling-yi-lie-li-mian-chu-xian-guo/"/>
-    <id>https://chen-shang.github.io/2025/09/23/gong-ju-kong/excel/cha-zhao-yi-lie-zhong-de-zhi-shi-fou-zai-ling-yi-lie-li-mian-chu-xian-guo/</id>
-    <published>2025-09-23T04:06:58.000Z</published>
-    <updated>2025-10-12T15:56:59.146Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Excel数据透视图</title>
-    <link href="https://chen-shang.github.io/2025/08/20/gong-ju-kong/excel/excel-shu-ju-tou-shi-tu/"/>
-    <id>https://chen-shang.github.io/2025/08/20/gong-ju-kong/excel/excel-shu-ju-tou-shi-tu/</id>
-    <published>2025-08-19T16:48:14.000Z</published>
-    <updated>2025-08-27T14:45:18.165Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在 Excel 中，存在一列或多列数值数据（如成绩、年龄、销售额等），需要统计其中落在&lt;strong&gt;特定数值区间&lt;/strong&gt;内的数据个数。例如，统计成绩在 60-80 分之间的人数、年龄在 20-30 岁之间的用户数等。&lt;/p&gt;
-&lt;h3 id=&quot;解决方案&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Excel" scheme="https://chen-shang.github.io/categories/%E5%B7%A5%E5%85%B7%E6%8E%A7/Excel/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="工具控" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/"/>
-    
-    <category term="Excel" scheme="https://chen-shang.github.io/tags/Excel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>docker空间清理</title>
-    <link href="https://chen-shang.github.io/2025/08/17/za-qi-za-ba/docker-kong-jian-qing-li/"/>
-    <id>https://chen-shang.github.io/2025/08/17/za-qi-za-ba/docker-kong-jian-qing-li/</id>
-    <published>2025-08-16T19:25:53.000Z</published>
-    <updated>2025-09-19T21:41:40.944Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在Docker中清理无关的镜像是一个常见的维护任务，可以帮助你释放磁盘空间并优化Docker主机。以下是一些清理Docker镜像和容器的方法：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;docker system prune -a -f --volumes&lt;/code&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="杂七杂八" scheme="https://chen-shang.github.io/categories/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
-    
-    
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-    <category term="杂七杂八" scheme="https://chen-shang.github.io/tags/%E6%9D%82%E4%B8%83%E6%9D%82%E5%85%AB/"/>
     
   </entry>
   
