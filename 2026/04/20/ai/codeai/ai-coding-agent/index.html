@@ -1,0 +1,1773 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Ai Coding Agent, IT,技术,总结">
+    <meta name="description" content="AI编程助手完全指南 - 从IDE插件到多智能体框架，涵盖Claude Code、Cursor、通义灵码等主流工具的选型与配置">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Ai Coding Agent | 涓涓细流</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 8.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">涓涓细流</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+<!--
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+-->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">涓涓细流</div>
+        <div class="logo-desc">
+            
+            无限可能
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Ai Coding Agent</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                <span class="chip bg-color">原创</span>
+                            </a>
+                        
+                            <a href="/tags/AI/">
+                                <span class="chip bg-color">AI</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">工具</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/AI/" class="post-category">
+                                AI
+                            </a>
+                        
+                            <a href="/categories/AI/CodeAI/" class="post-category">
+                                CodeAI
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-04-20
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-04-20
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    19 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="vibe-coding动嘴不动手"><a class="markdownIt-Anchor" href="#vibe-coding动嘴不动手"></a> Vibe Coding：动嘴不动手</h2>
+<p>最近有个概念很火： <strong>Vibe Coding</strong> 。</p>
+<p><strong>Vibe Coding（氛围编程）</strong> 是 2025 年初由 OpenAI 前研究员 Andrej Karpathy 提出的: 由 AI 驱动的 <strong>新型软件开发范式</strong> 。核心是： <strong>你用自然语言描述想法 ，AI 直接生成可运行的代码</strong> 。</p>
+<p>核心思想：<strong>改代码或写文章，动嘴就够了，不需要自己上手。</strong></p>
+<table>
+<thead>
+<tr>
+<th>传统方式</th>
+<th>Vibe Coding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打开 IDE → 找文件 → 定位代码 → 手动改 → 保存 → 测试通过 → 完成</td>
+<td>打开 Agent&nbsp;-&gt; 你说"帮我实现/修复" → AI 实现或修复→ 测试通过 → 完成</td>
+</tr>
+<tr>
+<td>你是执行者</td>
+<td>你是指挥官，AI 是执行者</td>
+</tr>
+</tbody>
+</table>
+<p>因此我们需要一个 Ai Coding Agent。还要学一门新的语言：自然语言。以前编程方式称为古法编程，不使用Vibe Coding 的程序员，我称为上古程序员。</p>
+<p>AI 写代码有诸多好处，这里不表。但AI并不是万能的，Vibe Coding 目前还有一些弊端，但只要控制得当，还是一把好武器。</p>
+<h1 id="vibe-coding-的缺点以及应对"><a class="markdownIt-Anchor" href="#vibe-coding-的缺点以及应对"></a> Vibe Coding 的缺点以及应对</h1>
+<ol>
+<li>
+<p><strong>代码质量不稳定，时好时坏，可维护性差，安全性风险高</strong></p>
+<p>自己用下来，AI 生成的代码往往「能用但不优雅」—— 结构混乱、冗余，长期维护成本高。易生成存在漏洞的代码（SQL 注入、XSS、权限绕过、敏感信息泄露等），非专业开发者很难发现。</p>
+<p>有两个观点：</p>
+<blockquote>
+<p>观点一：应用能跑就行，我不在乎代码的好不好，优不优美，只要能实现我的业务就行，就算有问题，写好提示词，让Ai自己打补丁不就好了，甚至不用review代码，测出问题再改就行。（这种想法现在会被认为是异教徒）</p>
+</blockquote>
+<blockquote>
+<p>观点二：必须要严格可控，防止代码腐化。因此极致的要求代码review，甚至换个模型再review代码。</p>
+</blockquote>
+<p>我觉得AI的发展一定是朝着 “观点一” 去的，对于开发同学，我们自己开发的软件甚至都是黑盒的，你也不会去关心AI是怎么实现的，你应该作为一个用户去审查AI给你的功能，而不是作为一名程序员去审查AI给你的代码，传统的程序员这个职业一定会换一种形式，不再是一行一行的coding了，而是一行一行的promting了。但这个还有很长的路要走，现阶段我持观点二，尤其是在已有项目，特别是金融项目（涉及钱的需要时刻紧绷一根弦），我们不能完全信任AI写出来的代码，必须做好review防止代码腐化。另外开发同学需要对AI生成的代码负责，需要确保AI生成代码的可维护性和可靠性，AI只是帮你写代码，出了问题，还是杀程序员祭天！</p>
+<p>如何应对这个问题：《Coding Agent 常用操作指南》- 只有具有 代码安全意识、专业知识背景、有实战经验的程序员方能更好的驾驭AI写的代码。</p>
+</li>
+<li>
+<p><strong>Bug 排查困难，修复容易走偏</strong></p>
+<p>AI写的代码基本上没问题，但往往是这样，只要有Bug，那就是大Bug! 我用AI写的从备注提取身份证和债务人姓名的程序，就遇到了边界没有考虑的情况。不过就算是人，也不一定能考虑到要过滤特殊字符的所有情况。因此AI 生成的 Bug 通常隐蔽，排查难度大。虽然可以直接让 AI 修复，但需要 <strong>有经验的程序员写出高质量的提示词才行</strong>，否则 AI 会像无头苍蝇一样乱撞，导致修复一个 Bug 又引入三个新 Bug，形成恶性循环的情况。</p>
+<p>如何应对这个问题：《Coding Agent 常用操作指南》- One Line Promot</p>
+</li>
+<li>
+<p><strong>过度依赖 AI，会削弱编程能力，团队之间经验难以快速共享，需求描述门槛被低估</strong></p>
+<p>长期「动嘴不动手」，会逐渐 <strong>看不懂复杂代码、不会调试、不会设计架构</strong>。当 AI 不可用或能力下降时，程序员可能丧失独立解决问题的能力，变成「AI 依赖症」患者。团队之间在同步知识的时候，往往很难说清，为什么这么提问就好用，不同的人有不同的思路和提问方式，此时修复问题后将很难解释清楚为什么要这么思考。</p>
+<p>如何应对这个问题：想让 AI 生成合格代码，你依然需要 <strong>清晰的逻辑、产品思维、技术常识</strong>，不是随便说两句就行。高质量提示词本身就是一种稀缺能力—— 你得知道怎么问、问什么、追问什么。</p>
+</li>
+<li>
+<p><strong>知识产权合规风险 &amp; 数据安全风险</strong></p>
+<p>大模型训练数据来源不透明，AI 可能 <strong>无意识抄袭开源代码</strong>，在没有明确许可证的情况下使用会带来法律风险。商业项目需格外注意代码来源审计。<br>
+代码是企业核心资产，随意调用外部 AI 服务可能导致数据泄露。敏感项目建议使用本地部署的 AI 服务或经过安全合规认证的方案。</p>
+</li>
+</ol>
+<h1 id="什么是-ai-coding-agent"><a class="markdownIt-Anchor" href="#什么是-ai-coding-agent"></a> 什么是 Ai Coding Agent</h1>
+<p>AI Coding Agent 是能自主理解开发需求、拆解任务、调试优化，可独立完成代码开发甚至从需求到部署全流程的智能代码代理。</p>
+<h1 id="阵营"><a class="markdownIt-Anchor" href="#阵营"></a> 阵营</h1>
+<h2 id="阵营1ide插件"><a class="markdownIt-Anchor" href="#阵营1ide插件"></a> 阵营1：IDE插件</h2>
+<p><strong>最顺手的AI副驾驶，日常编码离不开</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">开发公司</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">官网</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>GitHub Copilot</strong></td>
+<td style="text-align:left">GitHub (微软)</td>
+<td style="text-align:left">用户量最大，适合日常编码</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/features/copilot">https://github.com/features/copilot</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>通义灵码</strong></td>
+<td style="text-align:left">阿里巴巴</td>
+<td style="text-align:left">阿里云出品，Java/Python企业级支持好</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://lingma.aliyun.com/lingma">https://lingma.aliyun.com/lingma</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CodeGeeX</strong></td>
+<td style="text-align:left">智谱AI / 字节跳动</td>
+<td style="text-align:left">开源，支持130+语言互译</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://codegeex.cn">https://codegeex.cn</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>iFlyCode</strong></td>
+<td style="text-align:left">科大讯飞</td>
+<td style="text-align:left">中文提示词理解精准</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://iflycode.xfyun.cn">https://iflycode.xfyun.cn</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>aiXcoder</strong></td>
+<td style="text-align:left">硅心科技</td>
+<td style="text-align:left">百亿参数，响应&lt;0.5秒</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://www.aixcoder.com">http://www.aixcoder.com</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="阵营2原生ide"><a class="markdownIt-Anchor" href="#阵营2原生ide"></a> 阵营2：原生IDE</h2>
+<p><strong>为AI而生的编辑器，体验最丝滑</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">开发公司</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">官网</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Cursor</strong></td>
+<td style="text-align:left">Anysphere</td>
+<td style="text-align:left">市场领导者，体验最丝滑</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.cursor.so">https://www.cursor.so</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Trae</strong></td>
+<td style="text-align:left">字节跳动</td>
+<td style="text-align:left">支持视觉理解（看图写代码）</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.trae.com.cn">https://www.trae.com.cn</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CatPaw</strong></td>
+<td style="text-align:left">美团</td>
+<td style="text-align:left">美团自研，内部渗透率超95%</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://catpaw.meituan.com">https://catpaw.meituan.com</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="阵营3终端clitui"><a class="markdownIt-Anchor" href="#阵营3终端clitui"></a> 阵营3：终端CLI(TUI)</h2>
+<p><strong>高手专用，解决难题时能力最硬核</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">开发公司</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">官网/备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Claude Code</strong></td>
+<td style="text-align:left">Anthropic</td>
+<td style="text-align:left">推理能力最强，能解决复杂重构</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://claude.com/product/claude-code">https://claude.com/product/claude-code</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CodeBuddy Code</strong></td>
+<td style="text-align:left">腾讯云</td>
+<td style="text-align:left">比肩Claude Code，国内CLI标杆</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://codebuddy.ai">https://codebuddy.ai</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>veCLI</strong></td>
+<td style="text-align:left">字节跳动(火山引擎)</td>
+<td style="text-align:left">支持中文自然语言交互，基于豆包大模型1.6</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6662/2222397">https://www.volcengine.com/docs/6662/2222397</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Codex CLI</strong></td>
+<td style="text-align:left">OpenAI</td>
+<td style="text-align:left">完全开源，Rust编写，支持CI/CD集成</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/openai/codex">https://github.com/openai/codex</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Gemini CLI</strong></td>
+<td style="text-align:left">Google</td>
+<td style="text-align:left">拥有100万tokens超长上下文</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/google-gemini/gemini-cli">https://github.com/google-gemini/gemini-cli</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>OpenCode</strong></td>
+<td style="text-align:left">Abdel-Hazim Lawani</td>
+<td style="text-align:left">开源的Claude Code替代方案，支持多API密钥</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/openagentic/openagentic-ai">https://github.com/openagentic/openagentic-ai</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="阵营4云端web端"><a class="markdownIt-Anchor" href="#阵营4云端web端"></a> 阵营4：云端/WEB端</h2>
+<p><strong>你的AI实习生，能独立完成并提交PR</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">开发公司</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">官网/备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Devin</strong></td>
+<td style="text-align:left">Cognition</td>
+<td style="text-align:left">能独立完成从需求到部署的完整任务</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://devin.ai">https://devin.ai</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>文心快码Zulu</strong></td>
+<td style="text-align:left">百度</td>
+<td style="text-align:left">国内首个多模态AI程序员，图片秒变代码，会说话就能编程</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://comate.baidu.com/">https://comate.baidu.com/</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>华为云码道</strong></td>
+<td style="text-align:left">华为</td>
+<td style="text-align:left">鸿蒙深度适配GLM-4.7- ArkTS专属模型，支持规范驱动开发</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://codearts.huaweicloud.com/">https://codearts.huaweicloud.com/</a></td>
+</tr>
+</tbody>
+</table>
+<svg id="container" width="6098.734375" xmlns="http://www.w3.org/2000/svg" class="flowchart" height="326" viewBox="0 0 6098.734375 326" role="graphics-document document" aria-roledescription="flowchart-v2">$2<style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#container .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#container .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#container .error-icon{fill:hsl(180, 100%, 55%);}#container .error-text{fill:rgb(229.5, 0, 0);stroke:rgb(229.5, 0, 0);}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#0b0b0b;stroke:#0b0b0b;}#container .marker.cross{stroke:#0b0b0b;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#container .cluster-label text{fill:rgb(229.5, 0, 0);}#container .cluster-label span{color:rgb(229.5, 0, 0);}#container .cluster-label span p{background-color:transparent;}#container .label text,#container span{fill:#333;color:#333;}#container .node rect,#container .node circle,#container .node ellipse,#container .node polygon,#container .node path{fill:#ff0000;stroke:hsl(0, 60%, 40%);stroke-width:1px;}#container .rough-node .label text,#container .node .label text,#container .image-shape .label,#container .icon-shape .label{text-anchor:middle;}#container .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#container .rough-node .label,#container .node .label,#container .image-shape .label,#container .icon-shape .label{text-align:center;}#container .node.clickable{cursor:pointer;}#container .root .anchor path{fill:#0b0b0b!important;stroke-width:0;stroke:#0b0b0b;}#container .arrowheadPath{fill:#0b0b0b;}#container .edgePath .path{stroke:#0b0b0b;stroke-width:2.0px;}#container .flowchart-link{stroke:#0b0b0b;fill:none;}#container .edgeLabel{background-color:hsl(-120, 100%, 50%);text-align:center;}#container .edgeLabel p{background-color:hsl(-120, 100%, 50%);}#container .edgeLabel rect{opacity:0.5;background-color:hsl(-120, 100%, 50%);fill:hsl(-120, 100%, 50%);}#container .labelBkg{background-color:rgba(0, 0, 255, 0.5);}#container .cluster rect{fill:hsl(180, 100%, 55%);stroke:hsl(180, 60%, 45%);stroke-width:1px;}#container .cluster text{fill:rgb(229.5, 0, 0);}#container .cluster span{color:rgb(229.5, 0, 0);}#container div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(180, 100%, 55%);border:1px solid hsl(180, 60%, 45%);border-radius:2px;pointer-events:none;z-index:100;}#container .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container rect.text{fill:none;stroke-width:0;}#container .icon-shape,#container .image-shape{background-color:hsl(-120, 100%, 50%);text-align:center;}#container .icon-shape p,#container .image-shape p{background-color:hsl(-120, 100%, 50%);padding:2px;}#container .icon-shape rect,#container .image-shape rect{opacity:0.5;background-color:hsl(-120, 100%, 50%);fill:hsl(-120, 100%, 50%);}#container .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#container .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="container_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="container_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="container_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M2986.656,36.902L2613.76,45.252C2240.865,53.601,1495.073,70.301,1122.177,84.15C749.281,98,749.281,109,749.281,114.5L749.281,120" id="L_A_B_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_B_0" data-points="W3sieCI6Mjk4Ni42NTYyNSwieSI6MzYuOTAyMDQ0MzU4OTIxNzR9LHsieCI6NzQ5LjI4MTI1LCJ5Ijo4N30seyJ4Ijo3NDkuMjgxMjUsInkiOjEyNH1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M624.68,164.046L543.566,172.538C462.453,181.03,300.227,198.015,219.113,210.008C138,222,138,229,138,232.5L138,236" id="L_B_B1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_B1_0" data-points="W3sieCI6NjI0LjY3OTY4NzUsInkiOjE2NC4wNDU1NDk4MTg1MTY0M30seyJ4IjoxMzgsInkiOjIxNX0seyJ4IjoxMzgsInkiOjI0MH1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M624.68,177.469L595.233,183.724C565.786,189.979,506.893,202.49,477.447,212.245C448,222,448,229,448,232.5L448,236" id="L_B_B2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_B2_0" data-points="W3sieCI6NjI0LjY3OTY4NzUsInkiOjE3Ny40Njg2MjM1ODY3NjQ4Nn0seyJ4Ijo0NDgsInkiOjIxNX0seyJ4Ijo0NDgsInkiOjI0MH1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M749.281,178L749.281,184.167C749.281,190.333,749.281,202.667,749.281,214.333C749.281,226,749.281,237,749.281,242.5L749.281,248" id="L_B_B3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_B3_0" data-points="W3sieCI6NzQ5LjI4MTI1LCJ5IjoxNzh9LHsieCI6NzQ5LjI4MTI1LCJ5IjoyMTV9LHsieCI6NzQ5LjI4MTI1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M873.748,178L902.175,184.167C930.603,190.333,987.458,202.667,1015.885,214.333C1044.313,226,1044.313,237,1044.313,242.5L1044.313,248" id="L_B_B4_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_B4_0" data-points="W3sieCI6ODczLjc0NzU1ODU5Mzc1LCJ5IjoxNzh9LHsieCI6MTA0NC4zMTI1LCJ5IjoyMTV9LHsieCI6MTA0NC4zMTI1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M873.883,164.848L949.091,173.207C1024.299,181.565,1174.716,198.283,1249.924,212.141C1325.133,226,1325.133,237,1325.133,242.5L1325.133,248" id="L_B_B5_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_B5_0" data-points="W3sieCI6ODczLjg4MjgxMjUsInkiOjE2NC44NDgxODY3ODg1ODc1NX0seyJ4IjoxMzI1LjEzMjgxMjUsInkiOjIxNX0seyJ4IjoxMzI1LjEzMjgxMjUsInkiOjI1Mn1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M2986.656,38.525L2791.96,46.604C2597.263,54.683,2207.87,70.842,2013.173,82.421C1818.477,94,1818.477,101,1818.477,104.5L1818.477,108" id="L_A_C_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_C_0" data-points="W3sieCI6Mjk4Ni42NTYyNSwieSI6MzguNTI0OTEyNzE4MjA0NDl9LHsieCI6MTgxOC40NzY1NjI1LCJ5Ijo4N30seyJ4IjoxODE4LjQ3NjU2MjUsInkiOjExMn1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M1688.477,186.329L1670.893,191.108C1653.31,195.886,1618.143,205.443,1600.56,215.722C1582.977,226,1582.977,237,1582.977,242.5L1582.977,248" id="L_C_C1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_C1_0" data-points="W3sieCI6MTY4OC40NzY1NjI1LCJ5IjoxODYuMzI5MDg3MDQ4ODMyMjZ9LHsieCI6MTU4Mi45NzY1NjI1LCJ5IjoyMTV9LHsieCI6MTU4Mi45NzY1NjI1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M1818.477,190L1818.477,194.167C1818.477,198.333,1818.477,206.667,1818.477,216.333C1818.477,226,1818.477,237,1818.477,242.5L1818.477,248" id="L_C_C2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_C2_0" data-points="W3sieCI6MTgxOC40NzY1NjI1LCJ5IjoxOTB9LHsieCI6MTgxOC40NzY1NjI1LCJ5IjoyMTV9LHsieCI6MTgxOC40NzY1NjI1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M1948.477,183.939L1968.908,189.116C1989.339,194.293,2030.201,204.646,2050.632,215.323C2071.063,226,2071.063,237,2071.063,242.5L2071.063,248" id="L_C_C3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_C3_0" data-points="W3sieCI6MTk0OC40NzY1NjI1LCJ5IjoxODMuOTM5Mjg0Mjc4MjQ2ODd9LHsieCI6MjA3MS4wNjI1LCJ5IjoyMTV9LHsieCI6MjA3MS4wNjI1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M3071.602,62L3071.602,66.167C3071.602,70.333,3071.602,78.667,3071.602,88.333C3071.602,98,3071.602,109,3071.602,114.5L3071.602,120" id="L_A_D_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_D_0" data-points="W3sieCI6MzA3MS42MDE1NjI1LCJ5Ijo2Mn0seyJ4IjozMDcxLjYwMTU2MjUsInkiOjg3fSx7IngiOjMwNzEuNjAxNTYyNSwieSI6MTI0fV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M2946.383,162.158L2847.543,170.965C2748.703,179.772,2551.023,197.386,2452.184,211.693C2353.344,226,2353.344,237,2353.344,242.5L2353.344,248" id="L_D_D1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_D1_0" data-points="W3sieCI6Mjk0Ni4zODI4MTI1LCJ5IjoxNjIuMTU3NTUzNTQyMDk5NX0seyJ4IjoyMzUzLjM0Mzc1LCJ5IjoyMTV9LHsieCI6MjM1My4zNDM3NSwieSI6MjUyfV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M2946.383,169.908L2896.613,177.424C2846.844,184.939,2747.305,199.969,2697.535,210.985C2647.766,222,2647.766,229,2647.766,232.5L2647.766,236" id="L_D_D2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_D2_0" data-points="W3sieCI6Mjk0Ni4zODI4MTI1LCJ5IjoxNjkuOTA4MjU5NzU1NTgwNTN9LHsieCI6MjY0Ny43NjU2MjUsInkiOjIxNX0seyJ4IjoyNjQ3Ljc2NTYyNSwieSI6MjQwfV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M3012.776,178L2999.341,184.167C2985.906,190.333,2959.035,202.667,2945.599,214.333C2932.164,226,2932.164,237,2932.164,242.5L2932.164,248" id="L_D_D3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_D3_0" data-points="W3sieCI6MzAxMi43NzYzNjcxODc1LCJ5IjoxNzh9LHsieCI6MjkzMi4xNjQwNjI1LCJ5IjoyMTV9LHsieCI6MjkzMi4xNjQwNjI1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M3130.427,178L3143.862,184.167C3157.298,190.333,3184.168,202.667,3197.604,214.333C3211.039,226,3211.039,237,3211.039,242.5L3211.039,248" id="L_D_D4_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_D4_0" data-points="W3sieCI6MzEzMC40MjY3NTc4MTI1LCJ5IjoxNzh9LHsieCI6MzIxMS4wMzkwNjI1LCJ5IjoyMTV9LHsieCI6MzIxMS4wMzkwNjI1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M3196.82,169.471L3248.26,177.06C3299.701,184.648,3402.581,199.824,3454.021,212.912C3505.461,226,3505.461,237,3505.461,242.5L3505.461,248" id="L_D_D5_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_D5_0" data-points="W3sieCI6MzE5Ni44MjAzMTI1LCJ5IjoxNjkuNDcxNDIyOTEyMDg5OX0seyJ4IjozNTA1LjQ2MDkzNzUsInkiOjIxNX0seyJ4IjozNTA1LjQ2MDkzNzUsInkiOjI1Mn1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M3196.82,162.03L3297.048,170.858C3397.276,179.686,3597.732,197.343,3697.96,211.672C3798.188,226,3798.188,237,3798.188,242.5L3798.188,248" id="L_D_D6_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_D6_0" data-points="W3sieCI6MzE5Ni44MjAzMTI1LCJ5IjoxNjIuMDI5NjY1NzA5NzA4M30seyJ4IjozNzk4LjE4NzUsInkiOjIxNX0seyJ4IjozNzk4LjE4NzUsInkiOjI1Mn1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M3156.547,38.523L3351.337,46.603C3546.128,54.682,3935.708,70.841,4130.499,84.421C4325.289,98,4325.289,109,4325.289,114.5L4325.289,120" id="L_A_E_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_E_0" data-points="W3sieCI6MzE1Ni41NDY4NzUsInkiOjM4LjUyMzMzMTE3MzAzOTU0fSx7IngiOjQzMjUuMjg5MDYyNSwieSI6ODd9LHsieCI6NDMyNS4yODkwNjI1LCJ5IjoxMjR9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M4217.016,178L4192.286,184.167C4167.557,190.333,4118.099,202.667,4093.37,214.333C4068.641,226,4068.641,237,4068.641,242.5L4068.641,248" id="L_E_E1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E_E1_0" data-points="W3sieCI6NDIxNy4wMTU1MDI5Mjk2ODc1LCJ5IjoxNzh9LHsieCI6NDA2OC42NDA2MjUsInkiOjIxNX0seyJ4Ijo0MDY4LjY0MDYyNSwieSI6MjUyfV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M4325.289,178L4325.289,184.167C4325.289,190.333,4325.289,202.667,4325.289,214.333C4325.289,226,4325.289,237,4325.289,242.5L4325.289,248" id="L_E_E2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E_E2_0" data-points="W3sieCI6NDMyNS4yODkwNjI1LCJ5IjoxNzh9LHsieCI6NDMyNS4yODkwNjI1LCJ5IjoyMTV9LHsieCI6NDMyNS4yODkwNjI1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M4438.891,176.925L4466.698,183.271C4494.505,189.617,4550.12,202.308,4577.927,214.154C4605.734,226,4605.734,237,4605.734,242.5L4605.734,248" id="L_E_E3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E_E3_0" data-points="W3sieCI6NDQzOC44OTA2MjUsInkiOjE3Ni45MjQ4NDA1MTU5MjA1NX0seyJ4Ijo0NjA1LjczNDM3NSwieSI6MjE1fSx7IngiOjQ2MDUuNzM0Mzc1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M3156.547,36.871L3535.839,45.226C3915.13,53.581,4673.714,70.29,5053.005,82.145C5432.297,94,5432.297,101,5432.297,104.5L5432.297,108" id="L_A_F_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_F_0" data-points="W3sieCI6MzE1Ni41NDY4NzUsInkiOjM2Ljg3MTEyNTA5ODg2ODUxfSx7IngiOjU0MzIuMjk2ODc1LCJ5Ijo4N30seyJ4Ijo1NDMyLjI5Njg3NSwieSI6MTEyfV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M5302.297,165.991L5231.462,174.159C5160.628,182.327,5018.958,198.664,4948.124,212.332C4877.289,226,4877.289,237,4877.289,242.5L4877.289,248" id="L_F_F1_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_F1_0" data-points="W3sieCI6NTMwMi4yOTY4NzUsInkiOjE2NS45OTA3Nzk5NzIxMjg3Nn0seyJ4Ijo0ODc3LjI4OTA2MjUsInkiOjIxNX0seyJ4Ijo0ODc3LjI4OTA2MjUsInkiOjI1Mn1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M5302.297,181.263L5278.143,186.886C5253.99,192.509,5205.682,203.754,5181.529,212.877C5157.375,222,5157.375,229,5157.375,232.5L5157.375,236" id="L_F_F2_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_F2_0" data-points="W3sieCI6NTMwMi4yOTY4NzUsInkiOjE4MS4yNjMxNDI5MzgzMzQ3N30seyJ4Ijo1MTU3LjM3NSwieSI6MjE1fSx7IngiOjUxNTcuMzc1LCJ5IjoyNDB9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M5432.297,190L5432.297,194.167C5432.297,198.333,5432.297,206.667,5432.297,216.333C5432.297,226,5432.297,237,5432.297,242.5L5432.297,248" id="L_F_F3_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_F3_0" data-points="W3sieCI6NTQzMi4yOTY4NzUsInkiOjE5MH0seyJ4Ijo1NDMyLjI5Njg3NSwieSI6MjE1fSx7IngiOjU0MzIuMjk2ODc1LCJ5IjoyNTJ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M5562.297,182.8L5584.236,188.167C5606.174,193.534,5650.052,204.267,5671.991,215.133C5693.93,226,5693.93,237,5693.93,242.5L5693.93,248" id="L_F_F4_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_F4_0" data-points="W3sieCI6NTU2Mi4yOTY4NzUsInkiOjE4Mi44MDAyOTI2MzM0MDIwMn0seyJ4Ijo1NjkzLjkyOTY4NzUsInkiOjIxNX0seyJ4Ijo1NjkzLjkyOTY4NzUsInkiOjI1Mn1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M5562.297,166.311L5631.195,174.426C5700.094,182.541,5837.891,198.77,5906.789,212.385C5975.688,226,5975.688,237,5975.688,242.5L5975.688,248" id="L_F_F5_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_F5_0" data-points="W3sieCI6NTU2Mi4yOTY4NzUsInkiOjE2Ni4zMTEyNjg5NDIxMTY5M30seyJ4Ijo1OTc1LjY4NzUsInkiOjIxNX0seyJ4Ijo1OTc1LjY4NzUsInkiOjI1Mn1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_B_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_B1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_B2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_B3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_B4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_B5_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_C_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_C1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_C2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_C_C3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_D_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_D1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_D2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_D3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_D4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_D5_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_D6_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_E_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E_E1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E_E2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E_E3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_A_F_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_F_F1_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_F_F2_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_F_F3_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_F_F4_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_F_F5_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-A-0" transform="translate(3071.6015625, 35)"><rect class="basic label-container" style="" x="-84.9453125" y="-27" width="169.890625" height="54"></rect><g class="label" style="" transform="translate(-54.9453125, -12)"><rect></rect><foreignObject width="109.890625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>AI编程助手生态</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B-2" transform="translate(749.28125, 151)"><rect class="basic label-container" style="" x="-124.6015625" y="-27" width="249.203125" height="54"></rect><g class="label" style="" transform="translate(-94.6015625, -12)"><rect></rect><foreignObject width="189.203125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>阵营1：IDE插件 / AI副驾驶</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B1-4" transform="translate(138, 279)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"></rect><g class="label" style="" transform="translate(-100, -24)"><rect></rect><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>GitHub Copilot (用户量最大)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B2-6" transform="translate(448, 279)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"></rect><g class="label" style="" transform="translate(-100, -24)"><rect></rect><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>通义灵码 (Java/Python企业级)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B3-8" transform="translate(749.28125, 279)"><rect class="basic label-container" style="" x="-121.28125" y="-27" width="242.5625" height="54"></rect><g class="label" style="" transform="translate(-91.28125, -12)"><rect></rect><foreignObject width="182.5625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>CodeGeeX (130+语言互译)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B4-10" transform="translate(1044.3125, 279)"><rect class="basic label-container" style="" x="-123.75" y="-27" width="247.5" height="54"></rect><g class="label" style="" transform="translate(-93.75, -12)"><rect></rect><foreignObject width="187.5" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>iFlyCode (中文提示词精准)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B5-12" transform="translate(1325.1328125, 279)"><rect class="basic label-container" style="" x="-107.0703125" y="-27" width="214.140625" height="54"></rect><g class="label" style="" transform="translate(-77.0703125, -12)"><rect></rect><foreignObject width="154.140625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>aiXcoder (响应&lt;0.5秒)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C-14" transform="translate(1818.4765625, 151)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"></rect><g class="label" style="" transform="translate(-100, -24)"><rect></rect><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>阵营2：原生IDE / AI原生编辑器</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C1-16" transform="translate(1582.9765625, 279)"><rect class="basic label-container" style="" x="-100.7734375" y="-27" width="201.546875" height="54"></rect><g class="label" style="" transform="translate(-70.7734375, -12)"><rect></rect><foreignObject width="141.546875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Cursor (体验最丝滑)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C2-18" transform="translate(1818.4765625, 279)"><rect class="basic label-container" style="" x="-84.7265625" y="-27" width="169.453125" height="54"></rect><g class="label" style="" transform="translate(-54.7265625, -12)"><rect></rect><foreignObject width="109.453125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Trae (视觉理解)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C3-20" transform="translate(2071.0625, 279)"><rect class="basic label-container" style="" x="-117.859375" y="-27" width="235.71875" height="54"></rect><g class="label" style="" transform="translate(-87.859375, -12)"><rect></rect><foreignObject width="175.71875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>CatPaw (美团渗透率95%)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D-22" transform="translate(3071.6015625, 151)"><rect class="basic label-container" style="" x="-125.21875" y="-27" width="250.4375" height="54"></rect><g class="label" style="" transform="translate(-95.21875, -12)"><rect></rect><foreignObject width="190.4375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>阵营3：终端CLI / 高手专用</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D1-24" transform="translate(2353.34375, 279)"><rect class="basic label-container" style="" x="-114.421875" y="-27" width="228.84375" height="54"></rect><g class="label" style="" transform="translate(-84.421875, -12)"><rect></rect><foreignObject width="168.84375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Claude Code (推理最强)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D2-26" transform="translate(2647.765625, 279)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"></rect><g class="label" style="" transform="translate(-100, -24)"><rect></rect><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>CodeBuddy Code (国内CLI标杆)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D3-28" transform="translate(2932.1640625, 279)"><rect class="basic label-container" style="" x="-104.3984375" y="-27" width="208.796875" height="54"></rect><g class="label" style="" transform="translate(-74.3984375, -12)"><rect></rect><foreignObject width="148.796875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>veCLI (中文自然语言)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D4-30" transform="translate(3211.0390625, 279)"><rect class="basic label-container" style="" x="-124.4765625" y="-27" width="248.953125" height="54"></rect><g class="label" style="" transform="translate(-94.4765625, -12)"><rect></rect><foreignObject width="188.953125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Codex CLI (Rust编写/开源)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D5-32" transform="translate(3505.4609375, 279)"><rect class="basic label-container" style="" x="-119.9453125" y="-27" width="239.890625" height="54"></rect><g class="label" style="" transform="translate(-89.9453125, -12)"><rect></rect><foreignObject width="179.890625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Gemini CLI (100万上下文)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D6-34" transform="translate(3798.1875, 279)"><rect class="basic label-container" style="" x="-122.78125" y="-27" width="245.5625" height="54"></rect><g class="label" style="" transform="translate(-92.78125, -12)"><rect></rect><foreignObject width="185.5625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>OpenCode (开源替代方案)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E-36" transform="translate(4325.2890625, 151)"><rect class="basic label-container" style="" x="-113.6015625" y="-27" width="227.203125" height="54"></rect><g class="label" style="" transform="translate(-83.6015625, -12)"><rect></rect><foreignObject width="167.203125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>阵营4：云端 / AI实习生</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E1-38" transform="translate(4068.640625, 279)"><rect class="basic label-container" style="" x="-97.671875" y="-27" width="195.34375" height="54"></rect><g class="label" style="" transform="translate(-67.671875, -12)"><rect></rect><foreignObject width="135.34375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Devin (需求到部署)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E2-40" transform="translate(4325.2890625, 279)"><rect class="basic label-container" style="" x="-108.9765625" y="-27" width="217.953125" height="54"></rect><g class="label" style="" transform="translate(-78.9765625, -12)"><rect></rect><foreignObject width="157.953125" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>文心快码Zulu (多模态)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E3-42" transform="translate(4605.734375, 279)"><rect class="basic label-container" style="" x="-121.46875" y="-27" width="242.9375" height="54"></rect><g class="label" style="" transform="translate(-91.46875, -12)"><rect></rect><foreignObject width="182.9375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>华为云码道 (鸿蒙/嵌入式)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F-44" transform="translate(5432.296875, 151)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"></rect><g class="label" style="" transform="translate(-100, -24)"><rect></rect><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>阵营5：多智能体框架 / AI团队</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F1-46" transform="translate(4877.2890625, 279)"><rect class="basic label-container" style="" x="-100.0859375" y="-27" width="200.171875" height="54"></rect><g class="label" style="" transform="translate(-70.0859375, -12)"><rect></rect><foreignObject width="140.171875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>AutoGen (人机协同)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F2-48" transform="translate(5157.375, 279)"><rect class="basic label-container" style="" x="-130" y="-39" width="260" height="78"></rect><g class="label" style="" transform="translate(-100, -24)"><rect></rect><foreignObject width="200" height="48"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table; white-space: break-spaces; line-height: 1.5; max-width: 200px; text-align: center; width: 200px;"><span class="nodeLabel"><p>AgentScope (分布式/低代码)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F3-50" transform="translate(5432.296875, 279)"><rect class="basic label-container" style="" x="-94.921875" y="-27" width="189.84375" height="54"></rect><g class="label" style="" transform="translate(-64.921875, -12)"><rect></rect><foreignObject width="129.84375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>Eino (Go语言编排)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F4-52" transform="translate(5693.9296875, 279)"><rect class="basic label-container" style="" x="-116.7109375" y="-27" width="233.421875" height="54"></rect><g class="label" style="" transform="translate(-86.7109375, -12)"><rect></rect><foreignObject width="173.421875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>MetaGPT (模拟软件公司)</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F5-54" transform="translate(5975.6875, 279)"><rect class="basic label-container" style="" x="-115.046875" y="-27" width="230.09375" height="54"></rect><g class="label" style="" transform="translate(-85.046875, -12)"><rect></rect><foreignObject width="170.09375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>CrewAI (基于LangChain)</p></span></div></foreignObject></g></g></g></g></g></svg>
+<h1 id="使用选型"><a class="markdownIt-Anchor" href="#使用选型"></a> 使用&amp;选型</h1>
+<h2 id="阵营1ide插件-2"><a class="markdownIt-Anchor" href="#阵营1ide插件-2"></a> 阵营1：IDE插件</h2>
+<h3 id="intellij-idea"><a class="markdownIt-Anchor" href="#intellij-idea"></a> IntelliJ IDEA</h3>
+<ul>
+<li><strong>通义灵码</strong>：阿里出品，必属精品 <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/17809-lingma--alibaba-cloud-ai-coding-assistant">下载</a><br>
+我的常用场景
+<ul>
+<li>代码问答与架构咨询</li>
+<li>Git Commit Message 自动生成</li>
+<li>智能代码补全与重构</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/04/20/ai/codeai/ai-coding-agent/1776392869091.png" alt=""></p>
+<ul>
+<li><strong>CC GUI</strong>：Claude Code/ Codex 的 GUI 封装 <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/29342-cc-gui-claude-or-codex-">下载</a><br>
+我的常用场景
+<ul>
+<li>阅读代码、梳理业务逻辑、写比较明确的需求</li>
+</ul>
+</li>
+</ul>
+<p><img src="/2026/04/20/ai/codeai/ai-coding-agent/1776393069792.png" alt=""></p>
+<p>已安装过但已经被我废弃的：Trae 插件、智谱AI（有相同功能点只留一两个顺手的就行）</p>
+<h3 id="vs-code"><a class="markdownIt-Anchor" href="#vs-code"></a> VS Code</h3>
+<p>推荐</p>
+<ul>
+<li><strong>GitHub Copilot</strong></li>
+<li><strong>Claude Code</strong></li>
+<li><strong>Kimi</strong></li>
+<li><strong>Kilo</strong></li>
+<li><strong>通义灵码</strong></li>
+<li><strong>Codex CLI</strong>：这玩意需要翻墙使用</li>
+</ul>
+<p><img src="/2026/04/20/ai/codeai/ai-coding-agent/1776393243660.png" alt=""></p>
+<p>我的常用场景</p>
+<ul>
+<li>主要是写博客</li>
+<li>整理文档</li>
+<li>探索新的工具</li>
+</ul>
+<h2 id="阵营3终端clitui-2"><a class="markdownIt-Anchor" href="#阵营3终端clitui-2"></a> 阵营3：终端CLI(TUI)</h2>
+<p>怎么选？</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">你的情况</th>
+<th style="text-align:left">推荐工具</th>
+<th style="text-align:left">理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">想要开源可控,用国产模型友好</td>
+<td style="text-align:left"><strong>OpenCode</strong></td>
+<td style="text-align:left">支持智谱GLM、通义Qwen、DeepSeek、MiniMax等国内模型</td>
+</tr>
+<tr>
+<td style="text-align:left">不差钱，追求官方体验</td>
+<td style="text-align:left"><strong>Claude Code</strong> 或 <strong>Codex CLI</strong></td>
+<td style="text-align:left">官方出品，体验完善，专家级能力</td>
+</tr>
+<tr>
+<td style="text-align:left">需要企业级支持</td>
+<td style="text-align:left"><strong>通义灵码</strong> 或 <strong>文心快码</strong></td>
+<td style="text-align:left">阿里/百度企业版，国产化合规</td>
+</tr>
+<tr>
+<td style="text-align:left">鸿蒙/嵌入式开发</td>
+<td style="text-align:left"><strong>华为云码道</strong></td>
+<td style="text-align:left">GLM-4.7- ArkTS专属模型，鸿蒙深度适配</td>
+</tr>
+<tr>
+<td style="text-align:left">需要IDE原生体验</td>
+<td style="text-align:left"><strong>Cursor</strong> 或 <strong>Trae</strong></td>
+<td style="text-align:left">AI原生编辑器，体验最丝滑</td>
+</tr>
+</tbody>
+</table>
+<p>结论</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">核心优势</th>
+<th style="text-align:left">学习曲线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Claude Code</strong></td>
+<td style="text-align:left">深度推理，复杂重构，专家级调试</td>
+<td style="text-align:left">中</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Codex CLI</strong></td>
+<td style="text-align:left">云端异步执行，并行多任务，自动测试</td>
+<td style="text-align:left">低</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Gemini CLI</strong></td>
+<td style="text-align:left">100万tokens超长上下文，多模态</td>
+<td style="text-align:left">低</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>OpenCode</strong></td>
+<td style="text-align:left">100万tokens超长上下文，多模态</td>
+<td style="text-align:left">低</td>
+</tr>
+</tbody>
+</table>
+<p>Claude Code、Codex CLI、Gemini CLI 主要是为了偶尔用一下国外的最强模型，有些问题国内大模型解决起来比较耗时费力，用 Claude Code、Codex CLI、Gemini CLI 则可以快速解决。<br>
+Claude Code 和 OpenCode 还是作为主力使用。Claude Code、Codex CLI、Gemini CLI 都可以 配置国内的模型，但自身的工具还是对自身的模型适配度最好，毕竟那些内置的提示词针对的是自家的LLM，毕竟是做闭源的，对其他模型的适配可能就没那么好了。就好比你用中文跟爱因斯坦对话，就算他精通中文，也还是得多琢磨一下才能给出答案。</p>
+<h1 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h1>
+<p>这些玩意配置项特别多，要能用好需要好好熟悉一下，第一道大关就是配置 国产模型 和 本地模型。推荐使用 cc-switch 这个工具。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/farion1231/cc-switch/releases">下载</a> 全部可视化配置模型、skills、mcp</p>
+<p><img src="/2026/04/20/ai/codeai/ai-coding-agent/1776404745129.png" alt=""></p>
+<h1 id="vibe-coding-标准流程"><a class="markdownIt-Anchor" href="#vibe-coding-标准流程"></a> Vibe Coding 标准流程</h1>
+<svg id="container" width="1063.80078125" xmlns="http://www.w3.org/2000/svg" class="flowchart" height="2415.015625" viewBox="0 0 1063.80078125 2415.015625" role="graphics-document document" aria-roledescription="flowchart-v2">$2<style>#container{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;fill:#333;}@keyframes edge-animation-frame{from{stroke-dashoffset:0;}}@keyframes dash{to{stroke-dashoffset:0;}}#container .edge-animation-slow{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 50s linear infinite;stroke-linecap:round;}#container .edge-animation-fast{stroke-dasharray:9,5!important;stroke-dashoffset:900;animation:dash 20s linear infinite;stroke-linecap:round;}#container .error-icon{fill:hsl(180, 100%, 55%);}#container .error-text{fill:rgb(229.5, 0, 0);stroke:rgb(229.5, 0, 0);}#container .edge-thickness-normal{stroke-width:1px;}#container .edge-thickness-thick{stroke-width:3.5px;}#container .edge-pattern-solid{stroke-dasharray:0;}#container .edge-thickness-invisible{stroke-width:0;fill:none;}#container .edge-pattern-dashed{stroke-dasharray:3;}#container .edge-pattern-dotted{stroke-dasharray:2;}#container .marker{fill:#0b0b0b;stroke:#0b0b0b;}#container .marker.cross{stroke:#0b0b0b;}#container svg{font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:16px;}#container p{margin:0;}#container .label{font-family:"trebuchet ms",verdana,arial,sans-serif;color:#333;}#container .cluster-label text{fill:rgb(229.5, 0, 0);}#container .cluster-label span{color:rgb(229.5, 0, 0);}#container .cluster-label span p{background-color:transparent;}#container .label text,#container span{fill:#333;color:#333;}#container .node rect,#container .node circle,#container .node ellipse,#container .node polygon,#container .node path{fill:#ff0000;stroke:hsl(0, 60%, 40%);stroke-width:1px;}#container .rough-node .label text,#container .node .label text,#container .image-shape .label,#container .icon-shape .label{text-anchor:middle;}#container .node .katex path{fill:#000;stroke:#000;stroke-width:1px;}#container .rough-node .label,#container .node .label,#container .image-shape .label,#container .icon-shape .label{text-align:center;}#container .node.clickable{cursor:pointer;}#container .root .anchor path{fill:#0b0b0b!important;stroke-width:0;stroke:#0b0b0b;}#container .arrowheadPath{fill:#0b0b0b;}#container .edgePath .path{stroke:#0b0b0b;stroke-width:2.0px;}#container .flowchart-link{stroke:#0b0b0b;fill:none;}#container .edgeLabel{background-color:hsl(-120, 100%, 50%);text-align:center;}#container .edgeLabel p{background-color:hsl(-120, 100%, 50%);}#container .edgeLabel rect{opacity:0.5;background-color:hsl(-120, 100%, 50%);fill:hsl(-120, 100%, 50%);}#container .labelBkg{background-color:rgba(0, 0, 255, 0.5);}#container .cluster rect{fill:hsl(180, 100%, 55%);stroke:hsl(180, 60%, 45%);stroke-width:1px;}#container .cluster text{fill:rgb(229.5, 0, 0);}#container .cluster span{color:rgb(229.5, 0, 0);}#container div.mermaidTooltip{position:absolute;text-align:center;max-width:200px;padding:2px;font-family:"trebuchet ms",verdana,arial,sans-serif;font-size:12px;background:hsl(180, 100%, 55%);border:1px solid hsl(180, 60%, 45%);border-radius:2px;pointer-events:none;z-index:100;}#container .flowchartTitleText{text-anchor:middle;font-size:18px;fill:#333;}#container rect.text{fill:none;stroke-width:0;}#container .icon-shape,#container .image-shape{background-color:hsl(-120, 100%, 50%);text-align:center;}#container .icon-shape p,#container .image-shape p{background-color:hsl(-120, 100%, 50%);padding:2px;}#container .icon-shape rect,#container .image-shape rect{opacity:0.5;background-color:hsl(-120, 100%, 50%);fill:hsl(-120, 100%, 50%);}#container .label-icon{display:inline-block;height:1em;overflow:visible;vertical-align:-0.125em;}#container .node .label-icon path{fill:currentColor;stroke:revert;stroke-width:revert;}#container :root{--mermaid-font-family:"trebuchet ms",verdana,arial,sans-serif;}</style><g><marker id="container_flowchart-v2-pointEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-pointStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="4.5" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 5 L 10 10 L 10 0 z" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-circleEnd" class="marker flowchart-v2" viewBox="0 0 10 10" refX="11" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="container_flowchart-v2-circleStart" class="marker flowchart-v2" viewBox="0 0 10 10" refX="-1" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><circle cx="5" cy="5" r="5" class="arrowMarkerPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></circle></marker><marker id="container_flowchart-v2-crossEnd" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="12" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><marker id="container_flowchart-v2-crossStart" class="marker cross flowchart-v2" viewBox="0 0 11 11" refX="-1" refY="5.2" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto"><path d="M 1,1 l 9,9 M 10,1 l -9,9" class="arrowMarkerPath" style="stroke-width: 2; stroke-dasharray: 1, 0;"></path></marker><g class="root"><g class="clusters"></g><g class="edgePaths"><path d="M193.547,62L193.547,66.167C193.547,70.333,193.547,78.667,193.547,86.333C193.547,94,193.547,101,193.547,104.5L193.547,108" id="L_A_B_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_A_B_0" data-points="W3sieCI6MTkzLjU0Njg3NSwieSI6NjJ9LHsieCI6MTkzLjU0Njg3NSwieSI6ODd9LHsieCI6MTkzLjU0Njg3NSwieSI6MTEyfV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M240.034,166L247.208,170.167C254.382,174.333,268.73,182.667,275.904,190.333C283.078,198,283.078,205,283.078,208.5L283.078,212" id="L_B_C_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_B_C_0" data-points="W3sieCI6MjQwLjAzNDI1NDgwNzY5MjMyLCJ5IjoxNjZ9LHsieCI6MjgzLjA3ODEyNSwieSI6MTkxfSx7IngiOjI4My4wNzgxMjUsInkiOjIxNn1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M257.479,347.76L252.447,358.193C247.416,368.627,237.352,389.493,219.315,405.818C201.278,422.143,175.266,433.926,162.26,439.817L149.254,445.709" id="L_C_D_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_D_0" data-points="W3sieCI6MjU3LjQ3ODkwNjQ2MzU3Mjk3LCJ5IjozNDcuNzYwMTU2NDYzNTcyOTd9LHsieCI6MjI3LjI4OTA2MjUsInkiOjQxMC4zNTkzNzV9LHsieCI6MTQ1LjYxMDgzOTg0Mzc1LCJ5Ijo0NDcuMzU5Mzc1fV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M80.1,447.359L78.751,441.193C77.401,435.026,74.703,422.693,73.353,397.246C72.004,371.799,72.004,333.24,72.004,296.68C72.004,260.12,72.004,225.56,81.13,204.376C90.256,183.191,108.508,175.382,117.634,171.478L126.76,167.573" id="L_D_B_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_D_B_0" data-points="W3sieCI6ODAuMDk5OTE0NTUwNzgxMjUsInkiOjQ0Ny4zNTkzNzV9LHsieCI6NzIuMDAzOTA2MjUsInkiOjQxMC4zNTkzNzV9LHsieCI6NzIuMDAzOTA2MjUsInkiOjI5NC42Nzk2ODc1fSx7IngiOjcyLjAwMzkwNjI1LCJ5IjoxOTF9LHsieCI6MTMwLjQzODAyNTg0MTM0NjE2LCJ5IjoxNjZ9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M293.676,362.761L294.911,370.694C296.146,378.627,298.616,394.493,299.851,407.926C301.086,421.359,301.086,432.359,301.086,437.859L301.086,443.359" id="L_C_E_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_C_E_0" data-points="W3sieCI6MjkzLjY3NjM0MTQzODAyNTkzLCJ5IjozNjIuNzYxMTU4NTYxOTc0MDd9LHsieCI6MzAxLjA4NTkzNzUsInkiOjQxMC4zNTkzNzV9LHsieCI6MzAxLjA4NTkzNzUsInkiOjQ0Ny4zNTkzNzV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M366.136,501.359L376.174,505.526C386.213,509.693,406.29,518.026,416.329,525.693C426.367,533.359,426.367,540.359,426.367,543.859L426.367,547.359" id="L_E_F_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_E_F_0" data-points="W3sieCI6MzY2LjEzNTgxNzMwNzY5MjMsInkiOjUwMS4zNTkzNzV9LHsieCI6NDI2LjM2NzE4NzUsInkiOjUyNi4zNTkzNzV9LHsieCI6NDI2LjM2NzE4NzUsInkiOjU1MS4zNTkzNzV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M426.367,708.719L426.367,714.885C426.367,721.052,426.367,733.385,411.276,745.475C396.185,757.565,366.002,769.411,350.911,775.334L335.82,781.257" id="L_F_G_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_G_0" data-points="W3sieCI6NDI2LjM2NzE4NzUsInkiOjcwOC43MTg3NX0seyJ4Ijo0MjYuMzY3MTg3NSwieSI6NzQ1LjcxODc1fSx7IngiOjMzMi4wOTY2Nzk2ODc1LCJ5Ijo3ODIuNzE4NzV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M263.305,782.719L263.305,776.552C263.305,770.385,263.305,758.052,263.305,732.605C263.305,707.159,263.305,668.599,263.305,632.039C263.305,595.479,263.305,560.919,265.94,540.012C268.576,519.105,273.847,511.85,276.482,508.223L279.118,504.595" id="L_G_E_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_G_E_0" data-points="W3sieCI6MjYzLjMwNDY4NzUsInkiOjc4Mi43MTg3NX0seyJ4IjoyNjMuMzA0Njg3NSwieSI6NzQ1LjcxODc1fSx7IngiOjI2My4zMDQ2ODc1LCJ5Ijo2MzAuMDM5MDYyNX0seyJ4IjoyNjMuMzA0Njg3NSwieSI6NTI2LjM1OTM3NX0seyJ4IjoyODEuNDY4NzUsInkiOjUwMS4zNTkzNzV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M445.047,690.039L447.937,699.319C450.826,708.599,456.604,727.159,459.494,741.939C462.383,756.719,462.383,767.719,462.383,773.219L462.383,778.719" id="L_F_H_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_F_H_0" data-points="W3sieCI6NDQ1LjA0NzM4MzE3MjYwNjUsInkiOjY5MC4wMzg1NTQzMjczOTM1fSx7IngiOjQ2Mi4zODI4MTI1LCJ5Ijo3NDUuNzE4NzV9LHsieCI6NDYyLjM4MjgxMjUsInkiOjc4Mi43MTg3NX1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M430.316,836.719L425.368,840.885C420.419,845.052,410.522,853.385,405.574,861.052C400.625,868.719,400.625,875.719,400.625,879.219L400.625,882.719" id="L_H_I_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_H_I_0" data-points="W3sieCI6NDMwLjMxNjI1NjAwOTYxNTM2LCJ5Ijo4MzYuNzE4NzV9LHsieCI6NDAwLjYyNSwieSI6ODYxLjcxODc1fSx7IngiOjQwMC42MjUsInkiOjg4Ni43MTg3NX1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M400.625,940.719L400.625,944.885C400.625,949.052,400.625,957.385,400.625,965.052C400.625,972.719,400.625,979.719,400.625,983.219L400.625,986.719" id="L_I_J_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_I_J_0" data-points="W3sieCI6NDAwLjYyNSwieSI6OTQwLjcxODc1fSx7IngiOjQwMC42MjUsInkiOjk2NS43MTg3NX0seyJ4Ijo0MDAuNjI1LCJ5Ijo5OTAuNzE4NzV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M358.668,1074.121L332.023,1087.28C305.379,1100.44,252.09,1126.759,220.045,1145.602C188.001,1164.445,177.201,1175.812,171.801,1181.495L166.401,1187.178" id="L_J_K_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_J_K_0" data-points="W3sieCI6MzU4LjY2NzczNjEwMDc2NDQsInkiOjEwNzQuMTIwODYxMTAwNzY0NH0seyJ4IjoxOTguODAwNzgxMjUsInkiOjExNTMuMDc4MTI1fSx7IngiOjE2My42NDU4MTI5ODgyODEyNSwieSI6MTE5MC4wNzgxMjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M132.084,1190.078L130.735,1183.911C129.386,1177.745,126.687,1165.411,125.338,1142.632C123.988,1119.852,123.988,1086.625,123.988,1055.398C123.988,1024.172,123.988,994.945,123.988,971.665C123.988,948.385,123.988,931.052,123.988,913.719C123.988,896.385,123.988,879.052,167.883,863.64C211.778,848.228,299.569,834.738,343.464,827.993L387.359,821.247" id="L_K_H_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_K_H_0" data-points="W3sieCI6MTMyLjA4NDI4OTU1MDc4MTI1LCJ5IjoxMTkwLjA3ODEyNX0seyJ4IjoxMjMuOTg4MjgxMjUsInkiOjExNTMuMDc4MTI1fSx7IngiOjEyMy45ODgyODEyNSwieSI6MTA1My4zOTg0Mzc1fSx7IngiOjEyMy45ODgyODEyNSwieSI6OTY1LjcxODc1fSx7IngiOjEyMy45ODgyODEyNSwieSI6OTEzLjcxODc1fSx7IngiOjEyMy45ODgyODEyNSwieSI6ODYxLjcxODc1fSx7IngiOjM5MS4zMTI1LCJ5Ijo4MjAuNjM5ODk2NDk4Mjg1OH1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M444.641,1072.062L476.484,1085.565C508.328,1099.068,572.016,1126.073,603.859,1145.075C635.703,1164.078,635.703,1175.078,635.703,1180.578L635.703,1186.078" id="L_J_L_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_J_L_0" data-points="W3sieCI6NDQ0LjY0MDc3MTU5MDM1MjIsInkiOjEwNzIuMDYyMzUzNDA5NjQ3OH0seyJ4Ijo2MzUuNzAzMTI1LCJ5IjoxMTUzLjA3ODEyNX0seyJ4Ijo2MzUuNzAzMTI1LCJ5IjoxMTkwLjA3ODEyNX1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M635.703,1244.078L635.703,1248.245C635.703,1252.411,635.703,1260.745,635.703,1268.411C635.703,1276.078,635.703,1283.078,635.703,1286.578L635.703,1290.078" id="L_L_M_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_L_M_0" data-points="W3sieCI6NjM1LjcwMzEyNSwieSI6MTI0NC4wNzgxMjV9LHsieCI6NjM1LjcwMzEyNSwieSI6MTI2OS4wNzgxMjV9LHsieCI6NjM1LjcwMzEyNSwieSI6MTI5NC4wNzgxMjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M635.703,1348.078L635.703,1352.245C635.703,1356.411,635.703,1364.745,635.703,1372.411C635.703,1380.078,635.703,1387.078,635.703,1390.578L635.703,1394.078" id="L_M_N_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_M_N_0" data-points="W3sieCI6NjM1LjcwMzEyNSwieSI6MTM0OC4wNzgxMjV9LHsieCI6NjM1LjcwMzEyNSwieSI6MTM3My4wNzgxMjV9LHsieCI6NjM1LjcwMzEyNSwieSI6MTM5OC4wNzgxMjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M591.687,1479.422L559.844,1492.924C528,1506.427,464.312,1533.432,423.489,1552.74C382.666,1572.047,364.707,1583.656,355.727,1589.461L346.748,1595.266" id="L_N_O_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_N_O_0" data-points="W3sieCI6NTkxLjY4NzM1MzQwOTY0NzgsInkiOjE0NzkuNDIxNzI4NDA5NjQ3OH0seyJ4Ijo0MDAuNjI1LCJ5IjoxNTYwLjQzNzV9LHsieCI6MzQzLjM4ODM2NjY5OTIxODc1LCJ5IjoxNTk3LjQzNzV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M295.713,1597.438L294.364,1591.271C293.015,1585.104,290.316,1572.771,288.967,1549.991C287.617,1527.211,287.617,1493.984,287.617,1462.758C287.617,1431.531,287.617,1402.305,287.617,1379.025C287.617,1355.745,287.617,1338.411,287.617,1321.078C287.617,1303.745,287.617,1286.411,287.617,1269.078C287.617,1251.745,287.617,1234.411,287.617,1215.078C287.617,1195.745,287.617,1174.411,287.617,1147.132C287.617,1119.852,287.617,1086.625,287.617,1055.398C287.617,1024.172,287.617,994.945,287.617,971.665C287.617,948.385,287.617,931.052,287.617,913.719C287.617,896.385,287.617,879.052,304.261,865.433C320.904,851.814,354.191,841.91,370.835,836.958L387.479,832.006" id="L_O_H_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_O_H_0" data-points="W3sieCI6Mjk1LjcxMzE5NTgwMDc4MTI1LCJ5IjoxNTk3LjQzNzV9LHsieCI6Mjg3LjYxNzE4NzUsInkiOjE1NjAuNDM3NX0seyJ4IjoyODcuNjE3MTg3NSwieSI6MTQ2MC43NTc4MTI1fSx7IngiOjI4Ny42MTcxODc1LCJ5IjoxMzczLjA3ODEyNX0seyJ4IjoyODcuNjE3MTg3NSwieSI6MTMyMS4wNzgxMjV9LHsieCI6Mjg3LjYxNzE4NzUsInkiOjEyNjkuMDc4MTI1fSx7IngiOjI4Ny42MTcxODc1LCJ5IjoxMjE3LjA3ODEyNX0seyJ4IjoyODcuNjE3MTg3NSwieSI6MTE1My4wNzgxMjV9LHsieCI6Mjg3LjYxNzE4NzUsInkiOjEwNTMuMzk4NDM3NX0seyJ4IjoyODcuNjE3MTg3NSwieSI6OTY1LjcxODc1fSx7IngiOjI4Ny42MTcxODc1LCJ5Ijo5MTMuNzE4NzV9LHsieCI6Mjg3LjYxNzE4NzUsInkiOjg2MS43MTg3NX0seyJ4IjozOTEuMzEyNSwieSI6ODMwLjg2NTEwNjcyNzc2MDN9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M683.639,1475.502L729.663,1489.658C775.688,1503.814,867.736,1532.126,913.761,1551.782C959.785,1571.438,959.785,1582.438,959.785,1587.938L959.785,1593.438" id="L_N_P_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_N_P_0" data-points="W3sieCI6NjgzLjYzODkzMzEzMDY1MTgsInkiOjE0NzUuNTAxNjkxODY5MzQ4Mn0seyJ4Ijo5NTkuNzg1MTU2MjUsInkiOjE1NjAuNDM3NX0seyJ4Ijo5NTkuNzg1MTU2MjUsInkiOjE1OTcuNDM3NX1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M959.785,1651.438L959.785,1655.604C959.785,1659.771,959.785,1668.104,959.785,1675.771C959.785,1683.438,959.785,1690.438,959.785,1693.938L959.785,1697.438" id="L_P_Q_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_P_Q_0" data-points="W3sieCI6OTU5Ljc4NTE1NjI1LCJ5IjoxNjUxLjQzNzV9LHsieCI6OTU5Ljc4NTE1NjI1LCJ5IjoxNjc2LjQzNzV9LHsieCI6OTU5Ljc4NTE1NjI1LCJ5IjoxNzAxLjQzNzV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M897.968,1809.839L854.257,1826.308C810.546,1842.778,723.125,1875.717,669.575,1898.014C616.025,1920.31,596.347,1931.964,586.508,1937.791L576.669,1943.618" id="L_Q_R_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Q_R_0" data-points="W3sieCI6ODk3Ljk2NzY5Njg3NzA1MTgsInkiOjE4MDkuODM4NzkwNjI3MDUxOH0seyJ4Ijo2MzUuNzAzMTI1LCJ5IjoxOTA4LjY1NjI1fSx7IngiOjU3My4yMjcyMzM4ODY3MTg4LCJ5IjoxOTQ1LjY1NjI1fV0=" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M521.729,1945.656L520.379,1939.49C519.03,1933.323,516.331,1920.99,514.982,1894.471C513.633,1867.953,513.633,1827.25,513.633,1788.547C513.633,1749.844,513.633,1713.141,513.633,1686.122C513.633,1659.104,513.633,1641.771,513.633,1622.438C513.633,1603.104,513.633,1581.771,513.633,1554.491C513.633,1527.211,513.633,1493.984,513.633,1462.758C513.633,1431.531,513.633,1402.305,513.633,1379.025C513.633,1355.745,513.633,1338.411,513.633,1321.078C513.633,1303.745,513.633,1286.411,513.633,1269.078C513.633,1251.745,513.633,1234.411,513.633,1215.078C513.633,1195.745,513.633,1174.411,513.633,1147.132C513.633,1119.852,513.633,1086.625,513.633,1055.398C513.633,1024.172,513.633,994.945,513.633,971.665C513.633,948.385,513.633,931.052,513.633,913.719C513.633,896.385,513.633,879.052,509.994,866.694C506.356,854.335,499.078,846.951,495.44,843.259L491.801,839.568" id="L_R_H_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_R_H_0" data-points="W3sieCI6NTIxLjcyODgyMDgwMDc4MTIsInkiOjE5NDUuNjU2MjV9LHsieCI6NTEzLjYzMjgxMjUsInkiOjE5MDguNjU2MjV9LHsieCI6NTEzLjYzMjgxMjUsInkiOjE3ODYuNTQ2ODc1fSx7IngiOjUxMy42MzI4MTI1LCJ5IjoxNjc2LjQzNzV9LHsieCI6NTEzLjYzMjgxMjUsInkiOjE2MjQuNDM3NX0seyJ4Ijo1MTMuNjMyODEyNSwieSI6MTU2MC40Mzc1fSx7IngiOjUxMy42MzI4MTI1LCJ5IjoxNDYwLjc1NzgxMjV9LHsieCI6NTEzLjYzMjgxMjUsInkiOjEzNzMuMDc4MTI1fSx7IngiOjUxMy42MzI4MTI1LCJ5IjoxMzIxLjA3ODEyNX0seyJ4Ijo1MTMuNjMyODEyNSwieSI6MTI2OS4wNzgxMjV9LHsieCI6NTEzLjYzMjgxMjUsInkiOjEyMTcuMDc4MTI1fSx7IngiOjUxMy42MzI4MTI1LCJ5IjoxMTUzLjA3ODEyNX0seyJ4Ijo1MTMuNjMyODEyNSwieSI6MTA1My4zOTg0Mzc1fSx7IngiOjUxMy42MzI4MTI1LCJ5Ijo5NjUuNzE4NzV9LHsieCI6NTEzLjYzMjgxMjUsInkiOjkxMy43MTg3NX0seyJ4Ijo1MTMuNjMyODEyNSwieSI6ODYxLjcxODc1fSx7IngiOjQ4OC45OTMzODk0MjMwNzY5LCJ5Ijo4MzYuNzE4NzV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M959.785,1871.656L959.785,1877.823C959.785,1883.99,959.785,1896.323,959.785,1907.99C959.785,1919.656,959.785,1930.656,959.785,1936.156L959.785,1941.656" id="L_Q_S_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_Q_S_0" data-points="W3sieCI6OTU5Ljc4NTE1NjI1LCJ5IjoxODcxLjY1NjI1fSx7IngiOjk1OS43ODUxNTYyNSwieSI6MTkwOC42NTYyNX0seyJ4Ijo5NTkuNzg1MTU2MjUsInkiOjE5NDUuNjU2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M959.785,1999.656L959.785,2003.823C959.785,2007.99,959.785,2016.323,959.785,2023.99C959.785,2031.656,959.785,2038.656,959.785,2042.156L959.785,2045.656" id="L_S_T_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_S_T_0" data-points="W3sieCI6OTU5Ljc4NTE1NjI1LCJ5IjoxOTk5LjY1NjI1fSx7IngiOjk1OS43ODUxNTYyNSwieSI6MjAyNC42NTYyNX0seyJ4Ijo5NTkuNzg1MTU2MjUsInkiOjIwNDkuNjU2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M927.931,2143.161L916.072,2154.637C904.213,2166.113,880.495,2189.064,860.979,2206.306C841.462,2223.547,826.147,2235.078,818.49,2240.844L810.832,2246.61" id="L_T_U_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_T_U_0" data-points="W3sieCI6OTI3LjkzMDcxMjg0NTQ1NTYsInkiOjIxNDMuMTYxMTgxNTk1NDU1N30seyJ4Ijo4NTYuNzc3MzQzNzUsInkiOjIyMTIuMDE1NjI1fSx7IngiOjgwNy42MzY3MTg3NSwieSI6MjI0OS4wMTU2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M765.869,2249.016L764.52,2242.849C763.171,2236.682,760.472,2224.349,759.123,2201.569C757.773,2178.789,757.773,2145.563,757.773,2114.336C757.773,2083.109,757.773,2053.883,757.773,2030.603C757.773,2007.323,757.773,1989.99,757.773,1970.656C757.773,1951.323,757.773,1929.99,757.773,1898.971C757.773,1867.953,757.773,1827.25,757.773,1788.547C757.773,1749.844,757.773,1713.141,757.773,1686.122C757.773,1659.104,757.773,1641.771,757.773,1622.438C757.773,1603.104,757.773,1581.771,757.773,1554.491C757.773,1527.211,757.773,1493.984,757.773,1462.758C757.773,1431.531,757.773,1402.305,757.773,1379.025C757.773,1355.745,757.773,1338.411,757.773,1321.078C757.773,1303.745,757.773,1286.411,757.773,1269.078C757.773,1251.745,757.773,1234.411,757.773,1215.078C757.773,1195.745,757.773,1174.411,757.773,1147.132C757.773,1119.852,757.773,1086.625,757.773,1055.398C757.773,1024.172,757.773,994.945,757.773,971.665C757.773,948.385,757.773,931.052,757.773,913.719C757.773,896.385,757.773,879.052,721.043,863.92C684.313,848.787,610.853,835.855,574.123,829.389L537.393,822.923" id="L_U_H_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_U_H_0" data-points="W3sieCI6NzY1Ljg2OTQ0NTgwMDc4MTIsInkiOjIyNDkuMDE1NjI1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5IjoyMjEyLjAxNTYyNX0seyJ4Ijo3NTcuNzczNDM3NSwieSI6MjExMi4zMzU5Mzc1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5IjoyMDI0LjY1NjI1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5IjoxOTcyLjY1NjI1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5IjoxOTA4LjY1NjI1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5IjoxNzg2LjU0Njg3NX0seyJ4Ijo3NTcuNzczNDM3NSwieSI6MTY3Ni40Mzc1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5IjoxNjI0LjQzNzV9LHsieCI6NzU3Ljc3MzQzNzUsInkiOjE1NjAuNDM3NX0seyJ4Ijo3NTcuNzczNDM3NSwieSI6MTQ2MC43NTc4MTI1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5IjoxMzczLjA3ODEyNX0seyJ4Ijo3NTcuNzczNDM3NSwieSI6MTMyMS4wNzgxMjV9LHsieCI6NzU3Ljc3MzQzNzUsInkiOjEyNjkuMDc4MTI1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5IjoxMjE3LjA3ODEyNX0seyJ4Ijo3NTcuNzczNDM3NSwieSI6MTE1My4wNzgxMjV9LHsieCI6NzU3Ljc3MzQzNzUsInkiOjEwNTMuMzk4NDM3NX0seyJ4Ijo3NTcuNzczNDM3NSwieSI6OTY1LjcxODc1fSx7IngiOjc1Ny43NzM0Mzc1LCJ5Ijo5MTMuNzE4NzV9LHsieCI6NzU3Ljc3MzQzNzUsInkiOjg2MS43MTg3NX0seyJ4Ijo1MzMuNDUzMTI1LCJ5Ijo4MjIuMjI5ODMxNzI0NDExNX1d" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M969.376,2165.425L970.779,2173.19C972.182,2180.955,974.987,2196.485,976.39,2209.75C977.793,2223.016,977.793,2234.016,977.793,2239.516L977.793,2245.016" id="L_T_V_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_T_V_0" data-points="W3sieCI6OTY5LjM3NjAxMzkwMzE3OTgsInkiOjIxNjUuNDI0NzY3MzQ2ODIwM30seyJ4Ijo5NzcuNzkyOTY4NzUsInkiOjIyMTIuMDE1NjI1fSx7IngiOjk3Ny43OTI5Njg3NSwieSI6MjI0OS4wMTU2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path><path d="M977.793,2303.016L977.793,2307.182C977.793,2311.349,977.793,2319.682,977.793,2327.349C977.793,2335.016,977.793,2342.016,977.793,2345.516L977.793,2349.016" id="L_V_W_0" class="edge-thickness-normal edge-pattern-solid edge-thickness-normal edge-pattern-solid flowchart-link" style=";" data-edge="true" data-et="edge" data-id="L_V_W_0" data-points="W3sieCI6OTc3Ljc5Mjk2ODc1LCJ5IjoyMzAzLjAxNTYyNX0seyJ4Ijo5NzcuNzkyOTY4NzUsInkiOjIzMjguMDE1NjI1fSx7IngiOjk3Ny43OTI5Njg3NSwieSI6MjM1My4wMTU2MjV9XQ==" marker-end="url(#container_flowchart-v2-pointEnd)"></path></g><g class="edgeLabels"><g class="edgeLabel"><g class="label" data-id="L_A_B_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_B_C_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(218.10309, 414.52059)"><g class="label" data-id="L_C_D_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>否</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_D_B_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(301.0859375, 410.359375)"><g class="label" data-id="L_C_E_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>是</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_E_F_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(426.3671875, 745.71875)"><g class="label" data-id="L_F_G_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>否</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_G_E_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(462.3828125, 745.71875)"><g class="label" data-id="L_F_H_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>是</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_H_I_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_I_J_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(255.85378, 1124.90001)"><g class="label" data-id="L_J_K_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>否</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_K_H_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(635.703125, 1153.078125)"><g class="label" data-id="L_J_L_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>是</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_L_M_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_M_N_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(464.78287, 1533.23277)"><g class="label" data-id="L_N_O_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>否</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_O_H_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(959.78515625, 1560.4375)"><g class="label" data-id="L_N_P_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>是</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_P_Q_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(732.86188, 1872.04825)"><g class="label" data-id="L_Q_R_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>否</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_R_H_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(959.78515625, 1908.65625)"><g class="label" data-id="L_Q_S_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>是</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_S_T_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(870.25191, 2198.97641)"><g class="label" data-id="L_T_U_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>否</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_U_H_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="translate(977.79296875, 2212.015625)"><g class="label" data-id="L_T_V_0" transform="translate(-8.0078125, -12)"><foreignObject width="16.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"><p>是</p></span></div></foreignObject></g></g><g class="edgeLabel"><g class="label" data-id="L_V_W_0" transform="translate(0, 0)"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" class="labelBkg" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node default" id="flowchart-A-0" transform="translate(193.546875, 35)"><rect class="basic label-container" style="fill:#f0f4f9 !important" x="-62.0078125" y="-27" width="124.015625" height="54"></rect><g class="label" style="" transform="translate(-32.0078125, -12)"><rect></rect><foreignObject width="64.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>需求分析</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-B-1" transform="translate(193.546875, 139)"><rect class="basic label-container" style="" x="-87.0703125" y="-27" width="174.140625" height="54"></rect><g class="label" style="" transform="translate(-57.0703125, -12)"><rect></rect><foreignObject width="114.140625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>AI 辅助需求拆解</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-C-3" transform="translate(283.078125, 294.6796875)"><polygon points="78.6796875,0 157.359375,-78.6796875 78.6796875,-157.359375 0,-78.6796875" class="label-container" transform="translate(-78.1796875, 78.6796875)"></polygon><g class="label" style="" transform="translate(-51.6796875, -12)"><rect></rect><foreignObject width="103.359375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>需求是否清晰?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-D-5" transform="translate(86.0078125, 474.359375)"><rect class="basic label-container" style="" x="-78.0078125" y="-27" width="156.015625" height="54"></rect><g class="label" style="" transform="translate(-48.0078125, -12)"><rect></rect><foreignObject width="96.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>人工澄清需求</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-E-9" transform="translate(301.0859375, 474.359375)"><rect class="basic label-container" style="" x="-87.0703125" y="-27" width="174.140625" height="54"></rect><g class="label" style="" transform="translate(-57.0703125, -12)"><rect></rect><foreignObject width="114.140625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>AI 生成技术方案</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-F-11" transform="translate(426.3671875, 630.0390625)"><polygon points="78.6796875,0 157.359375,-78.6796875 78.6796875,-157.359375 0,-78.6796875" class="label-container" transform="translate(-78.1796875, 78.6796875)"></polygon><g class="label" style="" transform="translate(-51.6796875, -12)"><rect></rect><foreignObject width="103.359375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>方案是否可行?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-G-13" transform="translate(263.3046875, 809.71875)"><rect class="basic label-container" style="" x="-78.0078125" y="-27" width="156.015625" height="54"></rect><g class="label" style="" transform="translate(-48.0078125, -12)"><rect></rect><foreignObject width="96.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>人工调整方案</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-H-17" transform="translate(462.3828125, 809.71875)"><rect class="basic label-container" style="fill:#fff2e8 !important" x="-71.0703125" y="-27" width="142.140625" height="54"></rect><g class="label" style="" transform="translate(-41.0703125, -12)"><rect></rect><foreignObject width="82.140625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>AI 生成代码</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-I-19" transform="translate(400.625, 913.71875)"><rect class="basic label-container" style="fill:#fde8e8 !important" x="-78.0078125" y="-27" width="156.015625" height="54"></rect><g class="label" style="" transform="translate(-48.0078125, -12)"><rect></rect><foreignObject width="96.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>人工代码审查</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-J-21" transform="translate(400.625, 1053.3984375)"><polygon points="62.6796875,0 125.359375,-62.6796875 62.6796875,-125.359375 0,-62.6796875" class="label-container" transform="translate(-62.1796875, 62.6796875)"></polygon><g class="label" style="" transform="translate(-35.6796875, -12)"><rect></rect><foreignObject width="71.359375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>审查通过?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-K-23" transform="translate(137.9921875, 1217.078125)"><rect class="basic label-container" style="" x="-114.625" y="-27" width="229.25" height="54"></rect><g class="label" style="" transform="translate(-84.625, -12)"><rect></rect><foreignObject width="169.25" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>修改代码或调整 Prompt</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-L-27" transform="translate(635.703125, 1217.078125)"><rect class="basic label-container" style="fill:#edf7ed !important" x="-87.0703125" y="-27" width="174.140625" height="54"></rect><g class="label" style="" transform="translate(-57.0703125, -12)"><rect></rect><foreignObject width="114.140625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>AI 生成测试用例</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-M-29" transform="translate(635.703125, 1321.078125)"><rect class="basic label-container" style="" x="-62.0078125" y="-27" width="124.015625" height="54"></rect><g class="label" style="" transform="translate(-32.0078125, -12)"><rect></rect><foreignObject width="64.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>运行测试</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-N-31" transform="translate(635.703125, 1460.7578125)"><polygon points="62.6796875,0 125.359375,-62.6796875 62.6796875,-125.359375 0,-62.6796875" class="label-container" transform="translate(-62.1796875, 62.6796875)"></polygon><g class="label" style="" transform="translate(-35.6796875, -12)"><rect></rect><foreignObject width="71.359375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>测试通过?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-O-33" transform="translate(301.62109375, 1624.4375)"><rect class="basic label-container" style="" x="-61.6953125" y="-27" width="123.390625" height="54"></rect><g class="label" style="" transform="translate(-31.6953125, -12)"><rect></rect><foreignObject width="63.390625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>修复 bug</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-P-37" transform="translate(959.78515625, 1624.4375)"><rect class="basic label-container" style="" x="-62.0078125" y="-27" width="124.015625" height="54"></rect><g class="label" style="" transform="translate(-32.0078125, -12)"><rect></rect><foreignObject width="64.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>提交代码</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-Q-39" transform="translate(959.78515625, 1786.546875)"><polygon points="85.109375,0 170.21875,-85.109375 85.109375,-170.21875 0,-85.109375" class="label-container" transform="translate(-84.609375, 85.109375)" style="fill:#eef2fb !important"></polygon><g class="label" style="" transform="translate(-58.109375, -12)"><rect></rect><foreignObject width="116.21875" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>是否通过 CI/CD?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-R-41" transform="translate(527.63671875, 1972.65625)"><rect class="basic label-container" style="" x="-86.71875" y="-27" width="173.4375" height="54"></rect><g class="label" style="" transform="translate(-56.71875, -12)"><rect></rect><foreignObject width="113.4375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>修复 CI/CD 问题</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-S-45" transform="translate(959.78515625, 1972.65625)"><rect class="basic label-container" style="" x="-62.0078125" y="-27" width="124.015625" height="54"></rect><g class="label" style="" transform="translate(-32.0078125, -12)"><rect></rect><foreignObject width="64.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>代码审查</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-T-47" transform="translate(959.78515625, 2112.3359375)"><polygon points="62.6796875,0 125.359375,-62.6796875 62.6796875,-125.359375 0,-62.6796875" class="label-container" transform="translate(-62.1796875, 62.6796875)" style="fill:#fff7e6 !important"></polygon><g class="label" style="" transform="translate(-35.6796875, -12)"><rect></rect><foreignObject width="71.359375" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>审查通过?</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-U-49" transform="translate(771.77734375, 2276.015625)"><rect class="basic label-container" style="" x="-78.0078125" y="-27" width="156.015625" height="54"></rect><g class="label" style="" transform="translate(-48.0078125, -12)"><rect></rect><foreignObject width="96.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>根据反馈修改</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-V-53" transform="translate(977.79296875, 2276.015625)"><rect class="basic label-container" style="fill:#e6f4ea !important" x="-78.0078125" y="-27" width="156.015625" height="54"></rect><g class="label" style="" transform="translate(-48.0078125, -12)"><rect></rect><foreignObject width="96.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>合并到主分支</p></span></div></foreignObject></g></g><g class="node default" id="flowchart-W-55" transform="translate(977.79296875, 2380.015625)"><rect class="basic label-container" style="" x="-46.0078125" y="-27" width="92.015625" height="54"></rect><g class="label" style="" transform="translate(-16.0078125, -12)"><rect></rect><foreignObject width="32.015625" height="24"><div xmlns="http://www.w3.org/1999/xhtml" style="display: table-cell; white-space: nowrap; line-height: 1.5; max-width: 200px; text-align: center;"><span class="nodeLabel"><p>发布</p></span></div></foreignObject></g></g></g></g></g></svg>
+<h1 id="责任界定"><a class="markdownIt-Anchor" href="#责任界定"></a> 责任界定</h1>
+<h2 id="ai-辅助开发的责任归属"><a class="markdownIt-Anchor" href="#ai-辅助开发的责任归属"></a> AI 辅助开发的责任归属</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>责任主体</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI 工具提供错误建议</strong></td>
+<td>AI 工具供应商（如有合同）</td>
+<td>AI 工具本身的缺陷，需追究供应商责任</td>
+</tr>
+<tr>
+<td><strong>AI 生成的代码有bug</strong></td>
+<td>开发者</td>
+<td>开发者有责任审查和验证代码</td>
+</tr>
+<tr>
+<td><strong>AI 生成的代码导事故</strong></td>
+<td>开发者 + Code Reviewer</td>
+<td>开发者未充分审查，审查者未发现问题</td>
+</tr>
+<tr>
+<td><strong>AI 生成的代码违反规约</strong></td>
+<td>开发者</td>
+<td>开发者应遵循规约，AI 不能替代人的判断</td>
+</tr>
+</tbody>
+</table>
+<h1 id="实战这些玩意能干啥"><a class="markdownIt-Anchor" href="#实战这些玩意能干啥"></a> 实战（这些玩意能干啥？）</h1>
+<p>参考 <a href="/_posts/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF.md">AI真正帮我干好的事儿</a> 这篇文章</p>
+<h1 id="常见问题"><a class="markdownIt-Anchor" href="#常见问题"></a> 常见问题</h1>
+<h2 id="q1-ai生成的代码能直接用吗"><a class="markdownIt-Anchor" href="#q1-ai生成的代码能直接用吗"></a> Q1: AI生成的代码能直接用吗？</h2>
+<blockquote>
+<p>不能直接用于生产环境。需要：</p>
+<ol>
+<li>自己理解代码逻辑</li>
+<li>添加单元测试</li>
+<li>进行Code Review</li>
+<li>测试环境验证</li>
+</ol>
+</blockquote>
+<h2 id="q2-ai会泄露我的代码吗"><a class="markdownIt-Anchor" href="#q2-ai会泄露我的代码吗"></a> Q2: AI会泄露我的代码吗？</h2>
+<blockquote>
+<p>主流AI有隐私保护政策：</p>
+<ul>
+<li>使用本地模型不用担心，使用非本地模型需要特别小心</li>
+<li>不用过于担心 1. 输入的都是代码片段，基本很难复原 2. 提高自身的安全意识，代码中不要包含敏感信息。特别是秘钥、密码等敏感信息。</li>
+</ul>
+</blockquote>
+<h2 id="q3-ai能替代程序员吗"><a class="markdownIt-Anchor" href="#q3-ai能替代程序员吗"></a> Q3: AI能替代程序员吗？</h2>
+<blockquote>
+<p>目前不能完全替代，但会放大程序员能力，以后可能。</p>
+<ul>
+<li>重复劳动 → AI处理</li>
+<li>创造性工作 → 人类负责</li>
+<li>提升效率 3-5倍</li>
+</ul>
+</blockquote>
+<h2 id="q4-ai写的代码有bug该怪谁"><a class="markdownIt-Anchor" href="#q4-ai写的代码有bug该怪谁"></a> Q4: AI写的代码有Bug该怪谁？</h2>
+<blockquote>
+<p>最终责任人是程序员，不是 AI。AI 只是工具，代码所有权和责任都是你的。</p>
+<ul>
+<li>出了线上 Bug，领导找你而不是找 AI</li>
+<li>所以 AI 写代码，人来 review，这个流程不能省</li>
+</ul>
+</blockquote>
+<h2 id="q5-怎么让ai少写bug"><a class="markdownIt-Anchor" href="#q5-怎么让ai少写bug"></a> Q5: 怎么让AI少写Bug？</h2>
+<blockquote>
+<p>核心在于提示词质量：</p>
+<ol>
+<li><strong>明确上下文</strong> - 告诉 AI 项目技术栈、代码风格、现有架构</li>
+<li><strong>拆分任务</strong> - 大任务拆成小任务，让 AI 一步步来</li>
+<li><strong>指定约束</strong> - 明确说"加单元测试"、“用try-catch”、“遵循PEP8”</li>
+<li><strong>让它自检</strong> - 写完后让 AI 自己先 review 一遍再给你</li>
+</ol>
+</blockquote>
+<h2 id="q6-ai编程的正确姿势是什么"><a class="markdownIt-Anchor" href="#q6-ai编程的正确姿势是什么"></a> Q6: AI编程的正确姿势是什么？</h2>
+<blockquote>
+<p>建议按任务难度分层：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">任务类型</th>
+<th style="text-align:left">AI 参与度</th>
+<th style="text-align:left">人的角色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">简单重复代码</td>
+<td style="text-align:left">AI 直出</td>
+<td style="text-align:left">检查即可</td>
+</tr>
+<tr>
+<td style="text-align:left">中等复杂度</td>
+<td style="text-align:left">AI 写+人 review</td>
+<td style="text-align:left">引导+审查</td>
+</tr>
+<tr>
+<td style="text-align:left">核心架构/关键逻辑</td>
+<td style="text-align:left">人为主、AI 为辅</td>
+<td style="text-align:left">设计+把控</td>
+</tr>
+<tr>
+<td style="text-align:left">新技术调研</td>
+<td style="text-align:left">AI 打头阵</td>
+<td style="text-align:left">验证+决策</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                    <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/AI/">
+                                    <span class="chip bg-color">AI</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">工具</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zpykYxqrLC4qVar5tL3t0MAL-gzGzoHsz',
+        appKey: '3LhmIMSf9HYX5VXhD21hiPPG',
+        serverURLs: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2026/04/20/ai/codeai/ai-coding-rules/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="AI Coding Rules">
+                        
+                        <span class="card-title">AI Coding Rules</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Ai Coding Rules 规约
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-04-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            <a href="/categories/AI/CodeAI/" class="post-category">
+                                    CodeAI
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/AI/">
+                        <span class="chip bg-color">AI</span>
+                    </a>
+                    
+                    <a href="/tags/AI%E5%B7%A5%E5%85%B7%E9%9B%86/">
+                        <span class="chip bg-color">AI工具集</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/04/19/ai/ai-gong-ju-ji/claude-code-cai-keng/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="claude code 踩坑">
+                        
+                        <span class="card-title">claude code 踩坑</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            摘要
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-04-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/AI/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            <a href="/categories/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/" class="post-category">
+                                    AI工具集
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('300')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 涓涓细流<br />'
+            + '文章作者: 陈尚<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2026</span>
+            
+            <a href="/about" target="_blank">陈尚</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">281.3k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chen-shang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2414973330@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2414973330" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2414973330" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+	<span id="jinrishici-sentence"></span>
+        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f34c6ca18e751cd090a8864b66dda7fd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    
+        
+<!-- page-agent 智能助手 -->
+<script src="/libs/page-agent/page-agent.demo.js" crossorigin="true"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 初始化 PageAgent
+        if (typeof PageAgent !== 'undefined') {
+            const agent = new PageAgent({
+                language: 'zh-CN',
+                
+                
+                // 右下角位置配置
+                position: { bottom: '20px', right: '20px' }
+                
+            });
+            
+            // 将 agent 实例暴露到全局，方便调试
+            window.blogAgent = agent;
+            
+            console.log('🤖 PageAgent 智能助手已加载');
+        } else {
+            console.warn('PageAgent 加载失败，请检查脚本路径');
+        }
+    });
+</script>
+
+
+    
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+
+</html>
