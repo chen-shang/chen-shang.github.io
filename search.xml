@@ -26,17 +26,17 @@
     
     <entry>
       <title>Coding Agent 常用操作指南</title>
-      <link href="/2026/04/20/AI/CodeAI/Coding-Agent-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
-      <url>/2026/04/20/AI/CodeAI/Coding-Agent-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/</url>
+      <link href="/2026/04/20/ai/codeai/Coding-Agent-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
+      <url>/2026/04/20/ai/codeai/Coding-Agent-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/</url>
       
         <content type="html"><![CDATA[<h2 id="一、快速入门">一、快速入门</h2><h3 id="快捷指令">快捷指令</h3><pre><code class="hljs bash"><span class="hljs-built_in">alias</span> @oc=<span class="hljs-string">&#x27;opencode run&#x27;</span><span class="hljs-built_in">alias</span> @cc=<span class="hljs-string">&#x27;claude -p&#x27;</span><span class="hljs-built_in">alias</span> cc=<span class="hljs-string">&#x27;claude --dangerously-skip-permissions&#x27;</span><span class="hljs-built_in">alias</span> oc=<span class="hljs-string">&#x27;opencode&#x27;</span></code></pre><table><thead><tr><th>指令</th><th>完整命令</th><th>用途</th><th>适用场景</th></tr></thead><tbody><tr><td><code>@oc</code></td><td><code>opencode run</code></td><td>直接在当前目录运行 opencode 单次对话模式</td><td>快速问一个问题，不进入交互式终端</td></tr><tr><td><code>@cc</code></td><td><code>claude -p</code></td><td>使用 Claude Code 单次对话模式</td><td>快速问一个问题，不进入交互式终端</td></tr><tr><td><code>cc</code></td><td><code>claude --dangerously-skip-permissions</code></td><td>跳过权限确认直接执行</td><td>自动化脚本中避免卡住</td></tr><tr><td><code>oc</code></td><td><code>opencode</code></td><td>启动 opencode 交互式终端</td><td>进入完整对话</td></tr></tbody></table><h4 id="为什么设置这些别名？">为什么设置这些别名？</h4><ol><li><strong>@oc</strong>|<strong>@cc</strong> - 避免每次输入 <code>opencode run</code>|<code>claude -p</code> ，少打字符。单次对话模式，不用进入交互终端，适合快速问答</li><li><strong>cc</strong> |<strong>oc</strong>- 自动化场景下不会弹出权限确认提示，简短好记，比 <code>opencode</code>|<code>claude</code>  少打字符</li></ol><blockquote><p>提示：使用前需要先在 shell 配置文件中添加这些 alias（推荐 <code>~/.zshrc</code> 或 <code>~/.bashrc</code>），然后执行 <code>source</code> 重新加载。</p></blockquote><hr><h2 id="二、代理配置">二、代理配置</h2><p>为什么要配置代理？使用 Codex 或 Claude Code 时，终端需要开启代理（翻墙）。如果配置的是国产模型或本地模型则不需要。</p><blockquote><p>注意：即使开启代理全局模式，终端访问 Google 还是会失败，这是终端机制决定的。参考 <a href="https://chen-shang.github.io/2026/02/18/gong-ju-kong/mac/zhong-duan-lin-shi-dai-li-fan-qiang/">终端临时代理翻墙</a></p></blockquote><h3 id="自动配置代理脚本">自动配置代理脚本</h3><pre><code class="hljs bash"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">proxy</span></span>()&#123;    <span class="hljs-built_in">export</span> http_proxy=http://127.0.0.1:7890    <span class="hljs-built_in">export</span> https_proxy=http://127.0.0.1:7890    <span class="hljs-built_in">export</span> HTTP_PROXY=http://127.0.0.1:7890    <span class="hljs-built_in">export</span> HTTPS_PROXY=http://127.0.0.1:7890    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;proxy success&quot;</span>&#125;<span class="hljs-comment"># 如果7890端口被占用，则执行代理</span><span class="hljs-keyword">if</span> lsof -i:7890 &gt; /dev/null 2&gt;&amp;1; <span class="hljs-keyword">then</span>    proxy<span class="hljs-keyword">fi</span></code></pre><hr><h2 id="三、查看可用模型">三、查看可用模型</h2><h3 id="OpenCode">OpenCode</h3><pre><code class="hljs bash">opencode models</code></pre><p>或进入 opencode 终端，输入 <code>/models</code>（注意是复数）</p><blockquote><p>适用场景：配置 oh-my-opencode 时需要知道可用模型名称</p></blockquote><p><img src="1776181489259.png" alt=""><br><img src="1776181402441.png" alt=""></p><blockquote><p>⚠️ <strong>注意</strong>：不要企图通过提示词让模型自己配置最佳实践，会乱。配置出错后 opencode 会崩溃，最后只能删掉重装。</p></blockquote><h3 id="Claude-Code">Claude Code</h3><p>先进入 Claude Code 终端，然后输入 <code>/model</code></p><hr><h2 id="四、快捷键">四、快捷键</h2><h3 id="粘贴图片">粘贴图片</h3><table><thead><tr><th>工具</th><th>快捷键</th></tr></thead><tbody><tr><td>OpenCode</td><td><code>Ctrl + Option + v</code></td></tr><tr><td>Claude Code</td><td><code>Ctrl + v</code></td></tr></tbody></table><h3 id="搜索提示词">搜索提示词</h3><table><thead><tr><th>工具</th><th>快捷键</th></tr></thead><tbody><tr><td>OpenCode</td><td><code>Ctrl + r</code></td></tr></tbody></table><blockquote><p>作用：在终端中快速搜索历史提示词</p></blockquote><hr><h2 id="五、配置文件详解">五、配置文件详解</h2><h3 id="1-配置文件类型">1. 配置文件类型</h3><p>opencode 支持两种配置文件格式：</p><table><thead><tr><th>文件名</th><th>格式</th><th>支持注释</th><th>支持末尾逗号</th></tr></thead><tbody><tr><td><code>oh-my-opencode.json</code></td><td>标准 JSON</td><td>❌ 不允许</td><td>❌ 不允许</td></tr><tr><td><code>oh-my-opencode.jsonc</code></td><td>JSON with Comments</td><td>✅ 允许 <code>//</code> 和 <code>/* */</code></td><td>✅ 允许</td></tr></tbody></table><h3 id="2-加载优先级">2. 加载优先级</h3><p>当两个文件同时存在时：</p><ul><li><strong><code>oh-my-opencode.jsonc</code> 优先级更高</strong>，会被优先加载</li><li><code>oh-my-opencode.json</code> 会被忽略</li><li>仅当 <strong>不存在 <code>.jsonc</code> 文件</strong>时，才会加载 <code>.json</code> 文件</li></ul><h3 id="Claude-Code-跳过登录">Claude Code 跳过登录</h3><p>在首次使用或重置配置后，可以通过修改配置文件来跳过强制登录流程（适用于某些自动化场景或本地测试）。否则会报错</p><p><strong>操作步骤：</strong></p><ol><li><p>找到 Claude Code 的全局配置文件：</p><ul><li>macOS/Linux: <code>~/.claude/settings.json</code></li><li>Windows: <code>%USERPROFILE%\.claude\settings.json</code></li></ul></li><li><p>编辑该文件，添加或修改 <code>hasCompletedOnboarding</code> 字段为 <code>true</code>：</p></li></ol><pre><code class="hljs plaintext"></code></pre><h3 id="3-Skill-存放位置">3. Skill 存放位置</h3><table><thead><tr><th style="text-align:left">工具</th><th style="text-align:left">项目级目录</th><th style="text-align:left">用户级目录</th><th style="text-align:left">备注</th></tr></thead><tbody><tr><td style="text-align:left"><strong>OpenCode</strong></td><td style="text-align:left"><code>.opencode/skills/&lt;name&gt;/SKILL.md</code></td><td style="text-align:left"><code>~/.config/opencode/skills/&lt;name&gt;/SKILL.md</code></td><td style="text-align:left">兼容 <code>.claude/skills/</code> 和 <code>.agents/skills/</code></td></tr><tr><td style="text-align:left"><strong>Claude Code</strong></td><td style="text-align:left"><code>.claude/skills/&lt;name&gt;/SKILL.md</code></td><td style="text-align:left"><code>~/.claude/skills/&lt;name&gt;/SKILL.md</code></td><td style="text-align:left">最常见标准路径</td></tr><tr><td style="text-align:left"><strong>Codex</strong></td><td style="text-align:left">-</td><td style="text-align:left"><code>~/.codex/skills/&lt;name&gt;/SKILL.md</code></td><td style="text-align:left">需确保目录名与元数据一致</td></tr><tr><td style="text-align:left"><strong>Gemini CLI</strong></td><td style="text-align:left"><code>.gemini/skills/&lt;name&gt;/SKILL.md</code> 或 <code>.agents/skills/&lt;name&gt;/SKILL.md</code></td><td style="text-align:left">同项目级</td><td style="text-align:left"><code>.agents/skills</code> 优先级更高</td></tr></tbody></table><h3 id="4-MCP-配置">4. MCP 配置</h3><pre><code class="hljs bash">opencode mcp list</code></pre><pre><code class="hljs plaintext">┌  MCP Servers│▲  No MCP servers configured│└  Add servers with: opencode mcp add</code></pre><blockquote><p>注意：在 opencode 终端内执行 <code>/mcp</code> 可以看到内置 MCP：context7、grep_app、websearch</p></blockquote><h3 id="5-AGENTS-md-配置">5. <a href="http://AGENTS.md">AGENTS.md</a> 配置</h3><ul><li><strong>全局配置</strong>：<code>~/.config/opencode/AGENTS.md</code></li><li>建议写简单的配置内容</li></ul><hr><h2 id="六、Agent-操作">六、Agent 操作</h2><p>Agent 像是&quot;一个人&quot;，使用 <code>@</code> 符号操作：</p><pre><code class="hljs bash">@agent-name 你的指令</code></pre><hr><h2 id="七、常用检查命令">七、常用检查命令</h2><h3 id="检查配置冲突">检查配置冲突</h3><pre><code class="hljs bash"><span class="hljs-comment"># 检查 rules 是否有冲突</span>看一下我现在的 rules、agents、<span class="hljs-built_in">command</span>、skill 有没有冲突的看一下我现在的 rules、agents、<span class="hljs-built_in">command</span>、skill 有没有投毒的</code></pre><hr><h2 id="八、常见问题">八、常见问题</h2><h3 id="Q-第三方下载的-Skill-如何更新？">Q: 第三方下载的 Skill 如何更新？</h3><p>第三方下载的 Skill（如通过 npx skills add 或 cc switch 安装）更新方式如下：</p><h4 id="npx-skills-update（推荐-✅）">npx skills update（推荐 ✅）</h4><pre><code class="hljs bash"><span class="hljs-comment"># 更新所有已安装的 skill</span>npx skills update<span class="hljs-comment"># 更新指定 skill</span>npx skills update &lt;skill-name&gt;<span class="hljs-comment"># 仅更新全局 skill</span>npx skills update -g<span class="hljs-comment"># 仅更新项目级 skill</span>npx skills update -p</code></pre><h4 id="cc-switch">cc switch</h4><p>cc switch 是一款跨平台桌面工具，可统一管理 Claude Code、Codex、OpenCode、OpenClaw、Gemini CLI 的 API 提供商配置。</p><p><strong>cc-switch 安装的 Skill 位置：</strong> <code>~/.cc-switch/skills/</code></p><p><strong>Skill 更新方式：</strong></p><p>直接进入skill管理，点击更新即可</p><p><img src="1776186946184.png" alt="1776186946184"></p><blockquote><p>详细使用说明见 <a href="https://github.com/farion1231/cc-switch">cc-switch 官方文档</a></p></blockquote><blockquote><p>⚠️ <strong>注意</strong>：第三方 Skill 更新后一定要<strong>重启工具</strong>才能生效。部分工具可能需要完全退出终端再重新打开。</p></blockquote><h2 id="CC">CC</h2><p>❯ plugin:pyright-lsp:pyright Plugin · unknown · ✘ failed to load · 1 error</p><p>npm uninstall -g pyright<br>npm install -g pyright<br>重启 cc</p><p>如何写好高质量代码</p><h2 id="one-line-promot">one line promot</h2><ol><li>尽可能一句话描述</li><li>否则分条描述</li><li>然后分布描述</li><li>不要一次性描述多件事情</li><li>慢慢追加描述</li><li>禁止的事情，可以重复几次强调</li></ol><p>AI生成的代码，还是有瑕疵<br>明明可以 ExcelTranslateUtil.export(exportParams, null, biBillTransactionAdvanceList, BiBillTransactionAdvanceListLogicVO.class); 但它就想不到</p><pre><code class="hljs plaintext">Workbook workbook = ExcelExportUtil.exportExcel(exportParams, InvestorBiBillTransactionExportVO.class, exportList);        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();        try &#123;            workbook.write(byteArrayOutputStream);        &#125; catch (IOException e) &#123;            throw new RuntimeException(&quot;导出Excel失败&quot;, e);        &#125;</code></pre><pre><code>    何时使用 AI#</code></pre><p>适合使用 AI 的场景<br>重复性任务：如撰写报告、整理数据、生成文案<br>需要创意的任务：如头脑风暴、创意点子、故事生成<br>需要分析的任务：如数据分析、趋势分析、洞察发现<br>需要优化的任务：如文本优化、格式调整、内容改写<br>不适合使用 AI 的场景</p><p>需要高度保密的任务：如处理敏感数据、机密信息<br>需要专业判断的任务：如法律咨询、医疗诊断<br>需要情感交流的任务：如安抚客户、处理纠纷<br>需要实时信息的任务：如股票行情、新闻资讯</p><pre><code>/simplfy/rewind/btw/insights@cc 一次性问题![alt text](iShot_2026-04-22_15.35.30.gif)学会回复ok学会用语音# 执行脚本!常用 open .lspwd![](1777276605705.png)请问这个你该怎么描述截图，问AI（豆包在处理文字比较）![](1777276741424.png)复制就行![](1777277502219.png)</code></pre>]]></content>
       
       
       <categories>
           
-          <category> AI </category>
+          <category> ai </category>
           
-          <category> CodeAI </category>
+          <category> codeai </category>
           
       </categories>
       
@@ -55,17 +55,17 @@
     
     <entry>
       <title>我的AI工具实战指南</title>
-      <link href="/2026/04/20/AI/CodeAI/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF/"/>
-      <url>/2026/04/20/AI/CodeAI/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF/</url>
+      <link href="/2026/04/20/ai/codeai/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF/"/>
+      <url>/2026/04/20/ai/codeai/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF/</url>
       
         <content type="html"><![CDATA[<p>记录我用AI工具实际解决的问题，记录尝试的过程，每个案例都是真实经历。本文系统梳理了AI如何在开发全流程中提升效率，从代码编写到团队协作。</p><h2 id="1-开发调试">1. 开发调试</h2><h3 id="1-1-需求文档分析">1.1 需求文档分析</h3><p><strong>场景</strong>：产品经理提供需求文档后，让AI帮助分析。</p><blockquote><p>帮我分析一下这个需求。输出</p><ol><li>需要二次向产品澄清的问题</li><li>已经明确的业务逻辑</li><li>用mermaid画出业务流程图</li></ol></blockquote><p><img src="1777276934896.png" alt=""></p><pre class="mermaid">flowchart TD    START([入账工单提交]) --> Q1{系统是否存在官费调增记录<br/>且预结算官费金额之和 > 0?}    %% 不存在官费调增记录的情况    Q1 -- 否 --> SUCCESS1[可以提交]    %% 存在官费调增记录的情况    Q1 -- 是 --> Q2{工单是否包含官费?}    %% 未包含官费    Q2 -- 否 --> FAIL1[无法提交<br/>该客户存在官费调增记录<br/>请核实是否包含官费]    %% 包含官费    Q2 -- 是 --> Q3{官费垫付方是否为<br/>处置方垫付或投资方垫付?}    %% 是处置方/投资方垫付    Q3 -- 是 --> FAIL2[无法提交<br/>该客户已存在官费调增记录<br/>请核实官费垫付方]    %% 非处置方/投资方垫付    Q3 -- 否 --> Q4{该资产包是否存在<br/>往来退费还款或委外退费还款<br/>的入账记录?}    %% 不存在历史退费记录    Q4 -- 否 --> SUCCESS2[可以提交]    %% 存在历史退费记录    Q4 -- 是 --> Q5{本次官费垫付方与<br/>历史入账记录一致?}    %% 一致    Q5 -- 是 --> SUCCESS3[可以提交]    %% 不一致    Q5 -- 否 --> FAIL3[无法提交<br/>过往官费垫付方为xxx<br/>与本次不一致<br/>请修改官费垫付方]</pre><h3 id="1-2-Jar包冲突解决">1.2 Jar包冲突解决</h3><p><strong>场景</strong>：执行Word模板填充功能时，使用EasyPoi库导出Word文档失败，抛出 <code>NoSuchMethodError</code>异常。</p><p><strong>错误日志</strong>：</p><pre><code class="hljs plaintext">Exception in thread &quot;main&quot; java.lang.NoSuchMethodError: org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth.getW()Ljava/math/BigInteger;  at cn.afterturn.easypoi.util.PoiWordStyleUtil.copyCellAndSetValue(PoiWordStyleUtil.java:34)  at cn.afterturn.easypoi.word.parse.excel.ExcelMapParse.parseNextRowAndAddRow(ExcelMapParse.java:131)</code></pre><blockquote><p>提示词：程序启动报错 [Copy 10+] , 请修复。</p></blockquote><p>AI分析错误日志，定位是Apache POI版本冲突问题，查看pom.xml中相关依赖版本，锁定 <code>openxmlformats</code>库版本不兼容，排除冲突依赖，统一定义版本</p><p>当天发了个朋友圈：</p><pre><code class="hljs 朋友圈">一个jar 冲突 的 bug  自己研究一小时，没解决。同样的提示词opencode(GML) 半小时没解决，还反复在哪试错，耗我token。codex(GPT) 3分钟解决，一次命中。看了他们的思维链，冷静的可怕。有时候得反思向Agent学习了，真是教会了徒弟饿死了师傅。</code></pre><p><img src="1776676182890.png" alt=""></p><h3 id="1-3-服务启动失败排查">1.3 服务启动失败排查</h3><p><strong>场景</strong>：前端启动失败，不知道原因，也不关心原因</p><blockquote><p>提示词：启动服务</p></blockquote><p><strong>案例</strong>：docker启动服务</p><blockquote><p>提示词：使用docker启动服务</p></blockquote><p>或者，把启动方式写到 md 文件中，然后 直接 告诉 Agent <code>启动服务</code></p><h3 id="1-4-测试用例TDD">1.4 测试用例TDD</h3><p>TDD（测试驱动开发）完整流程<br>核心原则：先写测试 → 再写代码 → 重构，循环迭代，核心口诀：红→绿→重构</p><ol><li>补全单元测试</li><li>写代码</li><li>补单新增场景单元测试</li><li>审测试用例（基本没人看）</li><li>运行单测，写代码直到单测全部通过</li></ol><blockquote><p>提示词：com.vxlink.repay.ext.util.IdCardExtractor#extract 针对特殊字符的场景补充测试用例。</p></blockquote><blockquote><p>提示词：com.vxlink.repay.ext.util.IdCardExtractorTest#testExtractWithMixedSpecialChars<br>这个单测没有通过，为什么。修复一下，但是不要影响其他场景</p></blockquote><h2 id="2-应用开发">2. 应用开发</h2><h3 id="2-1-多轮对话开发应用">2.1 多轮对话开发应用</h3><p>通过多轮对话，从零开发了一个完整的应用。</p><p>案例一：<br><img src="1776740688832.png" alt=""></p><p>案例二：<br><img src="1777290299761.png" alt=""></p><h3 id="2-2-描述bug-自动修复">2.2 描述bug,自动修复</h3><p><img src="1777275044329.png" alt=""></p><blockquote><p>提示词：管理后台 模型管理 保存的时候失败 [Pasted text #1 +17 lines][Pasted text #2 +124 lines]</p></blockquote><h3 id="2-3-集成三方服务page-agent">2.3 集成三方服务page-agent</h3><blockquote><p>提示词：请阅读<a href="https://alibaba.github.io/page-agent/docs/introduction/overview%EF%BC%8C%E5%B9%B6%E5%B8%AE%E6%88%91%E9%9B%86%E6%88%90%E5%88%B0%E6%88%91%E7%9A%84hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD">https://alibaba.github.io/page-agent/docs/introduction/overview，并帮我集成到我的hexo博客中</a></p></blockquote><p><img src="1777276418750.png" alt=""></p><h2 id="3-代码评审">3. 代码评审</h2><h3 id="3-1-提示词代码评审">3.1 提示词代码评审</h3><blockquote><p>提示词：review vxlink-bill-server 项目下的  feature-workingday 分支代码 使用glab工具</p></blockquote><p>AI进行了详细的代码审查，包括：</p><ul><li>缓存逻辑Bug（重复查询）</li><li>日期处理逻辑错误</li><li>缓存有效期设置不合理</li><li>缺少异常处理等</li></ul><h3 id="3-2-原生skills代码评审">3.2 原生skills代码评审</h3><p>配合glab审核代码，推送评论</p><blockquote><p>提示词：/review <a href="https://dev-git.vanxlink.com/autodev-app-repo/pn3xeltib3/vxlink-bill-server/-/merge_requests/397">https://dev-git.vanxlink.com/autodev-app-repo/pn3xeltib3/vxlink-bill-server/-/merge_requests/397</a> 使用glab工具<br>提示词：把问题提交到评论里头</p></blockquote><p><img src="1776828624240.png" alt=""></p><h3 id="3-2-三方skills代码评审">3.2 三方skills代码评审</h3><p>使用 skills: /code-review:code-review 自动评审和提交，但我更倾向于先review，我看过后经过询问跳过不必要的建议，再提交。</p><blockquote><p>提示词：/code-review:code-reviewreview <a href="https://dev-git.vanxlink.com/autodev-app-repo/pn3xeltib3/vxlink-bill-server/-/merge_requests/397">https://dev-git.vanxlink.com/autodev-app-repo/pn3xeltib3/vxlink-bill-server/-/merge_requests/397</a> 使用glab工具</p></blockquote><p><img src="1776999625953.png" alt=""></p><h3 id="3-3-安装glab工具">3.3 安装glab工具</h3><p>使用glab工具 这个经常写，好吧，那就入记忆吧。因为不写，AI 可能会先用gh工具。</p><pre><code class="hljs txt">.├── 数据库规约.md├── 代码质量规则.md├── 业务术语.md├── 通用开发规则.md└── git协作规则.md</code></pre><p>在 .claude/rules/ 中 <a href="http://xn--git-k69d78jd5bi28p.md">git协作规则.md</a> 。注意 opencode 是兼容 claude 的，这里改了，opencode 中不改也会生效的。</p><blockquote><ul><li>AI 创建的分支必须包含 <code>ai-</code> 前缀标识</li><li>示例：<ul><li><code>feature/ai-integrate-sso</code></li><li><code>hotfix/ai-patch-sql-injection</code></li></ul></li><li>该项目使用glab工具，不用gh工具</li></ul></blockquote><h2 id="4-SQL编写">4. SQL编写</h2><h3 id="4-1-资产包数据查询">4.1 资产包数据查询</h3><p><strong>业务需求</strong>：查询资产包表，关键字段为空的记录。</p><blockquote><p>提示词：请帮我写SQL，查询资产包表 [Copy 10+ 资产包表的DDL]中，关键字段为空的记录。关键字如下<br>转让签约日期、债转通知公告日期、成交金额、基准日债权总额、基准日债权本金、债转协议名称、债转协议编号</p></blockquote><p>AI生成了查询SQL，支持查询任意关键字段为空的记录。</p><h3 id="4-2-银行流水统计分析">4.2 银行流水统计分析</h3><p>根据银行流水表和事务项表，统计特定时间范围内特定账号的自动入账数量。</p><blockquote><p>提示词：帮我写一个sql ,按照 amc_bank_no = 9012010510379392 查询，创建日期在 2026-04-17 00:00:00 到 2026-04-20 23:59:59 的银行流水中有多少自动入账的。<br>粘贴 流水表 和 事务项表的DDL [省略DDL]</p></blockquote><p>AI生成了包含表关联和条件筛选的复杂SQL查询。</p><h3 id="4-3-动态SQL改写优化">4.3 动态SQL改写优化</h3><p>根据表结构更新SQL查询字段，添加更多减免相关字段并拼接成&quot;减免信息&quot;字段。</p><blockquote><p>提示词：上面的sql ，根据下表的DDL [省略DDL]更新：添加上减免本金金额、减免利息金额、减免官费金额、减免费用金额、减免本金比例、减免官费比例、减免息费比例、基准日本金余额、基准日息费余额、目前已还款官费，并且把上面的内容，在额外拼接到一个字段中，叫减免信息。并按照总金额、本、官、息、费以及减免的顺序回车换行展示。</p></blockquote><p>AI成功更新SQL，添加了所需字段并拼接成格式化的减免信息字段。</p><p><img src="1776999973227.png" alt=""></p><h2 id="5-代码规范">5. 代码规范</h2><h3 id="5-1-解决命名困难症">5.1 解决命名困难症</h3><p><strong>痛点</strong>：经常为一个变量名纠结半天，真正做到了见名知意。</p><p><strong>解决</strong>：AI生成的代码命名非常规范。像xxxPO再也没有了（非驼峰命名，idea下划线提示，但这玩意也不能在团队间规约，因为很多人这么写）</p><p>再也不用忍受这样的命名了。</p><p><img src="1776699997306.png" alt=""></p><h3 id="5-2-团队编码标准建立">5.2 团队编码标准建立</h3><p>参考 <a href="!https://chen-shang.github.io/2026/04/20/ai/codeai/ai-coding-rules/">Ai Coding Rules 规约</a>，帮助制定团队编码规范。</p><h2 id="6-自动脚本">6. 自动脚本</h2><h3 id="6-1-一键开发环境启动">6.1 一键开发环境启动</h3><p><strong>场景</strong>：每天早上需要打开多个应用（IDE、数据库工具、终端、浏览器）。</p><p><strong>解决</strong>：让AI帮我写一个打开所有应用的脚本。</p><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><span class="hljs-comment"># 一键打开常用开发工具</span><span class="hljs-comment"># 使用方法: ./cs-dev-tools.sh</span><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;正在打开开发工具...&quot;</span><span class="hljs-comment"># 打开微信</span>open -a <span class="hljs-string">&quot;WeChat&quot;</span><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;✓ 微信&quot;</span><span class="hljs-comment"># 打开 IntelliJ IDEA</span>open -a <span class="hljs-string">&quot;IntelliJ IDEA&quot;</span><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;✓ IntelliJ IDEA&quot;</span><span class="hljs-comment"># 打开 Chrome</span>open -a <span class="hljs-string">&quot;Google Chrome&quot;</span><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;✓ Chrome&quot;</span><span class="hljs-comment"># 打开 VSCode</span>open -a <span class="hljs-string">&quot;Visual Studio Code&quot;</span><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;✓ VSCode&quot;</span><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;&quot;</span><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;所有应用已启动完成！&quot;</span></code></pre><p>然后抽取成command或者skill。这样输入 <code>开始搬砖</code> 就会自动找到这个skill执行对应的脚本。或者直接输入 <code>/cs-dev-tools</code> 指令即可。</p><h3 id="6-2-音乐播放快捷指令">6.2 音乐播放快捷指令</h3><p>AI帮助编写打开网易云音乐的command和skills。</p><pre><code class="hljs plaintext"># 打开网易云音乐直接执行以下命令打开本地网易云音乐：open /Applications/NetEaseMusic.app</code></pre><p>然后抽取成command或者skill。这样输入 <code>我想听歌</code> 就会自动找到这个skill执行对应的脚本。或者直接输入 <code>/cs-music</code> 指令即可。</p><p><strong>注意</strong>：直接运行 <code>open /Applications/NetEaseMusic.app</code> 可以打开，但在Claude环境中可能因沙盒环境导致权限问题，需要使用 <code>dangerouslyDisableSandbox: true</code> 参数。</p><h3 id="6-3-平安银行档案下载脚本修复">6.3 平安银行档案下载脚本修复</h3><p>平安银行修复银行档案下载脚本</p><blockquote><p>提示词：[Copy 10+]从API返回的JSON中提取文件URL并下载文件。</p></blockquote><p>AI修复了脚本中的多个问题：</p><ul><li>检查API返回码</li><li>提取下载URL和文件名</li><li>使用curl下载文件</li><li>删除导致提前退出的exit语句</li></ul><h2 id="7-Git自动化">7. Git自动化</h2><h3 id="7-1-多仓库批量更新PR">7.1 多仓库批量更新PR</h3><p><strong>场景</strong>：需要同时更新14个git仓库。需要每一个项目都新建一个分支，都添加一个Agent.md文件，然后推送到远程仓库，再发起合并请求的PR。</p><p><strong>结果</strong>：</p><ul><li>成功推送：14个项目 ✅</li><li>已更新：2个项目 ⏭️</li><li>有冲突：1个项目 ⚠️（需要手动合并）</li></ul><h2 id="8-代码理解">8. 代码理解</h2><h3 id="8-1-业务流程可视化">8.1 业务流程可视化</h3><p>使用自制的flow skill，支持使用mermaid和ASCII码画流程图。</p><blockquote><p>提示词：/flow com.vxlink.repay.ext.service.logic.impl.BankInvoiceMatchServiceImpl#calculateAndMatch</p></blockquote><p><img src="1777000766046.png" alt=""></p><h3 id="8-2-资产包征信状态分析">8.2 资产包征信状态分析</h3><p>通过AI理解复杂代码逻辑：</p><ul><li>分析代码功能</li><li>解释业务逻辑</li><li>生成流程图</li></ul><blockquote><p>提示词：com.vxlink.registration.ext.service.caseInfo.impl.TcCaseInfoExtServiceImpl#updateCreditSubmitStatus</p></blockquote><blockquote><p>这段代码在干什么？</p></blockquote><p><img src="1777203329246.png" alt=""></p><blockquote><p>追问：这段代码的业务逻辑是什么？</p></blockquote><p><img src="1777203438725.png" alt=""></p><blockquote><p>这段代码的业务逻辑使用mermaid画成流程图</p></blockquote><p>或</p><blockquote><p>提示词：/flow com.vxlink.registration.ext.service.caseInfo.impl.TcCaseInfoExtServiceImpl#updateCreditSubmitStatus</p></blockquote><p><img src="1777203542874.png" alt=""></p><p><img src="1777203605997.png" alt=""></p><h3 id="8-3-逾期天数计算定位">8.3 逾期天数计算定位</h3><blockquote><p>提示词：帮我找一下逾期天数计算逻辑</p></blockquote><p>AI成功定位到逾期天数计算逻辑的具体位置和实现方式。</p><h3 id="8-4-项目分析">8.4 项目分析</h3><p><strong>场景</strong>：使用AI工具分析现有项目的结构、依赖关系和优化建议。</p><blockquote><p>提示词：分析一下 vxlink- 项目之间的RPC依赖关系，用mermaid画出依赖关系图，并特别标识存在循环依赖的服务，标识一下服务间依赖的主要业务场景，输出到md文档中</p></blockquote><p>AI可以：</p><ul><li>生成项目结构图</li><li>分析依赖关系和版本兼容性</li><li>识别代码重复和重构机会</li><li>评估项目的可维护性和扩展性</li><li>提供性能优化建议</li></ul><h2 id="9-文档处理">9. 文档处理</h2><h3 id="9-1-文档翻译处理">9.1 文档翻译处理</h3><blockquote><p>将 ~/.claude/usage-data/report.html 翻译成中文，写到 ~/.claude/usage-data/report-zh.html 中</p></blockquote><div style="display: flex; gap: 20px; margin: 20px 0;">  <div style="flex: 1; text-align: center;">    <img src="1776961367981.png" alt="" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">    <p style="margin-top: 10px; font-size: 14px; color: #666;">英文报告</p>  </div>  <div style="flex: 1; text-align: center;">    <img src="1776961378942.png" alt="" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">    <p style="margin-top: 10px; font-size: 14px; color: #666;">中文翻译</p>  </div></div><h3 id="9-2-图片识别工具">9.2 图片识别工具</h3><p>使用的工具：豆包、终端</p><h3 id="9-3-文档处理">9.3 文档处理</h3><ul><li>章节处理，自动归类，内容移动</li></ul><blockquote><p>提示词：9.6 项目分析 的内容 移动到 8. 代码理解 下边</p></blockquote><ul><li>错别字纠正</li></ul><blockquote><p>提示词：修正文章中的错别字</p></blockquote><ul><li>标点符号修正</li></ul><blockquote><p>提示词：修正文章中的错误标点符号</p></blockquote><ul><li>去空行</li></ul><blockquote><p>整理一下去掉不必要的空行</p></blockquote><h3 id="9-4-Hexo代码块优化">9.4 Hexo代码块优化</h3><p><strong>场景</strong>：Hexo生成的代码框在代码内容过长时超出文章内容区域。</p><blockquote><p>提示词：hexo生成的代码框，在代码文本内容太长的时候，展示超过了文章内容区域，最好做成滚动条横向滑动展示的效果</p></blockquote><p><img src="/1777002340840.png" alt=""></p><h3 id="9-5-学习资源推荐">9.5 学习资源推荐</h3><p><strong>场景</strong>：在AI工具使用过程中，需要不断学习新的技巧和最佳实践。</p><p><strong>推荐资源</strong>：</p><ul><li><strong>官方文档</strong>：各AI工具的官方文档是最权威的学习资源，如Claude、ChatGPT、GitHub Copilot的文档</li><li><strong>在线课程</strong>：Coursera、Udemy上的AI编程辅助工具课程</li><li><strong>社区论坛</strong>：Reddit的r/ClaudeAI、r/ChatGPT等子版块，分享实战经验</li><li><strong>中文资源</strong>：掘金、知乎上的AI工具使用经验分享</li><li><strong>实践项目</strong>：GitHub上的开源AI工具集成项目，动手实践学习</li></ul><h2 id="10-创意生成">10. 创意生成</h2><h3 id="10-1-AI音乐创作">10.1 AI音乐创作</h3><h4 id="舒缓背景音乐生成">舒缓背景音乐生成</h4><p>工作之余，想用AI生成一些背景音乐。</p><p><strong>使用的工具</strong>：豆包、Gemini</p><p><strong>过程</strong>：描述想要的风格（轻音乐、钢琴曲、缓解压力），AI生成音乐。</p><h4 id="歌词谱曲">歌词谱曲</h4><p><img src="1777275833283.png" alt=""></p><p><a href="https://www.doubao.com/music-sharing?vid=v0d69cg10004d4g4dsnog65krb0q3e1g&amp;source_type=mobile&amp;creation_id=30318703976028418">去听</a></p><h3 id="10-3-PPT自动制作">10.3 PPT自动制作</h3><p>先给AI一个话题，然后在慢慢描述，最后产出一个PPT。</p><p><img src="1776752328199.png" alt=""></p>]]></content>
       
       
       <categories>
           
-          <category> AI </category>
+          <category> ai </category>
           
-          <category> CodeAI </category>
+          <category> codeai </category>
           
       </categories>
       
@@ -74,7 +74,7 @@
             
             <tag> 原创 </tag>
             
-            <tag> AI </tag>
+            <tag> ai </tag>
             
             <tag> 工具集 </tag>
             
@@ -88,17 +88,17 @@
     
     <entry>
       <title>AI Coding Rules</title>
-      <link href="/2026/04/20/AI/CodeAI/Ai-Coding-Rules/"/>
-      <url>/2026/04/20/AI/CodeAI/Ai-Coding-Rules/</url>
+      <link href="/2026/04/20/ai/codeai/Ai-Coding-Rules/"/>
+      <url>/2026/04/20/ai/codeai/Ai-Coding-Rules/</url>
       
         <content type="html"><![CDATA[<p><strong>由于 AI Coding Agent 不擅长理解你公司特有的业务逻辑、隐性规则、历史债务和领域术语</strong>，所以至少需要以下规约 <code>business_glossary.md</code>（业务术语表）、<code>domain_rules.md</code>（核心业务规则）。业务术语最好放到扩展记忆中，而规则则写到 md 中，每次请求必须带上。以下是我总结的 Rule 的一些心得。</p><blockquote><p>业务逻辑：比如还款必须按照本关息费的顺序按户冲抵<br>隐性规则：还款预报的匹配必须等值匹配<br>历史债务：账单服务为了财务特意冗余了费率数据，属于不合理的设计。有一些字段已经废弃，但还没有来得及删除清理<br>领域术语：比如事务项-委外还款、退费还款、往来退费还款等</p></blockquote><blockquote><p><strong>【强制】分类书写</strong></p></blockquote><blockquote><p><strong>【强制】分类书写虽是好的，但分类数量不宜过多，否则难以维护。</strong></p></blockquote><p>比如4-5个基本就够用了，如下是我给团队规定的几个文件：</p><pre><code class="hljs bash">.├── 数据库规约.md├── 代码质量规则.md├── 通用开发规则.md├── git协作规则.md└── MEMORY.md</code></pre><hr><blockquote><p><strong>【强制】内容不宜太多，100行以内，否则会导致阅读困难。</strong></p></blockquote><hr><blockquote><p><strong>【强制】只写必要的统一规范，避免重复内容。</strong></p></blockquote><p>现在的AI(基座大模型)已经比较智能了，很多知识已经固化，不必强行约定。</p><p><strong>【反例】</strong> 请不要使用拼音命名。这种规约写了跟没写一样。<br><strong>【正例】</strong> 创建的分支必须包含 <code>ai-</code> 前缀标识。这种你不写 AI 肯定不知道。<br><strong>【正例】</strong> 强调，禁令</p><ul><li>强调型</li></ul><pre><code class="hljs plaintext">严格遵循阿里巴巴 Java 开发手册</code></pre><p>这种属于强调，AI 肯定学习过，但是你不强调，它是不会主动遵守的，但是你不用把 Java 开发手册的内容都一一列出来，只用激活记忆即可。</p><ul><li>禁令型</li></ul><pre><code class="hljs text">- 禁止执行无 WHERE 条件的 UPDATE/DELETE- 禁止在生产环境直接修改数据- 禁止批量操作未先测试单条数据</code></pre><p>这种属于禁令，AI 肯定学习过，但是你不禁用，它是不会主动遵守的。</p><blockquote><p><strong>【强制】不要写无意义的规约。</strong></p></blockquote><hr><blockquote><p><strong>【反例】</strong> 以下是我曾经写过的不合理规约：</p></blockquote><pre><code class="hljs plaintext"># 通用开发规则## 工作态度- 每次工作都要用严谨的工作态度，保证完美的质量标准## 沟通风格- 直接输出代码或方案，禁止客套话（&quot;抱歉&quot;、&quot;我明白了&quot;等）- 除非明确要求，否则不提供代码摘要## 求真原则（禁止瞎猜）- 不确定/信息不足时先查证或提问澄清- 对环境/配置/源码/行为的结论必须有证据- 回答里把&quot;事实&quot;和&quot;推测/假设&quot;分开写即可</code></pre><p>这个规则的问题在于&quot;严谨&quot;、&quot;完美&quot;是无效指令，LLM 无法量化，实际行为不变。</p><blockquote><p>【强制】不要写带有冲突的规约。</p></blockquote><p>需要定期检查，一段时间后固化下来</p>]]></content>
       
       
       <categories>
           
-          <category> AI </category>
+          <category> ai </category>
           
-          <category> CodeAI </category>
+          <category> codeai </category>
           
       </categories>
       
@@ -107,9 +107,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> AI </tag>
+            <tag> ai </tag>
             
-            <tag> AI工具集 </tag>
+            <tag> ai工具集 </tag>
             
         </tags>
       
@@ -119,17 +119,17 @@
     
     <entry>
       <title>Ai Coding Agent</title>
-      <link href="/2026/04/20/AI/CodeAI/Ai-Coding-Agent/"/>
-      <url>/2026/04/20/AI/CodeAI/Ai-Coding-Agent/</url>
+      <link href="/2026/04/20/ai/codeai/Ai-Coding-Agent/"/>
+      <url>/2026/04/20/ai/codeai/Ai-Coding-Agent/</url>
       
         <content type="html"><![CDATA[<h2 id="Vibe-Coding：动嘴不动手">Vibe Coding：动嘴不动手</h2><p>最近有个概念很火： <strong>Vibe Coding</strong> 。</p><p><strong>Vibe Coding（氛围编程）</strong> 是 2025 年初由 OpenAI 前研究员 Andrej Karpathy 提出的: 由 AI 驱动的 <strong>新型软件开发范式</strong> 。核心是： <strong>你用自然语言描述想法 ，AI 直接生成可运行的代码</strong> 。</p><p>核心思想：<strong>改代码或写文章，动嘴就够了，不需要自己上手。</strong></p><table><thead><tr><th>传统方式</th><th>Vibe Coding</th></tr></thead><tbody><tr><td>打开 IDE → 找文件 → 定位代码 → 手动改 → 保存 → 测试通过 → 完成</td><td>打开 Agent -&gt; 你说&quot;帮我实现/修复&quot; → AI 实现或修复→ 测试通过 → 完成</td></tr><tr><td>你是执行者</td><td>你是指挥官，AI 是执行者</td></tr></tbody></table><p>因此我们需要一个 Ai Coding Agent。还要学一门新的语言：自然语言。以前编程方式称为古法编程，不使用Vibe Coding 的程序员，我称为上古程序员。</p><p>AI 写代码有诸多好处，这里不表。但AI并不是万能的，Vibe Coding 目前还有一些弊端，但只要控制得当，还是一把好武器。</p><h1>Vibe Coding 的缺点以及应对</h1><ol><li><p><strong>代码质量不稳定，时好时坏，可维护性差，安全性风险高</strong></p><p>自己用下来，AI 生成的代码往往「能用但不优雅」—— 结构混乱、冗余，长期维护成本高。易生成存在漏洞的代码（SQL 注入、XSS、权限绕过、敏感信息泄露等），非专业开发者很难发现。</p><p>有两个观点：</p><blockquote><p>观点一：应用能跑就行，我不在乎代码的好不好，优不优美，只要能实现我的业务就行，就算有问题，写好提示词，让Ai自己打补丁不就好了，甚至不用review代码，测出问题再改就行。（这种想法现在会被认为是异教徒）</p></blockquote><blockquote><p>观点二：必须要严格可控，防止代码腐化。因此极致的要求代码review，甚至换个模型再review代码。</p></blockquote><p>我觉得AI的发展一定是朝着 “观点一” 去的，对于开发同学，我们自己开发的软件甚至都是黑盒的，你也不会去关心AI是怎么实现的，你应该作为一个用户去审查AI给你的功能，而不是作为一名程序员去审查AI给你的代码，传统的程序员这个职业一定会换一种形式，不再是一行一行的coding了，而是一行一行的promting了。但这个还有很长的路要走，现阶段我持观点二，尤其是在已有项目，特别是金融项目（涉及钱的需要时刻紧绷一根弦），我们不能完全信任AI写出来的代码，必须做好review防止代码腐化。另外开发同学需要对AI生成的代码负责，需要确保AI生成代码的可维护性和可靠性，AI只是帮你写代码，出了问题，还是杀程序员祭天！</p><p>如何应对这个问题：《Coding Agent 常用操作指南》- 只有具有 代码安全意识、专业知识背景、有实战经验的程序员方能更好的驾驭AI写的代码。</p></li><li><p><strong>Bug 排查困难，修复容易走偏</strong></p><p>AI写的代码基本上没问题，但往往是这样，只要有Bug，那就是大Bug! 我用AI写的从备注提取身份证和债务人姓名的程序，就遇到了边界没有考虑的情况。不过就算是人，也不一定能考虑到要过滤特殊字符的所有情况。因此AI 生成的 Bug 通常隐蔽，排查难度大。虽然可以直接让 AI 修复，但需要 <strong>有经验的程序员写出高质量的提示词才行</strong>，否则 AI 会像无头苍蝇一样乱撞，导致修复一个 Bug 又引入三个新 Bug，形成恶性循环的情况。</p><p>如何应对这个问题：《Coding Agent 常用操作指南》- One Line Promot</p></li><li><p><strong>过度依赖 AI，会削弱编程能力，团队之间经验难以快速共享，需求描述门槛被低估</strong></p><p>长期「动嘴不动手」，会逐渐 <strong>看不懂复杂代码、不会调试、不会设计架构</strong>。当 AI 不可用或能力下降时，程序员可能丧失独立解决问题的能力，变成「AI 依赖症」患者。团队之间在同步知识的时候，往往很难说清，为什么这么提问就好用，不同的人有不同的思路和提问方式，此时修复问题后将很难解释清楚为什么要这么思考。</p><p>如何应对这个问题：想让 AI 生成合格代码，你依然需要 <strong>清晰的逻辑、产品思维、技术常识</strong>，不是随便说两句就行。高质量提示词本身就是一种稀缺能力—— 你得知道怎么问、问什么、追问什么。</p></li><li><p><strong>知识产权合规风险 &amp; 数据安全风险</strong></p><p>大模型训练数据来源不透明，AI 可能 <strong>无意识抄袭开源代码</strong>，在没有明确许可证的情况下使用会带来法律风险。商业项目需格外注意代码来源审计。<br>代码是企业核心资产，随意调用外部 AI 服务可能导致数据泄露。敏感项目建议使用本地部署的 AI 服务或经过安全合规认证的方案。</p></li></ol><h1>什么是 Ai Coding Agent</h1><p>AI Coding Agent 是能自主理解开发需求、拆解任务、调试优化，可独立完成代码开发甚至从需求到部署全流程的智能代码代理。</p><h1>阵营</h1><h2 id="阵营1：IDE插件">阵营1：IDE插件</h2><p><strong>最顺手的AI副驾驶，日常编码离不开</strong></p><table><thead><tr><th style="text-align:left">工具</th><th style="text-align:left">开发公司</th><th style="text-align:left">特点</th><th style="text-align:left">官网</th></tr></thead><tbody><tr><td style="text-align:left"><strong>GitHub Copilot</strong></td><td style="text-align:left">GitHub (微软)</td><td style="text-align:left">用户量最大，适合日常编码</td><td style="text-align:left"><a href="https://github.com/features/copilot">https://github.com/features/copilot</a></td></tr><tr><td style="text-align:left"><strong>通义灵码</strong></td><td style="text-align:left">阿里巴巴</td><td style="text-align:left">阿里云出品，Java/Python企业级支持好</td><td style="text-align:left"><a href="https://lingma.aliyun.com/lingma">https://lingma.aliyun.com/lingma</a></td></tr><tr><td style="text-align:left"><strong>CodeGeeX</strong></td><td style="text-align:left">智谱AI / 字节跳动</td><td style="text-align:left">开源，支持130+语言互译</td><td style="text-align:left"><a href="https://codegeex.cn">https://codegeex.cn</a></td></tr><tr><td style="text-align:left"><strong>iFlyCode</strong></td><td style="text-align:left">科大讯飞</td><td style="text-align:left">中文提示词理解精准</td><td style="text-align:left"><a href="https://iflycode.xfyun.cn">https://iflycode.xfyun.cn</a></td></tr><tr><td style="text-align:left"><strong>aiXcoder</strong></td><td style="text-align:left">硅心科技</td><td style="text-align:left">百亿参数，响应&lt;0.5秒</td><td style="text-align:left"><a href="http://www.aixcoder.com">http://www.aixcoder.com</a></td></tr></tbody></table><h2 id="阵营2：原生IDE">阵营2：原生IDE</h2><p><strong>为AI而生的编辑器，体验最丝滑</strong></p><table><thead><tr><th style="text-align:left">工具</th><th style="text-align:left">开发公司</th><th style="text-align:left">特点</th><th style="text-align:left">官网</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Cursor</strong></td><td style="text-align:left">Anysphere</td><td style="text-align:left">市场领导者，体验最丝滑</td><td style="text-align:left"><a href="https://www.cursor.so">https://www.cursor.so</a></td></tr><tr><td style="text-align:left"><strong>Trae</strong></td><td style="text-align:left">字节跳动</td><td style="text-align:left">支持视觉理解（看图写代码）</td><td style="text-align:left"><a href="https://www.trae.com.cn">https://www.trae.com.cn</a></td></tr><tr><td style="text-align:left"><strong>CatPaw</strong></td><td style="text-align:left">美团</td><td style="text-align:left">美团自研，内部渗透率超95%</td><td style="text-align:left"><a href="https://catpaw.meituan.com">https://catpaw.meituan.com</a></td></tr></tbody></table><h2 id="阵营3：终端CLI-TUI">阵营3：终端CLI(TUI)</h2><p><strong>高手专用，解决难题时能力最硬核</strong></p><table><thead><tr><th style="text-align:left">工具</th><th style="text-align:left">开发公司</th><th style="text-align:left">特点</th><th style="text-align:left">官网/备注</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Claude Code</strong></td><td style="text-align:left">Anthropic</td><td style="text-align:left">推理能力最强，能解决复杂重构</td><td style="text-align:left"><a href="https://claude.com/product/claude-code">https://claude.com/product/claude-code</a></td></tr><tr><td style="text-align:left"><strong>CodeBuddy Code</strong></td><td style="text-align:left">腾讯云</td><td style="text-align:left">比肩Claude Code，国内CLI标杆</td><td style="text-align:left"><a href="https://codebuddy.ai">https://codebuddy.ai</a></td></tr><tr><td style="text-align:left"><strong>veCLI</strong></td><td style="text-align:left">字节跳动(火山引擎)</td><td style="text-align:left">支持中文自然语言交互，基于豆包大模型1.6</td><td style="text-align:left"><a href="https://www.volcengine.com/docs/6662/2222397">https://www.volcengine.com/docs/6662/2222397</a></td></tr><tr><td style="text-align:left"><strong>Codex CLI</strong></td><td style="text-align:left">OpenAI</td><td style="text-align:left">完全开源，Rust编写，支持CI/CD集成</td><td style="text-align:left"><a href="https://github.com/openai/codex">https://github.com/openai/codex</a></td></tr><tr><td style="text-align:left"><strong>Gemini CLI</strong></td><td style="text-align:left">Google</td><td style="text-align:left">拥有100万tokens超长上下文</td><td style="text-align:left"><a href="https://github.com/google-gemini/gemini-cli">https://github.com/google-gemini/gemini-cli</a></td></tr><tr><td style="text-align:left"><strong>OpenCode</strong></td><td style="text-align:left">Abdel-Hazim Lawani</td><td style="text-align:left">开源的Claude Code替代方案，支持多API密钥</td><td style="text-align:left"><a href="https://github.com/openagentic/openagentic-ai">https://github.com/openagentic/openagentic-ai</a></td></tr></tbody></table><h2 id="阵营4：云端-WEB端">阵营4：云端/WEB端</h2><p><strong>你的AI实习生，能独立完成并提交PR</strong></p><table><thead><tr><th style="text-align:left">工具</th><th style="text-align:left">开发公司</th><th style="text-align:left">特点</th><th style="text-align:left">官网/备注</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Devin</strong></td><td style="text-align:left">Cognition</td><td style="text-align:left">能独立完成从需求到部署的完整任务</td><td style="text-align:left"><a href="https://devin.ai">https://devin.ai</a></td></tr><tr><td style="text-align:left"><strong>文心快码Zulu</strong></td><td style="text-align:left">百度</td><td style="text-align:left">国内首个多模态AI程序员，图片秒变代码，会说话就能编程</td><td style="text-align:left"><a href="https://comate.baidu.com/">https://comate.baidu.com/</a></td></tr><tr><td style="text-align:left"><strong>华为云码道</strong></td><td style="text-align:left">华为</td><td style="text-align:left">鸿蒙深度适配GLM-4.7- ArkTS专属模型，支持规范驱动开发</td><td style="text-align:left"><a href="https://codearts.huaweicloud.com/">https://codearts.huaweicloud.com/</a></td></tr></tbody></table><pre class="mermaid">graph TD    A["AI编程助手生态"]      A --> B["阵营1：IDE插件 / AI副驾驶"]    B --> B1["GitHub Copilot (用户量最大)"]    B --> B2["通义灵码 (Java/Python企业级)"]    B --> B3["CodeGeeX (130+语言互译)"]    B --> B4["iFlyCode (中文提示词精准)"]    B --> B5["aiXcoder (响应<0.5秒)"]    A --> C["阵营2：原生IDE / AI原生编辑器"]    C --> C1["Cursor (体验最丝滑)"]    C --> C2["Trae (视觉理解)"]    C --> C3["CatPaw (美团渗透率95%)"]    A --> D["阵营3：终端CLI / 高手专用"]    D --> D1["Claude Code (推理最强)"]    D --> D2["CodeBuddy Code (国内CLI标杆)"]    D --> D3["veCLI (中文自然语言)"]    D --> D4["Codex CLI (Rust编写/开源)"]    D --> D5["Gemini CLI (100万上下文)"]    D --> D6["OpenCode (开源替代方案)"]    A --> E["阵营4：云端 / AI实习生"]    E --> E1["Devin (需求到部署)"]    E --> E2["文心快码Zulu (多模态)"]    E --> E3["华为云码道 (鸿蒙/嵌入式)"]    A --> F["阵营5：多智能体框架 / AI团队"]    F --> F1["AutoGen (人机协同)"]    F --> F2["AgentScope (分布式/低代码)"]    F --> F3["Eino (Go语言编排)"]    F --> F4["MetaGPT (模拟软件公司)"]    F --> F5["CrewAI (基于LangChain)"]</pre><h1>使用&amp;选型</h1><h2 id="阵营1：IDE插件-2">阵营1：IDE插件</h2><h3 id="IntelliJ-IDEA">IntelliJ IDEA</h3><ul><li><strong>通义灵码</strong>：阿里出品，必属精品 <a href="https://plugins.jetbrains.com/plugin/17809-lingma--alibaba-cloud-ai-coding-assistant">下载</a><br>我的常用场景<ul><li>代码问答与架构咨询</li><li>Git Commit Message 自动生成</li><li>智能代码补全与重构</li></ul></li></ul><p><img src="1776392869091.png" alt=""></p><ul><li><strong>CC GUI</strong>：Claude Code/ Codex 的 GUI 封装 <a href="https://plugins.jetbrains.com/plugin/29342-cc-gui-claude-or-codex-">下载</a><br>我的常用场景<ul><li>阅读代码、梳理业务逻辑、写比较明确的需求</li></ul></li></ul><p><img src="1776393069792.png" alt=""></p><p>已安装过但已经被我废弃的：Trae 插件、智谱AI（有相同功能点只留一两个顺手的就行）</p><h3 id="VS-Code">VS Code</h3><p>推荐</p><ul><li><strong>GitHub Copilot</strong></li><li><strong>Claude Code</strong></li><li><strong>Kimi</strong></li><li><strong>Kilo</strong></li><li><strong>通义灵码</strong></li><li><strong>Codex CLI</strong>：这玩意需要翻墙使用</li></ul><p><img src="1776393243660.png" alt=""></p><p>我的常用场景</p><ul><li>主要是写博客</li><li>整理文档</li><li>探索新的工具</li></ul><h2 id="阵营3：终端CLI-TUI-2">阵营3：终端CLI(TUI)</h2><p>怎么选？</p><table><thead><tr><th style="text-align:left">你的情况</th><th style="text-align:left">推荐工具</th><th style="text-align:left">理由</th></tr></thead><tbody><tr><td style="text-align:left">想要开源可控,用国产模型友好</td><td style="text-align:left"><strong>OpenCode</strong></td><td style="text-align:left">支持智谱GLM、通义Qwen、DeepSeek、MiniMax等国内模型</td></tr><tr><td style="text-align:left">不差钱，追求官方体验</td><td style="text-align:left"><strong>Claude Code</strong> 或 <strong>Codex CLI</strong></td><td style="text-align:left">官方出品，体验完善，专家级能力</td></tr><tr><td style="text-align:left">需要企业级支持</td><td style="text-align:left"><strong>通义灵码</strong> 或 <strong>文心快码</strong></td><td style="text-align:left">阿里/百度企业版，国产化合规</td></tr><tr><td style="text-align:left">鸿蒙/嵌入式开发</td><td style="text-align:left"><strong>华为云码道</strong></td><td style="text-align:left">GLM-4.7- ArkTS专属模型，鸿蒙深度适配</td></tr><tr><td style="text-align:left">需要IDE原生体验</td><td style="text-align:left"><strong>Cursor</strong> 或 <strong>Trae</strong></td><td style="text-align:left">AI原生编辑器，体验最丝滑</td></tr></tbody></table><p>结论</p><table><thead><tr><th style="text-align:left">工具</th><th style="text-align:left">核心优势</th><th style="text-align:left">学习曲线</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Claude Code</strong></td><td style="text-align:left">深度推理，复杂重构，专家级调试</td><td style="text-align:left">中</td></tr><tr><td style="text-align:left"><strong>Codex CLI</strong></td><td style="text-align:left">云端异步执行，并行多任务，自动测试</td><td style="text-align:left">低</td></tr><tr><td style="text-align:left"><strong>Gemini CLI</strong></td><td style="text-align:left">100万tokens超长上下文，多模态</td><td style="text-align:left">低</td></tr><tr><td style="text-align:left"><strong>OpenCode</strong></td><td style="text-align:left">100万tokens超长上下文，多模态</td><td style="text-align:left">低</td></tr></tbody></table><p>Claude Code、Codex CLI、Gemini CLI 主要是为了偶尔用一下国外的最强模型，有些问题国内大模型解决起来比较耗时费力，用 Claude Code、Codex CLI、Gemini CLI 则可以快速解决。<br>Claude Code 和 OpenCode 还是作为主力使用。Claude Code、Codex CLI、Gemini CLI 都可以 配置国内的模型，但自身的工具还是对自身的模型适配度最好，毕竟那些内置的提示词针对的是自家的LLM，毕竟是做闭源的，对其他模型的适配可能就没那么好了。就好比你用中文跟爱因斯坦对话，就算他精通中文，也还是得多琢磨一下才能给出答案。</p><h1>配置</h1><p>这些玩意配置项特别多，要能用好需要好好熟悉一下，第一道大关就是配置 国产模型 和 本地模型。推荐使用 cc-switch 这个工具。</p><p><a href="https://github.com/farion1231/cc-switch/releases">下载</a> 全部可视化配置模型、skills、mcp</p><p><img src="1776404745129.png" alt=""></p><h1>Vibe Coding 标准流程</h1><pre class="mermaid">graph TD    A["需求分析"] --> B["AI 辅助需求拆解"]    B --> C{需求是否清晰?}    C -->|否| D["人工澄清需求"]    D --> B    C -->|是| E["AI 生成技术方案"]    E --> F{方案是否可行?}    F -->|否| G["人工调整方案"]    G --> E    F -->|是| H["AI 生成代码"]    H --> I["人工代码审查"]    I --> J{审查通过?}    J -->|否| K["修改代码或调整 Prompt"]    K --> H    J -->|是| L["AI 生成测试用例"]    L --> M["运行测试"]    M --> N{测试通过?}    N -->|否| O["修复 bug"]    O --> H    N -->|是| P["提交代码"]    P --> Q{是否通过 CI/CD?}    Q -->|否| R["修复 CI/CD 问题"]    R --> H    Q -->|是| S["代码审查"]    S --> T{审查通过?}    T -->|否| U["根据反馈修改"]    U --> H    T -->|是| V["合并到主分支"]    V --> W["发布"]    style A fill:#f0f4f9    style H fill:#fff2e8    style I fill:#fde8e8    style L fill:#edf7ed    style Q fill:#eef2fb    style T fill:#fff7e6    style V fill:#e6f4ea</pre><h1>责任界定</h1><h2 id="AI-辅助开发的责任归属">AI 辅助开发的责任归属</h2><table><thead><tr><th>场景</th><th>责任主体</th><th>理由</th></tr></thead><tbody><tr><td><strong>AI 工具提供错误建议</strong></td><td>AI 工具供应商（如有合同）</td><td>AI 工具本身的缺陷，需追究供应商责任</td></tr><tr><td><strong>AI 生成的代码有bug</strong></td><td>开发者</td><td>开发者有责任审查和验证代码</td></tr><tr><td><strong>AI 生成的代码导事故</strong></td><td>开发者 + Code Reviewer</td><td>开发者未充分审查，审查者未发现问题</td></tr><tr><td><strong>AI 生成的代码违反规约</strong></td><td>开发者</td><td>开发者应遵循规约，AI 不能替代人的判断</td></tr></tbody></table><h1>实战（这些玩意能干啥？）</h1><p>参考 <a href="/_posts/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF.md">AI真正帮我干好的事儿</a> 这篇文章</p><h1>常见问题</h1><h2 id="Q1-AI生成的代码能直接用吗？">Q1: AI生成的代码能直接用吗？</h2><blockquote><p>不能直接用于生产环境。需要：</p><ol><li>自己理解代码逻辑</li><li>添加单元测试</li><li>进行Code Review</li><li>测试环境验证</li></ol></blockquote><h2 id="Q2-AI会泄露我的代码吗？">Q2: AI会泄露我的代码吗？</h2><blockquote><p>主流AI有隐私保护政策：</p><ul><li>使用本地模型不用担心，使用非本地模型需要特别小心</li><li>不用过于担心 1. 输入的都是代码片段，基本很难复原 2. 提高自身的安全意识，代码中不要包含敏感信息。特别是秘钥、密码等敏感信息。</li></ul></blockquote><h2 id="Q3-AI能替代程序员吗？">Q3: AI能替代程序员吗？</h2><blockquote><p>目前不能完全替代，但会放大程序员能力，以后可能。</p><ul><li>重复劳动 → AI处理</li><li>创造性工作 → 人类负责</li><li>提升效率 3-5倍</li></ul></blockquote><h2 id="Q4-AI写的代码有Bug该怪谁？">Q4: AI写的代码有Bug该怪谁？</h2><blockquote><p>最终责任人是程序员，不是 AI。AI 只是工具，代码所有权和责任都是你的。</p><ul><li>出了线上 Bug，领导找你而不是找 AI</li><li>所以 AI 写代码，人来 review，这个流程不能省</li></ul></blockquote><h2 id="Q5-怎么让AI少写Bug？">Q5: 怎么让AI少写Bug？</h2><blockquote><p>核心在于提示词质量：</p><ol><li><strong>明确上下文</strong> - 告诉 AI 项目技术栈、代码风格、现有架构</li><li><strong>拆分任务</strong> - 大任务拆成小任务，让 AI 一步步来</li><li><strong>指定约束</strong> - 明确说&quot;加单元测试&quot;、“用try-catch”、“遵循PEP8”</li><li><strong>让它自检</strong> - 写完后让 AI 自己先 review 一遍再给你</li></ol></blockquote><h2 id="Q6-AI编程的正确姿势是什么？">Q6: AI编程的正确姿势是什么？</h2><blockquote><p>建议按任务难度分层：</p><table><thead><tr><th style="text-align:left">任务类型</th><th style="text-align:left">AI 参与度</th><th style="text-align:left">人的角色</th></tr></thead><tbody><tr><td style="text-align:left">简单重复代码</td><td style="text-align:left">AI 直出</td><td style="text-align:left">检查即可</td></tr><tr><td style="text-align:left">中等复杂度</td><td style="text-align:left">AI 写+人 review</td><td style="text-align:left">引导+审查</td></tr><tr><td style="text-align:left">核心架构/关键逻辑</td><td style="text-align:left">人为主、AI 为辅</td><td style="text-align:left">设计+把控</td></tr><tr><td style="text-align:left">新技术调研</td><td style="text-align:left">AI 打头阵</td><td style="text-align:left">验证+决策</td></tr></tbody></table></blockquote>]]></content>
       
       
       <categories>
           
-          <category> AI </category>
+          <category> ai </category>
           
-          <category> CodeAI </category>
+          <category> codeai </category>
           
       </categories>
       
@@ -138,7 +138,7 @@
             
             <tag> 原创 </tag>
             
-            <tag> AI </tag>
+            <tag> ai </tag>
             
             <tag> 工具 </tag>
             
@@ -150,8 +150,8 @@
     
     <entry>
       <title>claude code 踩坑</title>
-      <link href="/2026/04/19/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/claude-code-%E8%B8%A9%E5%9D%91/"/>
-      <url>/2026/04/19/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/claude-code-%E8%B8%A9%E5%9D%91/</url>
+      <link href="/2026/04/19/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/claude-code-%E8%B8%A9%E5%9D%91/"/>
+      <url>/2026/04/19/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/claude-code-%E8%B8%A9%E5%9D%91/</url>
       
         <content type="html"><![CDATA[<p>我发现我的claude每次都无法准确识别当前目录，比如我让他帮我下一个脚本，其实我的本意是让他在我打开的目录下执行(也就是我执行cc的目录)，但是他总是识别不了，写到错误的目录，害的我不得不盯着他的执行过程找到最后写的脚本写到哪个目录了，最后在把脚本移动到我想要的目录下。很烦。</p><p>于是为了排查这个问题，我问他 “你现在的工作目录是什么？” 结果他总会报以下的错误。</p><pre><code class="hljs plaintext">Bash(pwd)  ⎿  PreToolUse:Bash hook returned blocking error                            ⎿  [Fact-Forcing Gate]                                                                                Quote the user&#x27;s current instruction verbatim.                                                                                Then retry the same operation.  ⎿  Error: [Fact-Forcing Gate]     Quote the user&#x27;s current instruction verbatim.     Then retry the same operation.</code></pre><p>这个报错不是你系统的报错， <strong>是 Claude 内部的安全 / 校验拦截机制</strong> ，翻译成人话就是：</p><blockquote><p>Claude 想执行 <code>pwd</code>，但被它自己的安全网关拦住了，要求你 <strong>原样复述一遍指令</strong> ，才能重试执行。</p></blockquote><p>原因</p><p>安装了 everything-claude-code 造成的，卸载即可。 everything-claude-code 这个传的很神，但个人使用下来，感觉一般，可能我还没有找到使用的方法</p>]]></content>
       
@@ -299,8 +299,8 @@
     
     <entry>
       <title>大模型薅羊毛战绩</title>
-      <link href="/2026/03/02/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%96%85%E7%BE%8A%E6%AF%9B%E6%88%98%E7%BB%A9/"/>
-      <url>/2026/03/02/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%96%85%E7%BE%8A%E6%AF%9B%E6%88%98%E7%BB%A9/</url>
+      <link href="/2026/03/02/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%96%85%E7%BE%8A%E6%AF%9B%E6%88%98%E7%BB%A9/"/>
+      <url>/2026/03/02/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%96%85%E7%BE%8A%E6%AF%9B%E6%88%98%E7%BB%A9/</url>
       
         <content type="html"><![CDATA[<h1>Xiaomi MiMo</h1><p><a href="https://platform.xiaomimimo.com/#/docs/welcome">https://platform.xiaomimimo.com/#/docs/welcome</a></p><p><img src="1772462482941.png" alt="1772462482941"></p><h1>月之暗面</h1><p><a href="https://www.moonshot.cn/">https://www.moonshot.cn/</a></p><p><img src="1772462368409.png" alt="1772462368409"></p><h1>Codex</h1><p>申请5个账号，一天一个。就是切换起来太麻烦了。</p><h1>优云智算</h1><p><a href="https://console.compshare.cn/light-gpu/model-manage">https://console.compshare.cn/light-gpu/model-manage</a></p><p><img src="1777299885707.png" alt=""></p>]]></content>
       
@@ -359,8 +359,8 @@
     
     <entry>
       <title>openclaw踩坑</title>
-      <link href="/2026/02/24/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/openclaw%E8%B8%A9%E5%9D%91/"/>
-      <url>/2026/02/24/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/openclaw%E8%B8%A9%E5%9D%91/</url>
+      <link href="/2026/02/24/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/openclaw%E8%B8%A9%E5%9D%91/"/>
+      <url>/2026/02/24/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/openclaw%E8%B8%A9%E5%9D%91/</url>
       
         <content type="html"><![CDATA[<p>听说这玩意会删除本地的东西，比如本地文件、比如你的数据库的数据，最近听说有人的飞书被爆破了（因为配置不当）导致个人的隐私信息泄漏了。所以我一直没敢碰这玩意。</p><p>而且你见过那个软件在安装的时候提示你下面这个的，直接就明说了，我这玩意是个实验性质的东西，没经验你别碰啊。光这个看到了估计就让人望而却步了。</p><pre><code class="hljs plaintext">|OpenClaw 是一个业余项目，仍处于测试阶段。可能会有粗糙之处。         ││  如果启用了工具，此机器人可以读取文件并执行操作。                  ││  不良提示可能会诱使其执行不安全的操作。                            ││                                                            │  如果您不熟悉基本的安全和访问控制，请不要运行 OpenClaw。           ││  在启用工具或将系统暴露给互联网之前，请寻求有经验的人士帮助。</code></pre><p><img src="1771900962627.png" alt=""></p><p>为了安装这玩意，先安装个虚拟机，在安装一个 Ubuntu 系统，然后在 Ubuntu 系统中安装 openclaw。<br>这玩意要想启动起来还是有门槛的<br>首先第一步你要配置一下大模型，这玩意就是要花钱的<br>而且现在好用的大模型本身就贵，我用的小米的模型，一晚上就花光了15块钱。（为了白嫖，我实现就抢注了一个账号）</p><p>为了连接上飞书，你要先注册飞书，然后在飞书中创建一个应用，获取到应用的 AppID 和 AppSecret，你以为这样就好了，其实还有各种权限要配置，这玩意要是没有一定的概念（比如你知道什么叫回调么？你知道为什么要授权么），你连权限都配置不好，更别说连接上了。硬生生拉高了openclaw的使用门槛。</p><p>飞书的群会话id 就得找半天，最后我是在手机上找的，因为ubuntu上的飞书没有显示，气死了</p><p>目前我还无法通过飞书给openclaw发送消息，卡在这一步骤了</p><p>重新配置了下好了，呜呜，也不知道怎么好的.<br><img src="1771901904685.png" alt=""></p><p>而且响应很慢<br><img src="1771902051356.png" alt=""></p><p>接下来就是永无止境的报错</p><p>想要链接上飞书也不容易</p><p>终于还是发成功了<br><img src="1771901806481.png" alt=""></p><p><img src="1771900504858.png" alt=""></p><p><img src="1771900516634.png" alt=""></p><p><img src="1771900538778.png" alt=""></p><p>然后你还要熟悉一堆的指令代表什么。</p><p>有一堆的概念需要学习</p><p>这玩意是真费token</p><p><img src="1771901301949.png" alt=""></p>]]></content>
       
@@ -419,8 +419,8 @@
     
     <entry>
       <title>如何知道自己的服务器适合跑什么样的大模型</title>
-      <link href="/2026/02/22/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E5%90%88%E8%B7%91%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
-      <url>/2026/02/22/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E5%90%88%E8%B7%91%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/</url>
+      <link href="/2026/02/22/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E5%90%88%E8%B7%91%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+      <url>/2026/02/22/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E5%90%88%E8%B7%91%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/</url>
       
         <content type="html"><![CDATA[<p>cargo install llmfit</p><p>一、llmfit 是什么<br>llmfit 是一款基于 Rust 开发的终端工具（TUI/CLI），核心定位是帮你快速匹配本地硬件（CPU/RAM/GPU/VRAM）与 LLM 模型，告诉你哪些模型能流畅跑、怎么量化最优。<br>核心功能<br>自动检测硬件：识别 CPU、内存、GPU / 显存、后端（CUDA/MPS/CPU）<br>模型匹配与打分：内置 90+ 主流模型、30+ 提供商，按质量 / 速度 / 适配度 / 上下文综合评分<br>量化推荐：自动给出适合你硬件的最佳量化（4/8/16 位等）<br>速度预估：估算 tok/s（每秒 token 数）<br>Ollama 集成：可直接在 TUI 里下载 / 管理 Ollama 模型<br>双模式：交互式 TUI（默认）+ 纯 CLI 命令<br>一句话：llmfit = 本地 LLM 硬件适配管家，一键告诉你 “你的电脑能跑哪些大模型”。</p><p><img src="1771696350619.png" alt="1771696350619"></p>]]></content>
       
@@ -477,8 +477,8 @@
     
     <entry>
       <title>模型的指标</title>
-      <link href="/2026/01/31/AI/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87/"/>
-      <url>/2026/01/31/AI/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87/</url>
+      <link href="/2026/01/31/ai/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87/"/>
+      <url>/2026/01/31/ai/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87/</url>
       
         <content type="html"><![CDATA[<h1>ollama <code>show</code> 命令全解析</h1><p><code>ollama show</code> 是 Ollama 中用于<strong>查看模型元数据、配置信息、模板规则</strong>的核心命令，能直观获取模型的架构、能力、推理参数、Prompt 模板等关键信息，是调试模型、适配开发的必备命令，以下从<strong>命令使用方法</strong>和<strong>输出内容逐段详解</strong>两部分讲透，结合实际示例，零基础也能看懂。</p><h2 id="一、ollama-show-核心使用方法">一、<code>ollama show</code> 核心使用方法</h2><h3 id="1-基础语法">1. 基础语法</h3><pre><code class="hljs bash">ollama show [模型名] [可选参数]</code></pre><ul><li><strong>模型名</strong>：本地已拉取的模型（如 <code>qwen2.5-coder:7b</code>、<code>deepseek-r1:8b</code>、<code>llama3.1:8b-instruct</code>）；</li><li><strong>可选参数</strong>：按需筛选输出内容，避免信息冗余，开发/调试常用。</li></ul><h3 id="2-常用参数（高频实用）">2. 常用参数（高频实用）</h3><table><thead><tr><th>参数</th><th>作用</th><th>示例</th><th>适用场景</th></tr></thead><tbody><tr><td>无参数</td><td>查看模型<strong>完整元数据</strong>（默认）</td><td><code>ollama show qwen2.5-coder:7b</code></td><td>全面了解模型配置</td></tr><tr><td><code>--modelfile</code></td><td>查看模型的<strong>Modelfile 构建配置</strong></td><td><code>ollama show deepseek-r1:8b --modelfile</code></td><td>自定义/修改模型配置时参考</td></tr><tr><td><code>--parameters</code></td><td>仅查看模型<strong>推理参数</strong>（stop/temp 等）</td><td><code>ollama show llama3.1:8b-instruct --parameters</code></td><td>调试推理参数、覆盖默认值</td></tr><tr><td><code>--template</code></td><td>仅查看模型的<strong>Prompt 模板</strong></td><td><code>ollama show qwen2.5-coder:7b --template</code></td><td>开发时适配模型的Prompt格式</td></tr><tr><td><code>--system</code></td><td>仅查看模型的<strong>默认系统提示词</strong></td><td><code>ollama show qwen2.5-coder:7b --system</code></td><td>自定义系统提示、修改模型人设</td></tr><tr><td><code>--license</code></td><td>仅查看模型的<strong>开源协议</strong></td><td><code>ollama show deepseek-r1:8b --license</code></td><td>确认商用/非商用权限</td></tr><tr><td><code>-f/--format</code></td><td>指定输出格式（<code>json</code>/<code>yaml</code>）</td><td><code>ollama show qwen2.5-coder:7b -f json</code></td><td>程序/脚本解析模型信息</td></tr></tbody></table><h3 id="3-实操示例">3. 实操示例</h3><pre><code class="hljs bash"><span class="hljs-comment"># 查看qwen2.5-coder:7b的完整信息（最常用）</span>ollama show qwen2.5-coder:7b<span class="hljs-comment"># 仅查看deepseek-r1:8b的Prompt模板（开发对接必备）</span>ollama show deepseek-r1:8b --template<span class="hljs-comment"># 以JSON格式输出llama3.1的参数，方便脚本解析</span>ollama show llama3.1:8b-instruct --parameters -f json</code></pre><h3 id="4-前置条件">4. 前置条件</h3><p>执行前需<strong>本地已拉取对应模型</strong>，若未拉取，先执行 <code>ollama pull 模型名</code>（如 <code>ollama pull qwen2.5-coder:7b</code>），否则会提示「model not found」。</p><h2 id="二、ollama-show-输出内容逐段详细讲解">二、<code>ollama show</code> 输出内容<strong>逐段详细讲解</strong></h2><p>以你之前的实际输出（<code>deepseek-r1:8b</code> 和 <code>qwen2.5-coder:7b</code>）为基础，结合通用模型的输出结构，<strong>按模块拆解</strong>，每个字段的含义、作用、实操价值都讲清，所有 Ollama 模型的输出都遵循此结构。</p><h3 id="模块1：Model-模型底层硬件-架构核心信息">模块1：<code>Model</code> - 模型<strong>底层硬件/架构核心信息</strong></h3><p>这是模型的<strong>基础属性</strong>，决定模型的运行要求、核心能力上限，是部署/选型的关键依据，示例：</p><pre><code class="hljs plaintext">Model  architecture        qwen3  parameters          8.2B  context length      131072  embedding length    4096  quantization        Q4_K_M</code></pre><table><thead><tr><th>字段</th><th>含义</th><th>实操价值</th></tr></thead><tbody><tr><td><code>architecture</code></td><td>模型底层训练架构（如 qwen2/qwen3/llama3/mistral）</td><td>决定模型的<strong>Prompt模板、推理逻辑、生态兼容</strong>，不同架构的Prompt格式不通用，开发时需匹配；</td></tr><tr><td><code>parameters</code></td><td>模型参数量（如 7.6B/8.2B/70B）</td><td>参数量≈模型理解/推理能力，越大能力越强，但对硬件（内存/显卡）要求越高；8B级适合本地部署，70B级需高端显卡/服务器；</td></tr><tr><td><code>context length</code></td><td>上下文窗口（单位：Token）</td><td>模型能<strong>记住/处理的最大文本长度</strong>，1Token≈0.75个中文字；131072（128k）可处理整份文档，32768（32k）适合日常对话/代码，是超长文本处理的核心指标；</td></tr><tr><td><code>embedding length</code></td><td>文本嵌入向量长度</td><td>仅影响<strong>文本嵌入/检索场景</strong>（如把文字转向量做相似度匹配），日常对话/工具调用无需关注；</td></tr><tr><td><code>quantization</code></td><td>模型量化级别（如 Q4_K_M/Q5_K_M/Q8_0）</td><td>平衡<strong>模型性能</strong>和<strong>硬件占用</strong>的关键：<code>&lt;br&gt;</code>✅ Q4_K_M（最常用）：本地部署首选，占用内存小（8B级约4-5G内存），推理速度快，精度损失小；<code>&lt;br&gt;</code>✅ Q5_K_M：精度更高，占用略大；<code>&lt;br&gt;</code>✅ Q8_0：接近原生精度，适合服务器，本地不推荐；</td></tr></tbody></table><h3 id="模块2：Capabilities-模型原生支持的核心功能（最关键）">模块2：<code>Capabilities</code> - 模型<strong>原生支持的核心功能</strong>（最关键）</h3><p>Ollama 对模型的<strong>功能硬限制</strong>，<strong>没有标注的能力，强制调用会直接报错</strong>（如你之前遇到的 <code>deepseek-r1:8b</code> 无 <code>tools</code> 导致工具调用失败），示例：</p><pre><code class="hljs plaintext"># deepseek-r1:8bCapabilities  completion  thinking# qwen2.5-coder:7bCapabilities  completion  tools  insert</code></pre><table><thead><tr><th>能力值</th><th>含义</th><th>适用场景</th></tr></thead><tbody><tr><td><code>completion</code></td><td>基础文本补全能力</td><td>所有大模型都支持，实现对话、写文案、补代码、生成文本等基础功能，是核心基础能力；</td></tr><tr><td><code>tools</code></td><td>工具/函数调用能力</td><td>模型能识别需求，按指定格式生成工具调用指令（如调用API、查数据库、执行代码），是对接 Agent、LangChain、New API 的<strong>必备能力</strong>；无此字段则绝对无法调用工具；</td></tr><tr><td><code>thinking</code></td><td>分步推理/思考能力</td><td>模型能拆解复杂问题、分步计算/分析（如数学题、逻辑推理、复杂任务拆解），适合推理型场景；</td></tr><tr><td><code>insert</code></td><td>文本/代码插入能力</td><td>模型能在<strong>已有文本/代码的中间位置</strong>生成内容（而非仅在末尾补全），是代码开发的核心能力（如在代码中间补逻辑、在文案中间加段落）；</td></tr><tr><td><code>embeddings</code></td><td>文本嵌入能力</td><td>模型能将文字转换为向量，用于文本检索、相似度匹配、知识库问答等场景；</td></tr></tbody></table><h3 id="模块3：Parameters-模型默认推理配置">模块3：<code>Parameters</code> - 模型<strong>默认推理配置</strong></h3><p>模型生成内容时的<strong>默认行为参数</strong>，可在调用时（<code>ollama run</code>/API）通过参数覆盖，若模型未配置自定义参数，此字段会<strong>自动省略</strong>（如 qwen2.5-coder:7b），示例：</p><pre><code class="hljs plaintext">Parameters  stop           &quot;&lt;｜begin▁of▁sentence｜&gt;&quot;  stop           &quot;&lt;｜end▁of▁sentence｜&gt;&quot;  stop           &quot;&lt;｜User｜&gt;&quot;  stop           &quot;&lt;｜Assistant｜&gt;&quot;  temperature    0.6  top_p          0.95</code></pre><table><thead><tr><th>字段</th><th>含义</th><th>可调范围</th><th>实操价值</th></tr></thead><tbody><tr><td><code>stop</code></td><td>停止符（可配置多个）</td><td>自定义字符串</td><td>模型生成内容时，<strong>遇到该字符立即停止</strong>，核心作用：<code>&lt;br&gt;</code>1. 避免生成冗余内容；<code>&lt;br&gt;</code>2. 适配模型的Prompt模板，保证输出格式规范；<code>&lt;br&gt;</code>3. 防止模型篡改角色（如助手冒充用户）；</td></tr><tr><td><code>temperature</code></td><td>生成随机性</td><td>0 ~ 2</td><td>0=输出完全固定（确定性高），1=随机性适中，2=高随机（内容多样但可能偏离主题）；<code>&lt;br&gt;</code>推理/代码场景设0.1-0.6，创意生成设0.8-1.2；</td></tr><tr><td><code>top_p</code></td><td>核采样阈值</td><td>0 ~ 1</td><td>和 <code>temperature</code> 配合控制随机性，通常设0.9-0.95，无需单独修改，随temperature调整即可；</td></tr><tr><td><code>max_tokens</code></td><td>单次最大生成Token数</td><td>1 ~ 上下文窗口值</td><td>限制模型单次回答的最大长度，避免生成过长内容；</td></tr><tr><td><code>repeat_penalty</code></td><td>重复生成惩罚</td><td>1.0 ~ 2.0</td><td>防止模型重复生成相同内容（如反复说一句话），值越大惩罚越重，通常设1.1-1.2；</td></tr></tbody></table><h3 id="模块4：System-模型默认系统提示词">模块4：<code>System</code> - 模型<strong>默认系统提示词</strong></h3><p>模型的<strong>原生人设/基础指令</strong>，约束模型的回答风格、角色定位，若未配置，此字段会省略，示例：</p><pre><code class="hljs plaintext">System  You are Qwen, created by Alibaba Cloud. You are a helpful assistant.</code></pre><ul><li><strong>作用</strong>：默认约束模型的行为（如“做一个有用的助手”“专业的代码工程师”）；</li><li><strong>实操</strong>：调用模型时可通过 <code>--system</code> 参数<strong>自定义覆盖</strong>（如 <code>ollama run qwen2.5-coder:7b --system &quot;你是一名资深Java工程师，回答简洁专业&quot;</code>）。</li></ul><h3 id="模块5：Template-模型Prompt-模板（开发对接核心）">模块5：<code>Template</code> - 模型<strong>Prompt 模板</strong>（开发对接<strong>核心</strong>）</h3><p>模型的<strong>原生输入格式规则</strong>，Ollama 会自动将用户的对话转换为该模板格式传给模型，<strong>不同架构/模型的模板不通用</strong>，若手动写Prompt，必须遵循此格式，否则模型会回答异常，示例（qwen2 架构模板）：</p><pre><code class="hljs plaintext">Template  &#123;%- if messages[0].role == &#x27;system&#x27; -%&#125;    &#123;%- set system_message = messages[0].content -%&#125;    &#123;%- set messages = messages[1:] -%&#125;  &#123;%- else -%&#125;    &#123;%- set system_message = &#x27;&#x27; -%&#125;  &#123;%- endif -%&#125;  &#123;%- for message in messages %&#125;    &#123;%- if message.role == &#x27;user&#x27; -%&#125;      &#123;&#123;- &#x27;&lt;|im_start|&gt;user\n&#x27; + message.content + &#x27;&lt;|im_end|&gt;\n&#x27; -&#125;&#125;    &#123;%- elif message.role == &#x27;assistant&#x27; -%&#125;      &#123;&#123;- &#x27;&lt;|im_start|&gt;assistant\n&#x27; + message.content + &#x27;&lt;|im_end|&gt;\n&#x27; -&#125;&#125;    &#123;%- elif message.role == &#x27;tool&#x27; -%&#125;      &#123;&#123;- &#x27;&lt;|im_start|&gt;tool\n&#x27; + message.content + &#x27;&lt;|im_end|&gt;\n&#x27; -&#125;&#125;    &#123;%- endif -%&#125;  &#123;%- endfor -%&#125;  &#123;&#123;- &#x27;&lt;|im_start|&gt;assistant\n&#x27; -&#125;&#125;</code></pre><ul><li><strong>核心标识</strong>：如 qwen2 的 <code>&lt;|im_start|&gt;user</code>/<code>&lt;|im_start|&gt;assistant</code>，deepseek-r1:8b 的 <code>&lt;｜User｜&gt;</code>/<code>&lt;｜Assistant｜&gt;</code>；</li><li><strong>实操价值</strong>：通过 <code>ollama show 模型名 --template</code> 查看模板，是<strong>代码对接Ollama API、自定义Prompt</strong>的必备步骤，确保模型能正确识别用户/助手/工具的角色。</li></ul><h3 id="模块6：License-模型开源协议">模块6：<code>License</code> - 模型<strong>开源协议</strong></h3><p>模型的<strong>使用权限说明</strong>，决定个人/企业能否免费使用、商用、二次开发，示例：</p><pre><code class="hljs plaintext">License  MIT License  Copyright (c) 2023 DeepSeek  ...</code></pre><ul><li><strong>常见友好协议</strong>：MIT、Apache 2.0（个人/企业可免费使用、商用，无授权限制）；</li><li><strong>受限协议</strong>：非商业用途（仅个人使用，禁止商用）、需申请授权等；</li><li><strong>实操价值</strong>：商用前必须查看，避免侵权。</li></ul><h2 id="三、关键补充：不同模型输出差异的原因">三、关键补充：不同模型输出差异的原因</h2><p>部分模型会<strong>省略某些模块</strong>（如 qwen2.5-coder:7b 省略 <code>Parameters</code>），并非模型没有该属性，而是<strong>Ollama的兜底机制</strong>：</p><blockquote><p>当模型的Modelfile中<strong>未配置自定义参数/系统提示</strong>时，Ollama会使用<strong>全局默认值</strong>，此时 <code>ollama show</code> 会省略对应模块，不影响模型使用，且所有默认值都能在调用时手动覆盖。</p></blockquote><p>例如：</p><ul><li>qwen2.5-coder:7b 未配置自定义 <code>Parameters</code> → 省略该模块，使用Ollama全局默认值（temperature=0.7、top_p=0.9、stop=<code>&lt;/s&gt;</code>）；</li><li>deepseek-r1:8b 配置了自定义 <code>stop</code> 符 → 显示 <code>Parameters</code> 模块，使用自定义值。</li></ul><h2 id="四、ollama-show-核心使用场景总结">四、<code>ollama show</code> 核心使用场景总结</h2><ol><li><strong>模型选型</strong>：通过 <code>Model</code> 模块看参数量、上下文窗口，<code>Capabilities</code> 看是否支持工具/推理，选择适配场景的模型；</li><li><strong>开发对接</strong>：通过 <code>--template</code> 查看Prompt模板，<code>--capabilities</code> 确认工具调用能力，保证代码和模型兼容；</li><li><strong>调试优化</strong>：通过 <code>--parameters</code> 查看默认推理参数，调用时覆盖（如调低temperature提升推理准确性）；</li><li><strong>权限确认</strong>：通过 <code>--license</code> 查看开源协议，确认商用/二次开发权限；</li><li><strong>自定义模型</strong>：通过 <code>--modelfile</code> 查看模型的构建配置，基于此修改并创建自定义模型（如添加stop符、修改系统提示）。</li></ol><h2 id="五、高频实操组合命令">五、高频实操组合命令</h2><pre><code class="hljs bash"><span class="hljs-comment"># 1. 快速查看模型是否支持工具调用（开发必备）</span>ollama show 模型名 | grep -A 5 Capabilities<span class="hljs-comment"># 2. 查看模型的Prompt模板并保存到本地，方便开发参考</span>ollama show 模型名 --template &gt; 模型名-template.txt<span class="hljs-comment"># 3. 以JSON格式输出所有推理参数，供脚本/程序解析</span>ollama show 模型名 --parameters -f json &gt; 模型名-params.json<span class="hljs-comment"># 4. 一次性查看模型的模板+系统提示+能力，适配Agent开发</span>ollama show 模型名 --template --system --capabilities</code></pre>]]></content>
       
@@ -566,8 +566,8 @@
     
     <entry>
       <title>机器学习算法无法保证百分百正确</title>
-      <link href="/2025/12/29/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%97%A0%E6%B3%95%E4%BF%9D%E8%AF%81%E7%99%BE%E5%88%86%E7%99%BE%E6%AD%A3%E7%A1%AE/"/>
-      <url>/2025/12/29/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%97%A0%E6%B3%95%E4%BF%9D%E8%AF%81%E7%99%BE%E5%88%86%E7%99%BE%E6%AD%A3%E7%A1%AE/</url>
+      <link href="/2025/12/29/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%97%A0%E6%B3%95%E4%BF%9D%E8%AF%81%E7%99%BE%E5%88%86%E7%99%BE%E6%AD%A3%E7%A1%AE/"/>
+      <url>/2025/12/29/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%97%A0%E6%B3%95%E4%BF%9D%E8%AF%81%E7%99%BE%E5%88%86%E7%99%BE%E6%AD%A3%E7%A1%AE/</url>
       
         <content type="html"><![CDATA[<p>在机器学习领域， <strong>没有任何算法能保证 100% 不出错</strong> ，这是由机器学习的 “数据驱动” 本质决定的 —— 模型学习的是数据中的统计规律，而非绝对的因果规律，你担心的 k-NN 被错误样本干扰、预测出错的问题，是所有机器学习模型的共性挑战。</p><h3 id="为什么无法-“保证一定不出错”？">为什么无法 “保证一定不出错”？</h3><p><strong>1. 数据本身的局限性</strong>真实数据必然存在噪声、标注错误、样本分布不均的问题。比如你说的 “某一类中间掺杂错误样本”，就算做了数据清洗，也不可能完全剔除所有干扰数据 —— 毕竟真实世界的信息本身就不是绝对纯净的。例如 k-NN 作为 “惰性学习” 算法，完全依赖样本的距离度量做判断，错误样本只要落在待预测样本的邻居范围内，就可能直接导致预测失误，这是由它的算法机制决定的。</p><p><strong>2. 模型的 “归纳偏置” 特性</strong>所有机器学习模型都有 <strong>归纳偏置</strong> （简单说就是模型的 “先天假设”），比如 k-NN 假设 “距离近的样本类别更相似”，线性回归假设 “变量之间是线性关系”。但真实世界的规律往往比模型假设更复杂，当数据规律超出模型的假设范围时，预测出错就是必然的。</p><p><strong>3. 测试集与训练集的分布差异</strong>模型训练时用的是训练集数据，但实际预测的是训练集之外的新样本。如果新样本的分布和训练集不一样（比如训练集里都是 “小猫” 样本，新样本是 “大猫”），模型就很容易出错 —— 这是无法通过训练完全规避的。</p><h3 id="关键认知：机器学习的目标是-“可控误差”，而非-“零误差”">关键认知：机器学习的目标是 “可控误差”，而非 “零误差”</h3><p>在实际应用中，我们追求的不是 “保证一定不出错”，而是 <strong>让模型的误差在业务可接受的范围内</strong> 。比如在垃圾邮件分类中，允许 1% 的正常邮件被误判为垃圾邮件；在医疗辅助诊断中，模型的预测结果只作为医生的参考，而非最终诊断依据 —— 通过 “模型预测 + 人工复核” 的方式，规避关键场景下的错误风险。</p>]]></content>
       
@@ -624,8 +624,8 @@
     
     <entry>
       <title>重学傅里叶级数</title>
-      <link href="/2025/12/21/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%87%8D%E5%AD%A6%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/"/>
-      <url>/2025/12/21/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%87%8D%E5%AD%A6%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/</url>
+      <link href="/2025/12/21/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%87%8D%E5%AD%A6%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/"/>
+      <url>/2025/12/21/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%87%8D%E5%AD%A6%E5%82%85%E9%87%8C%E5%8F%B6%E7%BA%A7%E6%95%B0/</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -653,8 +653,8 @@
     
     <entry>
       <title>逼近论</title>
-      <link href="/2025/12/21/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%80%BC%E8%BF%91%E8%AE%BA/"/>
-      <url>/2025/12/21/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%80%BC%E8%BF%91%E8%AE%BA/</url>
+      <link href="/2025/12/21/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%80%BC%E8%BF%91%E8%AE%BA/"/>
+      <url>/2025/12/21/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E9%80%BC%E8%BF%91%E8%AE%BA/</url>
       
         <content type="html"><![CDATA[<p>一、 逼近论（Approximation Theory）</p><p><strong>逼近论</strong>是数学的一个分支，核心任务是 <strong>用 “简单函数” 去近似替代 “复杂函数”</strong> ，并分析这种近似的误差大小、收敛性等规律。</p><p>简单来说，就是 “用容易计算、性质良好的函数，去拟合难处理的函数”，它是数值分析、机器学习、信号处理的重要数学基础。</p><h4 id="1-核心研究内容">1. 核心研究内容</h4><ul><li><strong>函数逼近</strong> ：<br>给定一个复杂函数 <strong>f</strong>(<strong>x</strong>)（比如没有显式表达式的函数、计算成本极高的函数），寻找一个简单函数 <strong>g</strong>(<strong>x</strong>)（如多项式、三角函数、样条函数），使得 <strong>g</strong>(<strong>x</strong>) 和 <strong>f</strong>(<strong>x</strong>) 在某个区间内的误差 <strong>∣</strong>f**(<strong>x</strong>)<strong>−</strong>g**(<strong>x</strong>)<strong>∣</strong> 尽可能小。<br>典型例子：*  <strong>泰勒展开</strong> ：用多项式逼近光滑函数（比如 <strong>e</strong>x**=<strong>1</strong>+<strong>x</strong>+<strong>2</strong>!<strong>x</strong>2+<strong>3</strong>!<strong>x</strong>3+**…）；</li><li><strong>傅里叶级数</strong> ：用三角函数（正弦、余弦）逼近周期函数，是信号处理中 “傅里叶变换” 的理论基础。</li><li><strong>最佳逼近</strong> ：<br>研究 “如何找到误差最小的近似函数”，比如 <strong>切比雪夫逼近</strong> （使最大误差最小化）、 <strong>最小二乘逼近</strong> （使误差平方和最小化）—— 后者正是机器学习中<strong>线性回归</strong>的核心数学原理。</li><li><strong>多元逼近与数值逼近</strong> ：<br>拓展到高维空间，用简单的多元函数逼近复杂多元函数，广泛应用于数值计算（比如用有限元方法求解偏微分方程）。</li></ul><p><strong>高等数学、线性代数、概率论与数理统计</strong>为主，<strong>《信号与系统》</strong> ：电子信息类专业课程，会讲 <strong>傅里叶级数、傅里叶变换</strong> ，这是逼近论在信号处理中的核心应用。</p>]]></content>
       
@@ -684,8 +684,8 @@
     
     <entry>
       <title>概率论vs统计学</title>
-      <link href="/2025/12/21/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A6%82%E7%8E%87%E8%AE%BAvs%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
-      <url>/2025/12/21/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A6%82%E7%8E%87%E8%AE%BAvs%E7%BB%9F%E8%AE%A1%E5%AD%A6/</url>
+      <link href="/2025/12/21/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A6%82%E7%8E%87%E8%AE%BAvs%E7%BB%9F%E8%AE%A1%E5%AD%A6/"/>
+      <url>/2025/12/21/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A6%82%E7%8E%87%E8%AE%BAvs%E7%BB%9F%E8%AE%A1%E5%AD%A6/</url>
       
         <content type="html"><![CDATA[<p>我一开始以为这俩是一回事。大学学的课程叫《<strong>概率论与数理统计</strong>》</p><h3 id="一、-核心区别：研究逻辑完全相反">一、 核心区别：研究逻辑完全相反</h3><table><thead><tr><th style="text-align:left">维度</th><th style="text-align:left">概率论</th><th style="text-align:left">统计学</th></tr></thead><tbody><tr><td style="text-align:left"><strong>核心问题</strong></td><td style="text-align:left"><strong>已知总体规律，推导样本特征</strong></td><td style="text-align:left"><strong>已知样本数据，推断总体规律</strong></td></tr><tr><td style="text-align:left"><strong>研究逻辑</strong></td><td style="text-align:left"><strong>演绎法</strong> （从一般到特殊）</td><td style="text-align:left"><strong>归纳法</strong> （从特殊到一般）</td></tr><tr><td style="text-align:left"><strong>前提条件</strong></td><td style="text-align:left">先明确总体的概率分布（如正态分布、二项分布）</td><td style="text-align:left">无预设总体规律，只有观测到的样本数据</td></tr><tr><td style="text-align:left"><strong>典型例子</strong></td><td style="text-align:left">已知一个袋子里有 3 个红球、2 个白球，求随机摸 1 个是红球的概率</td><td style="text-align:left">从袋子里摸出 10 个球，发现 7 个红球、3 个白球，推断袋子里红球和白球的比例</td></tr></tbody></table><p>概率论是统计学的 <strong>理论基础</strong> ，统计学是概率论的 <strong>实际应用</strong> 。</p><ul><li>没有概率论，统计学的推断就缺乏严格的数学依据（比如假设检验的 p 值计算、置信区间的推导，都依赖概率分布）；</li><li>没有统计学，概率论的理论就只能停留在抽象层面，无法解决现实中的数据分析问题。</li></ul><p>简单来说： <strong>概率论是 “算概率”，统计学是 “猜规律”；概率论给统计学提供工具，统计学让概率论落地</strong> 。</p>]]></content>
       
@@ -715,8 +715,8 @@
     
     <entry>
       <title>机器学习范式</title>
-      <link href="/2025/12/20/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%8C%83%E5%BC%8F/"/>
-      <url>/2025/12/20/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%8C%83%E5%BC%8F/</url>
+      <link href="/2025/12/20/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%8C%83%E5%BC%8F/"/>
+      <url>/2025/12/20/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E8%8C%83%E5%BC%8F/</url>
       
         <content type="html"><![CDATA[<p>首先数据库有个三大范式，起名字简单粗暴第一范式 (1NF)、第二范式 (2NF)、第三范式 (3NF)。 编程语言也有几个范式：面向对象、函数式、过程式、逻辑式等。机器学习中也学到一个范式名词，最近被这个分类折磨的不理解了。有的文章说 机器学习 分为 监督学习、无监督学习、强化学习，我的疑问是，这个范式分为无监督的和有监督的不就瓜分完了么，那么怎么又来了强化学习，这个强化学习看来不属于 监督学习和无监督学习呀。基于这个，我查了很多资料。</p><p>首先，这个范式的理解有错误，不同的领域虽然都叫范式，但是他们各有不同和相同的地方。先同的就是，能称之为范式的基本都是一种指导思想，是一种方法论。所以不要纠结，思想并非不能相互兼容的。例如scala这门语言就属于一种多范式的编程语言，未来的编程语言绝对会大一统的。</p><h1>什么是范式？</h1><p>“范式”（Paradigm）是一个源自科学哲学的重要概念，它在机器学习和人工智能领域有着特定的含义。</p><h2 id="范式的基本定义">范式的基本定义</h2><p><strong>范式</strong>指的是：</p><ul><li><strong>解决问题的基本框架和方法论</strong></li><li><strong>学科共同体公认的理论基础和实践规范</strong></li><li><strong>指导研究和实践的思维模式和行为准则</strong></li></ul><p>这个概念最早由科学哲学家托马斯・库恩（Thomas Kuhn）在《科学革命的结构》中提出，用于描述科学发展的模式。</p><h3 id="2-数据库的三大范式">2. <strong>数据库的三大范式</strong></h3><ul><li><strong>本质</strong> ：<strong>数据组织和设计的规则</strong></li><li><strong>目的</strong> ：减少数据冗余，保证数据一致性</li><li><strong>例子</strong> ：第一范式 (1NF)、第二范式 (2NF)、第三范式 (3NF)</li><li><strong>特点</strong> ：关注数据结构和存储</li><li>源自数据库理论，关注<strong>如何高效组织数据</strong></li></ul><h3 id="3-编程语言的范式">3. <strong>编程语言的范式</strong></h3><ul><li><strong>本质</strong> ：<strong>编程的风格和思维模式</strong></li><li><strong>目的</strong> ：提供组织代码的不同方式</li><li><strong>例子</strong> ：面向对象、函数式、过程式、逻辑式等</li><li><strong>特点</strong> ：关注代码结构和执行方式</li><li>源自计算机科学，关注<strong>如何表达计算逻辑</strong></li></ul><p>那机器学习的范式呢</p><p>9 种主要的机器学习范式：</p><ul><li>监督学习、无监督学习、强化学习</li><li>半监督学习、自监督学习、迁移学习</li><li>联邦学习、元学习、多任务学习</li></ul><h3 id="核心维度对比">核心维度对比</h3><table><thead><tr><th>范式</th><th>数据需求</th><th>学习目标</th><th>典型任务</th><th>主要挑战</th></tr></thead><tbody><tr><td><strong>监督学习</strong></td><td>大量标注数据</td><td>学习输入 - 输出映射</td><td>分类、回归</td><td>标注成本高、过拟合</td></tr><tr><td><strong>无监督学习</strong></td><td>无标签数据</td><td>发现数据结构</td><td>聚类、降维</td><td>结果解释性弱、评估困难</td></tr><tr><td><strong>强化学习</strong></td><td>环境交互数据</td><td>最大化累积奖励</td><td>游戏 AI、控制</td><td>样本效率低、训练时间长</td></tr><tr><td><strong>半监督学习</strong></td><td>少量标注 + 大量无标签</td><td>利用无标签数据提升性能</td><td>分类、回归</td><td>数据分布假设敏感</td></tr><tr><td><strong>自监督学习</strong></td><td>无标签数据</td><td>学习通用特征表示</td><td>预训练任务</td><td>代理任务设计、计算资源需求大</td></tr><tr><td><strong>迁移学习</strong></td><td>源任务数据 + 目标任务数据</td><td>知识迁移</td><td>图像分类、NLP</td><td>任务相关性、负迁移风险</td></tr><tr><td><strong>联邦学习</strong></td><td>分布式数据</td><td>隐私保护下的协作学习</td><td>医疗、金融</td><td>通信成本高、数据异构性</td></tr><tr><td><strong>元学习</strong></td><td>多个任务数据</td><td>学习如何学习</td><td>少样本学习</td><td>训练复杂、理论基础薄弱</td></tr><tr><td><strong>多任务学习</strong></td><td>多个任务数据</td><td>任务间知识共享</td><td>多标签分类</td><td>任务平衡、相关性要求高</td></tr></tbody></table>]]></content>
       
@@ -746,8 +746,8 @@
     
     <entry>
       <title>模型和算法是一回事么</title>
-      <link href="/2025/12/20/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%AE%97%E6%B3%95%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B%E4%B9%88/"/>
-      <url>/2025/12/20/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%AE%97%E6%B3%95%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B%E4%B9%88/</url>
+      <link href="/2025/12/20/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%AE%97%E6%B3%95%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B%E4%B9%88/"/>
+      <url>/2025/12/20/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E5%92%8C%E7%AE%97%E6%B3%95%E6%98%AF%E4%B8%80%E5%9B%9E%E4%BA%8B%E4%B9%88/</url>
       
         <content type="html"><![CDATA[<p>一开始我总以为机器学习里的 “模型” 和 “算法” 是一回事 —— 不都是一个函数吗？你看，模型是给一个或几个输入，经过一番计算后得出结论；算法似乎也一样，接收几个输入，再哐哐一顿运算，最后输出结果。这么看下来，二者好像没什么区别。直到后来我看到一篇文章，才明白它们其实是不同的概念，文章里的解读很有道理，想来对我之后理解机器学习的核心逻辑会很有帮助，所以特意记录下来。</p><p>ShowMeAI 网页内容（<a href="https://www.showmeai.tech/article-detail/185">https://www.showmeai.tech/article-detail/185</a>）</p><table><thead><tr><th>概念</th><th>网页中的核心定义</th><th>本质</th></tr></thead><tbody><tr><td><strong>模型</strong></td><td>在 AI 数据驱动范畴内，模型指的是「基于数据 X 做决策 Y 的假设函数」，可以有不同形态（计算型、规则型等）</td><td>是<strong>最终用于预测 / 决策的 “工具”</strong> —— 比如用 “房价预测模型”，输入面积、地段（X）就能输出房价（Y），它是对数据规律的 “具象化表达”</td></tr><tr><td><strong>算法</strong></td><td>指「学习模型的具体计算方法」，是统计学习中 “基于训练数据集，根据学习策略从假设空间选择最优模型，并求解最优模型的过程”</td><td>是<strong>得到模型的 “手段”</strong> —— 比如用 “线性回归算法” 去训练数据，最终得到 “线性回归模型”，它是 “寻找最优模型参数的步骤集合”</td></tr></tbody></table><p>简言之： <strong>算法是 “训练过程”，模型是 “训练结果”；算法为模型服务，模型是算法的产出物</strong> 。</p><p>二者容易被误认为 “一回事”，核心是因为它们 “强绑定”—— 没有算法就无法得到模型，讨论模型时也必然要关联对应的训练算法（比如 “决策树模型” 是用 “决策树算法” 训练得到的）。但绑定不代表等同，</p>]]></content>
       
@@ -777,8 +777,8 @@
     
     <entry>
       <title>什么样的问题可以用机器学习技术解决</title>
-      <link href="/2025/12/20/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%86%B3/"/>
-      <url>/2025/12/20/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%86%B3/</url>
+      <link href="/2025/12/20/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%86%B3/"/>
+      <url>/2025/12/20/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E9%97%AE%E9%A2%98%E5%8F%AF%E4%BB%A5%E7%94%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E6%8A%80%E6%9C%AF%E8%A7%A3%E5%86%B3/</url>
       
         <content type="html"><![CDATA[<p>能够用机器学习机技术解决的问题称之为机器学习的&quot;适定问题&quot;。这个词我也是第一次听说，我理解适定就是适合的意思，也就是说机器学习适合什么样的问题，或者说什么样的问题能用机器学习解决。也就是在给机器学习下定义，而且跟解释什么是机器学习不用，这里用一个明确的范围来定义。</p><h1>Well-posed Learning Problem</h1><p>原文是：</p><blockquote><p>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</p></blockquote><p>译为 <strong>适定学习问题</strong> ，是机器学习领域的核心定义。这个概念由 Tom Mitchell 在经典教材《Machine Learning》中提出，奠定了机器学习的理论框架 —— <strong>机器学习的本质，就是通过经验提升任务性能的过程</strong> 。</p><p><strong>通过经验提升任务性能的过程</strong> 。拆解为</p><table><thead><tr><th>要素</th><th>英文</th><th>含义</th><th>示例</th></tr></thead><tbody><tr><td>任务</td><td>T (Task)</td><td>程序需要完成的具体目标</td><td>图像分类、房价预测、语音识别</td></tr><tr><td>性能指标</td><td>P (Performance Measure)</td><td>衡量任务完成好坏的标准</td><td>分类准确率、预测误差的均方根</td></tr><tr><td>经验</td><td>E (Experience)</td><td>程序用于学习的数据或交互信息</td><td>标注好的图像数据集、用户的历史点击记录</td></tr></tbody></table><p>任务：就是你要干嘛</p><p>经验：就是你从哪儿知道怎么干</p><p>指标：就是你怎么知道你干的对不对或者好不好。</p><p>这个定义明确了 <strong>什么样的问题可以用机器学习解决</strong> ：只有同时具备 T、P、E 三个要素，且性能能随经验提升的问题，才是 “适定” 的机器学习问题。</p><p>比如 “用历史销售数据预测未来销量” 就是典型的适定问题，而 “生成一首无规则的诗” 若没有明确的性能指标 P，则不属于这个范畴。</p><p>反例：为什么 “写一首诗” 不算典型的适定学习问题？</p><ul><li>任务 T：写一首诗 → 看似明确，但 “好诗” 的标准太主观</li><li>性能指标 P：没法量化（有人觉得押韵就是好，有人觉得意境才重要，没有统一的 P）</li><li>经验 E：就算给一堆诗当素材，程序写出来的诗也没法用一个指标判断 “变好” 了</li></ul>]]></content>
       
@@ -1022,9 +1022,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 解决方案 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 解决方案 </tag>
             
         </tags>
       
@@ -1245,8 +1245,8 @@
     
     <entry>
       <title>sk-learn学习</title>
-      <link href="/2025/07/20/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/sk-learn%E5%AD%A6%E4%B9%A0/"/>
-      <url>/2025/07/20/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/sk-learn%E5%AD%A6%E4%B9%A0/</url>
+      <link href="/2025/07/20/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/sk-learn%E5%AD%A6%E4%B9%A0/"/>
+      <url>/2025/07/20/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/sk-learn%E5%AD%A6%E4%B9%A0/</url>
       
         <content type="html"><![CDATA[<pre><code class="hljs plaintext">System:    python: 3.13.5 (main, Jun 11 2025, 15:36:57) [Clang 17.0.0 (clang-1700.0.13.3)]executable: /Users/chenshang/Work/sklearn-env/bin/python   machine: macOS-15.5-arm64-arm-64bit-Mach-OPython dependencies:      sklearn: 1.7.1          pip: 25.1.1   setuptools: None        numpy: 2.3.1        scipy: 1.16.0       Cython: None       pandas: None   matplotlib: None       joblib: 1.5.1threadpoolctl: 3.6.0Built with OpenMP: Truethreadpoolctl info:       user_api: openmp   internal_api: openmp    num_threads: 11         prefix: libomp       filepath: /Users/chenshang/Work/sklearn-env/lib/python3.13/site-packages/sklearn/.dylibs/libomp.dylib        version: None</code></pre><p>怎么解读上面的</p><p>上面的输出是 <code>sklearn.show_versions()</code>函数返回的详细环境信息，主要用于排查scikit-learn（简称sklearn）运行时的依赖问题、系统兼容性等，可从以下几个部分解读：</p><h3 id="一、System（系统与Python基础信息）">一、System（系统与Python基础信息）</h3><p>这部分展示当前运行环境的基础配置，核心信息包括：</p><ul><li><strong>python</strong>: 3.13.5（主版本号），括号内是编译信息（Clang编译器版本、编译时间等），说明当前使用的Python版本较新（截至2025年）。</li><li><strong>executable</strong>: Python解释器的具体路径（<code>/Users/chenshang/Work/sklearn-env/bin/python</code>），从路径中的 <code>sklearn-env</code>可推测这是一个专门为sklearn创建的虚拟环境（符合最佳实践，避免依赖冲突）。</li><li><strong>machine</strong>: 系统信息（<code>macOS-15.5-arm64-arm-64bit-Mach-O</code>），说明运行在苹果的macOS系统（版本15.5），且是基于ARM架构的64位芯片（如M系列芯片）。</li></ul><h3 id="二、Python-dependencies（Python依赖库版本）">二、Python dependencies（Python依赖库版本）</h3><p>这部分列出了与sklearn相关的核心依赖库版本，是排查兼容性问题的关键：</p><ul><li><strong>sklearn: 1.7.1</strong>: scikit-learn自身的版本，1.7.x属于较新的稳定版。</li><li><strong>pip: 25.1.1</strong>: 包管理工具pip的版本，用于安装/管理库。</li><li><strong>setuptools: None</strong>: 未安装setuptools（或未在当前环境中），但通常不影响sklearn基础功能。</li><li><strong>numpy: 2.3.1</strong>: 科学计算基础库，sklearn的核心依赖（很多算法依赖numpy的数组运算），版本2.3.x是较新的稳定版。</li><li><strong>scipy: 1.16.0</strong>: 科学计算扩展库（如线性代数、统计函数），sklearn的高级算法（如SVM、聚类）依赖它。</li><li><strong>Cython: None</strong>: 未安装Cython（用于将Python代码编译为C扩展的工具），但sklearn已预编译，因此不影响使用（仅开发sklearn时需要）。</li><li><strong>pandas: None / matplotlib: None</strong>: 未安装pandas（数据处理）和matplotlib（可视化），说明当前环境可能仅用于sklearn的算法训练，不涉及数据清洗或结果可视化。</li><li><strong>joblib: 1.5.1</strong>: 用于并行计算和模型序列化（如 <code>joblib.dump</code>保存模型），sklearn的并行化功能依赖它。</li><li><strong>threadpoolctl: 3.6.0</strong>: 用于控制多线程（如OpenMP的线程数），sklearn的许多算法（如随机森林、线性回归）通过它实现并行加速。</li></ul><h3 id="三、Built-with-OpenMP-True">三、Built with OpenMP: True</h3><p>OpenMP是一种多线程并行编程技术，sklearn的很多算法（如决策树、聚类）会利用它加速计算。这里显示 <code>True</code>，说明当前安装的sklearn是支持OpenMP的版本，可利用多核CPU提升效率。</p><h3 id="四、threadpoolctl-info（线程控制信息）">四、threadpoolctl info（线程控制信息）</h3><p>这部分具体说明OpenMP的配置：</p><ul><li><strong>user_api: openmp / internal_api: openmp</strong>: 确认使用OpenMP作为多线程接口。</li><li><strong>num_threads: 11</strong>: 当前环境中，sklearn的并行算法会使用11个线程（通常与CPU核心数相关，M系列芯片可能有11个可用核心）。</li><li><strong>filepath: …libomp.dylib</strong>: OpenMP动态链接库的路径，说明依赖正常加载。</li><li><strong>version: None</strong>: 未显示具体版本，但不影响功能。</li></ul><h3 id="总结">总结</h3><p>这份信息表明：</p><ol><li>当前环境是一个干净的虚拟环境，专门用于运行scikit-learn 1.7.1，依赖库（numpy、scipy等）版本较新且兼容。</li><li>系统为苹果M系列芯片的macOS，支持多线程加速（OpenMP启用），适合中等规模的机器学习任务。</li><li>未安装pandas、matplotlib等工具，可能仅用于模型训练，而非完整的数据科学工作流。</li></ol><p>如果后续出现运行错误（如“缺少numpy”“无法并行计算”），可对照这份信息检查依赖是否缺失或版本不兼容。</p>]]></content>
       
@@ -1359,8 +1359,8 @@
     
     <entry>
       <title>AI学习基本概念基础知识</title>
-      <link href="/2025/07/12/AI/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AI%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
-      <url>/2025/07/12/AI/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AI%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      <link href="/2025/07/12/ai/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AI%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+      <url>/2025/07/12/ai/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/AI%E5%AD%A6%E4%B9%A0%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
       
         <content type="html"><![CDATA[<p>Embedding 模型<br>Rerank 模型<br>语音转文本模型<br>文本转语音模型</p><p>128k context window 是指大语言模型的上下文窗口大小为 128,000 个令牌（token）。它是衡量模型长文本处理能力的重要指标。以下是具体介绍：</p><p>含义：上下文窗口相当于模型的工作记忆，决定了模型在一次处理中能同时 “看到” 或 “记住” 的最大文本量。例如，GPT-4 Turbo、Llama 3.1 等模型就具备 128k 的上下文窗口，意味着它们可以处理最长达 128,000 个 token 的文本输入，能更好地处理长文档分析、多轮对话等任务。<br>作用：较大的上下文窗口使模型能够考虑更多的前文信息，从而生成更连贯、准确的回答，减少因遗忘前文导致的回答偏差。例如在处理长篇小说分析时，128k 的上下文窗口能让模型参考更多章节内容，给出更全面的分析。<br>影响：虽然增加上下文窗口大小有诸多好处，但也会带来计算资源需求的增加，导致成本上升，同时可能增加模型受对抗性攻击的风险。</p><p><strong>数据驱动</strong> ：数据驱动指的是我们基于客观的量化数据，通过主动数据的采集分析以支持决策。与之相对的是经验驱动，比如我们常说的「拍脑袋」。</p><p>几个过程：数据获取，数据清洗，数据分析，数据应用，数据反馈</p><p><strong>模型</strong> ：在AI数据驱动的范畴内，模型指的是基于数据X做决策Y的假设函数，可以有不同的形态，计算型和规则型等。</p><p><strong>算法</strong> ：指学习模型的具体计算方法。统计学习基于训练数据集，根据学习策略，从假设空间中选择最优模型，最后需要考虑用什么样的计算方法求解最优模型。通常是一个最优化的问题。</p><ul><li><strong>回归</strong> ：根据对已知属性值数据的训练，为模型寻找最佳拟合参数，基于模型预测新样本的输出值。</li><li><strong>分类</strong> ：应用以分类数据进行模型训练，根据模型对新样本进行精准分类与预测。</li><li><strong>聚类</strong> ：从海量数据中识别数据的相似性与差异性，并按照最大共同点聚合为多个类别。</li><li><strong>异常检测</strong> ：对数据点的分布规律进行分析，识别与正常数据及差异较大的离群点。</li></ul><p>机器学习的步骤</p><p>机器学习工作流（WorkFlow）包含数据 <strong>预处理</strong> （Processing）、 <strong>模型学习</strong> （Learning）、 <strong>模型评估</strong> （Evaluation）、 <strong>新样本预测</strong> （Prediction）几个步骤。</p><ul><li><strong>数据预处理</strong> ：输入（未处理的数据 + 标签）→处理过程（特征处理+幅度缩放、特征选择、维度约减、采样）→输出（测试集 + 训练集）。</li><li><strong>模型学习</strong> ：模型算法选择、交叉验证、结果评估、超参选择。</li><li><strong>模型评估</strong> ：了解模型对于数据集测试的得分。</li><li><strong>新样本预测</strong> ：预测测试集。</li></ul><p>机器学习基本概念</p><h1>机器学习数据、预处理及模型评估核心名词对照表</h1><table><thead><tr><th>中文术语</th><th>英文术语</th><th>符号表示</th><th>解释</th></tr></thead><tbody><tr><td>数据集</td><td>Dataset</td><td>$D$</td><td>一组记录的集合，每条记录描述一个事件或对象</td></tr><tr><td>样本/示例</td><td>Sample/Instance</td><td>$x$</td><td>数据集中的单条记录，描述事件或对象的特征</td></tr><tr><td>属性/特征</td><td>Attribute/Feature</td><td>-</td><td>描述样本的某个特性，如“色泽”“重量”“房屋面积”</td></tr><tr><td>属性值</td><td>Attribute Value</td><td>$x_i$</td><td>属性取到的具体值，如“青绿”“80㎡”</td></tr><tr><td>属性空间/样本空间</td><td>Attribute Space/Sample Space</td><td>$\mathcal{X}$</td><td>由所有属性张成的多维空间</td></tr><tr><td>特征向量</td><td>Feature Vector</td><td>$\boldsymbol{x} = (x_1;x_2;\dots;x_d)$</td><td>样本在属性空间中的坐标表示形式</td></tr><tr><td>维数</td><td>Dimensionality</td><td>$d$</td><td>样本属性的个数，即特征向量的维度</td></tr><tr><td>标记/标签</td><td>Label</td><td>$y$</td><td>样本的“结果”信息，监督学习的预测目标，如“好瓜”“房价200万”</td></tr><tr><td>样例</td><td>Example</td><td>$(\boldsymbol{x}, y)$</td><td>拥有标记信息的样本，即(特征向量, 标记)对</td></tr><tr><td>标记空间/输出空间</td><td>Label Space/Output Space</td><td>$\mathcal{Y}$</td><td>所有可能标记的集合，如{好瓜, 坏瓜}、$\mathbb{R}$（连续值）</td></tr><tr><td>训练集</td><td>Training Set</td><td>$D_{train}$</td><td>用于训练模型、让模型学习规律的数据集</td></tr><tr><td>测试集</td><td>Test Set</td><td>$D_{test}$</td><td>用于评估训练后模型泛化能力的数据集，模型训练时未见过</td></tr><tr><td>独立同分布</td><td>Independent and Identically Distributed</td><td>i.i.d</td><td>机器学习基本假设：训练集和测试集的样本相互独立，且服从相同概率分布</td></tr><tr><td>数据清洗</td><td>Data Cleaning</td><td>-</td><td>处理原始数据中的脏数据，包括缺失值填充、异常值处理、重复值去除</td></tr><tr><td>缺失值填充</td><td>Missing Value Imputation</td><td>-</td><td>补充数据中缺失的属性值，方法有均值/中位数填充、众数填充、模型预测填充等</td></tr><tr><td>异常值处理</td><td>Outlier Handling</td><td>-</td><td>识别并处理偏离正常数据分布的异常点，方法有删除、截断、转换等</td></tr><tr><td>特征选择</td><td>Feature Selection</td><td>-</td><td>筛选与目标标签相关性高的特征，剔除冗余、无关特征，提升模型效率</td></tr><tr><td>特征变换</td><td>Feature Transformation</td><td>-</td><td>对特征进行数学变换，使其更适配模型，常见操作有标准化、归一化</td></tr><tr><td>标准化</td><td>Standardization</td><td>-</td><td>将特征转换为<strong>均值为0、方差为1</strong>的分布，公式：$x’=\frac{x-\mu}{\sigma}$</td></tr><tr><td>归一化</td><td>Normalization</td><td>-</td><td>将特征缩放到<strong>0~1区间</strong>，公式：$x’=\frac{x-x_{min}}{x_{max}-x_{min}}$</td></tr><tr><td>独热编码</td><td>One-Hot Encoding</td><td>-</td><td>处理无序类别特征的方法，将离散类别转为二进制向量，避免类别间大小误导</td></tr><tr><td>标签编码</td><td>Label Encoding</td><td>-</td><td>将类别特征转为连续数字（如红=0、蓝=1），适合有序类别特征</td></tr><tr><td>过采样</td><td>Oversampling</td><td>-</td><td>处理类别不平衡数据的方法，对少数类样本进行复制或生成新样本（如SMOTE算法）</td></tr><tr><td>欠采样</td><td>Undersampling</td><td>-</td><td>处理类别不平衡数据的方法，对多数类样本进行随机删除，平衡样本分布</td></tr><tr><td>准确率</td><td>Accuracy</td><td>$Acc$</td><td>分类任务评估指标，正确预测的样本数占总样本数的比例，$Acc=\frac{TP+TN}{TP+TN+FP+FN}$</td></tr><tr><td>精确率/查准率</td><td>Precision</td><td>$P$</td><td>分类任务评估指标，预测为正类的样本中真实正类的比例，$P=\frac{TP}{TP+FP}$</td></tr><tr><td>召回率/查全率</td><td>Recall</td><td>$R$</td><td>分类任务评估指标，真实正类样本中被正确预测的比例，$R=\frac{TP}{TP+FN}$</td></tr><tr><td>F1分数</td><td>F1 Score</td><td>$F1$</td><td>精确率和召回率的调和均值，平衡二者矛盾，$F1=\frac{2\times P\times R}{P+R}$</td></tr><tr><td>混淆矩阵</td><td>Confusion Matrix</td><td>-</td><td>分类任务的可视化评估工具，行表示真实类别，列表示预测类别，展示TP/TN/FP/FN的分布</td></tr><tr><td>均方误差</td><td>Mean Squared Error</td><td>$MSE$</td><td>回归任务评估指标，预测值与真实值差的平方的均值，$MSE=\frac{1}{n}\sum_{i=1}^n(\hat{y}_i-y_i)^2$</td></tr><tr><td>均方根误差</td><td>Root Mean Squared Error</td><td>$RMSE$</td><td>回归任务评估指标，MSE的平方根，量纲与真实值一致，$RMSE=\sqrt{MSE}$</td></tr><tr><td>平均绝对误差</td><td>Mean Absolute Error</td><td>$MAE$</td><td>回归任务评估指标，预测值与真实值差的绝对值的均值，$MAE=\frac{1}{n}\sum_{i=1}^n</td></tr><tr><td>过拟合</td><td>Overfitting</td><td>-</td><td>模型在训练集上表现极好，但在测试集上表现很差，泛化能力弱</td></tr><tr><td>欠拟合</td><td>Underfitting</td><td>-</td><td>模型在训练集和测试集上表现都很差，未学到数据的核心规律</td></tr></tbody></table><p>需要我帮你整理一份<strong>机器学习数据流程速记清单</strong>，把数据收集、预处理、训练、评估的关键步骤串联起来吗？</p><pre><code class="hljs plaintext">flowchart TD    A[1. 数据收集] --&gt;|明确数据源+特征/标签| B[2. 数据预处理]    B --&gt; B1[数据清洗&lt;br/&gt;缺失值+异常值+重复值处理]    B1 --&gt; B2[特征工程&lt;br/&gt;选择+变换+构造]    B2 --&gt; B3[数据集划分&lt;br/&gt;训练集+验证集+测试集]    B3 --&gt; B4[特殊处理&lt;br/&gt;类别不平衡数据优化]    B4 --&gt; C[3. 模型训练]    C --&gt; C1[选择适配模型&lt;br/&gt;分类/回归/聚类]    C1 --&gt; C2[初始化超参数]    C2 --&gt; C3[训练集训练模型]    C3 --&gt; C4[验证集监控训练过程]    C4 --&gt; D[4. 模型评估]    D --&gt; D1[测试集评估性能&lt;br/&gt;分类:Acc/P/R/F1&lt;br/&gt;回归:MSE/RMSE/MAE]    D1 --&gt; D2&#123;性能是否达标?&#125;    D2 --&gt;|否| E[5. 模型调优]    E --&gt; E1&#123;诊断问题&lt;br/&gt;过拟合/欠拟合&#125;    E1 --&gt;|过拟合| E2[增加样本/降低复杂度/正则化]    E1 --&gt;|欠拟合| E3[增加特征/提升模型复杂度]    E2 &amp; E3 --&gt; E4[超参数调优&lt;br/&gt;网格/随机/贝叶斯搜索]    E4 --&gt; C2    D2 --&gt;|是| F[6. 模型部署与监控]    F --&gt; F1[封装为API/嵌入式程序]    F1 --&gt; F2[实时监控模型性能]    F2 --&gt; F3&#123;性能下降?&#125;    F3 --&gt;|是| A    F3 --&gt;|否| F4[定期迭代优化]</code></pre><h3 id="机器学习应用场景">机器学习应用场景</h3><p>作为一套数据驱动的方法，机器学习已广泛应用于数据挖掘、计算机视觉、自然语言处理、生物特征识别、搜索引擎、医学诊断、检测信用卡欺诈、证券市场分析、DNA序列测序、语音和手写识别和机器人等领域。</p><ol><li><strong>数据挖掘</strong><ul><li><strong>定义</strong>：从大量数据中发现有用模式和知识的过程，涉及数据预处理、分类、回归、聚类等多种任务。</li><li><strong>英文</strong>：Data Mining</li><li><strong>英文简称</strong>：无常用简称</li><li><strong>实际例子</strong>：银行通过数据挖掘分析客户交易数据，进行信用风险评估，识别高风险客户。</li><li><strong>相关算法模型</strong>：决策树（Decision Tree，DT）、随机森林（Random Forest，RF）、支持向量机（Support Vector Machine，SVM）等。</li></ul></li><li><strong>计算机视觉</strong><ul><li><strong>定义</strong>：让计算机像人类一样“看懂”图像和视频，涉及图像分类、目标检测、图像分割等任务。</li><li><strong>英文</strong>：Computer Vision</li><li><strong>英文简称</strong>：CV</li><li><strong>实际例子</strong>：特斯拉的Autopilot系统使用计算机视觉技术检测道路上的车辆、行人和障碍物，确保自动驾驶的安全性。</li><li><strong>相关算法模型</strong>：卷积神经网络（Convolutional Neural Network，CNN）、YOLO（You Only Look Once）、Mask R - CNN等。</li></ul></li><li><strong>自然语言处理</strong><ul><li><strong>定义</strong>：让计算机理解和处理人类自然语言，包括文本分类、情感分析、机器翻译、问答系统等任务。</li><li><strong>英文</strong>：Natural Language Processing</li><li><strong>英文简称</strong>：NLP</li><li><strong>实际例子</strong>：谷歌翻译利用自然语言处理技术实现不同语言之间的自动翻译。</li><li><strong>相关算法模型</strong>：循环神经网络（Recurrent Neural Network，RNN）、长短时记忆网络（Long Short - Term Memory，LSTM）、Transformer模型等。</li></ul></li><li><strong>生物特征识别</strong><ul><li><strong>定义</strong>：通过个体的生物特征（如指纹、人脸、虹膜等）进行身份识别或验证。</li><li><strong>英文</strong>：Biometric Recognition</li><li><strong>英文简称</strong>：BR</li><li><strong>实际例子</strong>：iPhone的Face ID通过人脸识别技术实现手机解锁。</li><li><strong>相关算法模型</strong>：FaceNet用于人脸特征提取，还有一些基于卷积神经网络的模型用于指纹、虹膜等生物特征的识别。</li></ul></li><li><strong>搜索引擎</strong><ul><li><strong>定义</strong>：根据用户输入的关键词，从大量网页中检索出相关信息并排序展示的系统，涉及网页索引、关键词匹配、排序算法等。</li><li><strong>英文</strong>：Search Engine</li><li><strong>英文简称</strong>：SE</li><li><strong>实际例子</strong>：百度搜索引擎根据用户输入的查询词，返回相关的网页结果。</li><li><strong>相关算法模型</strong>：PageRank算法用于网页排序，还有一些基于机器学习的排序算法，如LambdaMART，用于根据用户行为等数据优化搜索结果排序。</li></ul></li><li><strong>医学诊断</strong><ul><li><strong>定义</strong>：利用医学数据（如医学影像、电子健康记录等），辅助医生对疾病进行检测、诊断和预测。</li><li><strong>英文</strong>：Medical Diagnosis</li><li><strong>英文简称</strong>：MD</li><li><strong>实际例子</strong>：斯坦福大学的研究团队利用CNN训练的模型，能够以超过专业医生的准确率识别皮肤癌。</li><li><strong>相关算法模型</strong>：卷积神经网络（CNN）用于医学影像分析，逻辑回归（Logistic Regression，LR）可用于疾病风险预测。</li></ul></li><li><strong>检测信用卡欺诈</strong><ul><li><strong>定义</strong>：通过分析信用卡交易数据，识别异常交易行为，检测信用卡欺诈行为。</li><li><strong>英文</strong>：Credit Card Fraud Detection</li><li><strong>英文简称</strong>：CCFD</li><li><strong>实际例子</strong>：银行利用相关技术检测信用卡交易中的欺诈行为，保护用户资金安全。</li><li><strong>相关算法模型</strong>：梯度提升（Gradient Boosting）、随机森林（RF）、投票分类器（Voting Classifier）等。</li></ul></li><li><strong>证券市场分析</strong><ul><li><strong>定义</strong>：对证券市场数据（如股票价格、交易量等）进行分析，预测市场趋势、股票价格走势等，为投资决策提供依据。</li><li><strong>英文</strong>：Securities Market Analysis</li><li><strong>英文简称</strong>：SMA</li><li><strong>实际例子</strong>：金融机构通过分析证券市场数据，预测股票价格走势，为投资者提供投资建议。</li><li><strong>相关算法模型</strong>：线性回归（Linear Regression）可用于预测股票价格走势，随机森林（RF）可用于分析影响股票价格的因素。</li></ul></li><li><strong>DNA序列测序</strong><ul><li><strong>定义</strong>：确定特定DNA分子中核苷酸顺序，以了解其功能和对生物体的影响，还涉及片段对齐和合并等操作。</li><li><strong>英文</strong>：DNA Sequencing</li><li><strong>英文简称</strong>：DNA - seq</li><li><strong>实际例子</strong>：在生物医学研究中，通过DNA序列测序分析基因序列，研究疾病相关基因。</li><li><strong>相关算法模型</strong>：卷积神经网络（CNN）、循环神经网络（RNN）可用于序列分析任务，深度神经网络（DNN）可用于基因组注释和变异分类。</li></ul></li><li><strong>语音和手写识别</strong><ul><li><strong>定义</strong>：将语音信号或手写文字转换为计算机可处理的文本或指令，分别涉及语音识别和手写文字识别任务。</li><li><strong>英文</strong>：Speech and Handwriting Recognition</li><li><strong>英文简称</strong>：SHR</li><li><strong>实际例子</strong>：苹果的Siri通过语音识别技术理解用户语音指令并执行相应操作。</li><li><strong>相关算法模型</strong>：隐马尔可夫模型（Hidden Markov Model，HMM）、循环神经网络（RNN）及其变体LSTM等常用于语音识别，卷积神经网络（CNN）可用于手写文字识别。</li></ul></li><li><strong>机器人</strong><ul><li><strong>定义</strong>：使机器人能够自主或半自主地执行任务，涉及机器人的运动控制、环境感知、路径规划等。</li><li><strong>英文</strong>：Robotics</li><li><strong>英文简称</strong>：无常用简称</li><li><strong>实际例子</strong>：波士顿动力的机器人通过机器学习技术实现环境感知和动作控制，能够完成复杂的动作任务。</li><li><strong>相关算法模型</strong>：强化学习（Reinforcement Learning）算法可用于机器人的动作决策和路径规划，卷积神经网络（CNN）可用于机器人的视觉感知。</li></ul></li></ol>]]></content>
       
@@ -1554,8 +1554,8 @@
     
     <entry>
       <title>那些年玩过的AI</title>
-      <link href="/2025/03/01/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E9%82%A3%E4%BA%9B%E5%B9%B4%E7%8E%A9%E8%BF%87%E7%9A%84AI/"/>
-      <url>/2025/03/01/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E9%82%A3%E4%BA%9B%E5%B9%B4%E7%8E%A9%E8%BF%87%E7%9A%84AI/</url>
+      <link href="/2025/03/01/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E9%82%A3%E4%BA%9B%E5%B9%B4%E7%8E%A9%E8%BF%87%E7%9A%84AI/"/>
+      <url>/2025/03/01/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E9%82%A3%E4%BA%9B%E5%B9%B4%E7%8E%A9%E8%BF%87%E7%9A%84AI/</url>
       
         <content type="html"><![CDATA[<h1>Anything LLM</h1><p><img src="iShot_2025-03-01_22.14.52.png" alt=""></p><p><img src="iShot_2025-03-01_22.14.42.png" alt=""></p><p>我是因为后来发现了 openwebui 然后才不在使用它了。我还是倾向于不安装本地化的软件而是使用网页版本的。</p><h1>Bito</h1><p><img src="1762366703525.png" alt="img"></p><h1>OpenCode</h1><p><img src="1769803837576.png" alt=""></p><p>opencode web版本</p><p><img src="1776608910836.png" alt="1776608910836"></p><h1>Next AI Drawio</h1><p><img src="1769804262573.png" alt=""></p><h1>Codex</h1><p><img src="1771900025836.png" alt=""></p><h1>OpenClaw</h1><p><img src="1771899930528.png" alt=""></p><h1>Kimi Code CLI</h1><p><img src="1772462679842.png" alt="1772462679842"></p><h1>aicodeswitch</h1><p><img src="1774045995780.png" alt=""></p><h1>Cline</h1><p><img src="1774046631064.png" alt=""><br><img src="1775846523716.png" alt=""><br><img src="1776405749419.png" alt=""></p><h1>Kilo</h1><p><img src="iShot_2026-04-11_02.42.22.png" alt=""></p><h1>Dify</h1><p><img src="1776405648547.png" alt=""></p><h1>vibe-notch</h1><p><a href="https://github.com/farouqaldori/vibe-notch">https://github.com/farouqaldori/vibe-notch</a><br><img src="1777113409969.png" alt=""></p><p><a href="https://github.com/Octane0411/open-vibe-island/releases">https://github.com/Octane0411/open-vibe-island/releases</a></p><p><a href="https://github.com/8676311081/open-island/releases">https://github.com/8676311081/open-island/releases</a></p><p><img src="iShot_2026-04-25_18.35.59.png" alt=""> <img src="iShot_2026-04-25_19.39.43.png" alt=""></p><h1>Vibe Island</h1><p><a href="https://vibeisland.app/docs/custom-jump-rules/">https://vibeisland.app/docs/custom-jump-rules/</a><br><img src="1777118167697.png" alt=""></p>]]></content>
       
@@ -1585,8 +1585,8 @@
     
     <entry>
       <title>dify 部署填坑</title>
-      <link href="/2025/02/28/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/dify-%E9%83%A8%E7%BD%B2%E5%A1%AB%E5%9D%91/"/>
-      <url>/2025/02/28/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/dify-%E9%83%A8%E7%BD%B2%E5%A1%AB%E5%9D%91/</url>
+      <link href="/2025/02/28/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/dify-%E9%83%A8%E7%BD%B2%E5%A1%AB%E5%9D%91/"/>
+      <url>/2025/02/28/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/dify-%E9%83%A8%E7%BD%B2%E5%A1%AB%E5%9D%91/</url>
       
         <content type="html"><![CDATA[<h1>dify镜像下载EOF</h1><p><img src="image.png" alt=""></p><p>添加镜像源，目前下面这些是有效的，不知道以后会怎样，先用这个撑一段时间吧</p><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>  <span class="hljs-attr">&quot;builder&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>    <span class="hljs-attr">&quot;gc&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span>      <span class="hljs-attr">&quot;defaultKeepStorage&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;20GB&quot;</span><span class="hljs-punctuation">,</span>      <span class="hljs-attr">&quot;enabled&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>    <span class="hljs-punctuation">&#125;</span>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;experimental&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span>  <span class="hljs-attr">&quot;registry-mirrors&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>    <span class="hljs-string">&quot;https://9cpn8tt6.mirror.aliyuncs.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://registry.docker-cn.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://mirror.ccs.tencentyun.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.1panel.live&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://2a6bf1988cb6428c877f723ec7530dbc.mirror.swr.myhuaweicloud.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.m.daocloud.io&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://hub-mirror.c.163.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://mirror.baidubce.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://your_preferred_mirror&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://dockerhub.icu&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.registry.cyou&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker-cf.registry.cyou&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://dockercf.jsdelivr.fyi&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.jsdelivr.fyi&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://dockertest.jsdelivr.fyi&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://mirror.aliyuncs.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://dockerproxy.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://mirror.baidubce.com&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.m.daocloud.io&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.nju.edu.cn&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.mirrors.sjtug.sjtu.edu.cn&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://mirror.iscas.ac.cn&quot;</span><span class="hljs-punctuation">,</span>    <span class="hljs-string">&quot;https://docker.rainbond.cc&quot;</span>  <span class="hljs-punctuation">]</span><span class="hljs-punctuation">&#125;</span></code></pre><h1>not shared from the host and is not known to Docker</h1><pre><code class="hljs text">Error response from daemon: Mounts denied:The path /opt/dify/docker/volumes/db/data is not shared from the host and is not known to Docker.You can configure shared paths from Docker -&gt; Preferences... -&gt; Resources -&gt; File Sharing.See https://docs.docker.com/desktop/mac for more info.</code></pre><h1>dify 想添加本地 ollama 下载安装的模型</h1><p><img src="iShot_2025-03-01_07.42.21.png" alt=""></p><p><a href="https://docs.dify.ai/zh-hans/development/models-integration/ollama">参考官网</a></p><p>如果你使用 Docker 部署 Dify 和 Ollama，你可能会遇到以下错误:</p><pre><code class="hljs text">httpconnectionpool (host=127.0.0.1, port=11434): max retries exceeded with url:/cpi/chat (Caused by NewConnectionError (&#x27;&lt;urllib3.connection.HTTPConnection object at 0x7f8562812c20&gt;: fail to establish a new connection:[Errno 111] Connection refused&#x27;))httpconnectionpool (host=localhost, port=11434): max retries exceeded with url:/cpi/chat (Caused by NewConnectionError (&#x27;&lt;urllib3.connection.HTTPConnection object at 0x7f8562812c20&gt;: fail to establish a new connection:[Errno 111] Connection refused&#x27;))</code></pre><p>这个错误是因为 Docker 容器无法访问 Ollama 服务。localhost 通常指的是容器本身，而不是主机或其他容器。要解决此问题，你需要将 Ollama 服务暴露给网络。</p><h1>在 Mac 上设置环境变量</h1><p>如果 Ollama 作为 macOS 应用程序运行，则应使用以下命令设置环境变量 <code>launchctl</code></p><blockquote><p>通过调用 launchctl setenv 设置环境变量：<code>launchctl setenv OLLAMA_HOST &quot;0.0.0.0&quot;</code></p><p>重启 Ollama 应用程序。</p></blockquote><p>如果以上步骤无效，可以使用以下方法：</p><blockquote><p>问题是在 docker 内部，你应该连接到 <code>host.docker.internal</code>，才能访问 docker 的主机，所以将 localhost 替换为 <code>host.docker.internal</code> 服务就可以生效了：</p><p><code>http://host.docker.internal:11434</code></p></blockquote><h2 id="name不存在">name不存在</h2><p><img src="iShot_2025-03-01_21.47.00.png" alt=""></p><p>这个是因为我们写的模型的名称不对， 得跟 <code>ollama list</code> 显示的名字一样才行</p><p><img src="image-03.png" alt=""></p>]]></content>
       
@@ -1691,9 +1691,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 解决方案 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 解决方案 </tag>
             
         </tags>
       
@@ -2533,9 +2533,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> 未完待续 </tag>
             
         </tags>
       
@@ -2564,9 +2564,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 解决方案 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 解决方案 </tag>
             
         </tags>
       
@@ -2767,9 +2767,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3026,9 +3026,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3345,9 +3345,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3606,9 +3606,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3637,9 +3637,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3668,9 +3668,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3699,9 +3699,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3790,9 +3790,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3852,9 +3852,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -4088,9 +4088,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 未完待续 </tag>
-            
             <tag> 前端 </tag>
+            
+            <tag> 未完待续 </tag>
             
             <tag> Vue </tag>
             
@@ -5052,9 +5052,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -5431,8 +5431,8 @@
     
     <entry>
       <title>gpt-3.5-turbo-16k-0613 跟 gpt-3.5-turbo-0613 有什么区别</title>
-      <link href="/2023/08/10/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/gpt-3-5-turbo-16k-0613-%E8%B7%9F-gpt-3-5-turbo-0613-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
-      <url>/2023/08/10/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/gpt-3-5-turbo-16k-0613-%E8%B7%9F-gpt-3-5-turbo-0613-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</url>
+      <link href="/2023/08/10/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/gpt-3-5-turbo-16k-0613-%E8%B7%9F-gpt-3-5-turbo-0613-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/"/>
+      <url>/2023/08/10/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/gpt-3-5-turbo-16k-0613-%E8%B7%9F-gpt-3-5-turbo-0613-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/</url>
       
         <content type="html"><![CDATA[<p>“gpt-3.5-turbo-16k-0613” 和 “gpt-3.5-turbo-0613” 是 OpenAI 的两个不同的语言模型版本。</p><p>区别在于模型的大小。 “gpt-3.5-turbo-16k-0613” 使用了更大的模型，具有大约16,000个标记，而 “gpt-3.5-turbo-0613” 使用了较小的模型，具有大约3550个标记。这意味着 “gpt-3.5-turbo-16k-0613” 拥有更多的参数和更高的容量，可以生成更长、更具上下文的回答。</p><p>因此，如果您需要处理更复杂的任务或需要更详细的回答，您可能会选择使用&quot;gpt-3.5-turbo-16k-0613&quot;。但请注意，使用更大的模型可能需要更多的时间和计算资源。如果您只需要对简单问题进行回答，那么&quot;gpt-3.5-turbo-0613&quot; 可能已经足够满足您的需求了。</p>]]></content>
       
@@ -6654,9 +6654,9 @@
             
             <tag> 未完待续 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -7066,11 +7066,11 @@
     
     
     <entry>
-      <title>用shell教你搞定各种排序算法-冒泡排序</title>
-      <link href="/2020/04/15/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/Shell-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
-      <url>/2020/04/15/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/Shell-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
+      <title>用shell教你搞定各种排序算法-快速排序</title>
+      <link href="/2020/04/15/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/Shell-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
+      <url>/2020/04/15/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/Shell-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
       
-        <content type="html"><![CDATA[<p>最近在研究数据结构和算法,突然想用shell来实现一把,今天先来写一个冒泡排序。<br>要想记住各种排序算法，只要知道其原理，用什么语言实现都易如反掌</p><h1>冒泡排序</h1><ol><li>核心操作 交换相邻两个元素的值</li></ol><pre><code class="hljs bash"><span class="hljs-comment"># 定义一个数组</span>nums=(1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56)<span class="hljs-comment"># 核心操作</span><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">swap</span></span>()&#123;  <span class="hljs-comment"># i 和 j 分别代表要交换的两个元素的在数组中的下标</span>  <span class="hljs-built_in">local</span> i=<span class="hljs-variable">$1</span>;<span class="hljs-built_in">local</span> j=<span class="hljs-variable">$2</span>  <span class="hljs-built_in">local</span> tmp=<span class="hljs-variable">$&#123;nums[i]&#125;</span> <span class="hljs-comment"># 注意这里用 $&#123;nums[x]&#125; 的形式才能取出数组对应下标的元素的值</span>  nums[i]=<span class="hljs-variable">$&#123;nums[j]&#125;</span> <span class="hljs-comment"># 注意这里 $&#123;nums[x]&#125; 中的x 支持数学表达式，没必要 使用 $(()) 来计算</span>  nums[j]=<span class="hljs-variable">$&#123;tmp&#125;</span>     <span class="hljs-comment"># 注意这里 $&#123;  &#125; 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 $&#123;&#125; 包裹</span>&#125;<span class="hljs-comment"># 数组的元素个数</span><span class="hljs-built_in">local</span> size=<span class="hljs-variable">$&#123;#nums[@]&#125;</span> <span class="hljs-comment"># 注意这里使用$&#123;@xxx[@]&#125;的形式取出shell中数组元素的个数</span><span class="hljs-comment"># 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位</span><span class="hljs-keyword">for</span>((i=size-<span class="hljs-number">1</span>;i&gt;<span class="hljs-number">0</span>;i--))&#123; <span class="hljs-comment"># 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的</span>  <span class="hljs-comment"># 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的</span>  <span class="hljs-keyword">for</span>((j=<span class="hljs-number">0</span>;j&lt;i;j++));<span class="hljs-keyword">do</span> <span class="hljs-comment"># 这个地方是&lt;i</span>    <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;nums[j]&#125;</span> -gt <span class="hljs-variable">$&#123;nums[j+1]&#125;</span> ]];<span class="hljs-keyword">then</span> <span class="hljs-comment"># 注意这个地方的比较[1]</span>      swap <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;j&#125;</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-subst">$((j+1)</span>)&quot;</span>    <span class="hljs-keyword">fi</span>  <span class="hljs-keyword">done</span>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第<span class="hljs-subst">$((size-i)</span>)轮冒泡后:<span class="hljs-variable">$&#123;nums[*]&#125;</span>&quot;</span>&#125;</code></pre><p>我们执行一把</p><pre><code class="hljs text">第1轮冒泡后:1 3 5 2 3 6 7 8 11 22 22 11 1 33 34 a b c 56第2轮冒泡后:1 3 2 3 5 6 7 8 11 22 11 1 22 33 a b c 34 56第3轮冒泡后:1 2 3 3 5 6 7 8 11 11 1 22 22 a b c 33 34 56第4轮冒泡后:1 2 3 3 5 6 7 8 11 1 11 22 a b c 22 33 34 56第5轮冒泡后:1 2 3 3 5 6 7 8 1 11 11 a b c 22 22 33 34 56第6轮冒泡后:1 2 3 3 5 6 7 1 8 11 a b c 11 22 22 33 34 56第7轮冒泡后:1 2 3 3 5 6 1 7 8 a b c 11 11 22 22 33 34 56第8轮冒泡后:1 2 3 3 5 1 6 7 a b c 8 11 11 22 22 33 34 56第9轮冒泡后:1 2 3 3 1 5 6 a b c 7 8 11 11 22 22 33 34 56第10轮冒泡后:1 2 3 1 3 5 a b c 6 7 8 11 11 22 22 33 34 56第11轮冒泡后:1 2 1 3 3 a b c 5 6 7 8 11 11 22 22 33 34 56第12轮冒泡后:1 1 2 3 a b c 3 5 6 7 8 11 11 22 22 33 34 56第13轮冒泡后:1 1 2 a b c 3 3 5 6 7 8 11 11 22 22 33 34 56第14轮冒泡后:1 1 a b c 2 3 3 5 6 7 8 11 11 22 22 33 34 56第15轮冒泡后:1 a b c 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第16轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第17轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56</code></pre><p>注意上面的[1],因为这里我们只能比较数字,也就是只能比较整型数组,小数和字符串的冒泡排序我们的代码是不支持的。搞鬼的地方就在 我代码注释里面标[1]的地方.</p><p>我们用的判断相邻两个元素大小的表达是 <code>if [[ a -gt b ]]</code> 这种形式，这种用 [[]] 包裹的if判定表达式只能针对 整数。这个是shell语法决定的</p><p>如果nums数组中出现小数，运行程序立马报错，因为shell中没有浮点类型，带点号的shell默认为字符串<br>line 34: [[: 3.3: syntax error: invalid arithmetic operator (error token is “.3”)</p><p>如果要按照字符串比较，应该吧if表达式换成这样 <code>if [ ${nums[j]} \&gt; ${nums[j+1]} ]</code> 但同样，这种形式的比较会使数字的比较出现紊乱，例如<br>21 和 12 用上面这种比较，shell会认为 12 &gt; 21 因为12的第一个字符1出现在21的第一个字符2之前。</p>]]></content>
+        <content type="html"><![CDATA[<p>排序算法中,没有一种算法在任意一种情况下都是最好的。我们总是能构造出一种最坏的情况。快速排序并不总是最快的。</p><p>快速排序是由东尼·霍尔提出的一种高效的排序算法，简称快排。它的算法思想并不复杂，可以用3个步骤6个字来概括：选基、分割、递归。</p><p>扩充成一句话就是：首先挑选基准值；然后分割数组，把小于基准值的元素放到基准值前面，大于基准值的元素放到基准值后面；最后递归地对小于基准值的子序列和大于基准值的子序列进行排序。主要使用了所谓的分治的思想</p><p>快速排序的写法有很多中,可以优化的点也有很多。但终归逃过不过一个分一个治，也就是递归。</p><p>光第一步选基就有很多方法和优化的空间<br>第一种方式,我们每次选待排数组的最左边一个元素为主<br>第二种方式,我们随机选待排数组的一个元素为主<br>第三种方式,我们组左,中,右三个数的中位数为主。或者5个数中的中位数<br>如果我们每次选的元素总是能将数组刚好左右分割，使得所选元素左边都比该元素小，右边的元素都比该元素大，那么我们的算法就是最优的。</p><p>下面我没来挑战一下这个看似简单实则超级难理解的算法。</p><pre><code class="hljs shell">main()&#123;                                   #我们还是先来定义一个main方法  array=(1 3 5 7 9 2 4 6 8 10 1 2 8 5 31) #我们再来定义一个待排数组,注意这里是个全局的变量  quick_sort                              #我们调用我们即将书写的快速排序  echo &quot;$&#123;array[*]&#125;&quot;                      #打印数组,看看是不是按照从小到的的顺序排序了呢&#125;function quick_sort()&#123;<span class="hljs-meta prompt_">  #</span><span class="language-bash">注意array是全局变量,我们可以在这里访问到它</span><span class="hljs-meta prompt_"></span><span class="hljs-meta prompt_">  #</span><span class="language-bash">快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标</span>  function sort()&#123;    local left=$1;local right=$2    local i=$&#123;left&#125;;local j=$&#123;right&#125; #这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。    #1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件    if [[ $&#123;left&#125; -ge $&#123;right&#125; ]];then return; fi    #2. 选主元    local base=$&#123;array[left]&#125; #每次都已最左边的为基    while [[ $&#123;i&#125; -ne $&#123;j&#125; ]]; do      #3. 分隔      #3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知      while [[ $&#123;array[j]&#125; -ge $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do #注意等号        ((j--))      done      while [[ $&#123;array[i]&#125; -le $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do        ((i++))      done      if [[ $&#123;i&#125; -lt $&#123;j&#125; ]];then         local tmp=$&#123;array[j]&#125;         array[j]=$&#123;array[i]&#125;         array[i]=$&#123;tmp&#125;      fi    done    array[left]=$&#123;array[i]&#125;    array[i]=$&#123;base&#125;    sort &quot;$&#123;left&#125;&quot; &quot;$((i-1))&quot;    sort &quot;$((i+1))&quot; &quot;$&#123;right&#125;&quot;  &#125;  sort&#125;main</code></pre>]]></content>
       
       
       <categories>
@@ -7101,11 +7101,11 @@
     
     
     <entry>
-      <title>用shell教你搞定各种排序算法-快速排序</title>
-      <link href="/2020/04/15/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/Shell-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/"/>
-      <url>/2020/04/15/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/Shell-%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F/</url>
+      <title>用shell教你搞定各种排序算法-冒泡排序</title>
+      <link href="/2020/04/15/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/Shell-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"/>
+      <url>/2020/04/15/Linux/Shell/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%AE%97%E6%B3%95/Shell-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/</url>
       
-        <content type="html"><![CDATA[<p>排序算法中,没有一种算法在任意一种情况下都是最好的。我们总是能构造出一种最坏的情况。快速排序并不总是最快的。</p><p>快速排序是由东尼·霍尔提出的一种高效的排序算法，简称快排。它的算法思想并不复杂，可以用3个步骤6个字来概括：选基、分割、递归。</p><p>扩充成一句话就是：首先挑选基准值；然后分割数组，把小于基准值的元素放到基准值前面，大于基准值的元素放到基准值后面；最后递归地对小于基准值的子序列和大于基准值的子序列进行排序。主要使用了所谓的分治的思想</p><p>快速排序的写法有很多中,可以优化的点也有很多。但终归逃过不过一个分一个治，也就是递归。</p><p>光第一步选基就有很多方法和优化的空间<br>第一种方式,我们每次选待排数组的最左边一个元素为主<br>第二种方式,我们随机选待排数组的一个元素为主<br>第三种方式,我们组左,中,右三个数的中位数为主。或者5个数中的中位数<br>如果我们每次选的元素总是能将数组刚好左右分割，使得所选元素左边都比该元素小，右边的元素都比该元素大，那么我们的算法就是最优的。</p><p>下面我没来挑战一下这个看似简单实则超级难理解的算法。</p><pre><code class="hljs shell">main()&#123;                                   #我们还是先来定义一个main方法  array=(1 3 5 7 9 2 4 6 8 10 1 2 8 5 31) #我们再来定义一个待排数组,注意这里是个全局的变量  quick_sort                              #我们调用我们即将书写的快速排序  echo &quot;$&#123;array[*]&#125;&quot;                      #打印数组,看看是不是按照从小到的的顺序排序了呢&#125;function quick_sort()&#123;<span class="hljs-meta prompt_">  #</span><span class="language-bash">注意array是全局变量,我们可以在这里访问到它</span><span class="hljs-meta prompt_"></span><span class="hljs-meta prompt_">  #</span><span class="language-bash">快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标</span>  function sort()&#123;    local left=$1;local right=$2    local i=$&#123;left&#125;;local j=$&#123;right&#125; #这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。    #1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件    if [[ $&#123;left&#125; -ge $&#123;right&#125; ]];then return; fi    #2. 选主元    local base=$&#123;array[left]&#125; #每次都已最左边的为基    while [[ $&#123;i&#125; -ne $&#123;j&#125; ]]; do      #3. 分隔      #3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知      while [[ $&#123;array[j]&#125; -ge $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do #注意等号        ((j--))      done      while [[ $&#123;array[i]&#125; -le $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do        ((i++))      done      if [[ $&#123;i&#125; -lt $&#123;j&#125; ]];then         local tmp=$&#123;array[j]&#125;         array[j]=$&#123;array[i]&#125;         array[i]=$&#123;tmp&#125;      fi    done    array[left]=$&#123;array[i]&#125;    array[i]=$&#123;base&#125;    sort &quot;$&#123;left&#125;&quot; &quot;$((i-1))&quot;    sort &quot;$((i+1))&quot; &quot;$&#123;right&#125;&quot;  &#125;  sort&#125;main</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>最近在研究数据结构和算法,突然想用shell来实现一把,今天先来写一个冒泡排序。<br>要想记住各种排序算法，只要知道其原理，用什么语言实现都易如反掌</p><h1>冒泡排序</h1><ol><li>核心操作 交换相邻两个元素的值</li></ol><pre><code class="hljs bash"><span class="hljs-comment"># 定义一个数组</span>nums=(1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56)<span class="hljs-comment"># 核心操作</span><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">swap</span></span>()&#123;  <span class="hljs-comment"># i 和 j 分别代表要交换的两个元素的在数组中的下标</span>  <span class="hljs-built_in">local</span> i=<span class="hljs-variable">$1</span>;<span class="hljs-built_in">local</span> j=<span class="hljs-variable">$2</span>  <span class="hljs-built_in">local</span> tmp=<span class="hljs-variable">$&#123;nums[i]&#125;</span> <span class="hljs-comment"># 注意这里用 $&#123;nums[x]&#125; 的形式才能取出数组对应下标的元素的值</span>  nums[i]=<span class="hljs-variable">$&#123;nums[j]&#125;</span> <span class="hljs-comment"># 注意这里 $&#123;nums[x]&#125; 中的x 支持数学表达式，没必要 使用 $(()) 来计算</span>  nums[j]=<span class="hljs-variable">$&#123;tmp&#125;</span>     <span class="hljs-comment"># 注意这里 $&#123;  &#125; 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 $&#123;&#125; 包裹</span>&#125;<span class="hljs-comment"># 数组的元素个数</span><span class="hljs-built_in">local</span> size=<span class="hljs-variable">$&#123;#nums[@]&#125;</span> <span class="hljs-comment"># 注意这里使用$&#123;@xxx[@]&#125;的形式取出shell中数组元素的个数</span><span class="hljs-comment"># 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位</span><span class="hljs-keyword">for</span>((i=size-<span class="hljs-number">1</span>;i&gt;<span class="hljs-number">0</span>;i--))&#123; <span class="hljs-comment"># 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的</span>  <span class="hljs-comment"># 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的</span>  <span class="hljs-keyword">for</span>((j=<span class="hljs-number">0</span>;j&lt;i;j++));<span class="hljs-keyword">do</span> <span class="hljs-comment"># 这个地方是&lt;i</span>    <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;nums[j]&#125;</span> -gt <span class="hljs-variable">$&#123;nums[j+1]&#125;</span> ]];<span class="hljs-keyword">then</span> <span class="hljs-comment"># 注意这个地方的比较[1]</span>      swap <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;j&#125;</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-subst">$((j+1)</span>)&quot;</span>    <span class="hljs-keyword">fi</span>  <span class="hljs-keyword">done</span>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第<span class="hljs-subst">$((size-i)</span>)轮冒泡后:<span class="hljs-variable">$&#123;nums[*]&#125;</span>&quot;</span>&#125;</code></pre><p>我们执行一把</p><pre><code class="hljs text">第1轮冒泡后:1 3 5 2 3 6 7 8 11 22 22 11 1 33 34 a b c 56第2轮冒泡后:1 3 2 3 5 6 7 8 11 22 11 1 22 33 a b c 34 56第3轮冒泡后:1 2 3 3 5 6 7 8 11 11 1 22 22 a b c 33 34 56第4轮冒泡后:1 2 3 3 5 6 7 8 11 1 11 22 a b c 22 33 34 56第5轮冒泡后:1 2 3 3 5 6 7 8 1 11 11 a b c 22 22 33 34 56第6轮冒泡后:1 2 3 3 5 6 7 1 8 11 a b c 11 22 22 33 34 56第7轮冒泡后:1 2 3 3 5 6 1 7 8 a b c 11 11 22 22 33 34 56第8轮冒泡后:1 2 3 3 5 1 6 7 a b c 8 11 11 22 22 33 34 56第9轮冒泡后:1 2 3 3 1 5 6 a b c 7 8 11 11 22 22 33 34 56第10轮冒泡后:1 2 3 1 3 5 a b c 6 7 8 11 11 22 22 33 34 56第11轮冒泡后:1 2 1 3 3 a b c 5 6 7 8 11 11 22 22 33 34 56第12轮冒泡后:1 1 2 3 a b c 3 5 6 7 8 11 11 22 22 33 34 56第13轮冒泡后:1 1 2 a b c 3 3 5 6 7 8 11 11 22 22 33 34 56第14轮冒泡后:1 1 a b c 2 3 3 5 6 7 8 11 11 22 22 33 34 56第15轮冒泡后:1 a b c 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第16轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第17轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56</code></pre><p>注意上面的[1],因为这里我们只能比较数字,也就是只能比较整型数组,小数和字符串的冒泡排序我们的代码是不支持的。搞鬼的地方就在 我代码注释里面标[1]的地方.</p><p>我们用的判断相邻两个元素大小的表达是 <code>if [[ a -gt b ]]</code> 这种形式，这种用 [[]] 包裹的if判定表达式只能针对 整数。这个是shell语法决定的</p><p>如果nums数组中出现小数，运行程序立马报错，因为shell中没有浮点类型，带点号的shell默认为字符串<br>line 34: [[: 3.3: syntax error: invalid arithmetic operator (error token is “.3”)</p><p>如果要按照字符串比较，应该吧if表达式换成这样 <code>if [ ${nums[j]} \&gt; ${nums[j+1]} ]</code> 但同样，这种形式的比较会使数字的比较出现紊乱，例如<br>21 和 12 用上面这种比较，shell会认为 12 &gt; 21 因为12的第一个字符1出现在21的第一个字符2之前。</p>]]></content>
       
       
       <categories>
@@ -7249,9 +7249,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -8180,9 +8180,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -8435,6 +8435,37 @@
     
     
     <entry>
+      <title>作画</title>
+      <link href="/2016/09/11/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/%E4%BD%9C%E7%94%BB/"/>
+      <url>/2016/09/11/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/%E4%BD%9C%E7%94%BB/</url>
+      
+        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 墨香纸笺 </category>
+          
+          <category> 我的诗词 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
+            <tag> 墨香纸笺 </tag>
+            
+            <tag> 我的诗词 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Git万能后悔药</title>
       <link href="/2016/09/11/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/Git%E4%B8%87%E8%83%BD%E5%90%8E%E6%82%94%E8%8D%AF/"/>
       <url>/2016/09/11/%E5%B7%A5%E5%85%B7%E6%8E%A7/Git/Git%E4%B8%87%E8%83%BD%E5%90%8E%E6%82%94%E8%8D%AF/</url>
@@ -8520,37 +8551,6 @@
             <tag> 工具控 </tag>
             
             <tag> Git </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>作画</title>
-      <link href="/2016/09/11/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/%E4%BD%9C%E7%94%BB/"/>
-      <url>/2016/09/11/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/%E6%88%91%E7%9A%84%E8%AF%97%E8%AF%8D/%E4%BD%9C%E7%94%BB/</url>
-      
-        <content type="html"><![CDATA[<p>枯叶落，宣纸留，似蝴蝶吻你手。<br>杯中酒，心上秋，只恐画中人消瘦。</p><p>轻倚楼，月如钩，风拂一宿又一宿。<br>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>轻挽袖，我欲提笔画你温柔。<br>纸揉皱，谁研墨狼毫已湿透。<br>枯叶落，细数过又几个春秋。<br>宣纸留，新叶又点染柳枝头。</p><p>墨未干，何必平添一株柳。<br>茶已凉，那纸上蝶已飞走。<br>遥想当年，桥头栏杆细数天上星宿。<br>指指点点，纤纤细手。<br>喃喃自语，樱桃小口。</p><p>杯中酒，映梁上燕子去留。<br>心上秋，一撇一捺皆是愁。<br>轻倚楼，清风拂过门前柳。<br>月如钩，谁知谁又等了几个秋。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 墨香纸笺 </category>
-          
-          <category> 我的诗词 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
-            <tag> 墨香纸笺 </tag>
-            
-            <tag> 我的诗词 </tag>
             
         </tags>
       

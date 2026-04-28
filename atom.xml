@@ -35,12 +35,12 @@
     <author>
       <name>陈尚</name>
     </author>
-    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
-    <category term="CodeAI" scheme="https://chen-shang.github.io/categories/AI/CodeAI/"/>
+    <category term="ai" scheme="https://chen-shang.github.io/categories/ai/"/>
+    <category term="codeai" scheme="https://chen-shang.github.io/categories/ai/codeai/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     <category term="opencode" scheme="https://chen-shang.github.io/tags/opencode/"/>
-    <id>https://chen-shang.github.io/2026/04/20/AI/CodeAI/Coding-Agent-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/</id>
-    <link href="https://chen-shang.github.io/2026/04/20/AI/CodeAI/Coding-Agent-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
+    <id>https://chen-shang.github.io/2026/04/20/ai/codeai/Coding-Agent-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/</id>
+    <link href="https://chen-shang.github.io/2026/04/20/ai/codeai/Coding-Agent-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
     <published>2026-04-20T04:10:41.000Z</published>
     <summary>
       <![CDATA[<h2 id="一、快速入门">一、快速入门</h2>
@@ -48,20 +48,20 @@
 <pre><code class="hljs bash"><span class="hljs-built_in">alias</span> @oc=<span]]>
     </summary>
     <title>Coding Agent 常用操作指南</title>
-    <updated>2026-04-27T16:21:57.259Z</updated>
+    <updated>2026-04-28T06:26:26.485Z</updated>
   </entry>
   <entry>
     <author>
       <name>陈尚</name>
     </author>
-    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
-    <category term="CodeAI" scheme="https://chen-shang.github.io/categories/AI/CodeAI/"/>
+    <category term="ai" scheme="https://chen-shang.github.io/categories/ai/"/>
+    <category term="codeai" scheme="https://chen-shang.github.io/categories/ai/codeai/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    <category term="ai" scheme="https://chen-shang.github.io/tags/ai/"/>
     <category term="工具集" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
     <category term="开发效率" scheme="https://chen-shang.github.io/tags/%E5%BC%80%E5%8F%91%E6%95%88%E7%8E%87/"/>
-    <id>https://chen-shang.github.io/2026/04/20/AI/CodeAI/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF/</id>
-    <link href="https://chen-shang.github.io/2026/04/20/AI/CodeAI/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF/"/>
+    <id>https://chen-shang.github.io/2026/04/20/ai/codeai/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF/</id>
+    <link href="https://chen-shang.github.io/2026/04/20/ai/codeai/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF/"/>
     <published>2026-04-20T03:43:33.000Z</published>
     <summary>
       <![CDATA[<p>记录我用AI工具实际解决的问题，记录尝试的过程，每个案例都是真实经历。本文系统梳理了AI如何在开发全流程中提升效率，从代码编写到团队协作。</p>
@@ -69,37 +69,37 @@
 <h3 id="1-1-需求文档分析">1.1]]>
     </summary>
     <title>我的AI工具实战指南</title>
-    <updated>2026-04-28T00:41:21.502Z</updated>
+    <updated>2026-04-28T06:26:26.474Z</updated>
   </entry>
   <entry>
     <author>
       <name>陈尚</name>
     </author>
-    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
-    <category term="CodeAI" scheme="https://chen-shang.github.io/categories/AI/CodeAI/"/>
+    <category term="ai" scheme="https://chen-shang.github.io/categories/ai/"/>
+    <category term="codeai" scheme="https://chen-shang.github.io/categories/ai/codeai/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
-    <category term="AI工具集" scheme="https://chen-shang.github.io/tags/AI%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
-    <id>https://chen-shang.github.io/2026/04/20/AI/CodeAI/Ai-Coding-Rules/</id>
-    <link href="https://chen-shang.github.io/2026/04/20/AI/CodeAI/Ai-Coding-Rules/"/>
+    <category term="ai" scheme="https://chen-shang.github.io/tags/ai/"/>
+    <category term="ai工具集" scheme="https://chen-shang.github.io/tags/ai%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
+    <id>https://chen-shang.github.io/2026/04/20/ai/codeai/Ai-Coding-Rules/</id>
+    <link href="https://chen-shang.github.io/2026/04/20/ai/codeai/Ai-Coding-Rules/"/>
     <published>2026-04-20T02:18:01.000Z</published>
     <summary>
       <![CDATA[<p><strong>由于 AI Coding Agent 不擅长理解你公司特有的业务逻辑、隐性规则、历史债务和领域术语</strong>，所以至少需要以下规约]]>
     </summary>
     <title>AI Coding Rules</title>
-    <updated>2026-04-27T14:45:08.848Z</updated>
+    <updated>2026-04-28T06:26:26.464Z</updated>
   </entry>
   <entry>
     <author>
       <name>陈尚</name>
     </author>
-    <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
-    <category term="CodeAI" scheme="https://chen-shang.github.io/categories/AI/CodeAI/"/>
+    <category term="ai" scheme="https://chen-shang.github.io/categories/ai/"/>
+    <category term="codeai" scheme="https://chen-shang.github.io/categories/ai/codeai/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
+    <category term="ai" scheme="https://chen-shang.github.io/tags/ai/"/>
     <category term="工具" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
-    <id>https://chen-shang.github.io/2026/04/20/AI/CodeAI/Ai-Coding-Agent/</id>
-    <link href="https://chen-shang.github.io/2026/04/20/AI/CodeAI/Ai-Coding-Agent/"/>
+    <id>https://chen-shang.github.io/2026/04/20/ai/codeai/Ai-Coding-Agent/</id>
+    <link href="https://chen-shang.github.io/2026/04/20/ai/codeai/Ai-Coding-Agent/"/>
     <published>2026-04-20T01:26:08.000Z</published>
     <summary>
       <![CDATA[<h2 id="Vibe-Coding：动嘴不动手">Vibe Coding：动嘴不动手</h2>
@@ -117,8 +117,8 @@
     <category term="AI工具集" scheme="https://chen-shang.github.io/categories/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    <id>https://chen-shang.github.io/2026/04/19/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/claude-code-%E8%B8%A9%E5%9D%91/</id>
-    <link href="https://chen-shang.github.io/2026/04/19/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/claude-code-%E8%B8%A9%E5%9D%91/"/>
+    <id>https://chen-shang.github.io/2026/04/19/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/claude-code-%E8%B8%A9%E5%9D%91/</id>
+    <link href="https://chen-shang.github.io/2026/04/19/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/claude-code-%E8%B8%A9%E5%9D%91/"/>
     <published>2026-04-19T05:09:28.000Z</published>
     <summary>
       <![CDATA[<p>我发现我的claude每次都无法准确识别当前目录，比如我让他帮我下一个脚本，其实我的本意是让他在我打开的目录下执行(也就是我执行cc的目录)，但是他总是识别不了，写到错误的目录，害的我不得不盯着他的执行过程找到最后写的脚本写到哪个目录了，最后在把脚本移动到我想要的目录下。很]]>
@@ -210,8 +210,8 @@ Maximum Heap Size：4096 MiB （current]]>
     <category term="AI工具集" scheme="https://chen-shang.github.io/categories/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    <id>https://chen-shang.github.io/2026/03/02/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%96%85%E7%BE%8A%E6%AF%9B%E6%88%98%E7%BB%A9/</id>
-    <link href="https://chen-shang.github.io/2026/03/02/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%96%85%E7%BE%8A%E6%AF%9B%E6%88%98%E7%BB%A9/"/>
+    <id>https://chen-shang.github.io/2026/03/02/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%96%85%E7%BE%8A%E6%AF%9B%E6%88%98%E7%BB%A9/</id>
+    <link href="https://chen-shang.github.io/2026/03/02/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E8%96%85%E7%BE%8A%E6%AF%9B%E6%88%98%E7%BB%A9/"/>
     <published>2026-03-02T14:39:01.000Z</published>
     <summary>
       <![CDATA[<h1>Xiaomi MiMo</h1>
@@ -250,8 +250,8 @@ Maximum Heap Size：4096 MiB （current]]>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
     <category term="AI工具集" scheme="https://chen-shang.github.io/tags/AI%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
-    <id>https://chen-shang.github.io/2026/02/24/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/openclaw%E8%B8%A9%E5%9D%91/</id>
-    <link href="https://chen-shang.github.io/2026/02/24/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/openclaw%E8%B8%A9%E5%9D%91/"/>
+    <id>https://chen-shang.github.io/2026/02/24/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/openclaw%E8%B8%A9%E5%9D%91/</id>
+    <link href="https://chen-shang.github.io/2026/02/24/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/openclaw%E8%B8%A9%E5%9D%91/"/>
     <published>2026-02-24T02:22:26.000Z</published>
     <summary>
       <![CDATA[<p>听说这玩意会删除本地的东西，比如本地文件、比如你的数据库的数据，最近听说有人的飞书被爆破了（因为配置不当）导致个人的隐私信息泄漏了。所以我一直没敢碰这玩意。</p>
@@ -290,8 +290,8 @@ tree、curl、wget、jq、vim、git、tmux、python、java、node、npm</li>
     <category term="AI" scheme="https://chen-shang.github.io/categories/AI/"/>
     <category term="AI工具集" scheme="https://chen-shang.github.io/categories/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    <id>https://chen-shang.github.io/2026/02/22/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E5%90%88%E8%B7%91%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/</id>
-    <link href="https://chen-shang.github.io/2026/02/22/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E5%90%88%E8%B7%91%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
+    <id>https://chen-shang.github.io/2026/02/22/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E5%90%88%E8%B7%91%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/</id>
+    <link href="https://chen-shang.github.io/2026/02/22/ai/AI%E5%B7%A5%E5%85%B7%E9%9B%86/%E5%A6%82%E4%BD%95%E7%9F%A5%E9%81%93%E8%87%AA%E5%B7%B1%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%80%82%E5%90%88%E8%B7%91%E4%BB%80%E4%B9%88%E6%A0%B7%E7%9A%84%E5%A4%A7%E6%A8%A1%E5%9E%8B/"/>
     <published>2026-02-21T17:52:14.000Z</published>
     <summary>
       <![CDATA[<p>cargo install llmfit</p>
@@ -329,8 +329,8 @@ export]]>
     <category term="深度学习" scheme="https://chen-shang.github.io/categories/AI/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    <id>https://chen-shang.github.io/2026/01/31/AI/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87/</id>
-    <link href="https://chen-shang.github.io/2026/01/31/AI/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87/"/>
+    <id>https://chen-shang.github.io/2026/01/31/ai/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87/</id>
+    <link href="https://chen-shang.github.io/2026/01/31/ai/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%8C%87%E6%A0%87/"/>
     <published>2026-01-30T19:31:41.000Z</published>
     <summary>
       <![CDATA[<h1>ollama <code>show</code> 命令全解析</h1>
@@ -385,8 +385,8 @@ export]]>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     <category term="AI" scheme="https://chen-shang.github.io/tags/AI/"/>
     <category term="机器学习" scheme="https://chen-shang.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://chen-shang.github.io/2025/12/29/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%97%A0%E6%B3%95%E4%BF%9D%E8%AF%81%E7%99%BE%E5%88%86%E7%99%BE%E6%AD%A3%E7%A1%AE/</id>
-    <link href="https://chen-shang.github.io/2025/12/29/AI/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%97%A0%E6%B3%95%E4%BF%9D%E8%AF%81%E7%99%BE%E5%88%86%E7%99%BE%E6%AD%A3%E7%A1%AE/"/>
+    <id>https://chen-shang.github.io/2025/12/29/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%97%A0%E6%B3%95%E4%BF%9D%E8%AF%81%E7%99%BE%E5%88%86%E7%99%BE%E6%AD%A3%E7%A1%AE/</id>
+    <link href="https://chen-shang.github.io/2025/12/29/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E6%97%A0%E6%B3%95%E4%BF%9D%E8%AF%81%E7%99%BE%E5%88%86%E7%99%BE%E6%AD%A3%E7%A1%AE/"/>
     <published>2025-12-28T19:14:11.000Z</published>
     <summary>
       <![CDATA[<p>在机器学习领域， <strong>没有任何算法能保证 100% 不出错</strong> ，这是由机器学习的 “数据驱动” 本质决定的 —— 模型学习的是数据中的统计规律，而非绝对的因果规律，你担心的 k-NN]]>
