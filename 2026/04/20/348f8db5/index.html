@@ -1,0 +1,1840 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Ai Coding Agent, IT,技术,总结">
+    <meta name="description" content="AI编程助手完全指南 - 从IDE插件到多智能体框架，涵盖Claude Code、Cursor、通义灵码等主流工具的选型与配置">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Ai Coding Agent | 涓涓细流</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">涓涓细流</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+<!--
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+-->
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">涓涓细流</div>
+        <div class="logo-desc">
+            
+            无限可能
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Ai Coding Agent</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                <span class="chip bg-color">原创</span>
+                            </a>
+                        
+                            <a href="/tags/ai/">
+                                <span class="chip bg-color">ai</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                <span class="chip bg-color">工具</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/ai/" class="post-category">
+                                ai
+                            </a>
+                        
+                            <a href="/categories/ai/codeai/" class="post-category">
+                                codeai
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2026-04-20
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2026-04-20
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    7 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="Vibe-Coding：动嘴不动手">Vibe Coding：动嘴不动手</h2>
+<p>最近有个概念很火： <strong>Vibe Coding</strong> 。</p>
+<p><strong>Vibe Coding（氛围编程）</strong> 是 2025 年初由 OpenAI 前研究员 Andrej Karpathy 提出的: 由 AI 驱动的 <strong>新型软件开发范式</strong> 。核心是： <strong>你用自然语言描述想法 ，AI 直接生成可运行的代码</strong> 。</p>
+<p>核心思想：<strong>改代码或写文章，动嘴就够了，不需要自己上手。</strong></p>
+<table>
+<thead>
+<tr>
+<th>传统方式</th>
+<th>Vibe Coding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>打开 IDE → 找文件 → 定位代码 → 手动改 → 保存 → 测试通过 → 完成</td>
+<td>打开 Agent -&gt; 你说&quot;帮我实现/修复&quot; → AI 实现或修复→ 测试通过 → 完成</td>
+</tr>
+<tr>
+<td>你是执行者</td>
+<td>你是指挥官，AI 是执行者</td>
+</tr>
+</tbody>
+</table>
+<p>因此我们需要一个 Ai Coding Agent。还要学一门新的语言：自然语言。以前编程方式称为古法编程，不使用Vibe Coding 的程序员，我称为上古程序员。</p>
+<p>AI 写代码有诸多好处，这里不表。但AI并不是万能的，Vibe Coding 目前还有一些弊端，但只要控制得当，还是一把好武器。</p>
+<h1>Vibe Coding 的缺点以及应对</h1>
+<ol>
+<li>
+<p><strong>代码质量不稳定，时好时坏，可维护性差，安全性风险高</strong></p>
+<p>自己用下来，AI 生成的代码往往「能用但不优雅」—— 结构混乱、冗余，长期维护成本高。易生成存在漏洞的代码（SQL 注入、XSS、权限绕过、敏感信息泄露等），非专业开发者很难发现。</p>
+<p>有两个观点：</p>
+<blockquote>
+<p>观点一：应用能跑就行，我不在乎代码的好不好，优不优美，只要能实现我的业务就行，就算有问题，写好提示词，让Ai自己打补丁不就好了，甚至不用review代码，测出问题再改就行。（这种想法现在会被认为是异教徒）</p>
+</blockquote>
+<blockquote>
+<p>观点二：必须要严格可控，防止代码腐化。因此极致的要求代码review，甚至换个模型再review代码。</p>
+</blockquote>
+<p>我觉得AI的发展一定是朝着 “观点一” 去的，对于开发同学，我们自己开发的软件甚至都是黑盒的，你也不会去关心AI是怎么实现的，你应该作为一个用户去审查AI给你的功能，而不是作为一名程序员去审查AI给你的代码，传统的程序员这个职业一定会换一种形式，不再是一行一行的coding了，而是一行一行的promting了。但这个还有很长的路要走，现阶段我持观点二，尤其是在已有项目，特别是金融项目（涉及钱的需要时刻紧绷一根弦），我们不能完全信任AI写出来的代码，必须做好review防止代码腐化。另外开发同学需要对AI生成的代码负责，需要确保AI生成代码的可维护性和可靠性，AI只是帮你写代码，出了问题，还是杀程序员祭天！</p>
+<p>如何应对这个问题：《Coding Agent 常用操作指南》- 只有具有 代码安全意识、专业知识背景、有实战经验的程序员方能更好的驾驭AI写的代码。</p>
+</li>
+<li>
+<p><strong>Bug 排查困难，修复容易走偏</strong></p>
+<p>AI写的代码基本上没问题，但往往是这样，只要有Bug，那就是大Bug! 我用AI写的从备注提取身份证和债务人姓名的程序，就遇到了边界没有考虑的情况。不过就算是人，也不一定能考虑到要过滤特殊字符的所有情况。因此AI 生成的 Bug 通常隐蔽，排查难度大。虽然可以直接让 AI 修复，但需要 <strong>有经验的程序员写出高质量的提示词才行</strong>，否则 AI 会像无头苍蝇一样乱撞，导致修复一个 Bug 又引入三个新 Bug，形成恶性循环的情况。</p>
+<p>如何应对这个问题：《Coding Agent 常用操作指南》- One Line Promot</p>
+</li>
+<li>
+<p><strong>过度依赖 AI，会削弱编程能力，团队之间经验难以快速共享，需求描述门槛被低估</strong></p>
+<p>长期「动嘴不动手」，会逐渐 <strong>看不懂复杂代码、不会调试、不会设计架构</strong>。当 AI 不可用或能力下降时，程序员可能丧失独立解决问题的能力，变成「AI 依赖症」患者。团队之间在同步知识的时候，往往很难说清，为什么这么提问就好用，不同的人有不同的思路和提问方式，此时修复问题后将很难解释清楚为什么要这么思考。</p>
+<p>如何应对这个问题：想让 AI 生成合格代码，你依然需要 <strong>清晰的逻辑、产品思维、技术常识</strong>，不是随便说两句就行。高质量提示词本身就是一种稀缺能力—— 你得知道怎么问、问什么、追问什么。</p>
+</li>
+<li>
+<p><strong>知识产权合规风险 &amp; 数据安全风险</strong></p>
+<p>大模型训练数据来源不透明，AI 可能 <strong>无意识抄袭开源代码</strong>，在没有明确许可证的情况下使用会带来法律风险。商业项目需格外注意代码来源审计。<br>
+代码是企业核心资产，随意调用外部 AI 服务可能导致数据泄露。敏感项目建议使用本地部署的 AI 服务或经过安全合规认证的方案。</p>
+</li>
+</ol>
+<h1>什么是 Ai Coding Agent</h1>
+<p>AI Coding Agent 是能自主理解开发需求、拆解任务、调试优化，可独立完成代码开发甚至从需求到部署全流程的智能代码代理。</p>
+<h1>阵营</h1>
+<h2 id="阵营1：IDE插件">阵营1：IDE插件</h2>
+<p><strong>最顺手的AI副驾驶，日常编码离不开</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">开发公司</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">官网</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>GitHub Copilot</strong></td>
+<td style="text-align:left">GitHub (微软)</td>
+<td style="text-align:left">用户量最大，适合日常编码</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/features/copilot">https://github.com/features/copilot</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>通义灵码</strong></td>
+<td style="text-align:left">阿里巴巴</td>
+<td style="text-align:left">阿里云出品，Java/Python企业级支持好</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://lingma.aliyun.com/lingma">https://lingma.aliyun.com/lingma</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CodeGeeX</strong></td>
+<td style="text-align:left">智谱AI / 字节跳动</td>
+<td style="text-align:left">开源，支持130+语言互译</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://codegeex.cn">https://codegeex.cn</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>iFlyCode</strong></td>
+<td style="text-align:left">科大讯飞</td>
+<td style="text-align:left">中文提示词理解精准</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://iflycode.xfyun.cn">https://iflycode.xfyun.cn</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>aiXcoder</strong></td>
+<td style="text-align:left">硅心科技</td>
+<td style="text-align:left">百亿参数，响应&lt;0.5秒</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="http://www.aixcoder.com">http://www.aixcoder.com</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="阵营2：原生IDE">阵营2：原生IDE</h2>
+<p><strong>为AI而生的编辑器，体验最丝滑</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">开发公司</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">官网</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Cursor</strong></td>
+<td style="text-align:left">Anysphere</td>
+<td style="text-align:left">市场领导者，体验最丝滑</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.cursor.so">https://www.cursor.so</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Trae</strong></td>
+<td style="text-align:left">字节跳动</td>
+<td style="text-align:left">支持视觉理解（看图写代码）</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.trae.com.cn">https://www.trae.com.cn</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CatPaw</strong></td>
+<td style="text-align:left">美团</td>
+<td style="text-align:left">美团自研，内部渗透率超95%</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://catpaw.meituan.com">https://catpaw.meituan.com</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="阵营3：终端CLI-TUI">阵营3：终端CLI(TUI)</h2>
+<p><strong>高手专用，解决难题时能力最硬核</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">开发公司</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">官网/备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Claude Code</strong></td>
+<td style="text-align:left">Anthropic</td>
+<td style="text-align:left">推理能力最强，能解决复杂重构</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://claude.com/product/claude-code">https://claude.com/product/claude-code</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>CodeBuddy Code</strong></td>
+<td style="text-align:left">腾讯云</td>
+<td style="text-align:left">比肩Claude Code，国内CLI标杆</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://codebuddy.ai">https://codebuddy.ai</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>veCLI</strong></td>
+<td style="text-align:left">字节跳动(火山引擎)</td>
+<td style="text-align:left">支持中文自然语言交互，基于豆包大模型1.6</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://www.volcengine.com/docs/6662/2222397">https://www.volcengine.com/docs/6662/2222397</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Codex CLI</strong></td>
+<td style="text-align:left">OpenAI</td>
+<td style="text-align:left">完全开源，Rust编写，支持CI/CD集成</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/openai/codex">https://github.com/openai/codex</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Gemini CLI</strong></td>
+<td style="text-align:left">Google</td>
+<td style="text-align:left">拥有100万tokens超长上下文</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/google-gemini/gemini-cli">https://github.com/google-gemini/gemini-cli</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>OpenCode</strong></td>
+<td style="text-align:left">Abdel-Hazim Lawani</td>
+<td style="text-align:left">开源的Claude Code替代方案，支持多API密钥</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://github.com/openagentic/openagentic-ai">https://github.com/openagentic/openagentic-ai</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="阵营4：云端-WEB端">阵营4：云端/WEB端</h2>
+<p><strong>你的AI实习生，能独立完成并提交PR</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">开发公司</th>
+<th style="text-align:left">特点</th>
+<th style="text-align:left">官网/备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Devin</strong></td>
+<td style="text-align:left">Cognition</td>
+<td style="text-align:left">能独立完成从需求到部署的完整任务</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://devin.ai">https://devin.ai</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>文心快码Zulu</strong></td>
+<td style="text-align:left">百度</td>
+<td style="text-align:left">国内首个多模态AI程序员，图片秒变代码，会说话就能编程</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://comate.baidu.com/">https://comate.baidu.com/</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>华为云码道</strong></td>
+<td style="text-align:left">华为</td>
+<td style="text-align:left">鸿蒙深度适配GLM-4.7- ArkTS专属模型，支持规范驱动开发</td>
+<td style="text-align:left"><a target="_blank" rel="noopener" href="https://codearts.huaweicloud.com/">https://codearts.huaweicloud.com/</a></td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid">graph TD
+    A["AI编程助手生态"]
+  
+    A --> B["阵营1：IDE插件 / AI副驾驶"]
+    B --> B1["GitHub Copilot (用户量最大)"]
+    B --> B2["通义灵码 (Java/Python企业级)"]
+    B --> B3["CodeGeeX (130+语言互译)"]
+    B --> B4["iFlyCode (中文提示词精准)"]
+    B --> B5["aiXcoder (响应<0.5秒)"]
+
+    A --> C["阵营2：原生IDE / AI原生编辑器"]
+    C --> C1["Cursor (体验最丝滑)"]
+    C --> C2["Trae (视觉理解)"]
+    C --> C3["CatPaw (美团渗透率95%)"]
+
+    A --> D["阵营3：终端CLI / 高手专用"]
+    D --> D1["Claude Code (推理最强)"]
+    D --> D2["CodeBuddy Code (国内CLI标杆)"]
+    D --> D3["veCLI (中文自然语言)"]
+    D --> D4["Codex CLI (Rust编写/开源)"]
+    D --> D5["Gemini CLI (100万上下文)"]
+    D --> D6["OpenCode (开源替代方案)"]
+
+    A --> E["阵营4：云端 / AI实习生"]
+    E --> E1["Devin (需求到部署)"]
+    E --> E2["文心快码Zulu (多模态)"]
+    E --> E3["华为云码道 (鸿蒙/嵌入式)"]
+
+    A --> F["阵营5：多智能体框架 / AI团队"]
+    F --> F1["AutoGen (人机协同)"]
+    F --> F2["AgentScope (分布式/低代码)"]
+    F --> F3["Eino (Go语言编排)"]
+    F --> F4["MetaGPT (模拟软件公司)"]
+    F --> F5["CrewAI (基于LangChain)"]</pre>
+<h1>使用&amp;选型</h1>
+<h2 id="阵营1：IDE插件-2">阵营1：IDE插件</h2>
+<h3 id="IntelliJ-IDEA">IntelliJ IDEA</h3>
+<ul>
+<li><strong>通义灵码</strong>：阿里出品，必属精品 <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/17809-lingma--alibaba-cloud-ai-coding-assistant">下载</a><br>
+我的常用场景
+<ul>
+<li>代码问答与架构咨询</li>
+<li>Git Commit Message 自动生成</li>
+<li>智能代码补全与重构</li>
+</ul>
+</li>
+</ul>
+<p><img src="1776392869091.png" alt=""></p>
+<ul>
+<li><strong>CC GUI</strong>：Claude Code/ Codex 的 GUI 封装 <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/29342-cc-gui-claude-or-codex-">下载</a><br>
+我的常用场景
+<ul>
+<li>阅读代码、梳理业务逻辑、写比较明确的需求</li>
+</ul>
+</li>
+</ul>
+<p><img src="1776393069792.png" alt=""></p>
+<p>已安装过但已经被我废弃的：Trae 插件、智谱AI（有相同功能点只留一两个顺手的就行）</p>
+<h3 id="VS-Code">VS Code</h3>
+<p>推荐</p>
+<ul>
+<li><strong>GitHub Copilot</strong></li>
+<li><strong>Claude Code</strong></li>
+<li><strong>Kimi</strong></li>
+<li><strong>Kilo</strong></li>
+<li><strong>通义灵码</strong></li>
+<li><strong>Codex CLI</strong>：这玩意需要翻墙使用</li>
+</ul>
+<p><img src="1776393243660.png" alt=""></p>
+<p>我的常用场景</p>
+<ul>
+<li>主要是写博客</li>
+<li>整理文档</li>
+<li>探索新的工具</li>
+</ul>
+<h2 id="阵营3：终端CLI-TUI-2">阵营3：终端CLI(TUI)</h2>
+<p>怎么选？</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">你的情况</th>
+<th style="text-align:left">推荐工具</th>
+<th style="text-align:left">理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">想要开源可控,用国产模型友好</td>
+<td style="text-align:left"><strong>OpenCode</strong></td>
+<td style="text-align:left">支持智谱GLM、通义Qwen、DeepSeek、MiniMax等国内模型</td>
+</tr>
+<tr>
+<td style="text-align:left">不差钱，追求官方体验</td>
+<td style="text-align:left"><strong>Claude Code</strong> 或 <strong>Codex CLI</strong></td>
+<td style="text-align:left">官方出品，体验完善，专家级能力</td>
+</tr>
+<tr>
+<td style="text-align:left">需要企业级支持</td>
+<td style="text-align:left"><strong>通义灵码</strong> 或 <strong>文心快码</strong></td>
+<td style="text-align:left">阿里/百度企业版，国产化合规</td>
+</tr>
+<tr>
+<td style="text-align:left">鸿蒙/嵌入式开发</td>
+<td style="text-align:left"><strong>华为云码道</strong></td>
+<td style="text-align:left">GLM-4.7- ArkTS专属模型，鸿蒙深度适配</td>
+</tr>
+<tr>
+<td style="text-align:left">需要IDE原生体验</td>
+<td style="text-align:left"><strong>Cursor</strong> 或 <strong>Trae</strong></td>
+<td style="text-align:left">AI原生编辑器，体验最丝滑</td>
+</tr>
+</tbody>
+</table>
+<p>结论</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">工具</th>
+<th style="text-align:left">核心优势</th>
+<th style="text-align:left">学习曲线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Claude Code</strong></td>
+<td style="text-align:left">深度推理，复杂重构，专家级调试</td>
+<td style="text-align:left">中</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Codex CLI</strong></td>
+<td style="text-align:left">云端异步执行，并行多任务，自动测试</td>
+<td style="text-align:left">低</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Gemini CLI</strong></td>
+<td style="text-align:left">100万tokens超长上下文，多模态</td>
+<td style="text-align:left">低</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>OpenCode</strong></td>
+<td style="text-align:left">100万tokens超长上下文，多模态</td>
+<td style="text-align:left">低</td>
+</tr>
+</tbody>
+</table>
+<p>Claude Code、Codex CLI、Gemini CLI 主要是为了偶尔用一下国外的最强模型，有些问题国内大模型解决起来比较耗时费力，用 Claude Code、Codex CLI、Gemini CLI 则可以快速解决。<br>
+Claude Code 和 OpenCode 还是作为主力使用。Claude Code、Codex CLI、Gemini CLI 都可以 配置国内的模型，但自身的工具还是对自身的模型适配度最好，毕竟那些内置的提示词针对的是自家的LLM，毕竟是做闭源的，对其他模型的适配可能就没那么好了。就好比你用中文跟爱因斯坦对话，就算他精通中文，也还是得多琢磨一下才能给出答案。</p>
+<h1>配置</h1>
+<p>这些玩意配置项特别多，要能用好需要好好熟悉一下，第一道大关就是配置 国产模型 和 本地模型。推荐使用 cc-switch 这个工具。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/farion1231/cc-switch/releases">下载</a> 全部可视化配置模型、skills、mcp</p>
+<p><img src="1776404745129.png" alt=""></p>
+<h1>Vibe Coding 标准流程</h1>
+<pre class="mermaid">graph TD
+    A["需求分析"] --> B["AI 辅助需求拆解"]
+    B --> C{需求是否清晰?}
+    C -->|否| D["人工澄清需求"]
+    D --> B
+    C -->|是| E["AI 生成技术方案"]
+    E --> F{方案是否可行?}
+    F -->|否| G["人工调整方案"]
+    G --> E
+    F -->|是| H["AI 生成代码"]
+    H --> I["人工代码审查"]
+    I --> J{审查通过?}
+    J -->|否| K["修改代码或调整 Prompt"]
+    K --> H
+    J -->|是| L["AI 生成测试用例"]
+    L --> M["运行测试"]
+    M --> N{测试通过?}
+    N -->|否| O["修复 bug"]
+    O --> H
+    N -->|是| P["提交代码"]
+    P --> Q{是否通过 CI/CD?}
+    Q -->|否| R["修复 CI/CD 问题"]
+    R --> H
+    Q -->|是| S["代码审查"]
+    S --> T{审查通过?}
+    T -->|否| U["根据反馈修改"]
+    U --> H
+    T -->|是| V["合并到主分支"]
+    V --> W["发布"]
+
+    style A fill:#f0f4f9
+    style H fill:#fff2e8
+    style I fill:#fde8e8
+    style L fill:#edf7ed
+    style Q fill:#eef2fb
+    style T fill:#fff7e6
+    style V fill:#e6f4ea</pre>
+<h1>责任界定</h1>
+<h2 id="AI-辅助开发的责任归属">AI 辅助开发的责任归属</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>责任主体</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI 工具提供错误建议</strong></td>
+<td>AI 工具供应商（如有合同）</td>
+<td>AI 工具本身的缺陷，需追究供应商责任</td>
+</tr>
+<tr>
+<td><strong>AI 生成的代码有bug</strong></td>
+<td>开发者</td>
+<td>开发者有责任审查和验证代码</td>
+</tr>
+<tr>
+<td><strong>AI 生成的代码导事故</strong></td>
+<td>开发者 + Code Reviewer</td>
+<td>开发者未充分审查，审查者未发现问题</td>
+</tr>
+<tr>
+<td><strong>AI 生成的代码违反规约</strong></td>
+<td>开发者</td>
+<td>开发者应遵循规约，AI 不能替代人的判断</td>
+</tr>
+</tbody>
+</table>
+<h1>实战（这些玩意能干啥？）</h1>
+<p>参考 <a href="/_posts/AI/AI%E5%B7%A5%E5%85%B7%E9%9B%86/AI%E7%9C%9F%E6%AD%A3%E5%B8%AE%E6%88%91%E5%B9%B2%E5%A5%BD%E7%9A%84%E4%BA%8B%E5%84%BF.md">AI真正帮我干好的事儿</a> 这篇文章</p>
+<h1>常见问题</h1>
+<h2 id="Q1-AI生成的代码能直接用吗？">Q1: AI生成的代码能直接用吗？</h2>
+<blockquote>
+<p>不能直接用于生产环境。需要：</p>
+<ol>
+<li>自己理解代码逻辑</li>
+<li>添加单元测试</li>
+<li>进行Code Review</li>
+<li>测试环境验证</li>
+</ol>
+</blockquote>
+<h2 id="Q2-AI会泄露我的代码吗？">Q2: AI会泄露我的代码吗？</h2>
+<blockquote>
+<p>主流AI有隐私保护政策：</p>
+<ul>
+<li>使用本地模型不用担心，使用非本地模型需要特别小心</li>
+<li>不用过于担心 1. 输入的都是代码片段，基本很难复原 2. 提高自身的安全意识，代码中不要包含敏感信息。特别是秘钥、密码等敏感信息。</li>
+</ul>
+</blockquote>
+<h2 id="Q3-AI能替代程序员吗？">Q3: AI能替代程序员吗？</h2>
+<blockquote>
+<p>目前不能完全替代，但会放大程序员能力，以后可能。</p>
+<ul>
+<li>重复劳动 → AI处理</li>
+<li>创造性工作 → 人类负责</li>
+<li>提升效率 3-5倍</li>
+</ul>
+</blockquote>
+<h2 id="Q4-AI写的代码有Bug该怪谁？">Q4: AI写的代码有Bug该怪谁？</h2>
+<blockquote>
+<p>最终责任人是程序员，不是 AI。AI 只是工具，代码所有权和责任都是你的。</p>
+<ul>
+<li>出了线上 Bug，领导找你而不是找 AI</li>
+<li>所以 AI 写代码，人来 review，这个流程不能省</li>
+</ul>
+</blockquote>
+<h2 id="Q5-怎么让AI少写Bug？">Q5: 怎么让AI少写Bug？</h2>
+<blockquote>
+<p>核心在于提示词质量：</p>
+<ol>
+<li><strong>明确上下文</strong> - 告诉 AI 项目技术栈、代码风格、现有架构</li>
+<li><strong>拆分任务</strong> - 大任务拆成小任务，让 AI 一步步来</li>
+<li><strong>指定约束</strong> - 明确说&quot;加单元测试&quot;、“用try-catch”、“遵循PEP8”</li>
+<li><strong>让它自检</strong> - 写完后让 AI 自己先 review 一遍再给你</li>
+</ol>
+</blockquote>
+<h2 id="Q6-AI编程的正确姿势是什么？">Q6: AI编程的正确姿势是什么？</h2>
+<blockquote>
+<p>建议按任务难度分层：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">任务类型</th>
+<th style="text-align:left">AI 参与度</th>
+<th style="text-align:left">人的角色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">简单重复代码</td>
+<td style="text-align:left">AI 直出</td>
+<td style="text-align:left">检查即可</td>
+</tr>
+<tr>
+<td style="text-align:left">中等复杂度</td>
+<td style="text-align:left">AI 写+人 review</td>
+<td style="text-align:left">引导+审查</td>
+</tr>
+<tr>
+<td style="text-align:left">核心架构/关键逻辑</td>
+<td style="text-align:left">人为主、AI 为辅</td>
+<td style="text-align:left">设计+把控</td>
+</tr>
+<tr>
+<td style="text-align:left">新技术调研</td>
+<td style="text-align:left">AI 打头阵</td>
+<td style="text-align:left">验证+决策</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+                
+            </div>
+            <hr/>
+
+            
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                                    <span class="chip bg-color">原创</span>
+                                </a>
+                            
+                                <a href="/tags/ai/">
+                                    <span class="chip bg-color">ai</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%B7%A5%E5%85%B7/">
+                                    <span class="chip bg-color">工具</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="qq,qzone,wechat,weibo" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'zpykYxqrLC4qVar5tL3t0MAL-gzGzoHsz',
+        appKey: '3LhmIMSf9HYX5VXhD21hiPPG',
+        serverURLs: '',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2026/04/20/56faf0cc/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="AI Coding Rules">
+                        
+                        <span class="card-title">AI Coding Rules</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Ai Coding Rules 规约
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-04-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ai/" class="post-category">
+                                    ai
+                                </a>
+                            
+                            <a href="/categories/ai/codeai/" class="post-category">
+                                    codeai
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/ai/">
+                        <span class="chip bg-color">ai</span>
+                    </a>
+                    
+                    <a href="/tags/ai%E5%B7%A5%E5%85%B7%E9%9B%86/">
+                        <span class="chip bg-color">ai工具集</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2026/04/19/92b0ec2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="claude code 踩坑">
+                        
+                        <span class="card-title">claude code 踩坑</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            摘要
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-04-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/ai/" class="post-category">
+                                    AI
+                                </a>
+                            
+                            <a href="/categories/ai/ai%E5%B7%A5%E5%85%B7%E9%9B%86/" class="post-category">
+                                    AI工具集
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E5%88%9B/">
+                        <span class="chip bg-color">原创</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/">
+                        <span class="chip bg-color">未完待续</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+<script>
+    $('#articleContent').on('copy', function (e) {
+        // IE8 or earlier browser is 'undefined'
+        if (typeof window.getSelection === 'undefined') return;
+
+        var selection = window.getSelection();
+        // if the selection is short let's not annoy our users.
+        if (('' + selection).length < Number.parseInt('300')) {
+            return;
+        }
+
+        // create a div outside of the visible area and fill it with the selected text.
+        var bodyElement = document.getElementsByTagName('body')[0];
+        var newdiv = document.createElement('div');
+        newdiv.style.position = 'absolute';
+        newdiv.style.left = '-99999px';
+        bodyElement.appendChild(newdiv);
+        newdiv.appendChild(selection.getRangeAt(0).cloneContents());
+
+        // we need a <pre> tag workaround.
+        // otherwise the text inside "pre" loses all the line breaks!
+        if (selection.getRangeAt(0).commonAncestorContainer.nodeName === 'PRE' || selection.getRangeAt(0).commonAncestorContainer.nodeName === 'CODE') {
+            newdiv.innerHTML = "<pre>" + newdiv.innerHTML + "</pre>";
+        }
+
+        var url = document.location.href;
+        newdiv.innerHTML += '<br />'
+            + '来源: 涓涓细流<br />'
+            + '文章作者: 陈尚<br />'
+            + '文章链接: <a href="' + url + '">' + url + '</a><br />'
+            + '本文章著作权归作者所有，任何形式的转载都请注明出处。';
+
+        selection.selectAllChildren(newdiv);
+        window.setTimeout(function () {bodyElement.removeChild(newdiv);}, 200);
+    });
+</script>
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+
+<!-- 代码语言 -->
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2026</span>
+            
+            <a href="/about" target="_blank">陈尚</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">278.2k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/chen-shang" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:2414973330@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2414973330" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2414973330" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+	<span id="jinrishici-sentence"></span>
+        <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+        <!-- <script src='https://unpkg.com/mermaid@latest/dist/mermaid.min.js'></script> -->
+        <script src='/libs/mermaid/mermaid.min.js'></script>
+        <script>
+          if (window.mermaid) {
+            mermaid.initialize({theme: 'forest'});
+          }
+        </script>
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?f34c6ca18e751cd090a8864b66dda7fd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+    
+        
+<!-- page-agent 智能助手 -->
+<script src="/libs/page-agent/page-agent.demo.js" crossorigin="true"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 初始化 PageAgent
+        if (typeof PageAgent !== 'undefined') {
+            const agent = new PageAgent({
+                language: 'zh-CN',
+                
+                
+                // 右下角位置配置
+                position: { bottom: '20px', right: '20px' }
+                
+            });
+            
+            // 将 agent 实例暴露到全局，方便调试
+            window.blogAgent = agent;
+            
+            console.log('🤖 PageAgent 智能助手已加载');
+        } else {
+            console.warn('PageAgent 加载失败，请检查脚本路径');
+        }
+    });
+</script>
+
+
+    
+
+</body>
+
+</html>
