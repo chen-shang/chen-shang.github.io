@@ -50,9 +50,7 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 8.1.1">
-<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-<link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
+<meta name="generator" content="Hexo 8.1.1"><link rel="alternate" href="/atom.xml" title="涓涓细流" type="application/atom+xml">
 </head>
 
 
@@ -313,7 +311,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    982
+                    1k
                 </div>
                 
 
@@ -354,54 +352,54 @@
 <p>首先，我们如果在项目中使用事务，只需要在对应的方法上写上<code>@Transactional</code>这个注解就好。如果一个方法就是一个单纯的事务还好，方法内部有异常，方法中所有的数据库操作立马回滚。</p>
 <pre><code class="hljs java"><span class="hljs-meta">@Override</span>
 <span class="hljs-meta">@Transactional(rollbackFor = Exception.class)</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> {
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;
   <span class="hljs-type">DemoChangeLog</span> <span class="hljs-variable">entity</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoChangeLog</span>();
   entity.setId(<span class="hljs-number">2L</span>);
-  entity.setOperatorType(<span class="hljs-string">"123456"</span>);
+  entity.setOperatorType(<span class="hljs-string">&quot;123456&quot;</span>);
   <span class="hljs-built_in">this</span>.save(entity);
-  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">"123456"</span>);
-}</code></pre>
+  <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;123456&quot;</span>);
+&#125;</code></pre>
 <p>如上，这个方法用<code>@Transactional</code>注解，在调用这个方法的时候先开启事务，然后一次执行对应的语句，直到save调用会执行sql语句，然后在最后一行抛出了异常，之前做的save操作导致数据库的变动立马回滚，这也是事务最常用的场景。</p>
 <p>但是，如果一个事务调用另一个事务的情况下呢。如下</p>
 <pre><code class="hljs java"><span class="hljs-meta">@Transactional(rollbackFor = Exception.class)</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> {
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;
     demoChangeLogService.removeById(<span class="hljs-number">2</span>);
     demoChangeLogService.test();
-}</code></pre>
+&#125;</code></pre>
 <p>其中 demoChangeLogService.test() 如下，也用<code>@Transactional</code>注解</p>
 <pre><code class="hljs java"><span class="hljs-meta">@Override</span>
 <span class="hljs-meta">@Transactional(rollbackFor = Exception.class)</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> {
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;
     <span class="hljs-type">DemoChangeLog</span> <span class="hljs-variable">entity</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DemoChangeLog</span>();
     entity.setId(<span class="hljs-number">2L</span>);
-    entity.setOperatorType(<span class="hljs-string">"123456"</span>);
+    entity.setOperatorType(<span class="hljs-string">&quot;123456&quot;</span>);
     <span class="hljs-built_in">this</span>.save(entity);
-    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">"123456"</span>);
-}</code></pre>
+    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;123456&quot;</span>);
+&#125;</code></pre>
 <p>这样就形成了一个<code>@Transactional</code>方法调用另一个<code>@Transactional</code>的情形。这也是常见的情形之一：此时程序执行 <code>demoChangeLogService.removeById(2)</code> 之后 执行 <code>demoChangeLogService.test()</code>，发现  <code>demoChangeLogService.test()</code> 被<code>@Transactional</code> 注解，于是看一下Spring的事务配置，默认情况下，如果已经开启了一个事务，然后又遇到一个需要开启事务的方法，此时会直接使用最开始开启的事务，也就是加入到原来的事务当中，而不是开始一个新的事务。那么接下来执行 <code>demoChangeLogService.test()</code> 内部方法的时候，在最后一行抛出了异常，这样就会导致当前事务回滚，那么 <code>demoChangeLogService.removeById(2)</code>和 <code>demoChangeLogService.test()</code> 中所有数据库操作都会回滚。</p>
 <p>但是有的时候，我们在执行的时候期望 demoChangeLogService.removeById(2); 正常执行，如果demoChangeLogService.test();中执行异常的时候，只有demoChangeLogService.test();中的数据库操作回滚，而外层test() 方法中demoChangeLogService.removeById(2);的数据库操作不用回滚。此时我们可能会错误的写成</p>
 <pre><code class="hljs java"><span class="hljs-meta">@Transactional(rollbackFor = Exception.class)</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> {
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;
     demoChangeLogService.removeById(<span class="hljs-number">2</span>);
-    <span class="hljs-keyword">try</span>{
+    <span class="hljs-keyword">try</span>&#123;
        demoChangeLogService.test();
-    }<span class="hljs-keyword">catch</span> (Exception e){
-      log.error(<span class="hljs-string">"执行异常了"</span>,e)
-    }
-}</code></pre>
+    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;
+      log.error(<span class="hljs-string">&quot;执行异常了&quot;</span>,e)
+    &#125;
+&#125;</code></pre>
 <p>按照我们的理解， demoChangeLogService.test(); 内部异常了，那么内部的事务应该回滚，而外部方法中的异常被捕获了，理论上不应该被回滚啊。但是确实被回滚了，而且又抛出了一个异常 <code>Transaction rolled back because it has been marked as rollback-only</code> 这就是我今天遇到的异常。<br>
 原因是，demoChangeLogService.test();这个方法内部抛出了异常，对于当前事务来说应该执行回滚，但是由于我们把异常捕获了，导致外部的方法在执行完成后，事务应该是正常提交，此时就冲突了，一个要求回滚，一个要求正常提交，mysql蒙了，于是就抛出了上面这个异常。</p>
 <p>解决方法：第二个方法的事务用开启一个新的事物而不继承原来的事务。</p>
 <p>demoChangeLogService.test();</p>
 <pre><code class="hljs java"><span class="hljs-meta">@Transactional(propagation = Propagation.REQUIRES_NEW)</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> {
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">test</span><span class="hljs-params">()</span> &#123;
     demoChangeLogService.removeById(<span class="hljs-number">2</span>);
-    <span class="hljs-keyword">try</span>{
+    <span class="hljs-keyword">try</span>&#123;
        demoChangeLogService.test();
-    }<span class="hljs-keyword">catch</span> (Exception e){
-      log.error(<span class="hljs-string">"执行异常了"</span>,e)
-    }
-}</code></pre>
+    &#125;<span class="hljs-keyword">catch</span> (Exception e)&#123;
+      log.error(<span class="hljs-string">&quot;执行异常了&quot;</span>,e)
+    &#125;
+&#125;</code></pre>
 <p>可以达到上面的目的，但是用这种主机要万分小心，可能产生死锁。</p>
 
                 
@@ -768,7 +766,7 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/12/02/shu-ju-ku/mysql-de-case-when-de-yi-ban-yong-fa/">
+                <a href="/2023/12/02/%E6%95%B0%E6%8D%AE%E5%BA%93/mysql-%E7%9A%84-case-when-%E7%9A%84%E4%B8%80%E8%88%AC%E7%94%A8%E6%B3%95/">
                     <div class="card-image">
                         
                         
@@ -821,7 +819,7 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/11/29/java/springboot/springboot-zhong-handlerinterceptor-zhu-ru-qi-ta-service-bao-cuo-xun-huan-yi-lai-wen-ti/">
+                <a href="/2023/11/29/JAVA/SpringBoot/SpringBoot%E4%B8%ADHandlerInterceptor%E6%B3%A8%E5%85%A5%E5%85%B6%E4%BB%96Service%E6%8A%A5%E9%94%99%E5%BE%AA%E7%8E%AF%E4%BE%9D%E8%B5%96%E9%97%AE%E9%A2%98/">
                     <div class="card-image">
                         
                         
@@ -961,7 +959,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">281.3k</span>
+                        class="white-color">278.2k</span>
             
             
             
@@ -1274,6 +1272,6 @@ $(function () {
 
     
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</body>
 
 </html>
