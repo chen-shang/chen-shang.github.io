@@ -272,12 +272,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">Git</span>
-                            </a>
-                        
                             <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
                                 <span class="chip bg-color">工具控</span>
+                            </a>
+                        
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">Git</span>
                             </a>
                         
                     </div>
@@ -312,7 +312,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-28
+                    2026-05-03
                 </div>
                 
 
@@ -351,7 +351,7 @@
 <h1>概念概述</h1>
 <p>首先我们应该明白git rebase是用来处理git merge命令所处理的同样的问题。这两个命令都用于把一个分支的变更整合进另一个分支——只不过他们达成同样目的的方式不同。</p>
 <p>请考虑这个场景，当你开始在一个专有的分支开发新的功能时，另一位团队成员更新了main分支的内容。这将会造成一个分叉的提交历史，对于任何一个使用Git作为代码协作工具的人来说都不会陌生。<br>
-<img src="image.png" alt="Alt text"></p>
+<img src="/2023/10/07/4c194d59/image.png" alt="Alt text"></p>
 <p>现在假设main分支内新增的内容与你正在开发的新功能有关。为了把main分支里新增的代码应用在你的feature分支，你有两种方法：merge 和 rebase。</p>
 <h1>使用merge</h1>
 <p>最简单的方法就是把main分支合并进功能分支：</p>
@@ -360,7 +360,7 @@ git merge main</code></pre>
 <p>或者用下面这样的单行命令：</p>
 <pre><code class="hljs shell">git merge feature main</code></pre>
 <p>这会在feature分支中创建一个合并提交，这次提交会连结两个分支的提交历史，在分支图示结构中看起来像下面这样：</p>
-<p><img src="image-1.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-1.png" alt="Alt text"></p>
 <p>合并操作很友好，因为它没有破坏性。现存的分支历史不会发生什么改变。这一特性避免了rebase操作的所有缺陷（下面会详细讨论）。</p>
 <p>但是另一方面来说，这也意味着每当feature分支需要应用上游分支的更改时，都会在提交历史上增加一个无关的提交历史。如果main分支的更新非常活跃，这种操作也会对功能分支的提交历史产生相当程度的污染。虽然通过复杂的git log命令可以减轻这种提交历史的混乱现状，但仍然会让其他开发者对于提交历史感到费解。</p>
 <h1>使用rebase</h1>
@@ -368,7 +368,7 @@ git merge main</code></pre>
 <pre><code class="hljs plaintext">git checkout feature
 git rebase main</code></pre>
 <p>这些操作会把feature分支的起始历史放到main分支的最后一次提交之上，也达成了使用main分支中新代码的目的。但是，相对于merge操作中新建一个合并提交，rebase操作会通过为原始分支的每次提交创建全新的提交，从而重写原始分支的提交历史。</p>
-<p><img src="image-2.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-2.png" alt="Alt text"></p>
 <p>使用rebase操作的最大好处在于你可以让项目提交历史变得非常干净整洁。首先，它消除了git merge操作所需创建的没有必要的合并提交。其次，正如上图所示，rebase会造就一个线性的项目提交历史——也就是说你可以从feature分支的顶部开始向下查找到分支的起始点，而不会碰到任何历史分叉。这在使用git log,git bisect以及gitk等命令时更简单。</p>
 <p>不过为了获得这种便于理解的提交历史，却需要付出两种代价：安全性和可追溯性。如果不能遵循rebase的黄金法则，重写项目提交历史会为协作工作流程带来潜在的灾难性后果。再次，rebase操作丢失了合并提交能够提供的上下文信息——所以你就无法知道功能分支是什么时候应用了上游分支的变更。</p>
 <h1>可交互式rebase</h1>
@@ -385,12 +385,12 @@ pick 5c67e61 Message for commit #3</code></pre>
 fixup 9480b3d Message for commit #2
 pick 5c67e61 Message for commit #3</code></pre>
 <p>当你保存并关闭这个文件之后，Git会根据你的调改结果执行rebase操作，根据上面的例子项目历史会变成下图这样：</p>
-<p><img src="image-3.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-3.png" alt="Alt text"></p>
 <p>通过清除那些并不重要的提交历史可以让项目整体的历史更易读易懂。这一点是git merge操作所无法提供的。</p>
 <h1>rebase操作黄金法则</h1>
 <p>一旦你明白了什么是rebase，接下来最重要的事情就是要了解什么情况下不应该使用它。关于git rebase的黄金法则就是永远不要在公共分支上使用它。</p>
 <p>举例来说，想一想如果把main分支rebase到feature分支之上，会发生什么：</p>
-<p><img src="image-4.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-4.png" alt="Alt text"></p>
 <p>rebase命令会把main分支中的所有提交都放到feature分支的提交记录顶端。问题在于这个改变目前只出现在你的本地仓库。其他开发者仍然在原来的main分支上进行开发。由于rebase会产生全新的提交记录，所以Git会认为现在你本地的main分支与所有其他人的产生了分叉。</p>
 <p>唯一能够同步两个不同的main分支的方式就是将其合并起来，这会产生一个冗余的合并提交，并且这次合并中的大部分提交内容都是相同的（以前的main分支和你本地的main分支中）。不用说，这下可真让人疑惑。</p>
 <p>所以任何时候要执行git rebase命令之前，先确认“是否有其他人也正在使用此分支？”如果答案是确定的，那么你就应该停下来想想有没有其他非破坏性的操作（比如试试git revert命令）。除了这样的情况之外，重写提交历史都是安全的。</p>
@@ -402,13 +402,13 @@ pick 5c67e61 Message for commit #3</code></pre>
 <p>工作流实战<br>
 无论团队规模大小，rebase操作可以顺畅的接入现有团队的工作流程。在本部分中，我们一起看看在不同的功能开发阶段中，rebase都能提供哪些收益。</p>
 <p>在任何一种工作流中，如果我们希望让rebase介入其中，那么第一步就是为功能开发创建一个专用分支。这样可以提供必要的分支结构以便安全地使用rebase：</p>
-<p><img src="image-5.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-5.png" alt="Alt text"></p>
 <h1>本地清理</h1>
 <p>在现有工作流中包含rebase操作的最适合的场景之一是：清理本地正在进行中的开发分支。通过定期使用可交互rebase操作，可以清理本分支的提交记录，让每一次提交都更加聚焦并有意义。可交互rebase操作允许你在写代码的时候不用太在意提交历史，事实上你可以在事后再对提交历史进行清理。</p>
 <p>当使用git rebase命令时，有两种选项可以作为新的base：功能分支的父分支（比如 main 分支），或者是本分支内历史中的某一次提交。第一种情况的示例我们在交互式rebase的段落见到过。后一种选项对于修改本分支内的提交历史则相当有用。比如下面的命令会开启一次对于最近三次提交历史的rebase操作。</p>
 <pre><code class="hljs shell">git checkout feature git rebase -i HEAD~3</code></pre>
 <p>通过指定HEAD~3作为rebase操作的新base，你并不是在实际移动分支——你只是以交互的方式对HEAD~3这次提交之后的三次提交历史进行重写。注意这个操作并不会将上游的修改引入feature分支：</p>
-<p><img src="image-6.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-6.png" alt="Alt text"></p>
 <p>如果你想对整个feature分支历史进行重写，那么应该试试git merge-base命令，它会返回给你feature分支的原始base。下面的命令返回原始base的commit ID，获得之后就可以用于git rebase命令的参数：</p>
 <pre><code class="hljs shell">git merge-base feature main</code></pre>
 <p>像上面这种rebase的使用场景非常利于将git rebase引入现有的工作流程，毕竟它只会影响本地分支。其他开发者能看到的只是你已经完成之后的作品，那种拥有干净提交历史，易于理解分支内容，便于跟踪开发过程的优美的分支提交历史。</p>
@@ -419,9 +419,9 @@ pick 5c67e61 Message for commit #3</code></pre>
 <p>此种对于git rebase操作的使用与清理本地提交历史类似（也可以同时操作），差别在于在执行过程中会引入上游main分支的提交。</p>
 <p>请记住rebase可以对任何远端分支进行操作，并不仅限于main分支。比如当你需要与其他人协作开发一个功能时，你可以通过rebase来引入其他人的开发内容。</p>
 <p>比如说，当你和另一个名叫John的开发者都对feature分支进行了提交动作，在你fetch远程的feature分支之后，本地仓库应该看起来是下图这样的：</p>
-<p><img src="image-7.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-7.png" alt="Alt text"></p>
 <p>为了整合这个分叉，你可以像对待main分支一样：要么通过merge操作将john/feature分支合并到本地feature分支，或者rebase本地feature分支到john/feature分支的顶端。</p>
-<p><img src="image-8.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-8.png" alt="Alt text"></p>
 <p>请注意这并不与rebase的黄金法则发生冲突，因为只有你本地的feature分支的新提交被移动到john/feature分支的顶端，新提交之前的所有提交历史都没有变化。这就好像说：“把我提交的新内容添加到John已经提交的内容之上。”在大多数情况下，这种操作比使用merge操作更符合人类的直觉。</p>
 <p>git pull命令默认行为是进行一次合并操作，但你可以通过添加–rebase选项指定pull操作的行为为rebase。</p>
 <h1>使用pull request进行功能审查</h1>
@@ -431,7 +431,7 @@ pick 5c67e61 Message for commit #3</code></pre>
 <h1>整合审查通过的功能</h1>
 <p>被团队审查通过的功能代码，可以先使用rebase将新代码移动到main分支的顶端，然后在进行git merge合并新功能到main分支中。</p>
 <p>这个操作跟rebase上游分支到本地功能分支类似，只是由于你不能重写main分支的提交历史，所以你只能在最后通过git merge操作来把功能分支的代码整合进main分支。不过在合并之前进行一次rebase，可以保证这次merge操作是可以快速前进的，这样提交历史看上去就是完美的线性。这也给你机会可以在真正合并之前进行一次提交历史的清理。</p>
-<p><img src="image-10.png" alt="Alt text"></p>
+<p><img src="/2023/10/07/4c194d59/image-10.png" alt="Alt text"></p>
 <p>如果你还不是很适应git rebase操作，那么总是可以利用一个临时分支来进行rebase操作。这样的话，万一你不小心搞乱了功能分支的提交历史，总还有兜底的机会从原始的功能分支再来一遍。就像下面这样：</p>
 <pre><code class="hljs shell">git checkout feature
 git checkout -b temporary-branch
@@ -459,12 +459,12 @@ git merge temporary-branch</code></pre>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">Git</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%B7%A5%E5%85%B7%E6%8E%A7/">
                                     <span class="chip bg-color">工具控</span>
+                                </a>
+                            
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">Git</span>
                                 </a>
                             
                         </div>
@@ -1084,7 +1084,7 @@ git merge temporary-branch</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

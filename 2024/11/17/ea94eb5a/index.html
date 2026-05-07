@@ -312,7 +312,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-28
+                    2026-05-03
                 </div>
                 
 
@@ -349,7 +349,7 @@
                 <p>任何抛开场景对设计进行的评价都是愚蠢的。一个方案只要能实现目的都叫解决方案，解决方案没有对错，但是有好坏，我这里会总结一些我们在开发过程中所做的一些不好的设计、编码，包括管理方面愚蠢的举动。我会对入围的bad case进行场景的剖析，分析当时我们为什么会这么想，当然有些是我在采访当事人之后他们给出的说法。</p>
 <h2 id="try-catch系列">try catch系列</h2>
 <h3 id="for-循环内-try-catch">for 循环内 try catch</h3>
-<p><img src="image.png" alt=""></p>
+<p><img src="/2024/11/17/ea94eb5a/image.png" alt></p>
 <blockquote>
 <p>这里本意是 forEach 针对每一个元素进行一个操作，该操作有可能会抛出异常，为了在for循环中不阻塞后面元素的执行，因此这里进行了try catch。一旦对元素的处理成功就加到一个成功的集合中并在最后进行返回。</p>
 </blockquote>
@@ -357,7 +357,7 @@
 <p>但是，这里忽略了一点，就是失败的数据也被认为是成功的给加入到成功的list中进去了。</p>
 </blockquote>
 <p>修改方式之一:</p>
-<p><img src="image-1.png" alt=""></p>
+<p><img src="/2024/11/17/ea94eb5a/image-1.png" alt></p>
 <h3 id="finally-当中抛出异常">finally 当中抛出异常</h3>
 <pre><code class="hljs plaintext">public Boolean update( PmAssetUpdateLogicForm pmAsset) &#123;
         ResponseInfo&lt;Boolean&gt; responseInfo = null;
@@ -391,14 +391,14 @@
 </blockquote>
 <h2 id="mysql-系列">mysql 系列</h2>
 <h3 id="java中自定义的sql有必要全部大写么">java中自定义的sql有必要全部大写么</h3>
-<p><img src="image-3.png" alt=""></p>
+<p><img src="/2024/11/17/ea94eb5a/image-3.png" alt></p>
 <blockquote>
 <p>有同事写代码的时候，特意把sql语句全部大写了。说是Mysql会默认转大写，如果全部写了大写就不用转了，提高性能。</p>
 </blockquote>
 <blockquote>
 <p>网上的文章有的说可以提升性能，但是我问了一下Chat，回答如下，自己评判吧</p>
 </blockquote>
-<p><img src="image-4.png" alt=""></p>
+<p><img src="/2024/11/17/ea94eb5a/image-4.png" alt></p>
 <h2 id="CompletableFuture-系列">CompletableFuture 系列</h2>
 <h3 id="exceptionally-判断-e-是否为空">exceptionally 判断 e 是否为空</h3>
 <pre><code class="hljs java"><span class="hljs-comment">// exceptionally 中捕获判断 e 是否为空</span>
@@ -472,7 +472,7 @@
 &#125;</code></pre>
 <p>如果非要较真，区别就是再捕获异常之后再异常的message中加了一个 <code>&quot;异步下载文件失败！错误信息：&quot;</code> 但这个信息对定位问题并没有给程序定位带来多大的帮助。如果这里不抛出一个RuntimeException而是抛出一个特定的自定义异常，然后再上层针对这个自定义的异常进行一个业务逻辑的处理，我还能接受，否则这里没有必要捕获这个异常。当然还有一个前提是，在外层调用这个一步方法之后，需要有join或者get方法，否则不捕获异常打印日志的行为会导致异常堆栈的丢失。</p>
 <h2 id="抽象类中使用-Resource-以及-SpringUtil-getBean">抽象类中使用 @Resource 以及 SpringUtil.getBean</h2>
-<p><img src="1762792957162.png" alt=""></p>
+<p><img src="/2024/11/17/ea94eb5a/1762792957162.png" alt></p>
 <pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">AbstractBiLawsuitFeeExtService</span>&lt;T&gt; &#123;
 
     <span class="hljs-meta">@Resource</span>
@@ -744,9 +744,9 @@ processor.processOrder(<span class="hljs-keyword">new</span> <span class="hljs-t
 </li>
 </ol>
 <h1>无用和无意义的注释</h1>
-<p><img src="/%E4%BB%A3%E7%A0%81bad-case/1763564811549.png" alt="1763564811549"></p>
+<p><img src="/2024/11/17/ea94eb5a/1763564811549.png" alt="1763564811549"></p>
 <h1>try catch 后还加事务</h1>
-<p><img src="/%E4%BB%A3%E7%A0%81bad-case/iShot_2026-02-02_13.42.03.png" alt="alt text"></p>
+<p><img src="/2024/11/17/ea94eb5a/iShot_2026-02-02_13.42.03.png" alt="alt text"></p>
 
                 
             </div>
@@ -1398,7 +1398,7 @@ processor.processOrder(<span class="hljs-keyword">new</span> <span class="hljs-t
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

@@ -312,7 +312,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-28
+                    2026-05-03
                 </div>
                 
 
@@ -351,17 +351,17 @@
 <p>你如何知道一共有多少字段呢。<br>
 我问了一下我的同事，他们说吧这些内容放到一个文本编辑器里头打开，比如 vscode 或者 sublimText 或者 vim 然后搜索 <code>|</code> , 一般都会显示出来 <code>|</code> 的个数，然后+1就是字段的数量。这个方法也很好用,但感觉还是麻烦。</p>
 <center>
-  <img src="image.png">
+  <img src="/2023/07/04/d40cf1e5/image.png">
 </center>
 <p>我们如何用程序干这事儿呢。目前还没有发现直接统计列的工具，但是我知道一个统计行数的工具叫 wc 还有一个工具可以显示文本行数的工具叫 nl .还有 vim 也可以实现展示行数。那么如果我们能快速把这一行转换成列，直接数列数就知道有多少字段了吧。</p>
 <p>那么我们的问题就转变成了行专列的问题。但是现在的分隔符是 <code>|</code> ,我们只需要把他替换成回车就好了。如果用vim 我们输入替换指令 <code>%s/|/\r/g</code> 就可以吧指定的字符转换成回车换行。</p>
 <center>
-  <img src="image2.png">
+  <img src="/2023/07/04/d40cf1e5/image2.png">
 </center>
 <p>然后输入指令 <code>set no</code> 可以显示行号</p>
 <p>另外我们也可以通过 <code>sed</code> 指令替换的新式 <code>cat xxx.txt|sed 's/|/\n/g'|wc -l</code> 或者 <code>cat xxx.txt|sed 's/|/\n/g'|nl</code></p>
 <center>
-  <img src="image3.png">
+  <img src="/2023/07/04/d40cf1e5/image3.png">
 </center>
 
                 
@@ -929,7 +929,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

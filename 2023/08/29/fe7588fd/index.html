@@ -304,7 +304,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-28
+                    2026-05-03
                 </div>
                 
 
@@ -341,22 +341,22 @@
                 <p>初始话安装 mysql 之后,大多数版本会为你本机创建一个名为root的用户,这个用户是一个管理员账户,拥有至高无上的权限,而且大多数mysql版本在当前服务器上创建的这个root用户是没有密码的。你说那不是不安全么，其实也还好，因为这root用户只能在当前服务器上登录，通过远程的方式是链接不上的。所以只要没有服务器的登录权限，就没有服务器上数据库的登录权限，不过我还是建议在安装好数据库后立马给root用户设置一个密码，以加强数据库的安全。如果可以最好在创建一个用户，用来替代root用户作为管理员，然后吧root账户给降级或者删除掉。比如你可以叫Alice 或者 叫Bob ，这样就会更加安全，因为按照惯例，如果有人攻破了你的服务会第一时间用root作为账户名开始暴力破击你的数据库密码。</p>
 <h3 id="给初始root用户设置密码">给初始root用户设置密码</h3>
 <pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span> IDENTIFIED <span class="hljs-keyword">WITH</span> mysql_native_password <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;新密码&#x27;</span>;</code></pre>
-<p><img src="Mysql%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%9F%BA%E6%93%8D/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-08-29%20221806.jpg" alt="无需密码就能登录数据库"><br>
-<img src="Mysql%E7%94%A8%E6%88%B7%E3%80%81%E6%9D%83%E9%99%90%E5%9F%BA%E6%93%8D/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-08-29%20221919.jpg" alt="现在需要密码才能登录了"></p>
+<p><img src="/2023/08/29/fe7588fd/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-08-29%20221806.jpg" alt="无需密码就能登录数据库"><br>
+<img src="/2023/08/29/fe7588fd/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-08-29%20221919.jpg" alt="现在需要密码才能登录了"></p>
 <h3 id="查看当前数据库的用户">查看当前数据库的用户</h3>
 <p>查看所有用户</p>
 <pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">from</span> mysql.user</code></pre>
-<p><img src="image0.png" alt="这完全没办法看呀"></p>
+<p><img src="/2023/08/29/fe7588fd/image0.png" alt="这完全没办法看呀"></p>
 <p>查看所有用户，只返回 User,Host</p>
 <pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">User</span>,Host <span class="hljs-keyword">from</span> mysql.user</code></pre>
-<p><img src="image.png" alt="默认用户"><br>
+<p><img src="/2023/08/29/fe7588fd/image.png" alt="默认用户"><br>
 可以看到 默认 只有 4 个用户，其中一个就是 root , 其他几个我们基本用不到，也不要去手动干预他们，否则会有意想不到的后果，虽然我也不知道会怎样。</p>
 <h3 id="查看数据库用户的权限">查看数据库用户的权限</h3>
 <pre><code class="hljs sql"><span class="hljs-keyword">show</span> grants <span class="hljs-keyword">for</span> <span class="hljs-string">&#x27;mysql.sys&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span>
 <span class="hljs-keyword">show</span> grants <span class="hljs-keyword">for</span> <span class="hljs-string">&#x27;root&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span></code></pre>
-<p><img src="image-1.png" alt="root 权限也没办法看，展示不友好"></p>
+<p><img src="/2023/08/29/fe7588fd/image-1.png" alt="root 权限也没办法看，展示不友好"></p>
 <p>小技巧 ，在 sql 的后面 加个 <code>\G</code> 使用垂直方式显示，每行一个字段，更易于阅读。  注意在数据量小的时候好一点。<br>
-<img src="image-2.png" alt="使用垂直方式查看"><br>
+<img src="/2023/08/29/fe7588fd/image-2.png" alt="使用垂直方式查看"><br>
 可以看到 root 用户激活拥有了所有的权限。</p>
 <pre><code class="hljs sql"><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span>[ <span class="hljs-number">1.</span> <span class="hljs-type">row</span> ]<span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span><span class="hljs-operator">*</span>
 Grants <span class="hljs-keyword">for</span> root<span class="hljs-variable">@localhost</span> <span class="hljs-operator">|</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span>, <span class="hljs-keyword">INSERT</span>, <span class="hljs-keyword">UPDATE</span>, <span class="hljs-keyword">DELETE</span>, <span class="hljs-keyword">CREATE</span>, <span class="hljs-keyword">DROP</span>, RELOAD, SHUTDOWN, PROCESS, FILE, <span class="hljs-keyword">REFERENCES</span>, INDEX, <span class="hljs-keyword">ALTER</span>, <span class="hljs-keyword">SHOW</span> DATABASES, SUPER, <span class="hljs-keyword">CREATE</span> TEMPORARY TABLES, LOCK TABLES, <span class="hljs-keyword">EXECUTE</span>, REPLICATION SLAVE, REPLICATION CLIENT, <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span>, <span class="hljs-keyword">SHOW</span> <span class="hljs-keyword">VIEW</span>, <span class="hljs-keyword">CREATE</span> ROUTINE, <span class="hljs-keyword">ALTER</span> ROUTINE, <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span>, EVENT, <span class="hljs-keyword">TRIGGER</span>, <span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span>SPACE, <span class="hljs-keyword">CREATE</span> ROLE, <span class="hljs-keyword">DROP</span> ROLE <span class="hljs-keyword">ON</span> <span class="hljs-operator">*</span>.<span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> `root`@`localhost` <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> OPTION
@@ -385,15 +385,15 @@ Grants <span class="hljs-keyword">for</span> root<span class="hljs-variable">@lo
 <li>指定用户的最大连接数和并发连接数：您可以使用  MAX_CONNECTIONS  和  MAX_USER_CONNECTIONS  选项来限制用户的最大连接数和并发连接数。例如：</li>
 </ul>
 <pre><code class="hljs sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;用户名&#x27;</span>@<span class="hljs-string">&#x27;主机名&#x27;</span> IDENTIFIED <span class="hljs-keyword">BY</span> <span class="hljs-string">&#x27;密码&#x27;</span> <span class="hljs-keyword">WITH</span> MAX_CONNECTIONS <span class="hljs-number">10</span> MAX_USER_CONNECTIONS <span class="hljs-number">5</span>;</code></pre>
-<p><img src="image-3.png" alt="创建用户并用新用户登录"><br>
+<p><img src="/2023/08/29/fe7588fd/image-3.png" alt="创建用户并用新用户登录"><br>
 我们在查看一下用户<br>
-<img src="image-4.png" alt="查看用户"></p>
+<img src="/2023/08/29/fe7588fd/image-4.png" alt="查看用户"></p>
 <h3 id="删除用户">删除用户</h3>
 <p>只有具有足够权限的用户才能删除其他用户。如果您没有足够的权限，请使用具有适当权限的用户执行此操作。 一般用root用户来操作，尽量不要把删除、更新用户信息的权限随便授予某一个用户。</p>
 <pre><code class="hljs sql"><span class="hljs-keyword">DROP</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">&#x27;用户名&#x27;</span>@<span class="hljs-string">&#x27;主机名&#x27;</span>;</code></pre>
-<p><img src="image-5.png" alt="删除用户操作示例"></p>
+<p><img src="/2023/08/29/fe7588fd/image-5.png" alt="删除用户操作示例"></p>
 <h3 id="给用户授权">给用户授权</h3>
-<p><img src="image-6.png" alt="查看一下各自有权限的数据库"></p>
+<p><img src="/2023/08/29/fe7588fd/image-6.png" alt="查看一下各自有权限的数据库"></p>
 <p>基本语法<br>
 授予数据库的所有权限</p>
 <pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">ON</span> database_name.<span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;username&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span>;</code></pre>
@@ -401,7 +401,7 @@ Grants <span class="hljs-keyword">for</span> root<span class="hljs-variable">@lo
 <pre><code class="hljs sql"><span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">SELECT</span>, <span class="hljs-keyword">INSERT</span>, <span class="hljs-keyword">UPDATE</span>, <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">ON</span> database_name.<span class="hljs-operator">*</span> <span class="hljs-keyword">TO</span> <span class="hljs-string">&#x27;username&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span>;</code></pre>
 <p>刷新 MySQL 权限, 这一步是使 权限 生效的，类似 我们改了 linux 配置 是有 source 命令一样。</p>
 <pre><code class="hljs sql">FLUSH PRIVILEGES;</code></pre>
-<p><img src="image-7.png" alt="赋权了，然后就可以看到了"></p>
+<p><img src="/2023/08/29/fe7588fd/image-7.png" alt="赋权了，然后就可以看到了"></p>
 <h3 id="取消用户授权">取消用户授权</h3>
 <p>使用  REVOKE  命令来取消用户的权限。例如，如果要取消用户  ‘username’@‘localhost’  对所有数据库的所有权限：</p>
 <pre><code class="hljs sql"><span class="hljs-keyword">REVOKE</span> <span class="hljs-keyword">ALL</span> PRIVILEGES <span class="hljs-keyword">ON</span> <span class="hljs-operator">*</span>.<span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> <span class="hljs-string">&#x27;username&#x27;</span>@<span class="hljs-string">&#x27;localhost&#x27;</span>;</code></pre>
@@ -969,7 +969,7 @@ Grants <span class="hljs-keyword">for</span> root<span class="hljs-variable">@lo
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

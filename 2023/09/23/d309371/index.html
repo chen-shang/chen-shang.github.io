@@ -316,7 +316,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-28
+                    2026-05-03
                 </div>
                 
 
@@ -356,7 +356,7 @@
 <h1>响应式 和 非响应式</h1>
 <p>我个人理解，所谓响应式，就是一个地方变化了之后，其他依赖这个地方的地方也跟着相应的变化，这就是响应式的，反之就是不响应式的。<br>
 比如，页面上有好多个地方都引用了一个变量，要是我在某个时刻改变了这个变量的值，这时如果这个页面上引用这个变量的地方的都跟着变化了，那这就叫响应式的。<br>
-<img src="iShot_2023-09-23_23.34.23.jpg" alt=""></p>
+<img src="/2023/09/23/d309371/iShot_2023-09-23_23.34.23.jpg" alt></p>
 <p>再比如</p>
 <pre><code class="hljs javascript"><span class="hljs-keyword">const</span> a = <span class="hljs-title function_">ref</span>(<span class="hljs-number">1</span>)
 <span class="hljs-keyword">const</span> b = <span class="hljs-title function_">ref</span>(<span class="hljs-number">1</span>)
@@ -387,7 +387,7 @@ System.out.println(c) <span class="hljs-comment">//此时输出2</span>
 <p>我自己总结一下</p>
 <p>在组合式 API 中，推荐使用 ref() 函数来声明响应式状态，ref() 接收参数，并将其包裹在一个带有 .value 属性的 ref 对象中返回。这里用的是引用对象实现的，既然是引用，那意思就是说你现在拿到的是一个包含了原对象的新的对象，我明确告诉你你拿到的不是原来的对象哟，你想要使用的时候必须时刻记得是用.value的方式来操作原来的对象。</p>
 <p>reactive()与将内部值包装在特殊对象中的 ref 不同，reactive() 将使对象本身具有响应性，从而变成一个响应式对象，这个响应式对象是 JavaScript 代理对象，用的是代理的方式实现的，既然是代理，那意思就是表面上看是一模一样，但是骨子里还是有区别的，你要时刻注意，你拿到的其实已经不再是原来的对象了。</p>
-<div width="100%"  style="overflow:hidden">
+<div width="100%" style="overflow:hidden">
     <div style="float:left; width:50%;"><h2 style="font-size: 20px;margin-left:10px">ref()</h2>
         <pre><code class="hljs javascript"><span class="hljs-keyword">import</span> &#123;reactive, ref&#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;vue&quot;</span>;
 <span class="hljs-comment">// 如下有一个数组,使用 ref 来包装</span>
@@ -408,7 +408,7 @@ villagers.<span class="hljs-title function_">filter</span>(<span class="hljs-fun
 </div>
 <h1>小例子</h1>
 <p>想要实现下面的效果<br>
-<video src="iShot_2023-09-24_00.06.24.mp4" controls title="Title" width=100%></video><br>
+<video src="iShot_2023-09-24_00.06.24.mp4" controls title="Title" width="100%"></video><br>
 最终的代码如下，但是一开始的各种错误写法导致一直无法实现这样的效果，找原因找了好久，主要就是 ref() 和 reactive() 使用的问题. 这次彻底了解了一下这俩货的用途。</p>
 <pre><code class="hljs javascript">&lt;template&gt;
     <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">el-form</span> <span class="hljs-attr">:model</span>=<span class="hljs-string">&quot;form&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;el-form&quot;</span>&gt;</span></span>
@@ -519,7 +519,7 @@ villagers.<span class="hljs-title function_">filter</span>(<span class="hljs-fun
         <span class="hljs-keyword">return</span> villager.<span class="hljs-property">name</span>.<span class="hljs-title function_">includes</span>(form.<span class="hljs-property">name</span>);
     &#125;);
 &#125;</code></pre>
-
+</div>
                 
             </div>
             <hr/>
@@ -1166,7 +1166,7 @@ villagers.<span class="hljs-title function_">filter</span>(<span class="hljs-fun
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

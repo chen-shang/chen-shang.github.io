@@ -320,7 +320,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-28
+                    2026-05-03
                 </div>
                 
 
@@ -366,9 +366,9 @@
 <li>用mermaid画出业务流程图</li>
 </ol>
 </blockquote>
-<p><img src="1777276934896.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777276934896.png" alt></p>
 <pre class="mermaid">flowchart TD
-    START([入账工单提交]) --> Q1{系统是否存在官费调增记录<br/>且预结算官费金额之和 > 0?}
+    START([入账工单提交]) --> Q1{系统是否存在官费调增记录<br>且预结算官费金额之和 > 0?}
 
     %% 不存在官费调增记录的情况
     Q1 -- 否 --> SUCCESS1[可以提交]
@@ -377,28 +377,28 @@
     Q1 -- 是 --> Q2{工单是否包含官费?}
 
     %% 未包含官费
-    Q2 -- 否 --> FAIL1[无法提交<br/>该客户存在官费调增记录<br/>请核实是否包含官费]
+    Q2 -- 否 --> FAIL1[无法提交<br>该客户存在官费调增记录<br>请核实是否包含官费]
 
     %% 包含官费
-    Q2 -- 是 --> Q3{官费垫付方是否为<br/>处置方垫付或投资方垫付?}
+    Q2 -- 是 --> Q3{官费垫付方是否为<br>处置方垫付或投资方垫付?}
 
     %% 是处置方/投资方垫付
-    Q3 -- 是 --> FAIL2[无法提交<br/>该客户已存在官费调增记录<br/>请核实官费垫付方]
+    Q3 -- 是 --> FAIL2[无法提交<br>该客户已存在官费调增记录<br>请核实官费垫付方]
 
     %% 非处置方/投资方垫付
-    Q3 -- 否 --> Q4{该资产包是否存在<br/>往来退费还款或委外退费还款<br/>的入账记录?}
+    Q3 -- 否 --> Q4{该资产包是否存在<br>往来退费还款或委外退费还款<br>的入账记录?}
 
     %% 不存在历史退费记录
     Q4 -- 否 --> SUCCESS2[可以提交]
 
     %% 存在历史退费记录
-    Q4 -- 是 --> Q5{本次官费垫付方与<br/>历史入账记录一致?}
+    Q4 -- 是 --> Q5{本次官费垫付方与<br>历史入账记录一致?}
 
     %% 一致
     Q5 -- 是 --> SUCCESS3[可以提交]
 
     %% 不一致
-    Q5 -- 否 --> FAIL3[无法提交<br/>过往官费垫付方为xxx<br/>与本次不一致<br/>请修改官费垫付方]</pre>
+    Q5 -- 否 --> FAIL3[无法提交<br>过往官费垫付方为xxx<br>与本次不一致<br>请修改官费垫付方]</pre>
 <h3 id="1-2-Jar包冲突解决">1.2 Jar包冲突解决</h3>
 <p><strong>场景</strong>：执行Word模板填充功能时，使用EasyPoi库导出Word文档失败，抛出 <code>NoSuchMethodError</code>异常。</p>
 <p><strong>错误日志</strong>：</p>
@@ -417,7 +417,7 @@ opencode(GML) 半小时没解决，还反复在哪试错，耗我token。
 codex(GPT) 3分钟解决，一次命中。
 
 看了他们的思维链，冷静的可怕。有时候得反思向Agent学习了，真是教会了徒弟饿死了师傅。</code></pre>
-<p><img src="1776676182890.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1776676182890.png" alt></p>
 <h3 id="1-3-服务启动失败排查">1.3 服务启动失败排查</h3>
 <p><strong>场景</strong>：前端启动失败，不知道原因，也不关心原因</p>
 <blockquote>
@@ -449,11 +449,11 @@ codex(GPT) 3分钟解决，一次命中。
 <h3 id="2-1-多轮对话开发应用">2.1 多轮对话开发应用</h3>
 <p>通过多轮对话，从零开发了一个完整的应用。</p>
 <p>案例一：<br>
-<img src="1776740688832.png" alt=""></p>
+<img src="/2026/04/20/bc789f9b/1776740688832.png" alt></p>
 <p>案例二：<br>
-<img src="1777290299761.png" alt=""></p>
+<img src="/2026/04/20/bc789f9b/1777290299761.png" alt></p>
 <h3 id="2-2-描述bug-自动修复">2.2 描述bug,自动修复</h3>
-<p><img src="1777275044329.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777275044329.png" alt></p>
 <blockquote>
 <p>提示词：管理后台 模型管理 保存的时候失败 [Pasted text #1 +17 lines][Pasted text #2 +124 lines]</p>
 </blockquote>
@@ -461,7 +461,7 @@ codex(GPT) 3分钟解决，一次命中。
 <blockquote>
 <p>提示词：请阅读<a target="_blank" rel="noopener" href="https://alibaba.github.io/page-agent/docs/introduction/overview%EF%BC%8C%E5%B9%B6%E5%B8%AE%E6%88%91%E9%9B%86%E6%88%90%E5%88%B0%E6%88%91%E7%9A%84hexo%E5%8D%9A%E5%AE%A2%E4%B8%AD">https://alibaba.github.io/page-agent/docs/introduction/overview，并帮我集成到我的hexo博客中</a></p>
 </blockquote>
-<p><img src="1777276418750.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777276418750.png" alt></p>
 <h2 id="3-代码评审">3. 代码评审</h2>
 <h3 id="3-1-提示词代码评审">3.1 提示词代码评审</h3>
 <blockquote>
@@ -480,13 +480,13 @@ codex(GPT) 3分钟解决，一次命中。
 <p>提示词：/review <a target="_blank" rel="noopener" href="https://dev-git.vanxlink.com/autodev-app-repo/pn3xeltib3/vxlink-bill-server/-/merge_requests/397">https://dev-git.vanxlink.com/autodev-app-repo/pn3xeltib3/vxlink-bill-server/-/merge_requests/397</a> 使用glab工具<br>
 提示词：把问题提交到评论里头</p>
 </blockquote>
-<p><img src="1776828624240.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1776828624240.png" alt></p>
 <h3 id="3-2-三方skills代码评审">3.2 三方skills代码评审</h3>
 <p>使用 skills: /code-review:code-review 自动评审和提交，但我更倾向于先review，我看过后经过询问跳过不必要的建议，再提交。</p>
 <blockquote>
 <p>提示词：/code-review:code-reviewreview <a target="_blank" rel="noopener" href="https://dev-git.vanxlink.com/autodev-app-repo/pn3xeltib3/vxlink-bill-server/-/merge_requests/397">https://dev-git.vanxlink.com/autodev-app-repo/pn3xeltib3/vxlink-bill-server/-/merge_requests/397</a> 使用glab工具</p>
 </blockquote>
-<p><img src="1776999625953.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1776999625953.png" alt></p>
 <h3 id="3-3-安装glab工具">3.3 安装glab工具</h3>
 <p>使用glab工具 这个经常写，好吧，那就入记忆吧。因为不写，AI 可能会先用gh工具。</p>
 <pre><code class="hljs txt">.
@@ -529,13 +529,13 @@ codex(GPT) 3分钟解决，一次命中。
 <p>提示词：上面的sql ，根据下表的DDL [省略DDL]更新：添加上减免本金金额、减免利息金额、减免官费金额、减免费用金额、减免本金比例、减免官费比例、减免息费比例、基准日本金余额、基准日息费余额、目前已还款官费，并且把上面的内容，在额外拼接到一个字段中，叫减免信息。并按照总金额、本、官、息、费以及减免的顺序回车换行展示。</p>
 </blockquote>
 <p>AI成功更新SQL，添加了所需字段并拼接成格式化的减免信息字段。</p>
-<p><img src="1776999973227.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1776999973227.png" alt></p>
 <h2 id="5-代码规范">5. 代码规范</h2>
 <h3 id="5-1-解决命名困难症">5.1 解决命名困难症</h3>
 <p><strong>痛点</strong>：经常为一个变量名纠结半天，真正做到了见名知意。</p>
 <p><strong>解决</strong>：AI生成的代码命名非常规范。像xxxPO再也没有了（非驼峰命名，idea下划线提示，但这玩意也不能在团队间规约，因为很多人这么写）</p>
 <p>再也不用忍受这样的命名了。</p>
-<p><img src="1776699997306.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1776699997306.png" alt></p>
 <h3 id="5-2-团队编码标准建立">5.2 团队编码标准建立</h3>
 <p>参考 <a href="!https://chen-shang.github.io/2026/04/20/ai/codeai/ai-coding-rules/">Ai Coding Rules 规约</a>，帮助制定团队编码规范。</p>
 <h2 id="6-自动脚本">6. 自动脚本</h2>
@@ -603,7 +603,7 @@ open /Applications/NetEaseMusic.app</code></pre>
 <blockquote>
 <p>提示词：/flow com.vxlink.repay.ext.service.logic.impl.BankInvoiceMatchServiceImpl#calculateAndMatch</p>
 </blockquote>
-<p><img src="1777000766046.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777000766046.png" alt></p>
 <h3 id="8-2-资产包征信状态分析">8.2 资产包征信状态分析</h3>
 <p>通过AI理解复杂代码逻辑：</p>
 <ul>
@@ -617,11 +617,11 @@ open /Applications/NetEaseMusic.app</code></pre>
 <blockquote>
 <p>这段代码在干什么？</p>
 </blockquote>
-<p><img src="1777203329246.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777203329246.png" alt></p>
 <blockquote>
 <p>追问：这段代码的业务逻辑是什么？</p>
 </blockquote>
-<p><img src="1777203438725.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777203438725.png" alt></p>
 <blockquote>
 <p>这段代码的业务逻辑使用mermaid画成流程图</p>
 </blockquote>
@@ -629,8 +629,8 @@ open /Applications/NetEaseMusic.app</code></pre>
 <blockquote>
 <p>提示词：/flow com.vxlink.registration.ext.service.caseInfo.impl.TcCaseInfoExtServiceImpl#updateCreditSubmitStatus</p>
 </blockquote>
-<p><img src="1777203542874.png" alt=""></p>
-<p><img src="1777203605997.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777203542874.png" alt></p>
+<p><img src="/2026/04/20/bc789f9b/1777203605997.png" alt></p>
 <h3 id="8-3-逾期天数计算定位">8.3 逾期天数计算定位</h3>
 <blockquote>
 <p>提示词：帮我找一下逾期天数计算逻辑</p>
@@ -656,11 +656,11 @@ open /Applications/NetEaseMusic.app</code></pre>
 </blockquote>
 <div style="display: flex; gap: 20px; margin: 20px 0;">
   <div style="flex: 1; text-align: center;">
-    <img src="1776961367981.png" alt="" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+    <img src="/2026/04/20/bc789f9b/1776961367981.png" alt style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
     <p style="margin-top: 10px; font-size: 14px; color: #666;">英文报告</p>
   </div>
   <div style="flex: 1; text-align: center;">
-    <img src="1776961378942.png" alt="" style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
+    <img src="/2026/04/20/bc789f9b/1776961378942.png" alt style="max-width: 100%; height: auto; border: 1px solid #ddd; border-radius: 4px;">
     <p style="margin-top: 10px; font-size: 14px; color: #666;">中文翻译</p>
   </div>
 </div>
@@ -696,7 +696,7 @@ open /Applications/NetEaseMusic.app</code></pre>
 <blockquote>
 <p>提示词：hexo生成的代码框，在代码文本内容太长的时候，展示超过了文章内容区域，最好做成滚动条横向滑动展示的效果</p>
 </blockquote>
-<p><img src="/1777002340840.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777002340840.png" alt></p>
 <h3 id="9-5-学习资源推荐">9.5 学习资源推荐</h3>
 <p><strong>场景</strong>：在AI工具使用过程中，需要不断学习新的技巧和最佳实践。</p>
 <p><strong>推荐资源</strong>：</p>
@@ -714,11 +714,11 @@ open /Applications/NetEaseMusic.app</code></pre>
 <p><strong>使用的工具</strong>：豆包、Gemini</p>
 <p><strong>过程</strong>：描述想要的风格（轻音乐、钢琴曲、缓解压力），AI生成音乐。</p>
 <h4 id="歌词谱曲">歌词谱曲</h4>
-<p><img src="1777275833283.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1777275833283.png" alt></p>
 <p><a target="_blank" rel="noopener" href="https://www.doubao.com/music-sharing?vid=v0d69cg10004d4g4dsnog65krb0q3e1g&amp;source_type=mobile&amp;creation_id=30318703976028418">去听</a></p>
 <h3 id="10-3-PPT自动制作">10.3 PPT自动制作</h3>
 <p>先给AI一个话题，然后在慢慢描述，最后产出一个PPT。</p>
-<p><img src="1776752328199.png" alt=""></p>
+<p><img src="/2026/04/20/bc789f9b/1776752328199.png" alt></p>
 
                 
             </div>
@@ -1108,7 +1108,7 @@ open /Applications/NetEaseMusic.app</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            opencode 、Claude Code、Codex 以及常用工具
+                            opencode、Claude Code、Codex 以及常用工具的快捷操作和配置
                         
                     </div>
                     <div class="publish-info">
@@ -1140,6 +1140,10 @@ open /Applications/NetEaseMusic.app</code></pre>
                     
                     <a href="/tags/opencode/">
                         <span class="chip bg-color">opencode</span>
+                    </a>
+                    
+                    <a href="/tags/claude-code/">
+                        <span class="chip bg-color">claude-code</span>
                     </a>
                     
                 </div>
@@ -1374,7 +1378,7 @@ open /Applications/NetEaseMusic.app</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

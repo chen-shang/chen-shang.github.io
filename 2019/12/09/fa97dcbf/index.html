@@ -312,7 +312,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-09-05
+                    2026-04-28
                 </div>
                 
 
@@ -495,19 +495,19 @@ Join 方法：本质上还是根据wait方法实现的。分析join源码发现j
 <p>TIMED_WAITING</p>
 <ul>
 <li>
-<li>{@link #sleep Thread.sleep}
+</li><li>{@link #sleep Thread.sleep}
 </li>
 <li>
-<li>{@link Object#wait(long) Object.wait} with timeout
+</li><li>{@link Object#wait(long) Object.wait} with timeout
 </li>
 <li>
-<li>{@link #join(long) Thread.join} with timeout
+</li><li>{@link #join(long) Thread.join} with timeout
 </li>
 <li>
-<li>{@link LockSupport#parkNanos LockSupport.parkNanos}
+</li><li>{@link LockSupport#parkNanos LockSupport.parkNanos}
 </li>
 <li>
-<li>{@link LockSupport#parkUntil LockSupport.parkUntil}
+</li><li>{@link LockSupport#parkUntil LockSupport.parkUntil}
 </li>
 </ul>
 <p>TIMED_WATTING 状态一定是和时间有关，等时间到了，自动出发唤醒（其实现原理是，先把线程ID 放到一个队列中，然后每隔时钟周期都检查是不是有线程到时间了，到了就把状态改为RUNABLE)。这个定时唤醒是系统时钟搞得鬼，系统时钟也是独立运行的时钟，可以像它上面注册时钟事件，当时间到了之后，就会发起中断，以唤醒进程。而且cpu一定会响应的。</p>
@@ -1071,7 +1071,7 @@ Join 方法：本质上还是根据wait方法实现的。分析join源码发现j
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

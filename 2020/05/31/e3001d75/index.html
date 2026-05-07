@@ -320,7 +320,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-17
+                    2026-04-28
                 </div>
                 
 
@@ -418,7 +418,7 @@ cat       csh       df        expr      ksh       ln        mv        pwd       
 </blockquote>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】Linux工具的使用不必死记硬背,不必死记硬背,不必死记硬背,即查即用即可 </font><br /></p>
+<p><font color="#dd0000">【强制】Linux工具的使用不必死记硬背,不必死记硬背,不必死记硬背,即查即用即可 </font><br></p>
 </blockquote>
 <h2 id="运行方式">运行方式</h2>
 <p>既可以在命令行交互的运行,又可以将指令固化到文件中执行</p>
@@ -442,15 +442,15 @@ chenshang@chenshangMacBook-Pro:~$ ./test.sh
 chenshang@chenshangMacBook-Pro:~$</code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【推荐】脚本以均<code>.sh</code>结尾,使人可以一目了然知道该文件是脚本文件 </font><br /></p>
+<p><font color="#dd0000">【推荐】脚本以均<code>.sh</code>结尾,使人可以一目了然知道该文件是脚本文件 </font><br></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000">【推荐】脚本执行建议明确指定解析器,这样可以不用每个文件都单独赋予可执行权限 </font><br /></p>
+<p><font color="#dd0000">【推荐】脚本执行建议明确指定解析器,这样可以不用每个文件都单独赋予可执行权限 </font><br></p>
 </blockquote>
 <p>如果要固化到文件中,那我们的脚本该怎么写呢？</p>
 <h2 id="关于首行">关于首行</h2>
 <blockquote>
-<p><font color="#dd0000">【推荐】推荐使用 <code>#!/usr/bin/env bash</code> 作为 shebang </font><br /></p>
+<p><font color="#dd0000">【推荐】推荐使用 <code>#!/usr/bin/env bash</code> 作为 shebang </font><br></p>
 </blockquote>
 <p>我们往往看到大多数Shell脚本的第一行是 <code>#!/bin/bash</code> 这句话,当然也有 <code>#!/bin/sh</code>、<code>#!/usr/bin/bash</code>,这几种写法也都算是正确,当然还有一些野路子的写法,为了避免误导这里就不示例了。本Shell规约并不推荐使用上面的任何一种,而是使用 <code>#!/usr/bin/env bash</code> 这种。</p>
 <p>首行关系到运行脚本的时候究竟使用哪种Shell解释器。这也说明Shell是一种解释性语言,脚本从上到下每读一行就执行一行,在遇到第一行是 <code>#!/bin/bash</code> 的时候就会加载 bash 相关的环境,在遇到 <code>#!/bin/sh</code> 就会加载 sh 相关的环境,避免在执行脚本的时候遇到意想不到的错误。但一开始我并不知道我电脑上安装了哪些Shell,默认使用的又是哪一个Shell,我脚本移植到别人的计算机上执行,我更不可能知道别人的计算机是Ubuntu还是Arch或是Centos。为了提高程序的移植性,本Shell规约规定使用 <code>#!/usr/bin/env bash</code>, <code>#!/usr/bin/env bash</code> 会自己判断使用的Shell是目录在哪,并加载相应的环境变量。</p>
@@ -541,7 +541,7 @@ array[n]=valueN</code></pre>
 <p>可以不使用连续的下标,而且下标的范围没有限制。</p>
 <h4 id="读取数组">读取数组</h4>
 <blockquote>
-<p><font color="#dd0000"> 读取数组元素值的一般格式是:<code>${数组名[下标]}</code>。</font><br /><br>
+<p><font color="#dd0000"> 读取数组元素值的一般格式是:<code>${数组名[下标]}</code>。</font><br><br>
 例如:valuen=${array[n]}<br>
 使用 @ 或 * 符号可以获取数组中的所有元素。<br>
 例如:<code>echo ${array[@]}</code>, <code>echo ${array[*]}</code></p>
@@ -555,10 +555,10 @@ length=$&#123;#array[*]&#125;
 lengthn=$&#123;#array[n]&#125;</code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】传递数组使用 “${list[*]}” 形式 </font><br /></p>
+<p><font color="#dd0000">【强制】传递数组使用 “${list[*]}” 形式 </font><br></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000">【强制】接收数组使用 array=($*) 形式 </font><br /></p>
+<p><font color="#dd0000">【强制】接收数组使用 array=($*) 形式 </font><br></p>
 </blockquote>
 <p>示例:</p>
 <pre><code class="hljs bash"><span class="hljs-comment"># @return the number of elements in this list</span>
@@ -578,26 +578,26 @@ assertEquals <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;
 </ol>
 <p>本shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【推荐】不要定义与环境变量重名的局部变量,会改变环境变量的值,进而影响后续脚本的执行。</font><br /></p>
+<p><font color="#dd0000">【推荐】不要定义与环境变量重名的局部变量,会改变环境变量的值,进而影响后续脚本的执行。</font><br></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000">【推荐】如果要打破上一个推荐,修改后及时修改回来。例如 IFS 代表分隔符的情况。</font><br /></p>
+<p><font color="#dd0000">【推荐】如果要打破上一个推荐,修改后及时修改回来。例如 IFS 代表分隔符的情况。</font><br></p>
 </blockquote>
 <h3 id="变量定义">变量定义</h3>
 <p>基本形式 <code>变量=变量值</code></p>
 <p>本shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】变量名和等号之间不能有空格,这可能和你熟悉的所有编程语言都不一样。</font><br /></p>
+<p><font color="#dd0000">【强制】变量名和等号之间不能有空格,这可能和你熟悉的所有编程语言都不一样。</font><br></p>
 </blockquote>
 <h3 id="变量取值">变量取值</h3>
 <blockquote>
-<p><font color="#dd0000">【强制】变量取值用 “${}”, 使用 {} 包裹,给所有变量加上花括号,防止产生歧义 </font><br /></p>
+<p><font color="#dd0000">【强制】变量取值用 “${}”, 使用 {} 包裹,给所有变量加上花括号,防止产生歧义 </font><br></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000">【强制】变量取值用 “${}”, 使用 “” 包裹,防止分词 </font><br /></p>
+<p><font color="#dd0000">【强制】变量取值用 “${}”, 使用 “” 包裹,防止分词 </font><br></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000">【强制】若需要将调用的函数的返回结果赋值给local变量,使用 $(),不推荐使用 `` </font><br /></p>
+<p><font color="#dd0000">【强制】若需要将调用的函数的返回结果赋值给local变量,使用 $(),不推荐使用 `` </font><br></p>
 </blockquote>
 <h3 id="变量作用域">变量作用域</h3>
 <p>局部变量如果不明确变量的作用域则默认是全局可见的,也就是一个变量从定义它的位置开始到脚本的最后一行,一直是可以访问的,即使是在函数里面定义的,在函数外面也是可以访问的。这一点和我们用的Java是不一样的。Java在大括号内定义的变量只能在大括号内可见。如果想要实现在大括号的的作用于可见的变量,我们必须显示的用local关键字修饰。例如</p>
@@ -615,19 +615,19 @@ f1            <span class="hljs-comment">#这里得先调用一下</span>
 <p>a 在函数外面定义,系全局作用域；在f1里面改变了a的值,同时定义了一个全局作用域的变量b ,和一个 函数作用域的变量c。 所以 b 在大括号外是可以被访问的,但是c却不能被访问。</p>
 <p>本shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【推荐】能缩小变量作用域的就缩小变量的作用域,也就是能用local的就用local修饰</p>
+<p><font color="#dd0000">【推荐】能缩小变量作用域的就缩小变量的作用域,也就是能用local的就用local修饰</font></p>
 </blockquote>
 <h3 id="只读变量">只读变量</h3>
 <p>使用 readonly 命令可以将变量定义为只读变量,只读变量的值不能被改变。</p>
 <p>本shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】认定为常量的必须用readonly修饰,相当于 Java 中的final</p>
+<p><font color="#dd0000">【强制】认定为常量的必须用readonly修饰,相当于 Java 中的final</font></p>
 </blockquote>
 <h3 id="删除变量">删除变量</h3>
 <p>使用 unset 命令可以删除变量,变量被删除后不能再次使用。unset 命令不能删除只读变量。</p>
 <p>本shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【推荐】删除变量能不用就不用,一般没什么应用场景</p>
+<p><font color="#dd0000">【推荐】删除变量能不用就不用,一般没什么应用场景</font></p>
 </blockquote>
 <h2 id="关于注释">关于注释</h2>
 <p>除脚本首行外,所有以 <code>#</code> 开头的语句都将成为注释。</p>
@@ -652,17 +652,17 @@ f1            <span class="hljs-comment">#这里得先调用一下</span>
 &#125;</code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】函数需有注释标识该函数的用途、入参变量、函数的返回值类型</p>
+<p><font color="#dd0000">【强制】函数需有注释标识该函数的用途、入参变量、函数的返回值类型</font></p>
 </blockquote>
 <blockquote>
 <p><font color="#dd0000">【强制】函数的注释 <code>#</code> 顶格写, 井号后面紧跟一个空格<br>
-说明: 对于该格式的要求是为了最后生成函数的帮助文档是用的(markdown语法),然后是注释的内容,注释尽量简短且在一行,最后跟的是函数的类型。</p>
+说明: 对于该格式的要求是为了最后生成函数的帮助文档是用的(markdown语法),然后是注释的内容,注释尽量简短且在一行,最后跟的是函数的类型。</font></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000">【强制】函数内注释 <code>#</code> 与缩进格式对整齐</p>
+<p><font color="#dd0000">【强制】函数内注释 <code>#</code> 与缩进格式对整齐</font></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000">【强制】变量的注释紧跟在变量的后面,不推荐换行写注释</p>
+<p><font color="#dd0000">【强制】变量的注释紧跟在变量的后面,不推荐换行写注释</font></p>
 </blockquote>
 <h2 id="关于函数">关于函数</h2>
 <p>函数定义的形式是</p>
@@ -677,13 +677,13 @@ f1            <span class="hljs-comment">#这里得先调用一下</span>
 &#125;</code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000"> 【强制】认定为常函数的必须用readonly修饰,相当于 Java 中的final。</p>
+<p><font color="#dd0000"> 【强制】认定为常函数的必须用readonly修饰,相当于 Java 中的final。</font></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000"> 【推荐】使用关键字 <code>function</code> 显示定义的函数为 public 的函数,可以供 外部脚本以 <code>sh 脚本 函数 函数入参</code> 的形式调用,可以认为成Java当中的public的方法</p>
+<p><font color="#dd0000"> 【推荐】使用关键字 <code>function</code> 显示定义的函数为 public 的函数,可以供 外部脚本以 <code>sh 脚本 函数 函数入参</code> 的形式调用,可以认为成Java当中的public的方法</font></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000"> 【推荐】未使用关键字 <code>function</code> 显示定义的函数为 private 的函数, 仅供本脚本内部调用,可以认为成Java中的私有方法,注意这种private是人为规定的,并不是Shell的语法,不推荐以 &gt; <font color="#dd0000"> <code>sh 脚本 函数 函数入参</code> 的形式调用,注意是不推荐而不是不能。</p>
+<p><font color="#dd0000"> 【推荐】未使用关键字 <code>function</code> 显示定义的函数为 private 的函数, 仅供本脚本内部调用,可以认为成Java中的私有方法,注意这种private是人为规定的,并不是Shell的语法,不推荐以 &gt; <font color="#dd0000"> <code>sh 脚本 函数 函数入参</code> 的形式调用,注意是不推荐而不是不能。</font></font></p>
 </blockquote>
 <p>说明:本Shell规约这样做的目的就在于使脚本具有一定的封装性,看到 <code>function</code> 修饰的就知道这个函数能被外部调用, 没有被修饰的函数就仅供内部调用。你就知道如果你修改的函数的影响范围. 如果是 被function 修饰的函数,修改后可能影响到外部调用他的脚本, 而修改未被function修饰的函数的时候,仅仅影响本文件中其他函数。</p>
 <p>如 <a target="_blank" rel="noopener" href="http://core.sh">core.sh</a> 脚本内容如下是</p>
@@ -770,7 +770,7 @@ bash ChangBaiShanFetcher.sh main           <span class="hljs-comment">#执行其
 </table>
 <p>本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000"> 【强制】 在函数内部首先使用有意义的变量名接受参数,然后在使用这些变量进行操作,禁止直接操作$1,$2等,除非这些变量只用一次</p>
+<p><font color="#dd0000"> 【强制】 在函数内部首先使用有意义的变量名接受参数,然后在使用这些变量进行操作,禁止直接操作$1,$2等,除非这些变量只用一次</font></p>
 </blockquote>
 <h3 id="函数注释">函数注释</h3>
 <p>函数类型的概念是从函数编程语言中的概念偷过来的,Shell函数的函数类型指的是函数的输入到函数的输入的映射关系</p>
@@ -825,10 +825,10 @@ version=$?
 <p>注意这里不用 <code>version=$(check_version)</code> 这种形式获取结果,这样也是获取不到结果的</p>
 <p>本Shell规约规定:</p>
 <blockquote>
-<p><font color="#dd0000"> 【推荐】不推荐使用return方式返回,推荐使用echo方式返回结果</p>
+<p><font color="#dd0000"> 【推荐】不推荐使用return方式返回,推荐使用echo方式返回结果</font></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000"> 【推荐】返回结果类型是Boolean类型,也就是说函数的功能是起判断作用,返回结果是真或者假的时候使用才显示 return 返回结果</p>
+<p><font color="#dd0000"> 【推荐】返回结果类型是Boolean类型,也就是说函数的功能是起判断作用,返回结果是真或者假的时候使用才显示 return 返回结果</font></p>
 </blockquote>
 <p>例如</p>
 <pre><code class="hljs bash"><span class="hljs-comment"># 检查网络 [Boolean]&lt;-()</span>
@@ -884,7 +884,7 @@ BODY_END</code></pre>
 <p>本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
-</blockquote>
+</font></blockquote>
 <p>【强制】将HEAD_KEYWORD和初始化命令或者参数放在第一行；<br>
 【强制】将BODY_BEGIN同样放在第一行；<br>
 【强制】复合命令中的BODY部分以2个空格缩进；<br>
@@ -941,14 +941,14 @@ pattern )
 <p>本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
-</blockquote>
+</font></blockquote>
 <p>【强制】 if\while\until 后面的判断 使用 双中括号<code>[[]]</code></p>
 <h2 id="数学计算">数学计算</h2>
 <p>注释 1:shell 的自加、自减操作符在使用上和 c 语言一样。-- 或者 ++ 出现在变量前面是前缀形式,先运算后赋值；-- 或者 ++ 出现在变量后面是后缀形式,先赋值后运算。<br>
 本Shell规约规定</p>
 <blockquote>
 <font color="#dd0000">
-</blockquote>
+</font></blockquote>
 <p>【推荐】明确知道变量是整数,计算使用$(())包裹计算,(())内对变量的操作不用$取值<br>
 正确 a=$((1+1))<br>
 反例 a=$(($a++))<br>
@@ -962,16 +962,16 @@ pattern )
 <blockquote>
 <p><font color="#dd0000">【强制】脚本中变量、函数、文件的命名均不能以数字、下划线、$开头,也不能以下划线或者$结尾<br>
 反例: _name / _<em>name / $name / name</em> / name$ / 5name<br>
-说明: $作为Shell语言的取值符号,其他命名约束参考Java规约。</p>
+说明: $作为Shell语言的取值符号,其他命名约束参考Java规约。</font></p>
 </blockquote>
 <blockquote>
 <p><font color="#dd0000">【强制】代码中的命名严禁使用拼音与英文混合的方式,更不允许直接使用中文的方式。<br>
 正例:alibaba / taobao / youku / hangzhou 等国际通用的名称,可视同英文。<br>
-说明:正确的英文拼写和语法可以让阅读者易于理解,避免歧义。注意,即使纯拼音命名方式 也要避免采用。</p>
+说明:正确的英文拼写和语法可以让阅读者易于理解,避免歧义。注意,即使纯拼音命名方式 也要避免采用。</font></p>
 </blockquote>
 <blockquote>
 <p><font color="#dd0000">【强制】参数名、局部变量都统一使用 lowerCamelCase 风格,必须遵从 驼峰形式。<br>
-正例: localValue / errMsg / userName</p>
+正例: localValue / errMsg / userName</font></p>
 </blockquote>
 <blockquote>
 <p><font color="#dd0000">【推荐】使用下划线分割函数命名,都统一使用 lowerCamelCase 风格,必须遵从 驼峰形式。<br>
@@ -980,30 +980,30 @@ pattern )
 get_user_english_name()  vs getUserEnglishName()<br>
 log_info() vs logInfo()<br>
 map_add() vs mapAdd()<br>
-log_info “xxx” 在调用的时候类比于Java 的<code>log.info(&quot;xxx&quot;)</code></p>
+log_info “xxx” 在调用的时候类比于Java 的<code>log.info(&quot;xxx&quot;)</code></font></p>
 </blockquote>
 <blockquote>
 <p><font color="#dd0000">【强制】文件名 UpperCamelCase 风格,首字母大写的驼峰形式<br>
 正例:BaseLog.sh / <a target="_blank" rel="noopener" href="http://BaseString.sh">BaseString.sh</a><br>
 说明:类比Java的类,我们把相同功能的函数抽象到一个脚本文件中,留待后续其他脚本引用。随着我们写的脚本日渐增多<br>
-我们很有必要分门别类的将它们聚集到一个文本文件中,一是方便后续查阅,而是方便后续调用</p>
+我们很有必要分门别类的将它们聚集到一个文本文件中,一是方便后续查阅,而是方便后续调用</font></p>
 </blockquote>
 <blockquote>
 <p><font color="#dd0000">【强制】常量命名全部大写,单词间用下划线隔开,力求语义表达完整清楚,不要嫌名字长。<br>
-正例:MAX_STOCK_COUNT 反例:MAX_COUNT</p>
+正例:MAX_STOCK_COUNT 反例:MAX_COUNT</font></p>
 </blockquote>
 <blockquote>
 <p><font color="#dd0000">【推荐】文件夹名字大写<br>
 【强制】文件名以 .sh 结尾<br>
-说明:虽然不用.sh结尾或者以任何其他新式结尾都可以运行,但是以 .sh结尾可以一眼看出就是脚本文件</p>
+说明:虽然不用.sh结尾或者以任何其他新式结尾都可以运行,但是以 .sh结尾可以一眼看出就是脚本文件</font></p>
 </blockquote>
 <p><a name="end"></a><br>
 本Shell规约规定</p>
 <blockquote>
-<p><font color="#dd0000">【强制】使用两个空格进行缩进,不适用tab缩进</p>
+<p><font color="#dd0000">【强制】使用两个空格进行缩进,不适用tab缩进</font></p>
 </blockquote>
 <blockquote>
-<p><font color="#dd0000">【推荐】不在一行的时候使用 <code>\</code> 进行换行,使用 <code>\</code> 换行的原则是整齐美观</p>
+<p><font color="#dd0000">【推荐】不在一行的时候使用 <code>\</code> 进行换行,使用 <code>\</code> 换行的原则是整齐美观</font></p>
 </blockquote>
 <p>例子:</p>
 <pre><code class="hljs bash"><span class="hljs-meta">#!/usr/bin/env bash</span>
@@ -1742,7 +1742,7 @@ log_info “xxx” 在调用的时候类比于Java 的<code>log.info(&quot;xxx&q
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

@@ -312,7 +312,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-28
+                    2026-05-03
                 </div>
                 
 
@@ -360,16 +360,16 @@ export HTTPS_PROXY=http://127.0.0.1:7890</code></pre>
 → 部分软件认，部分不认</li>
 </ul>
 <p><strong>最安全、永远不出错的写法：大小都写。</strong></p>
-<p><img src="1771687853711.png" alt=""></p>
+<p><img src="/2026/02/18/fab1391f/1771687853711.png" alt></p>
 <p>如果不开启代理访问google，肯定超时</p>
-<pre><code class="hljs plaintext">curl -I -m 5 google.com
-curl: (28) Connection timed out after 5006 millisecond</code></pre>
+<pre><code class="hljs plaintext">curl -I -m 5 google.com</code></pre>
+<pre><code class="hljs plaintext">curl: (28) Connection timed out after 5006 millisecond</code></pre>
 <p>开启代理，不明确告诉curl 走代理，肯定超时</p>
-<pre><code class="hljs plaintext">curl -I -m 5 google.com
-curl: (28) Connection timed out after 5006 millisecond</code></pre>
+<pre><code class="hljs plaintext">curl -I -m 5 google.com</code></pre>
+<pre><code class="hljs plaintext">curl: (28) Connection timed out after 5006 millisecond</code></pre>
 <p>没有开启代理，还强行让curl 走代理，肯定不行</p>
-<pre><code class="hljs plaintext">curl -I -m 5 --proxy http://127.0.0.1:7890 google.com
-curl: (7) Failed to connect to 127.0.0.1 port 7890 after 0 ms: Couldn&#x27;t connect to server</code></pre>
+<pre><code class="hljs plaintext">curl -I -m 5 --proxy http://127.0.0.1:7890 google.com</code></pre>
+<pre><code class="hljs plaintext">curl: (7) Failed to connect to 127.0.0.1 port 7890 after 0 ms: Couldn&#x27;t connect to server</code></pre>
 <p>开启代理，在告诉curl 走代理，才可以访问成功</p>
 <pre><code class="hljs plaintext">curl -I -m 5 --proxy http://127.0.0.1:7890 google.com
 HTTP/1.1 301 Moved Permanently
@@ -780,7 +780,7 @@ The document has moved
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            如何知道自己的服务器适合跑什么样的大模型
                         
                     </div>
                     <div class="publish-info">
@@ -957,7 +957,7 @@ The document has moved
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             

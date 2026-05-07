@@ -10,7 +10,19 @@
   <rights>All rights reserved 2026, 陈尚</rights>
   <subtitle>涓涓细流 辟阖汪洋</subtitle>
   <title>涓涓细流</title>
-  <updated>2026-04-26T10:52:13.144Z</updated>
+  <updated>2026-05-05T14:36:51.254Z</updated>
+  <entry>
+    <author>
+      <name>陈尚</name>
+    </author>
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    <id>https://chen-shang.github.io/2026/05/05/7e4e1b0b/</id>
+    <link href="https://chen-shang.github.io/2026/05/05/7e4e1b0b/"/>
+    <published>2026-05-05T14:36:50.000Z</published>
+    <title>AI越狱</title>
+    <updated>2026-05-05T14:36:51.254Z</updated>
+  </entry>
   <entry>
     <author>
       <name>陈尚</name>
@@ -29,7 +41,7 @@
 <h2]]>
     </summary>
     <title>我github关注的项目分析报告</title>
-    <updated>2026-04-26T10:52:13.144Z</updated>
+    <updated>2026-04-28T06:42:51.264Z</updated>
   </entry>
   <entry>
     <author>
@@ -39,6 +51,7 @@
     <category term="codeai" scheme="https://chen-shang.github.io/categories/ai/codeai/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     <category term="opencode" scheme="https://chen-shang.github.io/tags/opencode/"/>
+    <category term="claude-code" scheme="https://chen-shang.github.io/tags/claude-code/"/>
     <id>https://chen-shang.github.io/2026/04/20/63952edd/</id>
     <link href="https://chen-shang.github.io/2026/04/20/63952edd/"/>
     <published>2026-04-20T04:10:41.000Z</published>
@@ -48,7 +61,7 @@
 <pre><code class="hljs bash"><span class="hljs-built_in">alias</span> @oc=<span]]>
     </summary>
     <title>Coding Agent 常用操作指南</title>
-    <updated>2026-04-28T06:26:26.485Z</updated>
+    <updated>2026-05-07T03:09:25.385Z</updated>
   </entry>
   <entry>
     <author>
@@ -69,7 +82,7 @@
 <h3 id="1-1-需求文档分析">1.1]]>
     </summary>
     <title>我的AI工具实战指南</title>
-    <updated>2026-04-28T06:26:26.474Z</updated>
+    <updated>2026-05-03T09:00:06.327Z</updated>
   </entry>
   <entry>
     <author>
@@ -87,7 +100,7 @@
       <![CDATA[<p><strong>由于 AI Coding Agent 不擅长理解你公司特有的业务逻辑、隐性规则、历史债务和领域术语</strong>，所以至少需要以下规约]]>
     </summary>
     <title>AI Coding Rules</title>
-    <updated>2026-04-28T06:26:26.464Z</updated>
+    <updated>2026-04-28T06:42:51.305Z</updated>
   </entry>
   <entry>
     <author>
@@ -124,7 +137,7 @@
       <![CDATA[<p>我发现我的claude每次都无法准确识别当前目录，比如我让他帮我下一个脚本，其实我的本意是让他在我打开的目录下执行(也就是我执行cc的目录)，但是他总是识别不了，写到错误的目录，害的我不得不盯着他的执行过程找到最后写的脚本写到哪个目录了，最后在把脚本移动到我想要的目录下。很]]>
     </summary>
     <title>claude code 踩坑</title>
-    <updated>2026-04-20T07:46:19.046Z</updated>
+    <updated>2026-05-05T12:27:20.990Z</updated>
   </entry>
   <entry>
     <author>
@@ -143,7 +156,7 @@
 <h3]]>
     </summary>
     <title>iTerm2设置Touch ID</title>
-    <updated>2026-04-14T15:17:24.881Z</updated>
+    <updated>2026-04-28T06:42:51.321Z</updated>
   </entry>
   <entry>
     <author>
@@ -164,7 +177,7 @@ PLease adjust the value and restart the IDE for the changes to take effect.<br>
 Maximum Heap Size：4096 MiB （current]]>
     </summary>
     <title>Idea-Tips-10</title>
-    <updated>2026-04-27T16:20:37.104Z</updated>
+    <updated>2026-05-03T08:59:07.577Z</updated>
   </entry>
   <entry>
     <author>
@@ -181,7 +194,7 @@ Maximum Heap Size：4096 MiB （current]]>
 <p><strong>写 vs]]>
     </summary>
     <title>写作与表达</title>
-    <updated>2026-04-20T15:58:54.946Z</updated>
+    <updated>2026-04-28T06:42:51.272Z</updated>
   </entry>
   <entry>
     <author>
@@ -195,12 +208,12 @@ Maximum Heap Size：4096 MiB （current]]>
     <link href="https://chen-shang.github.io/2026/04/01/f8bec92a/"/>
     <published>2026-04-01T15:02:15.000Z</published>
     <summary>
-      <![CDATA[<p><img src="iShot_2026-04-19_23.26.48.gif" alt=""></p>
+      <![CDATA[<p><img src="/2026/04/01/f8bec92a/iShot_2026-04-19_23.26.48.gif" alt></p>
 <pre><code class="hljs java">
 .check :]]>
     </summary>
     <title>Custom Postfix Templates</title>
-    <updated>2026-04-27T16:20:37.103Z</updated>
+    <updated>2026-05-03T08:59:07.577Z</updated>
   </entry>
   <entry>
     <author>
@@ -218,7 +231,7 @@ Maximum Heap Size：4096 MiB （current]]>
 <p><a]]>
     </summary>
     <title>大模型薅羊毛战绩</title>
-    <updated>2026-04-27T16:20:37.071Z</updated>
+    <updated>2026-05-03T08:59:07.533Z</updated>
   </entry>
   <entry>
     <author>
@@ -234,12 +247,11 @@ Maximum Heap Size：4096 MiB （current]]>
     <published>2026-02-24T14:17:31.000Z</published>
     <summary>
       <![CDATA[<p>这玩意也是各种问题，通过问豆包、deepseak等都不好使。各种尝试，遇到了各种报错，最后终于试出来了。</p>
-<p><img src="1771946535703.png" alt=""></p>
-<h2 id="报错信息">报错信息</h2>
-<h3]]>
+<p><img src="/2026/02/24/97348c1a/1771946535703.png" alt></p>
+<h2]]>
     </summary>
     <title>mac通过virtualbuddy安装了ubuntu虚拟机虚拟机和宿主机如何共享文件夹</title>
-    <updated>2026-04-27T16:20:37.111Z</updated>
+    <updated>2026-05-03T08:59:07.575Z</updated>
   </entry>
   <entry>
     <author>
@@ -258,7 +270,7 @@ Maximum Heap Size：4096 MiB （current]]>
 <p>而且你见过那个软件在安装的时候提示你下面这个的，直接就明说了，我这玩意是个实验性质的东西，没经验你别碰]]>
     </summary>
     <title>openclaw踩坑</title>
-    <updated>2026-04-27T16:20:37.071Z</updated>
+    <updated>2026-05-05T12:43:09.170Z</updated>
   </entry>
   <entry>
     <author>
@@ -277,11 +289,11 @@ Maximum Heap Size：4096 MiB （current]]>
 <li>安装图形软件<br>
 google浏览器、输入法、中文字体</li>
 <li>安装终端软件<br>
-tree、curl、wget、jq、vim、git、tmux、python、java、node、npm</li>
+vim、git、tree、curl、wget、jq、tmux、python、java、node、npm</li>
 <li>软件配置]]>
     </summary>
     <title>安装系统后要配置什么来提高效率</title>
-    <updated>2026-04-27T16:20:37.111Z</updated>
+    <updated>2026-05-03T09:27:05.644Z</updated>
   </entry>
   <entry>
     <author>
@@ -294,12 +306,12 @@ tree、curl、wget、jq、vim、git、tmux、python、java、node、npm</li>
     <link href="https://chen-shang.github.io/2026/02/22/c9886bc3/"/>
     <published>2026-02-21T17:52:14.000Z</published>
     <summary>
-      <![CDATA[<p>cargo install llmfit</p>
+      <![CDATA[<pre><code class="hljs plaintext">cargo install llmfit</code></pre>
 <p>一、llmfit 是什么<br>
-llmfit 是一款基于 Rust 开发的终端工具（TUI/CLI），核心定位是帮你快速匹配本地硬件（CPU/RAM/GPU/VRAM）与 LLM]]>
+llmfit 是一款基于 Rust]]>
     </summary>
     <title>如何知道自己的服务器适合跑什么样的大模型</title>
-    <updated>2026-04-27T16:20:37.072Z</updated>
+    <updated>2026-05-05T10:29:38.007Z</updated>
   </entry>
   <entry>
     <author>
@@ -319,7 +331,7 @@ llmfit 是一款基于 Rust 开发的终端工具（TUI/CLI），核心定位是
 export]]>
     </summary>
     <title>终端临时代理翻墙</title>
-    <updated>2026-04-27T16:20:37.109Z</updated>
+    <updated>2026-05-03T08:59:07.567Z</updated>
   </entry>
   <entry>
     <author>
@@ -337,7 +349,7 @@ export]]>
 <p><code>ollama show</code> 是 Ollama]]>
     </summary>
     <title>模型的指标</title>
-    <updated>2026-01-30T20:26:46.855Z</updated>
+    <updated>2026-04-28T06:42:51.304Z</updated>
   </entry>
   <entry>
     <author>
@@ -355,7 +367,7 @@ export]]>
 <h3]]>
     </summary>
     <title>金融行业从业考试</title>
-    <updated>2026-01-30T20:23:21.441Z</updated>
+    <updated>2026-04-28T06:42:51.323Z</updated>
   </entry>
   <entry>
     <author>
@@ -374,24 +386,6 @@ export]]>
 <h3]]>
     </summary>
     <title>处世之道</title>
-    <updated>2026-04-20T07:25:40.416Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>陈尚</name>
-    </author>
-    <category term="AI" scheme="https://chen-shang.github.io/categories/ai/"/>
-    <category term="机器学习" scheme="https://chen-shang.github.io/categories/ai/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    <category term="AI" scheme="https://chen-shang.github.io/tags/ai/"/>
-    <category term="机器学习" scheme="https://chen-shang.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://chen-shang.github.io/2025/12/29/7c1e1ca2/</id>
-    <link href="https://chen-shang.github.io/2025/12/29/7c1e1ca2/"/>
-    <published>2025-12-28T19:14:11.000Z</published>
-    <summary>
-      <![CDATA[<p>在机器学习领域， <strong>没有任何算法能保证 100% 不出错</strong> ，这是由机器学习的 “数据驱动” 本质决定的 —— 模型学习的是数据中的统计规律，而非绝对的因果规律，你担心的 k-NN]]>
-    </summary>
-    <title>机器学习算法无法保证百分百正确</title>
-    <updated>2025-12-28T19:17:18.387Z</updated>
+    <updated>2026-04-28T06:42:51.309Z</updated>
   </entry>
 </feed>

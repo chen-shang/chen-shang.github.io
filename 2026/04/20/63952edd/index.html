@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Coding Agent 常用操作指南, IT,技术,总结">
-    <meta name="description" content="opencode 、Claude Code、Codex 以及常用工具">
+    <meta name="description" content="opencode、Claude Code、Codex 以及常用工具的快捷操作和配置">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -280,6 +280,10 @@
                                 <span class="chip bg-color">opencode</span>
                             </a>
                         
+                            <a href="/tags/claude-code/">
+                                <span class="chip bg-color">claude-code</span>
+                            </a>
+                        
                     </div>
                     
                 </div>
@@ -312,21 +316,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-28
+                    2026-05-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    5 分
                 </div>
                 
 
@@ -390,8 +394,8 @@
 </table>
 <h4 id="为什么设置这些别名？">为什么设置这些别名？</h4>
 <ol>
-<li><strong>@oc</strong>|<strong>@cc</strong> - 避免每次输入 <code>opencode run</code>|<code>claude -p</code> ，少打字符。单次对话模式，不用进入交互终端，适合快速问答</li>
-<li><strong>cc</strong> |<strong>oc</strong>- 自动化场景下不会弹出权限确认提示，简短好记，比 <code>opencode</code>|<code>claude</code>  少打字符</li>
+<li><strong>@oc</strong> / <strong>@cc</strong> - 避免每次输入 <code>opencode run</code> / <code>claude -p</code>，少打字符。单次对话模式，不用进入交互终端，适合快速问答</li>
+<li><strong>cc</strong> / <strong>oc</strong> - 自动化场景下不会弹出权限确认提示，简短好记</li>
 </ol>
 <blockquote>
 <p>提示：使用前需要先在 shell 配置文件中添加这些 alias（推荐 <code>~/.zshrc</code> 或 <code>~/.bashrc</code>），然后执行 <code>source</code> 重新加载。</p>
@@ -423,8 +427,6 @@
 <blockquote>
 <p>适用场景：配置 oh-my-opencode 时需要知道可用模型名称</p>
 </blockquote>
-<p><img src="1776181489259.png" alt=""><br>
-<img src="1776181402441.png" alt=""></p>
 <blockquote>
 <p>⚠️ <strong>注意</strong>：不要企图通过提示词让模型自己配置最佳实践，会乱。配置出错后 opencode 会崩溃，最后只能删掉重装。</p>
 </blockquote>
@@ -504,23 +506,22 @@
 <li><code>oh-my-opencode.json</code> 会被忽略</li>
 <li>仅当 <strong>不存在 <code>.jsonc</code> 文件</strong>时，才会加载 <code>.json</code> 文件</li>
 </ul>
-<h3 id="Claude-Code-跳过登录">Claude Code 跳过登录</h3>
-<p>在首次使用或重置配置后，可以通过修改配置文件来跳过强制登录流程（适用于某些自动化场景或本地测试）。否则会报错</p>
+<h3 id="3-Claude-Code-跳过登录">3. Claude Code 跳过登录</h3>
+<p>在首次使用或重置配置后，可以通过修改配置文件来跳过强制登录流程（适用于某些自动化场景或本地测试）。</p>
 <p><strong>操作步骤：</strong></p>
 <ol>
-<li>
-<p>找到 Claude Code 的全局配置文件：</p>
+<li>找到 Claude Code 的全局配置文件：
 <ul>
 <li>macOS/Linux: <code>~/.claude/settings.json</code></li>
 <li>Windows: <code>%USERPROFILE%\.claude\settings.json</code></li>
 </ul>
 </li>
-<li>
-<p>编辑该文件，添加或修改 <code>hasCompletedOnboarding</code> 字段为 <code>true</code>：</p>
-</li>
+<li>编辑该文件，添加或修改 <code>hasCompletedOnboarding</code> 字段为 <code>true</code>：</li>
 </ol>
-<pre><code class="hljs plaintext"></code></pre>
-<h3 id="3-Skill-存放位置">3. Skill 存放位置</h3>
+<pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span>
+  <span class="hljs-attr">&quot;hasCompletedOnboarding&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span>
+<span class="hljs-punctuation">&#125;</span></code></pre>
+<h3 id="4-Skill-存放位置">4. Skill 存放位置</h3>
 <table>
 <thead>
 <tr>
@@ -557,7 +558,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="4-MCP-配置">4. MCP 配置</h3>
+<h3 id="5-MCP-配置">5. MCP 配置</h3>
 <pre><code class="hljs bash">opencode mcp list</code></pre>
 <pre><code class="hljs plaintext">┌  MCP Servers
 │
@@ -567,7 +568,7 @@
 <blockquote>
 <p>注意：在 opencode 终端内执行 <code>/mcp</code> 可以看到内置 MCP：context7、grep_app、websearch</p>
 </blockquote>
-<h3 id="5-AGENTS-md-配置">5. <a target="_blank" rel="noopener" href="http://AGENTS.md">AGENTS.md</a> 配置</h3>
+<h3 id="6-AGENTS-md-配置">6. <a target="_blank" rel="noopener" href="http://AGENTS.md">AGENTS.md</a> 配置</h3>
 <ul>
 <li><strong>全局配置</strong>：<code>~/.config/opencode/AGENTS.md</code></li>
 <li>建议写简单的配置内容</li>
@@ -602,85 +603,81 @@ npx skills update -p</code></pre>
 <p>cc switch 是一款跨平台桌面工具，可统一管理 Claude Code、Codex、OpenCode、OpenClaw、Gemini CLI 的 API 提供商配置。</p>
 <p><strong>cc-switch 安装的 Skill 位置：</strong> <code>~/.cc-switch/skills/</code></p>
 <p><strong>Skill 更新方式：</strong></p>
-<p>直接进入skill管理，点击更新即可</p>
-<p><img src="1776186946184.png" alt="1776186946184"></p>
+<p>直接进入 skill 管理，点击更新即可。</p>
 <blockquote>
 <p>详细使用说明见 <a target="_blank" rel="noopener" href="https://github.com/farion1231/cc-switch">cc-switch 官方文档</a></p>
 </blockquote>
 <blockquote>
 <p>⚠️ <strong>注意</strong>：第三方 Skill 更新后一定要<strong>重启工具</strong>才能生效。部分工具可能需要完全退出终端再重新打开。</p>
 </blockquote>
-<h2 id="CC">CC</h2>
-<p>❯ plugin:pyright-lsp:pyright Plugin · unknown · ✘ failed to load · 1 error</p>
-<p>npm uninstall -g pyright<br>
-npm install -g pyright<br>
-重启 cc</p>
-<p>如何写好高质量代码</p>
-<h2 id="one-line-promot">one line promot</h2>
-<ol>
-<li>尽可能一句话描述</li>
-<li>否则分条描述</li>
-<li>然后分布描述</li>
-<li>不要一次性描述多件事情</li>
-<li>慢慢追加描述</li>
-<li>禁止的事情，可以重复几次强调</li>
-</ol>
-<p>AI生成的代码，还是有瑕疵<br>
-明明可以 ExcelTranslateUtil.export(exportParams, null, biBillTransactionAdvanceList, BiBillTransactionAdvanceListLogicVO.class); 但它就想不到</p>
-<pre><code class="hljs plaintext">Workbook workbook = ExcelExportUtil.exportExcel(exportParams, InvestorBiBillTransactionExportVO.class, exportList);
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        try &#123;
-            workbook.write(byteArrayOutputStream);
-        &#125; catch (IOException e) &#123;
-            throw new RuntimeException(&quot;导出Excel失败&quot;, e);
-        &#125;</code></pre>
-<pre><code>    何时使用 AI#
-</code></pre>
-<p>适合使用 AI 的场景<br>
-重复性任务：如撰写报告、整理数据、生成文案<br>
-需要创意的任务：如头脑风暴、创意点子、故事生成<br>
-需要分析的任务：如数据分析、趋势分析、洞察发现<br>
-需要优化的任务：如文本优化、格式调整、内容改写<br>
-不适合使用 AI 的场景</p>
-<p>需要高度保密的任务：如处理敏感数据、机密信息<br>
-需要专业判断的任务：如法律咨询、医疗诊断<br>
-需要情感交流的任务：如安抚客户、处理纠纷<br>
-需要实时信息的任务：如股票行情、新闻资讯</p>
-<pre><code>
-/simplfy
-
-/rewind
-
-/btw
-
-/insights
-
-@cc 一次性问题
-
-![alt text](iShot_2026-04-22_15.35.30.gif)
-
-学会回复ok
-
-学会用语音
-
-# 执行脚本
-
-!
-
-常用 open .
-ls
-pwd
-
-![](1777276605705.png)
-请问这个你该怎么描述
-
-截图，问AI（豆包在处理文字比较）
-![](1777276741424.png)
-
-复制就行
-
-![](1777277502219.png)
-</code></pre>
+<hr>
+<h2 id="九、OpenCode-内置命令">九、OpenCode 内置命令</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/models</code></td>
+<td>查看可用模型</td>
+</tr>
+<tr>
+<td><code>/mcp</code></td>
+<td>查看 MCP 服务器</td>
+</tr>
+<tr>
+<td><code>/new</code></td>
+<td>新建会话</td>
+</tr>
+<tr>
+<td><code>/exit</code></td>
+<td>退出终端</td>
+</tr>
+<tr>
+<td><code>Ctrl + r</code></td>
+<td>搜索历史提示词</td>
+</tr>
+<tr>
+<td><code>Ctrl + Option + v</code></td>
+<td>粘贴图片</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="十、Claude-Code-内置命令">十、Claude Code 内置命令</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/model</code></td>
+<td>切换模型</td>
+</tr>
+<tr>
+<td><code>/cost</code></td>
+<td>查看本会话花费</td>
+</tr>
+<tr>
+<td><code>/reset</code></td>
+<td>清除对话历史</td>
+</tr>
+<tr>
+<td><code>/exit</code></td>
+<td>退出终端</td>
+</tr>
+<tr>
+<td><code>Ctrl + v</code></td>
+<td>粘贴图片</td>
+</tr>
+</tbody>
+</table>
 
                 
             </div>
@@ -701,6 +698,10 @@ pwd
                             
                                 <a href="/tags/opencode/">
                                     <span class="chip bg-color">opencode</span>
+                                </a>
+                            
+                                <a href="/tags/claude-code/">
+                                    <span class="chip bg-color">claude-code</span>
                                 </a>
                             
                         </div>
@@ -1324,7 +1325,7 @@ pwd
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">278.2k</span>
+                        class="white-color">281.3k</span>
             
             
             
