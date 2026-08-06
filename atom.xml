@@ -10,7 +10,33 @@
   <rights>All rights reserved 2026, 陈尚</rights>
   <subtitle>涓涓细流 辟阖汪洋</subtitle>
   <title>涓涓细流</title>
-  <updated>2026-05-05T14:36:51.254Z</updated>
+  <updated>2026-08-06T14:01:24.743Z</updated>
+  <entry>
+    <author>
+      <name>陈尚</name>
+    </author>
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    <id>https://chen-shang.github.io/2026/08/06/40b65c75/</id>
+    <link href="https://chen-shang.github.io/2026/08/06/40b65c75/"/>
+    <published>2026-08-06T13:56:25.000Z</published>
+    <summary>
+      <![CDATA[<p>打开 Finder / 访达窗口 → 按住 command 键 → 用鼠标调整 Finder 窗口到你想要的默认尺寸 → 关闭 Finder 窗口 → 松开 command 键（注意这过程中一直按住 command 键别松手）…… 好了，再从 Dock 或者]]>
+    </summary>
+    <title>访达窗口默认大小的方法</title>
+    <updated>2026-08-06T14:01:24.743Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>陈尚</name>
+    </author>
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
+    <id>https://chen-shang.github.io/2026/07/17/ace505f3/</id>
+    <link href="https://chen-shang.github.io/2026/07/17/ace505f3/"/>
+    <published>2026-07-17T15:11:08.000Z</published>
+    <title>AI机械臂</title>
+    <updated>2026-07-17T15:15:55.322Z</updated>
+  </entry>
   <entry>
     <author>
       <name>陈尚</name>
@@ -21,7 +47,7 @@
     <link href="https://chen-shang.github.io/2026/05/05/7e4e1b0b/"/>
     <published>2026-05-05T14:36:50.000Z</published>
     <title>AI越狱</title>
-    <updated>2026-05-05T14:36:51.254Z</updated>
+    <updated>2026-07-17T15:31:24.064Z</updated>
   </entry>
   <entry>
     <author>
@@ -41,7 +67,7 @@
 <h2]]>
     </summary>
     <title>我github关注的项目分析报告</title>
-    <updated>2026-04-28T06:42:51.264Z</updated>
+    <updated>2026-07-17T15:21:27.278Z</updated>
   </entry>
   <entry>
     <author>
@@ -61,7 +87,7 @@
 <pre><code class="hljs bash"><span class="hljs-built_in">alias</span> @oc=<span]]>
     </summary>
     <title>Coding Agent 常用操作指南</title>
-    <updated>2026-05-07T03:09:25.385Z</updated>
+    <updated>2026-07-09T16:12:13.026Z</updated>
   </entry>
   <entry>
     <author>
@@ -110,6 +136,26 @@
     <category term="codeai" scheme="https://chen-shang.github.io/categories/ai/codeai/"/>
     <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
     <category term="ai" scheme="https://chen-shang.github.io/tags/ai/"/>
+    <category term="ai工具集" scheme="https://chen-shang.github.io/tags/ai%E5%B7%A5%E5%85%B7%E9%9B%86/"/>
+    <id>https://chen-shang.github.io/2026/04/20/56faf0cc/</id>
+    <link href="https://chen-shang.github.io/2026/04/20/56faf0cc/"/>
+    <published>2026-04-20T02:18:01.000Z</published>
+    <summary>
+      <![CDATA[<h2 id="ai-skills-md"><a href="http://ai-skills.md">ai-skills.md</a></h2>
+<p>title: AI skills<br>
+summary:]]>
+    </summary>
+    <title>AI Skill</title>
+    <updated>2026-08-06T14:00:31.645Z</updated>
+  </entry>
+  <entry>
+    <author>
+      <name>陈尚</name>
+    </author>
+    <category term="ai" scheme="https://chen-shang.github.io/categories/ai/"/>
+    <category term="codeai" scheme="https://chen-shang.github.io/categories/ai/codeai/"/>
+    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
+    <category term="ai" scheme="https://chen-shang.github.io/tags/ai/"/>
     <category term="工具" scheme="https://chen-shang.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     <id>https://chen-shang.github.io/2026/04/20/348f8db5/</id>
     <link href="https://chen-shang.github.io/2026/04/20/348f8db5/"/>
@@ -137,7 +183,7 @@
       <![CDATA[<p>我发现我的claude每次都无法准确识别当前目录，比如我让他帮我下一个脚本，其实我的本意是让他在我打开的目录下执行(也就是我执行cc的目录)，但是他总是识别不了，写到错误的目录，害的我不得不盯着他的执行过程找到最后写的脚本写到哪个目录了，最后在把脚本移动到我想要的目录下。很]]>
     </summary>
     <title>claude code 踩坑</title>
-    <updated>2026-05-05T12:27:20.990Z</updated>
+    <updated>2026-05-16T00:56:51.374Z</updated>
   </entry>
   <entry>
     <author>
@@ -213,7 +259,7 @@ Maximum Heap Size：4096 MiB （current]]>
 .check :]]>
     </summary>
     <title>Custom Postfix Templates</title>
-    <updated>2026-05-03T08:59:07.577Z</updated>
+    <updated>2026-07-17T15:16:56.742Z</updated>
   </entry>
   <entry>
     <author>
@@ -230,7 +276,7 @@ Maximum Heap Size：4096 MiB （current]]>
 <p><a]]>
     </summary>
     <title>大模型薅羊毛战绩</title>
-    <updated>2026-05-13T05:36:02.493Z</updated>
+    <updated>2026-05-16T00:56:51.374Z</updated>
   </entry>
   <entry>
     <author>
@@ -269,7 +315,7 @@ Maximum Heap Size：4096 MiB （current]]>
 <p>而且你见过那个软件在安装的时候提示你下面这个的，直接就明说了，我这玩意是个实验性质的东西，没经验你别碰]]>
     </summary>
     <title>openclaw踩坑</title>
-    <updated>2026-05-05T12:43:09.170Z</updated>
+    <updated>2026-05-16T00:56:51.375Z</updated>
   </entry>
   <entry>
     <author>
@@ -292,7 +338,7 @@ vim、git、tree、curl、wget、jq、tmux、python、java、node、npm</li>
 <li>软件配置]]>
     </summary>
     <title>安装系统后要配置什么来提高效率</title>
-    <updated>2026-05-03T09:27:05.644Z</updated>
+    <updated>2026-05-16T00:56:51.400Z</updated>
   </entry>
   <entry>
     <author>
@@ -310,7 +356,7 @@ vim、git、tree、curl、wget、jq、tmux、python、java、node、npm</li>
 llmfit 是一款基于 Rust]]>
     </summary>
     <title>如何知道自己的服务器适合跑什么样的大模型</title>
-    <updated>2026-05-05T10:29:38.007Z</updated>
+    <updated>2026-07-17T15:08:14.561Z</updated>
   </entry>
   <entry>
     <author>
@@ -330,61 +376,6 @@ llmfit 是一款基于 Rust]]>
 export]]>
     </summary>
     <title>终端临时代理翻墙</title>
-    <updated>2026-05-03T08:59:07.567Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>陈尚</name>
-    </author>
-    <category term="AI" scheme="https://chen-shang.github.io/categories/ai/"/>
-    <category term="深度学习" scheme="https://chen-shang.github.io/categories/ai/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    <id>https://chen-shang.github.io/2026/01/31/2791a776/</id>
-    <link href="https://chen-shang.github.io/2026/01/31/2791a776/"/>
-    <published>2026-01-30T19:31:41.000Z</published>
-    <summary>
-      <![CDATA[<h1>ollama <code>show</code> 命令全解析</h1>
-<p><code>ollama show</code> 是 Ollama]]>
-    </summary>
-    <title>模型的指标</title>
-    <updated>2026-04-28T06:42:51.304Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>陈尚</name>
-    </author>
-    <category term="思考" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/"/>
-    <category term="经济学" scheme="https://chen-shang.github.io/categories/%E6%80%9D%E8%80%83/%E7%BB%8F%E6%B5%8E%E5%AD%A6/"/>
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    <category term="未完待续" scheme="https://chen-shang.github.io/tags/%E6%9C%AA%E5%AE%8C%E5%BE%85%E7%BB%AD/"/>
-    <id>https://chen-shang.github.io/2026/01/29/fbe60559/</id>
-    <link href="https://chen-shang.github.io/2026/01/29/fbe60559/"/>
-    <published>2026-01-29T06:52:21.000Z</published>
-    <summary>
-      <![CDATA[<p>证券从业、银行从业、基金从业、期货从业是四个独立的金融行业从业考试</p>
-<h3]]>
-    </summary>
-    <title>金融行业从业考试</title>
-    <updated>2026-04-28T06:42:51.323Z</updated>
-  </entry>
-  <entry>
-    <author>
-      <name>陈尚</name>
-    </author>
-    <category term="墨香纸笺" scheme="https://chen-shang.github.io/categories/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/"/>
-    <category term="吾日三省" scheme="https://chen-shang.github.io/categories/%E5%A2%A8%E9%A6%99%E7%BA%B8%E7%AC%BA/%E5%90%BE%E6%97%A5%E4%B8%89%E7%9C%81/"/>
-    <category term="原创" scheme="https://chen-shang.github.io/tags/%E5%8E%9F%E5%88%9B/"/>
-    <category term="思考" scheme="https://chen-shang.github.io/tags/%E6%80%9D%E8%80%83/"/>
-    <category term="To陈卓" scheme="https://chen-shang.github.io/tags/to%E9%99%88%E5%8D%93/"/>
-    <id>https://chen-shang.github.io/2026/01/18/ac8f0ec5/</id>
-    <link href="https://chen-shang.github.io/2026/01/18/ac8f0ec5/"/>
-    <published>2026-01-18T14:41:50.000Z</published>
-    <summary>
-      <![CDATA[<h2 id="处世之道">处世之道</h2>
-<h3]]>
-    </summary>
-    <title>处世之道</title>
-    <updated>2026-04-28T06:42:51.309Z</updated>
+    <updated>2026-05-16T00:56:51.397Z</updated>
   </entry>
 </feed>

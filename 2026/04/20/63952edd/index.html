@@ -316,14 +316,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-05-07
+                    2026-07-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
@@ -494,7 +494,7 @@
 <tr>
 <td><code>oh-my-opencode.jsonc</code></td>
 <td>JSON with Comments</td>
-<td>✅ 允许 <code>//</code> 和 <code>/* */</code></td>
+<td>✅ 允许<code>//</code> 和 <code>/* */</code></td>
 <td>✅ 允许</td>
 </tr>
 </tbody>
@@ -536,7 +536,7 @@
 <td style="text-align:left"><strong>OpenCode</strong></td>
 <td style="text-align:left"><code>.opencode/skills/&lt;name&gt;/SKILL.md</code></td>
 <td style="text-align:left"><code>~/.config/opencode/skills/&lt;name&gt;/SKILL.md</code></td>
-<td style="text-align:left">兼容 <code>.claude/skills/</code> 和 <code>.agents/skills/</code></td>
+<td style="text-align:left">兼容<code>.claude/skills/</code> 和 <code>.agents/skills/</code></td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Claude Code</strong></td>
@@ -647,6 +647,8 @@ npx skills update -p</code></pre>
 </tbody>
 </table>
 <hr>
+<h1>定期更新skill ，版本</h1>
+<p>skill 分发的形式，打成jar包</p>
 <h2 id="十、Claude-Code-内置命令">十、Claude Code 内置命令</h2>
 <table>
 <thead>
@@ -678,6 +680,18 @@ npx skills update -p</code></pre>
 </tr>
 </tbody>
 </table>
+<h2 id="opencode-model-切换模型">opencode model 切换模型</h2>
+<p>opencode auth list</p>
+<h3 id="设置-OpenCode-顶层全局对话默认模型">设置 OpenCode 顶层全局对话默认模型</h3>
+<p><code>opencode.json</code></p>
+<p>json</p>
+<pre><code class="hljs plaintext">&#123;
+  &quot;$schema&quot;: &quot;https://opencode.ai/config.json&quot;,
+  &quot;plugin&quot;: [&quot;oh-my-opencode@latest&quot;],
+  // 主聊天窗口默认模型
+  &quot;model&quot;: &quot;z-ai/glm-4.7&quot;,
+  &quot;server&quot;: &#123; &quot;port&quot;: 4096 &#125;
+&#125;</code></pre>
 
                 
             </div>
@@ -1063,7 +1077,7 @@ npx skills update -p</code></pre>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            摘要
+                            整理日期：2026-04-12。这篇文档记录了我在 GitHub 上收藏的项目，涵盖 AI Agent、PDF 处理、文档转换、画图工具、搜索等多个领域。
                         
                     </div>
                     <div class="publish-info">
@@ -1325,7 +1339,7 @@ npx skills update -p</code></pre>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">281.3k</span>
+                        class="white-color">284.1k</span>
             
             
             
