@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="从零安装 DBHub 与 email-mcp，并接入 Codex：最精简、逐字段、可直接执行的中文教程。">
+    <title>从零安装 DBHub + email-mcp — Codex MCP 极简教程</title>
+    <link rel="icon" href="data:,">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mcp-db-email.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="part9.html#ecosystem">← AI机械臂</a>
+        <span>CODEx · MCP SETUP</span>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-copy">
+                <p class="eyebrow">10 MINUTES · TWO MCP SERVERS</p>
+                <h1>从零安装<br><span>DBHub + email-mcp</span></h1>
+                <p class="hero-lead">不讲背景，直接照着做。完成后，Codex 可以只读查询数据库，也可以读取、搜索和整理 QQ 邮箱。</p>
+                <div class="hero-meta">
+                    <span>macOS / Linux</span>
+                    <span>Node.js 24+</span>
+                    <span>Codex CLI</span>
+                    <span>2026-08-02 核对</span>
+                </div>
+            </div>
+            <aside class="hero-route">
+                <strong>最短路线</strong>
+                <ol>
+                    <li><span>0</span>检查 Node 与 Codex</li>
+                    <li><span>1</span>配置 DBHub</li>
+                    <li><span>2</span>配置 QQ 邮箱</li>
+                    <li><span>3</span>注册并验证</li>
+                </ol>
+                <p>不要把数据库密码或邮箱授权码发到聊天里。</p>
+            </aside>
+        </section>
+
+        <nav class="local-nav" aria-label="页内目录">
+            <a href="#prepare">0. 准备</a>
+            <a href="#dbhub">1. DBHub</a>
+            <a href="#email">2. email-mcp</a>
+            <a href="#verify">3. 验证</a>
+            <a href="#examples">4. 使用</a>
+            <a href="#errors">排错</a>
+        </nav>
+
+        <section class="section" id="prepare">
+            <div class="section-head">
+                <span class="section-no">00</span>
+                <div><p class="section-kicker">PREPARE</p><h2>先检查三个命令</h2></div>
+            </div>
+            <div class="command-card">
+                <div class="command-bar"><span>Terminal</span><button type="button" data-copy="node --version\nnpm --version\ncodex --version">复制</button></div>
+                <pre><code>node --version
+npm --version
+codex --version</code></pre>
+            </div>
+            <div class="result-line success"><b>通过标准</b><span>Node.js 必须是 <strong>24 或更高</strong>；email-mcp 当前要求 Node ≥ 24。</span></div>
+            <details class="compact-details">
+                <summary>没有 Codex？执行这两条</summary>
+                <div class="command-card compact">
+                    <div class="command-bar"><span>Terminal</span><button type="button" data-copy="npm install -g @openai/codex@latest\ncodex login">复制</button></div>
+                    <pre><code>npm install -g @openai/codex@latest
+codex login</code></pre>
+                </div>
+            </details>
+            <figure class="screenshot">
+                <img src="source/mcp-db-email/01-prerequisites.png" alt="终端中检查 Node、npm 与 Codex 版本的示意截图">
+                <figcaption>截图 1：三个版本命令都有输出，就可以继续。</figcaption>
+            </figure>
+        </section>
+
+        <section class="section" id="dbhub">
+            <div class="section-head">
+                <span class="section-no">01</span>
+                <div><p class="section-kicker">DATABASE</p><h2>安装 DBHub</h2></div>
+            </div>
+
+            <article class="step-block">
+                <div class="step-title"><span>1</span><h3>创建配置文件</h3></div>
+                <div class="command-card">
+                    <div class="command-bar"><span>Terminal</span><button type="button" data-copy="mkdir -p ~/.config/dbhub\nnano ~/.config/dbhub/dbhub.toml">复制</button></div>
+                    <pre><code>mkdir -p ~/.config/dbhub
+nano ~/.config/dbhub/dbhub.toml</code></pre>
+                </div>
+                <p class="plain-note">把下面内容粘进去，只修改大写占位符：</p>
+                <div class="command-card config-code">
+                    <div class="command-bar"><span>~/.config/dbhub/dbhub.toml</span><button type="button" data-copy='[[sources]]&#10;id = "dev"&#10;dsn = "mysql://READONLY_USER:ENCODED_PASSWORD@DB_HOST:3306/DATABASE?sslmode=require"&#10;&#10;[[tools]]&#10;name = "execute_sql"&#10;source = "dev"&#10;readonly = true&#10;max_rows = 500&#10;&#10;[[tools]]&#10;name = "search_objects"&#10;source = "dev"'>复制</button></div>
+                    <pre><code><span class="comment"># MySQL 开发环境</span>
+[[sources]]
+id = <span class="string">"dev"</span>
+dsn = <span class="string">"mysql://READONLY_USER:ENCODED_PASSWORD@DB_HOST:3306/DATABASE?sslmode=require"</span>
+
+[[tools]]
+name = <span class="string">"execute_sql"</span>
+source = <span class="string">"dev"</span>
+readonly = <span class="bool">true</span>
+max_rows = <span class="number">500</span>
+
+[[tools]]
+name = <span class="string">"search_objects"</span>
+source = <span class="string">"dev"</span></code></pre>
+                </div>
+                <div class="field-grid">
+                    <div><code>READONLY_USER</code><span>数据库只读用户名</span></div>
+                    <div><code>ENCODED_PASSWORD</code><span>URL 编码后的密码</span></div>
+                    <div><code>DB_HOST</code><span>数据库地址</span></div>
+                    <div><code>DATABASE</code><span>数据库名称</span></div>
+                </div>
+                <div class="warning"><b>必须做</b><p>数据库账号本身也要设置成只读。<code>readonly = true</code> 是第二层保护，不能代替数据库权限。</p></div>
+                <div class="command-card compact">
+                    <div class="command-bar"><span>保存后执行</span><button type="button" data-copy="chmod 600 ~/.config/dbhub/dbhub.toml">复制</button></div>
+                    <pre><code>chmod 600 ~/.config/dbhub/dbhub.toml</code></pre>
+                </div>
+            </article>
+
+            <figure class="screenshot">
+                <img src="source/mcp-db-email/02-dbhub-config.png" alt="DBHub TOML 配置文件示意截图">
+                <figcaption>截图 2：一个数据源、一条只读 SQL 工具、一个对象搜索工具。</figcaption>
+            </figure>
+
+            <article class="step-block">
+                <div class="step-title"><span>2</span><h3>注册到 Codex</h3></div>
+                <div class="command-card">
+                    <div class="command-bar"><span>Terminal</span><button type="button" data-copy='codex mcp add dbhub -- npx -y @bytebase/dbhub@latest --transport stdio --config "$HOME/.config/dbhub/dbhub.toml"'>复制</button></div>
+                    <pre><code>codex mcp add dbhub -- \
+  npx -y @bytebase/dbhub@latest \
+  --transport stdio \
+  --config "$HOME/.config/dbhub/dbhub.toml"</code></pre>
+                </div>
+            </article>
+        </section>
+
+        <section class="section" id="email">
+            <div class="section-head">
+                <span class="section-no">02</span>
+                <div><p class="section-kicker">EMAIL</p><h2>安装 email-mcp（QQ 邮箱）</h2></div>
+            </div>
+
+            <article class="step-block">
+                <div class="step-title"><span>1</span><h3>先拿到 QQ 邮箱授权码</h3></div>
+                <ol class="mini-steps">
+                    <li>登录 QQ 邮箱网页版。</li>
+                    <li>打开 <strong>设置 → 账号</strong>。</li>
+                    <li>找到 POP3 / IMAP / SMTP 服务并开启。</li>
+                    <li>生成<strong>客户端授权码</strong>。</li>
+                </ol>
+                <div class="warning"><b>注意</b><p>后面 Password 填授权码，不填 QQ 登录密码。不要把授权码发给任何人，也不要放进 Git。</p></div>
+            </article>
+
+            <article class="step-block">
+                <div class="step-title"><span>2</span><h3>运行配置向导</h3></div>
+                <div class="command-card">
+                    <div class="command-bar"><span>Terminal</span><button type="button" data-copy="npx -y @codefuturist/email-mcp@latest setup">复制</button></div>
+                    <pre><code>npx -y @codefuturist/email-mcp@latest setup</code></pre>
+                </div>
+                <p class="plain-note">向导会提示 QQ 无法自动识别，这是正常的。每一项这样填：</p>
+                <div class="fields-table" role="table" aria-label="QQ 邮箱配置字段">
+                    <div class="fields-row head" role="row"><span>字段</span><span>填写内容</span></div>
+                    <div class="fields-row"><code>Account name</code><span><b>qq</b></span></div>
+                    <div class="fields-row"><code>Email address</code><span>完整 QQ 邮箱地址</span></div>
+                    <div class="fields-row"><code>Full name</code><span>你的昵称，可自定义</span></div>
+                    <div class="fields-row"><code>IMAP host / port / TLS</code><span><b>imap.qq.com / 993 / Yes</b></span></div>
+                    <div class="fields-row"><code>SMTP host / port / security</code><span><b>smtp.qq.com / 465 / TLS</b></span></div>
+                    <div class="fields-row"><code>Connection pooling</code><span><b>Yes / 3 / 100</b></span></div>
+                    <div class="fields-row"><code>Username</code><span>完整 QQ 邮箱地址</span></div>
+                    <div class="fields-row critical"><code>Password / App Password</code><span><b>QQ 客户端授权码</b>，不是登录密码</span></div>
+                </div>
+            </article>
+
+            <figure class="screenshot">
+                <img src="source/mcp-db-email/03-email-setup.png" alt="email-mcp 配置 QQ 邮箱字段示意截图">
+                <figcaption>截图 3：QQ 邮箱需要手动填写 IMAP 与 SMTP 参数。</figcaption>
+            </figure>
+
+            <article class="step-block">
+                <div class="step-title"><span>3</span><h3>测试邮箱，再注册到 Codex</h3></div>
+                <div class="command-card">
+                    <div class="command-bar"><span>Terminal</span><button type="button" data-copy="npx -y @codefuturist/email-mcp@latest test qq\ncodex mcp add email -- npx -y @codefuturist/email-mcp@latest stdio">复制</button></div>
+                    <pre><code><span class="comment"># 先测试 IMAP 与 SMTP</span>
+npx -y @codefuturist/email-mcp@latest test qq
+
+<span class="comment"># 测试通过后，注册到 Codex</span>
+codex mcp add email -- \
+  npx -y @codefuturist/email-mcp@latest stdio</code></pre>
+                </div>
+                <div class="result-line success"><b>继续标准</b><span>测试结果里 IMAP 和 SMTP 都成功，再执行注册命令。</span></div>
+            </article>
+        </section>
+
+        <section class="section" id="verify">
+            <div class="section-head">
+                <span class="section-no">03</span>
+                <div><p class="section-kicker">VERIFY</p><h2>一次性验证两个 MCP</h2></div>
+            </div>
+            <div class="command-card">
+                <div class="command-bar"><span>Terminal</span><button type="button" data-copy="codex mcp list\ncodex mcp get dbhub\ncodex mcp get email">复制</button></div>
+                <pre><code>codex mcp list
+codex mcp get dbhub
+codex mcp get email</code></pre>
+            </div>
+            <div class="verify-grid">
+                <article><span>01</span><h3>看到两个名字</h3><p>列表中应有 <code>dbhub</code> 和 <code>email</code>。</p></article>
+                <article><span>02</span><h3>重启 Codex</h3><p>关闭并重新打开 Codex，让工具重新加载。</p></article>
+                <article><span>03</span><h3>先做只读测试</h3><p>数据库只查表结构；邮箱只列邮件，不发送、不删除。</p></article>
+            </div>
+            <figure class="screenshot">
+                <img src="source/mcp-db-email/04-mcp-list.png" alt="Codex MCP 列表同时显示 dbhub 和 email 的示意截图">
+                <figcaption>截图 4：列表中同时出现 dbhub 与 email，即完成注册。</figcaption>
+            </figure>
+        </section>
+
+        <section class="section" id="examples">
+            <div class="section-head">
+                <span class="section-no">04</span>
+                <div><p class="section-kicker">PROMPTS</p><h2>安装后的使用示例</h2></div>
+            </div>
+            <div class="example-grid">
+                <article class="example-card db-card">
+                    <div class="example-label"><span>DB</span>DBHub</div>
+                    <h3>先看数据库结构</h3>
+                    <p>请使用 DBHub 搜索当前数据库的所有表，只返回表名和说明，不要执行修改操作。</p>
+                    <button type="button" data-copy="请使用 DBHub 搜索当前数据库的所有表，只返回表名和说明，不要执行修改操作。">复制 Prompt</button>
+                </article>
+                <article class="example-card db-card">
+                    <div class="example-label"><span>DB</span>DBHub</div>
+                    <h3>执行只读查询</h3>
+                    <p>请先查看 orders 表的字段，再生成并执行一条只读 SQL，返回最近 20 条记录。</p>
+                    <button type="button" data-copy="请先查看 orders 表的字段，再生成并执行一条只读 SQL，返回最近 20 条记录。">复制 Prompt</button>
+                </article>
+                <article class="example-card mail-card">
+                    <div class="example-label"><span>@</span>email-mcp</div>
+                    <h3>整理未读邮件</h3>
+                    <p>列出 QQ 邮箱最近 10 封未读邮件，只显示发件人、主题和时间，不要修改邮件状态。</p>
+                    <button type="button" data-copy="列出 QQ 邮箱最近 10 封未读邮件，只显示发件人、主题和时间，不要修改邮件状态。">复制 Prompt</button>
+                </article>
+                <article class="example-card mail-card">
+                    <div class="example-label"><span>@</span>email-mcp</div>
+                    <h3>生成回复草稿</h3>
+                    <p>读取最新一封需要回复的邮件，生成一份简短中文回复草稿，但不要发送。</p>
+                    <button type="button" data-copy="读取最新一封需要回复的邮件，生成一份简短中文回复草稿，但不要发送。">复制 Prompt</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="section" id="errors">
+            <div class="section-head">
+                <span class="section-no">!</span>
+                <div><p class="section-kicker">TROUBLESHOOTING</p><h2>只看这四个常见问题</h2></div>
+            </div>
+            <div class="error-list">
+                <article><code>Unsupported engine</code><p>Node 太旧，升级到 Node.js 24 或更高。</p></article>
+                <article><code>Provider not auto-detected</code><p>QQ 邮箱的正常提示，继续手动填写服务器参数。</p></article>
+                <article><code>Authentication failed</code><p>确认填的是 QQ 客户端授权码，并且已经开启 IMAP / SMTP。</p></article>
+                <article><code>Codex 看不到工具</code><p>先执行 <code>codex mcp list</code>，再完全重启 Codex。</p></article>
+            </div>
+            <details class="compact-details">
+                <summary>数据库密码包含特殊字符怎么办？</summary>
+                <p>DSN 中的密码如果包含 <code>@ / : ? # %</code> 等字符，需要先做 URL 编码。不要把真实密码放进在线编码网站，也不要发到聊天里。</p>
+            </details>
+        </section>
+
+        <section class="finish">
+            <p class="eyebrow">DONE</p>
+            <h2>到这里就装完了</h2>
+            <p>先用只读 Prompt 验证，再逐步开放写入、移动邮件或发送邮件等高影响操作。</p>
+            <div class="finish-actions">
+                <a href="https://github.com/bytebase/dbhub" target="_blank" rel="noopener noreferrer">DBHub 项目</a>
+                <a href="https://dbhub.ai/config/toml" target="_blank" rel="noopener noreferrer">DBHub TOML</a>
+                <a href="https://github.com/codefuturist/email-mcp" target="_blank" rel="noopener noreferrer">email-mcp 项目</a>
+                <a href="https://developers.openai.com/codex/mcp/" target="_blank" rel="noopener noreferrer">Codex MCP 文档</a>
+            </div>
+            <div class="remove-line"><span>需要卸载：</span><code>codex mcp remove dbhub</code><code>codex mcp remove email</code></div>
+        </section>
+    </main>
+
+    <footer>
+        <span>AI纪元 · MCP 极简教程</span>
+        <span>示例中的账号、地址和密码均为占位符</span>
+    </footer>
+
+    <script>
+        document.querySelectorAll('[data-copy]').forEach((button) => {
+            button.addEventListener('click', async () => {
+                const original = button.textContent;
+                try {
+                    await navigator.clipboard.writeText(button.dataset.copy);
+                    button.textContent = '已复制';
+                } catch (error) {
+                    button.textContent = '请手动复制';
+                }
+                window.setTimeout(() => button.textContent = original, 1400);
+            });
+        });
+    </script>
+</body>
+</html>

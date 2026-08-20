@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="使用 MCP 将钉钉接入 AI机械臂。两种方式可选：AI机械臂内置一键安装，或 WorkBuddy 按需配置自定义连接器。">
+    <title>连接钉钉：MCP 使用教程 — AI机械臂</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2324292f%27/%3E%3Cpath d=%27M13 19h38v27H13z%27 fill=%27none%27 stroke=%27%23f0b36c%27 stroke-width=%274%27/%3E%3Cpath d=%27m15 22 17 13 17-13%27 fill=%27none%27 stroke=%27%23f0b36c%27 stroke-width=%274%27/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css">
+    <link rel="stylesheet" href="connect-dingtalk.css?v=20260818">
+</head>
+
+<body class="connection-page dingtalk-guide-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 02 / 10</span>
+    </nav>
+
+    <main class="connection-guide dingtalk-guide">
+        <header class="guide-hero dingtalk-hero" data-number="02">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 02</div>
+            <h1>连接钉钉</h1>
+            <p>通过 MCP 协议，让 AI 直接调用钉钉的 AI 表格、文档、考勤、日历、群聊、通讯录、审批等能力。两种方式可选：AI机械臂内置一键安装，或 WorkBuddy 按需配置。</p>
+            <div class="guide-pills">
+                <span>Streamable HTTP</span>
+                <span>AI 表格</span>
+                <span>钉钉文档</span>
+                <span>考勤 / 日历</span>
+                <span>群聊机器人</span>
+            </div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#method">1. 选择接入方式</a>
+            <a href="#permission">2. 最小权限</a>
+            <a href="#verify">3. 验收</a>
+        </nav>
+
+        <!-- ════════════ 章节 01：两种方法 ════════════ -->
+        <section class="guide-section tutorial-section" id="method">
+            <div class="tutorial-heading">
+                <span>01</span>
+                <div><h2>选择你的接入方式</h2><p>AI机械臂适合希望"开箱即用"的用户；WorkBuddy 适合需要精细控制、按场景按需安装的场景。</p></div>
+            </div>
+
+            <div class="method-tabs">
+                <div class="method-tab active" onclick="switchMethod('a')">
+                    <div class="method-tab-header">
+                        <span class="method-tag easy">推荐 · 全功能</span>
+                        <h3>方式一：AI机械臂内置</h3>
+                    </div>
+                    <p>AI机械臂已内置钉钉 CLI，一条命令即可集成 AI 表格、考勤、日历、群聊机器人、文档、审批、日志等<strong>全部能力</strong>。配置简单，无需手动复制 JSON。</p>
+                </div>
+                <div class="method-tab" onclick="switchMethod('b')">
+                    <div class="method-tab-header">
+                        <span class="method-tag flex">灵活 · 按需</span>
+                        <h3>方式二：WorkBuddy 自定义 MCP</h3>
+                    </div>
+                    <p>在钉钉 AI 能力中心找到你想要的 MCP，复制 JSON，粘贴到 WorkBuddy 自定义连接器。按需安装，节省 Token 消耗，但配置稍繁琐。</p>
+                </div>
+            </div>
+
+            <!-- 方式一 -->
+            <div class="method-body open" id="method-a">
+                <div class="guide-callout guide-callout-core">
+                    <span>💡 提示</span>
+                    <p>AI机械臂内置的钉钉 CLI 通过 <code>dingtalk</code> 命令统一管理全产品能力，覆盖 AI 表格、考勤、日历、群聊与机器人、通讯录、开放平台文档、DING 消息、钉钉文档、钉钉云盘、AI 听记、邮箱、OA 审批、日志、待办等，<strong>一条命令全部搞定</strong>。</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-info">
+                        <span class="step-num">STEP 01</span>
+                        <strong>打开 AI机械臂 → 工具设置</strong>
+                        <p>在 AI机械臂界面中找到「工具」或「MCP」管理入口，进入 MCP 服务配置页面。</p>
+                    </div>
+                    <div class="step-img-wrap">
+                        <img src="source/dingtalk-search_web.png" alt="AI机械臂搜索钉钉" loading="lazy">
+                        <div class="step-img-caption">搜索「钉钉」并添加</div>
+                    </div>
+                </div>
+
+                <div class="step-card reverse">
+                    <div class="step-info">
+                        <span class="step-num">STEP 02</span>
+                        <strong>一键安装，自动完成</strong>
+                        <p>点击安装后，AI机械臂会自动拉取并配置钉钉 MCP，无需手动复制任何内容。安装完成后即可在对话中使用钉钉各类工具。</p>
+                        <div class="capability-list">
+                            <span class="capability-tag">AI 表格</span>
+                            <span class="capability-tag">钉钉文档</span>
+                            <span class="capability-tag">考勤</span>
+                            <span class="capability-tag">日历</span>
+                            <span class="capability-tag">群聊机器人</span>
+                            <span class="capability-tag">通讯录</span>
+                            <span class="capability-tag">OA 审批</span>
+                            <span class="capability-tag">日志</span>
+                            <span class="capability-tag">待办</span>
+                            <span class="capability-tag">邮箱</span>
+                            <span class="capability-tag">DING 消息</span>
+                            <span class="capability-tag">钉钉云盘</span>
+                            <span class="capability-tag">AI 听记</span>
+                        </div>
+                    </div>
+                    <div class="step-img-wrap">
+                        <img src="source/dingtalk-mcp-market_web.png" alt="钉钉 AI 能力中心" loading="lazy">
+                        <div class="step-img-caption">能力中心 · 一键安装</div>
+                    </div>
+                </div>
+
+                <div class="guide-warning">
+                    <span>!</span>
+                    <div>
+                        <strong>注意：能力越多，Token 消耗越大</strong>
+                        <p>安装全套钉钉 MCP 后，每次对话都会携带全部工具定义。如果你的 Token 预算紧张，建议使用方式二（WorkBuddy），按需安装你真正需要的 MCP。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 方式二 -->
+            <div class="method-body" id="method-b">
+                <div class="guide-callout guide-callout-core">
+                    <span>💡 提示</span>
+                    <p>按需安装、手动配置，Token 更省，但需要逐一来配置每个 MCP。适合只需要钉钉部分能力的场景，比如只用 AI 表格。</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-info">
+                        <span class="step-num">STEP 01</span>
+                        <strong>打开钉钉 AI 能力中心</strong>
+                        <p>登录 <a href="https://aihub.dingtalk.com/" target="_blank" rel="noopener" style="color:#C96742;">aihub.dingtalk.com</a>，在 MCP 广场中找到你需要的能力，例如「钉钉 AI 表格」。</p>
+                    </div>
+                    <div class="step-img-wrap">
+                        <img src="source/dingtalk-mcp-market.png" alt="钉钉 AI 能力中心 MCP 广场" loading="lazy">
+                        <div class="step-img-caption">MCP 广场 · 找到你的能力</div>
+                    </div>
+                </div>
+
+                <div class="step-card reverse">
+                    <div class="step-info">
+                        <span class="step-num">STEP 02</span>
+                        <strong>点击「使用 MCP」并复制配置</strong>
+                        <p>进入 MCP 详情页后，点击右上角的「使用 MCP」按钮，会弹出 Streamable HTTP URL 或 JSON Config。点击「复制」获取完整配置。</p>
+                    </div>
+                    <div class="step-img-wrap">
+                        <img src="source/dingtalk-mcp-use_web.png" alt="使用 MCP 弹窗与复制按钮" loading="lazy">
+                        <div class="step-img-caption">复制 JSON Config</div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-info">
+                        <span class="step-num">STEP 03</span>
+                        <strong>打开 WorkBuddy → 自定义连接器</strong>
+                        <p>在 WorkBuddy 左侧导航找到「连接器」，点击右上角的「自定义连接器」按钮。</p>
+                    </div>
+                    <div class="step-img-wrap">
+                        <img src="source/workbuddy-connectors_web.png" alt="WorkBuddy 连接器列表" loading="lazy">
+                        <div class="step-img-caption">自定义连接器</div>
+                    </div>
+                </div>
+
+                <div class="step-card reverse">
+                    <div class="step-info">
+                        <span class="step-num">STEP 04</span>
+                        <strong>粘贴配置并保存</strong>
+                        <p>在 MCP 服务管理弹窗中，将刚才复制的 JSON 内容粘贴到编辑器，确认无误后点击「保存」。</p>
+                    </div>
+                    <div class="step-img-wrap">
+                        <img src="source/workbuddy-mcp-config_web.png" alt="MCP 服务管理弹窗" loading="lazy">
+                        <div class="step-img-caption">MCP 服务管理</div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-info">
+                        <span class="step-num">STEP 05</span>
+                        <strong>粘贴 JSON 并保存</strong>
+                        <p>将复制的 JSON 内容粘贴到编辑器中，格式形如：<code>{"mcpServers": {"钉钉 AI 表格": {"type": "streamable-http", "url": "https://..."}}}</code>。确认无误后点击「保存」。</p>
+                    </div>
+                    <div class="step-img-wrap">
+                        <img src="source/workbuddy-mcp-json_web.png" alt="粘贴 JSON 配置" loading="lazy">
+                        <div class="step-img-caption">保存 MCP 配置</div>
+                    </div>
+                </div>
+
+                <div class="step-card reverse">
+                    <div class="step-info">
+                        <span class="step-num">STEP 06</span>
+                        <strong>新建任务，启用连接器</strong>
+                        <p>回到 WorkBuddy 主界面，新建任务时勾选刚刚配置的连接器，即可在对话中使用钉钉能力了。</p>
+                    </div>
+                    <div class="step-img-wrap">
+                        <img src="source/workbuddy-task-with-connector_web.png" alt="新建任务并启用连接器" loading="lazy">
+                        <div class="step-img-caption">新建任务 · 启用连接器</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════ 章节 02：最小权限 ════════════ -->
+        <section class="guide-section tutorial-section" id="permission">
+            <div class="tutorial-heading">
+                <span>02</span>
+                <div><h2>最小权限建议</h2><p>按需授权，不要把所有权限一次性开放给 AI。</p></div>
+            </div>
+            <div class="permission-table-wrap">
+                <table class="permission-table">
+                    <thead>
+                        <tr>
+                            <th>动作</th>
+                            <th>建议等级</th>
+                            <th>边界</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>读取 AI 表格数据</td>
+                            <td><span class="permission-level">只读</span></td>
+                            <td>先限制表格范围，禁止访问全量数据。</td>
+                        </tr>
+                        <tr>
+                            <td>写入 / 创建记录</td>
+                            <td><span class="permission-level confirm">确认</span></td>
+                            <td>高影响操作必须人工确认后再执行。</td>
+                        </tr>
+                        <tr>
+                            <td>发送群消息 / DING</td>
+                            <td><span class="permission-level confirm">确认</span></td>
+                            <td>禁止默认 @ 全体，限制发送频率。</td>
+                        </tr>
+                        <tr>
+                            <td>读取审批 / 日志</td>
+                            <td><span class="permission-level">只读</span></td>
+                            <td>仅按业务需要读取，不开放审批操作权限。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ════════════ 章节 03：验收 ════════════ -->
+        <section class="guide-section tutorial-section" id="verify">
+            <div class="tutorial-heading">
+                <span>03</span>
+                <div><h2>上线前验收清单</h2><p>不要只测成功路径，失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>读取 AI 表格时，AI 只返回指定范围数据，不泄露全表。</li>
+                    <li>写入记录前，AI 会提示预览内容，等待人工确认。</li>
+                    <li>发送群消息时，不会 @ 全体成员，内容经过安全过滤。</li>
+                    <li>Token 过期或权限不足时，返回明确错误提示，而非静默失败。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>列出我名下所有"进行中"的审批，按优先级排序，不要修改任何数据。</code>
+                </div>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-email.html">
+                <small>上一个连接</small>
+                <strong>← 连接邮箱</strong>
+            </a>
+            <a href="connect-wechat.html">
+                <small>下一个连接</small>
+                <strong>→ 连接微信</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+
+    <script>
+    function switchMethod(id) {
+        document.querySelectorAll('.method-body').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.method-tab').forEach(el => el.classList.remove('active'));
+        document.getElementById('method-' + id).classList.add('open');
+        event.currentTarget.classList.add('active');
+    }
+    </script>
+</body>
+
+</html>

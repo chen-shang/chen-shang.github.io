@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI的前世今生 — AI时间轴：从梦想到现实</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="part2.css">
+</head>
+
+<body>
+    <!-- Canvas Particle Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html" class="active" aria-current="page">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ai-timeline" data-section="ai-timeline"><span class="toc-num">01</span><span class="toc-label">· 从梦想到现实 ·</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ai-winter" data-section="ai-winter"><span class="toc-num">02</span><span class="toc-label">繁荣与寒冬</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#global-ai-giants" data-section="global-ai-giants"><span class="toc-num">03</span><span class="toc-label">巨头、天才与分岔路</span></a></li>
+        </ul>
+      </aside>
+
+
+        <!-- AI 时间轴 -->
+        <section id="ai-timeline">
+            <div class="era-inner fade-in-group">
+
+                <div class="era-header fade-in">
+                    <span class="era-year">1936 — 2026+</span>
+                    <h2 class="era-title">AI：从梦想到现实</h2>
+                    <p class="era-desc">
+                        从数学神经元的诞生到 DeepSeek 震撼全球<br>
+                        从华为韬定律重新定义半导体演进到中国大模型登顶全球<br>
+                        穿越寒冬的火焰，从被质疑到被仰望。
+                    </p>
+                </div>
+
+                <div class="ai-timeline">
+
+                    <!-- ======== 序章: 先声 (1936-1958) ======== -->
+                    <div class="phase-separator">
+                        <span class="phase-label">序章 · 先声</span>
+                    </div>
+
+                    <!-- 1936 图灵机 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1936</div>
+                            <div class="node-title">图灵机 — 可计算性的基石</div>
+                            <div class="node-person">艾伦·图灵（Alan Turing）</div>
+                            <div class="node-desc">
+                                24岁的艾伦·图灵发表《论可计算数及其在判定问题中的应用》，提出"图灵机"抽象模型——一条无限长的纸带、一个读写头、一套规则。他严格定义了"什么是可计算"，证明了存在机器无法解决的问题，为一切计算装置划定了理论边界。
+                            </div>
+                            <div class="node-problem"><strong>核心问题：</strong>图灵机是通用计算的理论模型，但"计算"不等于"智能"——机器能思考吗？</div>
+                        </div>
+                    </div>
+
+                    <!-- 1943 神经科学启发 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1943</div>
+                            <div class="node-title">神经科学的启示 — 大脑是一台计算机？</div>
+                            <div class="node-person">神经科学先驱们</div>
+                            <div class="node-desc">
+                                生物神经元通过突触传递电信号，兴奋性与抑制性输入在细胞体整合，超过阈值则产生动作电位。这些生物学发现给了沃伦·麦卡洛克（Warren McCulloch）和沃尔特·皮茨（Walter Pitts）关键灵感——大脑的"计算"或许可以用数学来描述。
+                            </div>
+                            <div class="node-problem"><strong>核心问题：</strong>如何用一个简洁的数学公式，捕捉生物神经元的"整合-发放"行为？</div>
+                        </div>
+                    </div>
+
+                    <!-- ======== 阶段 1: 黎明 (1943-1956) ======== -->
+                    <div class="phase-separator">
+                        <span class="phase-label">阶段 1 · 黎明</span>
+                    </div>
+
+                    <!-- 1943 MP模型 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1943</div>
+                            <div class="node-title">MP 模型 — 数学神经元的诞生</div>
+                            <div class="node-person">沃伦·麦卡洛克（Warren McCulloch） &amp; 沃尔特·皮茨（Walter Pitts）</div>
+                            <div class="node-desc">用数学公式模拟生物神经元：接收多个二进制输入，加权求和与阈值比较后输出0或1。证明了神经网络可以执行基本逻辑运算。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>权重必须手动设置，无法自动学习。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1945-1946 冯诺依曼 -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1945 — 1946</div>
+                            <div class="node-title">冯诺依曼架构 — 现代计算机的基因蓝图</div>
+                            <div class="node-person">约翰·冯·诺依曼（John von Neumann） · 普雷斯珀·埃克特（J. Presper Eckert） · 约翰·莫克利（John Mauchly）</div>
+                            <div class="node-desc">
+                                1945年，冯诺依曼起草《EDVAC报告书初稿》，首次系统提出"存储程序"概念。1946年，ENIAC在宾夕法尼亚大学公开亮相，标志着电子计算机时代的开端。
+                            </div>
+                            <div class="node-problem">
+                                <strong>硬件的伏笔：</strong>冯诺依曼架构是串行执行的——而大脑是860亿神经元并行工作。这个底层矛盾，将在几十年后成为AI算力的核心瓶颈。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1947-1958 半导体革命 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1947 — 1958</div>
+                            <div class="node-title">半导体革命 — 从晶体管到集成电路</div>
+                            <div class="node-person">威廉·肖克利（William Shockley） · 约翰·巴丁（John Bardeen） · 沃尔特·布拉顿（Walter Brattain） · 杰克·基尔比（Jack Kilby） · 罗伯特·诺伊斯（Robert Noyce）</div>
+                            <div class="node-desc">
+                                1947年贝尔实验室发明晶体管。1958年，杰克·基尔比（Jack Kilby）和罗伯特·诺伊斯（Robert Noyce）各自独立发明集成电路，把多个晶体管蚀刻在一块硅片上。这些硬件突破，为后来GPU算力的爆发埋下了种子。
+                            </div>
+                            <div class="node-problem"><strong>算力的种子：</strong>没有半导体，就没有后来的深度学习革命。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1949 赫布学习 -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1949</div>
+                            <div class="node-title">赫布学习规则 — 无监督学习的萌芽</div>
+                            <div class="node-person">唐纳德·赫布（Donald Hebb）</div>
+                            <div class="node-desc">"当神经元A反复参与激发神经元B时，A对B的激发效率就会增强"。第一个可操作的、生物学可解释的学习规则。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>仅依赖局部相关性，权重可能无限增长。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1950 图灵测试 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1950</div>
+                            <div class="node-title">图灵测试 — 机器能思考吗？</div>
+                            <div class="node-person">艾伦·图灵（Alan Turing）</div>
+                            <div class="node-desc">
+                                艾伦·图灵发表划时代论文《计算机器与智能》，提出"模仿游戏"（即图灵测试），首次系统性地探讨了"机器能否思考"这一根本问题。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1956 达特茅斯会议 ★里程碑 -->
+                    <div class="timeline-node right milestone fade-in">
+                        <a href="dartmouth.html" class="node-link" target="_blank">
+                            <div class="node-content">
+                                <div class="node-year">1956</div>
+                                <div class="node-title">达特茅斯会议 — AI 正式启航</div>
+                                <div class="node-person">约翰·麦卡锡（John McCarthy） · 马文·明斯基（Marvin Minsky） · 克劳德·香农（Claude Shannon） · 纳撒尼尔·罗切斯特（Nathaniel Rochester）</div>
+                                <div class="node-desc">在达特茅斯学院召开历史性研讨会，正式提出"人工智能"（Artificial Intelligence）这一术语。</div>
+                                <div class="node-solution"><strong>里程碑意义：</strong>AI 作为独立研究领域正式诞生。</div>
+                                <div class="node-click-hint">↓ 点击展开全新详情页 ↓</div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- ======== 达特茅斯人物展开区 ======== -->
+                    <div class="dartmouth-expansion fade-in">
+                        <div class="expansion-header">✦ 达特茅斯会议的参与者与他们的遗产 ✦</div>
+                        <div class="dartmouth-grid">
+
+                            <div class="dartmouth-card">
+                                <div class="dartmouth-avatar">
+                                    麦卡锡</div>
+                                <div class="dartmouth-name">约翰&middot;麦卡锡</div>
+                                <div class="dartmouth-years">1927 — 2011</div>
+                                <div class="dartmouth-role">会议发起人</div>
+                                <ul class="dartmouth-branches">
+                                    <li>符号主义 AI</li>
+                                    <li>LISP 编程语言</li>
+                                    <li>逻辑推理与常识推理</li>
+                                    <li>时间共享系统</li>
+                                </ul>
+                                <div class="dartmouth-contribution">
+                                    提出"AI"术语，发明LISP（1958），开创符号推理研究。1971年图灵奖得主。</div>
+                            </div>
+
+                            <div class="dartmouth-card">
+                                <div class="dartmouth-avatar">
+                                    MM</div>
+                                <div class="dartmouth-name">马文&middot;明斯基</div>
+                                <div class="dartmouth-years">1927 — 2016</div>
+                                <div class="dartmouth-role">会议发起人</div>
+                                <ul class="dartmouth-branches">
+                                    <li>框架理论（Frame Theory）</li>
+                                    <li>感知机理论分析</li>
+                                    <li>MIT AI Lab 联合创始人</li>
+                                    <li>计算认知科学</li>
+                                </ul>
+                                <div class="dartmouth-contribution">1969年证明感知机的XOR局限（引发第一次寒冬）。MIT AI Lab
+                                    联合创始人，1969年图灵奖得主。
+                                </div>
+                            </div>
+
+                            <div class="dartmouth-card">
+                                <div class="dartmouth-avatar">
+                                    CS</div>
+                                <div class="dartmouth-name">克劳德&middot;香农</div>
+                                <div class="dartmouth-years">1916 — 2001</div>
+                                <div class="dartmouth-role">特邀参与者</div>
+                                <ul class="dartmouth-branches">
+                                    <li>信息论</li>
+                                    <li>开关电路理论</li>
+                                    <li>通信的数学理论</li>
+                                    <li>计算理论</li>
+                                </ul>
+                                <div class="dartmouth-contribution">1948年创立信息论，证明所有信息都可用0和1编码。被称为"20世纪最重要的硕士论文"的作者。
+                                </div>
+                            </div>
+
+                            <div class="dartmouth-card">
+                                <div class="dartmouth-avatar">
+                                    NR</div>
+                                <div class="dartmouth-name">纳撒尼尔&middot;罗切斯特</div>
+                                <div class="dartmouth-years">1919 — 2001</div>
+                                <div class="dartmouth-role">会议发起人</div>
+                                <ul class="dartmouth-branches">
+                                    <li>IBM 早期 AI 研究</li>
+                                    <li>启发式搜索</li>
+                                    <li>计算机体系结构</li>
+                                    <li>自动定理证明</li>
+                                </ul>
+                                <div class="dartmouth-contribution">IBM首席设计师，领导开发IBM 701。1955年编写了第一个AI程序——为IBM
+                                    701编写的跳棋程序。
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- ======== 阶段 2: 早期探索与第一次寒冬 (1956-1980) ======== -->
+                    <div class="phase-separator">
+                        <span class="phase-label">阶段 2 · 早期探索与第一次寒冬</span>
+                    </div>
+
+                    <!-- 1958 LISP -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1958</div>
+                            <div class="node-title">LISP — 符号主义的核心语言</div>
+                            <div class="node-person">约翰·麦卡锡（John McCarthy）</div>
+                            <div class="node-desc">麦卡锡发明了 LISP（List Processing），这是第一种专为符号计算设计的编程语言。LISP
+                                让研究者能够自然地表达符号操作、递归推理和知识表示。</div>
+                            <div class="node-solution"><strong>里程碑意义：</strong>为符号主义提供了最核心的工程工具，催生了 Maclisp、Scheme、Common
+                                Lisp 等方言。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1958 感知机 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1958</div>
+                            <div class="node-title">感知机 — 第一个可训练的神经网络</div>
+                            <div class="node-person">弗兰克·罗森布拉特（Frank Rosenblatt）</div>
+                            <div class="node-desc">第一个能根据数据自动调整权重的神经网络模型。1958年的Mark I感知机登上《纽约时报》头条。
+                            </div>
+                            <div class="node-solution"><strong>关键突破：</strong>首次实现了从数据中自动学习分类规则。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>只能解决线性可分问题。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1962 逻辑理论家 & GPS -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1962</div>
+                            <div class="node-title">逻辑理论家 &amp; 通用问题求解器</div>
+                            <div class="node-person">艾伦·纽厄尔（Allen Newell） &amp; 赫伯特·西蒙（Herbert Simon）</div>
+                            <div class="node-desc">"逻辑理论家"自动证明了《数学原理》中 38 条定理。GPS 引入了"手段-目的分析"这一核心推理策略。</div>
+                            <div class="node-solution"><strong>里程碑意义：</strong>首次证明机器可以模拟人类的逻辑推理过程。1975年图灵奖得主。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1966 ELIZA -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1966</div>
+                            <div class="node-title">ELIZA — 第一次人机对话</div>
+                            <div class="node-person">约瑟夫·魏岑鲍姆（Joseph Weizenbaum）</div>
+                            <div class="node-desc">在MIT开发的ELIZA程序，通过模式匹配模拟心理治疗师对话，让第一次人机对话成为现实。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 1969 XOR危机 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1969</div>
+                            <div class="node-title">XOR危机 — 第一次AI寒冬的导火索</div>
+                            <div class="node-person">马文·明斯基（Marvin Minsky） &amp; 西摩·帕普特（Seymour Papert）</div>
+                            <div class="node-desc">用严格数学证明揭示了感知机的根本局限：无法解决异或（XOR）等线性不可分问题。这一证明直接导致神经网络研究经费枯竭。
+                            </div>
+                            <div class="node-problem"><strong>核心问题：</strong>单层感知机的数学局限被严格证明，连接主义跌入谷底。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1973 莱特希尔报告 -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1973</div>
+                            <div class="node-title">莱特希尔报告 — AI的"死刑宣告"</div>
+                            <div class="node-person">詹姆斯·莱特希尔爵士（Sir James Lighthill） · 英国科学研究会</div>
+                            <div class="node-desc">
+                                应英国科学研究会委托，数学家詹姆斯·莱特希尔发表了关于AI研究的评估报告。报告尖锐指出：AI研究从未兑现其"宏大承诺"——机器人、语言理解、智能系统全部远不如预期。报告建议：停止对AI基础研究的资助，只支持有明确应用价值的有限课题。
+                            </div>
+                            <div class="node-problem"><strong>腥风血雨：</strong>英国几乎完全停止了对AI的资助，DARPA也开始大规模削减AI项目经费，AI跌入历史上第一个真正的寒冬。</div>
+                            <div class="node-solution"><strong>深远影响：</strong>"期望越高，失望越大"——莱特希尔报告成为"AI泡沫破裂"的经典样本，后来的每次繁荣都让人不自觉地想起这次教训。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1974 框架理论 -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1974</div>
+                            <div class="node-title">框架理论 — 知识表示的里程碑</div>
+                            <div class="node-person">马文·明斯基（Marvin Minsky）</div>
+                            <div class="node-desc">
+                                明斯基提出"框架"（Frame）概念——用结构化的数据结构来表示人类对典型情境的预期知识。比如"教室"框架会自动包含黑板、桌椅等槽位。</div>
+                            <div class="node-solution"><strong>里程碑意义：</strong>直接影响了后来的语义网络、本体论和知识图谱的发展。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1976 专家系统崛起 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1976</div>
+                            <div class="node-title">专家系统崛起 — 符号主义的黄金时代</div>
+                            <div class="node-person">爱德华·费根鲍姆（Edward Feigenbaum） &amp; 斯坦福团队</div>
+                            <div class="node-desc">DENDRAL（化学分析）和
+                                MYCIN（医疗诊断）证明了"知识就是力量"。费根鲍姆提出"知识工程"概念。</div>
+                            <div class="node-solution"><strong>里程碑意义：</strong>专家系统成为 1980 年代 AI 商业化的主流形态，全球投入数十亿美元。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ======== 阶段 3: 双路线竞争 (1980-2012) ======== -->
+                    <div class="phase-separator">
+                        <span class="phase-label">阶段 3 · 连接主义 vs 统计学习</span>
+                    </div>
+
+                    <!-- 1986 反向传播 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1986</div>
+                            <div class="node-title">反向传播算法 — 深度学习的基石</div>
+                            <div class="node-person">戴维·鲁梅尔哈特（David Rumelhart）、杰弗里·辛顿（Geoffrey Hinton） &amp; 罗纳德·威廉姆斯（Ronald Williams）</div>
+                            <div class="node-desc">从输出层开始，利用链式法则将误差逐层反向传播，计算每个权重对总误差的贡献（梯度），然后用梯度下降更新权重。</div>
+                            <div class="node-solution"><strong>关键突破：</strong>使训练多层神经网络变得高效可行。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>深层网络中梯度会逐层衰减（梯度消失）。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1987 符号主义的瓶颈 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1987</div>
+                            <div class="node-title">符号主义的瓶颈 — 知识获取难题</div>
+                            <div class="node-person">整个 AI 研究社区</div>
+                            <div class="node-desc">
+                                专家系统的局限暴露无遗：知识获取是瓶颈、常识难以形式化、系统脆弱。LISP
+                                机器市场崩溃，DARPA 撤回资助，AI 跌入第二次寒冬。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>人类知识的复杂性无法被有限的规则穷举。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1989 LeNet -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1989</div>
+                            <div class="node-title">LeNet-5 — 卷积神经网络的诞生</div>
+                            <div class="node-person">杨立昆（Yann LeCun）</div>
+                            <div class="node-desc">第一个成功应用的卷积神经网络（CNN），引入了卷积层、池化层和全连接层的经典架构组合。
+                            </div>
+                            <div class="node-problem"><strong>核心问题：</strong>计算资源和数据规模不足。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1995 SVM [绿色 ML 节点] -->
+                    <div class="timeline-node right ml-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1995</div>
+                            <div class="node-title">SVM 崛起 — 统计学习超越神经网络</div>
+                            <div class="node-person">弗拉基米尔·瓦普尼克（Vladimir Vapnik）</div>
+                            <div class="node-desc">
+                                支持向量机（SVM）在手写数字识别上超越了LeNet。以VC维理论为数学基础，SVM在小数据集上表现出色。</div>
+                            <div class="node-solution"><strong>关键突破：</strong>为机器学习提供了严格的泛化理论框架。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>特征仍需手工设计。</div>
+                        </div>
+                    </div>
+
+                    <!-- 1997 LSTM -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">1997</div>
+                            <div class="node-title">LSTM — 长短期记忆网络</div>
+                            <div class="node-person">塞普·霍赫赖特（Sepp Hochreiter） &amp; 于尔根·施密德胡贝尔（Jürgen Schmidhuber）</div>
+                            <div class="node-desc">为解决RNN的梯度消失问题而设计。核心创新是"细胞状态"和三道门控机制（遗忘门、输入门、输出门）。</div>
+                            <div class="node-solution"><strong>关键突破：</strong>门控机制使网络能自主选择"记住什么、忘记什么"。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>计算串行，无法并行。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2000s 集成学习 -->
+                    <div class="timeline-node right ml-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2000s</div>
+                            <div class="node-title">集成学习 — 集体智慧的力量</div>
+                            <div class="node-person">利奥·布雷曼（Leo Breiman）、罗伯特·沙皮尔（Robert Schapire）、杰罗姆·弗里德曼（Jerome Friedman）等</div>
+                            <div class="node-desc">随机森林、AdaBoost、Gradient
+                                Boosting等集成方法蓬勃发展。XGBoost成为数据科学竞赛的标配武器。</div>
+                            <div class="node-solution"><strong>关键突破：</strong>偏差-方差权衡的理论框架。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2006 深度信念网络 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2006</div>
+                            <div class="node-title">深度信念网络 — 打破深度壁垒</div>
+                            <div class="node-person">杰弗里·辛顿（Geoffrey Hinton）</div>
+                            <div class="node-desc">提出用RBM进行逐层无监督预训练+DBN微调的方法，首次成功训练了真正意义上的深层网络（5层以上）。
+                            </div>
+                            <div class="node-solution"><strong>关键突破：</strong>逐层无监督预训练提供了良好的初始化。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2012 AlexNet ★里程碑 -->
+                    <div class="timeline-node right milestone fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2012</div>
+                            <div class="node-title">AlexNet — 深度学习革命的引爆点</div>
+                            <div class="node-person">亚历克斯·克里泽夫斯基（Alex Krizhevsky）、伊利亚·苏茨克维（Ilya Sutskever） &amp; 杰弗里·辛顿（Geoffrey Hinton）</div>
+                            <div class="node-desc">
+                                在ImageNet竞赛中以压倒性优势获胜——top-5错误率15.3%，第二名26.2%！四大创新：GPU加速、ReLU、Dropout、数据增强。</div>
+                            <div class="node-solution"><strong>里程碑意义：</strong>证明了大数据+GPU+深度网络的组合威力，深度学习从此一统江湖。</div>
+                        </div>
+                    </div>
+
+                    <!-- ======== 阶段 4: 深度学习革命 (2012-至今) ======== -->
+                    <div class="phase-separator">
+                        <span class="phase-label">阶段 4 · 深度学习革命</span>
+                    </div>
+
+                    <!-- 2014 GAN -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2014</div>
+                            <div class="node-title">GAN — 生成对抗网络</div>
+                            <div class="node-person">伊恩·古德费洛（Ian Goodfellow）</div>
+                            <div class="node-desc">两个网络相互对抗：生成器试图生成以假乱真的数据，判别器试图区分真实数据和生成数据。</div>
+                            <div class="node-solution"><strong>关键突破：</strong>无需显式定义数据分布，通过对抗训练自动学习。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>训练不稳定，模式崩溃（mode collapse）。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2015 ResNet -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2015</div>
+                            <div class="node-title">ResNet — 残差网络，打破深度壁垒</div>
+                            <div class="node-person">何恺明（Kaiming He）等（微软研究院）</div>
+                            <div class="node-desc">发现"退化问题"：56层网络的训练误差反而比20层高！引入"残差连接"（skip connection）。</div>
+                            <div class="node-solution">
+                                <strong>关键突破：</strong>残差连接使训练152层网络成为可能，ImageNet错误率降至3.57%，首次超越人类水平。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2017 Transformer -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2017</div>
+                            <div class="node-title">Transformer — "Attention Is All You Need"</div>
+                            <div class="node-person">阿希什·瓦斯瓦尼（Ashish Vaswani）等（Google Brain）</div>
+                            <div class="node-desc">彻底抛弃了RNN的循环结构和CNN的卷积操作，完全基于自注意力机制（Self-Attention）。
+                            </div>
+                            <div class="node-solution"><strong>关键突破：</strong>自注意力实现了O(1)的任意位置间信息传递路径，天然支持并行计算。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>自注意力计算复杂度为O(n²)。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2020+ LLM -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2020+</div>
+                            <div class="node-title">大语言模型时代 — Scaling Laws 与涌现能力</div>
+                            <div class="node-person">OpenAI, Google DeepMind, Anthropic 等</div>
+                            <div class="node-desc">
+                                模型性能与参数量、数据量、计算量之间存在精确的幂律关系。GPT-3（1750亿参数）展示了"涌现能力"。ChatGPT（2022）引爆了全球AI热潮。
+                            </div>
+                            <div class="node-solution"><strong>关键突破：</strong>Transformer架构+海量数据+巨大算力=通用智能的曙光。</div>
+                            <div class="node-problem"><strong>待解之问：</strong>幻觉问题、推理可靠性、对齐安全、能耗成本。</div>
+                        </div>
+                    </div>
+
+                    <!-- ======== 阶段5: AI 大爆发 (2024-2026+) ======== -->
+                    <div class="phase-separator">
+                        <span class="phase-label">阶段 5 · AI 大爆发</span>
+                    </div>
+
+                    <!-- 2024 Sora -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2024</div>
+                            <div class="node-title">Sora — 文本生成视频与世界模型</div>
+                            <div class="node-person">OpenAI</div>
+                            <div class="node-desc">
+                                OpenAI发布Sora，实现高质量文本生成视频。Sora不仅是一个视频生成工具，更被视作AI对物理世界建模的"世界模型"雏形。
+                            </div>
+                            <div class="node-solution"><strong>关键突破：</strong>视频生成不仅是创意工具，更是AI理解和模拟物理世界的关键一步。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2024 GPT-4o -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2024</div>
+                            <div class="node-title">GPT-4o — 端到端多模态的飞跃</div>
+                            <div class="node-person">OpenAI · Anthropic</div>
+                            <div class="node-desc">
+                                OpenAI发布GPT-4o，实现真正的端到端多模态——一个统一模型同时处理文本、语音、图像。Anthropic同期发布Claude 3.5 Sonnet。
+                            </div>
+                            <div class="node-solution"><strong>关键突破：</strong>从"拼接多模块"到"原生多模态"，人机交互自然度实现质的飞跃。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2024 诺贝尔奖 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2024</div>
+                            <div class="node-title">诺贝尔奖花落 AI — 里程碑式的认可</div>
+                            <div class="node-person">杰弗里·辛顿（Geoffrey Hinton） · 德米斯·哈萨比斯（Demis Hassabis）</div>
+                            <div class="node-desc">
+                                2024年诺贝尔物理学奖授予辛顿和霍普菲尔德；诺贝尔化学奖授予哈萨比斯和珀普，表彰AlphaFold的突破。AI首获诺贝尔奖认可。
+                            </div>
+                            <div class="node-solution"><strong>历史意义：</strong>诺贝尔奖首次表彰AI领域的贡献，标志着AI研究正式进入人类科学殿堂的核心。</div>
+                            <div class="node-problem"><strong>深层反思：</strong>辛顿从推动AI崛起到警示AI风险——获奖后他呼吁人类认真对待AI的生存威胁。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2025 DeepSeek R1 -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2025</div>
+                            <div class="node-title">DeepSeek R1 — 开源推理模型的震撼一击</div>
+                            <div class="node-person">梁文锋 · DeepSeek</div>
+                            <div class="node-desc">中国深度求索发布DeepSeek-R1开源推理模型，以极低成本实现了媲美OpenAI
+                                o1的推理性能。美股英伟达单日暴跌17%，被称为"AI界的斯普特尼克时刻"。</div>
+                            <div class="node-solution"><strong>关键突破：</strong>开源+低成本打破了"算力霸权"的神话。</div>
+                            <div class="node-problem"><strong>核心问题：</strong>开源模型的安全风险、技术封锁与开放的博弈。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2025 AI编程革命 -->
+                    <div class="timeline-node left nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2025</div>
+                            <div class="node-title">AI 编程革命 — Cursor 与 Vibe Coding</div>
+                            <div class="node-person">迈克尔&middot;特鲁尔 · Anysphere</div>
+                            <div class="node-desc">AI编程工具Cursor估值飙升至26亿美元。开发者用自然语言描述需求，AI直接生成代码。"Vibe
+                                Coding"成为新趋势——用意图驱动AI构建软件。</div>
+                            <div class="node-solution"><strong>关键突破：</strong>AI不再只是"辅助"编程，而是成为编程的核心驱动力。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2026.5 DeepSeek登顶 -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2026.5</div>
+                            <div class="node-title">DeepSeek-V4-Flash 登顶全球调用榜</div>
+                            <div class="node-person">梁文锋 · DeepSeek</div>
+                            <div class="node-desc">
+                                OpenRouter平台全球AI大模型周调用量达28.9万亿Token。中国AI大模型周调用量连续4周超过美国，DeepSeek-V4-Flash登顶全球调用榜。
+                            </div>
+                            <div class="node-solution"><strong>关键突破：</strong>中国AI大模型在全球调用量上持续超越美国。</div>
+                        </div>
+                    </div>
+
+                    <!-- 2026.5.25 华为韬定律 -->
+                    <div class="timeline-node left milestone fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2026.5.25</div>
+                            <div class="node-title">华为发表"韬（τ）定律" — 半导体演进新范式</div>
+                            <div class="node-person">何庭波 · 华为半导体业务部总裁</div>
+                            <div class="node-desc">在IEEE ISCAS
+                                2026会上，何庭波正式发布"韬（τ）定律"——以"时间缩微"替代"几何缩微"，通过"逻辑折叠"（LogicFolding）等技术路径，不依赖极致物理制程大幅提升性能。预计2031年等效1.4纳米水平。
+                            </div>
+                            <div class="node-solution">
+                                <strong>里程碑意义：</strong>中国半导体从"跟随者"向"引领者"跨越的标志性事件。
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2026 具身智能 -->
+                    <div class="timeline-node right nn-node fade-in">
+                        <div class="node-content">
+                            <div class="node-year">2026</div>
+                            <div class="node-title">具身智能与全球 AI 治理元年</div>
+                            <div class="node-person">全球科技界与政策制定者</div>
+                            <div class="node-desc">
+                                大模型驱动的人形机器人开始进入工厂和家庭，具身智能从实验室走向现实。欧盟《人工智能法案》正式生效。
+                            </div>
+                            <div class="node-solution"><strong>关键突破：</strong>AI从数字世界走向物理世界，全球AI治理框架初步建立。</div>
+                        </div>
+                    </div>
+
+                    <!-- ======== 阶段5 代表人物 ======== -->
+                    <div class="dartmouth-expansion phase5-persons fade-in">
+                        <div class="expansion-header">✦ AI 大爆发时代的引领者 ✦</div>
+                        <div class="dartmouth-grid">
+
+                            <div class="dartmouth-card">
+                                <div class="dartmouth-avatar">
+                                    梁</div>
+                                <div class="dartmouth-name">梁文锋</div>
+                                <div class="dartmouth-role">DeepSeek 创始人</div>
+                                <ul class="dartmouth-branches">
+                                    <li>DeepSeek-R1 开源推理模型</li>
+                                    <li>低成本高效训练范式</li>
+                                    <li>AI 开源全球化推动者</li>
+                                </ul>
+                                <div class="dartmouth-contribution">2025年发布DeepSeek-R1，引发英伟达单日暴跌17%，被称为"AI界的斯普特尼克时刻"。
+                                </div>
+                            </div>
+
+                            <div class="dartmouth-card">
+                                <div class="dartmouth-avatar">
+                                    DA</div>
+                                <div class="dartmouth-name">达里奥&middot;阿莫代伊</div>
+                                <div class="dartmouth-role">Anthropic CEO</div>
+                                <ul class="dartmouth-branches">
+                                    <li>Claude 系列大模型</li>
+                                    <li>宪法 AI（Constitutional AI）</li>
+                                    <li>AI 安全对齐研究</li>
+                                </ul>
+                                <div class="dartmouth-contribution">因AI安全理念离开OpenAI后创立Anthropic，提出"宪法AI"概念。2024年Claude
+                                    3.5系列成为OpenAI最强挑战者。</div>
+                            </div>
+
+                            <div class="dartmouth-card">
+                                <div class="dartmouth-avatar">
+                                    MT</div>
+                                <div class="dartmouth-name">迈克尔&middot;特鲁尔</div>
+                                <div class="dartmouth-role">Anysphere CEO</div>
+                                <ul class="dartmouth-branches">
+                                    <li>Cursor AI 编程工具</li>
+                                    <li>Vibe Coding 新范式</li>
+                                    <li>2025年ARR突破5亿美元</li>
+                                </ul>
+                                <div class="dartmouth-contribution">
+                                    联合创立Anysphere并推出Cursor，2025年ARR突破5亿美元。"Vibe
+                                    Coding"正在彻底改变软件构建的方式。</div>
+                            </div>
+
+                            <div class="dartmouth-card">
+                                <div class="dartmouth-avatar">
+                                    杨</div>
+                                <div class="dartmouth-name">杨植麟</div>
+                                <div class="dartmouth-role">月之暗面创始人</div>
+                                <ul class="dartmouth-branches">
+                                    <li>Kimi 系列大模型</li>
+                                    <li>超长上下文200万字</li>
+                                    <li>Google Brain 前研究员</li>
+                                </ul>
+                                <div class="dartmouth-contribution">
+                                    主导开发Kimi系列大模型，以超长上下文窗口著称，成为国产大模型的重要力量。</div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div><!-- end ai-timeline -->
+            </div>
+        </section>
+
+        <!-- ============================
+             AI 的繁荣与寒冬
+             ============================ -->
+        <section class="ai-winter-timeline" id="ai-winter">
+            <div class="era-inner">
+
+                <div class="era-header">
+                    <h2 class="era-title">繁荣与寒冬</h2>
+                    <p class="era-desc">
+                        人工智能的历史，是一部在希望与失望之间反复摆荡的史诗。<br>
+                        每一次繁荣都让人相信"这次不一样"，每一次寒冬都让人怀疑"AI 是否只是泡沫"。<br>
+                        但正是这种周期性的起伏，塑造了今天的 AI 世界。
+                    </p>
+                </div>
+
+                <!-- Waveform Chart -->
+                <div class="prologue-section">
+                    <div class="section-label">
+                        ✦ AI 热度波形图 ✦
+                    </div>
+
+                    <div class="winter-chart-container">
+                        <div id="winter-wave-chart" style="width: 100%; height: 480px;"></div>
+
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-dot"
+                                    style="background: linear-gradient(135deg, #EC4899, #F472B6);"></span>
+                                <span>繁荣期 — 资金涌入、突破频出、公众狂热</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot"
+                                    style="background: linear-gradient(135deg, #10B981, #34D399);"></span>
+                                <span>寒冬期 — 经费削减、质疑声起、研究停滞</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Persistent Scientists -->
+                <div class="persistent-scientists">
+                    <div class="section-label">
+                        ✦ 寒冬中的坚守者 ✦
+                    </div>
+
+                    <p
+                        style="text-align: center; color: var(--text-secondary); margin-bottom: var(--space-xl); font-size: 0.95rem;">
+                        在最黑暗的时刻，有一群科学家拒绝放弃。他们在经费匮乏、同行质疑的环境中坚持研究，最终改变了世界。
+                    </p>
+
+                    <div class="scientists-grid">
+                        <!-- Geoffrey Hinton -->
+                        <div class="scientist-card">
+                            <div class="scientist-header">
+                                <div class="scientist-avatar">GH</div>
+                                <div class="scientist-info">
+                                    <div class="scientist-name">杰弗里·辛顿<wbr>（Geoffrey Hinton）</div>
+                                    <div class="scientist-years">1947 — 至今</div>
+                                </div>
+                                <div class="scientist-badge">深度学习之父</div>
+                            </div>
+                            <div class="scientist-story">
+                                在第一次寒冬中，当所有人都在嘲笑神经网络时，辛顿（Hinton）选择了留下。1986年，他与鲁梅尔哈特（Rumelhart）、威廉姆斯（Williams）一起发表了反向传播算法。后来说："我知道我是对的，只是需要时间来证明。"
+                            </div>
+                            <div class="scientist-contribution">
+                                🏆 贡献：反向传播算法、玻尔兹曼机、深度信念网络、2018年图灵奖得主
+                            </div>
+                        </div>
+
+                        <!-- Yann LeCun -->
+                        <div class="scientist-card">
+                            <div class="scientist-header">
+                                <div class="scientist-avatar">YL</div>
+                                <div class="scientist-info">
+                                    <div class="scientist-name">杨立昆<wbr>（Yann LeCun）</div>
+                                    <div class="scientist-years">1960 — 至今</div>
+                                </div>
+                                <div class="scientist-badge">CNN 之父</div>
+                            </div>
+                            <div class="scientist-story">
+                                在第二次寒冬期间，杨立昆（LeCun）在AT&T贝尔实验室默默研究卷积神经网络。1989年，他发表了LeNet-5。当时没人相信这能成功，但他坚持了下来。
+                            </div>
+                            <div class="scientist-contribution">
+                                🏆 贡献：卷积神经网络（CNN）、LeNet、图像识别革命、2018年图灵奖得主
+                            </div>
+                        </div>
+
+                        <!-- Yoshua Bengio -->
+                        <div class="scientist-card">
+                            <div class="scientist-header">
+                                <div class="scientist-avatar">YB</div>
+                                <div class="scientist-info">
+                                    <div class="scientist-name">约书亚·本吉奥<wbr>（Yoshua Bengio）</div>
+                                    <div class="scientist-years">1964 — 至今</div>
+                                </div>
+                                <div class="scientist-badge">深度学习先驱</div>
+                            </div>
+                            <div class="scientist-story">
+                                在蒙特利尔大学，本吉奥（Bengio）是少数坚持神经网络研究的人之一。他的研究为后来的自然语言处理和生成模型奠定了基础。
+                            </div>
+                            <div class="scientist-contribution">
+                                🏆 贡献：词嵌入、序列概率模型、GAN理论、2018年图灵奖得主
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="summary-box" style="text-align: center;">
+                        <p>"在AI的寒冬中，他们不是看到了希望才坚持，而是坚持了才看到希望。"</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             海外 AI 巨头群像
+             ============================ -->
+        <section class="global-ai-giants" id="global-ai-giants">
+            <div class="era-inner">
+                <div class="giants-heading">
+                    <span class="giants-kicker">GLOBAL AI PLAYERS · 2026</span>
+                    <h2 class="era-title">巨头、天才与分岔路</h2>
+                    <p class="era-desc">
+                        今天的 AI 江湖不是几款聊天机器人的简单对决，而是一张由人才流动、资本、芯片、云计算与数据共同织成的关系网。
+                        <strong>GPT、Codex、Gemini、Claude、Grok 是产品或模型家族，不是公司名</strong>；它们背后站着 OpenAI、Google DeepMind、Anthropic 与马斯克的公司版图。
+                    </p>
+                    <div class="giants-update">
+                        <span class="update-pulse" aria-hidden="true"></span>
+                        资料更新至 2026 年 7 月 23 日
+                    </div>
+                </div>
+
+                <div class="giants-primer" aria-label="产品与公司对应关系">
+                    <div><span>GPT / ChatGPT / Codex</span><strong>OpenAI</strong></div>
+                    <div><span>Gemini</span><strong>Google DeepMind</strong></div>
+                    <div><span>Claude</span><strong>Anthropic</strong></div>
+                    <div><span>Grok</span><strong>xAI · SpaceX</strong></div>
+                    <div><span>GPU / AI 工厂</span><strong>NVIDIA</strong></div>
+                </div>
+
+                <div class="giants-grid">
+                    <article class="giant-card giant-google">
+                        <div class="giant-card-top">
+                            <span class="giant-mark">G</span>
+                            <div>
+                                <p class="giant-company">Google DeepMind</p>
+                                <h3>德米斯·哈萨比斯（Demis Hassabis） · 把研究院装进搜索帝国</h3>
+                            </div>
+                            <span class="giant-tag">Gemini</span>
+                        </div>
+                        <p class="giant-story">
+                            哈萨比斯早年是国际象棋神童、游戏设计师和神经科学研究者。2010 年联合创办 DeepMind，2014 年被 Google 收购；
+                            2023 年，DeepMind 与 Google Brain 合并为 Google DeepMind，他由创业者变成 Alphabet AI 核心掌舵人。
+                        </p>
+                        <div class="giant-news">
+                            <span>近况</span>
+                            <p>2026 年 2 月，Google 发布 Gemini 3.1 Pro，并将其推向 Gemini API、Vertex AI、Gemini 应用与 NotebookLM。Google 的优势，是把模型直接嵌入搜索、安卓、办公套件和云平台。</p>
+                        </div>
+                        <div class="giant-relation"><b>渊源：</b>DeepMind（英国创业公司） → 被 Google 收购 → 与 Google Brain 合流 → Gemini 成为统一模型品牌。</div>
+                    </article>
+
+                    <article class="giant-card giant-openai">
+                        <div class="giant-card-top">
+                            <span class="giant-mark">OA</span>
+                            <div>
+                                <p class="giant-company">OpenAI</p>
+                                <h3>萨姆·奥尔特曼（Sam Altman） · 从研究实验室到产品帝国</h3>
+                            </div>
+                            <span class="giant-tag">GPT · Codex</span>
+                        </div>
+                        <p class="giant-story">
+                            OpenAI 于 2015 年由萨姆·奥尔特曼（Sam Altman）、埃隆·马斯克（Elon Musk）、格雷格·布罗克曼（Greg Brockman）等人共同发起。ChatGPT 把 GPT 推向大众，Codex 则沿着“代码补全”继续进化为能读仓库、运行命令、分派任务的编程智能体。
+                        </p>
+                        <div class="giant-news">
+                            <span>近况</span>
+                            <p>2026 年 2 月 2 日，OpenAI 推出 macOS 版 Codex App；3 月 4 日扩展至 Windows。它不再只是“帮你写一行代码”，而更像同时调度多个智能体的开发指挥台。</p>
+                        </div>
+                        <div class="giant-relation"><b>渊源：</b>与埃隆·马斯克（Elon Musk）从共同创办到公开分歧；与 Microsoft 从算力合作走向资本、云与产品深度绑定，同时又通过 Stargate 扩展 Oracle、SoftBank、NVIDIA 等伙伴。</div>
+                    </article>
+
+                    <article class="giant-card giant-microsoft">
+                        <div class="giant-card-top">
+                            <span class="giant-mark">MS</span>
+                            <div>
+                                <p class="giant-company">Microsoft</p>
+                                <h3>萨提亚·纳德拉（Satya Nadella） · 最会结盟的“超级平台”</h3>
+                            </div>
+                            <span class="giant-tag">Azure · Copilot</span>
+                        </div>
+                        <p class="giant-story">
+                            微软没有把所有赌注押在一款自研模型上，而是用 Azure 云、GitHub、Windows、Office 和企业客户网络放大 OpenAI 的能力。它既是投资人、云伙伴，也是把模型送进工作流的渠道商。
+                        </p>
+                        <div class="giant-news">
+                            <span>关系</span>
+                            <p>双方自 2019 年开始合作。2026 年 2 月的联合声明再次确认：合作仍是核心，但 OpenAI 可以在既有协议框架下增加其他算力伙伴——这是一段深度绑定、又彼此保留空间的关系。</p>
+                        </div>
+                        <div class="giant-relation"><b>看点：</b>OpenAI 需要微软的资本、云和企业入口；微软也在发展自己的 Copilot 品牌与模型生态。盟友，同时也是彼此最重要的筹码。</div>
+                    </article>
+
+                    <article class="giant-card giant-anthropic">
+                        <div class="giant-card-top">
+                            <span class="giant-mark">A</span>
+                            <div>
+                                <p class="giant-company">Anthropic</p>
+                                <h3>达里奥·阿莫代伊（Dario Amodei） &amp; 丹妮拉·阿莫代伊（Daniela Amodei） · 从 OpenAI 分出的安全派</h3>
+                            </div>
+                            <span class="giant-tag">Claude</span>
+                        </div>
+                        <p class="giant-story">
+                            兄妹二人与一批前 OpenAI 研究人员在 2021 年创办 Anthropic，把“可靠、可解释、可控”放在公司叙事中心，并以 Constitutional AI（宪法式 AI）形成鲜明路线。
+                        </p>
+                        <div class="giant-news">
+                            <span>近况</span>
+                            <p>Anthropic 一边把 AWS 作为主要云与训练伙伴，一边继续使用 Google TPU 和 NVIDIA GPU。2026 年又扩大与 Google、Broadcom 的算力合作——竞争对手的投资者和基础设施，也可以同时成为它的供给者。</p>
+                        </div>
+                        <div class="giant-relation"><b>渊源：</b>人才源自 OpenAI；Amazon 与 Google 都投资或提供算力；Claude 又在企业与编程市场直接挑战 GPT、Codex 和 Gemini。</div>
+                    </article>
+
+                    <article class="giant-card giant-musk">
+                        <div class="giant-card-top">
+                            <span class="giant-mark">X</span>
+                            <div>
+                                <p class="giant-company">SpaceX · xAI · X</p>
+                                <h3>埃隆·马斯克（Elon Musk） · 离开 OpenAI 后另起炉灶</h3>
+                            </div>
+                            <span class="giant-tag">Grok</span>
+                        </div>
+                        <p class="giant-story">
+                            埃隆·马斯克（Elon Musk）参与共同创办 OpenAI，却在 2018 年辞去联席主席。之后，他于 2023 年创办 xAI 推出 Grok，并把社交平台、实时数据、超级计算集群、卫星通信与火箭能力逐步拼进同一版图。
+                        </p>
+                        <div class="giant-news">
+                            <span>分合</span>
+                            <p>2025 年 3 月，xAI 收购 X；2026 年 2 月 2 日，SpaceX 又收购 xAI（其中已包括 X）。这条链条把“内容与用户 → 模型与算力 → 星链与发射能力”纵向串联起来。</p>
+                        </div>
+                        <div class="giant-relation"><b>戏剧性：</b>从 OpenAI 的联合创办人，到公开批评者，再到最直接的竞争者。硅谷的理念之争，最终也变成了产品、资本和控制权之争。</div>
+                    </article>
+
+                    <article class="giant-card giant-nvidia">
+                        <div class="giant-card-top">
+                            <span class="giant-mark">NV</span>
+                            <div>
+                                <p class="giant-company">NVIDIA</p>
+                                <h3>黄仁勋（Jensen Huang） · 不押模型，卖给所有人“铲子”</h3>
+                            </div>
+                            <span class="giant-tag">GPU · CUDA</span>
+                        </div>
+                        <p class="giant-story">
+                            黄仁勋 1993 年共同创办 NVIDIA。游戏显卡时代积累的并行计算与 CUDA 生态，在深度学习浪潮中成为训练大模型的基础设施，让 NVIDIA 同时站在几乎所有 AI 巨头背后。
+                        </p>
+                        <div class="giant-news">
+                            <span>近况</span>
+                            <p>在 GTC 2026，NVIDIA 把 AI 描述为由能源、芯片、基础设施、模型和应用组成的“五层蛋糕”，继续从 GPU 公司向“AI 工厂”全栈平台扩张。</p>
+                        </div>
+                        <div class="giant-relation"><b>渊源：</b>OpenAI、Google、Anthropic、xAI 都需要巨量计算。模型公司彼此厮杀，NVIDIA 往往同时向各阵营供货，也面对 Google TPU、AWS Trainium 等自研芯片的挑战。</div>
+                    </article>
+                </div>
+
+                <div class="relationship-map">
+                    <div class="relationship-title">
+                        <span>一张图看懂</span>
+                        <h3>他们为什么一边竞争，一边合作？</h3>
+                    </div>
+                    <div class="relationship-track" aria-label="AI 公司关系链">
+                        <div class="relation-stop"><b>人才</b><span>OpenAI → Anthropic<br>埃隆·马斯克（Elon Musk） → xAI</span></div>
+                        <div class="relation-arrow" aria-hidden="true">→</div>
+                        <div class="relation-stop"><b>模型</b><span>GPT / Gemini<br>Claude / Grok</span></div>
+                        <div class="relation-arrow" aria-hidden="true">→</div>
+                        <div class="relation-stop"><b>算力</b><span>Azure / AWS / Google Cloud<br>NVIDIA / TPU / Trainium</span></div>
+                        <div class="relation-arrow" aria-hidden="true">→</div>
+                        <div class="relation-stop"><b>入口</b><span>搜索 / Office / X<br>ChatGPT / Android / Starlink</span></div>
+                    </div>
+                    <p class="relationship-conclusion">
+                        <strong>真正的竞争单位不是“一家公司”，而是一整套生态：</strong>谁能同时掌握人才、模型、芯片、云、数据和用户入口，谁就更接近下一代计算平台。
+                    </p>
+                </div>
+
+                <div class="giants-timeline">
+                    <div class="section-label">✦ 分分合合时间线 ✦</div>
+                    <div class="giants-timeline-row">
+                        <div><time>2010</time><p>DeepMind 在伦敦成立</p></div>
+                        <div><time>2014</time><p>Google 收购 DeepMind</p></div>
+                        <div><time>2015</time><p>萨姆·奥尔特曼（Sam Altman）、埃隆·马斯克（Elon Musk）等共同发起 OpenAI</p></div>
+                        <div><time>2018</time><p>埃隆·马斯克（Elon Musk）离开 OpenAI 董事会</p></div>
+                        <div><time>2019</time><p>Microsoft 与 OpenAI 开始深度合作</p></div>
+                        <div><time>2021</time><p>前 OpenAI 团队创办 Anthropic</p></div>
+                        <div><time>2023</time><p>Google Brain 与 DeepMind 合并；xAI 成立</p></div>
+                        <div><time>2025</time><p>xAI 收购 X；Stargate 启动</p></div>
+                        <div><time>2026</time><p>SpaceX 收购 xAI；Codex App、Gemini 3.1 Pro 登场</p></div>
+                    </div>
+                </div>
+
+                <div class="giants-sources">
+                    <span>延伸阅读 / 资料来源</span>
+                    <a href="https://deepmind.google/blog/announcing-google-deepmind/" target="_blank" rel="noopener noreferrer">Google DeepMind 合并公告</a>
+                    <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-1-pro/" target="_blank" rel="noopener noreferrer">Gemini 3.1 Pro</a>
+                    <a href="https://openai.com/index/introducing-the-codex-app/" target="_blank" rel="noopener noreferrer">Codex App</a>
+                    <a href="https://openai.com/index/continuing-microsoft-partnership/" target="_blank" rel="noopener noreferrer">OpenAI × Microsoft</a>
+                    <a href="https://www.anthropic.com/news/anthropic-raises-124-million-to-build-more-reliable-general-ai-systems" target="_blank" rel="noopener noreferrer">Anthropic 创办团队</a>
+                    <a href="https://www.anthropic.com/news/anthropic-amazon-trainium" target="_blank" rel="noopener noreferrer">Anthropic × AWS</a>
+                    <a href="https://x.ai/news/xai-joins-spacex" target="_blank" rel="noopener noreferrer">xAI 加入 SpaceX</a>
+                    <a href="https://nvidianews.nvidia.com/news/nvidia-ceo-jensen-huang-and-global-technology-leaders-to-showcase-age-of-ai-at-gtc-2026" target="_blank" rel="noopener noreferrer">NVIDIA GTC 2026</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+        <div class="footer-links">
+            <a href="index-all.html">学习地图</a>
+            <a href="part1.html">上一章：序章</a>
+            <a href="part3.html">下一章：机器学习</a>
+        </div>
+    </footer>
+
+    <!-- 粒子背景脚本 -->
+    <script>
+        (function () {
+            const canvas = document.getElementById('particles');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animId;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createParticles() {
+                particles = [];
+                const count = Math.min(60, Math.floor(window.innerWidth / 20));
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3,
+                        r: Math.random() * 1.5 + 0.5,
+                        a: Math.random() * 0.3 + 0.1
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (const p of particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(192, 132, 252, ' + p.a + ')';
+                    ctx.fill();
+                }
+
+                // 连线
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = 'rgba(192, 132, 252, ' + (0.08 * (1 - dist / 120)) + ')';
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                animId = requestAnimationFrame(draw);
+            }
+
+            resize();
+            createParticles();
+            draw();
+
+            window.addEventListener('resize', function () {
+                resize();
+                createParticles();
+            });
+        })();
+    </script>
+
+    <!-- AI 热度波形图 -->
+    <script>
+        (function () {
+            var chartDom = document.getElementById('winter-wave-chart');
+            if (!chartDom) return;
+            var chart = echarts.init(chartDom);
+
+            var data = [
+                { year: '1943', label: 'MP模型', heat: 0.3, period: '繁荣' },
+                { year: '1956', label: '达特茅斯', heat: 0.7, period: '繁荣' },
+                { year: '1966', label: 'ELIZA', heat: 0.5, period: '繁荣' },
+                { year: '1969', label: 'XOR危机', heat: 0.2, period: '寒冬' },
+                { year: '1973', label: '莱特希尔报告', heat: 0.15, period: '寒冬' },
+                { year: '1974', label: '框架理论', heat: 0.3, period: '寒冬' },
+                { year: '1980', label: '专家系统', heat: 0.6, period: '繁荣' },
+                { year: '1986', label: '反向传播', heat: 0.5, period: '繁荣' },
+                { year: '1987', label: 'LISP机器崩溃', heat: 0.2, period: '寒冬' },
+                { year: '1989', label: 'LeNet', heat: 0.3, period: '寒冬' },
+                { year: '1997', label: 'LSTM', heat: 0.3, period: '寒冬' },
+                { year: '2006', label: '深度信念网络', heat: 0.4, period: '复苏' },
+                { year: '2012', label: 'AlexNet', heat: 0.9, period: '繁荣' },
+                { year: '2014', label: 'GAN', heat: 0.7, period: '繁荣' },
+                { year: '2015', label: 'ResNet', heat: 0.7, period: '繁荣' },
+                { year: '2017', label: 'Transformer', heat: 0.95, period: '繁荣' },
+                { year: '2022', label: 'ChatGPT', heat: 1.0, period: '繁荣' },
+                { year: '2024', label: '诺贝尔奖', heat: 0.85, period: '繁荣' },
+                { year: '2025', label: 'DeepSeek R1', heat: 0.9, period: '繁荣' },
+                { year: '2026', label: '华为韬定律', heat: 0.8, period: '繁荣' },
+            ];
+
+            var years = data.map(function (d) { return d.year; });
+            var heats = data.map(function (d) { return d.heat; });
+            var items = data.map(function (d) { return d.label; });
+            var periods = data.map(function (d) { return d.period; });
+
+            var option = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'line',
+                        lineStyle: {
+                            color: '#C084FC',
+                            width: 1.5,
+                            type: 'dashed',
+                            opacity: 0.5
+                        }
+                    },
+                    backgroundColor: 'rgba(255,255,255,0.97)',
+                    borderColor: '#EDE8E3',
+                    borderWidth: 1,
+                    padding: [12, 16],
+                    textStyle: { color: '#2D2A26', fontSize: 13, fontFamily: 'Noto Sans SC' },
+                    extraCssText: 'border-radius:12px;box-shadow:0 8px 32px rgba(45,42,38,0.12);backdrop-filter:blur(8px);',
+                    formatter: function (params) {
+                        var idx = params[0].dataIndex;
+                        var c = periods[idx] === '寒冬' ? '#10B981' : (periods[idx] === '复苏' ? '#F59E0B' : '#EC4899');
+                        var dotHtml = '<span style="display:inline-block;margin-right:8px;width:8px;height:8px;border-radius:50%;background:' + c + ';box-shadow:0 0 5px ' + c + '66;"></span>';
+                        return '<div style="font-weight:600;margin-bottom:6px;font-size:14px">' + years[idx] + ' — ' + items[idx] + '</div>'
+                            + dotHtml + periods[idx] + '期 &nbsp;热度 <strong style="color:' + c + '">' + Math.round(heats[idx] * 100) + '%</strong>';
+                    }
+                },
+                grid: {
+                    left: 48,
+                    right: 24,
+                    top: 30,
+                    bottom: 32,
+                    containLabel: false
+                },
+                xAxis: {
+                    type: 'category',
+                    data: years,
+                    boundaryGap: false,
+                    axisLine: { show: false },
+                    axisTick: { show: false },
+                    axisLabel: {
+                        color: '#9A948C',
+                        fontSize: 11,
+                        fontFamily: 'JetBrains Mono',
+                        fontWeight: 500,
+                        interval: 0
+                    },
+                    splitLine: { show: false },
+                    axisPointer: { label: { show: false } }
+                },
+                yAxis: {
+                    type: 'value',
+                    min: 0,
+                    max: 1,
+                    axisLine: { show: false },
+                    axisTick: { show: false },
+                    axisLabel: { show: false },
+                    splitLine: {
+                        lineStyle: { color: '#F0EDE9', type: 'dashed', opacity: 0.6 }
+                    }
+                },
+                // 用 markArea 标注繁荣/寒冬时期
+                series: [
+                    // 底层面积层
+                    {
+                        name: '热度',
+                        type: 'line',
+                        smooth: 0.4,
+                        symbol: 'none',
+                        sampling: 'none',
+                        lineStyle: { width: 0 },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(236, 72, 153, 0.28)' },
+                                { offset: 0.5, color: 'rgba(192, 132, 252, 0.12)' },
+                                { offset: 1, color: 'rgba(16, 185, 129, 0.01)' }
+                            ])
+                        },
+                        data: heats,
+                        markArea: {
+                            silent: true,
+                            label: {
+                                show: true,
+                                fontSize: 12,
+                                fontWeight: 600,
+                                fontFamily: 'Noto Sans SC',
+                                color: '#fff',
+                                padding: [4, 10],
+                                borderRadius: 6,
+                                formatter: function (params) {
+                                    return params.value || '';
+                                }
+                            },
+                            itemStyle: {
+                                borderWidth: 0,
+                                color: function (params) {
+                                    if (params.data[3] === '寒冬') return 'rgba(16, 185, 129, 0.06)';
+                                    if (params.data[3] === '复苏') return 'rgba(245, 158, 11, 0.05)';
+                                    return 'rgba(236, 72, 153, 0.04)';
+                                }
+                            },
+                            data: [
+                                [
+                                    { name: '黎明', xAxis: '1943', itemStyle: { color: 'rgba(236, 72, 153, 0.04)' } },
+                                    { xAxis: '1969' }
+                                ],
+                                [
+                                    { name: '寒冬', xAxis: '1969', itemStyle: { color: 'rgba(16, 185, 129, 0.06)' } },
+                                    { xAxis: '1976' }
+                                ],
+                                [
+                                    { name: '复兴', xAxis: '1980', itemStyle: { color: 'rgba(236, 72, 153, 0.04)' } },
+                                    { xAxis: '1987' }
+                                ],
+                                [
+                                    { name: '寒冬', xAxis: '1987', itemStyle: { color: 'rgba(16, 185, 129, 0.06)' } },
+                                    { xAxis: '2006' }
+                                ],
+                                [
+                                    { name: '复苏', xAxis: '2006', itemStyle: { color: 'rgba(245, 158, 11, 0.05)' } },
+                                    { xAxis: '2012' }
+                                ],
+                                [
+                                    { name: '大爆发', xAxis: '2012', itemStyle: { color: 'rgba(236, 72, 153, 0.04)' } },
+                                    { xAxis: '2026' }
+                                ]
+                            ]
+                        }
+                    },
+                    // 主线条
+                    {
+                        name: '热度',
+                        type: 'line',
+                        smooth: 0.4,
+                        symbol: 'none',
+                        sampling: 'none',
+                        lineStyle: {
+                            width: 3,
+                            color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+                                { offset: 0, color: '#EC4899' },
+                                { offset: 0.4, color: '#C084FC' },
+                                { offset: 1, color: '#10B981' }
+                            ]),
+                            shadowColor: 'rgba(192, 132, 252, 0.25)',
+                            shadowBlur: 10,
+                            shadowOffsetY: 3
+                        },
+                        areaStyle: {
+                            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                                { offset: 0, color: 'rgba(236, 72, 153, 0.20)' },
+                                { offset: 0.5, color: 'rgba(192, 132, 252, 0.07)' },
+                                { offset: 1, color: 'rgba(16, 185, 129, 0.005)' }
+                            ])
+                        },
+                        emphasis: {
+                            lineStyle: { width: 4, shadowBlur: 18 }
+                        },
+                        data: heats
+                    },
+                    // 精致的数据点
+                    {
+                        name: '事件',
+                        type: 'scatter',
+                        symbolSize: 8,
+                        symbol: 'circle',
+                        smooth: 0.4,
+                        sampling: 'none',
+                        itemStyle: {
+                            color: function (params) {
+                                var p = periods[params.dataIndex];
+                                if (p === '寒冬') return '#10B981';
+                                if (p === '复苏') return '#F59E0B';
+                                return '#FEF2F8';
+                            },
+                            borderWidth: 2,
+                            borderColor: function (params) {
+                                var p = periods[params.dataIndex];
+                                if (p === '寒冬') return '#10B981';
+                                if (p === '复苏') return '#F59E0B';
+                                return '#EC4899';
+                            },
+                            shadowBlur: 6,
+                            shadowColor: function (params) {
+                                var p = periods[params.dataIndex];
+                                if (p === '寒冬') return 'rgba(16,185,129,0.25)';
+                                if (p === '复苏') return 'rgba(245,158,11,0.25)';
+                                return 'rgba(236,72,153,0.25)';
+                            },
+                            shadowOffsetY: 2
+                        },
+                        emphasis: {
+                            itemStyle: { symbolSize: 14, borderWidth: 3, shadowBlur: 12 },
+                            lineStyle: { width: 4 }
+                        },
+                        data: heats,
+                        z: 20
+                    },
+                    // 事件名称标注 — 小圆角标签
+                    {
+                        name: '标注',
+                        type: 'scatter',
+                        symbol: 'label',
+                        symbolSize: 0,
+                        sampling: 'none',
+                        label: {
+                            show: true,
+                            position: 'top',
+                            distance: 10,
+                            fontSize: 9,
+                            color: '#9A948C',
+                            fontFamily: 'Noto Sans SC',
+                            fontWeight: 500,
+                            backgroundColor: 'rgba(255,255,255,0.75)',
+                            borderRadius: 4,
+                            padding: [2, 6],
+                            formatter: function (params) {
+                                return items[params.dataIndex];
+                            }
+                        },
+                        emphasis: {
+                            label: { fontSize: 11, color: '#2D2A26', fontWeight: 700, backgroundColor: 'rgba(255,255,255,0.95)' }
+                        },
+                        data: heats,
+                        z: 30
+                    }
+                ],
+                backgroundColor: 'transparent',
+                animationDuration: 1500,
+                animationEasing: 'cubicOut'
+            };
+
+            chart.setOption(option);
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+        })();
+    </script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>序章：从智能的定义到三大流派 - AI纪元</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part1.css">
+</head>
+
+<body>
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html" class="active" aria-current="page">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#what-is-intelligence" data-section="what-is-intelligence"><span class="toc-num">01</span><span class="toc-label">什么是智能？</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#do-we-understand-intelligence" data-section="do-we-understand-intelligence"><span class="toc-num">02</span><span class="toc-label">我们真的了解智能吗？</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ai-classification" data-section="ai-classification"><span class="toc-num">03</span><span class="toc-label">AI 的分类</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#three-approaches" data-section="three-approaches"><span class="toc-num">04</span><span class="toc-label">实现智能的三种角度</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#three-schools" data-section="three-schools"><span class="toc-num">05</span><span class="toc-label">催生出 AI 的三大流派</span></a></li>
+        </ul>
+      </aside>
+
+
+        <!-- ============================
+             Hero Section
+             ============================ -->
+        <header class="article-header">
+            <h1 class="article-title">人工智能</h1>
+            <div class="article-meta">
+                <span>📖 全 10 章 · 序章</span>
+                <span>⏱ 约 15 分钟阅读</span>
+            </div>
+        </header>
+
+        <!-- ============================
+             AI 这个名字的由来
+             ============================ -->
+        <section class="chapter-section fade-in">
+
+
+            <div class="etymology-grid">
+                <div class="etymology-card" style="border-top: 3px solid var(--primary);">
+                    <div class="char-display" style="color: var(--primary);">Artificial</div>
+                    <div class="etymology-structure">人工的 / 人造的</div>
+                    <div class="etymology-source">
+                        <span class="source-tag">拉丁语词根</span><br>
+                        <span class="root-part">Ars</span>（技艺）+ <span class="root-part">facere</span>（制作）
+                    </div>
+                    <p>拉丁语词根 <em>ars</em> 意为"技艺、艺术"，<em>facere</em> 意为"制作"。<br /><strong>Artificial
+                            的核心含义是"由人工技艺造成的"</strong>。它可以指"人造的"，在某些语境中也会引申为"非自然、做作"。</p>
+                </div>
+                <div class="etymology-card" style="border-top: 3px solid var(--accent);">
+                    <div class="char-display" style="color: var(--accent);">Intelligence</div>
+                    <div class="etymology-structure">智能 / 智慧</div>
+                    <div class="etymology-source">
+                        <span class="source-tag">拉丁语词根</span><br>
+                        <span class="root-part">inter</span>（之间）+ <span class="root-part">legere</span>（选择、阅读）
+                    </div>
+                    <p>拉丁语 <em>intelligere</em> 意为"在之间选择、辨别理解"。<br /><strong>智能的本质，是在纷繁中辨别、在混沌中选择的能力。</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             什么是智能？
+             ============================ -->
+        <section id="what-is-intelligence" class="chapter-section fade-in">
+            <h2>什么是智能？</h2>
+            <p
+                style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: var(--space-xl);">
+                在谈论人工智能之前，让我们先回到一个更根本的问题——"智能"这个词，到底意味着什么？
+            </p>
+
+            <div class="section-label">✦ 从汉字说起 ✦</div>
+
+            <!-- 汉字解析 -->
+            <div class="etymology-grid">
+                <div class="etymology-card">
+                    <div class="char-display" style="font-size: 4rem;">智</div>
+                    <div class="char-structure">知 + 日 → 智</div>
+                    <div class="source-tag">《说文解字》</div>
+                    <p>"识词也。从白、从亏、从知。"<br><br>
+                        "智"由"知"和"日"组成。"知"是认知、感知，"日"代表时间的积累。认知经过日积月累的沉淀，方能升华为<strong>智慧</strong>。</p>
+                </div>
+                <div class="etymology-card">
+                    <div class="char-display" style="font-size: 4rem;">能</div>
+                    <div class="char-structure">甲骨文象形（熊）→ 能</div>
+                    <div class="source-tag">《说文解字》</div>
+                    <p>"熊属。足似鹿。"<br><br>
+                        "能"的甲骨文像一只熊的形态。熊力大无穷，故引申为<strong>能力、才能</strong>。与生俱来的力量，经过磨练方能成为真正的"能"。</p>
+                </div>
+            </div>
+
+            <!-- 古典文献引用 -->
+            <div class="classical-refs">
+                <h4>▎古典文献中的"智能"</h4>
+                <ul class="classical-list">
+                    <li>
+                        <span class="ref-source">《论语·子罕》</span><br>
+                        "知者不惑，仁者不忧，勇者不惧。"孔子将"知"（智）视为君子的首要品质，强调认知带来内心的坚定。
+                    </li>
+                    <li>
+                        <span class="ref-source">《道德经·第三十三章》</span><br>
+                        "知人者智，自知者明。"老子认为，了解他人是智慧，了解自己才是真正的明智——智能的更高层次是自我认知。
+                    </li>
+                    <li>
+                        <span class="ref-source">《荀子·正名》</span><br>
+                        "所以<strong>知</strong>之在人者谓之知，知有所合谓之<strong>智</strong>。所以<strong>能</strong>之在人者谓之能，能有所合谓之<strong>能</strong>。" -
+                    认知/能力与实践相契合，才是真正有价值的智能。
+                    </li>
+                </ul>
+            </div>
+
+            <p
+                style="text-align: center; font-family: 'Noto Serif SC', serif; font-size: 1.05rem; color: var(--text-primary); margin: var(--space-xl) 0;">
+                所以古人认为，<strong>智能其实是两个维度</strong>——<span
+                    style="color: var(--primary); font-weight: 700; font-size: 1.2em;">智</span>
+                是认知的积累与升华，<span style="color: var(--accent); font-weight: 700; font-size: 1.2em;">能</span>
+                是天赋的磨砺与施展。二者缺一不可。
+            </p>
+
+            <!-- 东西方对比 -->
+            <div class="section-label">✦ 东西方对智能的理解 ✦</div>
+
+            <div class="compare-container">
+                <!-- 东方 -->
+                <div class="compare-column east">
+                    <div class="compare-header">
+                        <h3>东方智慧</h3>
+                        <div class="subtitle">EASTERN PERSPECTIVE</div>
+                    </div>
+
+                    <div class="quote-card">
+                        <div class="quote-text">"知有所合谓之智，能有所合谓之能。"</div>
+                        <p class="quote-explain">认知/能力与实践契合，才是真正的智能。</p>
+                        <div class="quote-source">— 荀子《正名篇》</div>
+                    </div>
+
+                    <div class="quote-card">
+                        <div class="quote-text">"是非之心，智之端也。"</div>
+                        <p class="quote-explain">判断是非的能力就是智能的发端。</p>
+                        <div class="quote-source">— 孟子（四端说）</div>
+                    </div>
+
+                    <div class="quote-card">
+                        <div class="quote-text">"知行合一"</div>
+                        <p class="quote-explain">真正的"知"必须体现在"行"中，智能不能脱离行动而存在。</p>
+                        <div class="quote-source">— 王阳明</div>
+                    </div>
+
+                    <ul class="summary-list">
+                        <li>智能 = <strong>认知</strong> + <strong>实践</strong>（知行合一）</li>
+                        <li>强调<strong>道德判断</strong>是智能的核心</li>
+                        <li>重视<strong>自我认知</strong>（自知者明）</li>
+                        <li>智能需要在<strong>人际关系</strong>中体现</li>
+                    </ul>
+                </div>
+
+                <!-- 西方 -->
+                <div class="compare-column west">
+                    <div class="compare-header">
+                        <h3>西方视角</h3>
+                        <div class="subtitle">WESTERN PERSPECTIVE</div>
+                    </div>
+
+                    <div class="quote-card">
+                        <div class="quote-text">"人是理性的动物（ζῷον λόγον ἔχον）"</div>
+                        <p class="quote-explain">理性（logos）是人的本质，推理能力就是智能的核心。</p>
+                        <div class="quote-source">— 亚里士多德</div>
+                    </div>
+
+                    <div class="quote-card">
+                        <div class="quote-text">"我思故我在（Cogito, ergo sum）"</div>
+                        <p class="quote-explain">思考本身证明了存在，智能的起点就是思考能力。</p>
+                        <div class="quote-source">— 笛卡尔 (1637)</div>
+                    </div>
+
+                    <div class="quote-card">
+                        <div class="quote-text">"机器能思考吗？"</div>
+                        <p class="quote-explain">如果机器的行为无法与人类区分，就应认为它具有智能。</p>
+                        <div class="quote-source">— 图灵测试 (1950)</div>
+                    </div>
+
+                    <ul class="summary-list">
+                        <li>智能 = <strong>推理</strong> + <strong>规划</strong> + <strong>学习</strong> + <strong>问题解决</strong>
+                        </li>
+                        <li>强调<strong>可测量的认知能力</strong>（IQ 测试传统）</li>
+                        <li>Legg & Hutter (2007)："智能是在<strong>广泛环境中达成目标</strong>的能力"</li>
+                        <li>现代 AI 核心要素：感知、推理、学习、规划、语言理解</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="convergence-box">
+                <p>
+                    东方强调<strong>"知行合一"</strong>，西方强调<strong>"推理+目标"</strong>。<br>
+                    无论哪种视角，<strong>真正的智能都不只是知道，而是做到</strong>。
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================
+             我们真的了解智能吗？
+             ============================ -->
+        <section id="do-we-understand-intelligence" class="chapter-section fade-in">
+            <h2>我们真的了解智能吗？</h2>
+
+            <div class="quote-block">
+                <p>"我们甚至连一只蠕虫的大脑都没有搞明白。"</p>
+                <cite>—— 一位神经科学家</cite>
+            </div>
+
+            <div class="arguments-grid">
+                <div class="argument-card">
+                    <div >🪱 秀丽隐杆线虫——302个神经元的未解之谜</div>
+                    <p>线虫只有 <strong>302 个神经元</strong>，人类在 2019 年就完成了其完整神经连接组的测绘。但直到今天，我们仍<strong>无法从这 302
+                            个神经元的连接结构中推导出线虫的行为</strong>。连接图谱在那里，智能却依然是个黑箱。</p>
+                </div>
+
+                <div class="argument-card">
+                    <div >🧠 果蝇大脑——13.9 万神经元，只是万里长征第一步</div>
+                    <p>2024 年，科学家首次完成了果蝇大脑的完整神经连接组——约 <strong>13.9 万个神经元</strong>、约 5450
+                        万条突触。但<strong>我们依然不理解这些连接如何产生"智能"</strong>——果蝇如何决策、如何学习、如何记住回家的路。而人脑有 <strong>860
+                            亿个神经元</strong>，是果蝇的约 62 万倍。</p>
+                </div>
+
+                <div class="argument-card">
+                    <div >💭 意识的"困难问题"——哲学家 30 余年无解</div>
+                    <p>哲学家 David Chalmers 在 1995 年提出"意识的困难问题"（Hard Problem of
+                        Consciousness）：<strong>即便我们能完整解释大脑中每一个原子的物理过程，仍然无法解释为什么会有"感受"</strong>。为什么看到红色会有红色的"感觉"？为什么疼痛是"痛"的？
+                    </p>
+                </div>
+
+                <div class="argument-card">
+                    <div >📐 70 多种定义——没有人能说清什么是智能</div>
+                    <p>Legg &amp; Hutter (2007) 整理了学界对"智能"的定义，发现超过 <strong>70 种</strong>不同版本。心理学家 Sternberg
+                        说"智能是心理能力"，Gardner 说有 8 种智能，图灵说"表现得有智能就是智能"。<strong>一个连定义都没有共识的概念，我们真的了解它吗？</strong></p>
+                </div>
+
+                <div class="argument-card">
+                    <div >🌊 涌现——智能可能根本无法被"理解"</div>
+                    <p>现代神经科学发现，智能可能是<strong>大量简单单元交互后"涌现"出来的集体行为</strong>。就像单个水分子没有"湿"的性质，但大量水分子聚在一起就产生了"湿"。如果智能是一种涌现现象，那意味着<strong>我们可能永远无法通过拆解来理解它</strong>——理解了每一个神经元，也不等于理解了智能。
+                    </p>
+                </div>
+            </div>
+
+            <div class="conclusion-box">
+                <p>
+                    从 302 个神经元到 860 亿个神经元, 从行为到意识，从定义到涌现 ——
+                    <strong>我们不是"快要"理解智能, 我们连理解它的门在哪里都还没找到。</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================
+             AI 的分类
+             ============================ -->
+        <section id="ai-classification" class="chapter-section fade-in">
+            <p
+                style="text-align: center; font-family: 'Noto Serif SC', serif; font-size: 1.05rem; color: var(--text-secondary); margin-bottom: var(--space-2xl);">
+                这事儿急不来!<br>
+                前辈们画了三个台阶，让我们一阶一阶走
+            </p>
+
+            <div class="type-cards">
+                <div class="type-card ani">
+                    <span class="type-badge">现在时 · NOW</span>
+                    <h3>弱人工智能</h3>
+                    <div class="type-name-en">Artificial Narrow Intelligence (ANI)</div>
+                    <p class="type-def">专精于<strong>特定任务或任务簇</strong>的智能系统。它可以在一个领域表现出色，但无法像人类一样稳定迁移到全新领域。</p>
+                    <ul class="type-features">
+                        <li>专注于特定任务的优化</li>
+                        <li>无法跨领域泛化</li>
+                        <li>尚无公认 AGI，现有 AI 通常仍归入此类</li>
+                        <li>常依赖规则系统、统计学习或深度学习</li>
+                    </ul>
+                    <div class="type-examples"><strong>典型应用：</strong>Siri / 图像识别 / AlphaGo / 推荐系统 / GPT 系列<br>
+                        <strong>算：</strong>医学影像模型能筛肺结节，但不能把同一套能力迁移去做法律辩护。<br>
+                        <strong>不算：</strong>能在陌生任务间自主迁移、学习和规划的系统，那已经更接近 AGI。
+                    </div>
+                </div>
+
+                <div class="type-card agi">
+                    <span class="type-badge">未来时 · FUTURE</span>
+                    <h3>通用人工智能</h3>
+                    <div class="type-name-en">Artificial General Intelligence (AGI)</div>
+                    <p class="type-def">达到<strong>人类级别</strong>的全面认知能力。能跨领域推理、自主学习、制定计划、理解抽象概念。</p>
+                    <ul class="type-features">
+                        <li>跨领域的通用推理能力</li>
+                        <li>自主学习与知识迁移</li>
+                        <li>抽象思维与因果理解</li>
+                        <li>尚未有公认实现，是 AI 研究的核心目标</li>
+                    </ul>
+                    <div class="type-examples"><strong>关键脉络：</strong>Alan Turing / John McCarthy（AI 术语提出者）/ Shane
+                        Legg（通用智能定义研究）<br>
+                        <strong>算：</strong>第一次接触陌生任务，也能读说明、制定计划、调用工具并达到人类级表现。<br>
+                        <strong>不算：</strong>只是在聊天、写作、编程等多个任务上表现很强，但缺少稳定自主迁移与可靠现实行动能力。
+                    </div>
+                </div>
+
+                <div class="type-card asi">
+                    <span class="type-badge">终极命题 · ULTIMATE</span>
+                    <h3>超人工智能</h3>
+                    <div class="type-name-en">Artificial Superintelligence (ASI)</div>
+                    <p class="type-def">在<strong>几乎所有领域</strong>超越人类的智能。包括科学创造力、社交技能、哲学思考等全方位能力。</p>
+                    <ul class="type-features">
+                        <li>全面超越人类认知极限</li>
+                        <li>可能存在递归自我改进能力</li>
+                        <li>带来深刻的伦理与存在挑战</li>
+                        <li>时间线未知，争议极大</li>
+                    </ul>
+                    <div class="type-examples"><strong>关键著作：</strong>Nick Bostrom《Superintelligence》(2014)<br>
+                        <strong>算：</strong>在科学发现、工程创造、战略规划、社交协作等几乎所有重要领域持续显著超过最强人类。<br>
+                        <strong>不算：</strong>只在围棋、蛋白结构预测等单项任务上超过人类的专用系统。
+                    </div>
+                </div>
+            </div>
+
+            <div class="convergence-box">
+                <p>从"专用"到"通用"再到"超越"——这是 AI 的三个台阶。今天，AI 仍普遍被认为站在第一个台阶上，仰望第二个。</p>
+            </div>
+        </section>
+        
+        <section id="three-approaches" class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>不了解智能，不代表不能创造智能。<br>工程创新常常不是等理论完全成熟才开始；飞机也是靠空气动力学实验和工程迭代一步步造出来的。</p>
+            </div>
+
+            <div class="section-label">✦ 实现智能的三种角度 ✦</div>
+
+            <div class="routes-container">
+                <div class="route-card">
+                    <h3>模拟智能本身</h3>
+                    <div class="route-subtitle">从大脑出发</div>
+                    <p>智能来自大脑，那就像大脑一样造——从神经元开始，把它造出来。</p>
+                    <p>1943 年，McCulloch &amp; Pitts 给出了神经元的数学描述，打开了第一扇门。1958 年，Rosenblatt 造出感知机——能识别字母、能学习，世界为之兴奋。</p>
+                    <p>但兴奋很快被现实浇灭。冯·诺依曼架构的计算机跑类脑计算，就像拿算盘当火箭计算机用，根本跑不动。1969 年，Minsky &amp; Papert 一刀致命：单层感知机连 XOR（异或）都算不了。</p>
+                    <div class="route-conclusion">最直觉的方向，卡在了最现实的问题上——硬件不兼容，理论也不够。路还没修好，走不远。</div>
+                </div>
+
+                <div class="route-card">
+                    <h3>模拟智能的行为</h3>
+                    <div class="route-subtitle">从功能出发</div>
+                    <p>不关心大脑怎么工作，只关心机器能做什么。飞机不需要拍打翅膀也能飞，智能也不一定需要"像人一样思考"。</p>
+                    <p>图灵 1950 年埋下种子：如果一台机器让你分辨不出它是人还是机器，它就是有智能的。符号主义沿着这条路狂奔——逻辑理论家自动证明定理，DENDRAL 像化学家一样分析分子，MYCIN 像医生一样诊断血液感染。</p>
+                    <p>但知识的海洋太深了。常识无法写成规则——"把鸡蛋打到碗里"这件事就涉及几百条隐含的常识。系统越做越大，也越来越脆弱。1980 年代末，AI 寒冬降临。</p>
+                    <div class="route-conclusion">这条路教会我们：机器可以表现得有智能，但"真正的理解"不是靠堆规则堆出来的。</div>
+                </div>
+
+                <div class="route-card">
+                    <h3>模拟智能的交互</h3>
+                    <div class="route-subtitle">从环境出发</div>
+                    <p>蚂蚁不需要理解迷宫也能找到回家的路——智能或许根本不在大脑里，而在与环境的每一次碰撞中。</p>
+                    <p>Brooks 在 1980 年代提出包容架构，并在 1991 年发表《Intelligence Without Representation》：智能不需要先建立完整的内部模型和知识库，也可以通过感知与行动闭环产生。</p>
+                    <p>强化学习把"交互中优化"的思路推向高潮——智能体试错、得到奖励、再试错、再优化。2016 年，AlphaGo 将人类棋谱学习与自我博弈强化学习结合，在围棋棋盘上完成了一次震撼的突破。</p>
+                    <div class="route-conclusion">智能不是设计出来的，是在交互中自己长出来的。</div>
+                </div>
+            </div>
+
+            <p
+                style="text-align: center; font-family: 'Noto Serif SC', serif; font-size: 1.05rem; color: var(--text-primary); margin: var(--space-xl) 0;">
+                这三种不同的思路，沿着各自的历史轨迹演进——<br>
+                有时一方崛起主导话题，有时另一方重新夺回中心，<br>
+                它们之间的博弈与融合，最终塑造了我们今天所熟知的三大流派——
+            </p>
+        </section>
+
+        <!-- ============================
+             AI 的三大流派
+             ============================ -->
+        <section id="three-schools" class="chapter-section fade-in">
+            <div class="section-label">✦ 催生出 AI 的三大流派 ✦</div>
+
+            <div class="streams-container">
+                <div class="stream-card connectionist">
+                    <h3>连接主义</h3>
+                    <div class="stream-english">Connectionism / Neural Networks</div>
+                    <p class="stream-desc">
+                        从"大脑"出发——模仿生物神经元的连接与学习。不灌输规则，而是让机器从数据中自己"学会"。
+                    </p>
+                    <div class="stream-core">
+                        <p><strong>核心思路：</strong>神经元连接 + 学习训练</p>
+                        <p><strong>黄金时代：</strong>2010 年代至今，深度学习</p>
+                        <p><strong>代表成果：</strong>深度学习、大语言模型</p>
+                    </div>
+                </div>
+
+                <div class="stream-card symbolic">
+                    <h3>符号主义</h3>
+                    <div class="stream-english">Symbolic AI / GOFAI</div>
+                    <p class="stream-desc">
+                        从"行为"出发——不模仿大脑，只模仿结果。把知识编码成符号和规则，让机器通过逻辑推理来表现智能。
+                    </p>
+                    <div class="stream-core">
+                        <p><strong>核心思路：</strong>知识表示 + 逻辑推理</p>
+                        <p><strong>黄金时代：</strong>1970–80 年代，专家系统</p>
+                        <p><strong>代表成果：</strong>DENDRAL、MYCIN、知识图谱</p>
+                    </div>
+                </div>
+
+                <div class="stream-card behaviorist">
+                    <h3>行为主义</h3>
+                    <div class="stream-english">Behaviorism / Embodied AI</div>
+                    <p class="stream-desc">
+                        从"交互"出发——不模仿大脑，也不模仿结果，而是让智能体在与环境的互动中涌现出智能。
+                    </p>
+                    <div class="stream-core">
+                        <p><strong>核心思路：</strong>感知-行动闭环 + 试错学习</p>
+                        <p><strong>近年浪潮：</strong>2010 年代以来，深度强化学习与具身智能</p>
+                        <p><strong>代表成果：</strong>AlphaGo、具身智能、机器人学</p>
+                    </div>
+                </div>
+            </div>
+
+            <p
+                style="text-align: center; font-family: 'Noto Serif SC', serif; font-size: 1.05rem; color: var(--text-primary); margin-top: var(--space-xl);">
+                这三大流派，贯穿了 AI 发展的全部历史。它们交替领先，互相竞争，又彼此融合。
+            </p>
+        </section>
+
+        <!-- ============================
+             过渡
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>现在，让我们回到 1936 年，看这一切是如何开始的——</p>
+            </div>
+        </section>
+
+        <!-- 上下篇导航 -->
+        <nav class="article-nav">
+            <a href="index-all.html" class="nav-button prev">← 返回目录</a>
+            <a href="part2.html" class="nav-button">第1章 · 前世今生 →</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1619 @@
+        /* ==========================================
+           AI越狱 — 实战安全风格
+           深红+暗蓝主题，技术实战感
+           ========================================== */
+
+        /* ---- Hero Section ---- */
+        .hero-section {
+            text-align: center;
+            padding: var(--space-xl) 0;
+            margin-bottom: var(--space-lg);
+            position: relative;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #DC2626, transparent);
+            border-radius: 2px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #DC2626;
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 6px 20px;
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-md);
+            letter-spacing: 0.08em;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
+            letter-spacing: 0.02em;
+        }
+
+        .hero-desc {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ---- 警示横幅 ---- */
+        .warning-banner {
+            background: var(--bg-card);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .warning-banner .warning-header {
+            background: linear-gradient(135deg, #DC2626, #B91C1C);
+            padding: 10px var(--space-xl);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #fff;
+            letter-spacing: 0.12em;
+        }
+
+        .warning-banner .warning-body {
+            padding: var(--space-lg) var(--space-xl);
+        }
+
+        .warning-body h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #DC2626;
+            margin-bottom: var(--space-xs);
+        }
+
+        .warning-body p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ---- 章节样式 ---- */
+        .chapter-section {
+            margin-bottom: var(--space-xl);
+        }
+
+        .chapter-section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .chapter-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #DC2626, #3B82F6);
+        }
+
+        .chapter-section h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: var(--space-lg) 0 var(--space-md);
+            padding-left: var(--space-md);
+            border-left: 3px solid #DC2626;
+        }
+
+        .chapter-section h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: var(--space-md) 0 var(--space-sm);
+        }
+
+        /* ---- 评估表格概念 ---- */
+        .taxonomy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .taxonomy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .taxonomy-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-accent);
+        }
+
+        .taxonomy-card .tax-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 auto var(--space-sm);
+        }
+
+        .taxonomy-card .tax-icon.t1 { background: rgba(239, 68, 68, 0.15); }
+        .taxonomy-card .tax-icon.t2 { background: rgba(59, 130, 246, 0.15); }
+        .taxonomy-card .tax-icon.t3 { background: rgba(245, 158, 11, 0.15); }
+        .taxonomy-card .tax-icon.t4 { background: rgba(139, 92, 246, 0.15); }
+
+        .taxonomy-card h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .taxonomy-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .taxonomy-card .taxonomy-location {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #0891B2;
+            background: rgba(8, 145, 178, 0.08);
+            border: 1px solid rgba(8, 145, 178, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 2px 8px;
+            margin-bottom: 6px;
+            letter-spacing: 0.03em;
+        }
+
+        /* ---- 攻击技术卡片 ---- */
+        .attack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .attack-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .attack-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .attack-card.danger::before { background: linear-gradient(90deg, #DC2626, #F87171); }
+        .attack-card.warning::before { background: linear-gradient(90deg, #D97706, #FBBF24); }
+        .attack-card.info::before { background: linear-gradient(90deg, #2563EB, #60A5FA); }
+        .attack-card.agent::before { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+        .attack-card.mcp::before { background: linear-gradient(90deg, #0891B2, #22D3EE); }
+
+        .attack-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .attack-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .attack-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .attack-icon.red { background: rgba(220, 38, 38, 0.15); }
+        .attack-icon.orange { background: rgba(217, 119, 6, 0.15); }
+        .attack-icon.blue { background: rgba(37, 99, 235, 0.15); }
+        .attack-icon.purple { background: rgba(124, 58, 237, 0.15); }
+        .attack-icon.cyan { background: rgba(8, 145, 178, 0.15); }
+
+        .attack-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .attack-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-md);
+        }
+
+        .attack-example {
+            background: var(--bg-elevated);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            border-left: 3px solid #DC2626;
+            overflow-x: auto;
+            line-height: 1.6;
+        }
+
+        .attack-example code {
+            color: #DC2626;
+        }
+
+        .attack-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: var(--radius-xl);
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-bottom: var(--space-sm);
+        }
+
+        .attack-tag.red { background: rgba(220, 38, 38, 0.12); color: #DC2626; }
+        .attack-tag.blue { background: rgba(37, 99, 235, 0.12); color: #2563EB; }
+        .attack-tag.purple { background: rgba(124, 58, 237, 0.12); color: #7C3AED; }
+        .attack-tag.cyan { background: rgba(8, 145, 178, 0.12); color: #0891B2; }
+        .attack-tag.orange { background: rgba(217, 119, 6, 0.12); color: #D97706; }
+
+        /* ---- 核心原理解释框 ---- */
+        .principle-box {
+            background: rgba(13, 148, 136, 0.04);
+            border: 1px solid rgba(13, 148, 136, 0.15);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm) var(--space-md);
+            margin: 16px 0 var(--space-md);
+        }
+
+        /* 第3章攻击卡片内的 principle-box：等高 + 统一距卡片顶部距离 */
+        .attack-grid-main .attack-card .principle-box {
+            min-height: 120px;
+            margin-top: 16px;
+            margin-bottom: var(--space-md);
+        }
+
+        .principle-box .principle-label {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #0D9488;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+        }
+
+        .principle-box p {
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .principle-box strong {
+            color: var(--text-primary);
+        }
+
+        /* ---- 实操要点框 ---- */
+        .practical-box {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(139, 92, 246, 0.06));
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-sm) 0 var(--space-md);
+            position: relative;
+        }
+
+        .practical-box .practical-label {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #2563EB;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-xs);
+        }
+
+        .practical-box p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .practical-box code {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(37, 99, 235, 0.1);
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #1D4ED8;
+        }
+
+        /* ---- 案例研究 ---- */
+        .case-study {
+            background: var(--bg-card);
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .case-study .case-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .case-study .case-badge {
+            display: inline-block;
+            padding: 3px 12px;
+            background: #DC2626;
+            color: white;
+            border-radius: var(--radius-sm);
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+
+        .case-study .case-date {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .case-body {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .case-body strong {
+            color: var(--text-primary);
+        }
+
+        /* ---- 工具卡 ---- */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tool-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-accent);
+        }
+
+        .tool-card .tool-name {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .tool-card .tool-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: var(--space-sm);
+        }
+
+        .tool-card .tool-body {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .tool-card .tool-body strong {
+            color: var(--text-primary);
+        }
+
+        /* ---- 攻击流程图（新版 CSS 可视化） ---- */
+        .attack-flow-chain {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            padding: var(--space-md);
+            margin: var(--space-sm) 0 var(--space-md);
+            overflow-x: auto;
+            border-radius: var(--radius-md);
+        }
+
+        .flow-node {
+            flex: 0 0 auto;
+            width: 105px;
+            padding: 12px 8px;
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all var(--transition-slow);
+            position: relative;
+        }
+
+        .flow-node .node-icon {
+            font-size: 1.4rem;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .flow-node .node-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+        }
+
+        .flow-node .node-action {
+            font-size: 0.62rem;
+            line-height: 1.4;
+            opacity: 0.8;
+        }
+
+        /* 攻击者节点 */
+        .flow-node.attacker {
+            background: rgba(220, 38, 38, 0.08);
+            border: 1px solid rgba(220, 38, 38, 0.25);
+        }
+
+        .flow-node.attacker .node-icon {
+            filter: drop-shadow(0 0 6px rgba(220, 38, 38, 0.5));
+        }
+
+        .flow-node.attacker .node-label {
+            color: #DC2626;
+        }
+
+        /* 被攻陷节点 */
+        .flow-node.breached {
+            background: rgba(220, 38, 38, 0.06);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            box-shadow: 0 0 12px rgba(220, 38, 38, 0.1);
+        }
+
+        .flow-node.breached .node-label {
+            color: #DC2626;
+        }
+
+        /* 被连锁感染节点 */
+        .flow-node.compromised {
+            background: rgba(245, 158, 11, 0.06);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .flow-node.compromised .node-label {
+            color: #D97706;
+        }
+
+        /* 传播箭头 */
+        .flow-arrow {
+            flex: 0 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 2px;
+            position: relative;
+            min-width: 36px;
+        }
+
+        .flow-arrow::before {
+            content: '──▶';
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0;
+            line-height: 1;
+        }
+
+        .flow-arrow.danger::before {
+            color: #DC2626;
+        }
+
+        .flow-arrow .arrow-label {
+            position: absolute;
+            top: -14px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.58rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            background: var(--bg-base);
+            padding: 1px 4px;
+            border-radius: 3px;
+        }
+
+        .flow-arrow.danger .arrow-label {
+            color: #DC2626;
+            background: rgba(220, 38, 38, 0.05);
+        }
+
+        .flow-node:hover {
+            transform: translateY(-3px);
+        }
+
+        .flow-node.attacker:hover {
+            box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+        }
+
+        .flow-node.breached:hover {
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
+        }
+
+        .flow-node.compromised:hover {
+            box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+        }
+
+        /* 旧版 ASCII 流程图样式（保留兼容） */
+        .attack-flow {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            margin: var(--space-sm) 0 var(--space-md);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        /* ---- 失效分析框 ---- */
+        .dead-banner {
+            background: linear-gradient(135deg, rgba(107, 114, 128, 0.08), rgba(156, 163, 175, 0.08));
+            border: 1px dashed rgba(156, 163, 175, 0.4);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .dead-banner .dead-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .dead-banner p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .dead-banner strong {
+            color: #6B7280;
+        }
+
+        /* ---- 时效性标签 ---- */
+        .freshness {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 10px;
+            border-radius: var(--radius-xl);
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .freshness.hot {
+            background: rgba(220, 38, 38, 0.12);
+            color: #DC2626;
+        }
+
+        .freshness.warm {
+            background: rgba(217, 119, 6, 0.12);
+            color: #D97706;
+        }
+
+        .freshness.cold {
+            background: rgba(107, 114, 128, 0.12);
+            color: #6B7280;
+        }
+
+        /* ---- 防御表 ---- */
+        .defense-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-md) 0;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .defense-table th,
+        .defense-table td {
+            padding: var(--space-md) var(--space-lg);
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .defense-table th {
+            background: var(--bg-elevated);
+            font-family: 'Noto Serif SC', serif;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .defense-table td {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .defense-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .defense-table tr:hover td {
+            background: var(--bg-elevated);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: var(--radius-xl);
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .badge.high { background: rgba(220, 38, 38, 0.15); color: #DC2626; }
+        .badge.medium { background: rgba(217, 119, 6, 0.15); color: #D97706; }
+        .badge.low { background: rgba(5, 150, 105, 0.15); color: #059669; }
+
+        /* ---- 时间线 ---- */
+        .timeline-section {
+            margin: var(--space-xl) 0;
+            padding-left: var(--space-xl);
+            border-left: 2px solid var(--border-accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--space-xl);
+            padding-left: var(--space-lg);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -27px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #DC2626;
+            border: 2px solid var(--bg-base);
+        }
+
+        .timeline-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #DC2626;
+            font-weight: 500;
+            margin-bottom: var(--space-xs);
+        }
+
+        .timeline-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ---- 总结框 ---- */
+        .summary-box {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.06), rgba(37, 99, 235, 0.06));
+            border: 1px solid var(--border-medium);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            margin: var(--space-lg) 0;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .summary-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #DC2626, #3B82F6);
+            border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+        }
+
+        .summary-box p {
+            color: var(--text-primary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ---- 知识卡片（保留原有样式但缩小） ---- */
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .knowledge-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .knowledge-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-accent);
+        }
+
+        .knowledge-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #DC2626, #3B82F6);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin: 0 auto var(--space-md);
+        }
+
+        .knowledge-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .knowledge-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ---- 研究引用块 ---- */
+        .research-quote {
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.06), rgba(6, 182, 212, 0.06));
+            border: 1px solid rgba(13, 148, 136, 0.2);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl) var(--space-xl) var(--space-lg);
+            margin: var(--space-lg) 0;
+            position: relative;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .research-quote::before {
+            content: '"';
+            position: absolute;
+            top: -8px;
+            left: 28px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 4rem;
+            line-height: 1;
+            color: rgba(13, 148, 136, 0.2);
+            pointer-events: none;
+        }
+
+        .research-quote .quote-text {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1rem;
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding-left: 56px;
+            font-style: italic;
+        }
+
+        .research-quote .quote-text strong {
+            color: #0D9488;
+            font-style: normal;
+        }
+
+        .research-quote .quote-source {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+            padding-top: var(--space-sm);
+            border-top: 1px solid rgba(13, 148, 136, 0.15);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            padding-left: 56px;
+        }
+
+        .research-quote .quote-source .source-badge {
+            display: inline-block;
+            padding: 2px 10px;
+            background: rgba(13, 148, 136, 0.12);
+            color: #0D9488;
+            border-radius: var(--radius-sm);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* ---- 温馨提示框 ---- */
+        .prompt-box {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            margin: var(--space-md) 0;
+            position: relative;
+        }
+
+        .prompt-label {
+            position: absolute;
+            top: -10px;
+            left: var(--space-md);
+            background: var(--bg-base);
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+        }
+
+        .prompt-content {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .prompt-content .highlight {
+            color: #DC2626;
+            font-weight: 500;
+        }
+
+        /* ---- 攻击向量图例 ---- */
+        .vector-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .vector-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .vector-legend .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .vector-legend .dot.danger { background: #DC2626; }
+        .vector-legend .dot.warning { background: #D97706; }
+        .vector-legend .dot.info { background: #2563EB; }
+        .vector-legend .dot.agent-dot { background: #7C3AED; }
+        .vector-legend .dot.mcp-dot { background: #0891B2; }
+
+        /* ---- 章节锚点偏移 ---- */
+        .chapter-section[id] {
+            scroll-margin-top: 140px;
+        }
+
+        /* ---- 章节分割线 ---- */
+        .section-divider {
+            text-align: center;
+            margin: var(--space-xl) 0;
+            position: relative;
+        }
+
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-medium), transparent);
+        }
+
+        .section-divider span {
+            position: relative;
+            background: var(--bg-base);
+            padding: 0 var(--space-md);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* ---- 章节标题优化 ---- */
+        .chapter-section h2 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .chapter-section h2 .ch-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #DC2626, #3B82F6);
+            color: white;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        /* ---- 攻击卡片改进 ---- */
+        .attack-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .attack-card .card-footer {
+            margin-top: auto;
+            padding-top: var(--space-md);
+        }
+
+        /* ---- 改进失效卡片 ---- */
+        .dead-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .dead-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md) var(--space-lg);
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+            opacity: 0.75;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dead-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #9CA3AF, #D1D5DB);
+        }
+
+        .dead-card:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .dead-card .dead-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .dead-card .dead-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--radius-md);
+            background: rgba(107, 114, 128, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .dead-card .dead-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .dead-card .dead-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ---- Agent 4列网格 ---- */
+        .agent-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* ---- 改进攻击手法网格 ---- */
+        .attack-grid-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+
+        .attack-grid-main .attack-card {
+            display: flex;
+            flex-direction: column;
+            /* 等高：确保 grid 中所有卡片高度一致 */
+            height: 100%;
+        }
+
+        /* ---- 供应链层攻击卡片：2列固定 ---- */
+        .supply-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+        }
+        .standalone-section {
+            margin-bottom: var(--space-xl);
+        }
+
+        .standalone-section h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: var(--space-lg) 0 var(--space-md);
+            padding-left: var(--space-md);
+            border-left: 3px solid #DC2626;
+        }
+
+        /* ---- 越狱成功标准 三元卡片 ---- */
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .criteria-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+
+        .criteria-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(220, 38, 38, 0.25);
+        }
+
+        .criteria-card .criteria-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #DC2626;
+            margin-bottom: var(--space-xs);
+            line-height: 1;
+        }
+
+        .criteria-card h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .criteria-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .criteria-card p strong {
+            color: var(--text-primary);
+        }
+
+        .criteria-note {
+            background: rgba(220, 38, 38, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.18);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-lg);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .criteria-note strong {
+            color: #DC2626;
+        }
+
+        /* ---- 越狱场景卡片 ---- */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .scenario-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .scenario-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--border-accent);
+        }
+
+        .scenario-card .scenario-badge {
+            display: block;
+            padding: 8px var(--space-lg);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+
+        .scenario-card .scenario-badge.red {
+            background: rgba(220, 38, 38, 0.1);
+            color: #DC2626;
+            border-bottom: 1px solid rgba(220, 38, 38, 0.15);
+        }
+
+        .scenario-card .scenario-badge.blue {
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563EB;
+            border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+        }
+
+        .scenario-card .scenario-content {
+            padding: var(--space-md) var(--space-lg);
+        }
+
+        .scenario-content p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: var(--space-sm);
+        }
+
+        .scenario-content p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .scenario-content p strong {
+            color: var(--text-primary);
+        }
+
+        .scenario-content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            background: rgba(220, 38, 38, 0.08);
+            padding: 1px 6px;
+            border-radius: 4px;
+            color: #DC2626;
+        }
+
+        .scenario-verdict {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            color: var(--text-secondary);
+        }
+
+        .scenario-verdict .verdict-icon {
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .scenario-verdict strong {
+            color: #DC2626;
+        }
+
+        /* ---- 红队三级结构 ---- */
+        .redteam-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+        }
+
+        .redteam-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .redteam-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+
+        .redteam-card .redteam-level {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #DC2626;
+            margin-bottom: var(--space-xs);
+            line-height: 1;
+        }
+
+        .redteam-card h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .redteam-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .redteam-card p strong {
+            color: var(--text-primary);
+        }
+
+        /* ---- 红蓝对抗 ---- */
+        .rvb-grid {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .rvb-card {
+            flex: 1;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            text-align: center;
+            transition: all var(--transition-slow);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rvb-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .rvb-card.red::before { background: linear-gradient(90deg, #DC2626, #F87171); }
+        .rvb-card.blue::before { background: linear-gradient(90deg, #2563EB, #60A5FA); }
+
+        .rvb-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .rvb-card .rvb-side {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: var(--space-xs);
+        }
+
+        .rvb-card.red .rvb-side { color: #DC2626; }
+        .rvb-card.blue .rvb-side { color: #2563EB; }
+
+        .rvb-card h4 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .rvb-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .rvb-card p strong {
+            color: var(--text-primary);
+        }
+
+        .rvb-card .rvb-tag {
+            display: inline-block;
+            margin-top: var(--space-sm);
+            padding: 2px 12px;
+            border-radius: var(--radius-xl);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .rvb-card.red .rvb-tag { background: rgba(220, 38, 38, 0.1); color: #DC2626; }
+        .rvb-card.blue .rvb-tag { background: rgba(37, 99, 235, 0.1); color: #2563EB; }
+
+        .rvb-vs {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            letter-spacing: 0.05em;
+        }
+
+        .rvb-note {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.06), rgba(168, 85, 247, 0.06));
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-md) var(--space-lg);
+            margin-bottom: var(--space-sm);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .rvb-note strong {
+            color: #7C3AED;
+        }
+
+        /* ---- 参考文献 ---- */
+        .ref-section {
+            margin: var(--space-xl) 0;
+        }
+
+        .ref-section h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .ref-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #DC2626, #3B82F6);
+        }
+
+        .ref-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .ref-item {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-sm);
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .ref-item:last-child {
+            border-bottom: none;
+        }
+
+        .ref-item .ref-tag {
+            display: inline-block;
+            padding: 1px 8px;
+            border-radius: var(--radius-sm);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            flex-shrink: 0;
+            background: rgba(220, 38, 38, 0.1);
+            color: #DC2626;
+        }
+
+        .ref-item .ref-authors {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            min-width: fit-content;
+        }
+
+        .ref-item .ref-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            flex-shrink: 0;
+        }
+
+        .ref-item .ref-detail {
+            color: var(--text-muted);
+            font-size: 0.83rem;
+        }
+
+        /* ---- 响应式 ---- */
+        @media (max-width: 768px) {
+            .attack-grid,
+            .attack-grid-main,
+            .agent-grid,
+            .supply-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .knowledge-grid,
+            .taxonomy-grid,
+            .tool-grid,
+            .dead-grid,
+            .criteria-grid,
+            .scenario-grid,
+            .redteam-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .warning-banner {
+                text-align: left;
+            }
+
+            .attack-flow {
+                font-size: 0.7rem;
+            }
+
+            .ref-item {
+                flex-wrap: wrap;
+                gap: 4px var(--space-sm);
+            }
+
+            .rvb-grid {
+                flex-direction: column;
+            }
+
+            .rvb-vs {
+                transform: rotate(90deg);
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1200px) {
+            .attack-grid-main {
+                grid-template-columns: 1fr;
+            }
+
+            .agent-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .criteria-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .criteria-card:last-child {
+                grid-column: 1 / -1;
+                max-width: 50%;
+                justify-self: center;
+            }
+
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .redteam-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    

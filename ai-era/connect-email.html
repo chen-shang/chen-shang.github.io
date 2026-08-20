@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="使用 email-mcp 将 163、网易企业邮箱、QQ、Gmail、iCloud、Outlook 等邮箱接入 Coding Agent。包含授权码获取、终端安装和 WorkBuddy 安装教程。"
+    />
+    <title>连接邮箱：email-mcp 使用教程 — AI机械臂</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2324292f%27/%3E%3Cpath d=%27M13 19h38v27H13z%27 fill=%27none%27 stroke=%27%23f0b36c%27 stroke-width=%274%27/%3E%3Cpath d=%27m15 22 17 13 17-13%27 fill=%27none%27 stroke=%27%23f0b36c%27 stroke-width=%274%27/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="connection-guides.css?v=20260723" />
+    <link rel="stylesheet" href="connect-email.css?v=20260819" />
+  </head>
+
+  <body class="connection-page email-guide-page">
+    <nav class="connection-nav" aria-label="教程导航">
+      <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+      <span>CONNECTION GUIDE · 01 / 10</span>
+    </nav>
+
+    <main class="connection-guide email-guide">
+      <header class="guide-hero email-hero" data-number="@">
+        <div class="guide-kicker">EMAIL-MCP · 使用教程</div>
+        <h1>连接邮箱</h1>
+        <p>
+          使用 <strong>@codefuturist/email-mcp</strong>，让
+          Codex、Claude、WorkBuddy 等 Agent 读取和处理你的邮件。
+        </p>
+        <div class="guide-pills">
+          <span>支持常见邮箱</span>
+          <span>多账户</span>
+          <span>先只读后放权</span>
+        </div>
+      </header>
+      <br />
+
+      <div class="email-intro">
+        <strong>开始前先记住：</strong>
+        <span
+          >配置邮箱时使用的是邮箱官方生成的<strong
+            >授权码 / 客户端专用密码</strong
+          >，不是网页登录密码。授权码只在终端中输入，不要发给 Agent。</span
+        >
+      </div>
+
+      <!-- ════════════ 章节 01：获取授权码 ════════════ -->
+      <section class="guide-section tutorial-section" id="prepare">
+        <div class="tutorial-heading">
+          <span>01</span>
+          <div>
+            <h2>获取邮箱授权码</h2>
+            <p>先在邮箱网页中开启 IMAP/SMTP，再生成客户端授权码。</p>
+          </div>
+        </div>
+
+        <div class="provider-list">
+          <section class="provider-item">
+            <div class="provider-name">
+              <b>163</b>
+              <h3>网易 163 邮箱</h3>
+            </div>
+            <ol>
+              <li>登录 163 网页邮箱，进入<strong>设置</strong>。</li>
+              <li>找到 <strong>POP3/SMTP/IMAP</strong> 或"客户端授权密码"。</li>
+              <li>开启 IMAP/SMTP，完成手机验证并生成授权码。</li>
+              <li>配置 email-mcp 时，用户名填完整邮箱地址，密码填授权码。</li>
+            </ol>
+            <p class="server-line">
+              <code>IMAP imap.163.com:993</code
+              ><code>SMTP smtp.163.com:465</code>
+            </p>
+          </section>
+
+          <section class="provider-item">
+            <div class="provider-name">
+              <b>企</b>
+              <h3>网易 163 企业邮箱</h3>
+            </div>
+            <ol>
+              <li>
+                登录企业邮箱 Webmail，进入<strong
+                  >设置 → 账户与安全 / 客户端设置</strong
+                >。
+              </li>
+              <li>生成"客户端授权码"或"客户端专用密码"。</li>
+              <li>
+                如果没有此入口，请联系企业管理员开启 IMAP/SMTP 和客户端登录。
+              </li>
+              <li>服务器和端口以企业邮箱后台的"客户端设置"页为准。</li>
+            </ol>
+            <p class="server-line">
+              <code>常见 IMAP imap.qiye.163.com:993</code
+              ><code>SMTP 以企业后台为准</code>
+            </p>
+          </section>
+
+          <section class="provider-item">
+            <div class="provider-name">
+              <b>QQ</b>
+              <h3>QQ 邮箱</h3>
+            </div>
+            <ol>
+              <li>
+                登录 QQ 邮箱网页版，进入<strong>设置 → 账号与安全</strong>。
+              </li>
+              <li>找到并开启 IMAP/SMTP 服务。</li>
+              <li>完成身份验证，生成授权码。</li>
+              <li>配置 email-mcp 时，密码填写授权码，不填 QQ 密码。</li>
+            </ol>
+            <p class="server-line">
+              <code>IMAP imap.qq.com:993</code><code>SMTP smtp.qq.com:465</code>
+            </p>
+          </section>
+        </div>
+
+        <details class="other-providers">
+          <summary>其他常见邮箱参数</summary>
+          <div class="provider-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>邮箱</th>
+                  <th>凭据</th>
+                  <th>IMAP</th>
+                  <th>SMTP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>腾讯企业邮箱</td>
+                  <td>客户端专用密码</td>
+                  <td><code>imap.exmail.qq.com:993</code></td>
+                  <td><code>smtp.exmail.qq.com:465</code></td>
+                </tr>
+                <tr>
+                  <td>Gmail</td>
+                  <td>开启两步验证后生成 App Password</td>
+                  <td><code>imap.gmail.com:993</code></td>
+                  <td><code>smtp.gmail.com:465</code></td>
+                </tr>
+                <tr>
+                  <td>iCloud Mail</td>
+                  <td>Apple Account 的 App 专用密码</td>
+                  <td><code>imap.mail.me.com:993</code></td>
+                  <td><code>smtp.mail.me.com:587</code></td>
+                </tr>
+                <tr>
+                  <td>Outlook / M365</td>
+                  <td>优先 OAuth2，受账户和企业策略限制</td>
+                  <td><code>outlook.office365.com:993</code></td>
+                  <td><code>smtp-mail.outlook.com:587</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            企业邮箱没有授权码入口时，请联系管理员，不要绕过公司的安全策略。
+          </p>
+        </details>
+      </section>
+      <!-- ════════════ 章节 03：WorkBuddy 安装 ════════════ -->
+      <section class="guide-section tutorial-section" id="workbuddy">
+        <div class="tutorial-heading">
+          <span>01</span>
+          <div>
+            <h2>让 Agent 帮你安装</h2>
+            <p>把下面这段话发给能够操作终端的 Agent。</p>
+          </div>
+        </div>
+
+        <div class="agent-prompt" style="margin: 0; border-radius: 12px">
+          <p id="agent-prompt-text">
+            帮我在这台电脑安装并配置 @codefuturist/email-mcp。先检查 Node.js
+            是否为 22 或更高版本，只使用官方 npm
+            包。需要邮箱授权码时必须停下来，让我本人在终端中输入，不要读取、回显或记录授权码。配置完成后，为当前
+            Agent 注册 MCP，默认开启只读模式，最后测试连接，并用 list_accounts
+            和 check_health 验证结果。修改系统或 Agent
+            配置前，先告诉我会修改什么。
+          </p>
+          <button type="button" data-copy-target="#agent-prompt-text">
+            复制这段话
+          </button>
+        </div>
+
+        <p class="security-note">
+          <strong>注意：</strong>"Agent 自动安装"不代表把授权码发给
+          Agent。安全的做法是在密码输入环节停下来，由你本人操作。
+        </p>
+      </section>
+      <!-- ════════════ 章节 02：终端安装 ════════════ -->
+      <section class="guide-section tutorial-section" id="terminal">
+        <div class="tutorial-heading">
+          <span>02</span>
+          <div>
+            <h2>手动安装</h2>
+            <p>适合第一次使用，整个过程大约 5 分钟。</p>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-info">
+            <span class="step-num">STEP 01</span>
+            <strong>检查环境</strong>
+            <p>
+              email-mcp 需要 Node.js 22 或更高版本。在终端中运行以下命令确认：
+            </p>
+            <div class="command"><code>node --version</code></div>
+            <p class="note" style="margin-top: 8px; margin-left: 0">
+              如果版本低于 22，请先升级 Node.js（推荐通过 nvm 或官方安装包）。
+            </p>
+          </div>
+          <div class="step-img-wrap">
+            <img
+              src="source/email-setup_01.png"
+              alt="终端检查 Node.js 和 Codex 版本"
+              loading="lazy"
+            />
+            <div class="step-img-caption">
+              环境检查 · Node.js 24 + Codex CLI
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card reverse">
+          <div class="step-info">
+            <span class="step-num">STEP 02</span>
+            <strong>运行安装向导</strong>
+            <p>向导会带你添加邮箱、测试连接并注册 MCP。</p>
+            <div class="command primary">
+              <code>npx @codefuturist/email-mcp setup</code>
+            </div>
+            <p class="note" style="margin-top: 8px; margin-left: 0">
+              出现密码输入框时，由你本人输入上一节生成的授权码，不要粘贴到任何文件里。
+            </p>
+          </div>
+          <div class="step-img-wrap">
+            <img
+              src="source/email-setup_02.png"
+              alt="email-mcp 添加邮箱账户界面"
+              loading="lazy"
+            />
+            <div class="step-img-caption">
+              向导界面 · 手动填写 IMAP/SMTP 参数
+            </div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-info">
+            <span class="step-num">STEP 03</span>
+            <strong>分步执行（如向导失败）</strong>
+            <p>如果向导流程中断，可逐条执行以下命令：</p>
+            <div class="command multiline">
+              <code
+                >npx -y @codefuturist/email-mcp account add<br />npx -y
+                @codefuturist/email-mcp test<br />npx -y @codefuturist/email-mcp
+                install</code
+              >
+            </div>
+          </div>
+          <div class="step-img-wrap">
+            <img
+              src="source/email-setup_03.png"
+              alt="MCP 列表显示已注册状态"
+              loading="lazy"
+            />
+            <div class="step-img-caption">注册确认 · codex mcp list</div>
+          </div>
+        </div>
+
+        <div class="step-card reverse">
+          <div class="step-info">
+            <span class="step-num">STEP 04</span>
+            <strong>先开启只读模式</strong>
+            <p>第一次接入先不要开放发信、删除和移动邮件。</p>
+            <div class="command">
+              <code>npx -y @codefuturist/email-mcp config edit</code>
+            </div>
+            <p class="note" style="margin-top: 8px; margin-left: 0">
+              在配置中将 <code>Read-only mode</code> 设置为开启。
+            </p>
+          </div>
+          <div class="step-img-wrap">
+            <div
+              class="step-img-placeholder"
+              style="
+                padding: 48px 24px;
+                text-align: center;
+                color: #8a6351;
+                font-size: 0.82rem;
+                line-height: 1.8;
+              "
+            >
+              <strong
+                style="
+                  display: block;
+                  color: #ad5738;
+                  font-size: 0.95rem;
+                  margin-bottom: 8px;
+                "
+                >编辑 email-mcp 配置文件</strong
+              >
+              在打开的配置文件中找到
+              <code
+                style="
+                  background: #f2f4f8;
+                  padding: 2px 6px;
+                  border-radius: 4px;
+                  font-size: 0.76rem;
+                "
+                >read_only</code
+              >，<br />将其值设为
+              <code
+                style="
+                  background: #f2f4f8;
+                  padding: 2px 6px;
+                  border-radius: 4px;
+                  font-size: 0.76rem;
+                "
+                >true</code
+              >
+            </div>
+            <div class="step-img-caption">配置 → 只读模式</div>
+          </div>
+        </div>
+
+        <div class="step-card">
+          <div class="step-info">
+            <span class="step-num">STEP 05</span>
+            <strong>重启 Agent</strong>
+            <p>
+              完全退出并重新打开 Codex、Claude 或 WorkBuddy，让 MCP 配置生效。
+            </p>
+          </div>
+          <div class="step-img-wrap">
+            <div
+              class="step-img-placeholder"
+              style="
+                padding: 48px 24px;
+                text-align: center;
+                color: #8a6351;
+                font-size: 0.82rem;
+                line-height: 1.8;
+              "
+            >
+              <strong
+                style="
+                  display: block;
+                  color: #ad5738;
+                  font-size: 0.95rem;
+                  margin-bottom: 8px;
+                "
+                >重启步骤</strong
+              >
+              关闭应用 → 等待 3 秒 →<br />重新打开 → 让 Agent 重新加载 MCP
+            </div>
+            <div class="step-img-caption">完全重启</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ════════════ 章节 04：验收 ════════════ -->
+      <section class="guide-section tutorial-section" id="verify">
+        <div class="tutorial-heading">
+          <span>04</span>
+          <div>
+            <h2>安装完成后验收</h2>
+            <p>先确认读取正常，再考虑开放更多权限。</p>
+          </div>
+        </div>
+
+        <ul class="check-list">
+          <li>Agent 能调用 <code>list_accounts</code> 列出正确的邮箱账户。</li>
+          <li><code>check_health</code> 没有 IMAP/SMTP 认证错误。</li>
+          <li>Agent 能读取最近几封邮件的主题，但不能发送、删除或移动邮件。</li>
+          <li>授权码没有出现在 Prompt、项目文件、截图或 Git 记录中。</li>
+        </ul>
+
+        <div class="first-prompt">
+          <span>第一次测试可以这样说</span>
+          <p id="first-prompt-text">
+            请检查 email-mcp 的连接状态，列出已连接的邮箱账户，然后只读取最近 3
+            封邮件的发件人和主题，不要发送、删除或移动任何邮件。
+          </p>
+          <button type="button" data-copy-target="#first-prompt-text">
+            复制测试话术
+          </button>
+        </div>
+
+        <p class="doc-links">
+          参考：
+          <a
+            href="https://github.com/codefuturist/email-mcp"
+            target="_blank"
+            rel="noopener noreferrer"
+            >email-mcp GitHub</a
+          >
+          <a
+            href="https://www.npmjs.com/package/@codefuturist/email-mcp"
+            target="_blank"
+            rel="noopener noreferrer"
+            >npm</a
+          >
+          <a
+            href="https://help.mail.163.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >网易邮箱帮助</a
+          >
+          <a
+            href="https://qiye.163.com/help/client-profile.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            >网易企业邮箱</a
+          >
+          <a
+            href="https://service.mail.qq.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >QQ 邮箱帮助</a
+          >
+        </p>
+      </section>
+
+      <nav class="guide-pager" aria-label="切换连接教程">
+        <a href="part9.html#ecosystem">
+          <small>返回总览</small>
+          <strong>← 10 个连接教程</strong>
+        </a>
+        <a href="connect-dingtalk.html">
+          <small>下一个连接</small>
+          <strong>→ 连接钉钉</strong>
+        </a>
+      </nav>
+    </main>
+
+    <footer class="guide-footer">
+      © 2026 AI纪元 · 授权码自己输入，Agent 负责装
+    </footer>
+
+    <script>
+      (() => {
+        const toast = document.querySelector(".copy-toast");
+        let timer;
+
+        async function copyText(text, button) {
+          try {
+            await navigator.clipboard.writeText(text.trim());
+          } catch (error) {
+            const input = document.createElement("textarea");
+            input.value = text.trim();
+            input.style.position = "fixed";
+            input.style.opacity = "0";
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand("copy");
+            input.remove();
+          }
+
+          const oldText = button.textContent;
+          button.textContent = "已复制";
+          button.classList.add("copied");
+          toast.classList.add("show");
+          clearTimeout(timer);
+          timer = setTimeout(() => toast.classList.remove("show"), 1500);
+          setTimeout(() => {
+            button.textContent = oldText;
+            button.classList.remove("copied");
+          }, 1500);
+        }
+
+        document
+          .querySelectorAll("[data-copy], [data-copy-target]")
+          .forEach((button) => {
+            button.addEventListener("click", () => {
+              const target = button.dataset.copyTarget;
+              const text = target
+                ? document.querySelector(target)?.textContent
+                : button.dataset.copy;
+              if (text) copyText(text, button);
+            });
+          });
+      })();
+    </script>
+  </body>
+</html>

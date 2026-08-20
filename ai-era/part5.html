@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>脉冲神经网络 - AI纪元</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part5.css">
+</head>
+
+<body>
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html" class="active" aria-current="page">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#snn-why" data-section="snn-why"><span class="toc-num">01</span><span class="toc-label">1 · 为什么需要第三代 AI</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#snn-principle" data-section="snn-principle"><span class="toc-num">02</span><span class="toc-label">2 · 核心原理</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#snn-vs" data-section="snn-vs"><span class="toc-num">03</span><span class="toc-label">3 · 传统 NN vs SNN</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#snn-app" data-section="snn-app"><span class="toc-num">04</span><span class="toc-label">4 · 应用场景</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#snn-pros-cons" data-section="snn-pros-cons"><span class="toc-num">05</span><span class="toc-label">5 · 优势与挑战</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#snn-people" data-section="snn-people"><span class="toc-num">06</span><span class="toc-label">6 · 代表人物</span></a></li>
+        </ul>
+      </aside>
+
+
+        <!-- ============================
+             Hero Section
+             ============================ -->
+        <header class="article-header">
+            <h1 class="article-title">脉冲神经网络</h1>
+            <div class="article-meta">
+                <span>📖 全 10 章 · 第 5 章</span>
+                <span>⏱ 约 30 分钟阅读</span>
+            </div>
+        </header>
+
+        <!-- ============================
+             引子
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: var(--space-xl);">
+                在前面的章节中，我们见证了深度学习如何改变世界——从图像识别到自然语言处理，从 AlphaGo 到大语言模型。然而，当 AI 的能耗呈指数级增长时，一个深刻的矛盾浮出水面：今天的 AI 在智力任务上已超越人类，但能耗也远超人类。<strong style="color: var(--primary);">GPT-4 训练一次消耗的电力相当于 100 个家庭一年的用电量</strong>——而人脑只需要 20 瓦。这正是脉冲神经网络（SNN）登场的时刻。
+            </p>
+        </section>
+
+        <!-- ============================
+             1. 为什么需要第三代 AI？
+             ============================ -->
+        <section id="snn-why" class="chapter-section fade-in">
+            <div class="section-label">✦ 1 · 为什么需要第三代 AI？ ✦</div>
+
+            <!-- 三大挑战卡片 -->
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🔋 能耗墙</h3>
+                    <div class="tech-desc">人脑全天运行仅需 <strong style="color:var(--primary);">0.48 kWh</strong>（约 20 瓦），却能同时处理视觉、听觉、运动、语言等海量任务；而 GPT-4 单次推理就要消耗约 <strong style="color:var(--primary);">0.1 kWh</strong>。SNN 驱动的神经形态芯片可将能耗降至约 <strong style="color:var(--primary);">0.0005 kWh</strong>，效率差距达 <strong style="color:var(--primary);">数千倍</strong>——当前连续浮点计算架构在全面部署场景下不可持续。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>⏱️ 实时性瓶颈</h3>
+                    <div class="tech-desc">传统帧相机以 30fps 固定采样（每帧 33ms），事件驱动传感器（DVS）仅捕捉变化，时间分辨率达微秒级。自动驾驶需要毫秒级响应，云端 LLM 推理延迟常在秒级。SNN 的事件驱动机制天然适配端侧实时场景。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🧠 生物启发</h3>
+                    <div class="tech-desc">人脑 860 亿个神经元、100 万亿个突触，仅消耗 20 瓦；同等规模的 ANN 模拟需要数百万瓦。单个生物突触事件能耗约 10 fJ，而 ANN 一次浮点运算高达 0.1–1 pJ，效率差距达百倍以上。</div>
+                </div>
+            </div>
+
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                <strong>脉冲神经网络</strong>（Spiking Neural Network, SNN）正是在这个背景下被重新重视——它不再用连续的浮点数模拟神经元，而是用离散的"脉冲"（spike）来传递信息，更接近真实生物神经元的工作方式。
+            </p>
+
+            <div class="summary-box">
+                <p>💡 脉冲神经网络的目标不是替代深度学习，而是<strong>在人类大脑的高效性与当前 AI 的强大能力之间架起一座桥梁</strong>。两者的融合，而非替代，才是通往下一代 AI 的路径。</p>
+            </div>
+        </section>
+
+        <!-- ============================
+             2. 核心原理：从大脑到算法
+             ============================ -->
+        <section id="snn-principle" class="chapter-section fade-in">
+            <div class="section-label">✦ 2 · 核心原理：从大脑到算法 ✦</div>
+
+            <h3>生物神经元：生命的计算单元</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                要理解脉冲神经网络，首先要理解<strong>生物神经元</strong>的实际运作方式。传统人工神经元是对生物神经元的极度简化——而 SNN 则回归了更多生物细节。
+            </p>
+
+            <!-- 神经元解剖 SVG -->
+            <div class="viz-card">
+                <div class="viz-title">生物神经元解剖</div>
+                <div class="viz-container">
+                    <svg viewBox="0 0 600 280" style="display:block;background:#FDFBF9;border-radius:10px;">
+                        <defs>
+                            <radialGradient id="somaGrad" cx="40%" cy="35%" r="60%">
+                                <stop offset="0%" stop-color="hsla(16, 65%, 72%, 0.30)"/>
+                                <stop offset="60%" stop-color="hsla(16, 65%, 58%, 0.06)"/>
+                                <stop offset="100%" stop-color="hsla(16, 65%, 45%, 0.01)"/>
+                            </radialGradient>
+                            <radialGradient id="nucleusGrad" cx="40%" cy="35%" r="60%">
+                                <stop offset="0%" stop-color="hsla(16, 55%, 58%, 0.30)"/>
+                                <stop offset="100%" stop-color="hsla(16, 55%, 45%, 0.08)"/>
+                            </radialGradient>
+                            <filter id="sGlow">
+                                <feGaussianBlur stdDeviation="2" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                        </defs>
+
+                        <!-- Background -->
+                        <rect x="0" y="0" width="600" height="280" rx="10" fill="#FDFBF9"/>
+                        <path d="M0,272 Q300,258 600,272" fill="none" stroke="hsla(16, 40%, 85%, 0.25)" stroke-width="1"/>
+
+                        <!-- Background pulse aura -->
+                        <ellipse cx="210" cy="140" rx="180" ry="95" fill="hsla(16, 40%, 92%, 0.2)">
+                            <animate attributeName="rx" values="180;195;180" dur="4s" repeatCount="indefinite"/>
+                            <animate attributeName="ry" values="95;105;95" dur="4s" repeatCount="indefinite"/>
+                        </ellipse>
+
+                        <!-- ===== 树突 — 接收端 ===== -->
+                        <!-- 上簇 -->
+                        <path d="M165,110 Q120,75 70,80" fill="none" stroke="var(--primary)" stroke-width="2.8" stroke-linecap="round"/>
+                        <path d="M120,80 Q100,60 85,55" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M100,68 Q85,65 70,62" fill="none" stroke="var(--primary)" stroke-width="1.3" stroke-linecap="round"/>
+                        <!-- 中簇（主） -->
+                        <path d="M165,140 Q105,130 55,135" fill="none" stroke="var(--primary)" stroke-width="2.8" stroke-linecap="round"/>
+                        <path d="M105,133 Q85,118 70,110" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M90,128 Q75,140 60,148" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round"/>
+                        <!-- 下簇 -->
+                        <path d="M165,170 Q120,205 70,200" fill="none" stroke="var(--primary)" stroke-width="2.8" stroke-linecap="round"/>
+                        <path d="M115,200 Q95,215 80,220" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M100,205 Q85,195 70,188" fill="none" stroke="var(--primary)" stroke-width="1.3" stroke-linecap="round"/>
+                        <!-- 树突末端小点 -->
+                        <circle cx="85" cy="55" r="2" fill="var(--primary)" opacity="0.5"/>
+                        <circle cx="70" cy="62" r="1.5" fill="var(--primary)" opacity="0.4"/>
+                        <circle cx="70" cy="80" r="2.5" fill="var(--primary)" opacity="0.5"/>
+                        <circle cx="70" cy="110" r="2" fill="var(--primary)" opacity="0.5"/>
+                        <circle cx="55" cy="135" r="2.5" fill="var(--primary)" opacity="0.6"/>
+                        <circle cx="60" cy="148" r="2" fill="var(--primary)" opacity="0.4"/>
+                        <circle cx="70" cy="200" r="2.5" fill="var(--primary)" opacity="0.5"/>
+                        <circle cx="80" cy="220" r="2" fill="var(--primary)" opacity="0.4"/>
+                        <circle cx="70" cy="188" r="1.5" fill="var(--primary)" opacity="0.4"/>
+
+                        <!-- ===== 胞体 ===== -->
+                        <!-- 细胞体光晕 -->
+                        <ellipse cx="205" cy="140" rx="60" ry="48" fill="none" stroke="var(--primary)" stroke-width="1" opacity="0.12">
+                            <animate attributeName="rx" values="60;68;60" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="ry" values="48;55;48" dur="3s" repeatCount="indefinite"/>
+                        </ellipse>
+                        <!-- 胞体主体 -->
+                        <ellipse cx="205" cy="140" rx="52" ry="42" fill="url(#somaGrad)" stroke="var(--primary)" stroke-width="2.2"/>
+                        <!-- 放电脉冲 -->
+                        <ellipse cx="205" cy="140" rx="52" ry="42" fill="none" stroke="var(--primary)" stroke-width="2" opacity="0">
+                            <animate attributeName="opacity" values="0;0;0;0.7;0" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="rx" values="52;52;52;63;52" dur="3s" repeatCount="indefinite"/>
+                            <animate attributeName="ry" values="42;42;42;51;42" dur="3s" repeatCount="indefinite"/>
+                        </ellipse>
+                        <!-- 细胞核 -->
+                        <circle cx="205" cy="140" r="18" fill="url(#nucleusGrad)" stroke="hsla(16, 55%, 55%, 0.3)" stroke-width="1.2"/>
+                        <circle cx="203" cy="137" r="5" fill="hsla(16, 55%, 50%, 0.2)"/>
+
+                        <!-- ===== 轴突 — 传导段 ===== -->
+                        <line x1="257" y1="140" x2="440" y2="140" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round"/>
+                        <!-- 髓鞘节段 -->
+                        <g filter="url(#sGlow)">
+                            <rect x="270" y="126" width="34" height="28" rx="9" fill="hsla(38, 70%, 60%, 0.2)" stroke="var(--accent)" stroke-width="1.8"/>
+                            <rect x="318" y="126" width="34" height="28" rx="9" fill="hsla(38, 70%, 60%, 0.2)" stroke="var(--accent)" stroke-width="1.8"/>
+                            <rect x="366" y="126" width="34" height="28" rx="9" fill="hsla(38, 70%, 60%, 0.2)" stroke="var(--accent)" stroke-width="1.8"/>
+                            <rect x="414" y="126" width="22" height="28" rx="9" fill="hsla(38, 70%, 60%, 0.2)" stroke="var(--accent)" stroke-width="1.8"/>
+                        </g>
+                        <!-- 郎飞氏结标记 -->
+                        <line x1="304" y1="126" x2="304" y2="154" stroke="hsla(38, 50%, 55%, 0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+                        <line x1="352" y1="126" x2="352" y2="154" stroke="hsla(38, 50%, 55%, 0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+                        <line x1="400" y1="126" x2="400" y2="154" stroke="hsla(38, 50%, 55%, 0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+
+                        <!-- ===== 突触末梢 ===== -->
+                        <path d="M440,140 Q470,100 495,90" fill="none" stroke="var(--primary)" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M440,140 Q480,140 505,140" fill="none" stroke="var(--primary)" stroke-width="2.2" stroke-linecap="round"/>
+                        <path d="M440,140 Q470,180 495,190" fill="none" stroke="var(--primary)" stroke-width="2.2" stroke-linecap="round"/>
+                        <!-- 突触小体 -->
+                        <circle cx="495" cy="90" r="8" fill="url(#somaGrad)" stroke="var(--primary)" stroke-width="1.8"/>
+                        <circle cx="505" cy="140" r="8" fill="url(#somaGrad)" stroke="var(--primary)" stroke-width="1.8"/>
+                        <circle cx="495" cy="190" r="8" fill="url(#somaGrad)" stroke="var(--primary)" stroke-width="1.8"/>
+                        <!-- 递质释放动画 -->
+                        <circle r="2.5" fill="var(--accent)" opacity="0.8">
+                            <animateMotion dur="1s" repeatCount="indefinite" path="M495,90 Q505,83 510,90 Q505,97 495,90"/>
+                        </circle>
+                        <circle r="2.5" fill="var(--accent)" opacity="0.6">
+                            <animateMotion dur="1.2s" repeatCount="indefinite" begin="0.4s" path="M505,140 Q515,133 520,140 Q515,147 505,140"/>
+                        </circle>
+                        <circle r="2.5" fill="var(--accent)" opacity="0.7">
+                            <animateMotion dur="1.1s" repeatCount="indefinite" begin="0.8s" path="M495,190 Q505,183 510,190 Q505,197 495,190"/>
+                        </circle>
+
+                        <!-- ===== 信号流向动画 ===== -->
+                        <!-- 输入 → 树突 → 胞体 -->
+                        <circle r="3.5" fill="var(--primary)" filter="url(#sGlow)">
+                            <animateMotion dur="3s" repeatCount="indefinite" path="M55,135 Q105,130 155,140"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle r="3" fill="var(--primary)" filter="url(#sGlow)">
+                            <animateMotion dur="3.3s" repeatCount="indefinite" begin="1s" path="M70,80 Q120,75 155,110"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="3.3s" repeatCount="indefinite" begin="1s"/>
+                        </circle>
+                        <circle r="3" fill="var(--primary)" filter="url(#sGlow)">
+                            <animateMotion dur="3.5s" repeatCount="indefinite" begin="2s" path="M70,200 Q120,205 155,170"/>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="3.5s" repeatCount="indefinite" begin="2s"/>
+                        </circle>
+                        <!-- 轴突传导 -->
+                        <circle r="3.5" fill="var(--accent)" filter="url(#sGlow)">
+                            <animate attributeName="cx" values="205;440" dur="2.5s" repeatCount="indefinite" begin="1.5s"/>
+                            <animate attributeName="opacity" values="0;0;1;1;1;0" dur="2.5s" repeatCount="indefinite" begin="1.5s" keyTimes="0;0.08;0.2;0.6;0.85;1"/>
+                        </circle>
+                        <circle r="3" fill="var(--accent)" filter="url(#sGlow)">
+                            <animate attributeName="cx" values="205;440" dur="2.5s" repeatCount="indefinite" begin="3.2s"/>
+                            <animate attributeName="opacity" values="0;0;1;1;1;0" dur="2.5s" repeatCount="indefinite" begin="3.2s" keyTimes="0;0.08;0.2;0.6;0.85;1"/>
+                        </circle>
+
+                        <!-- ===== 顶部标签（连接线式） ===== -->
+                        <!-- 树突 -->
+                        <line x1="75" y1="40" x2="75" y2="88" stroke="var(--text-muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+                        <circle cx="75" cy="40" r="2" fill="var(--primary)"/>
+                        <text x="75" y="32" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="600">树突</text>
+                        <text x="75" y="48" text-anchor="middle" fill="var(--text-muted)" font-size="8">接收信号</text>
+
+                        <!-- 细胞体 -->
+                        <line x1="205" y1="48" x2="205" y2="96" stroke="var(--text-muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+                        <circle cx="205" cy="48" r="2" fill="var(--primary)"/>
+                        <text x="205" y="40" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="600">细胞体</text>
+                        <text x="205" y="56" text-anchor="middle" fill="var(--text-muted)" font-size="8">整合信息 · 触发脉冲</text>
+
+                        <!-- 细胞核 -->
+                        <line x1="235" y1="48" x2="220" y2="130" stroke="var(--text-muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+                        <circle cx="235" cy="48" r="2" fill="hsla(16, 55%, 55%, 0.5)"/>
+                        <text x="235" y="40" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-weight="500">细胞核</text>
+
+                        <!-- 髓鞘 -->
+                        <line x1="350" y1="48" x2="350" y2="124" stroke="var(--text-muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+                        <circle cx="350" cy="48" r="2" fill="var(--accent)"/>
+                        <text x="350" y="40" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="600">髓鞘</text>
+                        <text x="350" y="56" text-anchor="middle" fill="var(--text-muted)" font-size="8">绝缘 · 加速传导</text>
+
+                        <!-- 郎飞氏结 -->
+                        <line x1="390" y1="48" x2="352" y2="130" stroke="var(--text-muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+                        <circle cx="390" cy="48" r="2" fill="var(--accent)"/>
+                        <text x="390" y="40" text-anchor="middle" fill="var(--text-secondary)" font-size="10" font-weight="500">郎飞氏结</text>
+
+                        <!-- 轴突 -->
+                        <line x1="310" y1="84" x2="310" y2="130" stroke="var(--text-muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+                        <circle cx="310" cy="84" r="2" fill="var(--accent)"/>
+                        <text x="310" y="80" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="600">轴突</text>
+
+                        <!-- 突触末梢 -->
+                        <line x1="510" y1="48" x2="505" y2="88" stroke="var(--text-muted)" stroke-width="0.8" stroke-dasharray="3,3"/>
+                        <circle cx="510" cy="48" r="2" fill="var(--primary)"/>
+                        <text x="510" y="40" text-anchor="middle" fill="var(--text-primary)" font-size="12" font-weight="600">突触末梢</text>
+                        <text x="510" y="56" text-anchor="middle" fill="var(--text-muted)" font-size="8">释放神经递质</text>
+
+                        <!-- ===== 底部流向 ===== -->
+                        <line x1="130" y1="215" x2="130" y2="240" stroke="var(--primary)" stroke-width="0.8" stroke-dasharray="3,4" opacity="0.3"/>
+                        <line x1="218" y1="215" x2="218" y2="240" stroke="var(--primary)" stroke-width="0.8" stroke-dasharray="3,4" opacity="0.3"/>
+                        <line x1="345" y1="215" x2="345" y2="240" stroke="var(--accent)" stroke-width="0.8" stroke-dasharray="3,4" opacity="0.3"/>
+                        <line x1="495" y1="215" x2="495" y2="240" stroke="var(--primary)" stroke-width="0.8" stroke-dasharray="3,4" opacity="0.3"/>
+
+                        <text x="130" y="255" text-anchor="middle" fill="var(--primary)" font-size="11" font-weight="600">⚡ 脉冲编码</text>
+                        <text x="175" y="255" fill="var(--text-muted)" font-size="11">→</text>
+                        <text x="218" y="255" text-anchor="middle" fill="var(--primary)" font-size="11" font-weight="600">💧 膜电位整合</text>
+                        <text x="270" y="255" fill="var(--text-muted)" font-size="11">→</text>
+                        <text x="345" y="255" text-anchor="middle" fill="var(--accent)" font-size="11" font-weight="600">⚡ 动作电位传导</text>
+                        <text x="405" y="255" fill="var(--text-muted)" font-size="11">→</text>
+                        <text x="495" y="255" text-anchor="middle" fill="var(--primary)" font-size="11" font-weight="600">🔗 递质释放</text>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- 原理一：脉冲 -->
+            <h3>脉冲（Spike）—— 全或无</h3>
+            <div class="summary-box">
+                <p>🤔 <strong>类比理解</strong>：传统神经网络就像一直在说话的人，每个字都在传信息；SNN 就像打电报，只在关键时刻发送"滴"的一声。</p>
+            </div>
+
+            <!-- 脉冲 SVG -->
+            <div class="viz-card">
+                <div class="viz-title">脉冲 — 全或无</div>
+                <div class="viz-container">
+                    <svg viewBox="0 0 620 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="spkGlow">
+                                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                            </filter>
+                            <pattern id="sGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="hsla(16, 20%, 85%, 0.35)" stroke-width="0.5"/>
+                            </pattern>
+                            <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="var(--primary)" stop-opacity="0"/>
+                                <stop offset="50%" stop-color="var(--primary)" stop-opacity="0.8"/>
+                                <stop offset="100%" stop-color="var(--primary)" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Warm background -->
+                        <rect x="0" y="0" width="620" height="200" fill="#FDFBF9" rx="8"/>
+                        <line x1="20" y1="185" x2="600" y2="185" stroke="hsla(16, 20%, 85%, 0.5)" stroke-width="0.5"/>
+                        <line x1="20" y1="25" x2="600" y2="25" stroke="hsla(16, 20%, 85%, 0.3)" stroke-width="0.5"/>
+
+                        <!-- Threshold -->
+                        <line x1="40" y1="40" x2="580" y2="40" stroke="var(--primary)" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.6"/>
+                        <text x="585" y="44" fill="var(--primary)" font-size="10" font-weight="600">阈值</text>
+
+                        <!-- Baseline -->
+                        <line x1="40" y1="170" x2="580" y2="170" stroke="var(--border-medium)" stroke-width="1"/>
+
+                        <!-- Low-frequency baseline noise -->
+                        <polyline points="140,170 160,169 180,171 200,170" fill="none" stroke="hsla(16, 30%, 85%, 0.6)" stroke-width="1"/>
+
+                        <!-- Zone 1: Low Frequency -->
+                        <polyline points="140,170 148,170 155,50 162,35 170,50 178,170 185,170 192,175 200,170" fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="162" cy="35" r="3.5" fill="var(--primary)" filter="url(#spkGlow)" opacity="0">
+                            <animate attributeName="opacity" values="0;0;1;0;0;1;0;0" dur="4s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- Medium-frequency noise -->
+                        <polyline points="260,170 280,172 300,168 320,171 340,170" fill="none" stroke="hsla(16, 30%, 80%, 0.5)" stroke-width="1"/>
+
+                        <!-- Zone 2: Medium Frequency -->
+                        <polyline points="280,170 288,170 295,42 302,35 310,42 318,170 325,170 332,175 340,170" fill="none" stroke="var(--primary-dark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="302" cy="35" r="3.5" fill="var(--primary-dark)" filter="url(#spkGlow)" opacity="0">
+                            <animate attributeName="opacity" values="0;0;1;0;1;0;1;0;1;0" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+
+                        <!-- High-frequency noise -->
+                        <polyline points="400,170 430,171 460,169 490,170 520,170 550,171" fill="none" stroke="hsla(16, 30%, 80%, 0.5)" stroke-width="1"/>
+
+                        <!-- Zone 3: High Frequency -->
+                        <polyline points="400,170 408,170 415,38 422,32 430,38 438,170 445,170 452,175 460,170" fill="none" stroke="hsl(16, 65%, 48%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="422" cy="32" r="3.5" fill="hsl(16, 65%, 48%)" filter="url(#spkGlow)" opacity="0">
+                            <animate attributeName="opacity" values="0;1;0;1;0;1;0" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <polyline points="490,170 498,170 505,42 512,35 520,42 528,170 535,170 542,175 550,170" fill="none" stroke="hsl(16, 65%, 48%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="512" cy="35" r="3.5" fill="hsl(16, 65%, 48%)" filter="url(#spkGlow)" opacity="0">
+                            <animate attributeName="opacity" values="0;1;0;1;0;1;0" dur="2s" repeatCount="indefinite" begin="0.3s"/>
+                        </circle>
+                        <polyline points="530,170 538,170 545,45 552,38 560,45 568,170 575,170" fill="none" stroke="hsl(16, 65%, 48%)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="552" cy="38" r="3.5" fill="hsl(16, 65%, 48%)" filter="url(#spkGlow)" opacity="0">
+                            <animate attributeName="opacity" values="0;1;0;1;0;1;0" dur="2s" repeatCount="indefinite" begin="0.7s"/>
+                        </circle>
+
+                        <!-- Scan line -->
+                        <line x1="40" y1="20" x2="40" y2="180" stroke="var(--primary)" stroke-width="2" opacity="0">
+                            <animate attributeName="opacity" values="0;0.7;0.7;0" dur="5s" repeatCount="indefinite" keyTimes="0;0.03;0.9;1"/>
+                            <animate attributeName="x1" values="40;580" dur="5s" repeatCount="indefinite"/>
+                            <animate attributeName="x2" values="40;580" dur="5s" repeatCount="indefinite"/>
+                        </line>
+                        <line x1="40" y1="20" x2="40" y2="180" stroke="var(--primary)" stroke-width="8" opacity="0" filter="url(#spkGlow)">
+                            <animate attributeName="opacity" values="0;0.15;0.15;0" dur="5s" repeatCount="indefinite" keyTimes="0;0.03;0.9;1"/>
+                            <animate attributeName="x1" values="40;580" dur="5s" repeatCount="indefinite"/>
+                            <animate attributeName="x2" values="40;580" dur="5s" repeatCount="indefinite"/>
+                        </line>
+
+                        <!-- Time axis -->
+                        <line x1="40" y1="192" x2="570" y2="192" stroke="var(--border-medium)" stroke-width="1"/>
+                        <text x="40" y="199" fill="var(--text-muted)" font-size="8">t=0</text>
+                        <text x="300" y="199" fill="var(--text-muted)" font-size="9" text-anchor="middle">输入强度 <tspan fill="var(--primary)" font-weight="600">→</tspan></text>
+                        <text x="560" y="199" fill="var(--text-muted)" font-size="8" text-anchor="end">t</text>
+
+                        <!-- Zone labels with scan-sync highlight -->
+                        <g transform="translate(50, 58)">
+                            <rect x="0" y="0" width="105" height="26" rx="6" fill="hsla(16, 40%, 94%, 0.85)" stroke="hsla(16, 40%, 82%, 0.5)" stroke-width="1">
+                                <animate attributeName="fill" values="hsla(16,40%,94%,0.85);hsla(16,65%,92%,0.95);hsla(16,40%,94%,0.85)" dur="5s" repeatCount="indefinite" keyTimes="0;0.2;0.35"/>
+                                <animate attributeName="stroke" values="hsla(16,40%,82%,0.5);hsla(16,65%,65%,0.8);hsla(16,40%,82%,0.5)" dur="5s" repeatCount="indefinite" keyTimes="0;0.2;0.35"/>
+                            </rect>
+                            <text x="52" y="17" text-anchor="middle" fill="var(--primary)" font-size="10" font-weight="500">低频 · 慢</text>
+                        </g>
+                        <text x="155" y="82" fill="var(--text-muted)" font-size="10">↓</text>
+
+                        <g transform="translate(230, 58)">
+                            <rect x="0" y="0" width="105" height="26" rx="6" fill="hsla(16, 50%, 92%, 0.85)" stroke="hsla(16, 50%, 78%, 0.5)" stroke-width="1">
+                                <animate attributeName="fill" values="hsla(16,50%,92%,0.85);hsla(16,65%,90%,0.95);hsla(16,50%,92%,0.85)" dur="5s" repeatCount="indefinite" keyTimes="0;0.4;0.55"/>
+                                <animate attributeName="stroke" values="hsla(16,50%,78%,0.5);hsla(16,65%,60%,0.8);hsla(16,50%,78%,0.5)" dur="5s" repeatCount="indefinite" keyTimes="0;0.4;0.55"/>
+                            </rect>
+                            <text x="52" y="17" text-anchor="middle" fill="var(--primary-dark)" font-size="10" font-weight="600">中频</text>
+                        </g>
+
+                        <g transform="translate(430, 58)">
+                            <rect x="0" y="0" width="105" height="26" rx="6" fill="hsla(16, 60%, 90%, 0.85)" stroke="hsla(16, 60%, 75%, 0.5)" stroke-width="1">
+                                <animate attributeName="fill" values="hsla(16,60%,90%,0.85);hsla(16,70%,88%,0.95);hsla(16,60%,90%,0.85)" dur="5s" repeatCount="indefinite" keyTimes="0;0.6;0.75"/>
+                                <animate attributeName="stroke" values="hsla(16,60%,75%,0.5);hsla(16,70%,55%,0.8);hsla(16,60%,75%,0.5)" dur="5s" repeatCount="indefinite" keyTimes="0;0.6;0.75"/>
+                            </rect>
+                            <text x="52" y="17" text-anchor="middle" fill="hsl(16, 70%, 38%)" font-size="10" font-weight="700">高频 · 强</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="term-grid" style="margin-top: var(--space-md);">
+                <div class="term-item">
+                    <div class="term-word">⚡ 全或无</div>
+                    <div class="term-def">脉冲是离散的时间事件（0 或 1），不携带幅度信息</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">📊 编码方式</div>
+                    <div class="term-def">信息编码在脉冲的<strong>时间</strong>和<strong>频率</strong>中：频率编码、时间编码、群体编码</div>
+                </div>
+            </div>
+
+            <!-- 原理二：膜电位 -->
+            <h3 style="margin-top: var(--space-xl);">膜电位（Membrane Potential）—— 水桶模型</h3>
+            <div class="summary-box">
+                <p>🤔 <strong>类比理解</strong>：想象一个水桶，不断有水倒入（输入信号），但水桶有一个阈值标记。只有水位超过阈值时，水桶就会突然倒空（产生脉冲），然后重新开始蓄水。</p>
+            </div>
+
+            <!-- 膜电位 SVG -->
+            <div class="viz-card">
+                <div class="viz-title">膜电位 — 水桶模型</div>
+                <div class="viz-container">
+                    <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="waterGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#93C5FD"/>
+                                <stop offset="100%" stop-color="#3B82F6"/>
+                            </linearGradient>
+                            <clipPath id="bucketClip">
+                                <rect x="180" y="40" width="200" height="160" rx="8"/>
+                            </clipPath>
+                        </defs>
+                        <defs>
+                            <pattern id="voltGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#F1F5F9" stroke-width="0.5"/>
+                            </pattern>
+                        </defs>
+                        <rect x="0" y="0" width="600" height="240" fill="url(#voltGrid)" rx="8"/>
+                        <g transform="translate(90, 60)">
+                            <text x="0" y="-5" text-anchor="middle" fill="#64748B" font-size="10" font-weight="600" font-family="Noto Sans SC">输入信号</text>
+                            <rect x="-6" y="0" width="12" height="40" rx="3" fill="#94A3B8"/>
+                            <rect x="-10" y="-5" width="20" height="10" rx="3" fill="#64748B"/>
+                            <ellipse cx="0" cy="52" rx="4" ry="5" fill="#3B82F6" opacity="0.8"/>
+                            <ellipse cx="0" cy="68" rx="3" ry="4" fill="#3B82F6" opacity="0.6"/>
+                            <ellipse cx="0" cy="82" rx="3" ry="3" fill="#3B82F6" opacity="0.4"/>
+                            <text x="0" y="102" text-anchor="middle" fill="#3B82F6" font-size="9" font-family="Noto Sans SC">💧 累积</text>
+                        </g>
+                        <rect x="180" y="40" width="200" height="160" rx="8" fill="none" stroke="#CBD5E1" stroke-width="2.5"/>
+                        <rect x="182" y="70" width="196" height="128" rx="6" fill="url(#waterGrad)">
+                            <animate attributeName="y" values="190;70;70;70;70;190" keyTimes="0;0.3;0.35;0.5;0.85;1" dur="5s" repeatCount="indefinite"/>
+                            <animate attributeName="height" values="10;130;130;130;130;10" keyTimes="0;0.3;0.35;0.5;0.85;1" dur="5s" repeatCount="indefinite"/>
+                        </rect>
+                        <rect x="182" y="70" width="196" height="6" rx="3" fill="#93C5FD" opacity="0.5">
+                            <animate attributeName="y" values="190;70;70;70;70;190" keyTimes="0;0.3;0.35;0.5;0.85;1" dur="5s" repeatCount="indefinite"/>
+                        </rect>
+                        <line x1="175" y1="80" x2="385" y2="80" stroke="#EF4444" stroke-width="2" stroke-dasharray="8,4"/>
+                        <text x="390" y="84" fill="#EF4444" font-size="11" font-weight="600" font-family="Noto Sans SC">放电阈值 V<sub>th</sub></text>
+                        <rect x="180" y="40" width="200" height="160" rx="8" fill="none" stroke="#6366F1" stroke-width="3" opacity="0">
+                            <animate attributeName="opacity" values="0;0;0;0.9;0;0" keyTimes="0;0.3;0.33;0.35;0.4;1" dur="5s" repeatCount="indefinite"/>
+                            <animate attributeName="stroke-width" values="2.5;2.5;2.5;4;2.5;2.5" keyTimes="0;0.3;0.33;0.35;0.4;1" dur="5s" repeatCount="indefinite"/>
+                        </rect>
+                        <g transform="translate(420, 60)">
+                            <line x1="0" y1="20" x2="40" y2="20" stroke="#6366F1" stroke-width="2.5" marker-end="url(#arrowSpike)"/>
+                            <defs>
+                                <marker id="arrowSpike" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                    <polygon points="0,0 8,3 0,6" fill="#6366F1"/>
+                                </marker>
+                            </defs>
+                            <text x="20" y="5" text-anchor="middle" fill="#6366F1" font-size="10" font-weight="600" font-family="Noto Sans SC">⚡ 脉冲输出</text>
+                        </g>
+                        <text x="495" y="25" text-anchor="middle" fill="#64748B" font-size="10" font-weight="600" font-family="Noto Sans SC">膜电位曲线</text>
+                        <line x1="430" y1="35" x2="570" y2="35" stroke="#E2E8F0" stroke-width="1"/>
+                        <polyline points="430,200 430,195 455,195 455,185 480,185 480,170 505,170 505,150 530,150 530,130 555,130 555,100 565,100" fill="none" stroke="#6366F1" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="430" y1="100" x2="570" y2="100" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="4,3"/>
+                        <text x="570" y="96" fill="#EF4444" font-size="8" font-family="Noto Sans SC">阈值</text>
+                        <polyline points="565,100 568,70 570,100" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="568,100 568,195" fill="none" stroke="#6366F1" stroke-width="2" stroke-dasharray="3,3"/>
+                        <line x1="425" y1="205" x2="570" y2="205" stroke="#94A3B8" stroke-width="1"/>
+                        <line x1="425" y1="35" x2="425" y2="205" stroke="#94A3B8" stroke-width="1"/>
+                        <text x="498" y="218" text-anchor="middle" fill="#64748B" font-size="9" font-family="Noto Sans SC">时间</text>
+                        <text x="415" y="120" fill="#64748B" font-size="9" font-family="Noto Sans SC" transform="rotate(-90,415,120)">V(t)</text>
+                        <text x="280" y="230" text-anchor="middle" fill="#64748B" font-size="10" font-family="Noto Sans SC">💧 输入累积 → 达到阈值 ⚡ 放电 → 💦 复位（Reset）</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="algo-section-card">
+                <h4>LIF（Leaky Integrate-and-Fire）模型</h4>
+                <div style="margin-top: var(--space-sm);">
+                    <div class="metric-formula">τ · dV/dt = −V + I(t)</div>
+                    <div class="metric-formula" style="margin-top: 4px;">if V &gt; V<sub>threshold</sub> → emit spike, V = V<sub>reset</sub></div>
+                </div>
+                <p style="margin-top: var(--space-sm);">LIF 是最经典的 SNN 神经元模型——膜电位随输入累积，超过阈值时发放一个脉冲并将电位重置到静息水平。</p>
+            </div>
+
+            <!-- 原理三：STDP -->
+            <h3 style="margin-top: var(--space-xl);">突触可塑性（STDP）—— 学习规则</h3>
+            <div class="summary-box">
+                <p>🤔 <strong>类比理解</strong>：突触就像水管上的阀门，控制信号流量的大小。STDP 则决定了阀门如何根据脉冲到达的先后来调整开度——先到的变强，后到的变弱。</p>
+            </div>
+
+            <!-- STDP SVG -->
+            <div class="viz-card">
+                <div class="viz-title">STDP — 突触可塑性</div>
+                <div class="viz-container">
+                    <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="strongGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#10B981"/>
+                                <stop offset="100%" stop-color="#059669"/>
+                            </linearGradient>
+                            <linearGradient id="weakGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#F87171"/>
+                                <stop offset="100%" stop-color="#DC2626"/>
+                            </linearGradient>
+                            <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                <polygon points="0,0 8,3 0,6" fill="#10B981"/>
+                            </marker>
+                            <marker id="arrowRed" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                                <polygon points="0,0 8,3 0,6" fill="#EF4444"/>
+                            </marker>
+                        </defs>
+                        <rect x="0" y="0" width="680" height="340" fill="#FAFBFC" rx="12"/>
+                        <rect x="15" y="12" width="310" height="148" rx="10" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.5"/>
+                        <text x="170" y="34" text-anchor="middle" fill="#047857" font-size="13" font-weight="700" font-family="Noto Sans SC">LTP — 突触增强 ✅</text>
+                        <text x="170" y="50" text-anchor="middle" fill="#059669" font-size="10" font-family="Noto Sans SC">前神经元先于后神经元发放 → 连接增强</text>
+                        <text x="30" y="72" fill="#475569" font-size="10" font-weight="600" font-family="Noto Sans SC">神经元 A：</text>
+                        <line x1="100" y1="67" x2="290" y2="67" stroke="#E2E8F0" stroke-width="1"/>
+                        <polyline points="120,67 124,67 128,38 132,67 136,67" fill="none" stroke="#6366F1" stroke-width="2.5" stroke-linejoin="round"/>
+                        <polyline points="160,67 164,67 168,48 172,67 176,67" fill="none" stroke="#6366F1" stroke-width="2" stroke-linejoin="round"/>
+                        <polyline points="195,67 199,67 203,52 207,67 211,67" fill="none" stroke="#6366F1" stroke-width="1.5" stroke-linejoin="round"/>
+                        <text x="30" y="102" fill="#475569" font-size="10" font-weight="600" font-family="Noto Sans SC">神经元 B：</text>
+                        <line x1="100" y1="97" x2="290" y2="97" stroke="#E2E8F0" stroke-width="1"/>
+                        <polyline points="155,97 159,97 163,68 167,97 171,97" fill="none" stroke="#EC4899" stroke-width="2.5" stroke-linejoin="round"/>
+                        <polyline points="195,97 199,97 203,72 207,97 211,97" fill="none" stroke="#EC4899" stroke-width="2" stroke-linejoin="round"/>
+                        <polyline points="230,97 234,97 238,78 242,97 246,97" fill="none" stroke="#EC4899" stroke-width="1.5" stroke-linejoin="round"/>
+                        <line x1="132" y1="72" x2="163" y2="72" stroke="#F59E0B" stroke-width="1.5" marker-start="url(#arrowGreen)" marker-end="url(#arrowGreen)"/>
+                        <text x="148" y="83" text-anchor="middle" fill="#D97706" font-size="9" font-family="Noto Sans SC">Δt &gt; 0</text>
+                        <text x="30" y="132" fill="#475569" font-size="10" font-weight="600" font-family="Noto Sans SC">突触：</text>
+                        <line x1="100" y1="127" x2="290" y2="127" stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="100" y1="127" x2="160" y2="127" stroke="#BBF7D0" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="160" y1="127" x2="230" y2="127" stroke="#10B981" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="230" y1="127" x2="290" y2="127" stroke="#059669" stroke-width="5.5" stroke-linecap="round"/>
+                        <text x="295" y="131" fill="#047857" font-size="11">➡️ 增强（+Δw）</text>
+                        <rect x="355" y="12" width="310" height="148" rx="10" fill="#FEF2F2" stroke="#FECACA" stroke-width="1.5"/>
+                        <text x="510" y="34" text-anchor="middle" fill="#991B1B" font-size="13" font-weight="700" font-family="Noto Sans SC">LTD — 突触减弱 ❌</text>
+                        <text x="510" y="50" text-anchor="middle" fill="#DC2626" font-size="10" font-family="Noto Sans SC">前神经元晚于后神经元发放 → 连接减弱</text>
+                        <text x="370" y="72" fill="#475569" font-size="10" font-weight="600" font-family="Noto Sans SC">神经元 A：</text>
+                        <line x1="440" y1="67" x2="630" y2="67" stroke="#E2E8F0" stroke-width="1"/>
+                        <polyline points="480,67 484,67 488,38 492,67 496,67" fill="none" stroke="#6366F1" stroke-width="2" stroke-linejoin="round"/>
+                        <polyline points="520,67 524,67 528,52 532,67 536,67" fill="none" stroke="#6366F1" stroke-width="1.5" stroke-linejoin="round"/>
+                        <text x="370" y="102" fill="#475569" font-size="10" font-weight="600" font-family="Noto Sans SC">神经元 B：</text>
+                        <line x1="440" y1="97" x2="630" y2="97" stroke="#E2E8F0" stroke-width="1"/>
+                        <polyline points="450,97 454,97 458,68 462,97 466,97" fill="none" stroke="#EC4899" stroke-width="2.5" stroke-linejoin="round"/>
+                        <polyline points="490,97 494,97 498,72 502,97 506,97" fill="none" stroke="#EC4899" stroke-width="2" stroke-linejoin="round"/>
+                        <polyline points="530,97 534,97 538,78 542,97 546,97" fill="none" stroke="#EC4899" stroke-width="1.5" stroke-linejoin="round"/>
+                        <line x1="462" y1="72" x2="488" y2="72" stroke="#F59E0B" stroke-width="1.5" marker-start="url(#arrowGreen)" marker-end="url(#arrowGreen)"/>
+                        <text x="475" y="83" text-anchor="middle" fill="#D97706" font-size="9" font-family="Noto Sans SC">Δt &lt; 0</text>
+                        <text x="370" y="132" fill="#475569" font-size="10" font-weight="600" font-family="Noto Sans SC">突触：</text>
+                        <line x1="440" y1="127" x2="630" y2="127" stroke="#E2E8F0" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="440" y1="127" x2="500" y2="127" stroke="#F87171" stroke-width="5.5" stroke-linecap="round"/>
+                        <line x1="500" y1="127" x2="570" y2="127" stroke="#EF4444" stroke-width="4" stroke-linecap="round"/>
+                        <line x1="570" y1="127" x2="630" y2="127" stroke="#FECACA" stroke-width="2" stroke-linecap="round"/>
+                        <text x="635" y="131" fill="#991B1B" font-size="11">➡️ 减弱（−Δw）</text>
+                        <rect x="120" y="180" width="440" height="40" rx="20" fill="linear-gradient(135deg,#EEF2FF,#FDF2F8)" stroke="#C7D2FE" stroke-width="1.5"/>
+                        <text x="340" y="205" text-anchor="middle" fill="#312E81" font-size="13" font-weight="700" font-family="Noto Sans SC">
+                            "Fire together, wire together" — 一起发放的神经元连在一起
+                        </text>
+                        <text x="340" y="240" text-anchor="middle" fill="#475569" font-size="13" font-weight="700" font-family="Noto Sans SC">STDP 权重变化曲线</text>
+                        <line x1="80" y1="290" x2="600" y2="290" stroke="#94A3B8" stroke-width="1.5"/>
+                        <line x1="340" y1="230" x2="340" y2="295" stroke="#94A3B8" stroke-width="1.5"/>
+                        <text x="340" y="318" text-anchor="middle" fill="#64748B" font-size="11" font-family="Noto Sans SC">Δt（前 − 后）</text>
+                        <text x="30" y="265" fill="#64748B" font-size="11" font-family="Noto Sans SC" transform="rotate(-90,30,265)">Δw（权重变化）</text>
+                        <path d="M340,260 C340,260 400,258 430,252 C460,246 490,255 520,268 C550,278 570,283 590,288" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M340,260 L340,290 L590,290 L590,288 C570,283 550,278 520,268 C490,255 460,246 430,252 C400,258 340,260 340,260 Z" fill="#D1FAE5" opacity="0.5"/>
+                        <text x="490" y="245" fill="#047857" font-size="10" font-weight="600" font-family="Noto Sans SC">LTP</text>
+                        <path d="M340,260 C340,260 280,258 250,252 C220,246 190,255 160,268 C130,278 110,283 90,288" fill="none" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M340,260 L340,290 L90,290 L90,288 C110,283 130,278 160,268 C190,255 220,246 250,252 C280,258 340,260 340,260 Z" fill="#FECACA" opacity="0.5"/>
+                        <text x="190" y="245" fill="#991B1B" font-size="10" font-weight="600" font-family="Noto Sans SC">LTD</text>
+                        <line x1="80" y1="260" x2="600" y2="260" stroke="#94A3B8" stroke-width="0.8" stroke-dasharray="4,4"/>
+                        <text x="605" y="263" fill="#64748B" font-size="9" font-family="Noto Sans SC">0</text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="term-grid" style="margin-top: var(--space-md);">
+                <div class="term-item">
+                    <div class="term-word">✅ 前神经元先到</div>
+                    <div class="term-def">增强连接（<strong>LTP</strong>，Long-Term Potentiation），Δt &gt; 0</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">❌ 后神经元先到</div>
+                    <div class="term-def">减弱连接（<strong>LTD</strong>，Long-Term Depression），Δt &lt; 0</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">🔗 Hebb 法则</div>
+                    <div class="term-def">"一起发放的神经元连在一起"（Fire together, wire together）</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             3. 传统 NN vs SNN
+             ============================ -->
+        <section id="snn-vs" class="chapter-section fade-in">
+            <div class="section-label">✦ 3 · 传统 NN vs SNN ✦</div>
+
+            <h3>两种计算范式的对比</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                传统人工神经网络（ANN）与脉冲神经网络（SNN）代表了两种不同的计算范式。理解它们的差异，有助于我们在不同场景中选择最合适的架构。
+            </p>
+
+            <div class="def-grid">
+                <div class="def-card">
+                    <span class="def-label" style="background:#EEF2FF; color:#312E81; border-color:#C7D2FE;">连续</span>
+                    <h3>信息表示</h3>
+                    <div class="def-body" style="text-align: center;">
+                        <strong>ANN</strong>：连续浮点数<br>
+                        <strong style="color: var(--primary);">SNN</strong>：离散脉冲（0/1）
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#EEF2FF; color:#312E81; border-color:#C7D2FE;">同步</span>
+                    <h3>计算方式</h3>
+                    <div class="def-body" style="text-align: center;">
+                        <strong>ANN</strong>：同步、连续计算<br>
+                        <strong style="color: var(--primary);">SNN</strong>：异步、事件驱动
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#EEF2FF; color:#312E81; border-color:#C7D2FE;">时序</span>
+                    <h3>时间处理</h3>
+                    <div class="def-body" style="text-align: center;">
+                        <strong>ANN</strong>：需额外模块（如 RNN）<br>
+                        <strong style="color: var(--primary);">SNN</strong>：天然处理时间序列
+                    </div>
+                </div>
+            </div>
+
+            <div class="two-col">
+                <div class="algo-section-card">
+                    <h4>🔋 能耗对比</h4>
+                    <p><strong>ANN</strong>：高（依赖 GPU，训练一次 = 100 户家庭年用电量）</p>
+                    <p style="margin-top: var(--space-sm);"><strong style="color: var(--primary);">SNN</strong>：极低（专用神经形态芯片，能效比传统芯片高 1000 倍）</p>
+                </div>
+                <div class="algo-section-card">
+                    <h4>🧬 生物合理性</h4>
+                    <p><strong>ANN</strong>：低（过度简化，忽略时间和脉冲机制）</p>
+                    <p style="margin-top: var(--space-sm);"><strong style="color: var(--primary);">SNN</strong>：高（工作机制更接近真实神经系统）</p>
+                </div>
+                <div class="algo-section-card">
+                    <h4>🎓 训练方法</h4>
+                    <p><strong>ANN</strong>：反向传播（成熟、高效）</p>
+                    <p style="margin-top: var(--space-sm);"><strong style="color: var(--primary);">SNN</strong>：STDP、代理梯度（发展中、仍在探索）</p>
+                </div>
+                <div class="algo-section-card">
+                    <h4>🖥️ 硬件支持</h4>
+                    <p><strong>ANN</strong>：GPU、TPU（成熟生态）</p>
+                    <p style="margin-top: var(--space-sm);"><strong style="color: var(--primary);">SNN</strong>：神经形态芯片（Intel Loihi, IBM TrueNorth）</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             4. 应用场景
+             ============================ -->
+        <section id="snn-app" class="chapter-section fade-in">
+            <div class="section-label">✦ 4 · 应用场景 ✦</div>
+
+            <h3>SNN 的典型应用领域</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                由于低功耗、实时性和事件驱动的特性，SNN 在以下领域展现出独特优势：
+            </p>
+
+            <div class="scene-grid">
+                <div class="scene-card">
+                    <div class="scene-icon">🧠</div>
+                    <h3>神经形态芯片</h3>
+                    <div class="scene-desc">Intel Loihi 2、IBM TrueNorth、SpiNNaker — 模拟生物神经元脉冲行为，能效比传统芯片高 1000 倍以上，支持片上学习和自适应。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">🤖</div>
+                    <h3>机器人实时控制</h3>
+                    <div class="scene-desc">亚毫秒级响应环境变化，极低功耗适合移动/自主机器人，天然处理传感器时间序列数据。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">🧬</div>
+                    <h3>脑机接口</h3>
+                    <div class="scene-desc">Neuralink 等项目的核心模型之一，与生物神经系统天然兼容，用于解码和编码神经信号，帮助瘫痪患者恢复运动功能。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">📡</div>
+                    <h3>边缘计算</h3>
+                    <div class="scene-desc">物联网设备与自动驾驶传感器的理想选择——本地处理、极低延迟、无需持续云端连接、数据隐私天然保护。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             5. 优势与挑战
+             ============================ -->
+        <section id="snn-pros-cons" class="chapter-section fade-in">
+            <div class="section-label">✦ 5 · 优势与挑战 ✦</div>
+
+            <h3>核心优势</h3>
+            <div class="eval-grid">
+                <div class="eval-card">
+                    <h4>🔋 极低能耗</h4>
+                    <p>事件驱动计算，只在有脉冲时消耗能量。相比 ANN 的持续浮点运算，SNN 在空闲时几乎不耗电。</p>
+                </div>
+                <div class="eval-card">
+                    <h4>⏱️ 实时处理</h4>
+                    <p>天然处理时间序列数据，无需额外时序模块。毫秒级响应使 SNN 成为实时控制的首选。</p>
+                </div>
+                <div class="eval-card">
+                    <h4>🧠 生物可解释性</h4>
+                    <p>工作机制更接近真实神经系统，为理解大脑和开发类脑计算提供桥梁。</p>
+                </div>
+            </div>
+
+            <h3>当前瓶颈</h3>
+            <div class="eval-grid">
+                <div class="eval-card">
+                    <h4>🚧 训练困难</h4>
+                    <p>脉冲不可微，反向传播难以直接应用。需要依赖 STDP 启发式规则或代理梯度等近似方法。</p>
+                </div>
+                <div class="eval-card">
+                    <h4>🖥️ 硬件生态不成熟</h4>
+                    <p>神经形态芯片尚未大规模量产，训练工具和框架远不如 ANN 生态完善。</p>
+                </div>
+                <div class="eval-card">
+                    <h4>📐 理论与应用局限</h4>
+                    <p>缺乏统一的理论指导，多为启发式方法。在图像、NLP 等基准上尚无法与成熟 ANN 匹敌。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             6. 代表人物
+             ============================ -->
+        <section id="snn-people" class="chapter-section fade-in">
+            <div class="section-label">✦ 6 · 代表人物 ✦</div>
+
+            <h3>SNN 领域的关键贡献者</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                脉冲神经网络的发展离不开一批理论神经科学家、计算科学家和工程师的长期努力。
+            </p>
+
+            <div class="def-grid">
+                <div class="def-card">
+                    <span class="def-label">理论奠基</span>
+                    <h3>Wolfgang Maass</h3>
+                    <div class="def-en">奥地利理论神经科学家</div>
+                    <div class="def-body">
+                        2003 年证明 SNN 的图灵完备性，提出"液体状态机"（Liquid State Machine），为 SNN 的计算能力奠定了理论基础。他的工作证明了 SNN 在理论上可以计算任何可计算函数。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label">工程先驱</span>
+                    <h3>Wulfram Gerstner</h3>
+                    <div class="def-en">洛桑联邦理工学院教授</div>
+                    <div class="def-body">
+                        脉冲神经网络理论先驱，提出 Spike Response Model（SRM），推动了 SNN 在计算神经科学中的工程化应用。他还开源了 NEST 模拟器，极大促进了 SNN 研究社区的发展。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label">产业化推动</span>
+                    <h3>Mike Davies</h3>
+                    <div class="def-en">Intel 神经形态计算实验室主任</div>
+                    <div class="def-body">
+                        Loihi 芯片项目的领导者，推动 SNN 从理论走向硬件产业化，让神经形态计算走出实验室，进入实际工程部署。他的团队构建了完整的 SNN 开发工具链。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             结尾过渡
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>理解了脉冲神经网络之后，下一章我们将进入 AI Agent 的世界——<br>看看如何给 AI 装上眼睛、手和腿，让它从"回答问题"到"主动执行"。</p>
+            </div>
+        </section>
+
+        <!-- 上下篇导航 -->
+        <nav class="article-nav">
+            <a href="part4-llm.html" class="nav-button prev">← 第4章 · 大语言模型</a>
+            <a href="part7.html" class="nav-button">第 6–7 章 · AI Agent →</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

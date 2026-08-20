@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI机械臂连接教程：连接本地文件、命令与浏览器。包含接入路线、最小权限、配置示例、验收清单和官方文档。">
+    <title>连接本地文件、命令与浏览器 — AI机械臂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css?v=20260723">
+</head>
+
+<body class="connection-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 09 / 10</span>
+    </nav>
+
+    <main class="connection-guide">
+        <header class="guide-hero" data-number="09">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 09</div>
+            <h1>连接本地文件、命令与浏览器</h1>
+            <p>把 Agent 能做的本地动作拆成清晰工具，并用工作区、命令白名单和确认门控制风险。</p>
+            <div class="guide-pills"><span>Filesystem</span><span>Shell</span><span>Browser</span><span>工作区沙箱</span></div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#route">选择路线</a>
+            <a href="#setup">接入步骤</a>
+            <a href="#config">配置示例</a>
+            <a href="#permission">最小权限</a>
+            <a href="#verify">验收</a>
+            <a href="#docs">官方文档</a>
+        </nav>
+
+        <section class="guide-section" id="route">
+            <div class="guide-section-head">
+                <span class="guide-section-number">01</span>
+                <div><h2>先选一条正确的连接路线</h2><p>不要一次开放所有能力。先选择最小可用入口，验证价值后再升级。</p></div>
+            </div>
+            <div class="route-grid">
+                <article class="route-card recommended">
+                    <span>推荐</span>
+                    <h3>受限工作区</h3>
+                    <p>Agent 只能读写当前项目目录，执行项目脚本；跨目录、网络和系统设置需要额外批准。</p>
+                </article>
+                <article class="route-card">
+                    <span>扩展</span>
+                    <h3>MCP 工具服务</h3>
+                    <p>把文件、数据库或内部服务封装成明确工具，参数和返回值比自由 Shell 更容易审计。</p>
+                </article>
+                <article class="route-card">
+                    <span>界面</span>
+                    <h3>浏览器自动化</h3>
+                    <p>适合测试网页和执行可见操作；登录、支付、发送和删除等动作应停在确认前。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="guide-section" id="setup">
+            <div class="guide-section-head">
+                <span class="guide-section-number">02</span>
+                <div><h2>按这六步完成第一次接入</h2><p>把身份、权限、工具边界和验收一起配置，而不是只追求“接口能通”。</p></div>
+            </div>
+            <ol class="step-list">
+                <li>
+                    <span>01</span>
+                    <div><strong>定义工作区</strong><p>将允许读写的项目目录、临时目录和只读资料目录列成白名单。</p></div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div><strong>划分命令等级</strong><p>搜索、格式化、测试可默认执行；安装依赖、联网、删除和系统命令必须批准。</p></div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div><strong>拆分明确工具</strong><p>数据库查询、发送消息和浏览器操作优先封装为参数化工具，而不是拼接任意 Shell。</p></div>
+                </li>
+                <li>
+                    <span>04</span>
+                    <div><strong>隐藏敏感数据</strong><p>工具返回前过滤环境变量、Cookie、Token、私钥和个人数据。</p></div>
+                </li>
+                <li>
+                    <span>05</span>
+                    <div><strong>保留操作记录</strong><p>记录任务 ID、工具名、参数摘要、执行目录、退出码与文件 Diff。</p></div>
+                </li>
+                <li>
+                    <span>06</span>
+                    <div><strong>从故障场景验收</strong><p>测试路径穿越、命令注入、超时、网络失败和半完成写入，确认能安全停止和回退。</p></div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="guide-section" id="config">
+            <div class="guide-section-head">
+                <span class="guide-section-number">03</span>
+                <div><h2>配置示例</h2><p>字段和值都是示例占位符，请按你使用的 Agent、平台和密钥管理方式调整。</p></div>
+            </div>
+            <div class="config-panel">
+                <div class="config-panel-head"><span>agent-tools.json · 概念示例</span><span>示例 · 不含真实密钥</span></div>
+                <pre><code>{
+    &quot;workspace&quot;: &quot;/path/to/project&quot;,
+    &quot;readOnlyRoots&quot;: [&quot;/path/to/docs&quot;],
+    &quot;allowCommands&quot;: [&quot;rg&quot;, &quot;git status&quot;, &quot;npm test&quot;],
+    &quot;requireApproval&quot;: [&quot;network&quot;, &quot;install&quot;, &quot;delete&quot;, &quot;publish&quot;],
+    &quot;browser&quot;: { &quot;allowDownloads&quot;: false }
+}</code></pre>
+                <p class="config-note">不同 Agent 的配置格式不同，这段用于表达边界：默认限制在工作区，高影响能力显式申请，而不是把整台电脑交给 Agent。</p>
+            </div>
+        </section>
+
+        <section class="guide-section" id="permission">
+            <div class="guide-section-head">
+                <span class="guide-section-number">04</span>
+                <div><h2>最小权限建议</h2><p>把读取、草稿和高影响动作分开，避免一个 Token 同时拥有全部能力。</p></div>
+            </div>
+            <table class="permission-table">
+                <thead><tr><th>动作</th><th>默认等级</th><th>建议边界</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>读写工作区文件</td>
+                        <td><span class="permission-level">草稿</span></td>
+                        <td>写入后必须展示 Diff，并遵守忽略文件。</td>
+                    </tr>
+                    <tr>
+                        <td>运行测试 / 格式化</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>限定命令、目录和超时时间。</td>
+                    </tr>
+                    <tr>
+                        <td>联网 / 安装依赖</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>说明域名、包名、版本与原因。</td>
+                    </tr>
+                    <tr>
+                        <td>删除 / 发布 / 系统设置</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>默认拒绝，必要时先备份并逐项批准。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="guide-section" id="verify">
+            <div class="guide-section-head">
+                <span class="guide-section-number">05</span>
+                <div><h2>上线前验收</h2><p>不要只测成功路径；撤销权限、重复执行和失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>无法读取工作区外的私钥、浏览器配置和个人文件。</li>
+                    <li>危险命令会在执行前展示完整动作与影响范围。</li>
+                    <li>浏览器操作到发送、购买或删除前会暂停确认。</li>
+                    <li>任务结束后可查看命令、退出码、文件 Diff 和失败原因。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>在当前测试项目中搜索 TODO、运行只读检查并生成报告；不要安装依赖、联网或修改工作区外文件。</code>
+                </div>
+            </div>
+            <div class="guide-warning">
+                <span>!</span>
+                <div><strong>“能运行 Shell”不等于“应该运行任何命令”</strong><p>自由 Shell 是最强也最危险的工具。优先使用参数化能力、工作区沙箱和命令分级；删除、网络、安装与发布始终保留人工确认。</p></div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="docs">
+            <div class="guide-section-head">
+                <span class="guide-section-number">06</span>
+                <div><h2>继续查看官方文档</h2><p>平台界面和权限名称会更新，实际接入时以官方文档和企业管理员策略为准。</p></div>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://modelcontextprotocol.io/docs/getting-started/intro" target="_blank" rel="noopener noreferrer">
+                    <small>MCP</small>
+                    <strong>Model Context Protocol</strong>
+                    <p>了解如何把数据源与工具暴露给 Agent。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://playwright.dev/docs/intro" target="_blank" rel="noopener noreferrer">
+                    <small>PLAYWRIGHT</small>
+                    <strong>Playwright documentation</strong>
+                    <p>用可观察、可测试的方式自动化网页。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">
+                    <small>OWASP</small>
+                    <strong>LLM Prompt Injection Prevention</strong>
+                    <p>设计工具调用和外部内容处理的安全边界。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-code-search.html">
+                <small>上一个连接</small>
+                <strong>← 连接代码阅读与检索</strong>
+            </a>
+            <a href="connect-knowledge.html">
+                <small>下一个连接</small>
+                <strong>→ 连接文档与知识库</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+</body>
+
+</html>

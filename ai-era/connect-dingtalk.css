@@ -1,0 +1,221 @@
+/* 连接钉钉：专用样式 */
+:root { --img-max: 420px; }
+
+.dingtalk-guide-page {
+    --dingtalk-dark: #1B1B2F;
+    --dingtalk-accent: #A95436;
+    --dingtalk-green: #306C4A;
+}
+
+.dingtalk-guide {
+    width: min(980px, calc(100% - 36px));
+}
+
+.dingtalk-hero {
+    min-height: auto;
+    padding: clamp(34px, 6vw, 58px);
+    background: linear-gradient(135deg, #1B1B2F 0%, #2D2D3F 60%, #3A2A1E 100%);
+}
+
+.dingtalk-hero::after {
+    font-size: clamp(10rem, 25vw, 17rem);
+}
+
+.dingtalk-hero h1 {
+    margin: 12px 0 10px;
+    font-size: clamp(2.5rem, 7vw, 4.6rem);
+}
+
+.dingtalk-hero p {
+    max-width: 680px;
+}
+
+/* ── 方法切换 ── */
+.method-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.method-tab {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.method-tab:hover {
+    border-color: #D5AA94;
+    box-shadow: var(--shadow-sm);
+}
+
+.method-tab.active {
+    border-color: #C96742;
+    background: linear-gradient(135deg, #FFF7F0 0%, #FFFDF9 100%);
+    box-shadow: 0 0 0 3px rgba(201,103,66,.12);
+}
+
+.method-tab-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.method-tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.method-tag.easy { background: #EAF6EF; color: #306C4A; }
+.method-tag.flex { background: #FFF3DE; color: #8A5428; }
+
+.method-tab h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.method-tab p {
+    margin: 0;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.method-body { display: none; }
+.method-body.open { display: block; }
+
+/* ── 步骤卡片 ── */
+.step-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--img-max);
+    gap: 22px;
+    align-items: start;
+    background: #fff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .2s;
+}
+
+.step-card:hover { box-shadow: var(--shadow-md); }
+.step-card.reverse { grid-template-columns: var(--img-max) minmax(0, 1fr); }
+
+.step-info { display: flex; flex-direction: column; gap: 7px; }
+
+.step-num {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #A95436;
+    letter-spacing: 0.08em;
+}
+
+.step-num::before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    height: 2px;
+    background: #D58A68;
+    border-radius: 2px;
+}
+
+.step-info strong {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.step-info p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.step-img-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+    background: #F5F4F1;
+}
+
+.step-img-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.step-img-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 10px;
+    background: linear-gradient(transparent, rgba(0,0,0,.55));
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+/* ── 能力清单 ── */
+.capability-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+}
+
+.capability-tag {
+    padding: 4px 10px;
+    background: #F5F4F1;
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+}
+
+/* ── 权限表格 ── */
+.permission-table-wrap {
+    margin-top: 14px;
+    overflow: hidden;
+    border-radius: 18px;
+}
+
+.permission-table th {
+    color: #78503E;
+    background: #FBF6F2;
+    font-size: 0.76rem;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .step-card,
+    .step-card.reverse {
+        grid-template-columns: 1fr !important;
+    }
+    .step-card.reverse .step-img-wrap { order: -1; }
+    .method-tabs { flex-direction: column; }
+}

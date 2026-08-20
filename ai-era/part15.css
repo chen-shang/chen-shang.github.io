@@ -1,0 +1,757 @@
+/* ==========================================
+   密码学专题 - 深色密码实验室 + 温暖杂志风
+   ========================================== */
+
+.crypto-article {
+    --crypto-ink: #12282a;
+    --crypto-deep: #0d1f21;
+    --crypto-teal: #187d78;
+    --crypto-teal-light: #dff3ef;
+    --crypto-gold: #e3a72f;
+    --crypto-gold-light: #fff3d5;
+    --crypto-coral: #d9684a;
+    --crypto-blue: #557aa0;
+}
+
+.crypto-article code,
+.crypto-article .mission-en,
+.crypto-article .hero-kicker,
+.crypto-article .lab-index,
+.crypto-article .timeline-number {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.crypto-hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(4.5rem, 8vw, 7.5rem) clamp(1.5rem, 5vw, 4rem);
+    border-radius: 0 0 32px 32px;
+    color: #f8f4e9;
+    background:
+        radial-gradient(circle at 78% 18%, rgba(227, 167, 47, 0.18), transparent 24%),
+        radial-gradient(circle at 15% 84%, rgba(44, 157, 147, 0.2), transparent 28%),
+        linear-gradient(135deg, #0b1b1d 0%, #153739 56%, #1a4241 100%);
+    box-shadow: 0 24px 60px rgba(13, 31, 33, 0.18);
+}
+
+.crypto-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.16;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+    background-size: 38px 38px;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), transparent 86%);
+}
+
+.crypto-hero .article-title {
+    max-width: 900px;
+    margin: 0.85rem auto 1rem;
+    color: #fffdf7;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 1.12;
+    letter-spacing: -0.04em;
+}
+
+.crypto-hero .article-title span { color: #f2c35b; }
+
+.crypto-hero .article-subtitle {
+    max-width: 760px;
+    margin: 0 auto 1.5rem;
+    color: rgba(248, 244, 233, 0.75);
+    font-size: clamp(1rem, 2vw, 1.22rem);
+    line-height: 1.8;
+}
+
+.crypto-hero .article-meta {
+    justify-content: center;
+    color: rgba(248, 244, 233, 0.68);
+}
+
+.hero-kicker {
+    position: relative;
+    z-index: 1;
+    color: #79c9c0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+}
+
+.cipher-rain span {
+    position: absolute;
+    z-index: -1;
+    color: rgba(255, 255, 255, 0.07);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.72rem, 1vw, 0.9rem);
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+}
+
+.cipher-rain span:nth-child(1) { left: 5%; top: 16%; transform: rotate(-9deg); }
+.cipher-rain span:nth-child(2) { right: 8%; top: 14%; transform: rotate(7deg); }
+.cipher-rain span:nth-child(3) { left: 9%; bottom: 18%; }
+.cipher-rain span:nth-child(4) { right: 4%; bottom: 22%; transform: rotate(-5deg); }
+.cipher-rain span:nth-child(5) { left: 28%; top: 11%; }
+.cipher-rain span:nth-child(6) { right: 25%; top: 28%; }
+.cipher-rain span:nth-child(7) { left: 18%; top: 49%; transform: rotate(90deg); }
+.cipher-rain span:nth-child(8) { right: 14%; top: 55%; transform: rotate(90deg); }
+
+.hero-equation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    width: fit-content;
+    max-width: 100%;
+    margin: 2rem auto 0;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    background: rgba(4, 17, 18, 0.35);
+    backdrop-filter: blur(8px);
+}
+
+.equation-chip {
+    padding: 0.38rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.equation-chip.plain { color: #153739; background: #f8f4e9; }
+.equation-chip.cipher { color: #ffe59c; background: rgba(227, 167, 47, 0.18); border: 1px solid rgba(242, 195, 91, 0.4); }
+.equation-arrow { color: rgba(255, 255, 255, 0.55); font-size: 0.75rem; }
+
+.crypto-toc {
+    position: sticky;
+    top: 62px;
+    z-index: 20;
+    display: flex;
+    overflow-x: auto;
+    gap: 0.35rem;
+    margin: 1.5rem auto 0;
+    padding: 0.55rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    background: rgba(254, 253, 251, 0.92);
+    box-shadow: var(--shadow-sm);
+    backdrop-filter: blur(12px);
+    scrollbar-width: none;
+}
+
+.crypto-toc::-webkit-scrollbar { display: none; }
+.crypto-toc a {
+    flex: 0 0 auto;
+    padding: 0.48rem 0.72rem;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-size: 0.76rem;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+.crypto-toc a:hover { color: var(--crypto-teal); background: var(--crypto-teal-light); }
+
+.crypto-article .chapter-section {
+    scroll-margin-top: 130px;
+}
+
+.crypto-article .section-label { color: var(--crypto-teal); }
+.crypto-article .section-title {
+    margin-bottom: 0.8rem;
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.75rem, 3.8vw, 2.7rem);
+    line-height: 1.35;
+    color: var(--crypto-ink);
+}
+
+.section-intro {
+    max-width: 860px;
+    margin-bottom: 1.8rem;
+    color: var(--text-secondary);
+    font-size: 1.02rem;
+    line-height: 1.9;
+}
+
+.opening-scene {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+}
+
+.scene-copy h2 {
+    margin: 0.65rem 0 1.1rem;
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.65rem, 3.2vw, 2.35rem);
+    line-height: 1.45;
+    color: var(--crypto-ink);
+}
+
+.message-scene {
+    display: grid;
+    grid-template-columns: 92px 1fr 92px;
+    align-items: center;
+    min-height: 270px;
+    padding: 1.4rem;
+    border: 1px solid #cfe6e1;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #f5fbf9, #e7f4f1);
+    box-shadow: 0 16px 42px rgba(24, 125, 120, 0.12);
+}
+
+.person { text-align: center; color: var(--crypto-ink); }
+.person > span { display: block; font-size: 2.7rem; margin-bottom: 0.4rem; }
+.person strong, .person small { display: block; }
+.person small { color: var(--text-muted); font-size: 0.7rem; }
+
+.message-path { position: relative; min-height: 150px; display: grid; place-items: start center; }
+.path-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 52px;
+    border-top: 2px dashed #64aaa4;
+}
+.path-line::after { content: '›'; position: absolute; right: -3px; top: -18px; color: #4a9993; font-size: 2rem; }
+.sealed-message {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.65rem 0.8rem;
+    border-radius: 10px;
+    color: #fff7df;
+    background: var(--crypto-deep);
+    box-shadow: 0 8px 18px rgba(13, 31, 33, 0.18);
+}
+.sealed-message code { color: #f2c35b; font-size: 0.68rem; }
+.eve { align-self: end; text-align: center; color: var(--text-secondary); }
+.eve span, .eve small { display: block; }
+.eve span { font-size: 1.55rem; }
+.eve small { margin-top: 0.2rem; font-size: 0.67rem; }
+
+.crypto-summary {
+    margin-top: 1.6rem;
+    border-left-color: var(--crypto-teal);
+    background: #f1faf8;
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.mission-card {
+    position: relative;
+    overflow: hidden;
+    min-height: 270px;
+    padding: 1.4rem 1.4rem 4rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: var(--shadow-sm);
+}
+.mission-card::before { content: ''; position: absolute; inset: 0 0 auto; height: 4px; background: var(--mission-color); }
+.mission-card.confidentiality { --mission-color: #187d78; }
+.mission-card.integrity { --mission-color: #d9684a; }
+.mission-card.authentication { --mission-color: #e3a72f; }
+.mission-card.nonrepudiation { --mission-color: #557aa0; }
+.mission-icon { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 1.1rem; border-radius: 50%; color: white; background: var(--mission-color); font-size: 1.25rem; }
+.mission-en { color: var(--text-muted); font-size: 0.62rem; letter-spacing: 0.08em; }
+.mission-card h3 { margin: 0.35rem 0 0.55rem; color: var(--crypto-ink); font-size: 1.25rem; }
+.mission-card p { color: var(--text-secondary); line-height: 1.7; }
+.mission-card small { position: absolute; left: 1.4rem; bottom: 1.3rem; color: var(--mission-color); font-weight: 500; }
+
+.concept-warning,
+.hash-not-encryption,
+.engineer-rule {
+    margin-top: 1.4rem;
+    padding: 1.25rem 1.4rem;
+    border-radius: 14px;
+    color: var(--text-secondary);
+    background: var(--crypto-gold-light);
+    border: 1px solid #f0d89e;
+    line-height: 1.8;
+}
+.concept-warning span, .engineer-rule span { display: block; margin-bottom: 0.35rem; color: #9a6a09; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; }
+.concept-warning p, .engineer-rule p { margin: 0; }
+
+.two-col-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+    gap: 2rem;
+    align-items: start;
+}
+.principle-card {
+    padding: 1.5rem;
+    border-left: 4px solid var(--crypto-teal);
+    border-radius: 0 14px 14px 0;
+    background: #f1faf8;
+}
+.principle-card > span { color: var(--crypto-teal); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; }
+.principle-card blockquote { margin: 0.8rem 0; font-family: 'Noto Serif SC', serif; color: var(--crypto-ink); font-size: 1.15rem; line-height: 1.7; }
+.principle-card p { margin: 0; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; }
+
+.lab-card {
+    overflow: hidden;
+    padding: 1.5rem;
+    border: 1px solid #cbdedb;
+    border-radius: 20px;
+    background: #f8fcfb;
+    box-shadow: 0 14px 36px rgba(18, 40, 42, 0.08);
+}
+.lab-heading { margin-bottom: 1.2rem; }
+.lab-heading h3 { margin: 0.25rem 0; color: var(--crypto-ink); font-size: 1.3rem; }
+.lab-heading p { margin: 0.35rem 0 0; color: var(--text-secondary); font-size: 0.84rem; }
+.lab-index { color: var(--crypto-teal); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; }
+.lab-card label { display: block; margin-bottom: 0.45rem; color: var(--text-secondary); font-size: 0.78rem; font-weight: 600; }
+.lab-card textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: vertical;
+    padding: 0.8rem;
+    border: 1px solid #cbdedb;
+    border-radius: 10px;
+    outline: none;
+    color: var(--crypto-ink);
+    background: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+}
+.lab-card textarea:focus { border-color: var(--crypto-teal); box-shadow: 0 0 0 3px rgba(24, 125, 120, 0.1); }
+.range-row { display: grid; grid-template-columns: auto 1fr 40px; gap: 0.8rem; align-items: center; margin: 1rem 0; }
+.range-row label { margin: 0; }
+.range-row input { accent-color: var(--crypto-teal); }
+.range-row output { padding: 0.25rem; border-radius: 6px; text-align: center; color: white; background: var(--crypto-teal); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; }
+.lab-output { padding: 1rem; border-radius: 12px; background: var(--crypto-deep); }
+.lab-output span { display: block; margin-bottom: 0.4rem; color: #7fc7bf; font-size: 0.7rem; }
+.lab-output code { color: #ffdc7a; word-break: break-all; }
+.lab-note { margin: 0.9rem 0 0; color: var(--text-muted); font-size: 0.78rem; line-height: 1.65; }
+
+.key-diagram {
+    display: grid;
+    grid-template-columns: 1fr auto 0.82fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.6rem;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #f4faf8, #eef6f4);
+    border: 1px solid #d7e8e4;
+}
+.diagram-party { text-align: center; }
+.party-name { display: block; margin-bottom: 0.55rem; color: var(--crypto-teal); font-size: 0.75rem; font-weight: 700; }
+.document { padding: 1rem; border-radius: 10px; text-align: center; font-size: 0.86rem; }
+.plain-doc { color: var(--crypto-ink); background: white; border: 1px solid #d7e8e4; }
+.cipher-doc { color: #f2c35b; background: var(--crypto-deep); font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em; }
+.diagram-operation { display: grid; grid-template-columns: 1fr; gap: 0.25rem; place-items: center; color: var(--text-muted); font-size: 0.7rem; }
+.diagram-operation i { color: var(--crypto-teal); font-size: 1.5rem; font-style: normal; }
+.shared-key { color: #956b15; }
+
+.knowledge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.2rem; }
+.knowledge-grid article { padding: 1.3rem; border: 1px solid var(--border-subtle); border-radius: 14px; background: white; }
+.knowledge-num { color: var(--crypto-teal); font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; }
+.knowledge-grid h3 { margin: 0.45rem 0; color: var(--crypto-ink); }
+.knowledge-grid p { margin: 0; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.75; }
+
+.formula-strip {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    padding: 1rem;
+    border-radius: 12px;
+    color: #b9dbd6;
+    background: var(--crypto-deep);
+}
+.formula-strip code { color: #ffdc7a; }
+.formula-strip span { font-size: 0.7rem; }
+
+.asymmetric-showcase {
+    display: grid;
+    grid-template-columns: 1fr minmax(130px, 0.42fr) 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+.key-pair { min-height: 270px; padding: 1.6rem; border-radius: 18px; }
+.key-pair.public-key { color: #174c48; background: #e0f3ef; border: 1px solid #bee0da; }
+.key-pair.private-key { color: #fff6dc; background: var(--crypto-deep); border: 1px solid #25484a; }
+.key-symbol { display: grid; place-items: center; width: 58px; height: 58px; margin-bottom: 1.5rem; border-radius: 50%; font-size: 2rem; background: rgba(255,255,255,.55); }
+.private-key .key-symbol { background: rgba(255,255,255,.08); }
+.key-pair > span { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em; opacity: .65; }
+.key-pair h3 { margin: 0.4rem 0 0.6rem; font-size: 1.5rem; }
+.key-pair p { margin: 0; line-height: 1.8; opacity: .78; }
+.math-bridge { text-align: center; color: var(--text-muted); font-size: 0.7rem; }
+.bridge-line { display: flex; align-items: center; gap: 0.4rem; margin: 0.5rem 0; }
+.bridge-line i { flex: 1; height: 1px; background: #b9d4d0; }
+.bridge-line b { display: grid; place-items: center; width: 35px; height: 35px; border-radius: 50%; color: var(--crypto-teal); background: #e7f4f1; }
+
+.hybrid-box { margin-top: 1.5rem; padding: 1.6rem; border: 1px solid #efd99f; border-radius: 18px; background: #fff9e9; }
+.hybrid-title > span { color: #a67515; font-size: 0.72rem; font-weight: 700; }
+.hybrid-title h3 { margin: 0.35rem 0 1.3rem; color: var(--crypto-ink); }
+.hybrid-flow { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0.8rem; align-items: center; }
+.hybrid-flow > div { min-height: 120px; padding: 1rem; border-radius: 12px; background: white; box-shadow: var(--shadow-sm); }
+.hybrid-flow b { display: grid; place-items: center; width: 28px; height: 28px; margin-bottom: 0.65rem; border-radius: 50%; color: white; background: var(--crypto-teal); }
+.hybrid-flow span, .hybrid-flow small { display: block; }
+.hybrid-flow span { color: var(--crypto-ink); font-weight: 600; }
+.hybrid-flow small { margin-top: 0.25rem; color: var(--text-muted); line-height: 1.5; }
+.hybrid-flow i { color: #c29437; font-size: 1.4rem; font-style: normal; }
+.hybrid-box > p { margin: 1rem 0 0; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; }
+
+.hash-properties { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.hash-properties article { padding: 1.2rem; border-radius: 14px; color: #e7f4f1; background: var(--crypto-deep); }
+.hash-properties article > span { color: #f2c35b; font-size: 1.4rem; }
+.hash-properties h3 { margin: 0.55rem 0 0.35rem; color: white; }
+.hash-properties p { margin: 0; color: rgba(231,244,241,.67); font-size: 0.82rem; line-height: 1.65; }
+.hash-lab { margin-top: 1.3rem; }
+.hash-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.lab-button { margin: 1rem 0; padding: 0.72rem 1.05rem; border: 0; border-radius: 9px; color: white; background: var(--crypto-teal); font-weight: 600; cursor: pointer; transition: .2s ease; }
+.lab-button:hover { transform: translateY(-1px); background: #126b67; }
+.lab-button:disabled { cursor: wait; opacity: .65; }
+.hash-results { display: grid; gap: 0.7rem; }
+.hash-results > div { padding: 0.85rem; border-radius: 10px; background: var(--crypto-deep); }
+.hash-results span { display: block; margin-bottom: 0.35rem; color: #7fc7bf; font-size: 0.68rem; }
+.hash-results code { display: block; color: #ffdc7a; font-size: 0.72rem; line-height: 1.55; overflow-wrap: anywhere; }
+.hash-results p { margin: 0; color: var(--text-secondary); font-size: 0.84rem; }
+.hash-results strong { color: var(--crypto-teal); }
+.hash-not-encryption { background: #f3f7fb; border-color: #d4e0ec; }
+
+.signature-flow { display: grid; grid-template-columns: 1fr 120px 1fr; gap: 1rem; align-items: stretch; }
+.signature-side { padding: 1.4rem; border: 1px solid var(--border-subtle); border-radius: 16px; background: white; }
+.side-label { display: block; margin-bottom: 1rem; color: var(--crypto-teal); font-size: 0.72rem; font-weight: 700; }
+.signature-step { display: grid; grid-template-columns: 30px 1fr auto; gap: 0.6rem; align-items: center; padding: 0.8rem; border-radius: 10px; background: #f3f8f7; }
+.signature-step b { color: var(--crypto-teal); }
+.signature-step span { color: var(--crypto-ink); font-weight: 600; }
+.signature-step code { color: var(--text-muted); font-size: 0.7rem; }
+.signature-step.result { color: #f7e4a9; background: var(--crypto-deep); }
+.signature-step.result span { color: white; }
+.signature-step.result code { color: #f2c35b; }
+.down-arrow { padding: 0.45rem; text-align: center; color: var(--text-muted); font-size: 0.7rem; }
+.signature-divider { display: grid; place-items: center; text-align: center; color: var(--text-muted); }
+.signature-divider::before, .signature-divider::after { content: ''; width: 1px; height: 70px; background: #d7e8e4; }
+.signature-divider span { padding: .7rem; border-radius: 999px; color: var(--crypto-teal); background: #e7f4f1; font-size: .72rem; }
+.verify-compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: .6rem; align-items: center; margin-top: 2rem; }
+.verify-compare > div { padding: 1rem .75rem; border-radius: 10px; text-align: center; background: #f3f8f7; }
+.verify-compare small, .verify-compare code { display: block; }
+.verify-compare small { margin-bottom: .5rem; color: var(--text-muted); line-height: 1.4; }
+.verify-compare code { color: var(--crypto-teal); font-size: .72rem; }
+.verify-compare > span { color: var(--crypto-teal); font-weight: 700; }
+.verify-success { margin-top: 1rem; padding: .8rem; border-radius: 9px; color: #17645f; background: #dff3ef; text-align: center; font-weight: 600; }
+
+.certificate-explainer { display: grid; grid-template-columns: minmax(300px, .75fr) 1.25fr; gap: 2rem; align-items: center; margin-top: 2rem; }
+.certificate-card { padding: 1.5rem; border: 1px solid #d8c48f; border-radius: 16px; background: linear-gradient(145deg, #fffef8, #fff5d9); box-shadow: 0 16px 38px rgba(104, 76, 20, .1); }
+.cert-top { display: flex; justify-content: space-between; color: #9c731f; font-family: 'JetBrains Mono', monospace; font-size: .64rem; letter-spacing: .08em; }
+.cert-top b { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; color: white; background: var(--crypto-teal); }
+.certificate-card h3 { color: var(--crypto-ink); font-family: 'JetBrains Mono', monospace; }
+.certificate-card dl { display: grid; gap: .4rem; }
+.certificate-card dl > div { display: grid; grid-template-columns: 65px 1fr; padding: .55rem 0; border-bottom: 1px dashed #e3d6b6; }
+.certificate-card dt { color: var(--text-muted); font-size: .72rem; }
+.certificate-card dd { margin: 0; color: var(--crypto-ink); font-size: .76rem; }
+.cert-seal { width: fit-content; margin: 1rem 0 0 auto; padding: .45rem .75rem; border: 1px solid #c99731; border-radius: 999px; color: #9c731f; font-size: .7rem; transform: rotate(-3deg); }
+.certificate-copy > span { color: var(--crypto-teal); font-size: .72rem; font-weight: 700; }
+.certificate-copy h3 { margin: .45rem 0 .8rem; color: var(--crypto-ink); font-family: 'Noto Serif SC', serif; font-size: 1.55rem; line-height: 1.5; }
+.certificate-copy p { color: var(--text-secondary); line-height: 1.8; }
+
+/* 中间人攻击与证书信任链 */
+.mitm-attack {
+    margin-bottom: 2.6rem;
+    padding: clamp(1.2rem, 3vw, 2rem);
+    border: 1px solid #eccabb;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #fffaf7, #fff1e9);
+}
+
+.mitm-lane {
+    display: grid;
+    grid-template-columns: 1fr minmax(105px, .62fr) 1.08fr minmax(105px, .62fr) 1fr;
+    gap: .8rem;
+    align-items: center;
+}
+
+.mitm-party {
+    min-height: 190px;
+    padding: 1.2rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 15px;
+    background: #fff;
+}
+
+.mitm-party .party-icon,
+.mitm-party small,
+.mitm-party strong,
+.mitm-party code { display: block; }
+.mitm-party .party-icon { margin-bottom: 1.15rem; font-size: 2rem; }
+.mitm-party small { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: .61rem; letter-spacing: .06em; }
+.mitm-party strong { margin: .55rem 0; color: var(--crypto-ink); line-height: 1.45; }
+.mitm-party code { color: var(--text-muted); font-size: .65rem; line-height: 1.55; }
+.mitm-party.attacker-party { color: #fff4ed; border-color: #a74631; background: linear-gradient(145deg, #6f2e25, #9d4634); box-shadow: 0 14px 30px rgba(112, 42, 31, .18); }
+.mitm-party.attacker-party small { color: #ffc2ae; }
+.mitm-party.attacker-party strong { color: #fff; }
+.mitm-party.attacker-party code { color: #ffd4c5; }
+
+.mitm-link { position: relative; text-align: center; }
+.mitm-link::before,
+.mitm-link::after { content: ''; position: absolute; top: 50%; width: 24%; height: 1px; background: #d88973; }
+.mitm-link::before { left: 0; }
+.mitm-link::after { right: 0; }
+.mitm-link span,
+.mitm-link b { display: block; position: relative; z-index: 1; }
+.mitm-link span { color: var(--crypto-coral); font-size: .67rem; font-weight: 700; }
+.mitm-link b { margin-top: .35rem; color: #8b4a3b; font-size: .71rem; line-height: 1.45; }
+
+.mitm-warning {
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 1.2rem;
+    padding: 1rem 1.1rem;
+    border-radius: 13px;
+    color: #69372d;
+    background: rgba(255,255,255,.72);
+}
+.mitm-warning > span { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: white; background: var(--crypto-coral); font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+.mitm-warning p { margin: 0; line-height: 1.75; }
+
+.subsection-heading { max-width: 800px; margin: 0 0 1.4rem; }
+.subsection-heading > span,
+.issuance-heading > span,
+.trust-chain-copy > span { color: var(--crypto-teal); font-family: 'JetBrains Mono', monospace; font-size: .67rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.subsection-heading h3,
+.issuance-heading h3,
+.trust-chain-copy h3,
+.checklist-title h3 { margin: .5rem 0 .65rem; color: var(--crypto-ink); font-family: 'Noto Serif SC', serif; font-size: clamp(1.35rem, 2.7vw, 1.85rem); line-height: 1.5; }
+.subsection-heading p,
+.issuance-heading p,
+.trust-chain-copy p { margin: 0; color: var(--text-secondary); line-height: 1.8; }
+
+.cert-anatomy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.7rem;
+}
+.cert-anatomy-grid article { min-height: 185px; padding: 1.3rem; border: 1px solid #d8e8e4; border-radius: 15px; background: #f8fcfb; }
+.cert-anatomy-grid span { color: var(--crypto-teal); font-family: 'JetBrains Mono', monospace; font-size: .63rem; font-weight: 600; letter-spacing: .06em; }
+.cert-anatomy-grid h4 { margin: .8rem 0 .55rem; color: var(--crypto-ink); font-size: 1.02rem; }
+.cert-anatomy-grid p { margin: 0; color: var(--text-secondary); font-size: .81rem; line-height: 1.7; }
+
+.issuance-panel {
+    display: grid;
+    grid-template-columns: minmax(245px, .72fr) 1.28fr;
+    gap: 2rem;
+    margin-bottom: 2.7rem;
+    padding: clamp(1.4rem, 3vw, 2rem);
+    border-radius: 20px;
+    color: #e6f3f0;
+    background: linear-gradient(135deg, #0c2022, #173d3e);
+}
+.issuance-heading > span { color: #7fc7bf; }
+.issuance-heading h3 { color: white; }
+.issuance-heading p { color: rgba(230,243,240,.68); }
+.issuance-steps { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.issuance-steps li { display: grid; grid-template-columns: 42px 1fr; gap: .9rem; padding: 1rem; border: 1px solid rgba(255,255,255,.09); border-radius: 12px; background: rgba(255,255,255,.05); }
+.issuance-steps li > b { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; color: #ffdc7a; background: rgba(242,195,91,.1); font-family: 'JetBrains Mono', monospace; font-size: .72rem; }
+.issuance-steps strong { color: #fff; }
+.issuance-steps p { margin: .35rem 0 0; color: rgba(230,243,240,.66); font-size: .8rem; line-height: 1.65; }
+
+.trust-chain-block {
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 2.2rem;
+}
+.certificate-chain { display: grid; gap: .5rem; }
+.certificate-chain > i { color: var(--crypto-teal); font-size: .7rem; font-style: normal; text-align: center; }
+.chain-node { position: relative; padding: 1rem 1.2rem 1rem 4rem; border: 1px solid var(--border-subtle); border-radius: 13px; background: white; box-shadow: 0 8px 22px rgba(18,40,42,.06); }
+.chain-node::before { position: absolute; left: 1.1rem; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; font-size: 1rem; }
+.root-cert::before { content: '⚓'; color: #8c671d; background: #fff0c7; }
+.intermediate-cert::before { content: '◆'; color: #176a66; background: #daf0ec; }
+.leaf-cert::before { content: '🌐'; background: #edf4fa; }
+.chain-node small,
+.chain-node strong,
+.chain-node span { display: block; }
+.chain-node small { color: var(--text-muted); font-size: .63rem; }
+.chain-node strong { margin: .25rem 0; color: var(--crypto-ink); }
+.chain-node span { color: var(--text-secondary); font-size: .75rem; }
+
+.certificate-checklist {
+    display: grid;
+    grid-template-columns: minmax(220px, .6fr) 1.4fr;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem;
+    padding: clamp(1.3rem, 3vw, 1.8rem);
+    border: 1px solid #d7e8e4;
+    border-radius: 18px;
+    background: #f6fbfa;
+}
+.checklist-title > span { color: var(--crypto-teal); font-size: .7rem; font-weight: 700; }
+.certificate-checklist ul { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; margin: 0; padding: 0; list-style: none; }
+.certificate-checklist li { padding: .9rem; border-radius: 10px; background: white; }
+.certificate-checklist li b,
+.certificate-checklist li span { display: block; }
+.certificate-checklist li b { margin-bottom: .35rem; color: var(--crypto-ink); font-size: .84rem; }
+.certificate-checklist li span { color: var(--text-secondary); font-size: .76rem; line-height: 1.6; }
+
+.cert-lifecycle-note { padding: 1rem 1.2rem; border-left: 4px solid var(--crypto-gold); border-radius: 0 12px 12px 0; color: #59451d; background: var(--crypto-gold-light); line-height: 1.75; }
+.cert-lifecycle-note strong { color: #8a6418; }
+
+.mitm-blocked { display: grid; grid-template-columns: 70px 1fr; gap: 1.2rem; align-items: start; margin-top: 1.35rem; padding: 1.4rem; border: 1px solid #c7e4de; border-radius: 16px; background: #eaf7f4; }
+.blocked-icon { display: grid; place-items: center; width: 62px; height: 62px; border-radius: 50%; background: white; font-size: 2rem; box-shadow: 0 7px 18px rgba(24,125,120,.1); }
+.mitm-blocked span { color: var(--crypto-teal); font-size: .68rem; font-weight: 700; }
+.mitm-blocked h3 { margin: .4rem 0 .55rem; color: var(--crypto-ink); font-family: 'Noto Serif SC', serif; font-size: 1.25rem; line-height: 1.5; }
+.mitm-blocked p { margin: 0; color: var(--text-secondary); font-size: .84rem; line-height: 1.75; }
+.mitm-blocked .blocked-caveat { margin-top: .65rem; color: #786343; font-size: .76rem; }
+
+.https-timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.https-timeline article { position: relative; min-height: 230px; padding: 1.3rem; border: 1px solid #d7e8e4; border-radius: 15px; background: #f7fbfa; }
+.https-timeline article:not(:last-child)::after { content: '→'; position: absolute; z-index: 2; right: -.8rem; top: 48%; color: var(--crypto-teal); font-size: 1.2rem; }
+.timeline-number { color: var(--crypto-teal); font-size: .66rem; }
+.timeline-icon { margin: 1.2rem 0 .8rem; font-size: 2rem; }
+.https-timeline h3 { margin: 0 0 .45rem; color: var(--crypto-ink); }
+.https-timeline p { margin: 0; color: var(--text-secondary); font-size: .84rem; line-height: 1.7; }
+.https-boundary { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
+.https-boundary > div { padding: 1.3rem; border-radius: 14px; }
+.https-boundary > div:first-child { background: #e9f6f3; border: 1px solid #cde7e2; }
+.https-boundary > div:last-child { background: #fff2e9; border: 1px solid #f2d6c4; }
+.https-boundary span { color: var(--crypto-ink); font-weight: 700; }
+.https-boundary ul { margin: .8rem 0 0; padding-left: 1.2rem; color: var(--text-secondary); line-height: 1.9; }
+
+.password-pipeline { display: flex; align-items: stretch; gap: .65rem; padding: 1.4rem; border-radius: 18px; background: var(--crypto-deep); overflow-x: auto; }
+.password-pipeline > div:not(.pipeline-plus):not(.pipeline-arrow) { flex: 1 0 145px; padding: 1rem; border-radius: 11px; }
+.pipeline-input { background: #f8f4e9; }
+.pipeline-input.salt { background: #dff3ef; }
+.pipeline-kdf { color: #f7ecd1; background: #25484a; }
+.pipeline-store { color: #f8f4e9; background: #355f61; }
+.password-pipeline span, .password-pipeline code, .password-pipeline strong, .password-pipeline small { display: block; }
+.password-pipeline span { margin-bottom: .5rem; font-size: .67rem; opacity: .65; }
+.password-pipeline code { color: var(--crypto-ink); font-size: .7rem; overflow-wrap: anywhere; }
+.pipeline-kdf strong { color: #ffda76; font-size: .78rem; line-height: 1.55; }
+.pipeline-kdf small { margin-top: .4rem; color: rgba(247,236,209,.55); }
+.pipeline-store code { color: #ffda76; }
+.pipeline-plus, .pipeline-arrow { display: grid; place-items: center; flex: 0 0 24px; color: #7fc7bf; font-size: 1.2rem; }
+.salt-explainer { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
+.salt-explainer article { padding: 1.4rem; border: 1px solid var(--border-subtle); border-radius: 14px; }
+.salt-explainer span { color: var(--crypto-teal); font-size: .72rem; font-weight: 700; }
+.salt-explainer h3 { margin: .45rem 0; color: var(--crypto-ink); }
+.salt-explainer p { margin: 0; color: var(--text-secondary); font-size: .88rem; line-height: 1.75; }
+.user-advice { margin-top: 1.2rem; padding: 1.4rem; border-radius: 14px; background: #f3f7fb; border: 1px solid #d6e0e9; }
+.user-advice strong { color: var(--crypto-ink); }
+.user-advice ol { margin: .75rem 0 0; padding-left: 1.3rem; color: var(--text-secondary); line-height: 1.9; }
+
+.pitfall-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.pitfall-grid article { padding: 1.25rem; border: 1px solid #efd7cb; border-radius: 14px; background: #fff8f4; }
+.pitfall-grid span { color: var(--crypto-coral); font-family: 'JetBrains Mono', monospace; font-size: .68rem; }
+.pitfall-grid h3 { margin: .45rem 0; color: var(--crypto-ink); }
+.pitfall-grid p { margin: 0; color: var(--text-secondary); font-size: .85rem; line-height: 1.7; }
+.engineer-rule { border-color: #e8c2b1; background: #fff1e9; }
+.engineer-rule span { color: #b34f34; }
+
+.quantum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.quantum-card { min-height: 240px; padding: 1.4rem; border-radius: 16px; }
+.quantum-card.affected { color: #4e2821; background: #f9e5de; }
+.quantum-card.adjusted { color: #4c3a15; background: #fff1cf; }
+.quantum-card.response { color: #173f3c; background: #dff3ef; }
+.quantum-card span { font-size: .7rem; font-weight: 700; opacity: .65; }
+.quantum-card h3 { margin: 1.2rem 0 .65rem; font-size: 1.25rem; }
+.quantum-card p { margin: 0; line-height: 1.8; opacity: .75; }
+.migration-roadmap { display: grid; grid-template-columns: .7fr 1.3fr; gap: 2rem; margin-top: 1.3rem; padding: 1.6rem; border-radius: 18px; color: #e7f4f1; background: var(--crypto-deep); }
+.roadmap-heading span { color: #7fc7bf; font-size: .7rem; font-weight: 700; }
+.roadmap-heading h3 { margin: .5rem 0; color: #fff; font-family: 'Noto Serif SC', serif; font-size: 1.5rem; line-height: 1.45; }
+.migration-roadmap ol { display: grid; gap: .6rem; margin: 0; padding: 0; list-style: none; }
+.migration-roadmap li { display: grid; grid-template-columns: 56px 1fr; gap: .8rem; align-items: start; padding: .85rem; border-radius: 10px; background: rgba(255,255,255,.06); }
+.migration-roadmap li b { color: #f2c35b; }
+.migration-roadmap li span { color: rgba(231,244,241,.7); line-height: 1.65; }
+
+.crypto-table-wrap { overflow-x: auto; border: 1px solid var(--border-subtle); border-radius: 16px; }
+.crypto-table { width: 100%; min-width: 760px; border-collapse: collapse; background: white; }
+.crypto-table th, .crypto-table td { padding: 1rem; border-bottom: 1px solid var(--border-subtle); text-align: left; }
+.crypto-table th { color: #d5ece8; background: var(--crypto-deep); font-size: .75rem; letter-spacing: .04em; }
+.crypto-table td { color: var(--text-secondary); font-size: .84rem; line-height: 1.55; }
+.crypto-table td strong { color: var(--crypto-ink); }
+.crypto-table tr:last-child td { border-bottom: 0; }
+.crypto-table tbody tr:hover { background: #f5faf9; }
+
+.crypto-conclusion { display: grid; grid-template-columns: 150px 1fr; gap: 2rem; align-items: center; padding: clamp(1.5rem, 4vw, 2.5rem); border-radius: 22px; color: #e7f4f1; background: linear-gradient(135deg, #0d1f21, #1c4848); }
+.conclusion-lock { display: grid; place-items: center; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.14); border-radius: 50%; background: rgba(255,255,255,.05); }
+.conclusion-lock span { display: grid; place-items: center; width: 66px; height: 76px; border: 4px solid #f2c35b; border-radius: 12px; color: #f2c35b; font-size: 2.5rem; }
+.crypto-conclusion h2 { margin: 0 0 1rem; color: #fff; font-family: 'Noto Serif SC', serif; font-size: clamp(1.55rem, 3vw, 2.3rem); line-height: 1.45; }
+.crypto-conclusion p { color: rgba(231,244,241,.72); line-height: 1.85; }
+.final-formula { margin-top: 1.2rem; padding: .9rem 1rem; border-left: 3px solid #f2c35b; color: #ffdc7a; background: rgba(255,255,255,.05); font-family: 'JetBrains Mono', monospace; font-size: .84rem; }
+
+@media (max-width: 980px) {
+    .mission-grid, .hash-properties, .https-timeline { grid-template-columns: repeat(2, 1fr); }
+    .mitm-lane { grid-template-columns: 1fr; }
+    .mitm-link { padding: .45rem 0; }
+    .mitm-link::before, .mitm-link::after { top: 50%; width: 34%; }
+    .mitm-party { min-height: 0; }
+    .cert-anatomy-grid { grid-template-columns: repeat(2, 1fr); }
+    .issuance-panel, .trust-chain-block, .certificate-checklist { grid-template-columns: 1fr; }
+    .opening-scene, .two-col-layout { grid-template-columns: 1fr; }
+    .message-scene { max-width: 620px; width: 100%; margin: 0 auto; }
+    .asymmetric-showcase { grid-template-columns: 1fr 100px 1fr; }
+    .signature-flow { grid-template-columns: 1fr; }
+    .signature-divider { grid-template-columns: 1fr auto 1fr; }
+    .signature-divider::before, .signature-divider::after { width: auto; height: 1px; }
+    .pitfall-grid { grid-template-columns: repeat(2, 1fr); }
+    .migration-roadmap { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .crypto-hero { border-radius: 0 0 22px 22px; }
+    .crypto-toc { top: 56px; margin-inline: .75rem; }
+    .mission-grid, .knowledge-grid, .hash-properties, .https-timeline, .salt-explainer, .pitfall-grid, .quantum-grid, .https-boundary, .cert-anatomy-grid { grid-template-columns: 1fr; }
+    .certificate-checklist ul { grid-template-columns: 1fr; }
+    .mitm-blocked { grid-template-columns: 54px 1fr; }
+    .blocked-icon { width: 50px; height: 50px; font-size: 1.5rem; }
+    .mission-card { min-height: 225px; }
+    .two-col-layout { gap: 1.25rem; }
+    .key-diagram { grid-template-columns: 1fr; }
+    .diagram-operation, .diagram-operation.reverse { grid-template-columns: repeat(3, auto); }
+    .diagram-operation i { transform: rotate(90deg); }
+    .asymmetric-showcase { grid-template-columns: 1fr; }
+    .math-bridge { padding: .4rem 2rem; }
+    .hybrid-flow { grid-template-columns: 1fr; }
+    .hybrid-flow i { transform: rotate(90deg); text-align: center; }
+    .hash-inputs { grid-template-columns: 1fr; }
+    .certificate-explainer { grid-template-columns: 1fr; }
+    .certificate-card { max-width: 430px; }
+    .https-timeline article:not(:last-child)::after { content: '↓'; right: 50%; top: auto; bottom: -.95rem; }
+    .password-pipeline { align-items: center; flex-direction: column; }
+    .password-pipeline > div:not(.pipeline-plus):not(.pipeline-arrow) { box-sizing: border-box; width: 100%; flex-basis: auto; }
+    .pipeline-arrow { transform: rotate(90deg); }
+    .crypto-conclusion { grid-template-columns: 1fr; }
+    .conclusion-lock { width: 120px; }
+}
+
+@media (max-width: 520px) {
+    .hero-equation { border-radius: 18px; }
+    .message-scene { grid-template-columns: 70px 1fr 70px; padding: .8rem; }
+    .person > span { font-size: 2rem; }
+    .sealed-message { padding: .55rem; }
+    .sealed-message code { display: none; }
+    .signature-step { grid-template-columns: 26px 1fr; }
+    .signature-step code { grid-column: 2; }
+    .verify-compare { grid-template-columns: 1fr; }
+    .certificate-card dl > div { grid-template-columns: 54px 1fr; }
+    .mitm-warning, .mitm-blocked { grid-template-columns: 1fr; }
+    .issuance-steps li { grid-template-columns: 34px 1fr; padding: .85rem; }
+    .issuance-steps li > b { width: 32px; height: 32px; }
+    .chain-node { padding-left: 3.7rem; }
+    .crypto-conclusion { padding: 1.3rem; }
+}
+
+@media print {
+    .crypto-toc, .lab-button { display: none; }
+    .crypto-hero { color: #111; background: #eee; box-shadow: none; }
+    .crypto-hero .article-title, .crypto-conclusion h2 { color: #111; }
+}

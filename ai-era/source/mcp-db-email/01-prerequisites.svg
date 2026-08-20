@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15181d"/><stop offset="1" stop-color="#22262d"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="26" stdDeviation="24" flood-opacity=".25"/></filter>
+  </defs>
+  <rect width="1400" height="760" fill="#efe9df"/>
+  <circle cx="1240" cy="80" r="230" fill="#ead7ca" opacity=".7"/>
+  <circle cx="120" cy="680" r="190" fill="#dce9ea" opacity=".75"/>
+  <rect x="110" y="82" width="1180" height="596" rx="26" fill="url(#bg)" filter="url(#shadow)"/>
+  <rect x="110" y="82" width="1180" height="66" rx="26" fill="#292d34"/>
+  <rect x="110" y="122" width="1180" height="26" fill="#292d34"/>
+  <circle cx="153" cy="115" r="9" fill="#e16c5d"/><circle cx="183" cy="115" r="9" fill="#e4b65e"/><circle cx="213" cy="115" r="9" fill="#68b783"/>
+  <text x="700" y="122" text-anchor="middle" fill="#9da3ad" font-family="Menlo, monospace" font-size="19">Terminal — 环境检查</text>
+  <text x="160" y="210" fill="#7fcaa2" font-family="Menlo, monospace" font-size="23">$</text><text x="195" y="210" fill="#eef1f5" font-family="Menlo, monospace" font-size="23">node --version</text>
+  <text x="195" y="253" fill="#aeb4be" font-family="Menlo, monospace" font-size="22">v24.4.1</text>
+  <text x="160" y="317" fill="#7fcaa2" font-family="Menlo, monospace" font-size="23">$</text><text x="195" y="317" fill="#eef1f5" font-family="Menlo, monospace" font-size="23">npm --version</text>
+  <text x="195" y="360" fill="#aeb4be" font-family="Menlo, monospace" font-size="22">11.4.2</text>
+  <text x="160" y="424" fill="#7fcaa2" font-family="Menlo, monospace" font-size="23">$</text><text x="195" y="424" fill="#eef1f5" font-family="Menlo, monospace" font-size="23">codex --version</text>
+  <text x="195" y="467" fill="#aeb4be" font-family="Menlo, monospace" font-size="22">codex-cli 0.146.0</text>
+  <rect x="160" y="525" width="1080" height="92" rx="16" fill="#20382f" stroke="#3f765e"/>
+  <circle cx="207" cy="571" r="20" fill="#62b88a"/><path d="M197 571l7 7 14-17" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="244" y="562" fill="#d9f2e5" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="23" font-weight="600">环境通过</text>
+  <text x="244" y="593" fill="#9fcab6" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="19">Node.js 24+ 可以同时运行 DBHub 与 email-mcp</text>
+  <text x="111" y="724" fill="#857c73" font-family="PingFang SC, sans-serif" font-size="18">示意截图 · 版本号会随安装时间变化</text>
+</svg>

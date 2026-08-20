@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI机械臂连接教程：连接 GitHub / GitLab。包含接入路线、最小权限、配置示例、验收清单和官方文档。">
+    <title>连接 GitHub / GitLab — AI机械臂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css?v=20260723">
+</head>
+
+<body class="connection-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 06 / 10</span>
+    </nav>
+
+    <main class="connection-guide">
+        <header class="guide-hero" data-number="06">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 06</div>
+            <h1>连接 GitHub / GitLab</h1>
+            <p>让 Agent 读取 Issue、创建分支和 PR / MR，并在最小权限下形成可审查的协作闭环。</p>
+            <div class="guide-pills"><span>GitHub CLI</span><span>GitLab CLI</span><span>Fine-grained Token</span><span>PR / MR</span></div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#route">选择路线</a>
+            <a href="#setup">接入步骤</a>
+            <a href="#config">配置示例</a>
+            <a href="#permission">最小权限</a>
+            <a href="#verify">验收</a>
+            <a href="#docs">官方文档</a>
+        </nav>
+
+        <section class="guide-section" id="route">
+            <div class="guide-section-head">
+                <span class="guide-section-number">01</span>
+                <div><h2>先选一条正确的连接路线</h2><p>不要一次开放所有能力。先选择最小可用入口，验证价值后再升级。</p></div>
+            </div>
+            <div class="route-grid">
+                <article class="route-card recommended">
+                    <span>推荐</span>
+                    <h3>官方 CLI 登录</h3>
+                    <p>本地开发优先用 gh auth login 或 glab auth login，凭证由 CLI 与系统钥匙串管理。</p>
+                </article>
+                <article class="route-card">
+                    <span>服务端</span>
+                    <h3>GitHub App / GitLab Token</h3>
+                    <p>持续运行的 Agent 应使用独立应用身份、短周期凭证和明确的仓库范围。</p>
+                </article>
+                <article class="route-card">
+                    <span>事件驱动</span>
+                    <h3>Webhook + API</h3>
+                    <p>让 Issue、PR/MR、Pipeline 事件进入你的服务，再按规则触发 Agent 分析或生成评论草稿。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="guide-section" id="setup">
+            <div class="guide-section-head">
+                <span class="guide-section-number">02</span>
+                <div><h2>按这六步完成第一次接入</h2><p>把身份、权限、工具边界和验收一起配置，而不是只追求“接口能通”。</p></div>
+            </div>
+            <ol class="step-list">
+                <li>
+                    <span>01</span>
+                    <div><strong>建立测试仓库</strong><p>复制一个不含敏感数据的仓库，准备 Issue、保护分支和最小 CI。</p></div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div><strong>选择身份类型</strong><p>个人开发机使用官方 CLI；团队服务使用 App、Bot 或专用服务账号，不共用个人 Token。</p></div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div><strong>缩小仓库范围</strong><p>仅授权指定仓库或项目。Token 只给 read_repository、api 中实际需要的部分，并设置到期时间。</p></div>
+                </li>
+                <li>
+                    <span>04</span>
+                    <div><strong>登录并验证</strong><p>分别运行 gh auth status 或 glab auth status，确认 Host、用户与协议正确。</p></div>
+                </li>
+                <li>
+                    <span>05</span>
+                    <div><strong>封装协作动作</strong><p>拆分为读 Issue、建分支、开 PR/MR、读检查结果、写评论草稿等工具。</p></div>
+                </li>
+                <li>
+                    <span>06</span>
+                    <div><strong>启用服务端保护</strong><p>主分支启用评审、状态检查、禁止强推与合并策略；Agent 不可绕过保护。</p></div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="guide-section" id="config">
+            <div class="guide-section-head">
+                <span class="guide-section-number">03</span>
+                <div><h2>配置示例</h2><p>字段和值都是示例占位符，请按你使用的 Agent、平台和密钥管理方式调整。</p></div>
+            </div>
+            <div class="config-panel">
+                <div class="config-panel-head"><span>terminal · CLI 登录</span><span>示例 · 不含真实密钥</span></div>
+                <pre><code># GitHub
+gh auth login
+gh auth status
+gh repo view OWNER/REPO
+
+# GitLab / self-managed GitLab
+glab auth login --hostname gitlab.example.com
+glab auth status
+glab repo view GROUP/PROJECT</code></pre>
+                <p class="config-note">不要把 Token 直接写在 shell 历史、Git remote URL 或仓库文件中。企业 GitLab 请确认 hostname 与实例证书。</p>
+            </div>
+        </section>
+
+        <section class="guide-section" id="permission">
+            <div class="guide-section-head">
+                <span class="guide-section-number">04</span>
+                <div><h2>最小权限建议</h2><p>把读取、草稿和高影响动作分开，避免一个 Token 同时拥有全部能力。</p></div>
+            </div>
+            <table class="permission-table">
+                <thead><tr><th>动作</th><th>默认等级</th><th>建议边界</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>读仓库 / Issue / MR</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>先开放读取元数据、Diff 与检查结果。</td>
+                    </tr>
+                    <tr>
+                        <td>创建分支 / PR / MR</td>
+                        <td><span class="permission-level">草稿</span></td>
+                        <td>允许生成 Draft PR/MR，标题与描述必须关联任务。</td>
+                    </tr>
+                    <tr>
+                        <td>评论 / 指派 / 标签</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>对外可见或改变协作状态的动作先预览。</td>
+                    </tr>
+                    <tr>
+                        <td>合并 / 关闭 / 删除分支</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>必须满足评审和 CI，并由人确认目标分支。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="guide-section" id="verify">
+            <div class="guide-section-head">
+                <span class="guide-section-number">05</span>
+                <div><h2>上线前验收</h2><p>不要只测成功路径；撤销权限、重复执行和失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>CLI 显示的登录用户和目标 Host 正确。</li>
+                    <li>Token 只对测试仓库或指定 Group 生效。</li>
+                    <li>Agent 创建的是 Draft PR/MR，且包含摘要、测试和风险。</li>
+                    <li>未通过 CI 或缺少评审时无法合并。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>读取测试 Issue，创建任务分支和 Draft MR；不要合并，只返回 MR 链接、Diff 摘要和检查状态。</code>
+                </div>
+            </div>
+            <div class="guide-warning">
+                <span>!</span>
+                <div><strong>不要给个人 Token 全局 api 权限</strong><p>GitLab 的 api Scope 或经典 GitHub Token 往往覆盖很广。优先使用项目范围、细粒度 Token、App 身份和到期时间，并定期审计最后使用时间。</p></div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="docs">
+            <div class="guide-section-head">
+                <span class="guide-section-number">06</span>
+                <div><h2>继续查看官方文档</h2><p>平台界面和权限名称会更新，实际接入时以官方文档和企业管理员策略为准。</p></div>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://docs.gitlab.com/user/profile/personal_access_tokens/" target="_blank" rel="noopener noreferrer">
+                    <small>GITLAB</small>
+                    <strong>Personal access tokens</strong>
+                    <p>创建、限定 Scope、设置到期并轮换 Token。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://docs.gitlab.com/api/merge_requests/" target="_blank" rel="noopener noreferrer">
+                    <small>GITLAB</small>
+                    <strong>Merge Requests API</strong>
+                    <p>读取、创建和更新 MR 的官方接口。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://cli.github.com/manual/gh_auth_login" target="_blank" rel="noopener noreferrer">
+                    <small>GITHUB</small>
+                    <strong>GitHub CLI authentication</strong>
+                    <p>使用 gh auth login 管理本地登录。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-git.html">
+                <small>上一个连接</small>
+                <strong>← 连接 Git</strong>
+            </a>
+            <a href="connect-release.html">
+                <small>下一个连接</small>
+                <strong>→ 连接发布平台</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+</body>
+
+</html>

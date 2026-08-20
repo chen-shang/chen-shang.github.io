@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 扫盲 - AI纪元</title>
+    <meta http-equiv="refresh" content="0; url=part7.html#agent-basics">
+    <link rel="canonical" href="part7.html#agent-basics">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part6.css">
+</head>
+
+<body>
+    <script>
+        window.location.replace('part7.html#agent-basics');
+    </script>
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html" class="active" aria-current="page">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#agent-overview" data-section="agent-overview"><span class="toc-num">01</span><span class="toc-label">1 · AI Agent 概述</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#agent-arch" data-section="agent-arch"><span class="toc-num">02</span><span class="toc-label">2 · AI Agent 的核心架构</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#agent-types" data-section="agent-types"><span class="toc-num">03</span><span class="toc-label">3 · 常见 AI Agent 类型</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#agent-apps" data-section="agent-apps"><span class="toc-num">04</span><span class="toc-label">4 · AI Agent 的应用场景</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#agent-tech" data-section="agent-tech"><span class="toc-num">05</span><span class="toc-label">5 · Agent 关键概念与技术</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#agent-future" data-section="agent-future"><span class="toc-num">06</span><span class="toc-label">6 · 总结与展望</span></a></li>
+        </ul>
+      </aside>
+
+
+        <!-- ============================
+             Hero Section
+             ============================ -->
+        <header class="article-header">
+            <h1 class="article-title">AI Agent 扫盲</h1>
+            <div class="article-meta">
+                <span>📖 全 10 章 · 第 6 章</span>
+                <span>⏱ 约 30 分钟阅读</span>
+            </div>
+        </header>
+
+        <!-- ============================
+             引子
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: var(--space-xl);">
+                在上一章中，我们认识了以脉冲神经网络为代表的类脑智能——它尝试模仿人脑的生物学机制，以更贴近真实神经元的方式处理信息。然而，无论单个模型多么精妙，它们本质上仍然是在做"感知"或"预测"：识别图片中的物体、预测下一个词是什么。
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: var(--space-xl);">
+                但真正的智能不止于感知与预测——它还意味着<span style="color: var(--primary); font-weight: 500;">在真实世界中采取行动、使用工具、面对不确定性并不断调整策略</span>。2024 年起，一个概念在 AI 领域迅速崛起，将 AI 的边界从"能理解"扩展到了"能行动"——这就是<span style="color: var(--primary); font-weight: 600;">AI Agent</span>（人工智能体）。
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: var(--space-xl);">
+                AI Agent 不是简单的聊天机器人，也不是传统的自动化脚本。它是一种能够<span style="color: var(--primary); font-weight: 500;">感知环境、自主决策、执行行动、达成目标</span>的智能系统。让我们从最基础的"它是什么"开始，逐步揭开 AI Agent 的面纱。
+            </p>
+        </section>
+
+        <!-- ============================
+             1. AI Agent 概述
+             ============================ -->
+        <section id="agent-overview" class="chapter-section fade-in">
+            <div class="section-label">✦ 1 · AI Agent 概述 ✦</div>
+
+            <!-- 1.1 什么是 AI Agent -->
+            <h3>什么是 AI Agent？</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                要准确理解 AI Agent，我们可以将其与相关概念进行对比——它们有什么区别，又在哪里交汇？
+            </p>
+
+            <!-- 对比卡片 -->
+            <div class="def-grid">
+                <div class="def-card">
+                    <span class="def-label" style="background:#FDF2F8; color:#BE185D; border-color:#FBCFE8;">被动</span>
+                    <h3>语言模型</h3>
+                    <div class="def-en">Large Language Model (LLM)</div>
+                    <div class="def-body">
+                        接收输入，生成输出。它是<span style="color: var(--primary);">被动</span>的——你问它答，你不问它不动。它"想"不出下一步该做什么，只能根据你给的提示词回应。典型行为：对话、总结、翻译。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#EFF6FF; color:#1D4ED8; border-color:#BFDBFE;">主动</span>
+                    <h3>AI Agent</h3>
+                    <div class="def-en">AI Agent / Intelligent Agent</div>
+                    <div class="def-body">
+                        接收<span style="color: var(--primary);">目标</span>，自主规划和执行。它是<span style="color: var(--primary);">主动</span>的——你告诉它目标，它会自己思考"怎么做"，使用各种工具，遇到困难时调整策略，直到达成目标。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#FFFBEB; color:#92400E; border-color:#FDE68A;">规则驱动</span>
+                    <h3>自动化脚本</h3>
+                    <div class="def-en">Script / Automation</div>
+                    <div class="def-body">
+                        按照预设规则顺序执行固定流程。它没有"思考"能力——如果流程中某个环节与预期不符，脚本就会出错或停止。它不会自适应，也不会学习。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#ECFDF5; color:#047857; border-color:#A7F3D0;">决策中心</span>
+                    <h3>AI Agent vs 传统 AI</h3>
+                    <div class="def-en">Key Difference</div>
+                    <div class="def-body">
+                        传统 AI 的核心是<span style="color: var(--primary);">"理解"和"预测"</span>——看懂图片、听懂语音。AI Agent 的核心则是<span style="color: var(--primary);">"行动"和"达成"</span>——不仅理解，还能使用工具、规划步骤、完成复杂任务。
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block" style="margin-bottom: var(--space-xl);">
+                <p>如果说大语言模型是 AI 的"大脑"，那么 AI Agent 就是 AI 的"完整身体"——它拥有感知、思考、行动的能力，能够在真实世界中完成复杂任务。</p>
+                <cite>—— AI 研究社区</cite>
+            </div>
+
+            <!-- 1.2 Agent 的哲学定义 -->
+            <h3>哲学家怎么定义"智能体"？</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                "智能体"这个概念最早来自哲学和认知科学。计算机科学家 Stan Franklin 和 Art Graesser 在 1996 年给出了一个被广泛引用的经典定义——
+            </p>
+            <div class="quote-block">
+                <p>"一个智能体（Agent）就是这样一个实体：它存在于一个代理环境（agent-environment）中，能够自主行动以影响当前的处境以满足自己的设计目标。"</p>
+                <cite>—— Stan Franklin &amp; Art Graesser, 1996</cite>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                这个定义揭示了 Agent 的四个核心属性：<span style="color: var(--primary); font-weight: 500;">自主性</span>（不依赖外部干预）、<span style="color: var(--primary); font-weight: 500;">感知能力</span>（对环境有某种观测手段）、<span style="color: var(--primary); font-weight: 500;">行动能力</span>（能通过某种行动模式影响环境）和<span style="color: var(--primary); font-weight: 500;">持续性</span>（在一段时间内持续存在）。
+            </p>
+
+            <!-- 1.3 AI Agent 发展历程 -->
+            <h3>AI Agent 的发展历程</h3>
+            <ul class="topic-list">
+                <li><strong>1950s-1970s</strong> — 符号主义 AI：基于逻辑推理的专家系统尝试模拟智能行为</li>
+                <li><strong>1980s-1990s</strong> — 智能体理论诞生：哲学家和认知科学家提出"Agent"概念，自动化脚本在工业领域起步</li>
+                <li><strong>2000s-2010s</strong> — 机器学习崛起：从统计学习方法到深度学习，AI 感知能力飞跃，但行动能力仍受限</li>
+                <li><strong>2020 年</strong> — GPT-3 发布：大语言模型展现出惊人的零样本推理能力，为 Agent 提供了强大的"大脑"</li>
+                <li><strong>2023 年</strong> — Function Calling 技术成熟：OpenAI 等公司推出的函数调用能力，让 LLM 首次能稳定地与外部工具交互</li>
+                <li><strong>2024 年</strong> — AI Agent 爆发：从 Devin 代码 Agent、AutoGPT 到 Anthropic 的 Computer Use，Agent 成为 AI 领域最热门的方向</li>
+                <li><strong>2025 年及以后</strong> — 多 Agent 协作、自主 Agent 成为新前沿：多个 Agent 可以像团队一样协作完成复杂项目</li>
+            </ul>
+
+            <!-- 1.4 AI Agent 工作流 -->
+            <h3>AI Agent 典型工作流</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                一个 AI Agent 从接受任务到完成任务，通常经历以下核心步骤：
+            </p>
+
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-num">1</div>
+                    <h4>感知理解</h4>
+                    <p>接收用户的目标和上下文信息，理解任务意图和约束条件</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">2</div>
+                    <h4>规划分解</h4>
+                    <p>将复杂目标拆解为可执行的子任务序列，制定行动计划</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">3</div>
+                    <h4>执行行动</h4>
+                    <p>调用工具（搜索、代码执行、浏览器等）完成每个子任务</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">4</div>
+                    <h4>反思调整</h4>
+                    <p>检查当前状态，若目标未达成则分析原因并调整策略，循环迭代</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">5</div>
+                    <h4>交付结果</h4>
+                    <p>将完成任务的最终结果以清晰的方式反馈给用户</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             2. AI Agent 的核心架构
+             ============================ -->
+        <section id="agent-arch" class="chapter-section fade-in">
+            <div class="section-label">✦ 2 · AI Agent 的核心架构 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                不管 AI Agent 的外壳多么花哨，它本质上都是由几个核心模块组成的系统——<strong>大脑（Brain）、记忆（Memory）、规划（Planning）、工具（Tools）</strong>。理解了这些模块，你就理解了 Agent 的本质。
+            </p>
+
+            <!-- 四大核心模块 -->
+            <div class="arch-grid">
+                <div class="arch-card">
+                    <div class="arch-icon">🧠</div>
+                    <h3>大脑（Brain）</h3>
+                    <div class="arch-desc">
+                        Agent 的"思考中心"，通常由<span style="color: var(--primary); font-weight: 500;">大语言模型</span>担任。它负责理解任务、推理规划、做出决策、生成回复。可以说，没有大脑就没有 Agent——LLM 的质量直接决定了 Agent 的"智商"上限。
+                        <div class="arch-tags" style="margin-top: var(--space-sm);">
+                            <span class="arch-tag">GPT-4o</span>
+                            <span class="arch-tag">Claude</span>
+                            <span class="arch-tag">Gemini</span>
+                            <span class="arch-tag">Llama</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-card">
+                    <div class="arch-icon">📦</div>
+                    <h3>记忆（Memory）</h3>
+                    <div class="arch-desc">
+                        记忆系统让 Agent 能够<span style="color: var(--primary); font-weight: 500;">记住过去的交互和知识</span>，从而做出更明智的决策。它分为短期记忆（工作记忆）和长期记忆，类似于人类的记忆系统。
+                        <div class="arch-tags" style="margin-top: var(--space-sm);">
+                            <span class="arch-tag">短期记忆</span>
+                            <span class="arch-tag">长期记忆</span>
+                            <span class="arch-tag">向量数据库</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-card">
+                    <div class="arch-icon">🗺️</div>
+                    <h3>规划（Planning）</h3>
+                    <div class="arch-desc">
+                        规划模块负责将复杂任务<span style="color: var(--primary); font-weight: 500;">分解为可执行的步骤</span>。常见方法包括思维链（Chain of Thought）、任务分解（ReAct）、思维树（ToT）、反思（Reflexion）等。
+                        <div class="arch-tags" style="margin-top: var(--space-sm);">
+                            <span class="arch-tag">CoT</span>
+                            <span class="arch-tag">ReAct</span>
+                            <span class="arch-tag">ToT</span>
+                            <span class="arch-tag">GoT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-card">
+                    <div class="arch-icon">🛠️</div>
+                    <h3>工具（Tools）</h3>
+                    <div class="arch-desc">
+                        工具是 Agent 与外部世界交互的<span style="color: var(--primary); font-weight: 500;">手段</span>。有了工具，Agent 不再只是一个"会说"的智能体，而是一个能够"去做"的智能体——搜索信息、执行代码、操控浏览器、操作文件。
+                        <div class="arch-tags" style="margin-top: var(--space-sm);">
+                            <span class="arch-tag">搜索</span>
+                            <span class="arch-tag">代码执行</span>
+                            <span class="arch-tag">浏览器</span>
+                            <span class="arch-tag">API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.2 大脑：LLM 作为 Agent 的推理引擎 -->
+            <h3>大脑：LLM 如何成为 Agent 的推理引擎？</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                大语言模型之所以能成为 Agent 的大脑，是因为它具备几种关键能力——从"只会说"到"会思考"的转变，依赖于这些推理技术。
+            </p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🔗 思维链（Chain of Thought）</h3>
+                    <div class="tech-desc">
+                        在回答之前，让模型逐步展示思考过程。<strong>"让我们一步步想"</strong>——这句简单的提示词能显著提升模型处理复杂推理任务的能力。CoT 让 Agent 能够将多步推理过程显式化，便于检查和修正。
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3>🔄 思维树（Tree of Thoughts）</h3>
+                    <div class="tech-desc">
+                        在 CoT 的基础上进一步扩展——不是只想一条路径，而是<strong>同时探索多条推理路径</strong>，像一棵思维树一样分叉、评估、回溯。这让 Agent 在面对复杂问题时能做出更好的策略选择。
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3>🔍 ReAct 推理</h3>
+                    <div class="tech-desc">
+                        <strong>Reason + Act</strong>——让模型交替进行"推理"和"行动"。Agent 先想"我需要查什么"，然后查，再看结果想"接下来怎么做"，再行动。这种循环让它能利用外部信息不断修正自己的推理。
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <h3>🪞 反思（Reflexion）</h3>
+                    <div class="tech-desc">
+                        Agent 在执行任务后<strong>回头审视自己的表现</strong>——"我刚才做对了什么？哪里出了问题？"通过自我反思和总结，Agent 能够在下一次尝试中改进策略，类似于人类从经验中学习的机制。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.3 记忆系统详解 -->
+            <h3>记忆系统：Agent 的"大脑皮层"</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                记忆是 Agent 能够持续学习和积累的关键。一个好的记忆系统让 Agent 不再"记不住"——每次对话、每次经验都能被保留和调用。
+            </p>
+
+            <!-- 记忆类型对比 -->
+            <div class="two-col">
+                <div class="algo-section-card" style="border-left: 4px solid #6366F1;">
+                    <h4>🔵 短期记忆（工作记忆）</h4>
+                    <p>
+                        类似于人类的"工作记忆"——在对话过程中临时存储和调用信息。通常通过<span style="color: var(--primary);">上下文窗口</span>（Context Window）实现，即大模型的 Token 限制内可以"记住"的内容。
+                    </p>
+                    <p style="margin-top: var(--space-sm);">
+                        <strong>特点：</strong>容量有限（数千到数十万 Token）、更新快、时效性强。新对话中通常为空，随着对话推进不断累积。
+                    </p>
+                    <p style="margin-top: var(--space-sm); font-size: 0.8rem; color: var(--text-muted);">
+                        🔗 典型实现：对话历史、当前任务的中间状态
+                    </p>
+                </div>
+                <div class="algo-section-card" style="border-left: 4px solid #10B981;">
+                    <h4>🟢 长期记忆</h4>
+                    <p>
+                        让 Agent 能够<span style="color: var(--primary);">跨会话持久存储和检索信息</span>——类似人类的长期记忆。核心方案是使用<strong>向量数据库</strong>（如 Chroma、Pinecone、Milvus）存储语义嵌入，通过相似性检索召回相关信息。
+                    </p>
+                    <p style="margin-top: var(--space-sm);">
+                        <strong>特点：</strong>容量无限、持久存在、支持语义检索。可以存储用户偏好、项目知识、历史决策等。
+                    </p>
+                    <p style="margin-top: var(--space-sm); font-size: 0.8rem; color: var(--text-muted);">
+                        🔗 典型实现：向量数据库、知识图谱、结构化存储
+                    </p>
+                </div>
+            </div>
+
+            <!-- 记忆流程 -->
+            <h3>记忆系统的工作流程</h3>
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-num">A</div>
+                    <h4>编码（Encode）</h4>
+                    <p>将对话内容、经验教训编码为向量或结构化数据</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">B</div>
+                    <h4>存储（Store）</h4>
+                    <p>存入向量数据库或持久化存储，标注时间、上下文等元信息</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">C</div>
+                    <h4>检索（Retrieve）</h4>
+                    <p>根据当前任务上下文，从记忆中检索最相关的历史信息</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">D</div>
+                    <h4>遗忘（Forgetting）</h4>
+                    <p>选择性遗忘过时或不重要的信息，保持记忆系统的精简和高效</p>
+                </div>
+            </div>
+
+            <!-- 2.4 工具使用详解 -->
+            <h3>工具：Agent 的"双手和双眼"</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                工具是 Agent 从"纸上谈兵"走向"真枪实弹"的关键。有了工具，Agent 不再只是在一个封闭的对话世界里"空谈"——它可以去搜索、去写代码、去操控浏览器、去访问数据库。
+            </p>
+
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">🔍</span>
+                        <span class="tool-name">搜索工具</span>
+                    </div>
+                    <div class="tool-desc">让 Agent 获取最新信息，突破训练数据的时间局限</div>
+                    <div class="tool-examples">SerpAPI · Tavily · DuckDuckGo · Google Search</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">💻</span>
+                        <span class="tool-name">代码执行</span>
+                    </div>
+                    <div class="tool-desc">让 Agent 编写并运行代码，完成计算、数据处理等任务</div>
+                    <div class="tool-examples">Python REPL · Jupyter · Code Interpreter</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">🌐</span>
+                        <span class="tool-name">浏览器控制</span>
+                    </div>
+                    <div class="tool-desc">让 Agent 操控浏览器完成网页操作——填表、点击、抓取数据</div>
+                    <div class="tool-examples">Playwright · Selenium · Puppeteer</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">📁</span>
+                        <span class="tool-name">文件操作</span>
+                    </div>
+                    <div class="tool-desc">让 Agent 读写文件、管理目录、处理文档</div>
+                    <div class="tool-examples">文件读写 · CSV/JSON · PDF 处理</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">🔌</span>
+                        <span class="tool-name">API 调用</span>
+                    </div>
+                    <div class="tool-desc">让 Agent 与外部服务交互——发邮件、查天气、订机票</div>
+                    <div class="tool-examples">REST API · GraphQL · Webhook</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-header">
+                        <span class="tool-icon">🗄️</span>
+                        <span class="tool-name">数据库</span>
+                    </div>
+                    <div class="tool-desc">让 Agent 查询和写入数据库，进行数据分析</div>
+                    <div class="tool-examples">SQL · MongoDB · Redis</div>
+                </div>
+            </div>
+
+            <!-- Function Calling 机制 -->
+            <h3>Function Calling：大模型如何"学会"使用工具？</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                工具之所以能被 Agent 调用，核心在于<strong>Function Calling</strong>（函数调用）技术——它让大语言模型能够理解工具的定义，并在合适的时机生成调用工具的请求。
+            </p>
+
+            <div class="two-col">
+                <div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                        它的工作原理并不复杂：首先，开发者为每个工具定义一个<strong>函数签名</strong>——包括函数名、参数描述、参数类型。然后将这些定义"告诉"大模型。当用户提出需求时，模型判断是否需要调用工具，并生成结构化的调用请求。
+                    </p>
+                </div>
+                <div class="code-block">
+<pre><span class="comment">// 给模型的"工具定义"</span>
+<span class="keyword">function</span> <span class="function">search_web</span>(
+  <span class="number">query</span>: <span class="string">string</span>,    <span class="comment">// 搜索关键词</span>
+  <span class="number">max_results</span>: <span class="string">int</span>  <span class="comment">// 最多返回结果数</span>
+) => <span class="string">string</span>
+
+<span class="comment">// 用户提问</span>
+<span class="string">"今天 AI 领域有什么重大新闻？"</span>
+
+<span class="comment">// 模型生成工具调用请求</span>
+{
+  <span class="number">tool</span>: <span class="string">"search_web"</span>,
+  <span class="number">arguments</span>: {
+    <span class="number">query</span>: <span class="string">"AI major news today"</span>,
+    <span class="number">max_results</span>: <span class="number">5</span>
+  }
+}
+
+<span class="comment">// 系统执行工具，返回结果</span>
+<span class="comment">// 模型根据结果生成最终回复</span></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             3. 常见 AI Agent 类型
+             ============================ -->
+        <section id="agent-types" class="chapter-section fade-in">
+            <div class="section-label">✦ 3 · 常见 AI Agent 类型 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                根据任务复杂度、自主程度和协作方式，AI Agent 可以分为多种类型。了解这些类型有助于我们在不同场景下选择合适的 Agent 架构。
+            </p>
+
+            <div class="type-grid">
+                <div class="type-card">
+                    <div class="type-emoji">🎯</div>
+                    <h3>简单响应型 Agent</h3>
+                    <div class="type-en">Simple Reflex Agent</div>
+                    <div class="type-body">
+                        最基本的 Agent 形式——接收到输入后直接做出反应。类似于"如果-那么"规则。例如：收到用户问题 → 调用 LLM → 返回回答。没有记忆，没有规划。
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-emoji">🧩</div>
+                    <h3>单 Agent</h3>
+                    <div class="type-en">Single Agent</div>
+                    <div class="type-body">
+                        一个 Agent 独立完成从规划到执行的全流程任务。它有记忆、有规划能力、可以调用工具。例如：<strong>AutoGPT</strong> 可以自主完成"写一个网页"的完整任务。
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-emoji">👥</div>
+                    <h3>多 Agent 系统</h3>
+                    <div class="type-en">Multi-Agent System</div>
+                    <div class="type-body">
+                        多个 Agent 分工协作完成复杂任务——就像一支团队。每个 Agent 有自己擅长的领域，通过通信和协调共同完成任务。例如：<strong>CrewAI、Microsoft AutoGen</strong>。
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-emoji">🤝</div>
+                    <h3>人机协作 Agent</h3>
+                    <div class="type-en">Human-in-the-Loop Agent</div>
+                    <div class="type-body">
+                        Agent 在执行过程中主动请求人类审核或决策。在关键步骤（如代码部署、发送重要邮件）暂停，等待人类确认。平衡了<strong>效率和安全</strong>。
+                    </div>
+                </div>
+                <div class="type-card">
+                    <div class="type-emoji">🚀</div>
+                    <h3>自主 Agent</h3>
+                    <div class="type-en">Autonomous Agent</div>
+                    <div class="type-body">
+                        能够在较长时间内独立运行，自主设定子目标、调整策略、学习改进。不需要人工干预就能完成复杂项目。是 Agent 的<strong>终极形态</strong>，目前仍处于早期探索阶段。
+                    </div>
+                </div>
+            </div>
+
+            <div class="quote-block" style="margin-bottom: var(--space-xl);">
+                <p>多 Agent 系统就像是一个 AI 团队，每个 Agent 都有自己的专长，通过协作能够完成单一个体无法完成的复杂任务。</p>
+                <cite>—— 微软研究院</cite>
+            </div>
+
+            <!-- 3.1 多 Agent 协作模式 -->
+            <h3>多 Agent 协作模式</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                在多 Agent 系统中，Agent 之间可以采用不同的协作模式来完成复杂任务：
+            </p>
+
+            <div class="algo-section-card">
+                <h4>📋 顺序执行（Sequential）</h4>
+                <p>Agent 按顺序依次完成任务，后一个 Agent 依赖前一个 Agent 的输出作为输入。适合流水线式的任务——先写代码、再测试、再部署。每个 Agent 专注于自己的环节。</p>
+            </div>
+            <div class="algo-section-card">
+                <h4>🤝 协作（Collaborative）</h4>
+                <p>多个 Agent 同时工作、共享信息，共同朝着目标前进。每个 Agent 有自己的子目标，但会与其他 Agent 保持沟通，确保方向一致。适合需要跨领域知识的项目。</p>
+            </div>
+            <div class="algo-section-card">
+                <h4>⚔️ 竞争（Competitive）</h4>
+                <p>Agent 之间存在竞争或辩论关系。例如一个 Agent 负责生成方案，另一个 Agent 负责批判和挑错——类似"红队测试"（Red Teaming）。这种模式能有效提升输出质量。</p>
+            </div>
+        </section>
+
+        <!-- ============================
+             4. AI Agent 的应用场景
+             ============================ -->
+        <section id="agent-apps" class="chapter-section fade-in">
+            <div class="section-label">✦ 4 · AI Agent 的应用场景 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                AI Agent 正在从概念走向大规模实践。以下是一些正在发生或即将发生的典型应用场景——每个场景都展示了 Agent 在"行动"方面的独特能力。
+            </p>
+
+            <div class="scene-grid">
+                <div class="scene-card">
+                    <div class="scene-icon">💻</div>
+                    <h3>软件开发</h3>
+                    <div class="scene-desc">自动写代码、调试、审查、部署。Agent 可以读取项目代码、理解架构、修改文件、运行测试。代表项目：<strong>Devin、Cursor Agent、Claude Code</strong>。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">🔍</div>
+                    <h3>研究助手</h3>
+                    <div class="scene-desc">自动搜索文献、整理资料、生成报告、对比观点。Agent 可以读取大量论文、提取关键信息、形成结构化分析。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">📧</div>
+                    <h3>办公自动化</h3>
+                    <div class="scene-desc">处理邮件、安排会议、管理任务、生成文档。Agent 可以连接日历、邮件、文档工具，独立完成一系列办公流程。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">🛒</div>
+                    <h3>电商与营销</h3>
+                    <div class="scene-desc">自动选品、生成产品描述、优化广告文案、管理客服。Agent 能实时分析市场数据并做出营销决策。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">📊</div>
+                    <h3>数据分析</h3>
+                    <div class="scene-desc">自动收集数据、清洗、分析、可视化、生成报告。Agent 可以编写 SQL 查询、运行 Python 分析脚本、制作图表。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">🎮</div>
+                    <h3>游戏与模拟</h3>
+                    <div class="scene-desc">在游戏环境中自主探索、学习策略、与人对战。Agent 通过"试错-奖励"机制在游戏中展现出超越人类的水平。</div>
+                </div>
+            </div>
+
+            <!-- 4.1 软件开发 Agent 详解 -->
+            <h3>软件开发 Agent：目前最成熟的 Agent 应用</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                软件开发是 Agent 落地最快、最成熟的领域之一。Agent 可以参与的环节贯穿整个软件开发生命周期——从需求分析到代码实现、测试、部署、运维。
+            </p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>📝 代码生成</h3>
+                    <div class="tech-desc">根据自然语言描述生成代码片段或完整函数。从 GitHub Copilot 的行内补全，到 Devin 的"给我一个网站"的全程生成，Agent 的代码能力越来越强。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🐛 自动调试</h3>
+                    <div class="tech-desc">读取错误日志 → 分析代码 → 定位 bug → 修复代码 → 运行验证。一个完整的调试闭环，Agent 可以独立完成，不再需要人类逐行排查。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>📦 项目管理</h3>
+                    <div class="tech-desc">读取整个代码库、理解架构、修改多个相关文件、提交 commit。Agent 不再只写"一段代码"，而是像真正的开发者一样管理整个项目。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🚀 部署运维</h3>
+                    <div class="tech-desc">编写 Dockerfile、配置 CI/CD 流水线、部署到服务器、监控系统状态。Agent 正在成为全栈工程师——不仅是写代码，更是交付一个完整的产品。</div>
+                </div>
+            </div>
+
+            <!-- 4.2 代表性 Agent 产品 -->
+            <h3>代表性 AI Agent 产品一览</h3>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>产品名称</th>
+                        <th>公司/团队</th>
+                        <th>核心能力</th>
+                        <th>典型场景</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>AutoGPT</td>
+                        <td>开源社区</td>
+                        <td>自主规划、工具调用、持续学习</td>
+                        <td>市场调研、内容创作、自动化工作流</td>
+                    </tr>
+                    <tr>
+                        <td>Devin</td>
+                        <td>Cognition AI</td>
+                        <td>全栈开发、代码调试、项目管理</td>
+                        <td>从需求到部署的完整开发流程</td>
+                    </tr>
+                    <tr>
+                        <td>CrewAI</td>
+                        <td>CrewAI Inc.</td>
+                        <td>多 Agent 角色编排、任务协作</td>
+                        <td>复杂项目的多角色团队协作</td>
+                    </tr>
+                    <tr>
+                        <td>AutoGen</td>
+                        <td>微软研究院</td>
+                        <td>多 Agent 对话、人机协同</td>
+                        <td>复杂推理任务、代码生成与验证</td>
+                    </tr>
+                    <tr>
+                        <td>LangGraph</td>
+                        <td>LangChain</td>
+                        <td>有向图编排 Agent 流程、状态管理</td>
+                        <td>自定义 Agent 工作流、复杂多步骤任务</td>
+                    </tr>
+                    <tr>
+                        <td>Computer Use</td>
+                        <td>Anthropic</td>
+                        <td>操控电脑桌面、模拟鼠标键盘</td>
+                        <td>不需要 API 的系统操作、GUI 自动化</td>
+                    </tr>
+                    <tr>
+                        <td>Dify</td>
+                        <td>Dify 团队</td>
+                        <td>低代码 Agent 平台、RAG 集成</td>
+                        <td>快速搭建企业级 AI 应用</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ============================
+             5. Agent 关键概念与技术
+             ============================ -->
+        <section id="agent-tech" class="chapter-section fade-in">
+            <div class="section-label">✦ 5 · Agent 关键概念与技术 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                在使用和开发 AI Agent 时，有一些核心概念和技术你需要了解——它们决定了 Agent 的行为模式和最终效果。
+            </p>
+
+            <!-- 关键术语 -->
+            <div class="section-label">✦ 核心术语 ✦</div>
+            <div class="term-grid">
+                <div class="term-item">
+                    <div class="term-word">🧩 Prompt（提示词）</div>
+                    <div class="term-def">给 Agent 的指令或"大脑中的想法"。好的 Prompt 决定了 Agent 能否理解任务并高效完成。Prompt 工程是 Agent 开发的核心技能。</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">📋 Context Window（上下文窗口）</div>
+                    <div class="term-def">大模型一次性能"记住"的 Token 上限。常见的有 8K、32K、128K 等。上下文窗口越大，Agent 能同时处理的信息就越多。</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">🔄 Loop（循环）</div>
+                    <div class="term-def">Agent 工作的核心模式——"思考→行动→观察→再思考"的循环。典型的如 ReAct Loop、Plan-and-Execute 循环等。</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">⚙️ System Prompt（系统提示词）</div>
+                    <div class="term-def">给 Agent 的"身份设定"和"行为准则"。例如："你是一个专业的 Python 程序员，你的任务是修复用户提出的 bug。"</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">📦 Tool Definition（工具定义）</div>
+                    <div class="term-def">告诉大模型"有哪些工具可用、每个工具怎么用"的 JSON 格式描述。包含函数名、参数说明、返回类型等。</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">🧠 Embedding（嵌入）</div>
+                    <div class="term-def">将文本转换为高维向量，使相似内容的向量在空间中距离更近。是实现语义搜索和长期记忆的基础技术。</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">🔐 Guardrails（护栏）</div>
+                    <div class="term-def">给 Agent 设置的安全边界——什么能做、什么不能做。防止 Agent 执行危险操作、生成有害内容或偏离任务目标。</div>
+                </div>
+                <div class="term-item">
+                    <div class="term-word">📐 Chain / Pipeline（工作流）</div>
+                    <div class="term-def">将多个 Agent 或 LLM 调用按顺序编排成一条流水线。每个环节的输出是下一个环节的输入，适合处理复杂的多步骤任务。</div>
+                </div>
+            </div>
+
+            <!-- 关键参数 -->
+            <h3>LLM 关键参数对 Agent 的影响</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                调整 LLM 的参数会显著影响 Agent 的行为——这些参数决定了模型的"性格"和"风格"。
+            </p>
+
+            <div class="param-grid">
+                <div class="param-card">
+                    <div class="param-name">temperature</div>
+                    <div class="param-range">范围：0.0 ~ 2.0（默认 0.7）</div>
+                    <div class="param-desc">控制输出的随机性。值越低，输出越确定和一致；值越高，输出越随机和多样化。Agent 做确定性任务时建议设低（0.1-0.3），创意任务可设高。</div>
+                </div>
+                <div class="param-card">
+                    <div class="param-name">top_p</div>
+                    <div class="param-range">范围：0.0 ~ 1.0</div>
+                    <div class="param-desc">核采样参数，控制模型从概率分布的顶部选取 token。与 temperature 类似但更精细，通常设为 0.9 左右。</div>
+                </div>
+                <div class="param-card">
+                    <div class="param-name">max_tokens</div>
+                    <div class="param-range">范围：1 ~ 数十万</div>
+                    <div class="param-desc">单次回答的最大 Token 数。Agent 的规划步骤需要足够的 max_tokens 来完整表达。</div>
+                </div>
+                <div class="param-card">
+                    <div class="param-name">presence_penalty</div>
+                    <div class="param-range">范围：-2.0 ~ 2.0</div>
+                    <div class="param-desc">鼓励模型使用新词。正值有助于减少重复，对 Agent 多轮推理中避免循环很有帮助。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             6. 总结与展望
+             ============================ -->
+        <section id="agent-future" class="chapter-section fade-in">
+            <div class="section-label">✦ 6 · 总结与展望 ✦</div>
+
+            <h3>核心要点回顾</h3>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🔑 核心定义</h3>
+                    <div class="tech-desc">AI Agent 是能<span style="color: var(--primary); font-weight: 500;">感知-思考-行动</span>的自主系统，与被动响应的语言模型和死板的自动化脚本有本质区别。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🧱 四大支柱</h3>
+                    <div class="tech-desc">Agent 由<strong>大脑（LLM）、记忆、规划、工具</strong>四大模块构成——缺一不可，共同协作完成复杂任务。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🔌 Function Calling</h3>
+                    <div class="tech-desc">让 LLM "学会"使用工具的关键技术——通过函数签名让模型理解工具的用途和用法，生成结构化的调用请求。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🚀 前景广阔</h3>
+                    <div class="tech-desc">从单 Agent 到多 Agent 协作，从辅助工具到自主智能体，AI Agent 正在重新定义人机交互的未来。</div>
+                </div>
+            </div>
+
+            <h3>下一步去哪里？</h3>
+            <div class="conclusion-box">
+                <p>我们已经理解了什么是 AI Agent、它由什么构成、能做什么。下一章，我们将进入<span style="color: var(--primary); font-weight: 600;">AI Agent 开发</span>——亲手搭建一个能够搜索信息、执行代码、管理文件的真实 Agent。从"知道"到"做到"，这就是 Agent 开发那一章要完成的事。</p>
+            </div>
+        </section>
+
+        <!-- ============================
+             结尾过渡
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>理解了 Agent 的本质和架构之后，下一章我们将进入它的实践——<br>亲手搭建一个能搜索、编码、执行任务的真实 AI Agent。</p>
+            </div>
+        </section>
+
+        <!-- 上下篇导航 -->
+        <nav class="article-nav">
+            <a href="part5.html" class="nav-button prev">← 第5章 · 脉冲神经网络</a>
+            <a href="part7.html" class="nav-button">第 6–7 章 · AI Agent →</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

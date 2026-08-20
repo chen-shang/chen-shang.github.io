@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="860" viewBox="0 0 1400 860">
+  <defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15181d"/><stop offset="1" stop-color="#22262d"/></linearGradient><filter id="s2"><feDropShadow dx="0" dy="25" stdDeviation="24" flood-opacity=".24"/></filter></defs>
+  <rect width="1400" height="860" fill="#eee8de"/>
+  <rect x="92" y="62" width="1216" height="728" rx="25" fill="url(#bg2)" filter="url(#s2)"/>
+  <rect x="92" y="62" width="1216" height="66" rx="25" fill="#292d34"/><rect x="92" y="102" width="1216" height="26" fill="#292d34"/>
+  <circle cx="135" cy="95" r="9" fill="#e16c5d"/><circle cx="165" cy="95" r="9" fill="#e4b65e"/><circle cx="195" cy="95" r="9" fill="#68b783"/>
+  <text x="700" y="102" text-anchor="middle" fill="#a5abb4" font-family="Menlo, monospace" font-size="19">dbhub.toml — 只读 MySQL 数据源</text>
+  <g font-family="Menlo, monospace" font-size="21">
+    <text x="145" y="184" fill="#858b95"># MySQL 开发环境</text>
+    <text x="145" y="230" fill="#e8ebef">[[sources]]</text>
+    <text x="145" y="269" fill="#e8ebef">id = </text><text x="205" y="269" fill="#a7d6b6">"dev"</text>
+    <text x="145" y="308" fill="#e8ebef">dsn = </text><text x="220" y="308" fill="#a7d6b6">"mysql://READONLY_USER:••••••@DB_HOST:3306/DATABASE"</text>
+    <text x="145" y="370" fill="#e8ebef">[[tools]]</text>
+    <text x="145" y="409" fill="#e8ebef">name = </text><text x="230" y="409" fill="#a7d6b6">"execute_sql"</text>
+    <text x="145" y="448" fill="#e8ebef">source = </text><text x="245" y="448" fill="#a7d6b6">"dev"</text>
+    <text x="145" y="487" fill="#e8ebef">readonly = </text><text x="280" y="487" fill="#e8b66c">true</text>
+    <text x="145" y="526" fill="#e8ebef">max_rows = </text><text x="270" y="526" fill="#e8b66c">500</text>
+    <text x="145" y="588" fill="#e8ebef">[[tools]]</text>
+    <text x="145" y="627" fill="#e8ebef">name = </text><text x="230" y="627" fill="#a7d6b6">"search_objects"</text>
+    <text x="145" y="666" fill="#e8ebef">source = </text><text x="245" y="666" fill="#a7d6b6">"dev"</text>
+  </g>
+  <rect x="875" y="382" width="365" height="247" rx="18" fill="#273a34" stroke="#41695b"/>
+  <text x="913" y="432" fill="#e4f2eb" font-family="PingFang SC, sans-serif" font-size="24" font-weight="600">两层只读保护</text>
+  <text x="913" y="482" fill="#aad0be" font-family="PingFang SC, sans-serif" font-size="20">① 数据库只读账号</text>
+  <text x="913" y="523" fill="#aad0be" font-family="PingFang SC, sans-serif" font-size="20">② readonly = true</text>
+  <text x="913" y="577" fill="#86a696" font-family="PingFang SC, sans-serif" font-size="17">真实密码已隐藏</text>
+  <text x="93" y="833" fill="#857c73" font-family="PingFang SC, sans-serif" font-size="18">示意截图 · 不要把真实 DSN 放进网页或 Git 仓库</text>
+</svg>

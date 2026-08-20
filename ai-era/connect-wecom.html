@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI机械臂连接教程：连接企业微信。包含接入路线、最小权限、配置示例、验收清单和官方文档。">
+    <title>连接企业微信 — AI机械臂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css?v=20260723">
+</head>
+
+<body class="connection-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 04 / 10</span>
+    </nav>
+
+    <main class="connection-guide">
+        <header class="guide-hero" data-number="04">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 04</div>
+            <h1>连接企业微信</h1>
+            <p>用群机器人完成通知，用自建应用承载成员身份、业务消息和可审计的组织内操作。</p>
+            <div class="guide-pills"><span>群机器人</span><span>自建应用</span><span>成员身份</span><span>可信 IP</span></div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#route">选择路线</a>
+            <a href="#setup">接入步骤</a>
+            <a href="#config">配置示例</a>
+            <a href="#permission">最小权限</a>
+            <a href="#verify">验收</a>
+            <a href="#docs">官方文档</a>
+        </nav>
+
+        <section class="guide-section" id="route">
+            <div class="guide-section-head">
+                <span class="guide-section-number">01</span>
+                <div><h2>先选一条正确的连接路线</h2><p>不要一次开放所有能力。先选择最小可用入口，验证价值后再升级。</p></div>
+            </div>
+            <div class="route-grid">
+                <article class="route-card recommended">
+                    <span>推荐</span>
+                    <h3>群机器人 Webhook</h3>
+                    <p>适合发布结果、告警和日报等单向通知，先从测试群与固定模板开始。</p>
+                </article>
+                <article class="route-card">
+                    <span>进阶</span>
+                    <h3>企业自建应用</h3>
+                    <p>需要按成员发送应用消息、读取授权通讯录或承载网页应用时使用。</p>
+                </article>
+                <article class="route-card">
+                    <span>对话</span>
+                    <h3>智能机器人 / 回调</h3>
+                    <p>适合在企微内接收问题并返回 Agent 结果，需要会话隔离、超时兜底和人工转接。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="guide-section" id="setup">
+            <div class="guide-section-head">
+                <span class="guide-section-number">02</span>
+                <div><h2>按这六步完成第一次接入</h2><p>把身份、权限、工具边界和验收一起配置，而不是只追求“接口能通”。</p></div>
+            </div>
+            <ol class="step-list">
+                <li>
+                    <span>01</span>
+                    <div><strong>建立测试范围</strong><p>准备测试企业、测试部门或测试群，避免直接对全公司成员开放。</p></div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div><strong>选择连接类型</strong><p>仅发通知选群机器人；需要成员身份和应用入口则创建自建应用。</p></div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div><strong>配置服务端凭证</strong><p>保存 CorpID、AgentID 和 Secret；配置可信域名、可信 IP 与事件回调。</p></div>
+                </li>
+                <li>
+                    <span>04</span>
+                    <div><strong>封装业务工具</strong><p>按“发应用消息、查成员、建待办”等动作拆分工具，并限制可见部门和接收人。</p></div>
+                </li>
+                <li>
+                    <span>05</span>
+                    <div><strong>增加确认门</strong><p>群发、外部联系人消息、通讯录修改和审批动作必须由人确认。</p></div>
+                </li>
+                <li>
+                    <span>06</span>
+                    <div><strong>验收撤销能力</strong><p>测试停用应用、轮换 Secret、移除成员和撤销授权后，访问应立即失效。</p></div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="guide-section" id="config">
+            <div class="guide-section-head">
+                <span class="guide-section-number">03</span>
+                <div><h2>配置示例</h2><p>字段和值都是示例占位符，请按你使用的 Agent、平台和密钥管理方式调整。</p></div>
+            </div>
+            <div class="config-panel">
+                <div class="config-panel-head"><span>.env.local · 自建应用</span><span>示例 · 不含真实密钥</span></div>
+                <pre><code>WECOM_CORP_ID=ww_your_corp_id
+WECOM_AGENT_ID=1000002
+WECOM_APP_SECRET=stored-in-secret-manager
+WECOM_ROBOT_WEBHOOK=https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=***
+WECOM_ALLOW_EXTERNAL_CONTACTS=false</code></pre>
+                <p class="config-note">群机器人 Webhook 与自建应用 Secret 是两套不同凭证。根据任务选择一种，不要为了方便把两者全部交给 Agent。</p>
+            </div>
+        </section>
+
+        <section class="guide-section" id="permission">
+            <div class="guide-section-head">
+                <span class="guide-section-number">04</span>
+                <div><h2>最小权限建议</h2><p>把读取、草稿和高影响动作分开，避免一个 Token 同时拥有全部能力。</p></div>
+            </div>
+            <table class="permission-table">
+                <thead><tr><th>动作</th><th>默认等级</th><th>建议边界</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>向测试群发通知</td>
+                        <td><span class="permission-level">草稿</span></td>
+                        <td>先预览内容，代理服务再发送。</td>
+                    </tr>
+                    <tr>
+                        <td>按成员发送应用消息</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>限制部门、成员和每日发送数量。</td>
+                    </tr>
+                    <tr>
+                        <td>读取基础通讯录</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>只开放业务需要的字段与部门范围。</td>
+                    </tr>
+                    <tr>
+                        <td>修改通讯录 / 联系客户</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>高风险动作独立审批，并保留操作前后快照。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="guide-section" id="verify">
+            <div class="guide-section-head">
+                <span class="guide-section-number">05</span>
+                <div><h2>上线前验收</h2><p>不要只测成功路径；撤销权限、重复执行和失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>测试群消息格式、链接和移动端显示正常。</li>
+                    <li>非白名单成员或部门无法被 Agent 查询。</li>
+                    <li>Secret 轮换后旧凭证立即失效。</li>
+                    <li>每条外发消息都有任务 ID、接收范围和确认人。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>生成一条企业微信发布通知，接收范围仅限测试群，先展示预览和接收人，再等待确认。</code>
+                </div>
+            </div>
+            <div class="guide-warning">
+                <span>!</span>
+                <div><strong>通讯录能力应当分层授权</strong><p>不要因为创建了自建应用就开放完整通讯录。测试部门、业务部门和全公司应使用不同授权范围；外部联系人与客户数据需要更严格控制。</p></div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="docs">
+            <div class="guide-section-head">
+                <span class="guide-section-number">06</span>
+                <div><h2>继续查看官方文档</h2><p>平台界面和权限名称会更新，实际接入时以官方文档和企业管理员策略为准。</p></div>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://developer.work.weixin.qq.com/document/" target="_blank" rel="noopener noreferrer">
+                    <small>WECOM</small>
+                    <strong>企业微信开发者中心</strong>
+                    <p>从应用、消息与服务端 API 总览开始。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://developer.work.weixin.qq.com/document/path/91770" target="_blank" rel="noopener noreferrer">
+                    <small>WECOM</small>
+                    <strong>群机器人配置说明</strong>
+                    <p>创建群机器人并使用 Webhook 发送消息。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://developer.work.weixin.qq.com/document/path/90236" target="_blank" rel="noopener noreferrer">
+                    <small>WECOM</small>
+                    <strong>发送应用消息</strong>
+                    <p>通过自建应用向成员发送受控消息。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-wechat.html">
+                <small>上一个连接</small>
+                <strong>← 连接微信</strong>
+            </a>
+            <a href="connect-git.html">
+                <small>下一个连接</small>
+                <strong>→ 连接 Git</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+</body>
+
+</html>

@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>核心系统如何全面使用 AI Coding — AI纪元</title>
+    <meta name="description" content="面向核心系统与研发团队的全流程 AI Coding 体系：从需求、设计、编码、测试到发布运维，并配套质量门禁、工程基础与架构演进路线。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part12.css">
+</head>
+
+<body>
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html" class="active" aria-current="page">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#principle" data-section="principle"><span class="toc-num">01</span><span class="toc-label">0 · AI 研发原则</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#current-state" data-section="current-state"><span class="toc-num">02</span><span class="toc-label">1 · 先解决三大基础问题</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#workflow" data-section="workflow"><span class="toc-num">03</span><span class="toc-label">2 · 建立全流程 AI 闭环</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#test-data" data-section="test-data"><span class="toc-num">04</span><span class="toc-label">3 · 测试环境数据</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#quality" data-section="quality"><span class="toc-num">05</span><span class="toc-label">4 · 风险分级守住底线</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#foundation" data-section="foundation"><span class="toc-num">06</span><span class="toc-label">5 · 工程底座建设</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#architecture" data-section="architecture"><span class="toc-num">07</span><span class="toc-label">6 · AI 友好的系统形态</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#roadmap" data-section="roadmap"><span class="toc-num">08</span><span class="toc-label">7 · 180 天落地路线</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#platform-decoupling" data-section="platform-decoupling"><span class="toc-num">09</span><span class="toc-label">8 · 平台能力解耦</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#code-self-audit" data-section="code-self-audit"><span class="toc-num">10</span><span class="toc-label">9 · AI 代码自审</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#conclusion" data-section="conclusion"><span class="toc-num">11</span><span class="toc-label">10 · 总结</span></a></li>
+        </ul>
+      </aside>
+
+        <header class="article-header">
+            <h1 class="article-title">核心系统如何全面使用 AI Coding</h1>
+            <div class="article-subtitle">从个人工具升级为团队能力：贯通需求、设计、开发、测试、发布与运维</div>
+            <div class="article-meta">
+                <span>📖 第 11 章</span>
+                <span>⏱ 约 30 分钟阅读</span>
+            </div>
+        </header>
+
+        <nav class="toc-bar" aria-label="本文目录">
+            <a href="#principle">核心原则</a>
+            <a href="#current-state">现状阻力</a>
+            <a href="#workflow">全流程</a>
+            <a href="#quality">质量门禁</a>
+            <a href="#test-data">测试数据</a>
+            <a href="#foundation">工程底座</a>
+            <a href="#architecture">架构演进</a>
+            <a href="#roadmap">落地路线</a>
+            <a href="#core-transformation">系统改造</a>
+            <a href="#platform-decoupling">平台解耦</a>
+            <a href="#code-self-audit">代码自检</a>
+        </nav>
+
+        <section class="chapter-section fade-in" id="principle">
+            <div class="section-label">✦ 先给结论 ✦</div>
+            <div class="hero-statement">
+                <div class="hero-kicker">CORE THESIS</div>
+                <h2>不追求 100% 代码由 AI 编写，追求 100% 研发环节有 AI 参与</h2>
+                <p>AI 负责理解、整理、生成、检查和反馈；人负责目标、业务语义、架构取舍、风险判断与最终责任。核心系统中的确定性规则和交易仍由 Core 执行。</p>
+            </div>
+
+            <div class="principle-grid">
+                <article class="principle-card">
+                    <span class="card-index">01</span>
+                    <h3>先辅助，再自治</h3>
+                    <p>先让 AI 给方案和草稿，再执行受约束的小任务。只有当任务可自动验证、可快速审查、可安全回滚时，才逐步提高自动化程度。</p>
+                </article>
+                <article class="principle-card">
+                    <span class="card-index">02</span>
+                    <h3>AI 左移，质量前置</h3>
+                    <p>AI 越早参与需求和方案，纠错成本越低；AI 参与越深，测试、审查、安全扫描、权限控制和回滚机制越要前置。</p>
+                </article>
+                <article class="principle-card">
+                    <span class="card-index">03</span>
+                    <h3>小步推进，结果负责</h3>
+                    <p>不做一次性重写，不用大提交掩盖不确定性。每轮只解决一个明确问题，留下计划、变更、验证和复盘证据。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="current-state">
+            <div class="section-label">✦ 一 · 先解决 AI 看不懂、改不动、验不完 ✦</div>
+            <p class="section-intro">
+                现有技术体系适合“人驱动”的标准化交付，但不天然适合 AI 协作。参考当前 Vxlink 架构，系统包含 <strong>19 个 Spring Boot 微服务</strong>，并深度依赖低代码平台、跨服务调用、配置中心和分布式中间件。
+            </p>
+
+            <div class="current-map" aria-label="现有架构问题">
+                <div class="arch-diagram-container">
+                    <iframe src="vxlink-architecture.html" class="arch-iframe" title="Vxlink 微服务架构图" loading="lazy"></iframe>
+                </div>
+                <div class="current-summary-wrapper">
+                <div class="current-summary">
+                    <span>当前工程</span>
+                    <strong>19 个微服务</strong>
+                    <small>多个仓库、接口、配置、数据状态和部署单元</small>
+                </div>
+                <div class="barrier-grid">
+                    <article class="barrier-card">
+                        <div class="barrier-label">阻力一</div>
+                        <h3>架构碎片化</h3>
+                        <p>一次需求常跨多个服务、Feign 接口、消息、配置和数据库。AI 难以判断完整修改边界，编译、联调和回归链路也过长。</p>
+                    </article>
+                    <article class="barrier-card">
+                        <div class="barrier-label">阻力二</div>
+                        <h3>平台锁定</h3>
+                        <p>生成代码、模块结构、插件机制和运行配置与平台深度绑定。隐含约定多，既增加 AI 上下文，也抬高自主维护、迁移和升级成本。</p>
+                    </article>
+                </div>
+                </div>
+            </div>
+
+            <div class="comparison-line">
+                <span>传统优势：团队熟悉、基础设施完整、常规交付快</span>
+                <span>AI 化代价：理解边界难、修改范围大、验证反馈慢</span>
+            </div>
+
+            <div class="quote-block">
+                <p><strong>所以第一步不是采购更多 AI 工具，而是让工程变得可理解、可修改、可验证。</strong></p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="workflow">
+            <div class="section-label">✦ 二 · 建立全流程 AI 开发闭环 ✦</div>
+            <p class="section-intro">
+                AI Coding 不能只停在 IDE 补全。团队要把 AI 放进从业务问题到线上反馈的每个环节，同时明确人、AI 和系统各自的责任。
+            </p>
+
+            <div class="workflow-loop" aria-label="研发全流程">
+                <div class="workflow-track">
+                    <span>发现问题</span><i>→</i><span>定义需求</span><i>→</i><span>设计方案</span><i>→</i><span>拆解任务</span><i>→</i><span>开发验证</span><i>→</i><span>评审发布</span><i>→</i><span>运行复盘</span>
+                </div>
+                <p>线上结果回流到需求模板、规则文件、测试资产和知识库，形成下一轮更准确的上下文。</p>
+            </div>
+
+            <div class="lifecycle-table" role="table" aria-label="AI 研发全流程分工">
+                <div class="lifecycle-head" role="row">
+                    <span>环节</span>
+                    <span>AI 主要工作</span>
+                    <span>人的责任与门禁</span>
+                    <span>必须沉淀的产物</span>
+                </div>
+                <div class="lifecycle-row" role="row">
+                    <strong>01 发现问题</strong>
+                    <p>汇总反馈、日志、工单和数据异常，归类高频问题与可能原因。</p>
+                    <p>确认是否值得做、业务价值和优先级。</p>
+                    <p>问题陈述、证据、影响范围。</p>
+                </div>
+                <div class="lifecycle-row" role="row">
+                    <strong>02 定义需求</strong>
+                    <p>补齐场景、规则、边界、反例、异常流和验收标准。</p>
+                    <p>确认业务语义、非目标、合规要求和成功标准。</p>
+                    <p>结构化 PRD、规则表、验收清单。</p>
+                </div>
+                <div class="lifecycle-row" role="row">
+                    <strong>03 设计方案</strong>
+                    <p>阅读调用链和历史决策，给出方案、影响面、风险与回滚路径。</p>
+                    <p>决定架构边界、数据方案、兼容策略和长期成本。</p>
+                    <p>ADR、接口契约、数据变更与风险清单。</p>
+                </div>
+                <div class="lifecycle-row" role="row">
+                    <strong>04 拆解任务</strong>
+                    <p>定位文件和依赖，拆成可独立验证的小任务，生成测试计划。</p>
+                    <p>确认范围没有遗漏，也没有无关扩张。</p>
+                    <p>任务计划、文件清单、测试点。</p>
+                </div>
+                <div class="lifecycle-row" role="row">
+                    <strong>05 开发实现</strong>
+                    <p>按现有风格修改代码、补测试、解释变更，并保持提交小而清晰。</p>
+                    <p>开发者拥有代码，处理业务判断、复杂异常和关键取舍。</p>
+                    <p>代码、测试、迁移脚本、变更说明。</p>
+                </div>
+                <div class="lifecycle-row" role="row">
+                    <strong>06 测试验证</strong>
+                    <p>运行单元、契约、集成、回归、安全和性能检查，分析失败原因。</p>
+                    <p>按风险等级决定测试深度，确认真实场景与历史兼容。</p>
+                    <p>测试报告、覆盖证据、残余风险。</p>
+                </div>
+                <div class="lifecycle-row" role="row">
+                    <strong>07 评审发布</strong>
+                    <p>生成 diff 摘要、风险提示、发布步骤、监控项和回滚方案。</p>
+                    <p>Reviewer 对语义、安全和可维护性负责；Owner 批准上线。</p>
+                    <p>评审记录、发布单、回滚预案。</p>
+                </div>
+                <div class="lifecycle-row" role="row">
+                    <strong>08 运行复盘</strong>
+                    <p>监控指标和日志，辅助定位异常，整理事故时间线和改进项。</p>
+                    <p>判断是否回滚，主持复盘，并决定规则如何更新。</p>
+                    <p>复盘报告、新用例、新规则、新知识。</p>
+                </div>
+            </div>
+
+            <div class="handoff-line">
+                <strong>每个环节只接受结构化输入，输出可验证产物。</strong>
+                <span>没有验收标准，不进入开发；没有验证证据，不进入发布。</span>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="test-data">
+            <div class="section-label">✦ 六 · 测试环境数据：让验证既逼真又安全 ✦</div>
+            <p class="section-intro">
+                AI Coding 要真正介入测试环节，第一个要解决的不是"AI 怎么写测试"，而是"AI 拿什么来测"。测试环境的数据如果太假，自动化测试只是一场自欺欺人；直接用生产数据，又踩上合规红线。核心矛盾是：<strong>测试既要尽可能逼真生产，又绝不能暴露真实个人信息</strong>。
+            </p>
+
+            <div class="test-data-challenge">
+                <div class="challenge-head">
+                    <span>核心矛盾</span>
+                    <h3>为什么要为测试数据单独设计方案？</h3>
+                    <p>很多团队的测试库长期用几条手工 INSERT 的"张三李四"就算完事。这样的数据测个流程通不通还行，但遇到金额边界、日期计算、状态流转、批量压力和异常路径，假数据根本覆盖不到。AI 生成的代码如果只在假数据上通过验证，上线后第一笔真实交易就可能出问题。</p>
+                </div>
+                <div class="challenge-grid">
+                    <article class="challenge-card risk">
+                        <span>风险一</span>
+                        <h4>失真数据 → 虚假安全感</h4>
+                        <p>字段长度、金额分布、空值比例、编码格式与生产不一致。测试全绿，上线就挂。</p>
+                    </article>
+                    <article class="challenge-card risk">
+                        <span>风险二</span>
+                        <h4>直接拷贝生产 → 合规事故</h4>
+                        <p>手机号、身份证、银行卡、地址一旦进入测试库，就是数据泄露的源头。监管和审计都不会手软。</p>
+                    </article>
+                    <article class="challenge-card risk">
+                        <span>风险三</span>
+                        <h4>环境漂移 → 验证失效</h4>
+                        <p>表结构改了测试库没跟上，或测试数据长期不刷新，AI 验证通过的代码在真实环境完全不可用。</p>
+                    </article>
+                </div>
+            </div>
+
+            <h3>测试数据构造的四层方法</h3>
+            <div class="data-layer-grid">
+                <article class="data-layer layer-base">
+                    <div class="layer-header">
+                        <span>LAYER 01</span>
+                        <h4>基础字典与配置数据</h4>
+                    </div>
+                    <p>币种、码值、产品码、机构号、费率表、参数表等<strong>不依赖个人</strong>的参考数据。</p>
+                    <div class="layer-note">来源：直接从生产同步或版本管理；不含个人信息，可放心使用。</div>
+                </article>
+                <article class="data-layer layer-mock">
+                    <div class="layer-header">
+                        <span>LAYER 02</span>
+                        <h4>规则化生成的业务实体</h4>
+                    </div>
+                    <p>客户、账户、合同、卡号等核心实体，用<strong>程序按生产规则批量生成</strong>：相同字段格式、相同校验规则、相似的分布特征，但内容虚构。</p>
+                    <div class="layer-note">关键：保持数据结构、约束、索引、状态码与生产一致，让 SQL 执行计划不走样。</div>
+                </article>
+                <article class="data-layer layer-masked">
+                    <div class="layer-header">
+                        <span>LAYER 03</span>
+                        <h4>脱敏后的生产子集</h4>
+                    </div>
+                    <p>从生产库抽取有代表性的样本子集（如某地区某产品近三月），再对敏感字段做<strong>不可逆脱敏</strong>：姓名、手机、证件号、地址、邮箱等。</p>
+                    <div class="layer-note">脱敏算法必须不可逆（哈希、替换、泛化），且保持关联一致性（同一客户在所有表的 ID 映射统一）。</div>
+                </article>
+                <article class="data-layer layer-synthetic">
+                    <div class="layer-header">
+                        <span>LAYER 04</span>
+                        <h4>AI 增强的合成数据</h4>
+                    </div>
+                    <p>在脱敏样本基础上，用生成模型或统计模型<strong>放大数据量</strong>：保持分布特征、相关性和边界，生成用于压力和回归测试的扩充集。</p>
+                    <div class="layer-note">合成数据仅用于性能和回归场景；不可用于涉及真实客户权益验证的场景。</div>
+                </article>
+            </div>
+
+            <div class="test-data-principles">
+                <div class="principles-head">
+                    <span>六条操作原则</span>
+                    <h3>把测试数据当成一条独立的数据流水线</h3>
+                </div>
+                <div class="principle-list">
+                    <div class="test-principle">
+                        <span>01</span>
+                        <div class="principle-content">
+                            <b>绝不直接拷贝生产</b>
+                            <p>任何从生产到测试的流动，都必须经过脱敏网关；禁止 DBA 手动 mysqldump 后直接导入测试库。</p>
+                        </div>
+                    </div>
+                    <div class="test-principle">
+                        <span>02</span>
+                        <div class="principle-content">
+                            <b>脱敏不可逆</b>
+                            <p>使用哈希、格式保留替换、区间泛化或假名化；禁止可逆加密当作脱敏。</p>
+                        </div>
+                    </div>
+                    <div class="test-principle">
+                        <span>03</span>
+                        <div class="principle-content">
+                            <b>保持关联一致性</b>
+                            <p>同一身份在所有表、所有层级中必须映射到同一个脱敏 ID，否则关联查询和外键校验会失真。</p>
+                        </div>
+                    </div>
+                    <div class="test-principle">
+                        <span>04</span>
+                        <div class="principle-content">
+                            <b>数据版本化、可重建</b>
+                            <p>测试数据集要版本管理，能按标签重建；不能只靠"当前测试库那堆不知道谁改过的数据"。</p>
+                        </div>
+                    </div>
+                    <div class="test-principle">
+                        <span>05</span>
+                        <div class="principle-content">
+                            <b>贴近生产分布</b>
+                            <p>金额、账龄、地区、产品、状态的比例应接近生产统计，否则 AI 优化的 SQL 执行计划在真实环境会走偏。</p>
+                        </div>
+                    </div>
+                    <div class="test-principle">
+                        <span>06</span>
+                        <div class="principle-content">
+                            <b>自动化数据供给</b>
+                            <p>CI 流水线启动测试环境时，自动拉取对应版本的测试数据集，避免环境差异带来的"我这好好的"问题。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="data-flow-diagram" aria-label="测试数据供给流程">
+                <div class="flow-stage prod">
+                    <span>生产数据</span>
+                    <strong>只读抽取子集</strong>
+                    <small>按时间、地区、产品抽样</small>
+                </div>
+                <i>→</i>
+                <div class="flow-stage mask">
+                    <span>脱敏网关</span>
+                    <strong>不可逆脱敏 + ID 映射</strong>
+                    <small>哈希 / 替换 / 泛化</small>
+                </div>
+                <i>→</i>
+                <div class="flow-stage enrich">
+                    <span>数据增强</span>
+                    <strong>规则生成 + AI 合成</strong>
+                    <small>补齐边界与规模</small>
+                </div>
+                <i>→</i>
+                <div class="flow-stage test">
+                    <span>版本化测试数据集</span>
+                    <strong>自动供给 CI 与本地</strong>
+                    <small>可审计、可重建</small>
+                </div>
+            </div>
+
+            <div class="test-data-summary">
+                <span>核心结论</span>
+                <p>测试环境的最终目标不是"数据越多越好"，而是让 <strong>AI 每次验证都在接近生产的土壤上进行，同时保证没有任何真实个人信息进入测试链路</strong>。把这层做好了，AI 参与测试才有意义；做不好，AI 生成的测试通过得再漂亮，也只是给生产事故写好了剧本。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="quality">
+            <div class="section-label">✦ 三 · 用风险分级守住核心系统底线 ✦</div>
+            <p class="section-intro">
+                不能让所有需求走同一套流程，也不能因为 AI 看起来“很有把握”就降低审查。质量门禁应由业务风险和变更半径决定，而不是由谁写代码决定。
+            </p>
+
+            <div class="risk-grid">
+                <article class="risk-card level-1">
+                    <span>L1</span>
+                    <h3>低风险</h3>
+                    <p>文案、样式、内部工具、无状态小改动。</p>
+                    <small>AI 可完成实现与基础验证，人做快速确认。</small>
+                </article>
+                <article class="risk-card level-2">
+                    <span>L2</span>
+                    <h3>一般风险</h3>
+                    <p>普通业务逻辑、查询接口、非关键流程。</p>
+                    <small>必须有单测、代码评审和可回滚发布。</small>
+                </article>
+                <article class="risk-card level-3">
+                    <span>L3</span>
+                    <h3>高风险</h3>
+                    <p>资金、账务、权限、租户、批量任务和数据迁移。</p>
+                    <small>双人评审、集成回归、灰度和专项核对。</small>
+                </article>
+                <article class="risk-card level-4">
+                    <span>L4</span>
+                    <h3>关键风险</h3>
+                    <p>核心交易规则、不可逆操作、监管与重大资损场景。</p>
+                    <small>架构评审、人工审批、演练、审计和明确责任人。</small>
+                </article>
+            </div>
+
+            <h3>六条不可跳过的门禁</h3>
+            <div class="gate-grid">
+                <div><strong>范围门禁</strong><span>变更只能落在确认过的文件、接口和数据边界内。</span></div>
+                <div><strong>测试门禁</strong><span>新增行为必须有自动化测试；历史行为必须有回归证据。</span></div>
+                <div><strong>评审门禁</strong><span>AI 可以辅助审查，但不能替代责任人的最终签字。</span></div>
+                <div><strong>权限门禁</strong><span>生产数据、密钥、发布和高风险 Tool 默认最小权限。</span></div>
+                <div><strong>回滚门禁</strong><span>不可快速回退的改动，必须降低自动化等级。</span></div>
+                <div><strong>审计门禁</strong><span>保留需求、计划、提示、执行、测试、审批和发布记录。</span></div>
+            </div>
+
+            <div class="trust-note">
+                <strong>防止“信任退化”：</strong>AI 越稳定，人越容易跳过检查。系统必须用自动门禁代替记忆，用抽检和事故复盘持续校准规则。
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="foundation">
+            <div class="section-label">✦ 四 · 先建设 AI 能工作的工程底座 ✦</div>
+            <p class="section-intro">
+                模型能力只是上限，工程环境决定实际产出。团队要把隐含经验变成机器可读、流程可执行、结果可验证的公共资产。
+            </p>
+
+            <div class="foundation-grid">
+                <article>
+                    <span>01</span>
+                    <h3>统一上下文</h3>
+                    <p>领域词典、模块边界、接口契约、数据字典、历史决策和运行手册有唯一来源。</p>
+                </article>
+                <article>
+                    <span>02</span>
+                    <h3>规则文件</h3>
+                    <p>把代码规范、架构约束、安全红线、测试要求和提交规则写成 AI 可读取的仓库规则。</p>
+                </article>
+                <article>
+                    <span>03</span>
+                    <h3>快速验证</h3>
+                    <p>提供一键启动、稳定测试数据、分层测试和快速 CI，让 AI 每次修改后立即得到反馈。</p>
+                </article>
+                <article>
+                    <span>04</span>
+                    <h3>安全工具链</h3>
+                    <p>通过受控 Tool、MCP 或函数调用访问代码、日志、文档和环境，按角色授权并完整审计。</p>
+                </article>
+                <article>
+                    <span>05</span>
+                    <h3>知识闭环</h3>
+                    <p>评审意见、线上故障、用户反馈和优秀实践持续回写规则、用例与知识库。</p>
+                </article>
+                <article>
+                    <span>06</span>
+                    <h3>模型可替换</h3>
+                    <p>流程、上下文和评测不绑定单一模型；用任务结果选择模型，而不是用模型品牌定义流程。</p>
+                </article>
+            </div>
+
+            <div class="source-of-truth">
+                <h3>团队知识的优先级</h3>
+                <div class="truth-flow">
+                    <span>代码与自动化测试</span><i>›</i><span>正式规范与 ADR</span><i>›</i><span>接口和数据契约</span><i>›</i><span>知识库与历史记录</span><i>›</i><span>聊天记忆</span>
+                </div>
+                <p>越靠前越接近真实运行状态。知识库负责解释“为什么”，代码和测试负责证明“现在是什么”。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="architecture">
+            <div class="section-label">✦ 五 · 把系统改造成 AI 友好的形态 ✦</div>
+            <p class="section-intro">
+                最终目标不是把 19 个微服务原样交给 AI，而是逐步收敛为更简单的工程体系：<strong>Agent 负责理解、规划和编排，AMC Core 负责确定性规则与交易。</strong>
+            </p>
+
+            <div class="evolution-path" aria-label="AI Coding 架构演进路线">
+                <article>
+                    <span>STEP 1</span>
+                    <h3>微服务收敛</h3>
+                    <p>先统一仓库、构建、测试和本地运行，再按业务事务合并强耦合服务，减少跨服务上下文。</p>
+                    <strong>19 个服务 → AMC Core + 少量边界服务</strong>
+                </article>
+                <article>
+                    <span>STEP 2</span>
+                    <h3>去平台锁定</h3>
+                    <p>冻结新增生成代码，把 auto 逻辑和隐含插件约定迁移成清晰、可维护、可测试的领域代码。</p>
+                    <strong>平台生成 → 自主领域代码</strong>
+                </article>
+                <article>
+                    <span>STEP 3</span>
+                    <h3>AI Coding 工程化</h3>
+                    <p>补齐领域知识、规则文件、契约测试、一键环境、快速 CI、权限和评测闭环。</p>
+                    <strong>AI 能理解、修改、验证</strong>
+                </article>
+                <article>
+                    <span>STEP 4</span>
+                    <h3>系统能力 Agent 化</h3>
+                    <p>把稳定领域能力封装成 Tool，增加规划、记忆、知识检索、人工审批、评测和审计。</p>
+                    <strong>AI Coding → AMC Agent</strong>
+                </article>
+            </div>
+
+            <h3>目标架构：四个清晰部署单元</h3>
+            <div class="target-architecture">
+                <article class="agent-unit">
+                    <div class="unit-number">01</div>
+                    <h3>AMC Agent Platform</h3>
+                    <p>Planner / Orchestrator、领域 Agent、Tool Registry、Memory、Knowledge、Guardrail 与 Human-in-the-loop。</p>
+                </article>
+                <article class="core-unit">
+                    <div class="unit-number">02</div>
+                    <h3>AMC Core</h3>
+                    <p>模块化单体，承载资产、项目、案件、登记、还款、账单、支付、档案、征信、权限、流程和审计。</p>
+                </article>
+                <article class="integration-unit">
+                    <div class="unit-number">03</div>
+                    <h3>Integration Hub</h3>
+                    <p>统一连接银行、征信、电子签章、支付、渠道和文件存储，隔离外部系统变化。</p>
+                </article>
+                <article class="data-unit">
+                    <div class="unit-number">04</div>
+                    <h3>Data &amp; Knowledge</h3>
+                    <p>统一业务库、对象与档案存储、事件与审计日志、向量知识库和模型评测数据。</p>
+                </article>
+            </div>
+
+            <div class="architecture-rule">
+                <div><strong>Agent</strong><span>理解目标、拆解任务、选择工具、编排流程</span></div>
+                <div><strong>AMC Core</strong><span>执行确定性业务规则、数据变更和核心交易</span></div>
+                <div><strong>高风险动作</strong><span>必须经过权限校验、人工审批、完整审计和可回退设计</span></div>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="roadmap">
+            <div class="section-label">✦ 六 · 180 天落地路线 ✦</div>
+            <p class="section-intro">
+                不从“全员买工具”开始，也不从“重构所有系统”开始。先选一条真实业务链路跑通闭环，再把有效规则复制到团队和架构。
+            </p>
+
+            <div class="roadmap">
+                <article class="roadmap-item">
+                    <div class="roadmap-day">0—30 天</div>
+                    <div>
+                        <h3>建立基线，跑通一个试点</h3>
+                        <p>选一个低到中风险、边界清晰、可度量的真实需求；补齐需求模板、仓库规则、测试命令和人工审批点。</p>
+                        <strong>交付：一条端到端 AI 辅助链路 + 第一版团队规范。</strong>
+                    </div>
+                </article>
+                <article class="roadmap-item">
+                    <div class="roadmap-day">31—90 天</div>
+                    <div>
+                        <h3>覆盖全流程，建立质量门禁</h3>
+                        <p>把 AI 接入需求、设计、开发、测试、评审、发布和复盘；上线风险分级、CI 检查、权限审计和知识回写。</p>
+                        <strong>交付：团队可重复使用的研发工作流，而不是个人技巧。</strong>
+                    </div>
+                </article>
+                <article class="roadmap-item">
+                    <div class="roadmap-day">91—180 天</div>
+                    <div>
+                        <h3>收敛工程，缩短验证链路</h3>
+                        <p>统一构建与本地环境，优先合并强耦合服务，逐步迁移平台生成逻辑，补齐契约测试和领域知识。</p>
+                        <strong>交付：AI 能完整理解、修改和验证的核心工程。</strong>
+                    </div>
+                </article>
+                <article class="roadmap-item future">
+                    <div class="roadmap-day">180 天以后</div>
+                    <div>
+                        <h3>把稳定能力封装为 Agent Tool</h3>
+                        <p>从只辅助研发，扩展到辅助资产分析、案件运营、档案处理和风险判断；高风险动作继续由 Core 和人工门禁控制。</p>
+                        <strong>交付：可评测、可审计、可运营的 AMC Agent 能力。</strong>
+                    </div>
+                </article>
+            </div>
+
+            <h3>管理层只看结果，不看“AI 写了多少代码”</h3>
+            <div class="metric-grid">
+                <div><span>交付效率</span><strong>需求到上线周期、等待时间、返工次数</strong></div>
+                <div><span>质量结果</span><strong>一次验收通过率、逃逸缺陷、回滚和事故</strong></div>
+                <div><span>工程健康</span><strong>构建与测试时长、变更半径、环境成功率</strong></div>
+                <div><span>AI 有效性</span><strong>建议采纳率、人工改写量、失败类型和任务完成率</strong></div>
+                <div><span>知识复用</span><strong>规则命中、用例复用、重复问题下降和新人上手时间</strong></div>
+                <div><span>风险控制</span><strong>越权次数、敏感数据暴露、门禁拦截和审计完整性</strong></div>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="core-transformation">
+            <div class="section-label">✦ 11 · 实战操作篇 · 第二阶段 ✦</div>
+            <div class="execution-heading">
+                <div>
+                    <span class="eyebrow">CORE SYSTEM TRANSFORMATION</span>
+                    <h2>再改项目：先盘点影响面，再决定哪些依赖该拆</h2>
+                </div>
+                <p>第二阶段不是直接让 AI 重写系统，也不是把飞速中心能力一股脑抛弃。先把入口、代码、数据、身份、权限、租户、流程和外部依赖画清楚；之后分别决定保留、隔离、迁移或下线。</p>
+            </div>
+
+            <div class="transformation-target-architecture">
+                <div class="transformation-target-core">
+                    <span>TARGET</span>
+                    <strong>核心系统收缩为模块化单体</strong>
+                    <p>一个核心代码库、一个领域模型、一条主发布链；模块边界清楚，不等于把所有代码搅在一起。</p>
+                </div>
+                <div class="transformation-target-streams">
+                    <article><span>FE</span><strong>前端并行</strong><p>页面、路由、状态和接口契约逐页迁移。</p></article>
+                    <article><span>BE</span><strong>后端并行</strong><p>按业务模块收口接口、规则和数据访问。</p></article>
+                    <article><span>OPS</span><strong>运维并行</strong><p>环境、发布、日志、监控和回退同步建设。</p></article>
+                </div>
+            </div>
+
+            <div class="transformation-scope-board">
+                <article class="transformation-scope-keep">
+                    <span>KEEP</span>
+                    <h3>保留</h3>
+                    <p>有稳定价值、替换成本高的数据库、缓存、消息队列、对象存储，以及成熟的认证、组织、审计等平台能力，盘点后可以继续保留。</p>
+                </article>
+                <article class="transformation-scope-cut">
+                    <span>CUT</span>
+                    <h3>砍掉</h3>
+                    <p>无明确用户、无使用数据、长期无人维护的功能。站内信若可被钉钉 / 企微通知替代，就停止新增能力，只保留必要历史查询。</p>
+                </article>
+                <article class="transformation-scope-rebuild">
+                    <span>AI REBUILD</span>
+                    <h3>AI 重构</h3>
+                    <p>需求清楚但代码质量差、测试缺失、改一次坏一次的模块，先补行为测试，再让 Coding Agent 在新边界内重写。</p>
+                </article>
+                <article class="transformation-scope-migrate">
+                    <span>MIGRATE</span>
+                    <h3>逐步自建</h3>
+                    <p>长期卡住的下载等关键链路，先加监控，再做新旧双路由和灰度迁移，稳定后才关闭旧实现。</p>
+                </article>
+            </div>
+
+            <h3 class="minor-heading">第一件事不是写代码，而是做一张“影响面盘点表”</h3>
+            <div class="transformation-inventory-layout">
+                <div class="transformation-inventory-checklist">
+                    <article><span>01</span><div><strong>功能入口</strong><p>菜单、按钮、定时任务、消息消费者、开放 API 分别从哪里进入？</p></div></article>
+                    <article><span>02</span><div><strong>代码归属</strong><p>涉及哪些仓库、模块、生成代码、公共包和配置中心？</p></div></article>
+                    <article><span>03</span><div><strong>数据影响</strong><p>读写哪些表、缓存、索引、文件和消息主题？是否需要历史迁移？</p></div></article>
+                    <article><span>04</span><div><strong>外部依赖</strong><p>飞速中心、流程中心、企微、对象存储或其他服务调用了什么？失败如何表现？</p></div></article>
+                    <article><span>05</span><div><strong>真实使用</strong><p>近 30 / 90 天调用量、活跃用户、失败率、峰值和人工兜底次数是多少？</p></div></article>
+                    <article><span>06</span><div><strong>迁移决策</strong><p>保留、砍掉、重构还是迁移？负责人、窗口、验收证据和回退开关是什么？</p></div></article>
+                </div>
+                <div class="transformation-inventory-card">
+                    <span>MIGRATION CARD</span>
+                    <h3>每个被改造模块都要填完这张卡</h3>
+                    <dl>
+                        <div><dt>模块 / 能力</dt><dd>下载中心</dd></div>
+                        <div><dt>当前调用方</dt><dd>订单、报表、审计导出</dd></div>
+                        <div><dt>当前痛点</dt><dd>大文件超时、状态不可见、失败需人工重试</dd></div>
+                        <div><dt>目标方案</dt><dd>异步任务 + 文件存储 + 状态查询</dd></div>
+                        <div><dt>切换方式</dt><dd>按租户灰度，新失败自动回旧链路</dd></div>
+                        <div><dt>完成证据</dt><dd>成功率、P95 时间、告警、回退演练</dd></div>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="transformation-parallel-workstreams">
+                <div class="transformation-workstream-title">
+                    <span>PARALLEL, NOT CHAOTIC</span>
+                    <h3>前端、后端、运维齐头并进，但共用同一份契约</h3>
+                </div>
+                <div class="transformation-workstream-grid">
+                    <article>
+                        <span>前端</span>
+                        <ul>
+                            <li>建立页面与旧接口映射表</li>
+                            <li>用 Mock / 契约先行解耦后端进度</li>
+                            <li>逐页加新旧开关和错误兜底</li>
+                            <li>记录关键路径埋点与用户行为</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <span>后端</span>
+                        <ul>
+                            <li>按领域建立模块边界，不按技术层随意互调</li>
+                            <li>先兼容旧契约，再逐步收敛新接口</li>
+                            <li>把外部依赖包进 Adapter，业务代码不直连</li>
+                            <li>对关键行为补集成测试和数据校验</li>
+                        </ul>
+                    </article>
+                    <article>
+                        <span>运维</span>
+                        <ul>
+                            <li>统一开发、测试、预发、生产配置差异</li>
+                            <li>建设新旧链路日志、指标和 Trace 对比</li>
+                            <li>发布必须支持灰度、开关和一键回退</li>
+                            <li>切换前完成容量评估与故障演练</li>
+                        </ul>
+                    </article>
+                </div>
+                <p class="transformation-shared-contract"><strong>共同基线：</strong>OpenAPI / 接口样例、错误码、事件结构、数据口径、状态机、Feature Flag 和验收用例必须版本化；任何一侧修改都要触发另外两侧检查。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="platform-decoupling">
+            <div class="section-label">✦ 七 · 平台能力解耦 ✦</div>
+            <div class="platform-audit">
+                <div class="platform-audit-heading">
+                    <div>
+                        <span>CAPABILITY INVENTORY FIRST</span>
+                        <h3>去飞速中心不是清空平台能力：先盘点，再下刀</h3>
+                    </div>
+                    <p>要去掉的是核心业务对平台实现细节的强耦合，不是把成熟的用户、认证、组织、租户和审计能力全部重写一遍。每项能力必须先确认价值、边界、数据归属和替换风险，再决定保留还是迁移。</p>
+                </div>
+
+                <div class="audit-dimensions" aria-label="平台能力盘点维度">
+                    <span>谁是数据源</span>
+                    <span>哪些系统在调用</span>
+                    <span>故障影响范围</span>
+                    <span>安全与合规要求</span>
+                    <span>本地定制程度</span>
+                    <span>替换和运维成本</span>
+                    <span>是否有可回退方案</span>
+                </div>
+
+                <div class="disposition-legend">
+                    <article><span>A</span><strong>直接保留</strong><p>成熟、稳定、非业务差异化能力，暂时不动。</p></article>
+                    <article><span>B</span><strong>保留能力，隔离调用</strong><p>继续使用飞速中心，但通过 Adapter、同步表或事件解耦。</p></article>
+                    <article><span>C</span><strong>逐步迁回核心系统</strong><p>与本项目业务规则强相关，平台已成为迭代瓶颈。</p></article>
+                    <article><span>D</span><strong>停止使用</strong><p>没有真实价值、可以被现有渠道替代，且无合规保留要求。</p></article>
+                </div>
+
+                <div class="platform-matrix-wrap">
+                    <table class="platform-matrix">
+                        <thead>
+                            <tr>
+                                <th>平台能力</th>
+                                <th>初步处理建议</th>
+                                <th>具体怎么处理</th>
+                                <th>下刀前必须查清</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>用户中心与登录认证</strong><span class="decision-tag decision-keep">A / B</span></td>
+                                <td>认证能力优先保留，先隔离调用，不急着自建密码、MFA、找回和会话安全。</td>
+                                <td>核心系统建立 Identity Adapter 和内部稳定的 <code>user_id</code>；登录仍可走飞速中心，但业务表不直接保存平台临时 Token 或 SDK 对象。</td>
+                                <td>账号唯一键、登录方式、禁用与离职流程、Token 生命周期、MFA、单点登录、账号合并和历史用户映射。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>用户资料与组织架构</strong><span class="decision-tag decision-adapter">B</span></td>
+                                <td>保留权威数据源，在核心系统建立只读投影或缓存。</td>
+                                <td>通过事件或定时任务同步部门、岗位、上级和状态；核心业务读取本地快照，平台短时不可用时不应拖垮全部查询。</td>
+                                <td>组织数据由谁维护、变更延迟要求、离职删除规则、跨组织兼职、历史部门以及企微通讯录是否也是数据源。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>权限管理</strong><span class="decision-tag decision-migrate">B / C</span></td>
+                                <td>认证与通用角色可以保留；订单、档案、审批等业务权限逐步迁回核心系统。</td>
+                                <td>先盘点角色、菜单、接口、数据范围和对象级权限，再建立统一 Authorization Adapter。平台提供身份和基础角色，核心系统负责领域权限判定。</td>
+                                <td>RBAC / ABAC 规则、角色继承、部门数据范围、本人数据、临时授权、超级管理员、前后端校验差异和越权审计。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>多租户控制</strong><span class="decision-tag decision-migrate">B / C</span></td>
+                                <td>租户主数据可以暂时保留，但租户隔离必须在核心系统内可独立执行和验证。</td>
+                                <td>统一 Tenant Context，让 <code>tenant_id</code> 贯穿请求、数据库、缓存、消息、定时任务、文件目录、搜索索引和日志；不能只依赖飞速中心在入口处过滤。</td>
+                                <td>租户创建与停用、用户跨租户、数据隔离模式、共享数据、缓存键、消息消费、批处理、文件路径、导出和运维查询是否会串租户。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>审计、登录日志与安全策略</strong><span class="decision-tag decision-keep">A / B</span></td>
+                                <td>合规链路优先保留；若要迁移，必须先双写并完成审计验收。</td>
+                                <td>核心系统补充业务操作审计，平台继续保留登录和账号安全日志。统一关联用户、租户、请求和业务对象，避免两边日志无法串联。</td>
+                                <td>法定保存期限、日志防篡改、敏感字段脱敏、查询权限、告警策略以及历史日志能否迁出。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>代码自动生成</strong><span class="decision-tag decision-migrate">C</span></td>
+                                <td>优先剥离，因为它直接限制研发能否独立修改和交付。</td>
+                                <td>冻结生成基线，把结果、模板或替代脚本收进仓库；确认不依赖平台也能新增字段、接口和页面。</td>
+                                <td>生成输入、模板版本、覆盖规则、二次手改区域、隐藏公共包和发布阶段是否仍会调用平台。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>流程中心</strong><span class="decision-tag decision-migrate">B / C</span></td>
+                                <td>先通过 Workflow Adapter 隔离，再按流程复杂度决定保留引擎还是迁移具体流程。</td>
+                                <td>通用审批可继续保留；与核心领域强绑定、频繁卡住迭代的状态机，逐条影子运行后迁回。</td>
+                                <td>节点、条件、角色、回调、超时、撤回、加签、抄送、历史实例和在途流程如何处理。</td>
+                            </tr>
+                            <tr>
+                                <td><strong>企微与消息渠道</strong><span class="decision-tag decision-adapter">B</span></td>
+                                <td>保留渠道能力，但核心业务只能调用统一通知接口。</td>
+                                <td>登录、通讯录、消息、机器人和审批分别封装；通知使用 Outbox、幂等键、重试和降级渠道。</td>
+                                <td>Token 刷新、限流、回调验签、重复消息、失败补偿、敏感信息和企微不可用时的业务影响。</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tenant-redline">
+                    <span>MULTI-TENANT RED LINE</span>
+                    <div>
+                        <strong>多租户不能靠"记得加 tenant_id 条件"来保证。</strong>
+                        <p>必须有统一上下文、默认数据过滤、跨租户显式授权和自动化隔离测试。任何新链路只要数据库、缓存、消息、文件、搜索或日志中有一处没有租户边界，就不能切生产流量。</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="minor-heading">盘点完成后，再按三个战役下刀</h3>
+            <div class="decoupling-steps">
+                <article>
+                    <div class="step-index">01</div>
+                    <div>
+                        <span>先剥离代码自动生成</span>
+                        <h3>把"能不能开发"从平台手里拿回来</h3>
+                        <ol>
+                            <li>盘点生成器输入、模板版本、生成目录和二次手改点。</li>
+                            <li>冻结一版可运行基线，把生成结果纳入仓库和测试。</li>
+                            <li>把必须保留的生成逻辑迁为仓库内脚本；能手写维护的直接停止生成。</li>
+                            <li>连续两个迭代不调用飞速中心仍可新增字段、接口和页面，才算完成。</li>
+                        </ol>
+                    </div>
+                </article>
+                <article>
+                    <div class="step-index">02</div>
+                    <div>
+                        <span>再替换流程中心</span>
+                        <h3>先还原真实状态机，再决定自研到什么程度</h3>
+                        <ol>
+                            <li>导出流程定义、节点、条件、角色、超时、撤回、加签和回调清单。</li>
+                            <li>把业务规则与流程引擎调用分开，建立统一 Workflow Adapter。</li>
+                            <li>先选一个低风险流程做影子运行，对比新旧节点与最终结果。</li>
+                            <li>双写期间每日核对实例数、状态和审批结果；有差异立即切回旧路。</li>
+                        </ol>
+                    </div>
+                </article>
+                <article>
+                    <div class="step-index">03</div>
+                    <div>
+                        <span>最后处理企微集成</span>
+                        <h3>把渠道能力降级为可替换适配器</h3>
+                        <ol>
+                            <li>盘点登录、通讯录、消息、机器人、回调和审批分别被谁调用。</li>
+                            <li>统一封装身份、组织、通知三类接口，核心业务不出现企微 SDK 对象。</li>
+                            <li>消息走 Outbox 与幂等键，渠道失败不阻塞主业务事务。</li>
+                            <li>验证 Token 刷新、限流、重试、重复回调和降级通知后再切量。</li>
+                        </ol>
+                    </div>
+                </article>
+            </div>
+
+            <div class="migration-gates">
+                <div>
+                    <span>GATE 1</span>
+                    <strong>梳理完成</strong>
+                    <p>调用方、数据、负责人和风险没有"未知"。</p>
+                </div>
+                <b>→</b>
+                <div>
+                    <span>GATE 2</span>
+                    <strong>新链可验证</strong>
+                    <p>契约测试、影子流量、监控和回退开关齐备。</p>
+                </div>
+                <b>→</b>
+                <div>
+                    <span>GATE 3</span>
+                    <strong>灰度可回退</strong>
+                    <p>小流量稳定，数据核对通过，故障演练完成。</p>
+                </div>
+                <b>→</b>
+                <div>
+                    <span>GATE 4</span>
+                    <strong>旧链可删除</strong>
+                    <p>观察期结束、无调用、文档与资产完成归档。</p>
+                </div>
+            </div>
+
+            <div class="ai-transformation-rules">
+                <span>AI 在改造中的正确位置</span>
+                <ul>
+                    <li><strong>适合交给 AI：</strong>跨仓检索调用链、生成依赖清单、补契约测试、批量改 Adapter、生成迁移脚本草稿、对比新旧结果。</li>
+                    <li><strong>必须由人决定：</strong>砍哪些功能、业务口径、数据迁移窗口、权限模型、生产切流和旧系统下线。</li>
+                    <li><strong>每个任务的交付包：</strong>影响面、Diff、测试证据、数据核对、监控面板、灰度计划、回退步骤、业务验收人。</li>
+                </ul>
+            </div>
+
+            <blockquote class="closing-quote transformation-quote">
+                <p>去中心依赖不是重写所有基础能力，而是先决定什么继续复用、什么需要隔离、什么必须迁回，再用可观察、可灰度、可回退的方式一点点下刀。</p>
+            </blockquote>
+        </section>
+
+        <section class="chapter-section fade-in" id="code-self-audit">
+            <div class="section-label">✦ 八 · 实战操作篇 · 代码自检 ✦</div>
+            <div class="execution-heading audit-heading">
+                <div>
+                    <span class="eyebrow">PERIODIC AI CODE AUDIT</span>
+                    <h2>AI 写的代码，要让 AI 定期回头检查</h2>
+                </div>
+                <p>AI 很擅长沿着当前任务继续加代码，却不一定会主动确认旧页面、旧接口、旧配置和兼容逻辑是否已经退出。项目连续迭代后，最容易出现的不是功能完全重复，而是新实现上线了，旧实现仍留在仓库里。</p>
+            </div>
+
+            <div class="audit-principle-strip">
+                <article><span>先审计</span><strong>只读检查，不立刻修改</strong></article>
+                <b>→</b>
+                <article><span>再确认</span><strong>证据、入口、调用方都核对</strong></article>
+                <b>→</b>
+                <article><span>后清理</span><strong>分批提交，每批都可回退</strong></article>
+            </div>
+
+            <h3 class="minor-heading">把代码自检做成固定制度，而不是想起来才问一次</h3>
+            <div class="audit-cadence-grid">
+                <article>
+                    <span>每周</span>
+                    <h3>轻量冗余扫描</h3>
+                    <p>检查无引用文件、误提交缓存、废弃 API 导出、重复小工具和长期隐藏入口。</p>
+                    <small>产物：候选清单，不改代码</small>
+                </article>
+                <article>
+                    <span>每个大版本前</span>
+                    <h3>新旧链路核对</h3>
+                    <p>重点检查路由、接口、模型、配置、任务状态机和启动入口是否存在双栈。</p>
+                    <small>产物：退役计划与兼容期限</small>
+                </article>
+                <article>
+                    <span>每月</span>
+                    <h3>结构性健康检查</h3>
+                    <p>统计超大文件、重复基础设施、跨模块拷贝和职责不断膨胀的服务。</p>
+                    <small>产物：重构候选与成本评估</small>
+                </article>
+                <article>
+                    <span>重大迁移后</span>
+                    <h3>旧实现退出检查</h3>
+                    <p>新页面、新流程、新配置或新任务体系上线后，确认旧入口是否真的停止使用。</p>
+                    <small>产物：删除证据与观察期记录</small>
+                </article>
+            </div>
+
+            <div class="audit-skill-contract">
+                <div>
+                    <span>TEAM SKILL</span>
+                    <h3>团队应固定一个 <code>code-health-audit</code> Skill</h3>
+                </div>
+                <p>所有项目使用同一套审计维度、优先级和证据格式。项目自己的 AGENTS.md 只补充目录、架构边界、测试命令和"哪些双实现是刻意保留的"，避免不同 Agent 每次用不同标准得出完全不同的结论。</p>
+                <ul>
+                    <li><strong>统一扫描范围：</strong>路由、生产引用、API、数据模型、配置、脚本、测试和生成产物。</li>
+                    <li><strong>统一证据：</strong>文件路径、行号、生产入口、调用方、替代实现和删除风险。</li>
+                    <li><strong>统一优先级：</strong>P0 明确冗余，P1 架构双栈，P2 小型重复或结构债务。</li>
+                    <li><strong>统一边界：</strong>第一次只出报告，不删除文件、不改接口、不自动提交。</li>
+                </ul>
+            </div>
+
+            <div class="prompt-example audit-prompt">
+                <div class="prompt-example-head"><span>READ-ONLY AUDIT PROMPT</span><strong>提示词：当前项目有没有哪些冗余的设计？</strong></div>
+                <pre><code>请在当前干净的 master 分支上，对项目做一次"只读静态审计"。
+先不要修改、删除、格式化或提交任何文件。
+
+目标：回答"当前项目有没有哪些冗余的设计？"
+重点不是泛泛评价代码质量，而是找出多次迭代后没有完全退出的旧实现。
+
+请检查：
+1. 当前路由、菜单和真实生产入口；
+2. 没有生产引用的页面、组件、服务、API 和测试；
+3. 同一业务能力的新旧两套命令、模型、配置或状态机；
+4. 重复的轮询、重试、路径校验、状态转换和设置存取逻辑；
+5. 超大页面、超大服务是否承担了过多职责并制造重复；
+6. 启动脚本、跨平台入口、缓存、编译产物和生成代码；
+7. 看似重复但实际上承担兼容、快照、审计或领域隔离职责的设计。
+
+每个结论必须提供：
+- 文件路径与行号；
+- 当前生产入口和调用方；
+- 已经替代它的新实现；
+- 为什么判断为冗余；
+- 删除或合并可能影响什么；
+- 建议归类：直接删除 / 标记废弃 / 逐步迁移 / 暂时保留；
+- 建议优先级：P0 / P1 / P2。
+
+最后输出：
+1. 总体判断和优先级表；
+2. 每项冗余的证据与建议；
+3. "不应误判为冗余"的设计；
+4. 分批清理顺序；
+5. 本次实际检查过的命令，以及未运行的测试。
+
+没有文件和调用证据时，不要下结论；不确定时标记"待人工确认"。</code></pre>
+            </div>
+
+            <div class="audit-evidence-gate">
+                <span>EVIDENCE GATE</span>
+                <strong>没有"入口 + 引用 + 替代实现 + 风险"四项证据，就不能建议删除。</strong>
+                <p>尤其是权限、租户、审计、规则快照、兼容查询表和领域 Job，看起来重复并不代表可以合并。AI 必须先证明它理解这些结构为什么存在。</p>
+            </div>
+
+            <h3 class="minor-heading">真实示例：一次静态审计找出的七类冗余</h3>
+            <p class="lead-paragraph">下面是某档案管理项目在干净的 <code>master</code> 上执行只读静态审计后的结果。它的价值不在具体文件名，而在于输出同时包含数量、生产入口、替代方案和清理风险。</p>
+
+            <div class="audit-summary-table-wrap">
+                <table class="audit-summary-table">
+                    <thead>
+                        <tr><th>优先级</th><th>冗余点</th><th>审计判断</th><th>下一动作</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><span class="priority-p0">P0</span></td><td>无生产入口的旧页面、组件和测试</td><td>明确冗余，约 1907 行生产代码和 2333 行陈旧测试</td><td>再次核对动态引用后分批删除</td></tr>
+                        <tr><td><span class="priority-p0">P0</span></td><td>Git 中误提交的缓存和编译产物</td><td>明确冗余，会持续制造无意义 Diff</td><td>从 Git 索引移除并核对忽略规则</td></tr>
+                        <tr><td><span class="priority-p1">P1</span></td><td>新旧两套 PDF 拆分命令链并存</td><td>业务架构双栈，旧前端函数已无生产调用方</td><td>先废弃旧入口，再收口到新 Job 服务</td></tr>
+                        <tr><td><span class="priority-p1">P1</span></td><td><code>LlmConfig</code> 与 <code>ModelProviderConfig</code> 双配置体系</td><td>一次性迁移逻辑已经变成长期运行时负担</td><td>正式迁移数据，删除查询期兼容</td></tr>
+                        <tr><td><span class="priority-p1">P1</span></td><td>多套前端任务轮询实现</td><td>间隔不同合理，但生命周期和并发控制重复</td><td>抽取统一 <code>useJobPolling</code></td></tr>
+                        <tr><td><span class="priority-p1">P1</span></td><td>多个超大页面和超大服务</td><td>不属于死代码，但职责过多，持续制造隐性重复</td><td>按业务用例和领域边界拆分</td></tr>
+                        <tr><td><span class="priority-p2">P2</span></td><td>执行模式、路径校验和状态转换函数重复</td><td>规模较小，但安全策略可能逐渐不一致</td><td>统一基础机制，保留业务语义</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="audit-example-stack">
+                <details open>
+                    <summary><span>01</span><strong>无生产入口代码：AI 不能只搜文件名，还要从路由和真实引用反推</strong><b>展开 / 收起</b></summary>
+                    <div class="audit-detail-body">
+                        <p>审计先从 <code>frontend/src/router/index.ts</code> 建立当前页面清单，再反向检查组件引用，发现 <code>FileInspector.vue</code>、<code>ArchiveTray.vue</code>、<code>CabinetRuleSettingsDialog.vue</code>、旧任务列表和详情页等已经没有生产入口。</p>
+                        <div class="audit-detail-grid">
+                            <article><span>生产代码</span><strong>约 1907 行</strong><p>旧页面、旧组件和没有入口的设置面板。</p></article>
+                            <article><span>对应测试</span><strong>约 2333 行</strong><p>仍在验证已经退出生产路径的旧实现。</p></article>
+                            <article><span>第一轮收益</span><strong>约 4240 行</strong><p>删除前先把仍有价值的行为测试迁到当前组件。</p></article>
+                        </div>
+                        <p class="audit-caution"><strong>不能机械删除：</strong>某设置面板虽然没有入口，但运行时仍读取它对应的配置。此时必须决定"恢复编辑入口"还是"取消可配置设计"，不能只删 UI 留下半套能力。</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span>02</span><strong>PDF 拆分双链路：结果关系表可以留，旧执行入口必须退出</strong><b>展开 / 收起</b></summary>
+                    <div class="audit-detail-body">
+                        <div class="old-new-lanes">
+                            <article><span>OLD</span><strong>Task Step + split_service</strong><p>旧的 <code>SPLIT_PDF/start</code>、summary、results 和前端 <code>startSplit</code> 等函数仍留在仓库。</p></article>
+                            <b>→</b>
+                            <article><span>NEW</span><strong>PdfSplitJobService</strong><p>当前 UI 已使用独立 Job、详情页、文件、分段、页面决策和日志模型。</p></article>
+                        </div>
+                        <p>正确处理不是一次删除所有旧模型，而是先停旧命令入口、检查外部调用方，把执行统一到新服务；仍被文件详情使用的 <code>PdfSplitResult</code> 可以暂时作为结果关系表保留。</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span>03</span><strong>配置双栈：一次性迁移不能永久藏在每次查询里</strong><b>展开 / 收起</b></summary>
+                    <div class="audit-detail-body">
+                        <p>旧的 <code>LlmConfig</code> 和新的 <code>ModelProviderConfig</code> 同时存在，新配置查询还会尝试从旧表自动迁移。原本应该执行一次的数据库迁移，因此变成了长期兼容路径。</p>
+                        <ol>
+                            <li>通过正式数据库迁移写入新模型。</li>
+                            <li>所有业务统一从 provider resolver 读取配置。</li>
+                            <li>删除旧前端 API 和旧后端接口。</li>
+                            <li>明确隐藏设置到底应该正式开放还是彻底移除。</li>
+                        </ol>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span>04</span><strong>重复基础设施：业务间隔可以不同，轮询生命周期不必复制五遍</strong><b>展开 / 收起</b></summary>
+                    <div class="audit-detail-body">
+                        <p>多个页面分别实现启动、停止、终态判断、卸载清理、静默刷新和异常处理。建议统一成可配置的 <code>useJobPolling</code>，至少处理页面隐藏暂停、请求互斥、任务切换取消和终态自动停止。</p>
+                        <pre><code>useJobPolling({
+    load,
+    shouldContinue,
+    interval: 2000,
+    immediate: true,
+    pauseWhenHidden: true
+})</code></pre>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span>05</span><strong>"上帝文件"：不能直接删除，但要识别它正在制造多少重复</strong><b>展开 / 收起</b></summary>
+                    <div class="audit-detail-body">
+                        <p>示例项目中五个最大文件合计超过 1.5 万行。扫描服务同时处理发现、OCR、额度、进度、暂停恢复和失败重试；生命周期服务同时处理清单、计划、执行、复核、质检和交付物。</p>
+                        <p>审计结论不应只是"文件太长"，而要给出按用例拆分的目标，例如 coordinator、discovery、progress、checkpoint、recognition pipeline 和 retry service。</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span>06</span><strong>小型重复：统一存取机制，不要强行统一业务语义</strong><b>展开 / 收起</b></summary>
+                    <div class="audit-detail-body">
+                        <p>路径校验、文件 ID、状态转换和枚举设置存取等辅助函数适合收口，尤其路径安全策略不能存在多个略有差异的版本。但档案整理和 PDF 拆分仍应拥有各自的执行模式、默认 Agent 和请求模型。</p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span>07</span><strong>仓库卫生：启动入口和缓存产物也属于架构成本</strong><b>展开 / 收起</b></summary>
+                    <div class="audit-detail-body">
+                        <p>跨平台脚本并不天然冗余，但统一入口必须符合平台语义。macOS / Linux、Windows 和 <code>make dev</code> 可以分别保留，Makefile 应按系统分发，而不是在所有平台固定调用 PowerShell。</p>
+                        <p>已经被 Git 跟踪的 SQLite 缓存、<code>__pycache__</code> 和 <code>.pyc</code> 即使后来写进 <code>.gitignore</code>，仍要从 Git 索引中主动移除。</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="not-redundant-panel">
+                <div>
+                    <span>FALSE POSITIVE CHECK</span>
+                    <h3>这些设计看起来重复，但不能被 AI 随手合并</h3>
+                </div>
+                <ul>
+                    <li><strong>原生 Agent 与工作流 Agent：</strong>执行语义和依赖路径不同，不应为了统一重新绑回同一平台。</li>
+                    <li><strong>共享模板与本地实例：</strong>一个负责版本控制，一个保存本地配置和认证状态。</li>
+                    <li><strong>任务规则快照与实时规则：</strong>任务执行后必须冻结当时规则，不能读取后来修改的设置。</li>
+                    <li><strong>稳定文件 ID 与当前可见列表：</strong>稳定 ID 用于保证筛选和重扫后仍指向同一文件。</li>
+                    <li><strong>不同领域 Job 表：</strong>可以统一轮询和状态基础设施，但不应强行合并业务字段差异很大的领域模型。</li>
+                </ul>
+            </div>
+
+            <h3 class="minor-heading">自检报告不是结束，必须转成分批可执行的清理计划</h3>
+            <div class="cleanup-waves">
+                <article>
+                    <span>第一批 · 低风险</span>
+                    <strong>明确冗余先退出</strong>
+                    <ul>
+                        <li>移除缓存和编译产物</li>
+                        <li>删除确认无入口的旧页面与组件</li>
+                        <li>迁移或删除对应陈旧测试</li>
+                        <li>删除无调用方的前端 API 导出</li>
+                    </ul>
+                </article>
+                <article>
+                    <span>第二批 · 业务双栈</span>
+                    <strong>先废弃，再迁移</strong>
+                    <ul>
+                        <li>记录旧接口调用并通知调用方</li>
+                        <li>新旧链路影子对比</li>
+                        <li>执行入口收口到新服务</li>
+                        <li>观察期后删除旧命令</li>
+                    </ul>
+                </article>
+                <article>
+                    <span>第三批 · 配置收口</span>
+                    <strong>正式迁移数据</strong>
+                    <ul>
+                        <li>编写一次性数据库迁移</li>
+                        <li>统一配置解析入口</li>
+                        <li>删除运行时 bootstrap</li>
+                        <li>明确隐藏功能的产品策略</li>
+                    </ul>
+                </article>
+                <article>
+                    <span>第四批 · 结构重构</span>
+                    <strong>最后拆大文件</strong>
+                    <ul>
+                        <li>先抽统一轮询和安全工具</li>
+                        <li>补行为与契约测试</li>
+                        <li>按用例拆服务和页面</li>
+                        <li>每次只移动一个边界</li>
+                    </ul>
+                </article>
+            </div>
+
+            <div class="audit-done-definition">
+                <span>AUDIT DONE</span>
+                <p><strong>一次合格的自检不是"AI 说代码有点乱"。</strong>它必须能回答：哪里冗余、证据是什么、为什么形成、什么不能删、先清哪一批、如何验证以及怎么回退。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="conclusion">
+            <div class="final-card">
+                <div class="final-card-label">最终判断</div>
+                <h2>AI 开发的胜负手，不在模型，而在工程体系</h2>
+                <p>真正的全流程 AI 开发，不是让 AI 一口气写完整个系统，而是让每个环节都有可靠的 AI 副驾，每次变更都有清晰边界、自动验证、人工责任和知识回流。</p>
+                <p><strong>先把团队流程变成 AI 可执行的流程，再把核心系统变成 AI 可理解的系统，最后才把稳定业务能力变成 Agent。</strong></p>
+            </div>
+        </section>
+
+        <nav class="article-nav">
+            <a href="part11.html" class="nav-button prev">← 第 10 章 · AI 工程演进</a>
+            <a href="index-all.html" class="nav-button">返回目录 ↑</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI 纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

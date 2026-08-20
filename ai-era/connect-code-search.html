@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI机械臂连接教程：连接代码阅读与检索。包含接入路线、最小权限、配置示例、验收清单和官方文档。">
+    <title>连接代码阅读与检索 — AI机械臂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css?v=20260723">
+</head>
+
+<body class="connection-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 08 / 10</span>
+    </nav>
+
+    <main class="connection-guide">
+        <header class="guide-hero" data-number="08">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 08</div>
+            <h1>连接代码阅读与检索</h1>
+            <p>让 Agent 先准确找到代码、调用链和变更历史，再开始修改。</p>
+            <div class="guide-pills"><span>ripgrep</span><span>代码索引</span><span>符号检索</span><span>只读优先</span></div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#route">选择路线</a>
+            <a href="#setup">接入步骤</a>
+            <a href="#config">配置示例</a>
+            <a href="#permission">最小权限</a>
+            <a href="#verify">验收</a>
+            <a href="#docs">官方文档</a>
+        </nav>
+
+        <section class="guide-section" id="route">
+            <div class="guide-section-head">
+                <span class="guide-section-number">01</span>
+                <div><h2>先选一条正确的连接路线</h2><p>不要一次开放所有能力。先选择最小可用入口，验证价值后再升级。</p></div>
+            </div>
+            <div class="route-grid">
+                <article class="route-card recommended">
+                    <span>推荐</span>
+                    <h3>本地搜索工具</h3>
+                    <p>从 rg、find、git log 和语言工具开始，信息新鲜、权限简单，适合单仓库任务。</p>
+                </article>
+                <article class="route-card">
+                    <span>大仓库</span>
+                    <h3>代码搜索平台</h3>
+                    <p>使用 Sourcegraph 或企业内部索引跨仓库查符号、引用、历史和所有者。</p>
+                </article>
+                <article class="route-card">
+                    <span>增强</span>
+                    <h3>语义检索 / RAG</h3>
+                    <p>为文档和代码摘要建立检索层，但结果必须回到源文件与具体行号验证。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="guide-section" id="setup">
+            <div class="guide-section-head">
+                <span class="guide-section-number">02</span>
+                <div><h2>按这六步完成第一次接入</h2><p>把身份、权限、工具边界和验收一起配置，而不是只追求“接口能通”。</p></div>
+            </div>
+            <ol class="step-list">
+                <li>
+                    <span>01</span>
+                    <div><strong>定义可读范围</strong><p>明确工作区根目录、允许的仓库、排除目录和敏感文件规则。</p></div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div><strong>先启用文本搜索</strong><p>提供 rg、文件列表与 git log；不要一开始就把所有代码上传到外部向量库。</p></div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div><strong>增加符号能力</strong><p>按语言接入 LSP、索引器或代码搜索平台，用于查定义、引用和调用方。</p></div>
+                </li>
+                <li>
+                    <span>04</span>
+                    <div><strong>返回可验证证据</strong><p>每个搜索结果都带仓库、文件、行号、Commit 或索引时间，避免只给抽象摘要。</p></div>
+                </li>
+                <li>
+                    <span>05</span>
+                    <div><strong>处理索引时效</strong><p>显示最后索引时间；修改前回读本地文件，避免基于陈旧索引改代码。</p></div>
+                </li>
+                <li>
+                    <span>06</span>
+                    <div><strong>建立检索基准</strong><p>准备 10 个已知答案的问题，评估召回、噪音、权限过滤和跨仓库能力。</p></div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="guide-section" id="config">
+            <div class="guide-section-head">
+                <span class="guide-section-number">03</span>
+                <div><h2>配置示例</h2><p>字段和值都是示例占位符，请按你使用的 Agent、平台和密钥管理方式调整。</p></div>
+            </div>
+            <div class="config-panel">
+                <div class="config-panel-head"><span>terminal · 本地检索基线</span><span>示例 · 不含真实密钥</span></div>
+                <pre><code># 查符号与调用线索
+rg -n &quot;PaymentService|process_payment&quot; src tests
+
+# 排除生成目录
+rg -n &quot;TODO|FIXME&quot; . -g &#x27;!dist/**&#x27; -g &#x27;!vendor/**&#x27;
+
+# 查变更历史
+git log -S &quot;process_payment&quot; --oneline --all</code></pre>
+                <p class="config-note">搜索工具应默认遵守 .gitignore，并额外排除密钥、导出数据、生产备份和大型生成目录。</p>
+            </div>
+        </section>
+
+        <section class="guide-section" id="permission">
+            <div class="guide-section-head">
+                <span class="guide-section-number">04</span>
+                <div><h2>最小权限建议</h2><p>把读取、草稿和高影响动作分开，避免一个 Token 同时拥有全部能力。</p></div>
+            </div>
+            <table class="permission-table">
+                <thead><tr><th>动作</th><th>默认等级</th><th>建议边界</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>文件名 / 文本搜索</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>限定工作区与排除规则。</td>
+                    </tr>
+                    <tr>
+                        <td>符号 / 引用检索</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>返回文件、行号和索引版本。</td>
+                    </tr>
+                    <tr>
+                        <td>跨仓库搜索</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>继承用户在每个仓库的可见权限。</td>
+                    </tr>
+                    <tr>
+                        <td>建立外部索引</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>先确认代码是否允许离开内网及其保留策略。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="guide-section" id="verify">
+            <div class="guide-section-head">
+                <span class="guide-section-number">05</span>
+                <div><h2>上线前验收</h2><p>不要只测成功路径；撤销权限、重复执行和失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>无法搜索未授权仓库和明确排除的敏感目录。</li>
+                    <li>结果带文件路径、行号和索引时间。</li>
+                    <li>Agent 修改前会重新读取本地最新文件。</li>
+                    <li>对已知问题的搜索结果可复现且噪音可控。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>找出 PaymentService 的定义、主要调用方和最近一次行为变更；只引用源文件与 git 历史，不要修改代码。</code>
+                </div>
+            </div>
+            <div class="guide-warning">
+                <span>!</span>
+                <div><strong>语义相似不等于代码事实</strong><p>向量检索适合发现候选，但不能替代编译器、文本搜索和源文件。架构结论、调用关系和修改位置必须回到真实代码验证。</p></div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="docs">
+            <div class="guide-section-head">
+                <span class="guide-section-number">06</span>
+                <div><h2>继续查看官方文档</h2><p>平台界面和权限名称会更新，实际接入时以官方文档和企业管理员策略为准。</p></div>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://github.com/BurntSushi/ripgrep" target="_blank" rel="noopener noreferrer">
+                    <small>RIPGREP</small>
+                    <strong>ripgrep project</strong>
+                    <p>快速递归文本搜索并遵守 Git 忽略规则。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://sourcegraph.com/docs/code-search" target="_blank" rel="noopener noreferrer">
+                    <small>SOURCEGRAPH</small>
+                    <strong>Code Search documentation</strong>
+                    <p>跨仓库搜索、查询语言和结果导航。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://git-scm.com/book/en/v2/Git-Tools-Searching" target="_blank" rel="noopener noreferrer">
+                    <small>GIT</small>
+                    <strong>Searching Git history</strong>
+                    <p>用 log、grep 和 pickaxe 查找历史变化。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-release.html">
+                <small>上一个连接</small>
+                <strong>← 连接发布平台</strong>
+            </a>
+            <a href="connect-local-tools.html">
+                <small>下一个连接</small>
+                <strong>→ 连接本地文件、命令与浏览器</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+</body>
+
+</html>

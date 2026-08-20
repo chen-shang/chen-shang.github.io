@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI机械臂连接教程：连接发布平台。包含接入路线、最小权限、配置示例、验收清单和官方文档。">
+    <title>连接发布平台 — AI机械臂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css?v=20260723">
+</head>
+
+<body class="connection-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 07 / 10</span>
+    </nav>
+
+    <main class="connection-guide">
+        <header class="guide-hero" data-number="07">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 07</div>
+            <h1>连接发布平台</h1>
+            <p>让 Agent 看懂 Pipeline 和发布结果，但把生产部署放在受保护环境与人工批准之后。</p>
+            <div class="guide-pills"><span>GitHub Actions</span><span>GitLab CI/CD</span><span>环境保护</span><span>回滚优先</span></div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#route">选择路线</a>
+            <a href="#setup">接入步骤</a>
+            <a href="#config">配置示例</a>
+            <a href="#permission">最小权限</a>
+            <a href="#verify">验收</a>
+            <a href="#docs">官方文档</a>
+        </nav>
+
+        <section class="guide-section" id="route">
+            <div class="guide-section-head">
+                <span class="guide-section-number">01</span>
+                <div><h2>先选一条正确的连接路线</h2><p>不要一次开放所有能力。先选择最小可用入口，验证价值后再升级。</p></div>
+            </div>
+            <div class="route-grid">
+                <article class="route-card recommended">
+                    <span>推荐</span>
+                    <h3>只读 CI 观察员</h3>
+                    <p>Agent 读取 Pipeline、Job 日志与测试结果，归纳失败原因，不具备重新部署权限。</p>
+                </article>
+                <article class="route-card">
+                    <span>受控</span>
+                    <h3>手动触发工作流</h3>
+                    <p>Agent 准备参数和变更摘要，人工确认后触发 workflow_dispatch 或 GitLab 手动 Job。</p>
+                </article>
+                <article class="route-card">
+                    <span>成熟</span>
+                    <h3>环境化发布编排</h3>
+                    <p>在测试、预发、生产间设置审批、锁、灰度、健康检查和自动回滚。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="guide-section" id="setup">
+            <div class="guide-section-head">
+                <span class="guide-section-number">02</span>
+                <div><h2>按这六步完成第一次接入</h2><p>把身份、权限、工具边界和验收一起配置，而不是只追求“接口能通”。</p></div>
+            </div>
+            <ol class="step-list">
+                <li>
+                    <span>01</span>
+                    <div><strong>画出发布链路</strong><p>列出构建、测试、制品、部署、迁移、健康检查和回滚步骤，标明每一步负责人。</p></div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div><strong>先接只读接口</strong><p>允许 Agent 查询工作流、Pipeline、Job 和日志，不允许取消、重跑或部署。</p></div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div><strong>设置受保护环境</strong><p>生产环境要求审批人、分支限制与专用 Secret；测试环境使用独立低风险凭证。</p></div>
+                </li>
+                <li>
+                    <span>04</span>
+                    <div><strong>封装发布请求</strong><p>Agent 输出版本、提交范围、变更摘要、风险、数据库影响和回滚命令。</p></div>
+                </li>
+                <li>
+                    <span>05</span>
+                    <div><strong>增加健康检查</strong><p>部署后读取应用健康、错误率和关键业务指标；异常立即停止后续步骤。</p></div>
+                </li>
+                <li>
+                    <span>06</span>
+                    <div><strong>演练失败回退</strong><p>在测试环境模拟 Job 失败、健康检查失败和超时，验证回滚与通知流程。</p></div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="guide-section" id="config">
+            <div class="guide-section-head">
+                <span class="guide-section-number">03</span>
+                <div><h2>配置示例</h2><p>字段和值都是示例占位符，请按你使用的 Agent、平台和密钥管理方式调整。</p></div>
+            </div>
+            <div class="config-panel">
+                <div class="config-panel-head"><span>.github/workflows/release.yml · 受控入口</span><span>示例 · 不含真实密钥</span></div>
+                <pre><code>name: release
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        type: choice
+        options: [staging, production]
+
+jobs:
+  deploy:
+    environment: ${{ inputs.environment }}
+    permissions:
+      contents: read</code></pre>
+                <p class="config-note">生产环境的审批人、Secret 和保护规则应配置在代码平台，不应由 Agent 在工作流文件中绕过。</p>
+            </div>
+        </section>
+
+        <section class="guide-section" id="permission">
+            <div class="guide-section-head">
+                <span class="guide-section-number">04</span>
+                <div><h2>最小权限建议</h2><p>把读取、草稿和高影响动作分开，避免一个 Token 同时拥有全部能力。</p></div>
+            </div>
+            <table class="permission-table">
+                <thead><tr><th>动作</th><th>默认等级</th><th>建议边界</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>读取 Job / Pipeline 日志</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>允许分析失败原因和测试报告。</td>
+                    </tr>
+                    <tr>
+                        <td>重跑失败 Job</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>确认失败是否可重试，避免重复执行迁移或外部操作。</td>
+                    </tr>
+                    <tr>
+                        <td>部署测试 / 预发</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>展示版本、参数、制品摘要和健康检查。</td>
+                    </tr>
+                    <tr>
+                        <td>部署生产 / 回滚</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>受保护环境审批；回滚路径必须提前验证。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="guide-section" id="verify">
+            <div class="guide-section-head">
+                <span class="guide-section-number">05</span>
+                <div><h2>上线前验收</h2><p>不要只测成功路径；撤销权限、重复执行和失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>Agent 能区分代码失败、环境失败和偶发失败。</li>
+                    <li>生产 Secret 不会出现在日志、Prompt 或生成的报告中。</li>
+                    <li>生产部署必须经过环境审批且只能来自受保护分支。</li>
+                    <li>部署失败时能停止流程并给出已验证的回滚入口。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>读取最近一次测试环境 Pipeline，归纳失败 Job 和日志证据；不要重跑，先给出修复与回滚建议。</code>
+                </div>
+            </div>
+            <div class="guide-warning">
+                <span>!</span>
+                <div><strong>Agent 不应成为生产环境的超级管理员</strong><p>即使 Agent 能写代码，也不代表它应能绕过环境保护。生产发布要依赖平台级审批、短期凭证、最小权限和可独立执行的回滚。</p></div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="docs">
+            <div class="guide-section-head">
+                <span class="guide-section-number">06</span>
+                <div><h2>继续查看官方文档</h2><p>平台界面和权限名称会更新，实际接入时以官方文档和企业管理员策略为准。</p></div>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://docs.github.com/en/actions/get-started/quickstart" target="_blank" rel="noopener noreferrer">
+                    <small>GITHUB</small>
+                    <strong>GitHub Actions Quickstart</strong>
+                    <p>建立第一个工作流并理解 Job 与 Runner。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://docs.github.com/en/actions/security-guides/automatic-token-authentication" target="_blank" rel="noopener noreferrer">
+                    <small>GITHUB</small>
+                    <strong>GITHUB_TOKEN permissions</strong>
+                    <p>限制工作流内置 Token 的权限。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://docs.gitlab.com/ci/pipelines/" target="_blank" rel="noopener noreferrer">
+                    <small>GITLAB</small>
+                    <strong>GitLab pipelines</strong>
+                    <p>配置、运行与查看 GitLab CI/CD Pipeline。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-repository.html">
+                <small>上一个连接</small>
+                <strong>← 连接 GitHub / GitLab</strong>
+            </a>
+            <a href="connect-code-search.html">
+                <small>下一个连接</small>
+                <strong>→ 连接代码阅读与检索</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+</body>
+
+</html>

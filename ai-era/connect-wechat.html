@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI机械臂连接教程：连接微信。包含接入路线、最小权限、配置示例、验收清单和官方文档。">
+    <title>连接微信 — AI机械臂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css?v=20260723">
+</head>
+
+<body class="connection-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 03 / 10</span>
+    </nav>
+
+    <main class="connection-guide">
+        <header class="guide-hero" data-number="03">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 03</div>
+            <h1>连接微信</h1>
+            <p>个人微信没有面向普通开发者的通用机器人接口；应通过公众号、小程序或企业微信走官方通道。</p>
+            <div class="guide-pills"><span>公众号</span><span>小程序</span><span>客服消息</span><span>不自动化个人号</span></div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#route">选择路线</a>
+            <a href="#setup">接入步骤</a>
+            <a href="#config">配置示例</a>
+            <a href="#permission">最小权限</a>
+            <a href="#verify">验收</a>
+            <a href="#docs">官方文档</a>
+        </nav>
+
+        <section class="guide-section" id="route">
+            <div class="guide-section-head">
+                <span class="guide-section-number">01</span>
+                <div><h2>先选一条正确的连接路线</h2><p>不要一次开放所有能力。先选择最小可用入口，验证价值后再升级。</p></div>
+            </div>
+            <div class="route-grid">
+                <article class="route-card recommended">
+                    <span>推荐</span>
+                    <h3>微信公众号</h3>
+                    <p>适合内容通知、用户咨询与客服回复。服务端校验签名后接收消息，再调用 Agent 生成建议回复。</p>
+                </article>
+                <article class="route-card">
+                    <span>产品入口</span>
+                    <h3>微信小程序</h3>
+                    <p>适合有界面的业务助手。用户在小程序内提交任务，后端控制身份、权限和结果展示。</p>
+                </article>
+                <article class="route-card">
+                    <span>团队协作</span>
+                    <h3>转到企业微信</h3>
+                    <p>如果目标是群通知、内部应用和员工身份，优先使用企业微信而不是模拟个人微信客户端。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="guide-section" id="setup">
+            <div class="guide-section-head">
+                <span class="guide-section-number">02</span>
+                <div><h2>按这六步完成第一次接入</h2><p>把身份、权限、工具边界和验收一起配置，而不是只追求“接口能通”。</p></div>
+            </div>
+            <ol class="step-list">
+                <li>
+                    <span>01</span>
+                    <div><strong>确定官方入口</strong><p>先判断是公众号、小程序还是企业微信。不要采用模拟登录、Hook 客户端或托管个人微信账号。</p></div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div><strong>注册与认证主体</strong><p>在微信公众平台创建对应账号，完成主体认证，并准备可公网访问的 HTTPS 回调地址。</p></div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div><strong>配置服务器</strong><p>填写 URL、Token 和 EncodingAESKey；服务端必须正确处理签名校验、消息解密和重放保护。</p></div>
+                </li>
+                <li>
+                    <span>04</span>
+                    <div><strong>连接 Agent 服务</strong><p>把用户消息转成内部任务，增加用户 ID、会话 ID、来源与敏感内容过滤，再交给 Agent。</p></div>
+                </li>
+                <li>
+                    <span>05</span>
+                    <div><strong>限制回复能力</strong><p>先只生成回复建议，由人工确认；自动回复仅用于固定低风险场景，并设置超时和兜底话术。</p></div>
+                </li>
+                <li>
+                    <span>06</span>
+                    <div><strong>测试完整链路</strong><p>覆盖关注、取消关注、文本、图片、超时、重复回调和服务异常，确认用户能得到明确反馈。</p></div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="guide-section" id="config">
+            <div class="guide-section-head">
+                <span class="guide-section-number">03</span>
+                <div><h2>配置示例</h2><p>字段和值都是示例占位符，请按你使用的 Agent、平台和密钥管理方式调整。</p></div>
+            </div>
+            <div class="config-panel">
+                <div class="config-panel-head"><span>.env.local · 公众号服务端</span><span>示例 · 不含真实密钥</span></div>
+                <pre><code>WECHAT_APP_ID=wx_your_app_id
+WECHAT_APP_SECRET=stored-in-secret-manager
+WECHAT_CALLBACK_TOKEN=random-long-token
+WECHAT_ENCODING_AES_KEY=43-char-aes-key
+WECHAT_AUTO_REPLY=false</code></pre>
+                <p class="config-note">AppSecret 与 EncodingAESKey 只应存在于服务端。回调接口要校验签名、时间戳与 nonce，并防止重复处理同一消息。</p>
+            </div>
+        </section>
+
+        <section class="guide-section" id="permission">
+            <div class="guide-section-head">
+                <span class="guide-section-number">04</span>
+                <div><h2>最小权限建议</h2><p>把读取、草稿和高影响动作分开，避免一个 Token 同时拥有全部能力。</p></div>
+            </div>
+            <table class="permission-table">
+                <thead><tr><th>动作</th><th>默认等级</th><th>建议边界</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>接收用户消息</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>保留来源与会话标识，敏感内容进入 Agent 前先脱敏。</td>
+                    </tr>
+                    <tr>
+                        <td>生成客服回复</td>
+                        <td><span class="permission-level">草稿</span></td>
+                        <td>先进入人工工作台确认。</td>
+                    </tr>
+                    <tr>
+                        <td>自动回复固定问答</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>只开放白名单意图，并设置低置信度转人工。</td>
+                    </tr>
+                    <tr>
+                        <td>用户画像与营销触达</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>必须满足平台规则、隐私告知与业务授权。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="guide-section" id="verify">
+            <div class="guide-section-head">
+                <span class="guide-section-number">05</span>
+                <div><h2>上线前验收</h2><p>不要只测成功路径；撤销权限、重复执行和失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>服务器配置校验可以通过，错误签名会被拒绝。</li>
+                    <li>同一回调重复到达时只处理一次。</li>
+                    <li>Agent 回复超时会返回固定兜底提示，而不是让请求悬空。</li>
+                    <li>个人微信账号没有被任何脚本、插件或云手机托管。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>收到公众号测试消息后，只生成客服回复建议，并在后台显示原消息、建议回复和是否需要转人工。</code>
+                </div>
+            </div>
+            <div class="guide-warning">
+                <span>!</span>
+                <div><strong>不要把“个人微信自动化”当正式集成</strong><p>模拟个人号登录、注入客户端或使用非官方协议可能带来封号、隐私和合规风险。生产用途应选择公众号、小程序或企业微信官方能力。</p></div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="docs">
+            <div class="guide-section-head">
+                <span class="guide-section-number">06</span>
+                <div><h2>继续查看官方文档</h2><p>平台界面和权限名称会更新，实际接入时以官方文档和企业管理员策略为准。</p></div>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://developers.weixin.qq.com/doc/offiaccount/Getting_Started/Overview.html" target="_blank" rel="noopener noreferrer">
+                    <small>WECHAT</small>
+                    <strong>公众号开发概述</strong>
+                    <p>了解服务器配置、消息与接口调用基础。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://developers.weixin.qq.com/miniprogram/dev/framework/" target="_blank" rel="noopener noreferrer">
+                    <small>WECHAT</small>
+                    <strong>小程序开发指南</strong>
+                    <p>建立有身份和界面的业务入口。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://open.weixin.qq.com/" target="_blank" rel="noopener noreferrer">
+                    <small>WECHAT</small>
+                    <strong>微信开放平台</strong>
+                    <p>查看移动应用、网站应用与账号体系能力。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-dingtalk.html">
+                <small>上一个连接</small>
+                <strong>← 连接钉钉</strong>
+            </a>
+            <a href="connect-wecom.html">
+                <small>下一个连接</small>
+                <strong>→ 连接企业微信</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+</body>
+
+</html>

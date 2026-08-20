@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>密码学：把信任写进数学 — AI纪元</title>
+    <meta name="description" content="从凯撒密码、对称加密、非对称加密与哈希，到中间人攻击、数字证书颁发、证书链、HTTPS、密码存储和后量子密码，一篇建立现代密码学的完整认知地图。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part15.css">
+</head>
+
+<body>
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html" class="active" aria-current="page">密码学</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content crypto-article">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#introduction" data-section="introduction"><span class="toc-num">01</span><span class="toc-label">引言</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#mission" data-section="mission"><span class="toc-num">02</span><span class="toc-label">密码学的使命</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#classical" data-section="classical"><span class="toc-num">03</span><span class="toc-label">古典密码学</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#symmetric" data-section="symmetric"><span class="toc-num">04</span><span class="toc-label">对称加密</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#asymmetric" data-section="asymmetric"><span class="toc-num">05</span><span class="toc-label">非对称加密</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#hash" data-section="hash"><span class="toc-num">06</span><span class="toc-label">哈希函数</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#signature" data-section="signature"><span class="toc-num">07</span><span class="toc-label">数字签名</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#mitm" data-section="mitm"><span class="toc-num">08</span><span class="toc-label">中间人攻击</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#https" data-section="https"><span class="toc-num">09</span><span class="toc-label">HTTPS 协同机制</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#password" data-section="password"><span class="toc-num">10</span><span class="toc-label">密码存储</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#pitfalls" data-section="pitfalls"><span class="toc-num">11</span><span class="toc-label">常见误区</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#quantum" data-section="quantum"><span class="toc-num">12</span><span class="toc-label">量子计算挑战</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#map" data-section="map"><span class="toc-num">13</span><span class="toc-label">密码学全景地图</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#conclusion" data-section="conclusion"><span class="toc-num">14</span><span class="toc-label">结语</span></a></li>
+        </ul>
+      </aside>
+
+        <header class="article-header crypto-hero">
+            <div class="cipher-rain" aria-hidden="true">
+                <span>01001011</span><span>HASH</span><span>7F 3A 91</span><span>PUBLIC KEY</span>
+                <span>AES</span><span>∑ mod n</span><span>SHA-256</span><span>PRIVATE KEY</span>
+            </div>
+            <div class="hero-kicker">CRYPTOGRAPHY · TRUST BY DESIGN</div>
+            <h1 class="article-title">密码学：<span>把信任写进数学</span></h1>
+            <p class="article-subtitle">密码学不只是将明文转换为密文，更是在不可信网络中提供机密性、完整性、身份认证与真实性保障</p>
+            <div class="article-meta">
+                <span>🔐 基础专题</span>
+                <span>⏱ 约 30 分钟阅读</span>
+                <span>🧪 含 2 个互动实验</span>
+            </div>
+            <div class="hero-equation" aria-label="密码学核心过程">
+                <span class="equation-chip plain">明文</span>
+                <span class="equation-arrow">＋ 密钥 →</span>
+                <span class="equation-chip cipher">密文</span>
+                <span class="equation-arrow">＋ 正确密钥 →</span>
+                <span class="equation-chip plain">明文</span>
+            </div>
+        </header>
+
+        <nav class="toc-bar crypto-toc" aria-label="本文目录">
+            <a href="#mission">四项任务</a>
+            <a href="#classical">古典密码</a>
+            <a href="#symmetric">对称加密</a>
+            <a href="#asymmetric">非对称加密</a>
+            <a href="#hash">哈希</a>
+            <a href="#signature">数字签名</a>
+            <a href="#mitm">中间人攻击</a>
+            <a href="#https">HTTPS</a>
+            <a href="#password">密码存储</a>
+            <a href="#pitfalls">常见误区</a>
+            <a href="#quantum">量子时代</a>
+        </nav>
+
+        <section class="chapter-section fade-in" id="introduction">
+            <div class="opening-scene">
+                <div class="scene-copy">
+                    <div class="section-label">从一个问题开始</div>
+                    <h2>如果传输链路和沿途节点都不可信，Alice 如何确保消息安全抵达 Bob？</h2>
+                    <p class="lead-paragraph">互联网通信通常需要经过多个中间节点。聊天消息、订单和登录请求，可能依次经过路由器、运营商网络、云服务与公共网络。密码学的目标，是让<strong>传输链路可以不可信，通信过程仍具备可信保障</strong>。</p>
+                </div>
+                <div class="message-scene" aria-label="Alice 向 Bob 发送加密消息，Eve 在中途窃听">
+                    <div class="person alice"><span>👩🏻‍💻</span><strong>Alice</strong><small>发送者</small></div>
+                    <div class="message-path">
+                        <div class="sealed-message"><span>🔒</span><code>8F A2 1C 7B</code></div>
+                        <div class="path-line"></div>
+                        <div class="eve"><span>👀</span><small>Eve 只能看到密文</small></div>
+                    </div>
+                    <div class="person bob"><span>👨🏻‍💻</span><strong>Bob</strong><small>接收者</small></div>
+                </div>
+            </div>
+            <div class="summary-box crypto-summary">
+                <strong>首先需要明确：</strong>密码学并不承诺脱离条件的“绝对不可破解”，而是通过计算复杂度与密钥空间，将攻击所需的时间和资源提高到现实中难以承受的水平。
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="mission">
+            <div class="section-label">01 · 密码学到底解决什么</div>
+            <h2 class="section-title">从信息保密到真实性验证</h2>
+            <p class="section-intro">现代密码系统通常要同时完成四项任务。只实现其中一项，往往还不够安全。</p>
+
+            <div class="mission-grid">
+                <article class="mission-card confidentiality">
+                    <div class="mission-icon">◐</div>
+                    <span class="mission-en">CONFIDENTIALITY</span>
+                    <h3>机密性</h3>
+                    <p>防止未授权主体获取内容。它回答：<strong>哪些主体可以访问？</strong></p>
+                    <small>典型工具：加密</small>
+                </article>
+                <article class="mission-card integrity">
+                    <div class="mission-icon">✓</div>
+                    <span class="mission-en">INTEGRITY</span>
+                    <h3>完整性</h3>
+                    <p>任何未授权改动都应能够被检测。它回答：<strong>数据是否保持完整？</strong></p>
+                    <small>典型工具：MAC、哈希、签名</small>
+                </article>
+                <article class="mission-card authentication">
+                    <div class="mission-icon">◎</div>
+                    <span class="mission-en">AUTHENTICATION</span>
+                    <h3>身份认证</h3>
+                    <p>验证通信实体的身份。它回答：<strong>对方是否为其声称的主体？</strong></p>
+                    <small>典型工具：证书、签名、挑战响应</small>
+                </article>
+                <article class="mission-card nonrepudiation">
+                    <div class="mission-icon">✎</div>
+                    <span class="mission-en">NON-REPUDIATION</span>
+                    <h3>不可否认性</h3>
+                    <p>在密钥得到妥善管理的前提下，为签名行为的归属提供可验证证据。</p>
+                    <small>典型工具：数字签名</small>
+                </article>
+            </div>
+
+            <div class="concept-warning">
+                <span>一个关键区别</span>
+                <p><strong>编码</strong>是为了表示数据，任何人都能还原；<strong>加密</strong>依赖密钥，只有授权者能还原；<strong>哈希</strong>通常是单向摘要，设计目标就不是还原。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="classical">
+            <div class="section-label">02 · 从古典密码开始</div>
+            <h2 class="section-title">秘密应该放在密钥里，而不是算法里</h2>
+            <div class="two-col-layout">
+                <div>
+                    <p class="section-intro">古典密码常用替换、移位或重排隐藏文字。凯撒密码把每个字母向后移动固定位置：当位移为 3 时，<code>A → D</code>，<code>HELLO → KHOOR</code>。</p>
+                    <div class="principle-card">
+                        <span>Kerckhoffs 原则</span>
+                        <blockquote>即使敌人知道系统如何工作，只要密钥仍然保密，系统也应该安全。</blockquote>
+                        <p>公开算法可以接受全世界检验；真正需要保护的是更短、更易更换的密钥。自行设计并依赖算法保密，通常只会形成安全性幻觉。</p>
+                    </div>
+                </div>
+
+                <div class="lab-card caesar-lab">
+                    <div class="lab-heading">
+                        <span class="lab-index">实验 01</span>
+                        <h3>调整参数，观察凯撒密码</h3>
+                    </div>
+                    <label for="caesar-input">输入英文</label>
+                    <textarea id="caesar-input" rows="3">MEET ME AT NINE</textarea>
+                    <div class="range-row">
+                        <label for="caesar-shift">位移</label>
+                        <input id="caesar-shift" type="range" min="0" max="25" value="3">
+                        <output id="caesar-shift-value" for="caesar-shift">3</output>
+                    </div>
+                    <div class="lab-output">
+                        <span>密文</span>
+                        <code id="caesar-output">PHHW PH DW QLQH</code>
+                    </div>
+                    <p class="lab-note">位移只有 26 种可能，穷举即可恢复明文。古典密码适合用于理解基本原理，但无法满足现代数据安全需求。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="symmetric">
+            <div class="section-label">03 · 对称加密</div>
+            <h2 class="section-title">共享密钥完成加密与解密</h2>
+            <p class="section-intro">对称加密中，发送方和接收方共享同一把秘密密钥。它的计算效率较高，适合保护文件、磁盘、数据库以及网络传输中的大量数据。</p>
+
+            <div class="key-diagram symmetric-diagram">
+                <div class="diagram-party">
+                    <span class="party-name">Alice</span>
+                    <div class="document plain-doc">转账 100 元</div>
+                </div>
+                <div class="diagram-operation">
+                    <span class="shared-key">🔑 K</span>
+                    <span>加密</span>
+                    <i>→</i>
+                </div>
+                <div class="document cipher-doc">A7·2F·91·C0</div>
+                <div class="diagram-operation reverse">
+                    <i>→</i>
+                    <span>解密</span>
+                    <span class="shared-key">🔑 K</span>
+                </div>
+                <div class="diagram-party">
+                    <span class="party-name">Bob</span>
+                    <div class="document plain-doc">转账 100 元</div>
+                </div>
+            </div>
+
+            <div class="knowledge-grid">
+                <article>
+                    <span class="knowledge-num">01</span>
+                    <h3>仅有算法并不足够</h3>
+                    <p>现代系统常使用 AES 等标准算法，但在工程实现中还需要选择安全的工作模式，并验证数据的完整性。</p>
+                </article>
+                <article>
+                    <span class="knowledge-num">02</span>
+                    <h3>Nonce 不是密钥</h3>
+                    <p>Nonce 可以公开，但在许多模式下绝不能与同一密钥重复使用。它的作用是让相同明文产生不同密文。</p>
+                </article>
+                <article>
+                    <span class="knowledge-num">03</span>
+                    <h3>密钥安全分发</h3>
+                    <p>如果 Alice 和 Bob 此前没有建立共享秘密，如何安全获得同一密钥？这是非对称密码学解决的重要问题之一。</p>
+                </article>
+            </div>
+
+            <div class="formula-strip">
+                <code>C = Encrypt(K, P, Nonce)</code>
+                <span>加密</span>
+                <code>P = Decrypt(K, C, Nonce)</code>
+                <span>解密</span>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="asymmetric">
+            <div class="section-label">04 · 非对称加密</div>
+            <h2 class="section-title">公钥可以公开，私钥必须严格保管</h2>
+            <p class="section-intro">非对称密码使用一对数学相关、功能不同的密钥：<strong>公钥</strong>可以公开，<strong>私钥</strong>必须保密。公钥不是“较弱的密码”，私钥也无法在可行的计算成本内由公钥推导出来。</p>
+
+            <div class="asymmetric-showcase">
+                <div class="key-pair public-key">
+                    <div class="key-symbol">◯</div>
+                    <span>PUBLIC KEY</span>
+                    <h3>公钥</h3>
+                    <p>可以公开分发，其他人可用它加密发送给你的消息，或验证由对应私钥生成的签名。</p>
+                </div>
+                <div class="math-bridge">
+                    <span>数学关系</span>
+                    <div class="bridge-line"><i></i><b>≠</b><i></i></div>
+                    <small>数学相关，但在可行计算资源内难以反向推导</small>
+                </div>
+                <div class="key-pair private-key">
+                    <div class="key-symbol">●</div>
+                    <span>PRIVATE KEY</span>
+                    <h3>私钥</h3>
+                    <p>应由持有者严格保管，用于解密或签名；一旦泄露，通信机密性和身份可信度都可能受到破坏。</p>
+                </div>
+            </div>
+
+            <div class="hybrid-box">
+                <div class="hybrid-title">
+                    <span>工程实践中的组合方案</span>
+                    <h3>混合加密：非对称机制建立密钥，对称机制保护数据</h3>
+                </div>
+                <div class="hybrid-flow">
+                    <div><b>1</b><span>建立身份</span><small>用证书与公钥确认对方</small></div>
+                    <i>→</i>
+                    <div><b>2</b><span>协商会话密钥</span><small>安全建立短期共享秘密</small></div>
+                    <i>→</i>
+                    <div><b>3</b><span>高速加密通信</span><small>用对称加密保护后续数据</small></div>
+                </div>
+                <p>该方案既解决了通信双方缺少预共享密钥的问题，也避免使用计算开销较高的非对称运算处理全部数据。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="hash">
+            <div class="section-label">05 · 哈希函数</div>
+            <h2 class="section-title">将任意长度数据映射为固定长度摘要</h2>
+            <p class="section-intro">哈希函数把任意长度输入压缩为固定长度摘要。好的密码学哈希应当难以逆推、难以寻找相同摘要，并对微小变化极其敏感。</p>
+
+            <div class="hash-properties">
+                <article><span>→</span><h3>固定长度</h3><p>无论输入是一个字符还是大体积文件，SHA-256 的输出始终是 256 位。</p></article>
+                <article><span>↛</span><h3>单向性</h3><p>从输入算摘要容易，从摘要反推出原文在计算上极难。</p></article>
+                <article><span>≠</span><h3>抗碰撞</h3><p>很难找到两份不同数据，让它们产生完全相同的摘要。</p></article>
+                <article><span>✦</span><h3>雪崩效应</h3><p>输入只发生一个字符的变化，输出摘要通常也会显著改变。</p></article>
+            </div>
+
+            <div class="lab-card hash-lab">
+                <div class="lab-heading">
+                    <span class="lab-index">实验 02</span>
+                    <h3>观察 SHA-256 的雪崩效应</h3>
+                    <p>修改一个字符，观察摘要的变化程度。计算完全在浏览器本地完成。</p>
+                </div>
+                <div class="hash-inputs">
+                    <label>输入 A<textarea id="hash-input-a" rows="2">密码学让互联网建立信任</textarea></label>
+                    <label>输入 B<textarea id="hash-input-b" rows="2">密码学让互联网建立信任。</textarea></label>
+                </div>
+                <button type="button" id="hash-button" class="lab-button">计算 SHA-256</button>
+                <div class="hash-results" aria-live="polite">
+                    <div><span>A 的摘要</span><code id="hash-output-a">等待计算…</code></div>
+                    <div><span>B 的摘要</span><code id="hash-output-b">等待计算…</code></div>
+                    <p id="hash-difference">点击按钮，比较两组十六进制摘要。</p>
+                </div>
+            </div>
+
+            <div class="hash-not-encryption">
+                <strong>哈希不是加密：</strong>加密为了让授权者日后解密；哈希的目的通常是比较、校验或构造其他密码机制，不存在通用的“解密哈希”操作。
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="signature">
+            <div class="section-label">06 · 数字签名与数字证书</div>
+            <h2 class="section-title">内容可以公开，来源与完整性必须可验证</h2>
+            <p class="section-intro">数字签名不负责隐藏内容，而是用于验证签名是否由对应私钥生成，以及内容在签名后是否被修改。</p>
+
+            <div class="signature-flow">
+                <div class="signature-side signing">
+                    <span class="side-label">发送方 · 签名</span>
+                    <div class="signature-step"><b>①</b><span>消息</span><code>合同.pdf</code></div>
+                    <div class="down-arrow">↓ 哈希</div>
+                    <div class="signature-step"><b>②</b><span>摘要</span><code>5B9A…E21C</code></div>
+                    <div class="down-arrow">↓ 私钥签名</div>
+                    <div class="signature-step result"><b>③</b><span>数字签名</span><code>SIGNATURE</code></div>
+                </div>
+                <div class="signature-divider"><span>发送<br>消息＋签名</span></div>
+                <div class="signature-side verifying">
+                    <span class="side-label">接收方 · 验证</span>
+                    <div class="verify-compare">
+                        <div><small>重新计算消息摘要</small><code>5B9A…E21C</code></div>
+                        <span>=</span>
+                        <div><small>用公钥验证签名</small><code>5B9A…E21C</code></div>
+                    </div>
+                    <div class="verify-success">✓ 签名有效，内容未被篡改</div>
+                </div>
+            </div>
+
+            <div class="certificate-explainer">
+                <div class="certificate-card" aria-label="网站数字证书示意图">
+                    <div class="cert-top"><span>✦ DIGITAL CERTIFICATE</span><b>✓</b></div>
+                    <h3>example.com</h3>
+                    <dl>
+                        <div><dt>主体</dt><dd>example.com</dd></div>
+                        <div><dt>公钥</dt><dd>30 82 01 0A …</dd></div>
+                        <div><dt>签发者</dt><dd>可信 CA</dd></div>
+                        <div><dt>有效期</dt><dd>一段明确时间</dd></div>
+                    </dl>
+                    <div class="cert-seal">CA 数字签名</div>
+                </div>
+                <div class="certificate-copy">
+                    <span>证书解决公钥归属问题</span>
+                    <h3>否则，攻击者可以用自己的公钥替换 Bob 的公钥</h3>
+                    <p>数字证书把<strong>域名、组织或设备身份</strong>与公钥绑定，并由受信任的证书颁发机构签名。浏览器或操作系统维护一组信任根，再沿证书链逐级验证。</p>
+                    <p>证书不是网站的“加密密码”，而是一份可验证的数字身份凭证。</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="mitm">
+            <div class="section-label">07 · 中间人攻击与证书信任链</div>
+            <h2 class="section-title">加密连接并不等同于已确认对端身份</h2>
+            <p class="section-intro">如果公钥交换没有经过身份认证，攻击者 Mallory 可以处于浏览器与服务器的通信路径上，并分别与两端建立加密连接。双方看到的都是“密文”，但攻击者仍能解密、读取、修改，再重新加密转发——这就是<strong>中间人攻击</strong>（Man-in-the-Middle，MITM）。</p>
+
+            <div class="mitm-attack" aria-label="中间人攻击过程示意图">
+                <div class="mitm-lane">
+                    <div class="mitm-party browser-party">
+                        <span class="party-icon">💻</span>
+                        <small>ALICE · 浏览器</small>
+                        <strong>我要访问 Bob</strong>
+                        <code>请求网站公钥</code>
+                    </div>
+                    <div class="mitm-link compromised">
+                        <span>加密通道 A</span>
+                        <b>使用 Mallory 的公钥</b>
+                    </div>
+                    <div class="mitm-party attacker-party">
+                        <span class="party-icon">🎭</span>
+                        <small>MALLORY · 攻击者</small>
+                        <strong>替换双方公钥</strong>
+                        <code>解密 → 修改 → 重加密</code>
+                    </div>
+                    <div class="mitm-link compromised">
+                        <span>加密通道 B</span>
+                        <b>使用 Bob 的公钥</b>
+                    </div>
+                    <div class="mitm-party server-party">
+                        <span class="party-icon">🖥️</span>
+                        <small>BOB · 真服务器</small>
+                        <strong>以为是正常客户端</strong>
+                        <code>正常处理请求</code>
+                    </div>
+                </div>
+                <div class="mitm-warning">
+                    <span>!</span>
+                    <p><strong>核心风险不在于是否使用加密，而在于能否确认公钥的真实归属。</strong>没有可靠身份认证时，两条加密通道反而可能让 Alice 和 Bob 都产生安全错觉。</p>
+                </div>
+            </div>
+
+            <div class="subsection-heading">
+                <span>数字证书包含哪些信息</span>
+                <h3>数字证书由“身份信息＋公钥＋签发者签名”构成</h3>
+                <p>网站证书通常采用 X.509 格式。它可以公开传输，因为证书的任务不是保密，而是让浏览器能够验证公钥归属和签发关系。</p>
+            </div>
+
+            <div class="cert-anatomy-grid">
+                <article><span>SUBJECT / SAN</span><h4>证书为谁服务</h4><p>主体信息以及允许使用该证书的域名列表。浏览器主要检查访问域名是否出现在 SAN 中。</p></article>
+                <article><span>PUBLIC KEY</span><h4>网站公钥</h4><p>用于验证服务器签名或参与密钥建立；与之配对的私钥必须由服务器严密保管。</p></article>
+                <article><span>ISSUER</span><h4>谁签发了证书</h4><p>记录签发该证书的 CA。浏览器会继续寻找签发者证书，直到连接到可信根。</p></article>
+                <article><span>VALIDITY</span><h4>生效与失效时间</h4><p>证书只在明确的时间窗口内有效，过期或尚未生效都会触发浏览器警告。</p></article>
+                <article><span>SERIAL / USAGE</span><h4>序列号与用途</h4><p>序列号帮助唯一识别证书；密钥用途约束它能否用于服务器认证、签名等场景。</p></article>
+                <article><span>CA SIGNATURE</span><h4>签发者数字签名</h4><p>CA 对证书中的待签名数据进行签名。受保护字段被修改后，签名验证就会失败。</p></article>
+            </div>
+
+            <div class="issuance-panel">
+                <div class="issuance-heading">
+                    <span>Certificate Issuance</span>
+                    <h3>一张网站证书是怎样被颁发的？</h3>
+                    <p>CA 不会向网站提供所谓的“万能密钥”，而是在完成验证后，通过数字签名确认某个公钥与特定域名或组织之间存在经过核验的绑定关系。</p>
+                </div>
+                <ol class="issuance-steps">
+                    <li>
+                        <b>01</b>
+                        <div><strong>网站生成密钥对</strong><p>服务器本地生成公钥和私钥。私钥应留在受控环境中，不应提交给 CA。</p></div>
+                    </li>
+                    <li>
+                        <b>02</b>
+                        <div><strong>创建并提交 CSR</strong><p>CSR（证书签名请求）携带公钥、申请域名和相关信息，并由申请者私钥签名以证明持有私钥。</p></div>
+                    </li>
+                    <li>
+                        <b>03</b>
+                        <div><strong>CA 验证申请资格</strong><p>最常见的是通过 DNS 记录或网站指定文件验证域名控制权；根据证书类型，还可能核验组织身份。</p></div>
+                    </li>
+                    <li>
+                        <b>04</b>
+                        <div><strong>中间 CA 签发证书</strong><p>验证通过后，CA 通常使用中间 CA 的私钥对网站证书签名，并把证书及中间证书交给申请者。</p></div>
+                    </li>
+                    <li>
+                        <b>05</b>
+                        <div><strong>服务器部署证书链</strong><p>网站安装自己的服务器证书和中间证书，保管对应私钥；之后在 TLS 握手中把服务器证书和必要的中间证书发送给浏览器。</p></div>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="trust-chain-block">
+                <div class="trust-chain-copy">
+                    <span>Chain of Trust</span>
+                    <h3>浏览器信任 CA 的依据是什么？</h3>
+                    <p>操作系统或浏览器预装并维护一组<strong>根证书信任库</strong>。根 CA 通常不直接大量签发网站证书，而是签发并约束中间 CA，再由中间 CA 签发服务器证书，以降低根密钥暴露风险并便于分工和撤销。</p>
+                </div>
+                <div class="certificate-chain" aria-label="根证书、中间证书和服务器证书组成的信任链">
+                    <div class="chain-node root-cert"><small>信任锚</small><strong>根 CA 证书</strong><span>已在系统或浏览器信任库中</span></div>
+                    <i>签名授权 ↓</i>
+                    <div class="chain-node intermediate-cert"><small>签发机构</small><strong>中间 CA 证书</strong><span>由根 CA 签名并限制用途</span></div>
+                    <i>签发证明 ↓</i>
+                    <div class="chain-node leaf-cert"><small>最终实体</small><strong>example.com 证书</strong><span>绑定域名与网站公钥</span></div>
+                </div>
+            </div>
+
+            <div class="certificate-checklist">
+                <div class="checklist-title">
+                    <span>浏览器收到证书后</span>
+                    <h3>通常需要完成六项检查</h3>
+                </div>
+                <ul>
+                    <li><b>域名是否匹配？</b><span>访问的域名必须被证书的 SAN 覆盖。</span></li>
+                    <li><b>有效期是否符合要求？</b><span>证书不能过期，也不能尚未生效。</span></li>
+                    <li><b>签名是否有效？</b><span>逐级使用签发者公钥验证证书签名。</span></li>
+                    <li><b>能否构建到可信根的证书链？</b><span>证书链最终必须落到本机信任库认可的根证书。</span></li>
+                    <li><b>密钥用途是否符合要求？</b><span>证书用途、算法和安全参数必须满足服务器认证要求。</span></li>
+                    <li><b>是否已失效或被撤销？</b><span>浏览器与系统会结合有效期、更新机制以及 CRL、OCSP 等撤销信息作出判断。</span></li>
+                </ul>
+            </div>
+
+            <div class="cert-lifecycle-note">
+                <strong>证书也有生命周期：</strong>
+                <span>到期前需要续期；私钥泄露、错误签发或控制权变化时应撤销并重新签发。公开信任的 TLS 证书还会借助证书透明度日志，让异常或未经授权的签发更容易被发现。</span>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="https">
+            <div class="section-label">08 · HTTPS 如何保护一次访问</div>
+            <h2 class="section-title">浏览器的安全连接标识，依赖多种密码机制协同工作</h2>
+            <p class="section-intro">当你访问 HTTPS 网站，浏览器与服务器会先完成一次握手，再开始传输网页和业务数据。证书认证负责确认服务器身份，密钥交换负责建立会话秘密；简化后可以理解为四步。</p>
+
+            <div class="https-timeline">
+                <article>
+                    <span class="timeline-number">01</span>
+                    <div class="timeline-icon">🌐</div>
+                    <h3>协商参数</h3>
+                    <p>双方声明支持的协议与算法，并交换随机信息。</p>
+                </article>
+                <article>
+                    <span class="timeline-number">02</span>
+                    <div class="timeline-icon">🪪</div>
+                    <h3>验证证书</h3>
+                    <p>浏览器检查域名、有效期、签名与证书链，确认服务器证书对应当前访问的域名。</p>
+                </article>
+                <article>
+                    <span class="timeline-number">03</span>
+                    <div class="timeline-icon">🤝</div>
+                    <h3>协商密钥</h3>
+                    <p>双方通过密钥交换得到相同的会话秘密，却不直接在网络上传送该秘密。</p>
+                </article>
+                <article>
+                    <span class="timeline-number">04</span>
+                    <div class="timeline-icon">⚡</div>
+                    <h3>加密通信</h3>
+                    <p>后续数据使用快速的对称认证加密，同时获得机密性与完整性。</p>
+                </article>
+            </div>
+
+            <div class="mitm-blocked">
+                <div class="blocked-icon">🛡️</div>
+                <div>
+                    <span>证书如何阻断中间人攻击</span>
+                    <h3>攻击者可以转发流量，但难以伪造受信任的证书链</h3>
+                    <p>普通攻击者即使替换服务器公钥，也无法为目标域名生成一个能通过可信 CA 签名验证的证书。浏览器会因域名不匹配、签名链不可信或证书异常而阻止连接并显示警告。</p>
+                    <p class="blocked-caveat">前提是用户没有忽略证书警告，设备没有被植入恶意根证书，CA、服务器私钥和终端本身也没有失陷。</p>
+                </div>
+            </div>
+
+            <div class="https-boundary">
+                <div>
+                    <span>HTTPS 能保护</span>
+                    <ul>
+                        <li>传输内容具备机密性</li>
+                        <li>能够检测传输过程中的篡改</li>
+                        <li>在证书体系内验证网站身份</li>
+                    </ul>
+                </div>
+                <div>
+                    <span>HTTPS 不能保证</span>
+                    <ul>
+                        <li>网站自身可信且不存在安全漏洞</li>
+                        <li>你的终端没有木马或恶意插件</li>
+                        <li>登录后提交的数据永远不被滥用</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="password">
+            <div class="section-label">09 · 网站应当怎样保存密码</div>
+            <h2 class="section-title">不应保存明文，也不应保存“可解密的密码”</h2>
+            <p class="section-intro">服务端验证密码时，不需要存储用户的原始密码。更安全的做法是保存经过<strong>随机盐值＋专用密码哈希函数</strong>处理后的结果。</p>
+
+            <div class="password-pipeline">
+                <div class="pipeline-input"><span>用户密码</span><code>correct horse …</code></div>
+                <div class="pipeline-plus">＋</div>
+                <div class="pipeline-input salt"><span>随机盐值</span><code>9f31a7…</code></div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-kdf"><span>慢速 KDF</span><strong>Argon2 / scrypt / bcrypt / PBKDF2</strong><small>提高计算与内存成本</small></div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-store"><span>数据库只存</span><code>参数＋盐＋结果</code></div>
+            </div>
+
+            <div class="salt-explainer">
+                <article>
+                    <span>盐值不需要保密</span>
+                    <h3>它负责让相同密码得到不同结果</h3>
+                    <p>每位用户使用独立随机盐值，可以破坏预先计算好的彩虹表，也避免通过摘要直接识别哪些用户设置了相同密码。</p>
+                </article>
+                <article>
+                    <span>慢是一种安全属性</span>
+                    <h3>普通哈希计算过快，不适合密码存储</h3>
+                    <p>密码专用 KDF 会刻意提高单次猜测所需的计算与内存成本。合法登录通常只需计算一次，而攻击者进行大规模尝试时将承担显著成本。</p>
+                </article>
+            </div>
+
+            <div class="user-advice">
+                <strong>普通用户应优先采取三项措施：</strong>
+                <ol>
+                    <li>每个重要网站使用不同的长密码，交给密码管理器生成和保存。</li>
+                    <li>开启多因素认证；条件允许时，优先使用抗钓鱼的通行密钥或安全密钥。</li>
+                    <li>密码泄露后立即更换，但不要用固定规律在旧密码后面加数字。</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="pitfalls">
+            <div class="section-label">10 · 密码学最常见的失败方式</div>
+            <h2 class="section-title">算法强度不能代表系统整体安全</h2>
+            <p class="section-intro">真实安全事件通常并非密码算法在数学层面被直接攻破，而是由密钥管理、随机数质量、参数配置、边界处理或错误使用引发。</p>
+
+            <div class="pitfall-grid">
+                <article><span>01</span><h3>自行设计密码算法</h3><p>“别人看不懂”不等于安全。优先使用经过公开分析的标准方案与成熟库。</p></article>
+                <article><span>02</span><h3>在代码中硬编码密钥</h3><p>代码会进入仓库、日志、镜像和备份。密钥应由专门的密钥管理系统托管与轮换。</p></article>
+                <article><span>03</span><h3>重复使用 Nonce</h3><p>某些加密模式在 Nonce 重复时会泄露明文关系，甚至破坏认证能力。</p></article>
+                <article><span>04</span><h3>只加密，不校验完整性</h3><p>攻击者可能无法读懂内容，却仍能篡改密文。现代系统应优先使用认证加密。</p></article>
+                <article><span>05</span><h3>使用非密码学安全随机数</h3><p>可预测的随机数会直接削弱密钥和令牌的安全性。安全场景必须使用密码学安全随机源。</p></article>
+                <article><span>06</span><h3>忽略密钥生命周期</h3><p>密钥管理应覆盖生成、授权、使用、轮换、吊销、备份和销毁；仅考虑存储位置并不足够。</p></article>
+            </div>
+
+            <div class="engineer-rule">
+                <span>工程原则</span>
+                <p><strong>不要自行设计密码算法或组合密码协议。</strong>应优先采用高层、带认证且默认安全的成熟接口，并由专业人员审查整体威胁模型。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="quantum">
+            <div class="section-label">11 · 量子计算会让密码学失效吗</div>
+            <h2 class="section-title">量子计算不会让现有体系瞬间失效，但必须提前规划算法迁移</h2>
+
+            <div class="quantum-grid">
+                <article class="quantum-card affected">
+                    <span>受影响更直接</span>
+                    <h3>部分公钥密码体系</h3>
+                    <p>足够强大的容错量子计算机，理论上可利用 Shor 算法高效解决某些整数分解和离散对数问题，从而威胁 RSA、经典椭圆曲线等体系。</p>
+                </article>
+                <article class="quantum-card adjusted">
+                    <span>需要增加安全余量</span>
+                    <h3>对称加密与哈希</h3>
+                    <p>Grover 算法带来的是平方级加速，不是瞬间破解。通过采用更大的密钥或摘要长度，可以恢复足够的安全余量。</p>
+                </article>
+                <article class="quantum-card response">
+                    <span>迁移方向</span>
+                    <h3>后量子密码学</h3>
+                    <p>使用在经典与量子计算机上都被认为难解的数学问题构造新算法，并逐步替换容易受量子攻击的公钥组件。</p>
+                </article>
+            </div>
+
+            <div class="migration-roadmap">
+                <div class="roadmap-heading">
+                    <span>迁移原则</span>
+                    <h3>先盘点密码资产，再制定算法替换计划</h3>
+                </div>
+                <ol>
+                    <li><b>识别</b><span>哪些系统、证书、协议和数据正在使用哪些密码算法？</span></li>
+                    <li><b>分级</b><span>哪些数据需要保密十年、二十年，存在“现在收集、未来解密”的风险？</span></li>
+                    <li><b>敏捷</b><span>使算法和参数具备可升级能力，避免将单一方案永久固化在系统中。</span></li>
+                    <li><b>迁移</b><span>采用经过标准化与充分评估的方案，分阶段兼容、验证和切换。</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="map">
+            <div class="section-label">12 · 一张表建立完整心智模型</div>
+            <h2 class="section-title">面对安全需求时，先明确需要实现哪种安全属性</h2>
+
+            <div class="crypto-table-wrap">
+                <table class="crypto-table">
+                    <thead>
+                        <tr><th>工具</th><th>核心输入</th><th>主要目标</th><th>能否还原</th><th>典型场景</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>对称加密</strong></td><td>共享密钥</td><td>保密＋完整性</td><td>持密钥可还原</td><td>文件、磁盘、网络数据</td></tr>
+                        <tr><td><strong>非对称加密</strong></td><td>公钥 / 私钥</td><td>密钥建立、保密</td><td>相应私钥可还原</td><td>建立安全通道、数字信封</td></tr>
+                        <tr><td><strong>哈希</strong></td><td>任意数据</td><td>生成摘要</td><td>设计上不可逆</td><td>校验、签名的基础组件</td></tr>
+                        <tr><td><strong>消息认证码</strong></td><td>消息＋共享密钥</td><td>完整性＋来源认证</td><td>不用于还原</td><td>接口请求、协议报文</td></tr>
+                        <tr><td><strong>数字签名</strong></td><td>消息＋私钥</td><td>身份认证＋完整性</td><td>验证，不是解密</td><td>软件发布、合同、证书</td></tr>
+                        <tr><td><strong>数字证书</strong></td><td>身份＋公钥＋CA 签名</td><td>绑定身份与公钥</td><td>可公开，不用于还原</td><td>HTTPS、代码签名、设备认证</td></tr>
+                        <tr><td><strong>密码 KDF</strong></td><td>密码＋盐＋参数</td><td>提高猜测成本</td><td>不还原，重新计算比较</td><td>用户密码存储</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="conclusion">
+            <div class="section-label">✦ 结 语 ✦</div>
+            <div class="crypto-conclusion">
+                <div class="conclusion-lock" aria-hidden="true"><span>⌁</span></div>
+                <div>
+                    <h2>密码学保护的不是一串字符，而是数字世界里的信任关系</h2>
+                    <p>加密让秘密只对授权者可见，哈希使数据变化能够被检测，签名让身份能够验证，证书让陌生人之间建立信任。它们共同支撑了登录、支付、软件更新、云服务和现代通信。</p>
+                    <p>可靠的安全并非单纯依赖某种高强度算法，而是需要<strong>选择合适的密码机制、保护密钥、采用成熟协议，并持续管理其完整生命周期</strong>。</p>
+                    <div class="final-formula">安全系统 = 可靠算法 × 正确实现 × 密钥管理 × 人与流程</div>
+                </div>
+            </div>
+        </section>
+
+        <nav class="article-nav">
+            <a href="part14.html" class="nav-button prev">← 行业专题 · 个贷不良资产</a>
+            <a href="index-all.html" class="nav-button">返回目录 ↑</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        (() => {
+            const input = document.getElementById('caesar-input');
+            const shift = document.getElementById('caesar-shift');
+            const shiftValue = document.getElementById('caesar-shift-value');
+            const output = document.getElementById('caesar-output');
+
+            function caesar(text, amount) {
+                return [...text].map(char => {
+                    const code = char.charCodeAt(0);
+                    if (code >= 65 && code <= 90) return String.fromCharCode((code - 65 + amount) % 26 + 65);
+                    if (code >= 97 && code <= 122) return String.fromCharCode((code - 97 + amount) % 26 + 97);
+                    return char;
+                }).join('');
+            }
+
+            function updateCaesar() {
+                const amount = Number(shift.value);
+                shiftValue.value = String(amount);
+                output.textContent = caesar(input.value, amount);
+            }
+
+            input.addEventListener('input', updateCaesar);
+            shift.addEventListener('input', updateCaesar);
+            updateCaesar();
+
+            const hashButton = document.getElementById('hash-button');
+            const hashA = document.getElementById('hash-input-a');
+            const hashB = document.getElementById('hash-input-b');
+            const outputA = document.getElementById('hash-output-a');
+            const outputB = document.getElementById('hash-output-b');
+            const difference = document.getElementById('hash-difference');
+
+            async function sha256(text) {
+                const bytes = new TextEncoder().encode(text);
+                const digest = await crypto.subtle.digest('SHA-256', bytes);
+                return [...new Uint8Array(digest)].map(byte => byte.toString(16).padStart(2, '0')).join('');
+            }
+
+            hashButton.addEventListener('click', async () => {
+                if (!window.crypto || !crypto.subtle) {
+                    difference.textContent = '当前浏览器环境不支持 Web Crypto API，请在现代浏览器或本地服务器中打开。';
+                    return;
+                }
+
+                hashButton.disabled = true;
+                hashButton.textContent = '计算中…';
+                try {
+                    const [digestA, digestB] = await Promise.all([sha256(hashA.value), sha256(hashB.value)]);
+                    outputA.textContent = digestA;
+                    outputB.textContent = digestB;
+                    const changed = [...digestA].filter((char, index) => char !== digestB[index]).length;
+                    difference.innerHTML = `两组摘要有 <strong>${changed} / ${digestA.length}</strong> 个十六进制字符不同。`;
+                } finally {
+                    hashButton.disabled = false;
+                    hashButton.textContent = '重新计算 SHA-256';
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

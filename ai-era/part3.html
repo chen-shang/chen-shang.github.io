@@ -1,0 +1,2480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机器学习 - AI纪元</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part3.css">
+    <script>
+        (function () {
+            var plotlyPromise = null;
+            var plotlyUrl = 'https://cdn.plot.ly/plotly-3.6.0.min.js';
+
+            function loadPlotly() {
+                if (window.Plotly) {
+                    return Promise.resolve(window.Plotly);
+                }
+
+                if (!plotlyPromise) {
+                    plotlyPromise = new Promise(function (resolve, reject) {
+                        var script = document.createElement('script');
+                        script.src = plotlyUrl;
+                        script.async = true;
+                        script.charset = 'utf-8';
+                        script.onload = function () {
+                            resolve(window.Plotly);
+                        };
+                        script.onerror = function () {
+                            plotlyPromise = null;
+                            reject(new Error('Plotly 加载失败'));
+                        };
+                        document.head.appendChild(script);
+                    });
+                }
+
+                return plotlyPromise;
+            }
+
+            function onDocumentReady(callback) {
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', callback, { once: true });
+                } else {
+                    callback();
+                }
+            }
+
+            window.deferPlotlyRender = function (chartIds, renderCharts) {
+                onDocumentReady(function () {
+                    var chartElements = chartIds.map(function (chartId) {
+                        return document.getElementById(chartId);
+                    }).filter(Boolean);
+
+                    if (!chartElements.length) {
+                        return;
+                    }
+
+                    var hasStarted = false;
+                    function startRendering() {
+                        if (hasStarted) {
+                            return;
+                        }
+                        hasStarted = true;
+
+                        chartElements.forEach(function (element) {
+                            var placeholder = element.querySelector('.plot-placeholder');
+                            if (placeholder) {
+                                placeholder.textContent = '交互图表加载中…';
+                            }
+                        });
+
+                        loadPlotly().then(function () {
+                            chartElements.forEach(function (element) {
+                                element.classList.remove('deferred-plot');
+                                element.replaceChildren();
+                            });
+                            renderCharts();
+                        }).catch(function () {
+                            chartElements.forEach(function (element) {
+                                element.classList.add('plot-load-error');
+                                var placeholder = element.querySelector('.plot-placeholder');
+                                if (placeholder) {
+                                    placeholder.textContent = '图表加载失败，请检查网络后刷新页面';
+                                }
+                            });
+                        });
+                    }
+
+                    if ('IntersectionObserver' in window) {
+                        var observer = new IntersectionObserver(function (entries) {
+                            if (entries.some(function (entry) { return entry.isIntersecting; })) {
+                                observer.disconnect();
+                                startRendering();
+                            }
+                        }, { rootMargin: '500px 0px' });
+                        observer.observe(chartElements[0]);
+                    } else {
+                        startRendering();
+                    }
+                });
+            };
+        })();
+    </script>
+    <script>
+        MathJax = {
+            tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+    </script>
+</head>
+
+<body>
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html" class="active" aria-current="page">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ml-concept" data-section="ml-concept"><span class="toc-num">01</span><span class="toc-label">1 · 机器学习的概念</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ml-elements" data-section="ml-elements"><span class="toc-num">02</span><span class="toc-label">2 · 机器学习的三大要素</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ml-paradigms" data-section="ml-paradigms"><span class="toc-num">03</span><span class="toc-label">3 · 三大学习范式概述</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ml-problem-types" data-section="ml-problem-types"><span class="toc-num">04</span><span class="toc-label">4 · 机器学习要解决的问题类型</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#training-core" data-section="training-core"><span class="toc-num">05</span><span class="toc-label">5 · 模型究竟怎样学会</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ml-evaluation" data-section="ml-evaluation"><span class="toc-num">06</span><span class="toc-label">6 · 模型评估与选择</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#ml-workflow" data-section="ml-workflow"><span class="toc-num">07</span><span class="toc-label">7 · 基本工作流程与现状展望</span></a></li>
+        </ul>
+      </aside>
+
+
+        <!-- ============================
+             Hero Section
+             ============================ -->
+        <header class="article-header">
+            <h1 class="article-title">机器学习</h1>
+            <div class="article-meta">
+                <span>📖 全 10 章 · 第 2 章</span>
+                <span>⏱ 约 30 分钟阅读</span>
+            </div>
+        </header>
+
+        <!-- ============================
+             引子
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <p
+                style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: var(--space-xl);">
+                在前两章中，我们探讨了"智能"的本质与 AI 发展的前世今生。从符号主义到连接主义，从专家系统到深度学习，AI 的每一次飞跃都离不开一个核心引擎——<strong
+                    style="color: var(--primary);">机器学习</strong>。
+            </p>
+            <p
+                style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; margin-bottom: var(--space-xl);">
+                接下来，我们将从头开始系统地认识机器学习——从基本概念与三要素，到三大学习范式，再到模型训练、评估与完整工作流程。准备好了吗？让我们一起推开机器学习的大门。
+            </p>
+        </section>
+
+        <!-- ============================
+             第1章：机器学习的概念
+             ============================ -->
+        <section id="ml-concept" class="chapter-section fade-in">
+            <div class="section-label">✦ 1 · 机器学习的概念 ✦</div>
+
+            <!-- 什么是机器学习 -->
+            <h3>什么是机器学习</h3>
+            <p
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                要理解机器学习，首先要厘清它与人工智能、深度学习的关系——它们是三个层层递进的概念。
+            </p>
+
+            <!-- AI / ML / DL 层级卡片 -->
+            <div class="def-grid">
+                <div class="def-card">
+                    <span class="def-label">最外层 · 概念</span>
+                    <h3>人工智能</h3>
+                    <div class="def-en">Artificial Intelligence</div>
+                    <div class="def-body">
+                        研究、开发用于模拟、延伸和扩展人的智能的理论、方法、技术及应用系统的学科。是一个笼统而宽泛的概念，<strong>最终目标是使计算机能够模拟人的思维方式和行为</strong>。上世纪 50
+                        年代兴起，但受限于数据和硬件，发展缓慢。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label">中间层 · 方法</span>
+                    <h3>机器学习</h3>
+                    <div class="def-en">Machine Learning</div>
+                    <div class="def-body">
+                        人工智能的子集，是实现 AI
+                        的一种途径（但不是唯一途径）。专门研究计算机怎样模拟或实现人类的学习行为，以获取新知识或技能，<strong>重新组织已有知识结构以不断改善自身性能</strong>。上世纪 80
+                        年代蓬勃发展，诞生了大量数学统计模型。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label">核心层 · 技术</span>
+                    <h3>深度学习</h3>
+                    <div class="def-en">Deep Learning</div>
+                    <div class="def-body">
+                        机器学习的子集，灵感来自人脑，由人工神经网络（ANN）组成。<strong>"深度"指神经网络中隐藏层的数量</strong>。2012 年以后爆炸式增长，借助大数据与 GPU
+                        算力，广泛应用于计算机视觉、NLP 等领域。
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mitchell 的 T·E·P 定义 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ Mitchell 的 T·E·P 定义与适定性 ✦</div>
+
+            <!-- Mitchell 定义卡片 -->
+            <div class="mitchell-card">
+                <div class="mitchell-header">
+                    <div class="mitchell-avatar">T</div>
+                    <div class="mitchell-info">
+                        <span class="mitchell-name">Tom Mitchell</span>
+                        <span class="mitchell-year">1997</span>
+                    </div>
+                </div>
+                <div class="mitchell-quote">
+                    <p>"一个程序被认为能从经验 <strong>E</strong> 学习，解决任务 <strong>T</strong>，达到性能度量值 <strong>P</strong>，当且仅当有了经验 E 后，经过 P 评判，程序在处理 T 时的性能有所提升。"</p>
+                </div>
+                <div class="mitchell-source">—— 出自经典教材 <em>Machine Learning</em></div>
+            </div>
+
+            <!-- T·E·P 三要素卡片 -->
+            <div class="tep-grid">
+                <div class="tep-card tep-t">
+                    <div class="tep-icon">🎯</div>
+                    <div class="tep-label">T · Task</div>
+                    <div class="tep-title">任务</div>
+                    <div class="tep-desc">需要解决的具体问题，如"判断邮件是否为垃圾邮件"</div>
+                </div>
+                <div class="tep-card tep-e">
+                    <div class="tep-icon">📚</div>
+                    <div class="tep-label">E · Experience</div>
+                    <div class="tep-title">经验</div>
+                    <div class="tep-desc">从历史数据中获取的信息，如"已标注的邮件数据集"</div>
+                </div>
+                <div class="tep-card tep-p">
+                    <div class="tep-icon">📏</div>
+                    <div class="tep-label">P · Performance</div>
+                    <div class="tep-title">性能</div>
+                    <div class="tep-desc">可量化的评估指标，如"分类准确率达到 98%"</div>
+                </div>
+            </div>
+
+            <!-- 适定性 -->
+            <div class="wellposed-header">
+                <h4>为什么强调"适定性"？</h4>
+                <p>Mitchell 的定义暗含了一个深刻的问题：<strong>并不是任何事都能通过"积累经验"来学会</strong>。只有当 T、E、P 都被精确描述时，我们才能真正谈论"学习是否发生"。</p>
+            </div>
+
+            <div class="wellposed-grid">
+                <div class="wellposed-card wellposed-good">
+                    <div class="wellposed-badge">✅ 适定问题</div>
+                    <div class="wellposed-example">
+                        <span class="wellposed-example-title">📧 垃圾邮件过滤</span>
+                        <div class="wellposed-views">
+                            <div class="wellposed-view">
+                                <span class="view-label">T · 任务</span>
+                                <span class="view-item">判断一封新邮件是否为垃圾邮件</span>
+                            </div>
+                            <div class="wellposed-view">
+                                <span class="view-label">E · 经验</span>
+                                <span class="view-item">10 万封已标注"垃圾/正常"的历史邮件</span>
+                            </div>
+                            <div class="wellposed-view">
+                                <span class="view-label">P · 性能</span>
+                                <span class="view-item">准确率 ≥ 98%，或 F1 ≥ 0.95</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wellposed-note">🎯 T、E、P 全部可量化 → 可以验证"学习是否发生"</div>
+                </div>
+
+                <div class="wellposed-card wellposed-bad">
+                    <div class="wellposed-badge">⚠️ 不适定陷阱</div>
+                    <div class="wellposed-example">
+                        <span class="wellposed-example-title">💬 "让 AI 变聪明"</span>
+                        <div class="wellposed-views">
+                            <div class="wellposed-view">
+                                <span class="view-label">T · 任务</span>
+                                <span class="view-item">"变聪明" — 具体指什么任务？</span>
+                            </div>
+                            <div class="wellposed-view">
+                                <span class="view-label">E · 经验</span>
+                                <span class="view-item">"多学习" — 用什么数据？什么方式？</span>
+                            </div>
+                            <div class="wellposed-view">
+                                <span class="view-label">P · 性能</span>
+                                <span class="view-item">"更聪明" — 如何量化衡量？</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wellposed-note">❌ T、E、P 全部模糊 → 无法验证"学习是否发生"</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             第2章：机器学习的三大要素
+             ============================ -->
+        <section id="ml-elements" class="chapter-section fade-in">
+            <div class="section-label">✦ 2 · 机器学习的三大要素 ✦</div>
+
+            <h3>机器学习三要素</h3>
+            <p
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                一个机器学习系统由三个核心要素构成：<strong>数据</strong>、<strong>算法</strong>和<strong>模型</strong>。三者缺一不可，共同构成了机器学习的完整框架。我们先来快速认识它们，然后逐一深入。
+            </p>
+
+            <div class="element-grid">
+                <div class="element-card">
+                    <div class="element-icon">📊</div>
+                    <h3>数据</h3>
+                    <div class="element-body">
+                        <strong>机器学习的燃料</strong>。没有数据，再好的算法也无从学习。数据由样本组成，每个样本包含若干特征和一个（或没有）标签。数据的质量与数量，直接决定了模型能力的上限。
+                    </div>
+                </div>
+                <div class="element-card">
+                    <div class="element-icon">⚙️</div>
+                    <h3>算法</h3>
+                    <div class="element-body">
+                        <strong>学习模型的具体计算方法</strong>。基于训练数据，根据学习策略，从假设空间中选择最优模型。通常是一个最优化问题——如何找到使损失函数最小化的模型参数。
+                    </div>
+                </div>
+                <div class="element-card">
+                    <div class="element-icon">🧠</div>
+                    <h3>模型</h3>
+                    <div class="element-body">
+                        <strong>基于数据的假设函数</strong>。模型是算法在数据上训练后的产出，它定义了从输入到输出的映射关系。可以是线性函数、决策树、神经网络等各种形式。
+                    </div>
+                </div>
+            </div>
+
+            <p
+                style="text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: var(--space-lg);">
+                三者的关系：<strong>数据</strong>驱动 <strong>算法</strong>，算法在数据上训练出 <strong>模型</strong>，模型用来对新数据进行 <strong>预测</strong>。
+            </p>
+
+            <!-- 详细：数据 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">📊 数据：我们怎么来表述数据</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                在机器学习中，数据不是杂乱无章的——我们有自己的一套"行话"来描述数据。下面用一个「房价预测」的例子来直观理解这些术语。这是一张简化的房价数据表：
+            </p>
+
+            <!-- 房价数据表 -->
+            <div class="term-demo-box">
+                <div class="term-demo-title">📊 房价数据集（示例）</div>
+                <table class="term-demo-table">
+                    <thead>
+                        <tr>
+                            <th class="feat-col">面积 (m²)</th>
+                            <th class="feat-col">卧室</th>
+                            <th class="feat-col">楼层</th>
+                            <th class="feat-col">房龄 (年)</th>
+                            <th class="label-col">均价 (万)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>89</td>
+                            <td>2</td>
+                            <td>12</td>
+                            <td>5</td>
+                            <td class="label-col">320</td>
+                        </tr>
+                        <tr class="sample-row">
+                            <td class="sample-cell">120</td>
+                            <td class="sample-cell">3</td>
+                            <td class="sample-cell">8</td>
+                            <td class="sample-cell">10</td>
+                            <td class="label-col sample-cell">450</td>
+                        </tr>
+                        <tr>
+                            <td>60</td>
+                            <td>1</td>
+                            <td>22</td>
+                            <td>2</td>
+                            <td class="label-col">210</td>
+                        </tr>
+                        <tr>
+                            <td>150</td>
+                            <td>4</td>
+                            <td>5</td>
+                            <td>15</td>
+                            <td class="label-col">580</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 术语标注 -->
+                <div class="term-anno-list">
+                    <div class="term-anno-item">
+                        <span class="anno-badge sample">← 示例 / 样本</span>
+                        <span class="anno-text">紫色高亮的一整行就是一条<strong>样本</strong>（Instance），如 <code>(120, 3, 8, 10, 450)</code></span>
+                    </div>
+                    <div class="term-anno-item">
+                        <span class="anno-badge feature">↓ 属性 / 特征</span>
+                        <span class="anno-text">蓝色列头（面积、卧室、楼层、房龄）是描述样本的 4 个<strong>特征</strong>（Feature），也叫属性</span>
+                    </div>
+                    <div class="term-anno-item">
+                        <span class="anno-badge label-badge">🏷️ 标记 / 标签</span>
+                        <span class="anno-text">粉色列「均价」是我们想预测的目标值，即<strong>标记</strong>（Label / y）。带标记的样本 <code>= (x, y)</code></span>
+                    </div>
+                    <div class="term-anno-item">
+                        <span class="anno-badge vector">📐 特征向量</span>
+                        <span class="anno-text">一个样本的特征值组合成向量：<code>x = (120, 3, 8, 10)</code>，这里是 4 维向量</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SVG 可视化 → 升级为 Plotly 3D -->
+            <div class="term-viz-row">
+                <!-- 属性空间 3D 散点图 -->
+                <div class="term-viz-card">
+                    <div id="scatter3d-plot" class="deferred-plot" style="width:100%;height:270px;">
+                        <div class="plot-placeholder">滚动到这里时加载交互图表</div>
+                    </div>
+                    <div class="term-viz-label"><strong>属性空间（3D）</strong>：每个样本是特征空间中的一个点。此处用面积 (X)、卧室数 (Y)、楼层 (Z) 三个维度展示，<strong>颜色越深房价越高</strong>。你可以拖拽旋转从任意角度观察。</div>
+                </div>
+
+                <!-- 特征向量 3D 可视化 -->
+                <div class="term-viz-card">
+                    <div id="vector3d-plot" class="deferred-plot" style="width:100%;height:270px;">
+                        <div class="plot-placeholder">滚动到这里时加载交互图表</div>
+                    </div>
+                    <div class="term-viz-label"><strong>特征向量</strong>：样本 <code>x = (120, 3, 8, 10)</code> 在三维特征空间中的位置。从原点 (0,0,0) 到该点的有向线段就是特征向量，虚线投影帮助读取各维度坐标值。</div>
+                </div>
+            </div>
+
+            <!-- Plotly 3D 图表脚本 -->
+            <script>
+            window.deferPlotlyRender(['scatter3d-plot', 'vector3d-plot'], function () {
+
+                // ========== 房价数据集 ==========
+                var points = [
+                    {area: 89, bedrooms: 2, floor: 12, age: 5, price: 320},
+                    {area: 120, bedrooms: 3, floor: 8, age: 10, price: 450},
+                    {area: 60, bedrooms: 1, floor: 22, age: 2, price: 210},
+                    {area: 150, bedrooms: 4, floor: 5, age: 15, price: 580}
+                ];
+                var sampleIdx = 1; // 高亮样本 (120, 3, 8, 10, 450)
+
+                // ========== 图1: 属性空间 3D 散点图 ==========
+                var sizes = points.map(function(p, i) {
+                    return i === sampleIdx ? 16 : 10;
+                });
+                var colors = points.map(function(p) {
+                    return p.price;
+                });
+
+                var scatterTrace = {
+                    type: 'scatter3d',
+                    mode: 'markers',
+                    x: points.map(function(p) { return p.area; }),
+                    y: points.map(function(p) { return p.bedrooms; }),
+                    z: points.map(function(p) { return p.floor; }),
+                    marker: {
+                        size: sizes,
+                        color: colors,
+                        colorscale: [
+                            [0, '#F59E0B'],
+                            [0.5, '#6366F1'],
+                            [1, '#EC4899']
+                        ],
+                        showscale: true,
+                        colorbar: {
+                            title: {text: '均价 (万)', side: 'right'},
+                            thickness: 12,
+                            len: 0.5,
+                            x: 0.95
+                        },
+                        line: {color: '#ffffff', width: 1.5},
+                        opacity: 0.92
+                    },
+                    text: points.map(function(p, i) {
+                        var label = i === sampleIdx ? '★ <b>高亮样本</b>' : ('样本 ' + (i+1));
+                        return label + '<br>面积: ' + p.area + ' m²<br>卧室: ' + p.bedrooms + ' 间<br>' +
+                            '楼层: ' + p.floor + ' 层<br>房龄: ' + p.age + ' 年<br><b>均价: ' + p.price + ' 万</b>';
+                    }),
+                    hoverinfo: 'text',
+                    hovertemplate: '%{text}<extra></extra>'
+                };
+
+                var scatterLayout = {
+                    scene: {
+                        xaxis: {title: '面积 (m²)', showspikes: false, gridcolor: '#E5E7EB'},
+                        yaxis: {title: '卧室 (间)', tickvals: [1, 2, 3, 4], gridcolor: '#E5E7EB'},
+                        zaxis: {title: '楼层', gridcolor: '#E5E7EB'},
+                        camera: {
+                            eye: {x: 1.6, y: 1.6, z: 1.0},
+                            center: {x: 0, y: 0, z: 0}
+                        },
+                        aspectmode: 'manual',
+                        aspectratio: {x: 1.4, y: 1, z: 1},
+                        bgcolor: 'rgba(0,0,0,0)'
+                    },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    margin: {l: 40, r: 50, b: 20, t: 5, pad: 0},
+                    hovermode: 'closest'
+                };
+
+                Plotly.newPlot('scatter3d-plot', [scatterTrace], scatterLayout, {
+                    responsive: true,
+                    displayModeBar: false
+                });
+
+                // ========== 图2: 特征向量 3D 可视化 ==========
+                var sample = points[sampleIdx];
+                // 在三维空间中展示 (面积, 卧室, 楼层)，房龄以标注形式呈现
+
+                // 向量: 原点 → 样本点
+                var vectorTrace = {
+                    type: 'scatter3d',
+                    mode: 'lines+markers',
+                    x: [0, sample.area, null],
+                    y: [0, sample.bedrooms, null],
+                    z: [0, sample.floor, null],
+                    line: {color: '#6366F1', width: 6},
+                    marker: {
+                        size: [0, 14, 0],
+                        color: ['#6366F1', '#6366F1', '#6366F1'],
+                        symbol: ['circle', 'diamond', 'circle']
+                    },
+                    showlegend: false,
+                    hoverinfo: 'skip'
+                };
+
+                // 到各坐标平面的投影线 (虚线)
+                var projX = {type: 'scatter3d', mode: 'lines',
+                    x: [sample.area, sample.area], y: [0, sample.bedrooms], z: [0, 0],
+                    line: {color: 'rgba(99,102,241,0.15)', width: 2, dash: 'dash'}, showlegend: false, hoverinfo: 'skip'};
+                var projY = {type: 'scatter3d', mode: 'lines',
+                    x: [0, sample.area], y: [sample.bedrooms, sample.bedrooms], z: [0, 0],
+                    line: {color: 'rgba(99,102,241,0.15)', width: 2, dash: 'dash'}, showlegend: false, hoverinfo: 'skip'};
+                var projZ = {type: 'scatter3d', mode: 'lines',
+                    x: [0, sample.area], y: [0, sample.bedrooms], z: [sample.floor, sample.floor],
+                    line: {color: 'rgba(99,102,241,0.15)', width: 2, dash: 'dash'}, showlegend: false, hoverinfo: 'skip'};
+
+                // 坐标轴上的标记点
+                var markX = {type: 'scatter3d', mode: 'markers+text',
+                    x: [sample.area], y: [0], z: [0],
+                    marker: {size: 8, color: '#EC4899', symbol: 'circle'},
+                    text: ['面积=120'], textposition: 'top center',
+                    textfont: {size: 11, color: '#EC4899', weight: 600},
+                    showlegend: false, hoverinfo: 'skip'};
+                var markY = {type: 'scatter3d', mode: 'markers+text',
+                    x: [0], y: [sample.bedrooms], z: [0],
+                    marker: {size: 8, color: '#F59E0B', symbol: 'circle'},
+                    text: ['卧室=3'], textposition: 'top center',
+                    textfont: {size: 11, color: '#F59E0B', weight: 600},
+                    showlegend: false, hoverinfo: 'skip'};
+                var markZ = {type: 'scatter3d', mode: 'markers+text',
+                    x: [0], y: [0], z: [sample.floor],
+                    marker: {size: 8, color: '#10B981', symbol: 'circle'},
+                    text: ['楼层=8'], textposition: 'top center',
+                    textfont: {size: 11, color: '#10B981', weight: 600},
+                    showlegend: false, hoverinfo: 'skip'};
+
+                // 原点
+                var originTrace = {type: 'scatter3d', mode: 'markers',
+                    x: [0], y: [0], z: [0],
+                    marker: {size: 6, color: '#9CA3AF', symbol: 'circle'},
+                    showlegend: false, hoverinfo: 'skip'};
+
+                var vectorLayout = {
+                    scene: {
+                        xaxis: {title: '面积 (m²)', range: [0, 150], gridcolor: '#E5E7EB'},
+                        yaxis: {title: '卧室 (间)', range: [0, 5], tickvals: [1, 2, 3, 4], gridcolor: '#E5E7EB'},
+                        zaxis: {title: '楼层', range: [0, 25], gridcolor: '#E5E7EB'},
+                        camera: {
+                            eye: {x: 1.8, y: 1.2, z: 0.6},
+                            center: {x: 0, y: 0, z: 0}
+                        },
+                        aspectmode: 'manual',
+                        aspectratio: {x: 1.4, y: 0.6, z: 0.8},
+                        bgcolor: 'rgba(0,0,0,0)'
+                    },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    margin: {l: 40, r: 20, b: 20, t: 5, pad: 0},
+                    annotations: [{
+                        text: '房龄=10 年 (第4维)', x: 0.5, y: 1.0,
+                        xref: 'paper', yref: 'paper',
+                        showarrow: false,
+                        font: {size: 12, color: '#6B7280'}
+                    }]
+                };
+
+                Plotly.newPlot('vector3d-plot',
+                    [vectorTrace, projX, projY, projZ, markX, markY, markZ, originTrace],
+                    vectorLayout, {responsive: true, displayModeBar: false});
+            });
+            </script>
+        </section>
+
+        <!-- ============================
+             第3章：三大学习范式概述
+             ============================ -->
+        <section id="ml-paradigms" class="chapter-section fade-in">
+            <div class="section-label">✦ 3 · 三大学习范式概述 ✦</div>
+
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-lg);">
+                根据数据是否有标签以及反馈方式的不同，机器学习可以划分为三种基本学习范式。下面先用三张卡片快速认识它们的定位，再逐一展开具体的例子和算法。
+            </p>
+
+            <!-- 三大范式卡片 -->
+            <div class="def-grid" style="margin-bottom: var(--space-xl);">
+                <div class="def-card">
+                    <span class="def-label" style="background:#FDF2F8; color:#BE185D; border-color:#FBCFE8;">有标签</span>
+                    <h3>监督学习</h3>
+                    <div class="def-en">Supervised Learning</div>
+                    <div class="def-body">
+                        训练数据带有<strong>标签</strong>，模型学习从输入到输出的映射。就像"有老师带着学"——老师告诉你正确答案，你从错误中不断改进。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#FFFBEB; color:#92400E; border-color:#FDE68A;">无标签</span>
+                    <h3>无监督学习</h3>
+                    <div class="def-en">Unsupervised Learning</div>
+                    <div class="def-body">
+                        训练数据<strong>没有标签</strong>，模型自己从数据中发现隐藏的结构和模式。就像"自学成才"——没有标准答案，全靠自己归纳总结。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#ECFDF5; color:#047857; border-color:#A7F3D0;">延迟反馈</span>
+                    <h3>强化学习</h3>
+                    <div class="def-en">Reinforcement Learning</div>
+                    <div class="def-body">
+                        没有现成的数据，智能体通过与环境<strong>交互试错</strong>来学习，获得延迟的奖励或惩罚。就像"学骑自行车"——摔倒了爬起来，慢慢找到平衡。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 监督学习：实例 + 算法 -->
+            <h3>📚 监督学习 <span style="font-size:0.85rem;font-weight:400;color:var(--text-tertiary);">Supervised Learning</span></h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-sm);">
+                <strong>🌰 举例：</strong>垃圾邮件分类。收集 10 万封已标注"垃圾/正常"的邮件，提取发件人、标题关键词、链接数量等特征，训练模型对新邮件自动分类。准确率达到 98% 以上即可投入生产。
+            </p>
+            <h4 style="margin: var(--space-sm) 0; color: var(--text-primary); font-size: 0.9rem;">常见算法</h4>
+            <div class="tech-grid tech-grid-3col" style="margin-bottom: var(--space-xl);">
+                <div class="tech-card"><h3>KNN</h3><div class="tech-desc">找最近的 K 个邻居投票，简单直观，适合小数据集。</div></div>
+                <div class="tech-card"><h3>逻辑回归</h3><div class="tech-desc">二分类的基石，在线性组合上套 Sigmoid 输出概率。</div></div>
+                <div class="tech-card"><h3>决策树</h3><div class="tech-desc">树形结构做特征判断，可解释性极强。</div></div>
+                <div class="tech-card"><h3>SVM</h3><div class="tech-desc">寻找最大间隔超平面，核技巧处理非线性问题。</div></div>
+                <div class="tech-card"><h3>朴素贝叶斯</h3><div class="tech-desc">基于贝叶斯定理，文本分类效果好且速度快。</div></div>
+                <div class="tech-card"><h3>随机森林</h3><div class="tech-desc">多棵决策树的集成，抗过拟合能力强。</div></div>
+            </div>
+
+            <!-- 无监督学习：实例 + 算法 -->
+            <h3>🔍 无监督学习 <span style="font-size:0.85rem;font-weight:400;color:var(--text-tertiary);">Unsupervised Learning</span></h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-sm);">
+                <strong>🌰 举例：</strong>电商客户分群。提取 100 万用户的消费能力、购买频率、品类偏好等特征，K-Means 自动将用户分成高价值忠实型、价格敏感型、冲动消费型、沉默用户等群体，无需任何人工标签。
+            </p>
+            <h4 style="margin: var(--space-sm) 0; color: var(--text-primary); font-size: 0.9rem;">常见算法</h4>
+            <div class="tech-grid tech-grid-3col" style="margin-bottom: var(--space-xl);">
+                <div class="tech-card"><h3>K-Means</h3><div class="tech-desc">最经典的聚类算法，迭代分配样本到最近中心。</div></div>
+                <div class="tech-card"><h3>DBSCAN</h3><div class="tech-desc">基于密度的聚类，自动识别噪声点，无需预置簇数。</div></div>
+                <div class="tech-card"><h3>层次聚类</h3><div class="tech-desc">构建聚类树，可在不同粒度观察分群结构。</div></div>
+                <div class="tech-card"><h3>PCA</h3><div class="tech-desc">线性降维，将数据投影到方差最大的方向上。</div></div>
+                <div class="tech-card"><h3>t-SNE</h3><div class="tech-desc">非线性降维，擅长将高维数据映射到 2D/3D 可视化。</div></div>
+                <div class="tech-card"><h3>GMM</h3><div class="tech-desc">高斯混合模型，比 K-Means 更灵活，给出概率归属。</div></div>
+            </div>
+
+            <!-- 强化学习：实例 + 算法 -->
+            <h3>🎮 强化学习 <span style="font-size:0.85rem;font-weight:400;color:var(--text-tertiary);">Reinforcement Learning</span></h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-sm);">
+                <strong>🌰 举例：</strong>AlphaGo 下围棋。Agent（AlphaGo）在棋盘环境中落子，终局赢棋得 +1 奖励，输棋得 -1。通过数百万次自我对弈，学会评估任意棋局的胜率，做出最优决策。
+            </p>
+            <h4 style="margin: var(--space-sm) 0; color: var(--text-primary); font-size: 0.9rem;">常见算法</h4>
+            <div class="tech-grid tech-grid-3col" style="margin-bottom: var(--space-lg);">
+                <div class="tech-card"><h3>Q-Learning</h3><div class="tech-desc">基于价值的经典算法，学习状态-动作的累积回报。</div></div>
+                <div class="tech-card"><h3>DQN</h3><div class="tech-desc">用深度网络逼近 Q 函数，解决高维状态空间问题。</div></div>
+                <div class="tech-card"><h3>Policy Gradient</h3><div class="tech-desc">直接学习策略函数，适合连续动作空间。</div></div>
+                <div class="tech-card"><h3>PPO</h3><div class="tech-desc">近端策略优化，平衡训练稳定性与样本效率。</div></div>
+                <div class="tech-card"><h3>A3C</h3><div class="tech-desc">异步多 Agent 并行训练，加速收敛。</div></div>
+                <div class="tech-card"><h3>AlphaZero</h3><div class="tech-desc">不依赖人类棋谱，仅靠自我对弈达到超人类水平。</div></div>
+            </div>
+
+            <!-- 三大范式一图对比 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 三大范式一图对比 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                三种范式各有特色，适用于不同类型的问题。一张对比表快速看清它们的差异：
+            </p>
+
+            <div class="compare-container">
+                <div class="compare-column" style="border-top: 3px solid #EC4899;">
+                    <div class="compare-header">
+                        <h3>📚 监督学习</h3>
+                        <div class="subtitle">Supervised</div>
+                    </div>
+                    <ul class="topic-list" style="margin-top: 0;">
+                        <li><strong>标签</strong>：✅ 有标签（有老师）</li>
+                        <li><strong>反馈</strong>：即时反馈（预测对错立刻知道）</li>
+                        <li><strong>目标</strong>：学习从输入到输出的映射</li>
+                        <li><strong>典型应用</strong>：分类、回归</li>
+                        <li><strong>数据要求</strong>：需要大量标注数据</li>
+                    </ul>
+                </div>
+                <div class="compare-column" style="border-top: 3px solid #F59E0B;">
+                    <div class="compare-header">
+                        <h3>🔍 无监督学习</h3>
+                        <div class="subtitle">Unsupervised</div>
+                    </div>
+                    <ul class="topic-list" style="margin-top: 0;">
+                        <li><strong>标签</strong>：❌ 无标签（自学成才）</li>
+                        <li><strong>反馈</strong>：无反馈（自己发现结构）</li>
+                        <li><strong>目标</strong>：发现数据内在的分布和结构</li>
+                        <li><strong>典型应用</strong>：聚类、降维</li>
+                        <li><strong>数据要求</strong>：无需标注，原始数据即可</li>
+                    </ul>
+                </div>
+                <div class="compare-column" style="border-top: 3px solid #10B981;">
+                    <div class="compare-header">
+                        <h3>🎮 强化学习</h3>
+                        <div class="subtitle">Reinforcement</div>
+                    </div>
+                    <ul class="topic-list" style="margin-top: 0;">
+                        <li><strong>标签</strong>：⏳ 延迟反馈（没有即时答案）</li>
+                        <li><strong>反馈</strong>：稀疏的奖励信号（赢/输）</li>
+                        <li><strong>目标</strong>：最大化长期累积奖励</li>
+                        <li><strong>典型应用</strong>：游戏 AI、机器人控制</li>
+                        <li><strong>数据要求</strong>：通过与环境交互生成数据</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 范式之间的桥梁 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 范式之间的桥梁 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                三种范式并非彼此孤立——在实际应用中，它们经常融合交叉，产生了许多重要方向：
+            </p>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🔗 半监督学习</h3>
+                    <div class="tech-desc">少量标注数据 + 大量未标注数据。利用未标注数据的结构信息辅助学习，大幅降低标注成本。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🪞 自监督学习</h3>
+                    <div class="tech-desc">自己给自己"造"标签。BERT、GPT 等大语言模型的核心训练方法就是自监督学习。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🧬 迁移学习</h3>
+                    <div class="tech-desc">将在源任务上学到的知识迁移到目标任务。用预训练模型做微调，小数据也能有不错的效果。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🎲 集成学习</h3>
+                    <div class="tech-desc">组合多个模型提升性能。Bagging 降低方差，Boosting 降低偏差，Stacking 融合不同模型优势。</div>
+                </div>
+            </div>
+
+            <!-- 如何选择 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 如何选择合适的学习范式 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8; margin-bottom: var(--space-lg);">
+                面对不同的数据和场景，选择正确的学习范式能事半功倍。下面四条决策路径帮你快速定位——
+            </p>
+            <div class="decision-grid">
+                <div class="decision-card">
+                    <div class="decision-question">
+                        <span class="decision-question-icon">🏷️</span>
+                        <span>有标签数据？</span>
+                    </div>
+                    <div class="decision-body">
+                        <div class="decision-arrow">
+                            <span class="decision-arrow-icon">➜</span>
+                            <span class="decision-arrow-text">监督学习</span>
+                        </div>
+                        <p class="decision-desc">输出是离散类别还是连续数值？这决定了你的具体任务类型。</p>
+                        <div class="decision-tags">
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 分类（离散标签）</span>
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 回归（连续数值）</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="decision-card">
+                    <div class="decision-question">
+                        <span class="decision-question-icon">🔍</span>
+                        <span>无标签数据？</span>
+                    </div>
+                    <div class="decision-body">
+                        <div class="decision-arrow">
+                            <span class="decision-arrow-icon">➜</span>
+                            <span class="decision-arrow-text">无监督学习</span>
+                        </div>
+                        <p class="decision-desc">想在数据中发现隐藏结构？根据你的目标选择不同方向。</p>
+                        <div class="decision-tags">
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 聚类（发现分组）</span>
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 降维（压缩与可视化）</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="decision-card">
+                    <div class="decision-question">
+                        <span class="decision-question-icon">🎮</span>
+                        <span>有交互环境？</span>
+                    </div>
+                    <div class="decision-body">
+                        <div class="decision-arrow">
+                            <span class="decision-arrow-icon">➜</span>
+                            <span class="decision-arrow-text">强化学习</span>
+                        </div>
+                        <p class="decision-desc">有明确的奖励信号？Agent 能在环境中反复试错？RL 是不二之选。</p>
+                        <div class="decision-tags">
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 游戏 AI / AlphaGo</span>
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 机器人控制</span>
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 优化调度</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="decision-card">
+                    <div class="decision-question">
+                        <span class="decision-question-icon">💡</span>
+                        <span>标注数据少？</span>
+                    </div>
+                    <div class="decision-body">
+                        <div class="decision-arrow">
+                            <span class="decision-arrow-icon">➜</span>
+                            <span class="decision-arrow-text">半监督 / 自监督 / 迁移学习</span>
+                        </div>
+                        <p class="decision-desc">利用未标注数据或预训练模型，大幅降低对人工标注的依赖。</p>
+                        <div class="decision-tags">
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 半监督（少量标注 + 大量未标注）</span>
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 自监督（自己造标签）</span>
+                            <span class="decision-tag"><span class="decision-tag-icon">◉</span> 迁移学习（预训练微调）</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             第4章：机器学习要解决的问题类型
+             ============================ -->
+        <section id="ml-problem-types" class="chapter-section fade-in">
+            <div class="section-label">✦ 4 · 机器学习要解决的问题类型 ✦</div>
+
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                理解了三种学习范式之后，我们来具体看看它们各自能解决什么样的实际问题。机器学习要解决的问题可以归纳为以下几大类：
+            </p>
+
+            <!-- 问题分类总览卡片 -->
+            <div class="def-grid problem-types">
+                <div class="row">
+                    <div class="def-card">
+                        <span class="def-label" style="background:#FDF2F8; color:#BE185D; border-color:#FBCFE8;">分类</span>
+                        <h3>分类问题</h3>
+                        <div class="def-en">Classification</div>
+                        <div class="def-body">
+                            预测<strong>离散的类别标签</strong>。模型判断样本属于哪个预定义的类别。<br>
+                            <span style="color:var(--text-muted);font-size:0.78rem;">→ 由 <strong>监督学习</strong> 解决</span>
+                        </div>
+                    </div>
+                    <div class="def-card">
+                        <span class="def-label" style="background:#EFF6FF; color:#1D4ED8; border-color:#BFDBFE;">回归</span>
+                        <h3>回归问题</h3>
+                        <div class="def-en">Regression</div>
+                        <div class="def-body">
+                            预测<strong>连续的数值</strong>。模型根据输入特征输出一个实数值。<br>
+                            <span style="color:var(--text-muted);font-size:0.78rem;">→ 由 <strong>监督学习</strong> 解决</span>
+                        </div>
+                    </div>
+                    <div class="def-card">
+                        <span class="def-label" style="background:#ECFDF5; color:#047857; border-color:#A7F3D0;">聚类</span>
+                        <h3>聚类问题</h3>
+                        <div class="def-en">Clustering</div>
+                        <div class="def-body">
+                            将数据自动分成若干<strong>有意义的群组</strong>，组内相似、组间相异。<br>
+                            <span style="color:var(--text-muted);font-size:0.78rem;">→ 由 <strong>无监督学习</strong> 解决</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="def-card">
+                        <span class="def-label" style="background:#FFFBEB; color:#92400E; border-color:#FDE68A;">降维</span>
+                        <h3>降维问题</h3>
+                        <div class="def-en">Dimensionality Reduction</div>
+                        <div class="def-body">
+                            将高维数据映射到<strong>低维空间</strong>，保留关键结构的同时去除冗余。<br>
+                            <span style="color:var(--text-muted);font-size:0.78rem;">→ 由 <strong>无监督学习</strong> 解决</span>
+                        </div>
+                    </div>
+                    <div class="def-card">
+                        <span class="def-label" style="background:#FEF2F2; color:#DC2626; border-color:#FECACA;">异常</span>
+                        <h3>异常检测</h3>
+                        <div class="def-en">Anomaly Detection</div>
+                        <div class="def-body">
+                            识别<strong>偏离正常模式</strong>的异常样本。与聚类不同——找出"与众不同"的那个。<br>
+                            <span style="color:var(--text-muted);font-size:0.78rem;">→ 可由 <strong>无监督/监督</strong> 解决</span>
+                        </div>
+                    </div>
+                    <div class="def-card">
+                        <span class="def-label" style="background:#FFF7ED; color:#C2410C; border-color:#FED7AA;">关联</span>
+                        <h3>关联分析</h3>
+                        <div class="def-en">Association Rule Learning</div>
+                        <div class="def-body">
+                            发现变量之间的<strong>共现关系和关联规则</strong>——"当 A 发生时，B 也经常发生"。<br>
+                            <span style="color:var(--text-muted);font-size:0.78rem;">→ 由 <strong>无监督学习</strong> 解决</span>
+                        </div>
+                    </div>
+                    <div class="def-card">
+                        <span class="def-label" style="background:#F5F3FF; color:#6D28D9; border-color:#DDD6FE;">决策</span>
+                        <h3>序贯决策</h3>
+                        <div class="def-en">Sequential Decision Making</div>
+                        <div class="def-body">
+                            在连续步骤中决策，每一步影响未来状态和收益，只有延迟的奖励信号。<br>
+                            <span style="color:var(--text-muted);font-size:0.78rem;">→ 由 <strong>强化学习</strong> 解决</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分类问题详解 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 什么叫分类问题 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                <strong>分类</strong>是监督学习中最常见的任务——模型根据样本的特征将其归入预定义的类别。根据输出形式的不同，又分为以下几种：
+            </p>
+            <div class="def-grid" style="margin-bottom: var(--space-lg);">
+                <div class="def-card">
+                    <span class="def-label" style="background:#FDF2F8; color:#BE185D; border-color:#FBCFE8;">二分类</span>
+                    <h3>Binary Classification</h3>
+                    <div class="def-body">
+                        输出只有两个互斥类别。<strong>🌰 例子：</strong>判断一封邮件是垃圾邮件（正）还是正常邮件（负）。这是分类中最基础、应用最广的一类。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#FFFBEB; color:#92400E; border-color:#FDE68A;">多类分类</span>
+                    <h3>Multiclass Classification</h3>
+                    <div class="def-body">
+                        输出有多个互斥类别，每个样本只能属于其中一类。<strong>🌰 例子：</strong>手写数字识别（0~9 共 10 类）；邮件自动归类为"工作"、"社交"或"促销"。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#ECFDF5; color:#047857; border-color:#A7F3D0;">多标签</span>
+                    <h3>Multilabel Classification</h3>
+                    <div class="def-body">
+                        每个样本可以同时属于多个类别。<strong>🌰 例子：</strong>一篇新闻文章可同时标注为"科技"和"AI"两个标签；一张图片可同时包含"猫"和"沙发"。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 回归问题详解 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 什么叫回归问题 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                与分类不同，<strong>回归</strong>的输出是一个<strong>连续数值</strong>而不是离散标签。你给它输入特征，它预测一个数值。上一章房价数据表（面积 → 均价）就是一个标准的回归问题。
+            </p>
+            <div class="def-grid" style="margin-bottom: var(--space-lg);">
+                <div class="def-card">
+                    <span class="def-label" style="background:#EFF6FF; color:#1D4ED8; border-color:#BFDBFE;">单变量</span>
+                    <h3>简单回归</h3>
+                    <div class="def-body">
+                        只有一个输入特征预测一个连续值。<strong>🌰 例子：</strong>根据房屋面积（单一特征）预测房价。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#FDF2F8; color:#BE185D; border-color:#FBCFE8;">多变量</span>
+                    <h3>多元回归</h3>
+                    <div class="def-body">
+                        使用多个输入特征进行预测。<strong>🌰 例子：</strong>根据面积、卧室数、楼层、房龄等多个特征预测房价。
+                    </div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#ECFDF5; color:#047857; border-color:#A7F3D0;">时序</span>
+                    <h3>时序预测</h3>
+                    <div class="def-body">
+                        基于历史时间序列数据预测未来值。<strong>🌰 例子：</strong>根据过去 30 天的气温预测明天的温度；根据历史销量预测下月销售额。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 聚类问题详解 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 什么叫聚类问题 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                <strong>聚类</strong>是无监督学习的核心——将数据自动分成若干组（簇），使得同一组内的样本彼此相似，不同组之间的样本差异明显。不需要事先知道有哪些类别，模型自己从数据中发现分组结构。
+            </p>
+            <div class="algo-section-card" style="margin-bottom: var(--space-lg);">
+                <p><strong>🌰 电商客户分群：</strong>某平台用 K-Means 将 100 万用户自动分成四类——高价值忠实用户（15%）、价格敏感型（30%）、冲动消费型（20%）、沉默用户（35%），然后针对每类用户制定不同的营销策略。整个过程没有任何人工标签。</p>
+            </div>
+
+            <!-- 降维问题详解 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 什么叫降维问题 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                <strong>降维</strong>将高维数据映射到低维空间，保留关键结构的同时去除冗余和噪声。高维数据（如 1000 维的图片向量）难以直接观察和计算，降维可以帮我们压缩数据、加速计算、缓解"维度灾难"。
+            </p>
+            <div class="algo-section-card" style="margin-bottom: var(--space-lg);">
+                <p><strong>🌰 数据可视化：</strong>一个数据集有 50 个特征（50 维），无法直接画图观察。用 PCA 或 t-SNE 将数据压缩到 2 维或 3 维，就可以画在平面上肉眼观察数据的分布结构——哪些样本聚在一起、有没有离群点，一目了然。</p>
+            </div>
+
+            <!-- 异常检测详解 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 什么叫异常检测 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                <strong>异常检测</strong>识别数据中显著偏离正常模式的样本。与"聚类"不同——聚类的目标是"分组"，将相似的归到一起；异常检测的目标是"找出与众不同的那个"。它可以由无监督学习解决（在无标签数据中发现离群点），也可以由监督学习解决（用已标注的正常/异常数据训练分类器）。
+            </p>
+            <div class="def-grid" style="margin-bottom: var(--space-lg);">
+                <div class="def-card">
+                    <span class="def-label" style="background:#FEF2F2; color:#DC2626; border-color:#FECACA;">金融</span>
+                    <h3>信用卡欺诈检测</h3>
+                    <div class="def-body">从海量交易记录中找出异常的消费行为——比如异地突然大额消费、短时间内频繁小额试探等。</div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#FEF2F2; color:#DC2626; border-color:#FECACA;">工业</span>
+                    <h3>产线缺陷识别</h3>
+                    <div class="def-body">通过产品外观图像或传感器数据，自动标记出有瑕疵的不合格品，替代人工质检。</div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#FEF2F2; color:#DC2626; border-color:#FECACA;">运维</span>
+                    <h3>服务器日志告警</h3>
+                    <div class="def-body">持续监控系统日志，自动发现偏离正常模式的异常请求或故障信号，及时告警。</div>
+                </div>
+            </div>
+
+            <!-- 关联分析详解 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 什么叫关联分析 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                <strong>关联分析</strong>从大规模数据中发现变量之间的共现关系，核心是找出"当 A 发生时，B 也经常发生"的关联规则。它是无监督学习的重要分支，在零售和推荐系统中应用极为广泛。
+            </p>
+            <div class="algo-section-card" style="margin-bottom: var(--space-lg);">
+                <p><strong>🌰 购物篮分析：</strong>超市发现一个有趣的规律——买尿布的顾客中有 60% 也买了啤酒。这就是经典的"啤酒与尿布"故事。基于这种关联规则，超市可以优化商品陈列（将尿布和啤酒放在邻近货架），或设计组合促销策略。常用的算法有 Apriori 和 FP-Growth。</p>
+            </div>
+
+            <!-- 序贯决策详解 -->
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 什么叫序贯决策 ✦</div>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                <strong>序贯决策</strong>是强化学习解决的核心问题——智能体在连续的时间步骤中做出决策，每一步的决策会影响未来的状态和收益。没有标准答案，只有延迟的奖励信号。
+            </p>
+            <div class="def-grid" style="margin-bottom: var(--space-lg);">
+                <div class="def-card">
+                    <span class="def-label" style="background:#F5F3FF; color:#6D28D9; border-color:#DDD6FE;">Agent</span>
+                    <h3>智能体</h3>
+                    <div class="def-body">学习并做出决策的主体，如 AlphaGo 程序本身。</div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#F5F3FF; color:#6D28D9; border-color:#DDD6FE;">State</span>
+                    <h3>状态</h3>
+                    <div class="def-body">环境的当前快照，包含决策所需的所有信息，如当前棋盘局势。</div>
+                </div>
+                <div class="def-card">
+                    <span class="def-label" style="background:#F5F3FF; color:#6D28D9; border-color:#DDD6FE;">Action → Reward</span>
+                    <h3>动作 → 奖励</h3>
+                    <div class="def-body">Agent 选择一个动作（如落子位置），环境返回奖励信号（赢棋 +1，输棋 -1）。</div>
+                </div>
+            </div>
+
+            <div class="transition-block" style="margin-top: var(--space-lg);">
+                <p>以上归纳了机器学习要解决的核心问题类型。值得留意的是，半监督学习和自监督学习又在传统框架之上拓展了机器学习的边界。接下来先从最经典的线性回归出发，真正拆开模型训练的内部过程，再讨论如何评估模型的好坏。</p>
+            </div>
+        </section>
+
+        <!-- ============================
+             第5章：从线性回归到 Adam
+             ============================ -->
+        <section id="training-core" class="chapter-section fade-in learning-core-section">
+            <div class="section-label">✦ 5 · 从线性回归到 Adam：模型究竟怎样学会 ✦</div>
+
+            <p class="learning-lead">
+                前面我们已经知道机器学习能解决哪些问题，现在追问最关键的一步：<strong>模型到底是怎么“学”出来的？</strong>
+                最适合回答这个问题的起点，是结构最简单、训练逻辑却最完整的<strong>线性回归</strong>。看懂它，就能顺着同一条主线理解损失函数、梯度下降、学习率，以及深度学习中最常见的 Adam 优化器。
+            </p>
+
+            <div class="learning-loop-banner" aria-label="机器学习训练闭环">
+                <div class="learning-loop-node">
+                    <span class="loop-icon">①</span>
+                    <strong>做出预测</strong>
+                    <small>Forward</small>
+                </div>
+                <span class="learning-loop-arrow">→</span>
+                <div class="learning-loop-node">
+                    <span class="loop-icon">②</span>
+                    <strong>计算损失</strong>
+                    <small>Loss</small>
+                </div>
+                <span class="learning-loop-arrow">→</span>
+                <div class="learning-loop-node">
+                    <span class="loop-icon">③</span>
+                    <strong>求出梯度</strong>
+                    <small>Gradient</small>
+                </div>
+                <span class="learning-loop-arrow">→</span>
+                <div class="learning-loop-node">
+                    <span class="loop-icon">④</span>
+                    <strong>更新参数</strong>
+                    <small>Optimizer</small>
+                </div>
+                <span class="learning-loop-return">↺ 不断重复，直到误差足够小</span>
+            </div>
+
+            <h3>第一步：用一条直线做预测</h3>
+            <p class="learning-copy">
+                假设我们想根据房屋面积预测总价。只有一个输入特征时，线性回归会尝试找到一条最合适的直线：
+            </p>
+
+            <div class="formula-box learning-formula">
+                \[
+                    \hat{y}=wx+b
+                \]
+                <div class="formula-desc">
+                    $x$ 是输入特征，$\hat{y}$ 是模型的预测值；$w$ 决定直线的斜率，$b$ 决定直线整体上下移动的位置。训练的目标，就是从数据中找到合适的 $w$ 和 $b$。
+                </div>
+            </div>
+
+            <div class="parameter-grid">
+                <div class="parameter-card">
+                    <span class="parameter-symbol">$w$</span>
+                    <div>
+                        <strong>权重 Weight</strong>
+                        <p>表示输入对结果的影响强度。面积每增加一个单位，预测价格大约变化多少。</p>
+                    </div>
+                </div>
+                <div class="parameter-card">
+                    <span class="parameter-symbol">$b$</span>
+                    <div>
+                        <strong>偏置 Bias</strong>
+                        <p>表示不依赖输入的基础值，让模型不必被迫经过坐标原点。</p>
+                    </div>
+                </div>
+                <div class="parameter-card">
+                    <span class="parameter-symbol">$e$</span>
+                    <div>
+                        <strong>残差 Residual</strong>
+                        <p>$e_i=\hat{y}_i-y_i$，也就是预测点与真实点之间的距离。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="regression-lab" class="regression-lab">
+                <div class="lab-header">
+                    <div>
+                        <span class="lab-kicker">互动实验</span>
+                        <h4>亲手移动直线，观察损失函数如何变化</h4>
+                    </div>
+                    <div class="loss-readout">
+                        当前 MSE
+                        <strong id="regression-loss-value">—</strong>
+                    </div>
+                </div>
+
+                <div class="regression-controls">
+                    <label for="weight-slider">
+                        <span>权重 $w$</span>
+                        <strong id="weight-value">1.20</strong>
+                    </label>
+                    <input id="weight-slider" type="range" min="-0.5" max="3.5" value="1.2" step="0.05">
+                    <label for="bias-slider">
+                        <span>偏置 $b$</span>
+                        <strong id="bias-value">1.00</strong>
+                    </label>
+                    <input id="bias-slider" type="range" min="-1" max="5" value="1" step="0.1">
+                </div>
+
+                <div class="regression-chart-grid">
+                    <figure class="learning-chart-card">
+                        <figcaption>
+                            <strong>数据空间</strong>
+                            <span>虚线是每个样本的残差</span>
+                        </figcaption>
+                        <canvas id="regression-canvas" role="img" aria-label="散点数据、线性回归直线与残差示意图"></canvas>
+                    </figure>
+                    <figure class="learning-chart-card loss-surface-card">
+                        <figcaption>
+                            <strong>损失空间</strong>
+                            <span>MSE 是关于 w、b 的二元函数</span>
+                        </figcaption>
+                        <div class="loss-surface-stage">
+                            <canvas id="loss-canvas" role="img" tabindex="0"
+                                aria-label="可旋转的三维损失曲面。拖动或使用方向键改变观察角度"></canvas>
+                            <div class="surface-control-bar">
+                                <span class="surface-drag-hint"><i>↻</i> 拖动旋转</span>
+                                <button id="reset-loss-view" class="surface-reset-button" type="button">重置视角</button>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+
+                <p class="lab-hint">
+                    试着调整两个滑块：左图中的直线越贴近散点，残差越短；右图中的红点就会沿着 $J(w,b)$ 曲面靠近“碗底”。<strong>训练模型，本质上就是同时调整多个参数，在损失空间里寻找最低点。</strong>
+                </p>
+            </div>
+
+            <h3>第二步：用损失函数定义“错得有多严重”</h3>
+            <p class="learning-copy">
+                模型必须先有一个可计算的评分标准，才知道自己应该往哪个方向改。这个标准就是<strong>损失函数（Loss Function）</strong>。在线性回归中最常见的是均方误差 MSE：
+            </p>
+
+            <div class="formula-box learning-formula">
+                \[
+                    J(w,b)=\frac{1}{n}\sum_{i=1}^{n}\left(\hat{y}_i-y_i\right)^2
+                    =\frac{1}{n}\sum_{i=1}^{n}\left(wx_i+b-y_i\right)^2
+                \]
+                <div class="formula-desc">
+                    先计算每个样本的预测误差，再平方、求和、取平均。误差平方后不会正负抵消，并且会让较大的错误受到更重惩罚。
+                </div>
+            </div>
+
+            <div class="loss-family-grid">
+                <div class="loss-family-card active">
+                    <span class="loss-family-badge">回归常用</span>
+                    <h4>均方误差 MSE</h4>
+                    <p>曲线光滑、方便求导，对大误差惩罚强。线性回归和神经网络回归任务都很常见。</p>
+                    <code>mean((ŷ - y)²)</code>
+                </div>
+                <div class="loss-family-card">
+                    <span class="loss-family-badge">更抗异常值</span>
+                    <h4>平均绝对误差 MAE</h4>
+                    <p>直接计算误差绝对值，不会把少数极端误差过度放大，但在零点处不光滑。</p>
+                    <code>mean(|ŷ - y|)</code>
+                </div>
+                <div class="loss-family-card">
+                    <span class="loss-family-badge">分类常用</span>
+                    <h4>交叉熵 Cross-Entropy</h4>
+                    <p>衡量预测概率与真实类别之间的差距，是分类网络与大语言模型训练的核心损失。</p>
+                    <code>-log p(正确答案)</code>
+                </div>
+            </div>
+
+            <div class="insight-box learning-insight">
+                <strong>为什么损失函数的图像如此重要？</strong>
+                <p>
+                    横轴不再是面积，而是模型参数；纵轴是损失。每一组参数都对应“地形”上的一个位置。线性回归的 MSE 通常像一个光滑的碗，最低点就是最优解；深度神经网络的损失地形则扩展到数百万甚至数十亿维，但“往低处走”的思想完全相同。
+                </p>
+            </div>
+
+            <h3>第三步：损失函数怎么求解</h3>
+            <div class="solution-path-grid">
+                <div class="solution-path-card closed-form">
+                    <div class="solution-path-icon">∑</div>
+                    <div>
+                        <span class="solution-path-label">路线 A · 直接计算</span>
+                        <h4>解析解 / 最小二乘法</h4>
+                        <p>对简单线性回归，可以令导数等于 0，直接算出碗底的位置。矩阵形式常写作：</p>
+                        <div class="mini-formula">$\theta=(X^TX)^{-1}X^Ty$</div>
+                        <p class="solution-note">适合特征规模不大、结构简单的问题。实际计算通常使用更稳定的数值分解，而不是直接求逆。</p>
+                    </div>
+                </div>
+                <div class="solution-path-card iterative">
+                    <div class="solution-path-icon">↘</div>
+                    <div>
+                        <span class="solution-path-label">路线 B · 逐步逼近</span>
+                        <h4>迭代优化 / 梯度下降</h4>
+                        <p>先随机选择一组参数，再根据当前位置的坡度不断向下移动，逐步逼近最低点。</p>
+                        <div class="mini-formula">$\theta \leftarrow \theta-\alpha\nabla J(\theta)$</div>
+                        <p class="solution-note">适合数据量大、参数多、模型复杂的场景，也是训练神经网络的基本方式。</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>第四步：梯度下降——顺着最陡的下坡方向走</h3>
+            <p class="learning-copy">
+                <strong>梯度</strong>可以理解为当前位置最陡的上坡方向，因此在梯度前加一个负号，就得到了下坡方向。在线性回归中，$w$ 和 $b$ 的梯度分别为：
+            </p>
+
+            <div class="formula-box learning-formula gradient-formula">
+                \[
+                    \frac{\partial J}{\partial w}=\frac{2}{n}\sum_{i=1}^{n}(wx_i+b-y_i)x_i,
+                    \qquad
+                    \frac{\partial J}{\partial b}=\frac{2}{n}\sum_{i=1}^{n}(wx_i+b-y_i)
+                \]
+                \[
+                    w \leftarrow w-\alpha\frac{\partial J}{\partial w},
+                    \qquad
+                    b \leftarrow b-\alpha\frac{\partial J}{\partial b}
+                \]
+            </div>
+
+            <div class="gradient-steps">
+                <div class="gradient-step">
+                    <span>1</span>
+                    <strong>初始化参数</strong>
+                    <p>先给 $w$、$b$ 一个起点。</p>
+                </div>
+                <div class="gradient-step">
+                    <span>2</span>
+                    <strong>前向计算</strong>
+                    <p>用当前参数得到预测值。</p>
+                </div>
+                <div class="gradient-step">
+                    <span>3</span>
+                    <strong>计算损失与梯度</strong>
+                    <p>判断错多少、往哪边改。</p>
+                </div>
+                <div class="gradient-step">
+                    <span>4</span>
+                    <strong>更新并重复</strong>
+                    <p>让参数朝损失更小的方向移动。</p>
+                </div>
+            </div>
+
+            <h3>第五步：学习率决定每一步迈多大</h3>
+            <p class="learning-copy">
+                更新公式里的 $\alpha$ 叫作<strong>学习率（Learning Rate）</strong>。它不是模型学到的参数，而是训练前人为设置的<strong>超参数</strong>。学习率太小，方向虽然正确却走得很慢；太大则可能跨过谷底、来回震荡，甚至越走越远。
+            </p>
+
+            <div id="learning-rate-lab" class="learning-rate-lab">
+                <div class="rate-lab-copy">
+                    <span class="lab-kicker">学习率模拟器</span>
+                    <h4>从同一个起点出发，看看不同步长的结果</h4>
+                    <div class="rate-buttons" role="group" aria-label="选择学习率">
+                        <button type="button" class="rate-button" data-rate="0.05">0.05 · 太小</button>
+                        <button type="button" class="rate-button active" data-rate="0.35">0.35 · 合适</button>
+                        <button type="button" class="rate-button" data-rate="1.05">1.05 · 太大</button>
+                    </div>
+                    <div id="rate-status" class="rate-status">合适：快速靠近最低点，并逐渐稳定。</div>
+                </div>
+                <div class="rate-chart-wrap">
+                    <canvas id="optimizer-canvas" role="img" aria-label="不同学习率下梯度下降路径示意图"></canvas>
+                </div>
+            </div>
+
+            <div class="rate-rule-grid">
+                <div class="rate-rule slow">
+                    <span>🐢</span>
+                    <strong>太小</strong>
+                    <p>稳定但收敛慢，训练成本高，也可能在有限轮次内学不充分。</p>
+                </div>
+                <div class="rate-rule good">
+                    <span>🎯</span>
+                    <strong>合适</strong>
+                    <p>损失持续下降，较少震荡，在速度和稳定性之间取得平衡。</p>
+                </div>
+                <div class="rate-rule fast">
+                    <span>⚡</span>
+                    <strong>太大</strong>
+                    <p>反复跨过最低点，损失剧烈震荡，严重时直接发散。</p>
+                </div>
+            </div>
+
+            <h3>从梯度下降到 Adam：优化器是怎样演化来的</h3>
+            <p class="learning-copy">
+                深度网络参数极多，不同参数方向的坡度也可能相差巨大。单纯使用固定步长的梯度下降往往不够高效，于是优化器沿着两条思路不断演化：<strong>减少梯度噪声</strong>，以及<strong>为不同参数自动调节步长</strong>。
+            </p>
+
+            <div id="optimizer-evolution" class="optimizer-evolution">
+                <div class="optimizer-stage">
+                    <span class="optimizer-year">完整数据</span>
+                    <h4>Batch GD</h4>
+                    <p>每更新一步都计算全部样本。方向稳定，但大数据下速度慢、内存压力大。</p>
+                </div>
+                <div class="optimizer-arrow">→</div>
+                <div class="optimizer-stage">
+                    <span class="optimizer-year">单个样本</span>
+                    <h4>SGD</h4>
+                    <p>每看一个样本就更新，速度快但路线抖动明显，有时会错过稳定下降方向。</p>
+                </div>
+                <div class="optimizer-arrow">→</div>
+                <div class="optimizer-stage emphasized">
+                    <span class="optimizer-year">折中方案</span>
+                    <h4>Mini-batch SGD</h4>
+                    <p>每次使用一小批数据，兼顾速度、稳定性和并行计算，成为深度学习训练的标准方式。</p>
+                </div>
+            </div>
+
+            <div class="optimizer-branches">
+                <div class="optimizer-branch momentum">
+                    <div class="branch-head">
+                        <span>路线一</span>
+                        <h4>记住方向：Momentum</h4>
+                    </div>
+                    <p>像小球下坡一样积累“惯性”：连续同向的梯度会加速，来回摆动的方向会相互抵消，从而减少震荡。</p>
+                    <div class="branch-path">SGD → <strong>Momentum</strong></div>
+                </div>
+                <div class="optimizer-plus">＋</div>
+                <div class="optimizer-branch adaptive">
+                    <div class="branch-head">
+                        <span>路线二</span>
+                        <h4>调整步长：AdaGrad → RMSProp</h4>
+                    </div>
+                    <p>AdaGrad 为频繁更新的参数减小步长，但学习率可能衰减过头；RMSProp 改用近期梯度平方的滑动平均，让步长保持活力。</p>
+                    <div class="branch-path"><strong>AdaGrad</strong> → <strong>RMSProp</strong></div>
+                </div>
+                <div class="optimizer-equals">＝</div>
+                <div class="optimizer-branch adam">
+                    <div class="branch-head">
+                        <span>融合结果</span>
+                        <h4>Adam</h4>
+                    </div>
+                    <p>同时维护梯度的一阶矩和二阶矩：既拥有 Momentum 的方向惯性，又具备 RMSProp 的自适应学习率。</p>
+                    <div class="branch-path"><strong>Momentum + RMSProp</strong></div>
+                </div>
+            </div>
+
+            <div class="adam-card">
+                <div class="adam-title">
+                    <span class="adam-mark">A</span>
+                    <div>
+                        <h4>Adam = Adaptive Moment Estimation</h4>
+                        <p>自适应矩估计：让每个参数都有自己的“方向记忆”和“步长刻度”。</p>
+                    </div>
+                </div>
+                <div class="adam-mechanics">
+                    <div>
+                        <strong>一阶矩 $m_t$</strong>
+                        <p>梯度的移动平均，回答“最近总体在往哪个方向走？”</p>
+                    </div>
+                    <div>
+                        <strong>二阶矩 $v_t$</strong>
+                        <p>梯度平方的移动平均，回答“这个方向最近波动有多大？”</p>
+                    </div>
+                    <div>
+                        <strong>自适应更新</strong>
+                        <p>方向稳定时大胆前进，波动较大时缩小步长。</p>
+                    </div>
+                </div>
+                <div class="formula-box adam-formula">
+                    \[
+                        m_t=\beta_1m_{t-1}+(1-\beta_1)g_t, \qquad
+                        v_t=\beta_2v_{t-1}+(1-\beta_2)g_t^2
+                    \]
+                    \[
+                        \theta_t=\theta_{t-1}-\alpha\frac{\hat m_t}{\sqrt{\hat v_t}+\varepsilon}
+                    \]
+                </div>
+                <p class="adam-note">
+                    Adam 通常是训练新模型时很实用的默认起点，但它并不保证在所有任务中都最好。实际项目仍需结合数据、模型、批大小和学习率调度进行验证。
+                </p>
+            </div>
+
+            <h3>这条主线如何通向深度学习</h3>
+            <div class="deep-bridge">
+                <div class="deep-bridge-side linear-side">
+                    <span class="bridge-label">线性回归</span>
+                    <div class="bridge-equation">$\hat y=wx+b$</div>
+                    <p>一个输入经过权重和偏置，输出一个预测值。</p>
+                </div>
+                <div class="deep-bridge-middle">
+                    <span>增加激活函数</span>
+                    <strong>＋</strong>
+                    <span>堆叠许多层</span>
+                    <strong>＋</strong>
+                    <span>用反向传播求梯度</span>
+                </div>
+                <div class="deep-bridge-side neural-side">
+                    <span class="bridge-label">深度神经网络</span>
+                    <div class="mini-network" aria-hidden="true">
+                        <span></span><span></span><span></span>
+                        <i></i><i></i><i></i><i></i>
+                        <b></b><b></b>
+                    </div>
+                    <p>海量参数共同表达复杂的图像、语音与语言规律。</p>
+                </div>
+            </div>
+
+            <div class="transition-block learning-transition">
+                <p>
+                    从线性回归到神经网络，变化的是<strong>模型规模与结构</strong>；始终不变的是同一个训练闭环：<strong>预测 → 计算损失 → 求梯度 → 优化参数</strong>。下一章讨论模型评估时，我们将进一步回答：损失下降了，是否就代表模型真的学好了？
+                </p>
+            </div>
+
+            <script>
+            (function () {
+                function onReady(callback) {
+                    if (document.readyState === 'loading') {
+                        document.addEventListener('DOMContentLoaded', callback, { once: true });
+                    } else {
+                        callback();
+                    }
+                }
+
+                onReady(function () {
+                    var regressionCanvas = document.getElementById('regression-canvas');
+                    var lossCanvas = document.getElementById('loss-canvas');
+                    var optimizerCanvas = document.getElementById('optimizer-canvas');
+                    var weightSlider = document.getElementById('weight-slider');
+                    var biasSlider = document.getElementById('bias-slider');
+                    var weightValue = document.getElementById('weight-value');
+                    var biasValue = document.getElementById('bias-value');
+                    var lossValue = document.getElementById('regression-loss-value');
+                    var resetLossViewButton = document.getElementById('reset-loss-view');
+                    var rateButtons = Array.from(document.querySelectorAll('.rate-button'));
+                    var rateStatus = document.getElementById('rate-status');
+
+                    if (!regressionCanvas || !lossCanvas || !optimizerCanvas) {
+                        return;
+                    }
+
+                    var samples = [
+                        { x: 1, y: 2.7 }, { x: 2, y: 4.9 }, { x: 3, y: 6.1 },
+                        { x: 4, y: 8.8 }, { x: 5, y: 10.2 }, { x: 6, y: 12.5 },
+                        { x: 7, y: 13.9 }
+                    ];
+                    var activeRate = 0.35;
+                    var colors = {
+                        text: '#6B625B', grid: '#E8E1DA', axis: '#A69B91',
+                        primary: '#E5613F', blue: '#4F7CAC', green: '#17866B', amber: '#D99124'
+                    };
+                    var lossView = {
+                        yaw: -0.72,
+                        pitch: 0.84,
+                        dragging: false,
+                        pointerId: null,
+                        lastX: 0,
+                        lastY: 0
+                    };
+
+                    function setupCanvas(canvas) {
+                        var ratio = Math.min(window.devicePixelRatio || 1, 2);
+                        var rect = canvas.getBoundingClientRect();
+                        var width = Math.max(280, Math.round(rect.width));
+                        var height = Math.max(220, Math.round(rect.height));
+                        if (canvas.width !== width * ratio || canvas.height !== height * ratio) {
+                            canvas.width = width * ratio;
+                            canvas.height = height * ratio;
+                        }
+                        var context = canvas.getContext('2d');
+                        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+                        return { context: context, width: width, height: height };
+                    }
+
+                    function drawAxes(context, width, height, padding, xLabel, yLabel) {
+                        context.clearRect(0, 0, width, height);
+                        context.strokeStyle = colors.grid;
+                        context.lineWidth = 1;
+                        for (var i = 0; i <= 4; i += 1) {
+                            var gridY = padding.top + (height - padding.top - padding.bottom) * i / 4;
+                            context.beginPath();
+                            context.moveTo(padding.left, gridY);
+                            context.lineTo(width - padding.right, gridY);
+                            context.stroke();
+                        }
+                        context.strokeStyle = colors.axis;
+                        context.lineWidth = 1.3;
+                        context.beginPath();
+                        context.moveTo(padding.left, padding.top);
+                        context.lineTo(padding.left, height - padding.bottom);
+                        context.lineTo(width - padding.right, height - padding.bottom);
+                        context.stroke();
+                        context.fillStyle = colors.text;
+                        context.font = '12px "Noto Sans SC", sans-serif';
+                        context.textAlign = 'center';
+                        context.fillText(xLabel, (padding.left + width - padding.right) / 2, height - 8);
+                        context.save();
+                        context.translate(14, (padding.top + height - padding.bottom) / 2);
+                        context.rotate(-Math.PI / 2);
+                        context.fillText(yLabel, 0, 0);
+                        context.restore();
+                    }
+
+                    function mse(weight, bias) {
+                        return samples.reduce(function (sum, sample) {
+                            var error = weight * sample.x + bias - sample.y;
+                            return sum + error * error;
+                        }, 0) / samples.length;
+                    }
+
+                    function drawRegression(weight, bias) {
+                        var prepared = setupCanvas(regressionCanvas);
+                        var context = prepared.context;
+                        var width = prepared.width;
+                        var height = prepared.height;
+                        var padding = { left: 42, right: 18, top: 18, bottom: 38 };
+                        var plotWidth = width - padding.left - padding.right;
+                        var plotHeight = height - padding.top - padding.bottom;
+                        var mapX = function (x) { return padding.left + x / 8 * plotWidth; };
+                        var mapY = function (y) { return height - padding.bottom - y / 18 * plotHeight; };
+
+                        drawAxes(context, width, height, padding, '面积 x', '价格 y');
+                        context.setLineDash([4, 4]);
+                        context.strokeStyle = 'rgba(229, 97, 63, 0.55)';
+                        context.lineWidth = 1.2;
+                        samples.forEach(function (sample) {
+                            context.beginPath();
+                            context.moveTo(mapX(sample.x), mapY(sample.y));
+                            context.lineTo(mapX(sample.x), mapY(weight * sample.x + bias));
+                            context.stroke();
+                        });
+                        context.setLineDash([]);
+
+                        context.strokeStyle = colors.primary;
+                        context.lineWidth = 3;
+                        context.beginPath();
+                        context.moveTo(mapX(0), mapY(bias));
+                        context.lineTo(mapX(8), mapY(weight * 8 + bias));
+                        context.stroke();
+
+                        samples.forEach(function (sample) {
+                            context.fillStyle = '#FFFFFF';
+                            context.strokeStyle = colors.blue;
+                            context.lineWidth = 2.5;
+                            context.beginPath();
+                            context.arc(mapX(sample.x), mapY(sample.y), 4.5, 0, Math.PI * 2);
+                            context.fill();
+                            context.stroke();
+                        });
+                    }
+
+                    function drawLoss(weight, bias) {
+                        var prepared = setupCanvas(lossCanvas);
+                        var context = prepared.context;
+                        var width = prepared.width;
+                        var height = prepared.height;
+                        var minW = -0.5;
+                        var maxW = 3.5;
+                        var minB = -1;
+                        var maxB = 5;
+                        var columns = width < 420 ? 18 : 26;
+                        var rows = width < 420 ? 16 : 22;
+                        var maxLoss = 0;
+
+                        context.clearRect(0, 0, width, height);
+
+                        for (var lossRow = 0; lossRow <= rows; lossRow += 1) {
+                            var sampleB = minB + (maxB - minB) * lossRow / rows;
+                            for (var lossColumn = 0; lossColumn <= columns; lossColumn += 1) {
+                                var sampleW = minW + (maxW - minW) * lossColumn / columns;
+                                maxLoss = Math.max(maxLoss, mse(sampleW, sampleB));
+                            }
+                        }
+
+                        var background = context.createLinearGradient(0, 0, width, height);
+                        background.addColorStop(0, 'rgba(248, 252, 250, 0.94)');
+                        background.addColorStop(0.56, 'rgba(250, 248, 244, 0.9)');
+                        background.addColorStop(1, 'rgba(250, 243, 238, 0.92)');
+                        context.fillStyle = background;
+                        context.fillRect(0, 0, width, height);
+
+                        var centerX = width * 0.5;
+                        var centerY = height * 0.6;
+                        var worldScale = Math.min(width * 0.245, height * 0.3);
+                        var cosineYaw = Math.cos(lossView.yaw);
+                        var sineYaw = Math.sin(lossView.yaw);
+                        var cosinePitch = Math.cos(lossView.pitch);
+                        var sinePitch = Math.sin(lossView.pitch);
+
+                        function project(parameterW, parameterB, loss) {
+                            var worldX = ((parameterW - minW) / (maxW - minW) - 0.5) * 2;
+                            var worldY = ((parameterB - minB) / (maxB - minB) - 0.5) * 2;
+                            var worldZ = Math.min(Math.max(loss, 0), maxLoss) / maxLoss * 1.28;
+                            var rotatedX = worldX * cosineYaw - worldY * sineYaw;
+                            var rotatedY = worldX * sineYaw + worldY * cosineYaw;
+                            return {
+                                x: centerX + rotatedX * worldScale,
+                                y: centerY + (rotatedY * sinePitch - worldZ * cosinePitch) * worldScale,
+                                depth: rotatedY * cosinePitch + worldZ * sinePitch
+                            };
+                        }
+
+                        function surfaceColor(loss, depth) {
+                            var ratio = Math.min(loss / maxLoss, 1);
+                            var hue = 165 - ratio * 148;
+                            var saturation = 54 + ratio * 12;
+                            var lightness = 66 - ratio * 13 + Math.max(-4, Math.min(4, depth * 2));
+                            return 'hsla(' + hue.toFixed(0) + ', ' + saturation.toFixed(0) + '%, ' + lightness.toFixed(0) + '%, 0.9)';
+                        }
+
+                        context.save();
+                        context.translate(centerX, centerY + worldScale * 0.74);
+                        context.scale(1, 0.28);
+                        var shadow = context.createRadialGradient(0, 0, 8, 0, 0, worldScale * 1.15);
+                        shadow.addColorStop(0, 'rgba(73, 60, 49, 0.16)');
+                        shadow.addColorStop(1, 'rgba(73, 60, 49, 0)');
+                        context.fillStyle = shadow;
+                        context.beginPath();
+                        context.arc(0, 0, worldScale * 1.15, 0, Math.PI * 2);
+                        context.fill();
+                        context.restore();
+
+                        var cells = [];
+                        for (var row = 0; row < rows; row += 1) {
+                            var b0 = minB + (maxB - minB) * row / rows;
+                            var b1 = minB + (maxB - minB) * (row + 1) / rows;
+                            for (var column = 0; column < columns; column += 1) {
+                                var w0 = minW + (maxW - minW) * column / columns;
+                                var w1 = minW + (maxW - minW) * (column + 1) / columns;
+                                var losses = [mse(w0, b0), mse(w1, b0), mse(w1, b1), mse(w0, b1)];
+                                var points = [
+                                    project(w0, b0, losses[0]),
+                                    project(w1, b0, losses[1]),
+                                    project(w1, b1, losses[2]),
+                                    project(w0, b1, losses[3])
+                                ];
+                                cells.push({
+                                    depth: (points[0].depth + points[1].depth + points[2].depth + points[3].depth) / 4,
+                                    loss: (losses[0] + losses[1] + losses[2] + losses[3]) / 4,
+                                    points: points
+                                });
+                            }
+                        }
+
+                        cells.sort(function (a, b) { return a.depth - b.depth; });
+                        cells.forEach(function (cell) {
+                            context.beginPath();
+                            context.moveTo(cell.points[0].x, cell.points[0].y);
+                            for (var pointIndex = 1; pointIndex < cell.points.length; pointIndex += 1) {
+                                context.lineTo(cell.points[pointIndex].x, cell.points[pointIndex].y);
+                            }
+                            context.closePath();
+                            context.fillStyle = surfaceColor(cell.loss, cell.depth);
+                            context.fill();
+                            context.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+                            context.lineWidth = 0.55;
+                            context.stroke();
+                        });
+
+                        context.strokeStyle = 'rgba(255, 255, 255, 0.42)';
+                        context.lineWidth = 0.8;
+                        for (var gridRow = 0; gridRow <= rows; gridRow += 2) {
+                            var gridB = minB + (maxB - minB) * gridRow / rows;
+                            context.beginPath();
+                            for (var gridColumn = 0; gridColumn <= columns; gridColumn += 1) {
+                                var gridW = minW + (maxW - minW) * gridColumn / columns;
+                                var rowPoint = project(gridW, gridB, mse(gridW, gridB));
+                                if (gridColumn === 0) {
+                                    context.moveTo(rowPoint.x, rowPoint.y);
+                                } else {
+                                    context.lineTo(rowPoint.x, rowPoint.y);
+                                }
+                            }
+                            context.stroke();
+                        }
+                        for (var gridColumnLine = 0; gridColumnLine <= columns; gridColumnLine += 2) {
+                            var lineW = minW + (maxW - minW) * gridColumnLine / columns;
+                            context.beginPath();
+                            for (var gridRowPoint = 0; gridRowPoint <= rows; gridRowPoint += 1) {
+                                var lineB = minB + (maxB - minB) * gridRowPoint / rows;
+                                var columnPoint = project(lineW, lineB, mse(lineW, lineB));
+                                if (gridRowPoint === 0) {
+                                    context.moveTo(columnPoint.x, columnPoint.y);
+                                } else {
+                                    context.lineTo(columnPoint.x, columnPoint.y);
+                                }
+                            }
+                            context.stroke();
+                        }
+
+                        var axisOrigin = project(minW, minB, 0);
+                        var weightEnd = project(maxW, minB, 0);
+                        var biasEnd = project(minW, maxB, 0);
+                        var lossEnd = project(minW, minB, maxLoss);
+
+                        context.strokeStyle = 'rgba(84, 75, 68, 0.72)';
+                        context.lineWidth = 1.35;
+                        [[axisOrigin, weightEnd], [axisOrigin, biasEnd], [axisOrigin, lossEnd]].forEach(function (axis) {
+                            context.beginPath();
+                            context.moveTo(axis[0].x, axis[0].y);
+                            context.lineTo(axis[1].x, axis[1].y);
+                            context.stroke();
+                        });
+
+                        function clamp(value, minimum, maximum) {
+                            return Math.max(minimum, Math.min(maximum, value));
+                        }
+
+                        context.fillStyle = colors.text;
+                        context.font = '700 11px "Noto Sans SC", sans-serif';
+                        context.textAlign = 'center';
+                        context.fillText('权重 w', clamp(weightEnd.x, 34, width - 34), clamp(weightEnd.y + 18, 14, height - 8));
+                        context.fillText('偏置 b', clamp(biasEnd.x, 34, width - 34), clamp(biasEnd.y + 18, 14, height - 8));
+                        context.textAlign = 'right';
+                        context.fillText('损失 J', clamp(lossEnd.x - 5, 38, width - 5), clamp(lossEnd.y + 4, 13, height - 8));
+
+                        var sumX = 0;
+                        var sumY = 0;
+                        var sumXX = 0;
+                        var sumXY = 0;
+                        samples.forEach(function (sample) {
+                            sumX += sample.x;
+                            sumY += sample.y;
+                            sumXX += sample.x * sample.x;
+                            sumXY += sample.x * sample.y;
+                        });
+                        var denominator = samples.length * sumXX - sumX * sumX;
+                        var optimalWeight = (samples.length * sumXY - sumX * sumY) / denominator;
+                        var optimalBias = (sumY - optimalWeight * sumX) / samples.length;
+                        var optimum = project(optimalWeight, optimalBias, mse(optimalWeight, optimalBias));
+
+                        context.shadowColor = 'rgba(23, 134, 107, 0.28)';
+                        context.shadowBlur = 9;
+                        context.fillStyle = '#FFFFFF';
+                        context.strokeStyle = colors.green;
+                        context.lineWidth = 2.2;
+                        context.beginPath();
+                        context.arc(optimum.x, optimum.y, 4.5, 0, Math.PI * 2);
+                        context.fill();
+                        context.stroke();
+                        context.shadowBlur = 0;
+                        context.fillStyle = colors.green;
+                        context.font = '700 10px "Noto Sans SC", sans-serif';
+                        context.textAlign = 'left';
+                        context.fillText('最低点', clamp(optimum.x + 8, 5, width - 42), clamp(optimum.y + 3, 12, height - 8));
+
+                        var currentLoss = mse(weight, bias);
+                        var basePoint = project(weight, bias, 0);
+                        var currentPoint = project(weight, bias, currentLoss);
+
+                        context.setLineDash([3, 3]);
+                        context.strokeStyle = 'rgba(229, 97, 63, 0.76)';
+                        context.lineWidth = 1.2;
+                        context.beginPath();
+                        context.moveTo(basePoint.x, basePoint.y);
+                        context.lineTo(currentPoint.x, currentPoint.y);
+                        context.stroke();
+                        context.setLineDash([]);
+
+                        context.shadowColor = 'rgba(229, 97, 63, 0.42)';
+                        context.shadowBlur = 12;
+                        context.fillStyle = '#FFFFFF';
+                        context.strokeStyle = colors.primary;
+                        context.lineWidth = 3;
+                        context.beginPath();
+                        context.arc(currentPoint.x, currentPoint.y, 6.5, 0, Math.PI * 2);
+                        context.fill();
+                        context.stroke();
+                        context.shadowBlur = 0;
+
+                        context.fillStyle = colors.primary;
+                        context.font = '700 10px "JetBrains Mono", monospace';
+                        context.textAlign = 'left';
+                        var labelX = clamp(currentPoint.x + 10, 5, width - 105);
+                        var labelY = clamp(currentPoint.y - 9, 13, height - 8);
+                        context.fillText('w=' + weight.toFixed(1) + '  b=' + bias.toFixed(1), labelX, labelY);
+
+                        var legendX = width - 88;
+                        var legendY = 10;
+                        var legendGradient = context.createLinearGradient(legendX, 0, width - 12, 0);
+                        legendGradient.addColorStop(0, 'hsl(165, 54%, 66%)');
+                        legendGradient.addColorStop(1, 'hsl(17, 66%, 53%)');
+                        context.fillStyle = 'rgba(255, 255, 255, 0.72)';
+                        context.fillRect(legendX - 5, legendY - 5, 81, 25);
+                        context.fillStyle = legendGradient;
+                        context.fillRect(legendX, legendY, 70, 5);
+                        context.fillStyle = colors.text;
+                        context.font = '9px "Noto Sans SC", sans-serif';
+                        context.textAlign = 'left';
+                        context.fillText('低', legendX, legendY + 15);
+                        context.textAlign = 'right';
+                        context.fillText('高', width - 18, legendY + 15);
+                    }
+
+                    function updateRegressionLab() {
+                        var weight = Number(weightSlider.value);
+                        var bias = Number(biasSlider.value);
+                        weightValue.textContent = weight.toFixed(2);
+                        biasValue.textContent = bias.toFixed(2);
+                        lossValue.textContent = mse(weight, bias).toFixed(2);
+                        drawRegression(weight, bias);
+                        drawLoss(weight, bias);
+                    }
+
+                    function drawOptimizer(rate) {
+                        var prepared = setupCanvas(optimizerCanvas);
+                        var context = prepared.context;
+                        var width = prepared.width;
+                        var height = prepared.height;
+                        var padding = { left: 42, right: 18, top: 18, bottom: 38 };
+                        var minW = -4;
+                        var maxW = 8;
+                        var maxLoss = 38;
+                        var plotWidth = width - padding.left - padding.right;
+                        var plotHeight = height - padding.top - padding.bottom;
+                        var mapX = function (x) { return padding.left + (x - minW) / (maxW - minW) * plotWidth; };
+                        var mapY = function (y) { return height - padding.bottom - Math.min(y, maxLoss) / maxLoss * plotHeight; };
+                        var lossAt = function (w) { return (w - 2) * (w - 2) + 0.8; };
+
+                        drawAxes(context, width, height, padding, '参数位置', '损失');
+                        context.strokeStyle = colors.green;
+                        context.lineWidth = 2.5;
+                        context.beginPath();
+                        for (var i = 0; i <= 140; i += 1) {
+                            var curveW = minW + (maxW - minW) * i / 140;
+                            if (i === 0) {
+                                context.moveTo(mapX(curveW), mapY(lossAt(curveW)));
+                            } else {
+                                context.lineTo(mapX(curveW), mapY(lossAt(curveW)));
+                            }
+                        }
+                        context.stroke();
+
+                        var points = [];
+                        var currentW = -2.5;
+                        for (var step = 0; step < 9; step += 1) {
+                            points.push({ w: currentW, loss: lossAt(currentW) });
+                            currentW = currentW - rate * 2 * (currentW - 2);
+                            if (Math.abs(currentW) > 30) {
+                                points.push({ w: currentW, loss: maxLoss });
+                                break;
+                            }
+                        }
+
+                        context.strokeStyle = colors.primary;
+                        context.lineWidth = 2;
+                        context.setLineDash([5, 4]);
+                        context.beginPath();
+                        points.forEach(function (point, index) {
+                            var safeW = Math.max(minW, Math.min(maxW, point.w));
+                            if (index === 0) {
+                                context.moveTo(mapX(safeW), mapY(point.loss));
+                            } else {
+                                context.lineTo(mapX(safeW), mapY(point.loss));
+                            }
+                        });
+                        context.stroke();
+                        context.setLineDash([]);
+
+                        points.forEach(function (point, index) {
+                            var safeW = Math.max(minW, Math.min(maxW, point.w));
+                            context.fillStyle = index === points.length - 1 ? colors.amber : colors.primary;
+                            context.beginPath();
+                            context.arc(mapX(safeW), mapY(point.loss), index === 0 ? 5.5 : 4, 0, Math.PI * 2);
+                            context.fill();
+                            if (index < 5) {
+                                context.fillStyle = colors.text;
+                                context.font = '10px "Noto Sans SC", sans-serif';
+                                context.textAlign = 'center';
+                                context.fillText(String(index), mapX(safeW), Math.max(mapY(point.loss) - 8, 12));
+                            }
+                        });
+                    }
+
+                    function setRate(rate) {
+                        activeRate = rate;
+                        rateButtons.forEach(function (button) {
+                            button.classList.toggle('active', Number(button.dataset.rate) === rate);
+                        });
+                        if (rate === 0.05) {
+                            rateStatus.textContent = '太小：方向正确，但走了很多步仍离最低点很远。';
+                        } else if (rate > 1) {
+                            rateStatus.textContent = '太大：不断跨过最低点，振幅越来越大，最终发散。';
+                        } else {
+                            rateStatus.textContent = '合适：快速靠近最低点，并逐渐稳定。';
+                        }
+                        drawOptimizer(rate);
+                    }
+
+                    function redrawLossAtCurrentParameters() {
+                        drawLoss(Number(weightSlider.value), Number(biasSlider.value));
+                    }
+
+                    function resetLossView() {
+                        lossView.yaw = -0.72;
+                        lossView.pitch = 0.84;
+                        redrawLossAtCurrentParameters();
+                    }
+
+                    lossCanvas.addEventListener('pointerdown', function (event) {
+                        lossView.dragging = true;
+                        lossView.pointerId = event.pointerId;
+                        lossView.lastX = event.clientX;
+                        lossView.lastY = event.clientY;
+                        lossCanvas.classList.add('is-rotating');
+                        lossCanvas.setPointerCapture(event.pointerId);
+                        event.preventDefault();
+                    });
+
+                    lossCanvas.addEventListener('pointermove', function (event) {
+                        if (!lossView.dragging || event.pointerId !== lossView.pointerId) {
+                            return;
+                        }
+                        var deltaX = event.clientX - lossView.lastX;
+                        var deltaY = event.clientY - lossView.lastY;
+                        lossView.lastX = event.clientX;
+                        lossView.lastY = event.clientY;
+                        lossView.yaw += deltaX * 0.012;
+                        lossView.pitch = Math.max(0.38, Math.min(1.12, lossView.pitch - deltaY * 0.009));
+                        redrawLossAtCurrentParameters();
+                        event.preventDefault();
+                    });
+
+                    function stopLossRotation(event) {
+                        if (!lossView.dragging || event.pointerId !== lossView.pointerId) {
+                            return;
+                        }
+                        lossView.dragging = false;
+                        lossView.pointerId = null;
+                        lossCanvas.classList.remove('is-rotating');
+                        if (lossCanvas.hasPointerCapture(event.pointerId)) {
+                            lossCanvas.releasePointerCapture(event.pointerId);
+                        }
+                    }
+
+                    lossCanvas.addEventListener('pointerup', stopLossRotation);
+                    lossCanvas.addEventListener('pointercancel', stopLossRotation);
+                    lossCanvas.addEventListener('keydown', function (event) {
+                        var handled = true;
+                        if (event.key === 'ArrowLeft') {
+                            lossView.yaw -= 0.12;
+                        } else if (event.key === 'ArrowRight') {
+                            lossView.yaw += 0.12;
+                        } else if (event.key === 'ArrowUp') {
+                            lossView.pitch = Math.min(1.12, lossView.pitch + 0.08);
+                        } else if (event.key === 'ArrowDown') {
+                            lossView.pitch = Math.max(0.38, lossView.pitch - 0.08);
+                        } else if (event.key.toLowerCase() === 'r') {
+                            resetLossView();
+                            event.preventDefault();
+                            return;
+                        } else {
+                            handled = false;
+                        }
+                        if (handled) {
+                            redrawLossAtCurrentParameters();
+                            event.preventDefault();
+                        }
+                    });
+
+                    if (resetLossViewButton) {
+                        resetLossViewButton.addEventListener('click', resetLossView);
+                    }
+
+                    weightSlider.addEventListener('input', updateRegressionLab);
+                    biasSlider.addEventListener('input', updateRegressionLab);
+                    rateButtons.forEach(function (button) {
+                        button.addEventListener('click', function () {
+                            setRate(Number(button.dataset.rate));
+                        });
+                    });
+
+                    var resizeTimer = null;
+                    window.addEventListener('resize', function () {
+                        window.clearTimeout(resizeTimer);
+                        resizeTimer = window.setTimeout(function () {
+                            updateRegressionLab();
+                            drawOptimizer(activeRate);
+                        }, 120);
+                    });
+
+                    updateRegressionLab();
+                    setRate(activeRate);
+                });
+            })();
+            </script>
+        </section>
+
+        <!-- ============================
+             第6章：模型评估与选择
+             ============================ -->
+        <section id="ml-evaluation" class="chapter-section fade-in">
+            <div class="section-label">✦ 6 · 模型评估与选择 ✦</div>
+
+            <!-- 引言 -->
+            <p
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                前面介绍了三大范式和各种算法，但"能跑起来的模型"不等于"好的模型"。我们需要一套科学的方法来衡量模型的好坏、诊断问题所在、选择最合适的模型。本章就来介绍这些核心技术。
+            </p>
+
+            <!-- 6.1 过拟合与欠拟合 -->
+            <h3>过拟合与欠拟合</h3>
+            <p
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                模型训练中最常见的问题就两个：过拟合和欠拟合。它们本质上反映了模型复杂度和数据拟合之间的平衡。
+            </p>
+
+            <!-- 学习曲线图：直观展示过拟合是如何发生的 -->
+            <div class="lc-wrap">
+                <div class="lc-head">
+                    <span class="lc-tag">📈 学习曲线</span>
+                    <span class="lc-sub">观察训练误差与验证误差，如何随训练轮次（Epoch）一路变化</span>
+                </div>
+                <div id="learning-curve-plot" class="lc-plot deferred-plot">
+                    <div class="plot-placeholder">滚动到这里时加载交互图表</div>
+                </div>
+                <div class="lc-legend">
+                    <span><i class="lc-dot lc-dot-train"></i>训练误差</span>
+                    <span><i class="lc-dot lc-dot-val"></i>验证误差（代表泛化能力）</span>
+                </div>
+            </div>
+
+            <!-- 概念卡片：什么是过拟合 / 什么是欠拟合 -->
+            <div class="fit-cards">
+                <div class="fit-card fit-underfit">
+                    <div class="fit-card-top">
+                        <span class="fit-emoji">📉</span>
+                        <h4>什么是欠拟合</h4>
+                    </div>
+                    <p>模型<strong>太简单</strong>，连训练数据里的基本规律都没学到位。</p>
+                    <ul class="fit-feat">
+                        <li>训练误差 <strong>高</strong></li>
+                        <li>验证误差 <strong>也高</strong></li>
+                        <li>本质：模型表达能力不足</li>
+                    </ul>
+                    <div class="fit-cure">对策：增加模型复杂度 · 补充特征 · 训练更久</div>
+                </div>
+                <div class="fit-card fit-overfit">
+                    <div class="fit-card-top">
+                        <span class="fit-emoji">📈</span>
+                        <h4>什么是过拟合</h4>
+                    </div>
+                    <p>模型<strong>太复杂</strong>，把训练数据里的噪声也“死记硬背”下来，反而学不到真正的规律。</p>
+                    <ul class="fit-feat">
+                        <li>训练误差 <strong>极低</strong></li>
+                        <li>验证误差 <strong>触底反弹</strong></li>
+                        <li>本质：泛化能力差</li>
+                    </ul>
+                    <div class="fit-cure">对策：正则化 · Dropout · Early Stopping · 扩充数据</div>
+                </div>
+            </div>
+
+            <!-- 过拟合的本质：泛化能力差（普通段落，不使用卡片） -->
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.8; margin: var(--space-md) 0 var(--space-lg);">
+                <strong style="color: var(--primary-dark);">过拟合，本质就是泛化能力差</strong>——模型在训练集上表现得很好，但在交叉验证集和测试集上表现一般，对未知样本的预测能力差。回到上面的学习曲线，这正是右侧的情形：训练误差一路走低，验证误差却在某个点之后不降反升，说明模型开始“背”噪声了。
+            </p>
+
+            <p
+                style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                那么，如何防止过拟合？常用的方法有：
+            </p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>📏 正则化</h3>
+                    <div class="tech-desc">在目标函数后添加一个正则化项。<strong>L1 正则化</strong>（Lasso）基于 L1 范数，倾向于产生稀疏解；<strong>L2
+                            正则化</strong>（Ridge）基于 L2 范数，倾向于让参数均匀缩小。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>📊 数据集扩增</h3>
+                    <div class="tech-desc">获得更多符合要求的数据（与已有数据独立同分布）。方法：从源头采集更多数据、复制数据并加随机噪声、重采样、使用数据分布参数生成新数据等。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🎲 Dropout</h3>
+                    <div class="tech-desc">通过修改神经网络本身结构来实现——在训练过程中随机"丢弃"一部分神经元，迫使网络学习更鲁棒的特征表示。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🛑 Early Stopping</h3>
+                    <div class="tech-desc">在验证集性能不再提升时提前终止训练，防止模型过度学习训练数据中的噪声。</div>
+                </div>
+            </div>
+
+            <!-- 学习曲线图脚本：训练误差 vs 验证误差 -->
+            <script>
+            window.deferPlotlyRender(['learning-curve-plot'], function () {
+                var COLOR_TRAIN = '#6366F1'; // 靛蓝：训练误差
+                var COLOR_VAL   = '#E5613F'; // 珊瑚：验证误差（泛化能力，重点）
+                var COLOR_BEST  = '#10B981'; // 绿：最佳停止点
+                var COLOR_GRID  = '#EDE8E3';
+                var COLOR_TXT   = '#6B6560';
+
+                // ---- 生成学习曲线数据 ----
+                var epochs = [], trainLoss = [], valLoss = [];
+                var overfitStart = 20; // 验证误差从此开始反弹
+                for (var i = 0; i <= 80; i++) {
+                    epochs.push(i);
+                    // 训练误差：单调持续下降
+                    trainLoss.push(0.85 * Math.exp(-0.045 * i) + 0.04);
+                    // 验证误差：先下降，过 overfitStart 后二次反弹
+                    var descend = 0.75 * Math.exp(-0.08 * i) + 0.12;
+                    var ascend = i > overfitStart ? 0.00025 * Math.pow(i - overfitStart, 2) : 0;
+                    valLoss.push(descend + ascend);
+                }
+
+                // 找验证误差最低点（最佳停止点）
+                var bestIdx = 0;
+                for (var j = 1; j < valLoss.length; j++) {
+                    if (valLoss[j] < valLoss[bestIdx]) bestIdx = j;
+                }
+                var bestRight = bestIdx + 8; // 最佳区间右边界
+
+                var trainTrace = {
+                    x: epochs, y: trainLoss, type: 'scatter', mode: 'lines',
+                    name: '训练误差',
+                    line: { color: COLOR_TRAIN, width: 3, shape: 'spline' },
+                    hovertemplate: 'Epoch %{x}<br>训练误差 = %{y:.3f}<extra></extra>'
+                };
+                var valTrace = {
+                    x: epochs, y: valLoss, type: 'scatter', mode: 'lines',
+                    name: '验证误差',
+                    line: { color: COLOR_VAL, width: 3.5, shape: 'spline' },
+                    hovertemplate: 'Epoch %{x}<br>验证误差 = %{y:.3f}<extra></extra>'
+                };
+                var bestPoint = {
+                    x: [epochs[bestIdx]], y: [valLoss[bestIdx]], type: 'scatter', mode: 'markers+text',
+                    name: '最佳停止点',
+                    marker: { size: 12, color: COLOR_BEST, symbol: 'circle', line: { color: '#fff', width: 2 } },
+                    text: ['最佳停止点'], textposition: 'top center',
+                    textfont: { size: 11, color: COLOR_BEST },
+                    hovertemplate: 'Early Stopping<br>Epoch %{x}<extra></extra>'
+                };
+
+                var layout = {
+                    xaxis: {
+                        title: '训练轮次 Epoch',
+                        gridcolor: COLOR_GRID, zerolinecolor: '#DFD8D0',
+                        tickfont: { size: 11, color: COLOR_TXT },
+                        titlefont: { size: 12, color: COLOR_TXT }
+                    },
+                    yaxis: {
+                        title: '误差 Error', rangemode: 'tozero',
+                        gridcolor: COLOR_GRID, zerolinecolor: '#DFD8D0',
+                        tickfont: { size: 11, color: COLOR_TXT },
+                        titlefont: { size: 12, color: COLOR_TXT }
+                    },
+                    shapes: [
+                        { type: 'rect', xref: 'x', yref: 'paper', x0: 0, x1: 15, y0: 0, y1: 1,
+                          fillcolor: 'rgba(245,158,11,0.10)', line: { width: 0 } },
+                        { type: 'rect', xref: 'x', yref: 'paper', x0: 15, x1: bestRight, y0: 0, y1: 1,
+                          fillcolor: 'rgba(16,185,129,0.10)', line: { width: 0 } },
+                        { type: 'rect', xref: 'x', yref: 'paper', x0: bestRight, x1: 80, y0: 0, y1: 1,
+                          fillcolor: 'rgba(229,97,63,0.10)', line: { width: 0 } },
+                        // 最佳停止点竖虚线
+                        { type: 'line', xref: 'x', yref: 'paper',
+                          x0: epochs[bestIdx], x1: epochs[bestIdx], y0: 0, y1: 1,
+                          line: { color: COLOR_BEST, width: 1.5, dash: 'dash' } }
+                    ],
+                    annotations: [
+                        { x: 7.5, y: 1.05, xref: 'x', yref: 'paper', text: '欠拟合区', showarrow: false,
+                          font: { size: 11, color: '#B45309' } },
+                        { x: (15 + bestRight) / 2, y: 1.05, xref: 'x', yref: 'paper', text: '最佳区间', showarrow: false,
+                          font: { size: 11, color: '#047857' } },
+                        { x: (bestRight + 80) / 2, y: 1.05, xref: 'x', yref: 'paper', text: '过拟合区', showarrow: false,
+                          font: { size: 11, color: '#C2410C' } }
+                    ],
+                    margin: { l: 48, r: 20, b: 44, t: 40 },
+                    paper_bgcolor: 'rgba(0,0,0,0)',
+                    plot_bgcolor: 'rgba(0,0,0,0)',
+                    showlegend: false,
+                    hovermode: 'closest'
+                };
+
+                Plotly.newPlot('learning-curve-plot', [trainTrace, valTrace, bestPoint], layout, {
+                    responsive: true,
+                    displayModeBar: false
+                });
+            });
+            </script>
+
+            <!-- 6.2 偏差与方差 -->
+            <h3>偏差与方差</h3>
+            <p
+                style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                评估模型性能时，两个关键角度是<strong>偏差（Bias）</strong>和<strong>方差（Variance）</strong>。
+            </p>
+
+            <div class="two-col">
+                <div class="summary-box" style="border-left: 4px solid #F59E0B;">
+                    <p><strong style="color:#F59E0B;">📈 高偏差</strong></p>
+                    <p style="font-size: 0.85rem; margin-top: var(--space-xs);">
+                        简单模型（如直线）一组训练的平均模型与真实模型的差距较大。<br>
+                        → <strong>欠拟合</strong>：模型过于简单，无法捕捉数据的真实结构。<br>
+                        → 特点：训练误差高，测试误差也高。
+                    </p>
+                </div>
+                <div class="summary-box" style="border-left: 4px solid #3B82F6;">
+                    <p><strong style="color:#3B82F6;">📉 高方差</strong></p>
+                    <p style="font-size: 0.85rem; margin-top: var(--space-xs);">
+                        复杂模型（如高阶曲线）对数据变动非常敏感，不同训练集产生的模型差异很大。<br>
+                        → <strong>过拟合</strong>：模型过于复杂，记住了噪声而非规律。<br>
+                        → 特点：训练误差低，测试误差高。
+                    </p>
+                </div>
+            </div>
+
+            <div class="convergence-box" style="margin-bottom: var(--space-lg);">
+                <p>我们希望找到<strong>表达能力好</strong>（低偏差）且<strong>复杂度适当</strong>（低方差）的模型——这就是<strong>偏差-方差平衡</strong>（Bias-Variance
+                    Tradeoff）的核心思想。</p>
+            </div>
+
+            <!-- 6.3 性能度量指标 -->
+            <h3>性能度量指标</h3>
+            <p
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                性能度量是衡量模型泛化能力的数值评价标准。不同的任务需要不同的指标。
+            </p>
+
+            <div class="section-label">✦ 回归问题指标 ✦</div>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-name">MAE <span class="tag reg">回归</span></div>
+                    <div class="metric-formula">\(MAE = \dfrac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|\)</div>
+                    <div class="metric-desc"><strong>平均绝对误差</strong>：所有标签值与预测值偏差的绝对值的平均。直观且对异常值不太敏感。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">MSE <span class="tag reg">回归</span></div>
+                    <div class="metric-formula">\(MSE = \dfrac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2\)</div>
+                    <div class="metric-desc"><strong>均方误差</strong>：预测偏差的平方的平均。对异常值敏感（误差大时惩罚更重）。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">RMSE <span class="tag reg">回归</span></div>
+                    <div class="metric-formula">\(RMSE = \sqrt{MSE}\)</div>
+                    <div class="metric-desc"><strong>均方根误差</strong>：在 MSE 基础上开方，使误差量纲与原始数据一致，更易解释。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">MAPE <span class="tag reg">回归</span></div>
+                    <div class="metric-formula">\(MAPE = \dfrac{100\%}{n}\sum_{i=1}^{n}\left|\dfrac{y_i - \hat{y}_i}{y_i}\right|\)</div>
+                    <div class="metric-desc"><strong>平均绝对百分误差</strong>：对 MAE 的改进，考虑误差相对于真实值的比例。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">R² <span class="tag reg">回归</span></div>
+                    <div class="metric-formula">\(R^2 = 1 - \dfrac{SS_{res}}{SS_{tot}}\)</div>
+                    <div class="metric-desc"><strong>决定系数</strong>：反映模型解释了多少因变量变异。越接近 1，模型解释能力越强。</div>
+                </div>
+            </div>
+
+            <div class="section-label" style="margin-top: var(--space-xl);">✦ 分类问题指标 ✦</div>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-name">错误率 <span class="tag cls">分类</span></div>
+                    <div class="metric-formula">\(Error = \dfrac{FP + FN}{TP + TN + FP + FN}\)</div>
+                    <div class="metric-desc">分类错误的样本数占样本总数的比例。最基本的分类评估指标。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">精确率 <span class="tag cls">分类</span></div>
+                    <div class="metric-formula">\(Accuracy = \dfrac{TP + TN}{TP + TN + FP + FN}\)</div>
+                    <div class="metric-desc">分类正确的样本数占样本总数的比例。最直观的模型整体表现指标。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">查准率 <span class="tag cls">分类</span></div>
+                    <div class="metric-formula">\(Precision = \dfrac{TP}{TP + FP}\)</div>
+                    <div class="metric-desc">模型预测为"正"的结果中，真正正确的比例。衡量模型的"精确性"。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">查全率 <span class="tag cls">分类</span></div>
+                    <div class="metric-formula">\(Recall = \dfrac{TP}{TP + FN}\)</div>
+                    <div class="metric-desc">在所有真正的"正"样本中，模型正确找出的比例。衡量模型的"覆盖能力"。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">F1 分数 <span class="tag cls">分类</span></div>
+                    <div class="metric-formula">\(F1 = \dfrac{2 \cdot P \cdot R}{P + R}\)</div>
+                    <div class="metric-desc">查准率与查全率的<strong>调和平均</strong>。Fβ 可调节对 precision 或 recall 的偏好。</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-name">ROC &amp; AUC <span class="tag cls">分类</span></div>
+                    <div class="metric-formula">\(AUC = \displaystyle\int_{0}^{1} TPR(FPR) \, d(FPR)\)</div>
+                    <div class="metric-desc"><strong>ROC 曲线</strong>以 FPR 为横轴、TPR 为纵轴。<strong>AUC</strong>
+                        是曲线下面积，衡量排序质量。AUC 越高，模型在低误判率下的识别能力越强。</div>
+                </div>
+            </div>
+
+            <!-- 6.4 评估方法 -->
+            <h3>评估方法</h3>
+            <p
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                评估的关键在于：测试集必须与训练集<strong>互斥</strong>，即测试集数据不参与训练过程。常见评估方法有三种：
+            </p>
+
+            <div class="eval-grid">
+                <div class="eval-card">
+                    <h4>✂️ 留出法</h4>
+                    <p>Hold-out。将原始数据直接划分为训练集和测试集（如 7:3 或 8:2）。简单直接，但对数据划分方式敏感，单次划分可能不够稳定。</p>
+                </div>
+                <div class="eval-card">
+                    <h4>🔄 交叉验证法</h4>
+                    <p>Cross Validation。将数据分为 k 份，每次用 k-1 份训练、1 份验证，轮流 k 次后取平均结果。<strong>k
+                            折交叉验证</strong>能有效减少方差，评估结果更稳定。</p>
+                </div>
+                <div class="eval-card">
+                    <h4>🎲 自助法</h4>
+                    <p>Bootstrap。通过<strong>有放回抽样</strong>生成大量伪样本，用这些样本估计统计量的分布。在小样本场景下尤其有用，但会引入一定的估计偏差。</p>
+                </div>
+            </div>
+
+            <!-- 6.5 模型选择准则 -->
+            <div class="conclusion-box">
+                <p>我们希望找到对当前问题<strong>表达能力好</strong>，且<strong>模型复杂度较低</strong>的模型——</p>
+                <p>表达力好的模型，可以较好地对训练数据中的规律和模式进行学习；<br>
+                    复杂度低的模型，方差较小，不容易过拟合，有较好的<strong>泛化表达</strong>。</p>
+            </div>
+        </section>
+
+        <!-- ============================
+             第7章：基本工作流程与现状展望
+             ============================ -->
+        <section id="ml-workflow" class="chapter-section fade-in">
+            <div class="section-label">✦ 7 · 基本工作流程与现状展望 ✦</div>
+
+            <h3>机器学习基本流程</h3>
+            <p
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                一个完整的机器学习项目，通常遵循以下四个核心步骤。记住这个流程，你就掌握了解决实际问题的基本框架。
+            </p>
+
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-num">1</div>
+                    <h4>数据预处理</h4>
+                    <p>输入原始数据 + 标签 → 特征处理（缩放、选择、降维、采样）→ 输出训练集 + 测试集</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">2</div>
+                    <h4>模型学习</h4>
+                    <p>选择模型、交叉验证、结果评估、超参选择——在训练集上学习模型参数</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">3</div>
+                    <h4>模型评估</h4>
+                    <p>使用测试集评估模型性能，了解模型对于数据集的得分与泛化能力</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">4</div>
+                    <h4>新样本预测</h4>
+                    <p>将训练好的模型应用于新数据，进行实际的预测或分类任务</p>
+                </div>
+            </div>
+
+            <!-- 优势与局限性 -->
+            <h3>优势与局限性</h3>
+            <p
+                style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                机器学习技术发展至今，既有强大的能力，也面临诸多挑战。客观认识它的优势和局限，能帮助我们更好地应用它。
+            </p>
+
+            <div class="pros-cons-grid">
+                <div class="pros-card">
+                    <div class="pros-header">
+                        <span class="pros-icon">✅</span>
+                        <span class="pros-title">机器学习的优势</span>
+                    </div>
+                    <ul class="pros-list">
+                        <li><strong>自动特征提取</strong>：深度学习可自动从数据中学习多层特征，减少人工干预</li>
+                        <li><strong>广泛适应性</strong>：适用于图像、文本、语音、时序等多种数据类型</li>
+                        <li><strong>实时推理能力</strong>：训练后的模型可快速推理，支持在线应用</li>
+                        <li><strong>良好的可扩展性</strong>：在数据规模增长下仍能保持高性能</li>
+                    </ul>
+                </div>
+
+                <div class="cons-card">
+                    <div class="cons-header">
+                        <span class="cons-icon">⚠️</span>
+                        <span class="cons-title">机器学习的局限性</span>
+                    </div>
+                    <ul class="cons-list">
+                        <li><strong>对数据依赖强</strong>：需大量高质量标注数据，获取成本高</li>
+                        <li><strong>缺乏可解释性</strong>：复杂模型难以解释决策过程</li>
+                        <li><strong>偏差与公平性问题</strong>：训练数据偏见可能导致不公平决策</li>
+                        <li><strong>计算资源消耗大</strong>：深度模型训练需高性能硬件</li>
+                        <li><strong>泛化能力受限</strong>：在小样本或分布变化场景下易过拟合</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="status-box">
+                <p>机器学习，尤其是深度学习，正以强大的预测能力和广泛的应用场景改变众多行业。但其对数据和计算资源的高度依赖、模型可解释性不足等问题仍需持续改进。未来的发展需在模型透明性、公平性与资源效率等方面取得突破，以实现更广泛且负责任的应用。</p>
+            </div>
+        </section>
+
+        <!-- ============================
+             结尾过渡
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>理解了机器学习的基础之后，下一章我们将进入它的核心引擎——<br>看看“深度学习”是如何让机器真正“看”和“听”的。</p>
+            </div>
+        </section>
+
+        <!-- 上下篇导航 -->
+        <nav class="article-nav">
+            <a href="part2.html" class="nav-button prev">← 第1章 · 前世今生</a>
+            <a href="part4.html" class="nav-button">第3章 · 深度学习 →</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

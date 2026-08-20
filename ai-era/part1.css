@@ -1,0 +1,428 @@
+/* ==========================================
+   序章：从智能的定义到三大流派 — 专有样式
+   延续全局温暖杂志风格，补充页面特有组件
+   ========================================== */
+
+/* 词源解析卡片额外增强 */
+.etymology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+    margin-bottom: var(--space-xl);
+}
+
+.etymology-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: all var(--transition-slow);
+    box-shadow: var(--shadow-sm);
+}
+
+.etymology-card:hover {
+    background: var(--bg-card-hover);
+    border-color: var(--border-medium);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.char-display {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+}
+
+.char-structure {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.05em;
+}
+
+.etymology-structure {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.etymology-source {
+    padding: var(--space-sm);
+    background: var(--bg-elevated);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--space-md);
+}
+
+.source-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+.root-part {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--primary);
+    font-weight: 500;
+    background: none;
+    padding: 0;
+}
+
+.etymology-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* 古典文献引用 */
+.classical-refs {
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+    border: 1px solid var(--border-medium);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin: var(--space-xl) 0;
+    box-shadow: var(--shadow-md);
+}
+
+.classical-refs h4 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    color: var(--primary);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.05em;
+}
+
+.classical-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.classical-list li {
+    padding: var(--space-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--accent);
+    transition: all var(--transition-base);
+}
+
+.classical-list li:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow-sm);
+}
+
+.classical-list li:last-child {
+    margin-bottom: 0;
+}
+
+.ref-source {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.classical-list p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0.25rem 0 0 0;
+}
+
+/* 东西方对比布局 */
+.compare-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    margin: var(--space-xl) 0;
+}
+
+.compare-column {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    transition: all var(--transition-slow);
+    box-shadow: var(--shadow-sm);
+}
+
+.compare-column:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-medium);
+}
+
+.compare-column.east {
+    background: linear-gradient(135deg, var(--bg-card) 0%, hsl(38 85% 97%) 100%);
+}
+
+.compare-column.west {
+    background: linear-gradient(135deg, var(--bg-card) 0%, hsl(16 65% 97%) 100%);
+}
+
+.compare-header {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.compare-header h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.compare-header .subtitle {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+}
+
+/* 引用卡片 */
+.quote-card {
+    background: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    transition: all var(--transition-base);
+}
+
+.quote-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-sm);
+}
+
+.quote-text {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.quote-explain {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+
+.quote-source {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+/* 总结列表 */
+.summary-list {
+    list-style: none;
+    padding: var(--space-md) 0 0 0;
+}
+
+.summary-list li {
+    padding: 0.4rem 0;
+    padding-left: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    position: relative;
+}
+
+.summary-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0.5rem;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.summary-list strong {
+    color: var(--text-primary);
+}
+
+/* 论点卡片 */
+.argument-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-md);
+    position: relative;
+    overflow: hidden;
+    transition: all var(--transition-slow);
+    box-shadow: var(--shadow-sm);
+}
+
+.argument-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: all var(--transition-slow);
+}
+
+.argument-card:hover::before {
+    height: 4px;
+}
+
+.argument-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--border-medium);
+}
+
+.argument-card > div:first-child {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.argument-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.argument-card strong {
+    color: var(--primary);
+}
+
+/* ANI/AGI/ASI 分类卡片颜色主题 */
+.type-card.ani {
+    border-top: 4px solid #3B82F6;
+}
+
+.type-card.agi {
+    border-top: 4px solid #8B5CF6;
+}
+
+.type-card.asi {
+    border-top: 4px solid #EF4444;
+}
+
+.type-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: var(--space-sm);
+}
+
+.type-card.ani .type-badge {
+    background: #EFF6FF;
+    color: #1D4ED8;
+}
+
+.type-card.agi .type-badge {
+    background: #F5F3FF;
+    color: #6D28D9;
+}
+
+.type-card.asi .type-badge {
+    background: #FEF2F2;
+    color: #DC2626;
+}
+
+/* 三大流派卡片颜色增强 */
+.stream-card.symbolic {
+    border-top: 4px solid #EC4899;
+}
+
+.stream-card.connectionist {
+    border-top: 4px solid #3B82F6;
+}
+
+.stream-card.behaviorist {
+    border-top: 4px solid #10B981;
+}
+
+.stream-card.symbolic:hover {
+    background: linear-gradient(135deg, var(--bg-card) 0%, #FDF2F8 100%);
+}
+
+.stream-card.connectionist:hover {
+    background: linear-gradient(135deg, var(--bg-card) 0%, #EFF6FF 100%);
+}
+
+.stream-card.behaviorist:hover {
+    background: linear-gradient(135deg, var(--bg-card) 0%, #ECFDF5 100%);
+}
+
+/* 过渡区块增强 */
+.transition-block {
+    text-align: center;
+    margin: var(--space-2xl) 0;
+    padding: var(--space-xl);
+    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-base) 100%);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+}
+
+.transition-block p {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 会聚结论区块 */
+.convergence-box {
+    text-align: center;
+    padding: var(--space-xl);
+    margin: var(--space-lg) 0;
+    background: linear-gradient(135deg, hsl(var(--primary-hue) 65% 95%) 0%, hsl(38 85% 95%) 100%);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-accent);
+}
+
+.convergence-box p {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    line-height: 1.8;
+    margin: 0;
+}
+
+.convergence-box strong {
+    color: var(--primary-dark);
+}
+
+/* ==========================================
+   响应式适配
+   ========================================== */
+@media (max-width: 768px) {
+    .etymology-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .compare-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .classical-refs {
+        padding: var(--space-md);
+    }
+
+    .char-display {
+        font-size: 2.5rem;
+    }
+}

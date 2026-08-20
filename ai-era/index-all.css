@@ -1,0 +1,168 @@
+        :root {
+            --primary-hue: 16;
+            --primary: hsl(var(--primary-hue) 65% 58%);
+            --primary-light: hsl(var(--primary-hue) 60% 68%);
+            --primary-dark: hsl(var(--primary-hue) 70% 45%);
+            --accent-hue: 38;
+            --accent: hsl(var(--accent-hue) 85% 55%);
+            --bg-base: #FEFDFB;
+            --bg-card: #FFFFFF;
+            --text-primary: #2D2A26;
+            --text-secondary: #6B6560;
+            --text-muted: #9A948C;
+            --border-subtle: #EDE8E3;
+            --border-medium: #DFD8D0;
+            --shadow-sm: 0 1px 3px rgba(45, 42, 38, 0.06);
+            --shadow-md: 0 4px 12px rgba(45, 42, 38, 0.08);
+            --shadow-lg: 0 8px 24px rgba(45, 42, 38, 0.10);
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-base);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 1px 1px, var(--border-subtle) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem 3rem;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent), var(--primary), transparent);
+            border-radius: 2px;
+        }
+        .hero-badge {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: hsl(var(--accent-hue) 80% 95%);
+            border: 1px solid hsl(var(--accent-hue) 60% 85%);
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.75rem;
+        }
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        /* Grid */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2.5rem 1rem 3rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: hsl(var(--primary-hue) 50% 85%);
+        }
+        .card:hover::before { opacity: 1; }
+        .card-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        .card h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        .card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            flex: 1;
+        }
+        .card-meta {
+            margin-top: 0.75rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .card-emoji {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        /* 达特茅斯 special card */
+        .card-extra {
+            background: linear-gradient(135deg, hsl(var(--primary-hue) 60% 97%) 0%, hsl(var(--accent-hue) 80% 97%) 100%);
+            border: 1px solid hsl(var(--primary-hue) 50% 85%);
+        }
+        .card-extra:hover {
+            border-color: var(--primary);
+        }
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        @media (max-width: 600px) {
+            .grid { grid-template-columns: 1fr; }
+            .hero { padding: 3rem 1rem 2rem; }
+        }
+    

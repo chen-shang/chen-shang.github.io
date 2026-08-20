@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI机械臂连接教程：连接 Git。包含接入路线、最小权限、配置示例、验收清单和官方文档。">
+    <title>连接 Git — AI机械臂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css?v=20260723">
+</head>
+
+<body class="connection-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 05 / 10</span>
+    </nav>
+
+    <main class="connection-guide">
+        <header class="guide-hero" data-number="05">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 05</div>
+            <h1>连接 Git</h1>
+            <p>先把身份、凭证、分支和提交规则配置好，再让 Agent 修改代码。</p>
+            <div class="guide-pills"><span>SSH Key</span><span>Credential Helper</span><span>分支保护</span><span>提交签名</span></div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#route">选择路线</a>
+            <a href="#setup">接入步骤</a>
+            <a href="#config">配置示例</a>
+            <a href="#permission">最小权限</a>
+            <a href="#verify">验收</a>
+            <a href="#docs">官方文档</a>
+        </nav>
+
+        <section class="guide-section" id="route">
+            <div class="guide-section-head">
+                <span class="guide-section-number">01</span>
+                <div><h2>先选一条正确的连接路线</h2><p>不要一次开放所有能力。先选择最小可用入口，验证价值后再升级。</p></div>
+            </div>
+            <div class="route-grid">
+                <article class="route-card recommended">
+                    <span>推荐</span>
+                    <h3>SSH Key</h3>
+                    <p>适合开发机和固定工作环境。每台设备使用独立密钥，便于吊销和审计。</p>
+                </article>
+                <article class="route-card">
+                    <span>兼容</span>
+                    <h3>HTTPS + 凭证管理器</h3>
+                    <p>适合企业 SSO 或代理环境。使用系统凭证管理器，不在远程 URL 中保存 Token。</p>
+                </article>
+                <article class="route-card">
+                    <span>增强</span>
+                    <h3>提交 / 标签签名</h3>
+                    <p>对发布仓库或高合规项目，使用 SSH、GPG 或平台支持的签名方式验证提交来源。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="guide-section" id="setup">
+            <div class="guide-section-head">
+                <span class="guide-section-number">02</span>
+                <div><h2>按这六步完成第一次接入</h2><p>把身份、权限、工具边界和验收一起配置，而不是只追求“接口能通”。</p></div>
+            </div>
+            <ol class="step-list">
+                <li>
+                    <span>01</span>
+                    <div><strong>确认 Git 身份</strong><p>设置 user.name 与 user.email；企业仓库使用公司邮箱，避免多个身份混在一起。</p></div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div><strong>创建独立凭证</strong><p>为当前设备生成 SSH Key，或启用系统 Credential Manager；不要复用同事密钥。</p></div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div><strong>绑定代码平台</strong><p>把公钥添加到 GitHub、GitLab 或企业 Git 服务，并记录密钥用途与到期策略。</p></div>
+                </li>
+                <li>
+                    <span>04</span>
+                    <div><strong>设置默认策略</strong><p>统一默认分支名、pull.rebase、自动换行和提交签名策略，减少 Agent 产生环境差异。</p></div>
+                </li>
+                <li>
+                    <span>05</span>
+                    <div><strong>限制 Agent 动作</strong><p>默认允许 status、diff、branch、add 和 commit；push、force push、tag 与 reset 单独确认。</p></div>
+                </li>
+                <li>
+                    <span>06</span>
+                    <div><strong>在测试仓库验收</strong><p>克隆、建分支、修改、提交、拉取和推送一次，确认作者、签名和远端分支都正确。</p></div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="guide-section" id="config">
+            <div class="guide-section-head">
+                <span class="guide-section-number">03</span>
+                <div><h2>配置示例</h2><p>字段和值都是示例占位符，请按你使用的 Agent、平台和密钥管理方式调整。</p></div>
+            </div>
+            <div class="config-panel">
+                <div class="config-panel-head"><span>terminal · 基础配置</span><span>示例 · 不含真实密钥</span></div>
+                <pre><code>git config --global user.name &quot;Your Name&quot;
+git config --global user.email &quot;you@company.com&quot;
+git config --global init.defaultBranch main
+git config --global pull.rebase false
+
+ssh-keygen -t ed25519 -C &quot;you@company.com&quot;
+ssh -T git@gitlab.com</code></pre>
+                <p class="config-note">不要在自动化脚本里写 git config credential.helper store。它可能把凭证明文写入磁盘；优先使用系统钥匙串或官方凭证管理器。</p>
+            </div>
+        </section>
+
+        <section class="guide-section" id="permission">
+            <div class="guide-section-head">
+                <span class="guide-section-number">04</span>
+                <div><h2>最小权限建议</h2><p>把读取、草稿和高影响动作分开，避免一个 Token 同时拥有全部能力。</p></div>
+            </div>
+            <table class="permission-table">
+                <thead><tr><th>动作</th><th>默认等级</th><th>建议边界</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>status / diff / log</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>Agent 可以自由读取本地 Git 状态和历史。</td>
+                    </tr>
+                    <tr>
+                        <td>branch / add / commit</td>
+                        <td><span class="permission-level">草稿</span></td>
+                        <td>允许在任务分支提交，但提交前展示 Diff。</td>
+                    </tr>
+                    <tr>
+                        <td>push / tag</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>确认目标远端、分支、提交范围和是否触发 CI。</td>
+                    </tr>
+                    <tr>
+                        <td>force push / reset --hard</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>默认禁止；确需执行时必须有备份与明确批准。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="guide-section" id="verify">
+            <div class="guide-section-head">
+                <span class="guide-section-number">05</span>
+                <div><h2>上线前验收</h2><p>不要只测成功路径；撤销权限、重复执行和失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>git config 中的姓名与邮箱属于当前用户。</li>
+                    <li>SSH Key 或 HTTPS Token 可以单独吊销。</li>
+                    <li>Agent 不会向 main/master 直接提交或推送。</li>
+                    <li>提交前后都能显示 Diff、分支名和目标远端。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>在测试仓库创建 agent/connect-git 分支，修改 README 并提交；不要 push，先展示提交信息与 Diff。</code>
+                </div>
+            </div>
+            <div class="guide-warning">
+                <span>!</span>
+                <div><strong>先保护主分支，再开放写能力</strong><p>本地规则无法替代服务端保护。main/master 应在 GitHub 或 GitLab 上启用受保护分支、评审和 CI 检查，避免凭证误用直接改写历史。</p></div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="docs">
+            <div class="guide-section-head">
+                <span class="guide-section-number">06</span>
+                <div><h2>继续查看官方文档</h2><p>平台界面和权限名称会更新，实际接入时以官方文档和企业管理员策略为准。</p></div>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://git-scm.com/book/en/v2/Git-Tools-Credential-Storage" target="_blank" rel="noopener noreferrer">
+                    <small>GIT</small>
+                    <strong>Credential Storage</strong>
+                    <p>了解凭证助手、系统钥匙串与安全取舍。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://docs.gitlab.com/user/ssh/" target="_blank" rel="noopener noreferrer">
+                    <small>GITLAB</small>
+                    <strong>Use SSH keys</strong>
+                    <p>生成、添加并验证 GitLab SSH Key。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh" target="_blank" rel="noopener noreferrer">
+                    <small>GITHUB</small>
+                    <strong>Connecting with SSH</strong>
+                    <p>配置 GitHub SSH 连接与故障排查。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-wecom.html">
+                <small>上一个连接</small>
+                <strong>← 连接企业微信</strong>
+            </a>
+            <a href="connect-repository.html">
+                <small>下一个连接</small>
+                <strong>→ 连接 GitHub / GitLab</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+</body>
+
+</html>

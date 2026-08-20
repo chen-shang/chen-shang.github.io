@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI工程演进 — AI纪元</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part11.css">
+</head>
+
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html" class="active" aria-current="page">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主内容区 -->
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#lv1" data-section="lv1"><span class="toc-num">01</span><span class="toc-label">第 1 重 · 提示词 Prompt</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#lv2" data-section="lv2"><span class="toc-num">02</span><span class="toc-label">第 2 重 · 提示词工程</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#lv3" data-section="lv3"><span class="toc-num">03</span><span class="toc-label">第 3 重 · 上下文工程</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#lv4" data-section="lv4"><span class="toc-num">04</span><span class="toc-label">第 4 重 · Harness</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#lv5" data-section="lv5"><span class="toc-num">05</span><span class="toc-label">第 5 重 · 循环工程</span></a></li>
+        </ul>
+      </aside>
+
+
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <span class="hero-badge">🛠️ 工程演进 · 实战理念</span>
+            <h1 class="hero-title">AI 工程：从提示词到循环工程的五次跃迁</h1>
+            <p class="hero-desc">
+                提示词、提示词工程、上下文工程、Harness、循环工程——这不是五个并列的技术名词，<br>
+                而是一条清晰的进化链：模型越强、任务越长，"驾驭 AI"的工程抽象层级就越往上抬。<br>
+                本文拆解 2025–2026 年业界最新实战理念，看懂每一次跃迁为何必然发生。
+            </p>
+        </section>
+
+        <!-- 核心命题横幅 -->
+        <div class="concept-banner">
+            <div class="banner-header">CORE THESIS · 核心命题</div>
+            <div class="banner-body">
+                <h4>提示词工程并没有"已死"——它只是不再够用</h4>
+                <p>2025 年开始，"Prompt Engineering is dead" 的标题满天飞。这是个误读。真相是：当模型从"一次性问答"走向"在循环里连续跑几十上百轮"的 Agent，<strong>仅靠把一句话写好</strong>已经无法保证结果。工程师的关注点被迫从"单条提示"上移到"整个上下文"，再上移到"整个系统"，最终上移到"设计循环本身"。每一次上移，都因为前一层在新场景下失效而诞生。</p>
+            </div>
+        </div>
+
+        <!-- 进化全景图 -->
+        <div class="standalone-section">
+            <h3>进化全景：驾驭抽象层级的五次抬升</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                先用一张图建立全局认知。下图中每一个节点都<strong>解决前一层的痛点</strong>，又<strong>暴露出新的问题</strong>，于是催生下一层。读懂这条链，就读懂了过去三年 AI 工程的全部主线。
+            </p>
+
+            <div class="evo-chain">
+                <div class="evo-node l1">
+                    <div class="evo-num">LV.1</div>
+                    <span class="evo-icon">💬</span>
+                    <div class="evo-name">提示词</div>
+                    <div class="evo-tag">Prompt</div>
+                    <div class="evo-pain">每次都要从头说，无法复用</div>
+                </div>
+                <div class="evo-arrow">──▶</div>
+                <div class="evo-node l2">
+                    <div class="evo-num">LV.2</div>
+                    <span class="evo-icon">✍️</span>
+                    <div class="evo-name">提示词工程</div>
+                    <div class="evo-tag">Prompt Engineering</div>
+                    <div class="evo-pain">只管"写好一句"，忽略窗口里的其他 token</div>
+                </div>
+                <div class="evo-arrow">──▶</div>
+                <div class="evo-node l3">
+                    <div class="evo-num">LV.3</div>
+                    <span class="evo-icon">🧩</span>
+                    <div class="evo-name">上下文工程</div>
+                    <div class="evo-tag">Context Engineering</div>
+                    <div class="evo-pain">窗口会"腐烂"，需要系统化管理整个 token 集</div>
+                </div>
+                <div class="evo-arrow">──▶</div>
+                <div class="evo-node l4">
+                    <div class="evo-num">LV.4</div>
+                    <span class="evo-icon">⚙️</span>
+                    <div class="evo-name">Harness</div>
+                    <div class="evo-tag">驾驭框架</div>
+                    <div class="evo-pain">从"管好一个请求"到"管好整个系统的生命周期"</div>
+                </div>
+                <div class="evo-arrow">──▶</div>
+                <div class="evo-node l5">
+                    <div class="evo-num">LV.5</div>
+                    <span class="evo-icon">🔄</span>
+                    <div class="evo-name">循环工程</div>
+                    <div class="evo-tag">Loop Engineering</div>
+                    <div class="evo-pain">不再逐次提示，而是工程化"自主运转的循环"</div>
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <p><strong>一句话主线：</strong>模型变强，并不会让"工程"消失——它只会把工程的<strong>重心</strong>从"驯服单次输出"不断上移到"设计自主运转的系统"。你驾驭的抽象层级越高，单点技巧的边际收益就越低，系统设计的杠杆就越大。</p>
+            </div>
+        </div>
+
+        <div class="section-divider"><span>✦</span></div>
+
+        <!-- =============================================
+             第1重：提示词
+             ============================================= -->
+        <section class="chapter-section" id="lv1">
+            <h2><span class="ch-num">1</span>第 1 重 · 提示词 Prompt —— 一切的起点</h2>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                提示词（Prompt）是你喂给模型的<strong>原始输入文本</strong>。在模型眼里，你的话不是"中文句子"，而是先被分词器切成一个个 <strong>token</strong>（词元），再变成向量，再送进 Transformer。提示词是一切 AI 工程的<strong>最小单元</strong>——就像源代码里的一个字符。
+            </p>
+
+            <div class="eng-card l1">
+                <div class="eng-header">
+                    <div class="eng-icon">💬</div>
+                    <div>
+                        <div class="eng-title">提示词的本质：一段被 tokenize 的文本</div>
+                        <div class="eng-en">Prompt = text → tokens → vectors → attention</div>
+                    </div>
+                </div>
+                <div class="eng-desc">
+                    一个提示词的好坏，本质上取决于<strong>它被切成的 token 序列能否激活模型训练时学到的高价值模式</strong>。这也是为什么同一件事，"请用 Python 写一个快速排序"和"作为资深算法工程师，请实现 Python 版快排并附复杂度分析"会得到截然不同的输出——后者激活的上下文模式更精准。提示词工程，就是从这里开始的。
+                </div>
+                <div class="principle-box">
+                    <span class="principle-label">⚙️ 为什么它是"第1重"且天然有局限</span>
+                    <p>提示词是<strong>一次性的、单点的、无状态的</strong>。你每次发问，模型都从零开始读你的输入；上一轮说过的话（在没有记忆机制时）它全忘了。对于"一问一答"的聊天，这够了；但一旦任务需要多轮推进、需要记住中间结果，单点提示词立刻捉襟见肘——于是催生了提示词工程。</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"><span>✦</span></div>
+
+        <!-- =============================================
+             第2重：提示词工程
+             ============================================= -->
+        <section class="chapter-section" id="lv2">
+            <h2><span class="ch-num">2</span>第 2 重 · 提示词工程 Prompt Engineering —— 把一句话写好</h2>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                提示词工程（Prompt Engineering）是<strong>编写和组织 LLM 指令以获得最佳结果的方法</strong>。它的核心战场是<strong>系统提示词（System Prompt）</strong>——那串在最开头、定义模型角色与规则的长文本。过去三年，业界沉淀出几条几乎万能的核心技巧。
+            </p>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🎯 系统提示词</h3>
+                    <div class="tech-desc"><strong>System Prompt</strong>：在最开头设定角色、目标、约束、输出格式。它定义了模型的"工作人格"，权重高于用户消息。是提示词工程的<strong>主战场</strong>。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>📝 少样本示例</h3>
+                    <div class="tech-desc"><strong>Few-shot</strong>：在提示里给 2–5 个"输入→输出"范例。模型从示例中<strong>在上下文中学习</strong>（In-Context Learning）目标模式，比纯文字描述更有效。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🧠 思维链</h3>
+                    <div class="tech-desc"><strong>Chain-of-Thought</strong>：要求模型"一步一步思考"再给答案。强迫模型展开中间推理，在数学、逻辑、多步任务上显著提升正确率。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🎭 角色设定</h3>
+                    <div class="tech-desc"><strong>Role Prompting</strong>：赋予模型专业身份（"你是资深安全审计员"）。激活该领域的高价值知识权重，输出更专业、更聚焦。</div>
+                </div>
+            </div>
+
+            <div class="practical-box">
+                <span class="practical-label">🔍 2026 现状：单条技巧在衰减</span>
+                <p>这些技巧依然有用，但<strong>边际收益正在递减</strong>。原因有二：① 前沿模型（Claude 4 / GPT-5）本身已很强，"写好一句提示"带来的提升不再决定性；② 真实任务早已不是"一问一答"，而是 Agent 在<strong>循环里跑几十上百轮</strong>——这时问题不再是"这句话怎么写"，而是"窗口里堆积的几百轮工具调用结果，模型该怎么消化"。提示词工程的视野，够不到这里。</p>
+            </div>
+
+            <div class="summary-box">
+                <p><strong>提示词工程的边界：</strong>它只回答"如何写好<strong>一条</strong>指令"，却假设模型窗口里<strong>只有这一条指令</strong>。当窗口里挤满了系统提示、工具定义、检索文档、历史消息时，"写好一句话"救不了被淹没的关键信息——这就是上下文工程要接管的地方。</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span>✦</span></div>
+
+        <!-- =============================================
+             第3重：上下文工程（核心重头）
+             ============================================= -->
+        <section class="chapter-section" id="lv3">
+            <h2><span class="ch-num">3</span>第 3 重 · 上下文工程 Context Engineering —— 2025 的范式转移</h2>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                2025 年，Anthropic 给出了一个已被业界广泛采纳的定义：<strong>上下文工程是在 LLM 推理时，策划和维护"最优 token 集合"的一整套策略</strong>——它不仅包括提示词，还包括所有可能进入窗口的东西：工具定义、检索文档、消息历史、外部数据。它是提示词工程的<strong>自然延伸</strong>。
+            </p>
+
+            <div class="research-quote">
+                <p class="quote-text">LLM 就像一种新的操作系统：<strong>模型是 CPU，上下文窗口是 RAM</strong>，是模型的工作内存。就像 RAM 容量有限，上下文窗口能承载的上下文来源也有限。正如操作系统负责调度什么进入 CPU 的 RAM，"上下文工程"扮演着类似的角色——<strong>用恰好正确的信息，填满上下文窗口以服务下一步</strong>。</p>
+                <div class="quote-source">
+                    <span class="source-badge">定义</span>
+                    Andrej Karpathy · 上下文工程的核心心智模型
+                </div>
+            </div>
+
+            <h3>3.1 为什么必须做：Context Rot（上下文腐烂）</h3>
+            <div class="principle-box">
+                <span class="principle-label">⚙️ 核心原理</span>
+                <p>"大海捞针"（needle-in-a-haystack）基准测试揭示了一个现象——<strong>上下文腐烂</strong>：随着上下文窗口里的 token 数量增加，模型<strong>准确召回其中信息的能力反而下降</strong>。原因有三：<br>
+                ① <strong>注意力预算</strong>：上下文是<strong>有限资源</strong>，有递减的边际收益，每个新 token 都在消耗这个预算；<br>
+                ② <strong>n² 注意力关系</strong>：Transformer 让每个 token 关注所有其他 token，n 个 token 产生 n² 对关系，上下文越长，这些关系被拉得越薄；<br>
+                ③ <strong>训练分布偏短</strong>：模型在训练中见过的短序列远多于长序列，对长程依赖缺乏专门参数。<br>
+                因此，<strong>把上下文当宝贝、当有限资源来精打细算</strong>，是构建强 Agent 的前提。</p>
+            </div>
+
+            <h3>3.2 上下文为什么会"坏掉"：四种失败模式</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                Drew Breunig 在 2025 年系统总结了长上下文导致 Agent 性能下降的四种典型方式。理解它们，才知道上下文工程要解决什么。
+            </p>
+
+            <div class="fail-grid">
+                <div class="fail-card">
+                    <div class="fail-name">上下文中毒</div>
+                    <div class="fail-en">Context Poisoning</div>
+                    <p>一次<strong>幻觉</strong>混进了上下文，后续每一轮都把它当"既定事实"继续推理，错误像滚雪球一样累积放大。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">上下文分心</div>
+                    <div class="fail-en">Context Distraction</div>
+                    <p>无关信息<strong>淹没了训练信号</strong>。模型被海量 token 分散注意力，抓不住真正关键的那几条指令。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">上下文混淆</div>
+                    <div class="fail-en">Context Confusion</div>
+                    <p><strong>冗余的上下文</strong>干扰了响应。即便是"有用但多余"的信息，也会让模型在取舍间偏离最优解。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">上下文冲突</div>
+                    <div class="fail-en">Context Clash</div>
+                    <p>上下文的不同部分<strong>相互矛盾</strong>（如过时的旧指令与新指令打架），模型无所适从，行为变得不可预测。</p>
+                </div>
+            </div>
+
+            <h3>3.3 四大策略：Write / Select / Compress / Isolate</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                LangChain 把业界应对手段归纳为四个动词。这是上下文工程的<strong>核心工具箱</strong>，几乎每一个强 Agent 都在用其中几种。
+            </p>
+
+            <div class="strategy-grid">
+                <div class="strategy-card s1">
+                    <div class="strat-verb">WRITE · 写出</div>
+                    <h4>把上下文写到窗口之外</h4>
+                    <div class="strat-def">saving context outside the window</div>
+                    <p>Agent 把信息存到<strong>窗口外</strong>，需要时再取。<strong>草稿本（Scratchpad）</strong>：在任务进行中记笔记到文件或状态对象；<strong>记忆（Memory）</strong>：跨会话持久化，如 Reflexion 的"反思记忆"、ChatGPT/Cursor 的长期记忆。</p>
+                    <div class="strat-ex">→ Anthropic 多 Agent 研究员：计划存入 Memory，避免超 200K token 被截断</div>
+                </div>
+
+                <div class="strategy-card s2">
+                    <div class="strat-verb">SELECT · 选择</div>
+                    <h4>把上下文拉进窗口</h4>
+                    <div class="strat-def">pulling context into the window</div>
+                    <p>从外部<strong>按需取回</strong>相关信息。读取草稿本、检索记忆、对工具描述做 RAG、对知识库做 RAG。代码 Agent 尤其典型：用 grep/文件搜索 + 知识图谱 + 重排序，精准取回相关代码。</p>
+                    <div class="strat-ex">→ Claude Code 用 CLAUDE.md 预载规则；ChatGPT 从大量记忆中按需检索</div>
+                </div>
+
+                <div class="strategy-card s3">
+                    <div class="strat-verb">COMPRESS · 压缩</div>
+                    <h4>只保留必需的 token</h4>
+                    <div class="strat-def">retaining only required tokens</div>
+                    <p><strong>摘要（Summarization）</strong>：用 LLM 蒸馏关键内容，如 Claude Code 在用到 <strong>95% 窗口时自动压缩</strong>（auto-compact）整段轨迹；<strong>裁剪（Trimming）</strong>：按硬规则删旧消息、清掉已用完的工具调用结果。</p>
+                    <div class="strat-ex">→ Cognition：在 Agent 间交接处做摘要，减少 token 传递</div>
+                </div>
+
+                <div class="strategy-card s4">
+                    <div class="strat-verb">ISOLATE · 隔离</div>
+                    <h4>把上下文拆分开</h4>
+                    <div class="strat-def">splitting context up</div>
+                    <p><strong>多 Agent</strong>：每个子 Agent 独占干净窗口，专攻子任务，只回传浓缩摘要；<strong>沙箱环境</strong>：把重 token 对象（图片/大数据）隔离在运行环境里；<strong>状态对象</strong>：用 schema 字段隔离信息，按需暴露给 LLM。</p>
+                    <div class="strat-ex">→ Anthropic：多 Agent 并行探索，各自窗口聚焦子问题</div>
+                </div>
+            </div>
+
+            <h3>3.4 有效上下文的解剖：不只是"多"，而是"精"</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                Anthropic 给出一条总原则：好的上下文工程，是找到<strong>最小的高信号 token 集</strong>，最大化达成目标的概率。这落到三个组件上：
+            </p>
+
+            <div class="practical-box">
+                <span class="practical-label">🎯 系统提示词的"正确高度"</span>
+                <p>系统提示要在<strong>两个极端之间找到金发姑娘区（Goldilocks Zone）</strong>：一端是把复杂逻辑硬编码成脆弱的 if-else（维护噩梦、模型稍变就崩）；另一端是给一句含糊的高层指导（模型拿不到具体信号、错误假设共享上下文）。最优解是<strong>具体到足以引导行为，又灵活到能提供强启发式</strong>。组织提示时用 <code>&lt;background&gt;</code> / <code>## Tool guidance</code> 等分段 + XML/Markdown 标签切分。</p>
+            </div>
+
+            <div class="practical-box">
+                <span class="practical-label">🛠️ 工具要"Token 高效 + 功能不重叠"</span>
+                <p>工具定义了 Agent 与信息/动作空间的<strong>契约</strong>。两个常见病：① 工具返回的信息太啰嗦，浪费预算；② <strong>功能重叠</strong>导致模型不知道该调哪个——"如果连人类工程师都说不清该用哪个工具，就别指望 AI 选对"。原则：自包含、健壮、用途极清晰，输入参数要发挥模型的长处。</p>
+            </div>
+
+            <div class="practical-box">
+                <span class="practical-label">📝 示例要"少而精"，别列 laundry list</span>
+                <p>很多团队往提示里塞一长串边界案例当规则。Anthropic 强烈建议反其道而行：<strong>精选一组多样、规范的范例</strong>来示范期望行为。对 LLM 而言，"一个好示例胜过千言万语"——示例是它最看得懂的"图"。</p>
+            </div>
+
+            <h3>3.5 即时检索：Claude Code 的混合策略</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                传统的 RAG 是<strong>推理前一次性预检索</strong>所有相关数据塞进窗口。新趋势是 <strong>"即时"（just-in-time）策略</strong>：Agent 只在窗口里保留轻量标识符（文件路径、查询语句、网页链接），运行时用工具<strong>动态加载</strong>真正需要的数据。这模仿了人类——我们不背诵整个语料库，而是靠文件系统、收件箱、书签按需取用。
+            </p>
+
+            <div class="practical-box">
+                <span class="practical-label">⚡ Claude Code 的真实做法</span>
+                <p>Claude Code 采用<strong>混合策略</strong>：<code>CLAUDE.md</code> 文件在启动时<strong>朴素地预载</strong>进上下文（提供项目规则），而 <code>glob</code> / <code>grep</code> 等原语让它<strong>即时</strong>导航环境、按需取文件。这样既绕过了"陈旧索引"问题，又不需要复杂的语法树。文件名、目录层级、时间戳本身就是<strong>元数据信号</strong>——一个叫 <code>test_utils.py</code> 的文件放在 <code>tests/</code> 还是 <code>src/core/</code>，暗示着截然不同的用途。</p>
+            </div>
+
+            <h3>3.6 长时程任务三件套</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                当任务跨越几十分钟到数小时（如大型代码库迁移、综合研究），token 量必然超过窗口。Anthropic 给出三把利器——注意，它们正对应上面四大策略的 Compress / Write / Isolate：
+            </p>
+
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🗜️</div>
+                    <h3>压缩 Compaction</h3>
+                    <div class="tool-desc">对应 Compress</div>
+                    <div class="tool-body">把临近窗口上限的对话<strong>摘要后重启</strong>新窗口。Claude Code 会保留架构决策、未解决 bug、实现细节，丢弃冗余工具输出。艺术在于<strong>取舍</strong>——过度压缩会丢掉后来才显出价值的关键细节。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📒</div>
+                    <h3>结构化笔记</h3>
+                    <div class="tool-desc">对应 Write · Agentic Memory</div>
+                    <div class="tool-body">Agent 定期把笔记写到窗口外的记忆（如 <code>NOTES.md</code>、todo list），稍后拉回。<strong>Claude 玩宝可梦</strong>是经典案例：它自动维护探索地图、记录招式克制关系，跨数小时训练保持连贯。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔀</div>
+                    <h3>子 Agent 架构</h3>
+                    <div class="tool-desc">对应 Isolate</div>
+                    <div class="tool-body">专用子 Agent 用<strong>干净窗口</strong>处理聚焦任务，主 Agent 只做高层协调。每个子 Agent 可能消耗数万 token，但只回传 1–2K 的浓缩摘要。关注点分离，效果远超单 Agent。</div>
+                </div>
+            </div>
+
+            <div class="research-quote">
+                <p class="quote-text">"上下文工程"……实际上是<strong>构建 AI Agent 的工程师的头号工作</strong>。<br>Agent 经常进行跨越<strong>数百轮</strong>的对话，需要谨慎的上下文管理策略。</p>
+                <div class="quote-source">
+                    <span class="source-badge">业界共识</span>
+                    Cognition（Devin 团队）· Anthropic
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <p><strong>上下文工程的跃迁意义：</strong>它把工程师的视野从"一句话"扩展到"模型在每一步看到的<strong>整个世界</strong>"。但请注意——它仍在回答"如何让单次推理更好"。当系统需要<strong>持续运行、自我纠错、协调多个 Agent、满足合规与安全</strong>时，单点优化不够了，必须上升为<strong>系统级框架</strong>。那就是 Harness。</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span>✦</span></div>
+
+        <!-- =============================================
+             第4重：Harness（完整章节）
+             ============================================= -->
+        <section class="chapter-section" id="lv4">
+            <h2><span class="ch-num">4</span>第 4 重 · Harness —— 从"管好一个请求"到"管好整个系统"</h2>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                Harness（驾驭框架）是上下文工程的<strong>系统化与生产化</strong>。上下文工程关注"单次推理的 token 质量"，Harness 则回答一个更硬的问题：当 AI 系统从实验室 demo 走向生产、从一段个人脚本变成影响千万人的服务，<strong>如何保证它可靠、安全、可控、合规</strong>？这是把 AI 从"能用"变成"敢用、可信"的那一层工程脚手架。
+            </p>
+
+            <div class="eng-card l4">
+                <div class="eng-header">
+                    <div class="eng-icon">⚙️</div>
+                    <div>
+                        <div class="eng-title">Harness = 上下文工程的系统归宿</div>
+                        <div class="eng-en">From single-inference to full lifecycle</div>
+                    </div>
+                </div>
+                <div class="eng-desc">
+                    Harness 的四大支柱——<strong>可观测性</strong>（追踪每次调用的延迟/成本/质量）、<strong>评估</strong>（量化"智能"、LLM-as-a-Judge）、<strong>防护</strong>（输入输出护栏、访问控制）、<strong>治理</strong>（NIST AI RMF、EU AI Act 合规）——本质上都是在<strong>系统层面</strong>保障上下文工程能持续、可控地运转。没有可观测性，你不知道上下文哪里腐烂了；没有评估，你不知道压缩是否丢了关键信息；没有防护，精心设计的上下文会被一次注入瞬间污染。
+                </div>
+                <div class="principle-box">
+                    <span class="principle-label">🔗 连接点：为什么 Harness 是必然</span>
+                    <p>上下文工程解决了"单点最优"，但生产系统是<strong>长跑</strong>：模型会更新、数据会漂移、攻击会进化、合规会收紧。Harness 把这些动态因素纳入一个闭环——<strong>监控 → 评估 → 防护 → 治理 → 反馈改进</strong>。它是上下文工程从"工艺"升级为"工程学科"的那一层脚手架。</p>
+                </div>
+            </div>
+
+            <!-- 4.0 四层含义 -->
+            <h3>4.0 同一个词的四层含义</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                "Harness"在不同语境下指向不同的东西——理解这四层，才不会把"工具""方法""架构""目标"混为一谈。
+            </p>
+            <div class="strategy-grid">
+                <div class="strategy-card s1">
+                    <div class="strat-verb">狭义 · 工具平台</div>
+                    <h4>AI 开发 Harness</h4>
+                    <div class="strat-def">AI Development Harness</div>
+                    <p>一套具体的<strong>工具链与平台</strong>，覆盖从提示管理、模型评估到部署监控的全生命周期。代表：<code>LangSmith</code>、<code>Arize Phoenix</code>、<code>Langfuse</code>。</p>
+                </div>
+                <div class="strategy-card s2">
+                    <div class="strat-verb">广义 · 治理框架</div>
+                    <h4>AI 治理框架</h4>
+                    <div class="strat-def">AI Governance Framework</div>
+                    <p>一套系统性方法，确保 AI 在设计、训练、部署到退役的全生命周期中，始终符合<strong>人类价值观、法律规范与社会伦理</strong>。代表：<code>NIST AI RMF</code>、<code>EU AI Act</code>。</p>
+                </div>
+                <div class="strategy-card s3">
+                    <div class="strat-verb">工程 · 架构模式</div>
+                    <h4>Agent 编排引擎</h4>
+                    <div class="strat-def">Agent Orchestration Engine</div>
+                    <p>协调多个 Agent 协同工作的<strong>架构模式</strong>，解决"单个 Agent 能力有限"的问题。代表：<code>LangGraph</code>、<code>AutoGen</code>、<code>CrewAI</code>。</p>
+                </div>
+                <div class="strategy-card s4">
+                    <div class="strat-verb">核心 · 终极目标</div>
+                    <h4>可信 AI</h4>
+                    <div class="strat-def">Trustworthy AI</div>
+                    <p>Harness 的终极目标——具备<strong>可靠性、安全性、公平性、透明性</strong>等特征的 AI 系统，才是真正值得信任的 AI。</p>
+                </div>
+            </div>
+
+            <!-- 4.1 五大风险 -->
+            <h3>4.1 为什么必须：AI 系统的五大独特风险</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                AI 越强大，风险越呈指数级增长。这些风险既不同于传统软件缺陷，也有别于信息安全领域的传统威胁——它们是<strong>模型原生</strong>的。
+            </p>
+            <div class="fail-grid">
+                <div class="fail-card">
+                    <div class="fail-name">幻觉与事实性错误</div>
+                    <div class="fail-en">Hallucination</div>
+                    <p>LLM 会生成看似合理、逻辑自洽却完全错误的内容。幻觉是模型的"<strong>原生日</strong>"——它本质是概率生成器，而非事实数据库。在 RAG 场景下，常表现为<strong>编造引用来源、曲解检索内容</strong>。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">提示注入与越狱</div>
+                    <div class="fail-en">Prompt Injection / Jailbreak</div>
+                    <p>攻击者精心设计的提示词可绕过护栏诱导有害输出。<strong>Direct Injection</strong>（直接注入恶意指令）、<strong>Indirect Injection</strong>（经输入数据间接注入）、<strong>Jailbreak</strong>（角色扮演、多轮诱导）。研究显示仅约 <strong>55%</strong> 的 LLM 能在充分红队测试后保持 90%+ 防护率。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">偏见与歧视</div>
+                    <div class="fail-en">Bias & Discrimination</div>
+                    <p>AI 会<strong>继承训练数据中的社会偏见</strong>，在性别、种族、年龄等维度产生不公平决策——嵌入在词汇偏好、推荐排序、识别准确率差异之中。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">隐私泄露</div>
+                    <div class="fail-en">Privacy Leakage</div>
+                    <p>模型可能在生成时"遗忘"并<strong>复现训练数据里的隐私</strong>。<strong>成员推断攻击</strong>与<strong>模型反演攻击</strong>是两大核心威胁。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">不可预测性与鲁棒性</div>
+                    <div class="fail-en">Unpredictability</div>
+                    <p>AI 在<strong>分布外（OOD）数据</strong>上行为往往不可预测——训练集上优异的模型，真实场景中可能因微小输入变化产生灾难性输出。<strong>对抗样本</strong>是最极端的案例。</p>
+                </div>
+            </div>
+
+            <div class="research-quote">
+                <p class="quote-text">强大的 AI 系统如果没有适当的<strong>治理框架</strong>，就像没有刹车的赛车——速度越快，危险越大。</p>
+                <div class="quote-source">
+                    <span class="source-badge">警示</span>
+                    AI 安全研究者
+                </div>
+            </div>
+
+            <!-- 4.2 四大支柱 -->
+            <h3>4.2 四大支柱：可观测性 / 评估 / 防护 / 治理</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                业界共识：一个成熟的 AI Harness 应包含四大支柱，<strong>相辅相成，缺一不可</strong>。它们恰好构成一条从"看见 → 衡量 → 约束 → 合规"的完整闭环。
+            </p>
+
+            <h4>4.2.1 可观测性 — 看见看不见的</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; margin-bottom: var(--space-sm);">
+                AI 系统的"内部思维"不可见，传统软件监控不够用——需要专门的技术来"看透"它的决策过程。
+            </p>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3>分布式追踪</h3>
+                    <div class="tool-desc">Distributed Tracing</div>
+                    <div class="tool-body">在 Agent 调用链、RAG 流程、多轮对话中追踪每次 LLM 调用的延迟、成本、IO。核心指标：<strong>首 Token 延迟（TTFT）</strong>、总延迟、Token 成本。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <h3>结构化日志</h3>
+                    <div class="tool-desc">Structured Logging</div>
+                    <div class="tool-body">记录每次调用的 prompt、completion、temperature、top_p 等参数，及下游系统（数据库、向量库、工具）响应，支持<strong>事后复现与调试</strong>。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📈</div>
+                    <h3>指标面板</h3>
+                    <div class="tool-desc">Metrics Dashboard</div>
+                    <div class="tool-body">实时展示 Token 消耗趋势、错误率、延迟分布、各 Prompt 版本性能对比，支持<strong>告警阈值与异常检测</strong>。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <h3>质量评分</h3>
+                    <div class="tool-desc">Quality Scoring</div>
+                    <div class="tool-body">对输出自动评分——基于启发式规则（长度、JSON 有效性）、<strong>LLM-as-a-Judge</strong>、嵌入向量相似度等多维度。</div>
+                </div>
+            </div>
+            <div class="convergence-box">
+                <p>🔑 <strong>趋势：</strong>2025–2026 年，可观测性正从"事后调试"升级为"<strong>实时质量感知</strong>"——新一代平台不仅能记录发生了什么，还能主动识别质量下降的早期信号。</p>
+            </div>
+
+            <h4>4.2.2 评估 — 量化"智能"</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; margin-bottom: var(--space-sm);">
+                评估是 Harness 的<strong>核心环节</strong>——没有评估，一切改进都是盲人摸象。2025 年起，AI 评估已发展为一门系统科学。
+            </p>
+            <div class="strategy-grid">
+                <div class="strategy-card s1">
+                    <div class="strat-verb">METHOD · 基准测试</div>
+                    <h4>自动化基准测试</h4>
+                    <p>用 <code>MMLU</code>、<code>GSM8K</code>、<code>HumanEval</code> 等标准化基准测知识广度、数学推理、代码生成；新兴的 <code>SWE-bench</code> 直接测代码修复。但<strong>基准无法完全覆盖真实场景</strong>。</p>
+                </div>
+                <div class="strategy-card s2">
+                    <div class="strat-verb">METHOD · 模型评审</div>
+                    <h4>LLM-as-a-Judge</h4>
+                    <p>用更强的模型对输出质量<strong>自动打分</strong>。精心设计 Prompt 让 LLM 扮演评判者。已形成 <code>AutoEval</code>、<code>Chatbot Arena</code> 等成熟框架。</p>
+                </div>
+                <div class="strategy-card s3">
+                    <div class="strat-verb">METHOD · 端到端</div>
+                    <h4>端到端场景测试</h4>
+                    <p>构建真实用户场景模拟完整工作流：客服 Agent 能否 5 轮内解决问题？RAG 能否答对专业问题？用 <code>RAGAS</code>、<code>Giskard</code> 评估召回率、忠实度等。</p>
+                </div>
+            </div>
+
+            <h4>📐 RAG 系统专属评估指标</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">📥</div>
+                    <h3>上下文召回率</h3>
+                    <div class="tool-desc">Context Recall</div>
+                    <div class="tool-body">检索到的片段中，有多少比例<strong>包含生成答案所需的信息</strong>？衡量检索系统能否找到"正确的知识"。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🎯</div>
+                    <h3>上下文精确率</h3>
+                    <div class="tool-desc">Context Precision</div>
+                    <div class="tool-body">检索到的片段中，有多少比例<strong>与问题真正相关</strong>？衡量检索系统的"精准度"。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">✅</div>
+                    <h3>忠实度</h3>
+                    <div class="tool-desc">Faithfulness</div>
+                    <div class="tool-body">生成答案的每句话是否都能在检索上下文中<strong>找到依据</strong>？衡量"忠实于来源"的程度，是<strong>对抗幻觉</strong>的关键指标。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">💡</div>
+                    <h3>答案相关性</h3>
+                    <div class="tool-desc">Answer Relevancy</div>
+                    <div class="tool-body">生成的答案是否<strong>直接回应了原始问题</strong>？衡量最终输出的实用性。</div>
+                </div>
+            </div>
+
+            <h4>4.2.3 防护 — 安全边界</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; margin-bottom: var(--space-sm);">
+                防护机制确保 AI 在<strong>安全边界</strong>内运行，是最后一道防线，分输入、输出、访问、运行时四道关。
+            </p>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <h3>输入防护</h3>
+                    <div class="tool-desc">Input Guard</div>
+                    <div class="tool-body"><strong>输入验证</strong>：过滤恶意 prompt、PII、恶意指令。<strong>注入检测</strong>：识别"忽略之前指令"等攻击模式。<strong>内容过滤</strong>：拦截有毒/仇恨言论。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <h3>输出防护</h3>
+                    <div class="tool-desc">Output Guard</div>
+                    <div class="tool-body"><strong>输出过滤</strong>：拦截有害/偏见输出。<strong>事实校验</strong>：核查生成内容与来源一致性。<strong>PII 保护</strong>：自动脱敏。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <h3>访问控制</h3>
+                    <div class="tool-desc">Access Control</div>
+                    <div class="tool-body"><strong>RBAC</strong>：基于角色的权限。<strong>API 密钥管理</strong>：轮换、限流、配额。<strong>模型选择策略</strong>：按用户角色选不同级别模型。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <h3>运行时护栏</h3>
+                    <div class="tool-desc">Runtime Guardrail</div>
+                    <div class="tool-body"><strong>Rate Limiting</strong>：控频防滥用。<strong>熔断机制</strong>：错误率超阈值自动降级。<strong>人工审核</strong>：高风险操作需人工批准。</div>
+                </div>
+            </div>
+
+            <h4>🛡️ 主流护栏框架</h4>
+            <div class="strategy-grid">
+                <div class="strategy-card s1">
+                    <div class="strat-verb">FRAMEWORK</div>
+                    <h4>Guardrails.as</h4>
+                    <p>开源框架，通过<strong>控制器（Controllers）</strong>验证输入、提取输出。支持 JSON Schema 提取、格式校验、自定义验证逻辑，适合<strong>结构化输出</strong>场景。</p>
+                </div>
+                <div class="strategy-card s2">
+                    <div class="strat-verb">FRAMEWORK</div>
+                    <h4>NeMo Guardrails</h4>
+                    <p>NVIDIA 开源，用 <strong>SpeakZ DSL</strong> 定义对话流程与行为约束，支持<strong>多轮对话的受控生成</strong>，内置安全防护套件。</p>
+                </div>
+                <div class="strategy-card s3">
+                    <div class="strat-verb">FRAMEWORK</div>
+                    <h4>Microsoft Guidance</h4>
+                    <p>轻量级框架，支持 <strong>JSON Schema 引导</strong>、正则约束、提示模板复用，适合<strong>严格输出格式控制</strong>的场景。</p>
+                </div>
+                <div class="strategy-card s4">
+                    <div class="strat-verb">MODEL · META</div>
+                    <h4>Llama Guard</h4>
+                    <p>Meta 开源的内容安全<strong>护栏模型</strong>，专检不安全请求与输出，覆盖<strong>10 大类安全风险</strong>（暴力、仇恨等），支持多语言。</p>
+                </div>
+            </div>
+
+            <h4>4.2.4 治理 — 制度保障</h4>
+            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; margin-bottom: var(--space-sm);">
+                治理是 Harness 的<strong>顶层制度保障</strong>，确保 AI 在全生命周期中合规运行——技术之外，更是法规与组织流程。
+            </p>
+            <div class="fail-grid">
+                <div class="fail-card">
+                    <div class="fail-name">NIST AI RMF</div>
+                    <div class="fail-en">风险管理框架 · 美国</div>
+                    <p>美国 NIST 发布的 <strong>AI Risk Management Framework</strong>，全球最具影响力的治理框架之一。四大核心功能：<strong>治理（Govern）→ 映射（Map）→ 测量（Measure）→ 管理（Manage）</strong>。2023 年发布 1.0，持续更新落地指南。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">EU AI Act</div>
+                    <div class="fail-en">欧盟人工智能法案</div>
+                    <p>2024 年通过，全球首部全面规范 AI 的法律。按风险分四级：<strong>不可接受</strong>（禁止，如社会评分）、<strong>高风险</strong>（医疗/司法/招聘，需严格合规）、<strong>有限风险</strong>（透明度要求）、<strong>最小风险</strong>。违规罚款最高达全球营收 <strong>7%</strong>。</p>
+                </div>
+                <div class="fail-card">
+                    <div class="fail-name">企业级 AI 治理</div>
+                    <div class="fail-en">Enterprise Practice</div>
+                    <p>大型企业普遍设立 AI 治理委员会审批高风险项目。关键实践：<strong>模型注册表、变更管理、审计追踪、偏见检测、人类监督</strong>——所有决策可追溯、可问责。</p>
+                </div>
+            </div>
+
+            <!-- 4.3 技术栈全景 -->
+            <h3>4.3 技术栈全景：2025–2026 工具选型</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                AI Harness 工具生态这两年爆发式增长。以下按四大支柱的功能维度给一张选型参考——<strong>不必全用，按风险与规模按需取用</strong>。
+            </p>
+
+            <h4>🔍 可观测性与追踪</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🦜</div>
+                    <h3>LangSmith</h3>
+                    <div class="tool-desc">LangChain 官方</div>
+                    <div class="tool-body">端到端调试与监控平台，支持链式调用追踪、输出评估、A/B 测试不同 Prompt 版本。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔥</div>
+                    <h3>Langfuse</h3>
+                    <div class="tool-desc">开源 · 可自部署</div>
+                    <div class="tool-body">开源 LLM 可观测性平台，支持分布式追踪、Prompt 版本管理、质量指标监控，数据完全自控。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🦅</div>
+                    <h3>Arize Phoenix</h3>
+                    <div class="tool-desc">开源 · 可视化</div>
+                    <div class="tool-body">向量可视化与模型解释工具，内置 embedding 空间探索、RAG 评估、embedding 模型对比。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">📡</div>
+                    <h3>AgentOps</h3>
+                    <div class="tool-desc">Agent 专用</div>
+                    <div class="tool-body">专为 Agent 设计的可观测性框架，支持 Agent 轨迹记录、工具调用追踪、Agent-to-Agent 通信监控。</div>
+                </div>
+            </div>
+
+            <h4>🧪 评估与测试</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">📐</div>
+                    <h3>RAGAS</h3>
+                    <div class="tool-desc">RAG 评估</div>
+                    <div class="tool-body">专为 RAG 设计的评估框架，自动计算上下文召回率、忠实度、答案相关性等核心指标，<strong>无需人工标注</strong>。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🧪</div>
+                    <h3>Giskard</h3>
+                    <div class="tool-desc">ML/LLM 测试</div>
+                    <div class="tool-body">开源测试平台，支持幻觉检测、偏见分析、对抗测试、回归测试，提供图形界面与 REST API。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">⚔️</div>
+                    <h3>红队工具</h3>
+                    <div class="tool-desc">Red Teaming</div>
+                    <div class="tool-body">如 <code>Garak</code>（LLM 脆弱性扫描器）、<code>Promptfoo</code>，自动化识别模型的弱点和安全漏洞。</div>
+                </div>
+            </div>
+
+            <h4>🛡️ 安全防护</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🚧</div>
+                    <h3>OpenAI Moderation API</h3>
+                    <div class="tool-desc">内容审核</div>
+                    <div class="tool-body">实时检测仇恨、暴力、色情、自残等有害内容，支持多语言。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔐</div>
+                    <h3>DryIce</h3>
+                    <div class="tool-desc">IO 防护</div>
+                    <div class="tool-body">专注 LLM 输入/输出防护，检测提示注入、越狱、PII 泄露、有害内容，提供<strong>低延迟实时防护</strong>。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <h3>Guardrails.as</h3>
+                    <div class="tool-desc">结构化生成</div>
+                    <div class="tool-body">通过控制器模式定义输入验证与输出提取规则，支持自定义验证逻辑。</div>
+                </div>
+            </div>
+
+            <!-- 4.4 Agent 编排 -->
+            <h3>4.4 Agent 编排：Harness 在 Agent 时代的核心场景</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                单个 Agent 能力有限，复杂任务需要多个 Agent 协同——这就引出 <strong>Agent 编排（Orchestration）</strong>，Harness 在 Agent 时代的核心应用，也是通向第 5 重"循环工程"的桥梁。
+            </p>
+
+            <h4>🔗 四种编排模式</h4>
+            <div class="strategy-grid">
+                <div class="strategy-card s1">
+                    <div class="strat-verb">MODE · 顺序</div>
+                    <h4>流水线模式</h4>
+                    <p>Agent A → Agent B → Agent C，每个 Agent 负责<strong>一个阶段</strong>，顺序执行。最简单，适合流程清晰的任务。</p>
+                </div>
+                <div class="strategy-card s2">
+                    <div class="strat-verb">MODE · 分发</div>
+                    <h4>路由模式</h4>
+                    <p>Router Agent 根据输入类型，<strong>选择最适合的专用 Agent</strong>处理。像调度员，把请求分到对口专家。</p>
+                </div>
+                <div class="strategy-card s3">
+                    <div class="strat-verb">MODE · 并行</div>
+                    <h4>协作模式</h4>
+                    <p>多个 Agent <strong>并行工作、共享上下文、互相调用工具</strong>，最终综合结果。适合需要多视角融合的任务。</p>
+                </div>
+                <div class="strategy-card s4">
+                    <div class="strat-verb">MODE · 分派</div>
+                    <h4>层级模式</h4>
+                    <p>Manager Agent <strong>拆解任务并分发给 Worker Agent</strong>，最后汇总。正是第 5 重"Fleet Loops"的雏形。</p>
+                </div>
+            </div>
+
+            <h4>🤖 主流编排框架</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🦜</div>
+                    <h3>LangGraph</h3>
+                    <div class="tool-desc">LangChain · 有向图</div>
+                    <div class="tool-body">基于<strong>有向图</strong>建模 Agent 流程，支持循环、条件分支、状态持久化。核心哲学：<strong>Agent 是图，不是链</strong>。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🤖</div>
+                    <h3>AutoGen</h3>
+                    <div class="tool-desc">Microsoft · 对话式</div>
+                    <div class="tool-body">多 Agent 对话框架，支持多角色（开发者、产品经理、测试工程师）之间<strong>自然语言对话</strong>完成任务。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">👥</div>
+                    <h3>CrewAI</h3>
+                    <div class="tool-desc">角色 · 流程 · 工具</div>
+                    <div class="tool-body">以"<strong>角色-流程-工具</strong>"为核心理念：定义每个 Agent 的角色、目标、工具，框架自动编排执行流程。</div>
+                </div>
+            </div>
+            <div class="convergence-box">
+                <p>🔑 <strong>趋势：</strong>Agent 编排正从"硬编码流程"走向"<strong>动态推理</strong>"。新一代框架（LangGraph 的 Checkpoint、AutoGen 的对话式协调）让 Agent 群体能根据任务<strong>动态调整</strong>协作方式，而非死板遵循预设流程——这正是第 5 重循环工程要展开的方向。</p>
+            </div>
+
+            <!-- 4.5 最佳实践 -->
+            <h3>4.5 最佳实践：构建可信 AI 的六条铁律</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                基于 2025–2026 年业界实践，以下是构建可信 AI 系统的六条核心建议。
+            </p>
+            <div class="strategy-grid">
+                <div class="strategy-card s1">
+                    <div class="strat-verb">RULE 1</div>
+                    <h4>从设计阶段开始 · Shift Left</h4>
+                    <p>安全不是事后添加。需求阶段就明确：<strong>哪些场景高风险？哪些错误不可接受？哪些数据需保护？</strong>把安全和伦理写进设计文档与用户故事。</p>
+                </div>
+                <div class="strategy-card s2">
+                    <div class="strat-verb">RULE 2</div>
+                    <h4>多层防御 · Defense in Depth</h4>
+                    <p>不依赖单一措施。理想架构多层：<strong>应用层</strong>（IO 过滤）→ <strong>模型层</strong>（安全对齐）→ <strong>框架层</strong>（护栏）→ <strong>基础设施层</strong>（访问控制）。任一层被突破，其他层仍能兜底。</p>
+                </div>
+                <div class="strategy-card s3">
+                    <div class="strat-verb">RULE 3</div>
+                    <h4>持续监控与反馈</h4>
+                    <p>AI 行为随时间变化——用户模式、模型更新、攻击手段都在变。持续监控 <strong>数据漂移、概念漂移、性能退化</strong>，建立快速回滚机制。</p>
+                </div>
+                <div class="strategy-card s4">
+                    <div class="strat-verb">RULE 4</div>
+                    <h4>自动化测试</h4>
+                    <p>完整回归套件：<strong>Prompt 回归</strong>（改一个不应影响其他场景）、<strong>模型回归</strong>（更新后不降级）、<strong>安全回归</strong>（不引入新漏洞）。用 LLM 生成用例与对抗样本增强覆盖。</p>
+                </div>
+                <div class="strategy-card s1">
+                    <div class="strat-verb">RULE 5</div>
+                    <h4>人机协同 · HITL</h4>
+                    <p>高风险场景<strong>始终保留人工监督</strong>。人机协同不仅满足合规，更在模型不可预测时提供最后保障。金融审批、医疗诊断、司法评估应<strong>强制人工审核</strong>。</p>
+                </div>
+                <div class="strategy-card s2">
+                    <div class="strat-verb">RULE 6</div>
+                    <h4>透明与可解释</h4>
+                    <p>记录并暴露决策过程：用了哪些数据？参考哪些规则？置信度如何？趋势是<strong>过程可解释</strong>——不只解释"为什么这样决定"，还解释"模型如何思考"。</p>
+                </div>
+            </div>
+
+            <!-- 4.6 可信 AI -->
+            <h3>4.6 收束：可信 AI 的六大特征</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                Harness 的终极目标是<strong>可信 AI（Trustworthy AI）</strong>。业界普遍认可的可信 AI 具备以下六大特征——它们正是四大支柱要共同守护的成果。
+            </p>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">🎯</div>
+                    <h3>可靠性</h3>
+                    <div class="tool-desc">Reliability</div>
+                    <div class="tool-body">在各种条件下稳定运行，性能指标<strong>可量化、可预测、可复现</strong>。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <h3>安全性</h3>
+                    <div class="tool-desc">Safety</div>
+                    <div class="tool-body">不对人类造成身体、心理、社会伤害，有完善的<strong>故障安全机制</strong>。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">⚖️</div>
+                    <h3>公平性</h3>
+                    <div class="tool-desc">Fairness</div>
+                    <div class="tool-body">对所有群体一视同仁，不因性别、种族、年龄产生<strong>系统性偏见</strong>。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">👁️</div>
+                    <h3>透明性</h3>
+                    <div class="tool-desc">Transparency</div>
+                    <div class="tool-body">决策过程可理解、可解释，用户能了解"<strong>AI 为什么这样决定</strong>"。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🔒</div>
+                    <h3>隐私性</h3>
+                    <div class="tool-desc">Privacy</div>
+                    <div class="tool-body">尊重并保护用户隐私，<strong>数据最小化</strong>原则，具备遗忘与删除能力。</div>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">🤝</div>
+                    <h3>问责性</h3>
+                    <div class="tool-desc">Accountability</div>
+                    <div class="tool-body">明确的责任归属与审计追踪，决策<strong>可追溯、可问责</strong>。</div>
+                </div>
+            </div>
+
+            <div class="convergence-box">
+                <p>🔑 <strong>Harness 核心公式：</strong><br>
+                <code style="font-family: 'JetBrains Mono', monospace; background: #FEF3C7; padding: 2px 8px; border-radius: 4px;">可信 AI = 可观测性 + 评估 + 防护 + 治理</code><br>
+                四者缺一不可，共同构成 AI 系统的"安全带"与"方向盘"。</p>
+            </div>
+
+            <div class="summary-box">
+                <p><strong>Harness 的跃迁意义：</strong>它把工程视野从"管好一次推理"上移到"<strong>管好整个系统的生命周期</strong>"。上下文工程保证单次最优，Harness 保证<strong>持续、可控、合规地长期运转</strong>——为更高一层的"循环工程"提供安全可信的底座。没有 Harness，再精巧的循环也只是在错误方向上高速空转。</p>
+            </div>
+        </section>   <div class="section-divider"><span>✦</span></div>
+
+        <!-- =============================================
+             第5重：循环工程（核心重头）
+             ============================================= -->
+        <section class="chapter-section" id="lv5">
+            <h2><span class="ch-num">5</span>第 5 重 · 循环工程 Loop Engineering —— 2026 的前沿</h2>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                前四重都在回答"如何让模型把<strong>这一次</strong>做好"。循环工程（Loop Engineering）换了个根本问题：<strong>与其一次次手动提示模型，不如设计一个能自主运转、自我改进的循环，让模型在循环里自己把任务推进到底</strong>。这是 2026 年最前沿的工程理念。
+            </p>
+
+            <div class="research-quote">
+                <p class="quote-text">别再提示了，开始<strong>工程化循环</strong>。<br>—— Stop prompting, start engineering loops.</p>
+                <div class="quote-source">
+                    <span class="source-badge">2026 口号</span>
+                    Loop Engineering 社区共识
+                </div>
+            </div>
+
+            <h3>5.1 Agent Loop：循环的心跳</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                Anthropic 给 Agent 下了一个被广泛采纳的极简定义：<strong>Agent = LLM 在循环里自主调用工具</strong>。这个循环由四个阶段周而复始构成，类似军事上的 OODA（观察-判断-决策-行动）环：
+            </p>
+
+            <div class="loop-flow">
+                <div class="loop-node p">
+                    <span class="loop-icon">👁️</span>
+                    <div class="loop-name">感知</div>
+                    <div class="loop-desc">读取环境与上下文<br>（用户输入 / 工具结果）</div>
+                </div>
+                <div class="loop-arrow">──▶</div>
+                <div class="loop-node r">
+                    <span class="loop-icon">🧠</span>
+                    <div class="loop-name">推理</div>
+                    <div class="loop-desc">决定下一步<br>该做什么</div>
+                </div>
+                <div class="loop-arrow">──▶</div>
+                <div class="loop-node a">
+                    <span class="loop-icon">🛠️</span>
+                    <div class="loop-name">行动</div>
+                    <div class="loop-desc">调用工具<br>改变环境</div>
+                </div>
+                <div class="loop-arrow">──▶</div>
+                <div class="loop-node e">
+                    <span class="loop-icon">✅</span>
+                    <div class="loop-name">评估</div>
+                    <div class="loop-desc">检查结果<br>是否达成目标</div>
+                </div>
+                <div class="loop-arrow back">◀──</div>
+            </div>
+            <div class="loop-caption">↑ 评估结果回灌感知，循环往复，直到目标达成或触发停止条件</div>
+
+            <div class="principle-box">
+                <span class="principle-label">⚙️ 核心原理：循环让模型"活着"</span>
+                <p>单次推理是<strong>开环</strong>的——模型给一个答案就结束。循环让它变成<strong>闭环</strong>：行动产生的新信息会被重新感知、重新推理。这正是 Agent 能处理"无法一步算清"的复杂任务的根基。前四重的所有工程（好的上下文、好的工具、好的护栏）都是为了让这个循环<strong>转得久、转得稳、转得对</strong>。</p>
+            </div>
+
+            <h3>5.2 自我改进：反思循环（Reflection Loops）</h3>
+            <div class="eng-grid">
+                <div class="eng-card l5">
+                    <div class="eng-header">
+                        <div class="eng-icon">🪞</div>
+                        <div>
+                            <div class="eng-title">反思循环</div>
+                            <div class="eng-en">Reflection Loop · 自我评估并迭代</div>
+                        </div>
+                    </div>
+                    <div class="eng-desc">
+                        Agent 在每轮结束后<strong>评估自己的输出</strong>，把"哪里做得不好、下次怎么改"记成记忆，下一轮带着这个反思继续。经典论文 <strong>Reflexion</strong> 开创了这条路线。它让 Agent 拥有了<strong>从自身经验中学习</strong>的能力——不更新权重，只在上下文/记忆里累积经验。
+                    </div>
+                </div>
+
+                <div class="eng-card l5">
+                    <div class="eng-header">
+                        <div class="eng-icon">🔁</div>
+                        <div>
+                            <div class="eng-title">递归自评估</div>
+                            <div class="eng-en">Recursive Self-Evaluation</div>
+                        </div>
+                    </div>
+                    <div class="eng-desc">
+                        把"评估"本身也变成一个可迭代的循环：模型不仅检查输出，还<strong>检查自己的检查</strong>是否到位。配合<strong>元提示（Meta-Prompting）</strong>——用一个更高层的提示去优化底层提示——形成层层递进的自我纠偏机制。
+                    </div>
+                </div>
+            </div>
+
+            <h3>5.3 开环 vs 闭环：人在哪儿</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                循环工程的一个核心设计抉择，是<strong>把人放在循环的什么位置</strong>。这决定了一个 Agent 是"工具"还是"自主 worker"。
+            </p>
+
+            <div class="two-col">
+                <div class="algo-section-card">
+                    <h4>🔵 开环 · 人在循环中</h4>
+                    <p><strong>Human-in-the-Loop</strong>：循环的某些关键节点必须<strong>停下来等人确认</strong>——高风险操作前要人批准、模糊决策时要人拍板。安全性高、可控性强，适合金融审批、医疗、生产部署等<strong>不可逆</strong>场景。代价是吞吐量受限于人的速度。</p>
+                </div>
+                <div class="algo-section-card">
+                    <h4>🟣 闭环 · 全自主</h4>
+                    <p><strong>Closed Loop</strong>：循环<strong>无需人工介入</strong>即可一直转到目标达成。Agent 自我感知、自我纠错、自我评估。吞吐量极高，适合大批量、可容错、可回滚的任务（如代码生成与自动测试、批量数据处理）。风险在于失控时的连锁错误。</p>
+                </div>
+            </div>
+
+            <div class="practical-box">
+                <span class="practical-label">🎯 实战建议：混合模式</span>
+                <p>2026 年的最佳实践<strong>不是二选一</strong>，而是<strong>按风险分级</strong>：低风险步骤闭环全自动跑（追求效率），高风险步骤切到开环等人确认（追求安全）。许多先进框架用"置信度阈值"自动在两者间切换——模型对自己的结果有把握时放行，没把握时主动求助。</p>
+            </div>
+
+            <h3>5.4 Fleet Loops：循环的舰队</h3>
+            <div class="eng-card l5">
+                <div class="eng-header">
+                    <div class="eng-icon">🚢</div>
+                    <div>
+                        <div class="eng-title">舰队循环 Fleet Loops</div>
+                        <div class="eng-en">One loop, self-improving · multi-agent orchestration</div>
+                    </div>
+                </div>
+                <div class="eng-desc">
+                    当单个循环不够，就把它<strong>扩展成一支舰队</strong>：一个<strong>编排器（Orchestrator）</strong>拿到总目标，拆解成子目标，<strong>把每个子目标委派给一个独立运转的子循环</strong>（子 Agent）。每个子循环自主跑、自我改进，完成后向编排器汇报，编排器综合结果、必要时重新分配。这正是上下文工程"Isolate 隔离"策略的<strong>循环级升华</strong>——不仅隔离上下文，还隔离整个执行循环。
+                </div>
+                <div class="principle-box">
+                    <span class="principle-label">⚙️ 为什么是趋势</span>
+                    <p>复杂任务往往<strong>无法用一个线性流程</strong>完成，需要并行探索、动态分工、结果整合。Fleet Loops 让 Agent 群体像一支有指挥的舰队：既保持每个单元的自主性与聚焦，又能协同攻下大目标。它也是 LangGraph、AutoGen、CrewAI 等编排框架（见本页 4.4 节）在循环工程语境下的最新演化方向。</p>
+                </div>
+            </div>
+
+            <div class="practical-box">
+                <span class="practical-label">⚠️ 验证器是瓶颈</span>
+                <p>循环工程社区在 2026 年达成一个共识：<strong>循环的天花板，由循环里的"验证器（Verifier）"决定</strong>。再强的执行循环，如果没法可靠判断"这一步到底做对没有"，就会在错误方向上空转、或过早宣告成功。因此，工程化的重心正从"让 Agent 更能干"转向"<strong>让 Agent 更会判断自己做得对不对</strong>"——高质量的评估器、可验证的成功标准、可回滚的检查点，成为循环工程的核心基础设施。</p>
+            </div>
+
+            <div class="summary-box">
+                <p><strong>循环工程的跃迁意义：</strong>前四重都在优化"单次推理"，循环工程把战场移到了<strong>时间维度</strong>——它不再追求"这一次完美"，而是追求"<strong>在持续运转中收敛到正确</strong>"。这是驾驭 AI 的抽象层级的最高一档：从"驯服单次输出"，到"设计自主运转并自我改进的系统"。人不再逐次提示，而是<strong>设计循环</strong>。</p>
+            </div>
+        </section>
+
+        <div class="section-divider"><span>✦</span></div>
+
+        <!-- =============================================
+             收束：驾驭层级上升图
+             ============================================= -->
+        <div class="standalone-section">
+            <h3>收束：驾驭抽象层级的上升</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: var(--space-md);">
+                把五重工程放回一张图。注意纵轴不是"技术难度"，而是<strong>你驾驭的抽象层级</strong>——层级越高，单点技巧的杠杆越小，系统设计的杠杆越大。
+            </p>
+
+            <div class="level-ladder">
+                <div class="level-step s1">
+                    <div class="lvl-num">LV.1</div>
+                    <div class="lvl-name">提示词</div>
+                    <div class="lvl-what">驯服<br>一次输出</div>
+                </div>
+                <div class="level-step s2">
+                    <div class="lvl-num">LV.2</div>
+                    <div class="lvl-name">提示词工程</div>
+                    <div class="lvl-what">写好<br>一句话</div>
+                </div>
+                <div class="level-step s3">
+                    <div class="lvl-num">LV.3</div>
+                    <div class="lvl-name">上下文工程</div>
+                    <div class="lvl-what">管好<br>整个窗口</div>
+                </div>
+                <div class="level-step s4">
+                    <div class="lvl-num">LV.4</div>
+                    <div class="lvl-name">Harness</div>
+                    <div class="lvl-what">管好<br>整个系统</div>
+                </div>
+                <div class="level-step s5">
+                    <div class="lvl-num">LV.5</div>
+                    <div class="lvl-name">循环工程</div>
+                    <div class="lvl-what">设计<br>自主循环</div>
+                </div>
+            </div>
+
+            <div class="convergence-box">
+                <p>🔑 <strong>最终公式：</strong>这条进化链不是"新淘汰旧"，而是<strong>层层包裹</strong>——你今天写的每一个循环工程系统里，都嵌着精心设计的上下文；每一段上下文里，都嵌着打磨过的提示词。<br>区别只在于：<strong>你的注意力，停留在哪一层。</strong></p>
+            </div>
+
+            <div class="quote-block" style="margin-top: var(--space-xl);">
+                <p>模型越强，工程越重要——只是工程的重心，会不断上移到更高的抽象层。</p>
+                <cite>—— AI 纪元 · 第 10 章</cite>
+            </div>
+        </div>
+
+        <!-- 参考文献 -->
+        <div class="ref-section">
+            <h2>📚 参考文献</h2>
+
+            <div class="ref-list">
+                <div class="ref-item">
+                    <span class="ref-tag">文章</span>
+                    <span class="ref-authors">Anthropic</span>
+                    <span class="ref-title">"Effective Context Engineering for AI Agents"</span>
+                    <span class="ref-detail">2025. — 上下文工程的权威定义、Context Rot、有效上下文解剖、长时程任务三件套。本文第 3 章核心来源。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">文章</span>
+                    <span class="ref-authors">LangChain</span>
+                    <span class="ref-title">"Context Engineering for Agents"</span>
+                    <span class="ref-detail">2025.07. — Write / Select / Compress / Isolate 四大策略框架的经典归纳。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">观点</span>
+                    <span class="ref-authors">Andrej Karpathy</span>
+                    <span class="ref-title">"LLM as Operating System"</span>
+                    <span class="ref-detail">— LLM 是 CPU、上下文窗口是 RAM 的核心心智模型。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">文章</span>
+                    <span class="ref-authors">Drew Breunig</span>
+                    <span class="ref-title">"Context Engineering 四种失败模式"</span>
+                    <span class="ref-detail">2025. — Poisoning / Distraction / Confusion / Clash 的系统总结。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">实践</span>
+                    <span class="ref-authors">Manus</span>
+                    <span class="ref-title">"Context Engineering for AI Agents: Lessons from Building Manus"</span>
+                    <span class="ref-detail">2025. — 工业界构建 Agent 的上下文工程实战经验。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">观点</span>
+                    <span class="ref-authors">Cognition（Devin 团队）</span>
+                    <span class="ref-title">"Don't build multi-agents" / 上下文工程论断</span>
+                    <span class="ref-detail">— "上下文工程是构建 Agent 工程师的头号工作"。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">论文</span>
+                    <span class="ref-authors">Shinn et al.</span>
+                    <span class="ref-title">"Reflexion: Language Agents with Verbal Reinforcement Learning"</span>
+                    <span class="ref-detail">2023. — 反思循环（Reflection Loop）与自生成记忆的开创性工作。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">文章</span>
+                    <span class="ref-authors">MindStudio</span>
+                    <span class="ref-title">"What Is Loop Engineering? The New Meta for AI Coding Agents"</span>
+                    <span class="ref-detail">2026. — 循环工程的核心定义与"停止提示、开始工程化循环"的口号。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">文章</span>
+                    <span class="ref-authors">AI Builder Club</span>
+                    <span class="ref-title">"Loop Engineering Guide (2026)"</span>
+                    <span class="ref-detail">— 验证器瓶颈、开环 vs 闭环的工程化设计。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">法规</span>
+                    <span class="ref-authors">NIST</span>
+                    <span class="ref-title">"AI Risk Management Framework (AI RMF 1.0)"</span>
+                    <span class="ref-detail">2023. — 治理 / 映射 / 测量 / 管理四大功能，第 4 重 Harness 治理支柱的权威来源。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">法规</span>
+                    <span class="ref-authors">欧盟委员会</span>
+                    <span class="ref-title">"EU AI Act"</span>
+                    <span class="ref-detail">2024. — 全球首部全面规范 AI 的法律，按风险分级的合规要求。</span>
+                </div>
+                <div class="ref-item">
+                    <span class="ref-tag">关联</span>
+                    <span class="ref-authors">本系列</span>
+                    <span class="ref-title">第 6–7 章 · AI Agent：原理、架构与开发实战</span>
+                    <span class="ref-detail">— 从 Agent 工作原理到框架、MCP、Skill 与工程实践的完整基础。</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 上下篇导航 -->
+        <nav class="article-nav">
+            <a href="part10.html" class="nav-button prev">← 第9章 · AI越狱</a>
+            <a href="part12.html" class="nav-button">第11章 · AI Coding →</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI 纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

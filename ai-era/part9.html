@@ -1,0 +1,2845 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AI机械臂：持续记录常用的 Coding Agent、命令行工具、IDE，以及从 MCP、Skill 到办公环境连接的 AI 工作方式。"
+    />
+    <title>AI机械臂：我的 AI 工具箱 — AI纪元</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="part9.css?v=20260817-3" />
+  </head>
+
+  <body>
+    <nav class="navbar" aria-label="文章导航">
+      <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+      <ul class="nav-links" aria-label="切换文章">
+        <li><a href="part1.html">序章</a></li>
+        <li><a href="part2.html">前世今生</a></li>
+        <li><a href="part3.html">机器学习</a></li>
+        <li><a href="part4.html">深度学习</a></li>
+        <li><a href="part4-llm.html">大语言模型</a></li>
+        <li><a href="part5.html">脉冲神经网络</a></li>
+        <li><a href="part7.html">AI Agent</a></li>
+        <li><a href="part8.html">Vibe Coding</a></li>
+        <li>
+          <a href="part9.html" class="active" aria-current="page">AI机械臂</a>
+        </li>
+        <li><a href="part10.html">AI越狱</a></li>
+        <li><a href="part11.html">AI工程</a></li>
+        <li><a href="part12.html">AI Coding</a></li>
+        <li><a href="part14.html">个贷不良资产</a></li>
+      </ul>
+    </nav>
+
+    <main class="main-content tool-article">
+      <button
+        class="toc-toggle-btn"
+        type="button"
+        aria-label="打开目录导航"
+        aria-expanded="false"
+        aria-controls="tocSidebar"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="15" y2="12" />
+          <line x1="3" y1="18" x2="18" y2="18" />
+          <polyline points="15 15 18 12 15 9" />
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside
+        class="toc-sidebar"
+        id="tocSidebar"
+        role="navigation"
+        aria-label="文章目录"
+      >
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button
+            class="toc-sidebar-close"
+            type="button"
+            aria-label="关闭目录"
+            onclick="window.closeTocSidebar && window.closeTocSidebar()"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#models" data-section="models"
+              ><span class="toc-num">01</span
+              ><span class="toc-label">从火热的 LLM 开始</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#agent" data-section="agent"
+              ><span class="toc-num">02</span
+              ><span class="toc-label">从会回答到会行动</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#ecosystem" data-section="ecosystem"
+              ><span class="toc-num">03</span
+              ><span class="toc-label">给 Coding Agent 装上手臂</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#protocols" data-section="protocols"
+              ><span class="toc-num">04</span
+              ><span class="toc-label">工具、协议与工作方法</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#utilities" data-section="utilities"
+              ><span class="toc-num">05</span
+              ><span class="toc-label">关节与夹具 · 配套工具</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#workbench" data-section="workbench"
+              ><span class="toc-num">06</span
+              ><span class="toc-label">操作台 · IDE 与编辑器</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#lifecycle" data-section="lifecycle"
+              ><span class="toc-num">07</span
+              ><span class="toc-label">实战操作篇</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a
+              class="toc-link"
+              href="#ai-safety-boundaries"
+              data-section="ai-safety-boundaries"
+              ><span class="toc-num">08</span
+              ><span class="toc-label">使用 AI 的安全红线</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#maintenance" data-section="maintenance"
+              ><span class="toc-num">09</span
+              ><span class="toc-label">定期清理</span></a
+            >
+          </li>
+          <li class="toc-sidebar-item">
+            <a class="toc-link" href="#todo" data-section="todo"
+              ><span class="toc-num">10</span
+              ><span class="toc-label">后续慢慢补充</span></a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <header class="article-header arm-header">
+        <div class="article-kicker">TOOL NOTES · 持续更新</div>
+        <div class="arm-mark" aria-hidden="true">
+          <span class="arm-mark-joint"></span>
+          <span class="arm-mark-beam arm-mark-beam-one"></span>
+          <span class="arm-mark-joint arm-mark-joint-two"></span>
+          <span class="arm-mark-beam arm-mark-beam-two"></span>
+          <span class="arm-mark-claw">⌁</span>
+        </div>
+        <h1 class="article-title">AI机械臂</h1>
+        <p class="article-subtitle">
+          我的 AI 工具箱，以及一套以 Coding Agent
+          为核心、不断向真实工作环境伸展的方法
+        </p>
+      </header>
+
+      <section class="living-note fade-in" aria-label="文章更新说明">
+        <div class="living-note-label">
+          <span>持续生长</span>
+          <strong>这是一篇生长中的文章</strong>
+        </div>
+        <p>
+          这里不是工具排行榜，也不追求一次写完。我会持续补充每个工具的<strong>真实使用记录</strong>：从第一次安装、日常任务，到踩坑过程和最终沉淀下来的工作流程。后面将以
+          Coding Agent 为核心，继续扩展
+          MCP、Skill、团队规则和办公环境连接等实践。
+        </p>
+        <div class="living-note-status" aria-label="文章状态">
+          <span>持续更新</span>
+          <span>亲自使用</span>
+          <span>实践验证</span>
+        </div>
+      </section>
+      <section class="chapter-section fade-in" id="models">
+        <div class="section-label">✦ 01 · 从火热的 LLM 开始 ✦</div>
+        <p class="lead-paragraph">
+          现在 LLM 很火。海外常见的有 OpenAI GPT、Anthropic Claude、Google
+          Gemini；国内常见的有 DeepSeek、Qwen、Kimi、GLM、MiniMax
+          和豆包。它们都在快速升级，今天的领先并不保证下个月仍然领先。
+        </p>
+
+        <div class="model-stage">
+          <article>
+            <span class="model-stage-label">海外模型</span>
+            <h3>GPT · Claude · Gemini</h3>
+            <p>
+              通用推理、编程、多模态和 Agent
+              能力都在第一梯队，生态成熟，更新速度也很快。
+            </p>
+            <div class="model-tags">
+              <span>GPT-5.6 Sol</span>
+              <span>Claude Fable 5</span>
+              <span>Gemini 3.1 Pro · Preview</span>
+            </div>
+          </article>
+          <article>
+            <span class="model-stage-label">国内模型</span>
+            <h3>DeepSeek · Qwen · Kimi · GLM</h3>
+            <p>
+              中文理解、本地生态、成本和企业接入各有优势，MiniMax、豆包等也有大量真实用户。
+            </p>
+            <div class="model-tags">
+              <span>DeepSeek</span>
+              <span>Qwen</span>
+              <span>Kimi</span>
+              <span>GLM</span>
+            </div>
+          </article>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          模型选好了，接下来就是让模型"站起来"——从只会回答，变成会动手行动。
+        </p>
+      </div>
+      <section class="chapter-section fade-in" id="agent">
+        <div class="section-label">✦ 02 · 从会回答到会行动 ✦</div>
+        <h2>LLM 像军师，Agent 像士兵，你是指挥官</h2>
+        <div class="advisor-agent">
+          <article>
+            <span class="analogy-index">01</span>
+            <div>
+              <small>LLM · 军师</small>
+              <h3>分析、推理、生成内容</h3>
+              <p>
+                可产出方案和代码片段；但默认不能进入仓库、执行命令、读取邮件或完成发布。
+              </p>
+            </div>
+          </article>
+          <div class="analogy-arrow" aria-hidden="true">
+            ＋ 工具 / 权限 / 循环 →
+          </div>
+          <article class="agent-side">
+            <span class="analogy-index">02</span>
+            <div>
+              <small>AGENT · 士兵</small>
+              <h3>观察、行动、验证、继续</h3>
+              <p>
+                读取真实环境、调用工具推进任务，并根据执行结果调整下一步，直到完成或触发人工确认。
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <div class="commander-note">
+          <span>COMMANDER</span>
+          <p>
+            <strong>你是指挥官：</strong>Agent
+            再强，方向错了也要你来纠偏。发给谁执行、开放哪些权限、何时喊停——这些决策权始终在你手里。
+          </p>
+        </div>
+
+        <h3 class="minor-heading">Agent 不是只有一种</h3>
+        <p class="lead-paragraph">
+          先建立一点共识：Agent
+          不是一个万能助手，而是根据主要任务分成四类。Chatting Agent
+          负责日常问答与信息检索，Coding Agent 负责软件工程，Working Agent
+          负责日常工作与业务协作，其他专业场景统一归入 Other Agent。
+        </p>
+
+        <div class="agent-type-grid">
+          <article>
+            <span>CHATTING AGENT</span><strong>Chatting Agent</strong>
+            <p>
+              像豆包、Kimi
+              这类对话助手，适合日常问答、资料搜索、知识解释与快速获取信息，很多时候可以当作更聪明的搜索引擎使用。
+            </p>
+          </article>
+          <article>
+            <span>CODING AGENT</span><strong>Coding Agent</strong>
+            <p>
+              阅读仓库、修改代码、运行测试，并把研发任务推进到可验证、可交付的结果。
+            </p>
+          </article>
+          <article>
+            <span>WORKING AGENT</span><strong>Working Agent</strong>
+            <p>
+              处理文档、邮件、表格、会议、审批和跨系统协作，帮助完成真实工作流程。
+            </p>
+          </article>
+          <article>
+            <span>OTHER AGENT</span><strong>Other Agent</strong>
+            <p>
+              覆盖研究、数据分析、客服、电脑操作、多 Agent
+              协作以及其他专业场景。
+            </p>
+          </article>
+        </div>
+
+        <div class="my-agent-stack">
+          <div class="stack-column stack-programmer">
+            <div class="stack-heading">
+              <span class="stack-tag">PROGRAMMER</span>
+              <h3>程序员用 Coding Agent 组合</h3>
+              <p>一套组合覆盖仓库开发、图形化协作和多模型切换。</p>
+            </div>
+            <div class="stack-card stack-primary">
+              <div class="stack-card-head">
+                <span class="stack-index">主力</span>
+                <div>
+                  <h4>Codex CLI</h4>
+                  <small>仓库开发主力</small>
+                </div>
+              </div>
+              <p>
+                直接读取仓库、修改代码、运行命令和测试，适合从需求实现到结果验证的完整开发任务。
+              </p>
+              <div class="mini-links" style="margin-top: var(--space-md)">
+                <a
+                  href="https://learn.chatgpt.com/docs/codex/cli"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >官方安装文档 ↗</a
+                >
+              </div>
+            </div>
+            <div class="stack-card stack-primary">
+              <div class="stack-card-head">
+                <span class="stack-index">协作</span>
+                <div>
+                  <h4>ChatGPT</h4>
+                  <small>问答与图形化协作</small>
+                </div>
+              </div>
+              <p>
+                用于方案讨论、图片与文件理解、临时分析，以及不必进入终端的轻量任务。
+              </p>
+              <div class="mini-links" style="margin-top: var(--space-md)">
+                <a
+                  href="https://chatgpt.com/download/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >官方下载 ↗</a
+                >
+              </div>
+            </div>
+            <div class="stack-card stack-secondary">
+              <div class="stack-card-head">
+                <span class="stack-index">补充</span>
+                <div>
+                  <h4>Claude Code + OpenCode</h4>
+                  <small>复杂任务与多模型补位</small>
+                </div>
+              </div>
+              <p>
+                Claude Code 适合换一种推理路径处理长链路任务；OpenCode
+                便于接入不同模型，在额度或模型受限时补位。
+              </p>
+              <div class="mini-links" style="margin-top: var(--space-md)">
+                <a
+                  href="https://code.claude.com/docs/en/getting-started"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Claude Code 安装 ↗</a
+                >
+                <a
+                  href="https://opencode.ai/docs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >OpenCode 安装 ↗</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="stack-column stack-business">
+            <div class="stack-heading">
+              <span class="stack-tag">BUSINESS</span>
+              <h3>业务员用图形化 Working Agent</h3>
+              <p>
+                优先选择与现有办公生态一致的产品，账号、沟通和流程衔接更顺。
+              </p>
+            </div>
+            <div class="stack-card stack-primary">
+              <div class="stack-card-head">
+                <span class="stack-index">腾讯</span>
+                <div>
+                  <h4>WorkBuddy + 微信 + 企业微信</h4>
+                  <small> 腾讯办公系列 </small>
+                </div>
+              </div>
+              <p>
+                WorkBuddy
+                负责执行文件、资料和日常办公任务，微信与企业微信承接沟通协作；也可接入钉钉，但属于跨生态连接。
+              </p>
+              <div class="mini-links" style="margin-top: var(--space-md)">
+                <a
+                  href="https://copilot.tencent.com/work/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >WorkBuddy 官网 ↗</a
+                >
+              </div>
+            </div>
+            <div class="stack-card stack-secondary">
+              <div class="stack-card-head">
+                <span class="stack-index">火山</span>
+                <div>
+                  <h4>TRAE Work + 豆包</h4>
+                  <small>火山办公系列</small>
+                </div>
+              </div>
+              <p>
+                豆包负责问答、写作和内容生成，TRAE
+                Work负责文件处理、研究分析与交付。
+              </p>
+              <div class="mini-links" style="margin-top: var(--space-md)">
+                <a
+                  href="https://www.doubao.com/download/desktop"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >豆包下载 ↗</a
+                >
+                <a
+                  href="https://www.trae.ai/work"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >TRAE Work 官网 ↗</a
+                >
+              </div>
+            </div>
+            <div class="stack-card stack-primary">
+              <div class="stack-card-head">
+                <span class="stack-index">阿里</span>
+                <div>
+                  <h4>QoderWork + 悟空</h4>
+                  <small>阿里办公系列</small>
+                </div>
+              </div>
+              <p>
+                QoderWork
+                处理本地文件、数据和文档，悟空连接钉钉及企业流程，适合阿里办公生态。
+              </p>
+              <div class="mini-links" style="margin-top: var(--space-md)">
+                <a
+                  href="https://qoder.com/download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >QoderWork 下载 ↗</a
+                >
+                <a
+                  href="https://wukong.dingtalk.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >悟空下载 ↗</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="role-toolkit-intro">
+          <h3>我的原则：不追求"一个最强"，追求"一套顺手的"</h3>
+          <p>
+            上面这套组合不是标准答案，工具会变、模型会变、公司的要求也会变。真正值得沉淀的是：<strong>清楚每个工具的强项和边界，知道什么时候该切、为什么切</strong>。
+          </p>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          Agent 已经有了，但要让它真正干活，就得给它装上接触外部世界的"手臂"。
+        </p>
+      </div>
+      <section class="chapter-section fade-in" id="ecosystem">
+        <div class="section-label">✦ 03 · 给 Coding Agent 装上手臂 ✦</div>
+        <p class="lead-paragraph">
+          把 Codex、Claude Code、OpenCode
+          这些基础工具玩顺之后，下一步不是不停换模型，而是让它接触更完整的上下文和更合适的工具：邮箱、钉钉、微信、企业微信、Git、代码仓库、发布平台、文档和知识库。
+        </p>
+
+        <div class="connection-callout">
+          <span>11 个可点击教程</span>
+          <p>
+            <strong>下面每一个扩展都可以打开独立配置页。</strong
+            >教程从最小权限开始，给出接入步骤、配置示例、验收方法和官方文档；先在测试账号或测试仓库验证，再逐步开放写入能力。
+          </p>
+        </div>
+
+        <div
+          class="agent-orbit"
+          aria-label="以 Coding Agent 为中心的工作连接图，点击节点打开对应教程"
+        >
+          <svg
+            class="orbit-lines"
+            viewBox="0 0 1000 620"
+            role="presentation"
+            aria-hidden="true"
+          >
+            <path
+              d="M500 310 L155 105 M500 310 L385 82 M500 310 L620 82 M500 310 L845 105 M500 310 L110 310 M500 310 L890 310 M500 310 L155 520 M500 310 L385 545 M500 310 L620 545 M500 310 L845 520 M500 310 L500 605"
+            />
+          </svg>
+          <div class="orbit-core">
+            <small>WORK ENGINE</small><strong>Coding Agent</strong
+            ><span>理解 · 执行 · 验证</span>
+          </div>
+          <a class="orbit-node node-mail" href="connect-email.html"
+            ><span>01</span><strong>邮箱</strong
+            ><small>Gmail / Microsoft 365</small><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-ding" href="connect-dingtalk.html"
+            ><span>02</span><strong>钉钉</strong><small>机器人与企业应用</small
+            ><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-wechat" href="connect-wechat.html"
+            ><span>03</span><strong>微信</strong><small>公众号 / 小程序</small
+            ><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-wecom" href="connect-wecom.html"
+            ><span>04</span><strong>企业微信</strong
+            ><small>群机器人与自建应用</small><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-git" href="connect-git.html"
+            ><span>05</span><strong>Git</strong><small>身份、凭证与分支</small
+            ><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-repo" href="connect-repository.html"
+            ><span>06</span><strong>代码仓库</strong
+            ><small>GitHub / GitLab</small><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-release" href="connect-release.html"
+            ><span>07</span><strong>发布平台</strong
+            ><small>CI / CD / Release</small><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-read" href="connect-code-search.html"
+            ><span>08</span><strong>代码阅读</strong
+            ><small>搜索、索引与检索</small><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-local" href="connect-local-tools.html"
+            ><span>09</span><strong>本地工具</strong
+            ><small>文件、命令与浏览器</small><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-docs" href="connect-knowledge.html"
+            ><span>10</span><strong>文档 / 知识库</strong
+            ><small>Notion / Confluence</small><em>打开教程 ↗</em></a
+          >
+          <a class="orbit-node node-database" href="connect-database.html"
+            ><span>11</span><strong>数据库</strong><small>MySQL · DBHub</small
+            ><em>打开教程 ↗</em></a
+          >
+        </div>
+
+        <div class="product-question">
+          <div class="question-mark">?</div>
+          <div>
+            <span class="eyebrow">一个自然冒出来的问题</span>
+            <h3>
+              既然 Coding Agent/Woring Agent
+              能帮我们干活，为什么不直接让它成为助手，还要再做一个个工具或者应用出来？
+            </h3>
+            <p>
+              如果任务只服务自己、发生频率不高，而且开发者始终在旁边监督，直接让
+              Coding Agent/Woring Agent
+              做通常更快。它就是一个灵活的工作台，也是一台验证想法的原型机。
+            </p>
+            <p>
+              但当能力要交给非技术用户、重复稳定运行、多人协作、长期保存状态，并且需要权限、审计、审批和清晰界面时，就要把探索过程封装成网站或业务系统。产品界面不是为了取代
+              Agent，而是给成熟能力建立稳定的服务边界。
+            </p>
+            <strong
+              >所以不是"Agent 还是网站"二选一，而是：先用 Agent
+              验证工作流，再把高频、稳定、多人需要的部分产品化。</strong
+            >
+          </div>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          连接方式多种多样，但它们背后都有一套共同的协议规范。先弄懂这些协议的分工，才能更精准地挑选工具。
+        </p>
+      </div>
+      <section class="chapter-section fade-in" id="protocols">
+        <div class="section-label">✦ 04 · 工具、协议与工作方法 ✦</div>
+        <h2>MCP、A2A、Skill 分别解决什么问题？</h2>
+        <p class="lead-paragraph">
+          这几个词经常同时出现，但它们不在同一层。可以先用一句话区分：Tool
+          是一个动作，MCP 负责连接工具和数据，A2A 负责 Agent 之间协作，Skill
+          负责告诉 Agent 应该怎样完成一类任务。
+        </p>
+
+        <div class="protocol-stack">
+          <article>
+            <span class="protocol-code">TOOL</span>
+            <h3>一个可调用的原子动作</h3>
+            <p>
+              例如读取文件、执行 SQL、创建 Issue、发送 HTTP 请求。Tool
+              关心的是"这一步能做什么"。
+            </p>
+          </article>
+          <article class="protocol-featured">
+            <span class="protocol-code">MCP</span>
+            <h3>统一连接工具与上下文</h3>
+            <p>
+              Model Context Protocol 通过 Host、Client、Server 等角色，让 Agent
+              用相对统一的方式发现并调用外部能力，减少每接一个系统都重写一套私有集成。
+            </p>
+            <a
+              href="https://modelcontextprotocol.io/docs/getting-started/intro"
+              target="_blank"
+              rel="noopener noreferrer"
+              >MCP 官方介绍 ↗</a
+            >
+          </article>
+          <article>
+            <span class="protocol-code">A2A</span>
+            <h3>让不同 Agent 发现和协作</h3>
+            <p>
+              Agent2Agent Protocol 面向 Agent
+              之间的通信：发现能力、委派任务、交换消息和交付结果。它适合跨团队、跨框架的多
+              Agent 协作。
+            </p>
+            <a
+              href="https://a2a-protocol.org/latest/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >A2A 官方文档 ↗</a
+            >
+          </article>
+          <article class="protocol-featured skill-protocol">
+            <span class="protocol-code">SKILL</span>
+            <h3>可复用的专业工作方法</h3>
+            <p>
+              Skill 通常用一个入口说明文件描述触发条件、步骤、约束和资源，让
+              Agent
+              在需要时再加载细节。它沉淀的是"这类事情应该怎样做"，而不只是一次
+              Prompt。
+            </p>
+            <a
+              href="https://agentskills.io/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Agent Skills 规范 ↗</a
+            >
+          </article>
+          <article>
+            <span class="protocol-code">RULES</span>
+            <h3>团队共同遵守的边界</h3>
+            <p>
+              例如
+              AGENTS.md、CLAUDE.md、仓库规范和验收清单，明确禁止事项、代码风格、测试要求、权限边界与完成标准。
+            </p>
+          </article>
+        </div>
+
+        <div class="protocol-flow" aria-label="Agent 能力组合关系">
+          <span>团队规则</span><b>约束</b><span>Skill</span><b>组织</b
+          ><span>Agent</span><b>通过 MCP 调用</b><span>Tools / Data</span
+          ><b>必要时通过 A2A</b><span>其他 Agent</span>
+        </div>
+
+        <div class="skill-mcp-heading">
+          <span class="added-index">RECOMMENDED SETUP</span>
+          <h3>不装 Skills 和 MCP 的 Agent，难以完成长链路任务</h3>
+          <p>
+            Skill 是做事方法，MCP
+            是外部连接。先装能解决当前任务的，再按使用频率保留。
+          </p>
+        </div>
+
+        <div class="skill-catalog-block">
+          <div class="catalog-copy">
+            <h3>截图中的 Skills，分别能做什么</h3>
+            <p>安装前先读 SKILL.md，确认触发条件、依赖、写入范围和维护来源。</p>
+          </div>
+          <button
+            class="article-image-button catalog-image"
+            type="button"
+            data-zoom-src="source/skills-market-list.png"
+          >
+            <img
+              src="source/skills-market-list.png"
+              alt="本地 Skills 列表截图"
+              loading="lazy"
+            /><span>Skills 列表 · 点击放大</span>
+          </button>
+        </div>
+        <div class="skill-directory-grid">
+          <article>
+            <strong>agent-browser</strong>
+            <p>网页导航、点击、填表、截图、抽取数据和 Web 测试。</p>
+          </article>
+          <article>
+            <strong>archify</strong>
+            <p>制作架构图、流程图、时序图、数据流和状态机。</p>
+          </article>
+          <article>
+            <strong>chrome-devtools</strong>
+            <p>分析页面网络、控制台、性能和浏览器调试信息。</p>
+          </article>
+          <article>
+            <strong>computer-use</strong>
+            <p>操作桌面应用，处理必须通过真实 UI 完成的任务。</p>
+          </article>
+          <article>
+            <strong>dev-browser</strong>
+            <p>保留页面状态的浏览器自动化，适合连续操作和测试。</p>
+          </article>
+          <article>
+            <strong>docx</strong>
+            <p>创建、读取和修改 Word 文档与模板。</p>
+          </article>
+          <article>
+            <strong>dogfood</strong>
+            <p>系统化探索 Web 产品，记录缺陷、证据和复现步骤。</p>
+          </article>
+          <article>
+            <strong>drawio</strong>
+            <p>创建、编辑和导出 draw.io 架构、网络与 UML 图。</p>
+          </article>
+          <article>
+            <strong>dws</strong>
+            <p>连接钉钉文档、表格、日历、群聊、审批、待办和邮箱。</p>
+          </article>
+          <article>
+            <strong>explain-code</strong>
+            <p>解释陌生代码、复杂逻辑和系统架构。</p>
+          </article>
+          <article>
+            <strong>find-skills</strong>
+            <p>按任务搜索可用 Skill，并判断是否值得安装。</p>
+          </article>
+          <article>
+            <strong>hatch-pet</strong>
+            <p>创建、修复和打包 Codex 动画宠物资源。</p>
+          </article>
+          <article>
+            <strong>humanizer-zh</strong>
+            <p>减少中文文本的机器腔，让表达更自然。</p>
+          </article>
+          <article>
+            <strong>pdf</strong>
+            <p>读取、生成、拆分、合并和检查 PDF 版式。</p>
+          </article>
+          <article>
+            <strong>playwright</strong>
+            <p>通过真实浏览器做表单、截图、数据提取和 UI 调试。</p>
+          </article>
+          <article>
+            <strong>pptx</strong>
+            <p>创建、读取和修改演示文稿。</p>
+          </article>
+          <article>
+            <strong>project-docs-setup</strong>
+            <p>为项目建立需求、架构、规范和交付文档体系。</p>
+          </article>
+          <article>
+            <strong>self-improving-agent</strong>
+            <p>把历史任务经验沉淀为可复用记忆与改进规则。</p>
+          </article>
+          <article>
+            <strong>todo</strong>
+            <p>汇总、规划、提醒并安全执行待办任务。</p>
+          </article>
+          <article>
+            <strong>using-superpowers</strong>
+            <p>在对话开始时检查并选择适用 Skill。</p>
+          </article>
+          <article>
+            <strong>web-design-guidelines</strong>
+            <p>审查 UI、可访问性、交互与 Web 设计规范。</p>
+          </article>
+          <article>
+            <strong>weread-skills</strong>
+            <p>搜索微信读书、管理书架、查看划线和阅读统计。</p>
+          </article>
+          <article>
+            <strong>xlsx</strong>
+            <p>创建、读取、清洗和修改 Excel / CSV 表格。</p>
+          </article>
+        </div>
+
+        <div class="mcp-catalog-block">
+          <div>
+            <h3>MCP：按系统连接，不按数量收藏</h3>
+            <div class="mcp-meaning-list">
+              <p>
+                <strong>computer-use</strong> 操作桌面应用；<strong
+                  >context7</strong
+                >
+                查询技术文档；<strong>dbhub</strong> 查询数据库。
+              </p>
+              <p>
+                <strong>ding-doc / ding-table</strong>
+                连接钉钉文档与表格；<strong>email</strong> 处理邮件；<strong
+                  >memory</strong
+                >
+                保存长期记忆。
+              </p>
+              <p>
+                <strong>node_repl</strong> 受控执行 JavaScript；<strong
+                  >sequential-thinking</strong
+                >
+                拆解复杂问题；<strong>ssh-manager</strong>
+                管理远程主机，属于高风险连接。
+              </p>
+            </div>
+          </div>
+          <button
+            class="article-image-button"
+            type="button"
+            data-zoom-src="source/mcp-manager.png"
+          >
+            <img
+              src="source/mcp-manager.png"
+              alt="MCP 服务器管理列表"
+              loading="lazy"
+            /><span>MCP 管理页 · 点击放大</span>
+          </button>
+        </div>
+
+        <div class="find-skill-guide">
+          <h3>怎么找到自己想用的 Skill 和 MCP？</h3>
+          <ol>
+            <li>先写清任务：要读什么、改什么、连接哪个系统。</li>
+            <li>用“任务关键词 + skill / mcp / server”搜索。</li>
+            <li>回到源仓库检查权限、依赖、更新时间、Issue 和示例。</li>
+            <li>先在测试项目启用，观察工具调用和日志。</li>
+            <li>只保留高频、稳定、权限边界清楚的工具。</li>
+          </ol>
+        </div>
+
+        <div class="directory-sites">
+          <article>
+            <img
+              src="source/mcpworld.png"
+              alt="MCPWorld 的 MCP Server 搜索页面"
+              loading="lazy"
+            />
+            <h3>MCPWorld</h3>
+            <p>
+              按分类和关键词发现 MCP
+              Server，适合先了解用途，再回源仓库核对安装与权限。
+            </p>
+            <a
+              href="https://www.mcpworld.com/mcp"
+              target="_blank"
+              rel="noopener noreferrer"
+              >访问网站 ↗</a
+            >
+          </article>
+          <article>
+            <img
+              src="source/skillsmp.png"
+              alt="SkillsMP 的 Agent Skills 市场页面"
+              loading="lazy"
+            />
+            <h3>SkillsMP</h3>
+            <p>按任务、创建者和职业浏览公开 SKILL.md，适合检查源码后再安装。</p>
+            <a
+              href="https://skillsmp.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >访问网站 ↗</a
+            >
+          </article>
+          <article>
+            <img
+              src="source/skillssh.png"
+              alt="skills.sh 的开放 Agent Skills 页面"
+              loading="lazy"
+            />
+            <h3>skills.sh</h3>
+            <p>
+              查看 Skill 排行、趋势、安装命令和支持的
+              Agent，适合快速发现热门能力。
+            </p>
+            <a
+              href="https://www.skills.sh/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >访问网站 ↗</a
+            >
+          </article>
+        </div>
+
+        <div class="bookmark-treasures">
+          <span class="added-index">CHROME BOOKMARKS · AI时代</span>
+          <h3>AI 宝藏网站：按用途收藏，不按数量收藏</h3>
+          <div class="bookmark-grid">
+            <article>
+              <strong>知识导航 · WaytoAGI</strong>
+              <p>中文 AI 知识库、教程和工具导航，适合找学习路径。</p>
+              <a
+                href="https://www.waytoagi.com/zh"
+                target="_blank"
+                rel="noopener noreferrer"
+                >打开 ↗</a
+              >
+            </article>
+            <article>
+              <strong>模型选型 · Models.dev</strong>
+              <p>查看模型与提供商信息，适合比较 API 和模型生态。</p>
+              <a
+                href="https://models.dev/providers/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >打开 ↗</a
+              >
+            </article>
+            <article>
+              <strong>开源生态 · Awesome OpenCode</strong>
+              <p>汇总 OpenCode 插件、主题、Agent 和相关项目。</p>
+              <a
+                href="https://github.com/awesome-opencode/awesome-opencode"
+                target="_blank"
+                rel="noopener noreferrer"
+                >打开 ↗</a
+              >
+            </article>
+            <article>
+              <strong>教程工具 · 刺猬星球</strong>
+              <p>面向实践的中文 AI 教程与工具集合。</p>
+              <a
+                href="https://www.super-i.cn/tool.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >打开 ↗</a
+              >
+            </article>
+            <article>
+              <strong>自动化工程 · OpenASE</strong>
+              <p>用工单驱动 Agent 执行开发任务，并保留过程追踪。</p>
+              <a
+                href="https://github.com/PacificStudio/openase"
+                target="_blank"
+                rel="noopener noreferrer"
+                >打开 ↗</a
+              >
+            </article>
+            <article>
+              <strong>本地模型 · Ollama</strong>
+              <p>学习本地模型下载、运行、API 调用和模型管理。</p>
+              <a
+                href="https://ollama.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >打开 ↗</a
+              >
+            </article>
+          </div>
+          <p class="bookmark-caution">
+            收藏夹中的企业内网、登录态页面和临时地址不在本文展示，也不应复制到公共资料。
+          </p>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          协议明白了，具体用什么工具来连接？下面这些配套工具，是日常工作中反复验证过的小帮手。
+        </p>
+      </div>
+      <section class="chapter-section fade-in" id="utilities">
+        <div class="section-label">✦ 05 · 关节与夹具 · 配套工具 ✦</div>
+        <div class="section-heading-row">
+          <div>
+            <p>
+              Agent 是核心，但真正顺手的日常工作流，往往由这些"小工具"连接起来。
+            </p>
+          </div>
+          <span class="status-pill">6 项已记录</span>
+        </div>
+
+        <div
+          class="added-tool-showcase"
+          aria-label="配置切换、本地模型与多 Agent 工作台"
+        >
+          <article class="added-tool-row">
+            <div class="added-tool-copy">
+              <span class="added-index">00 · CONFIG SWITCH</span>
+              <h3>CC Switch：统一管理 Coding Agent 公共配置</h3>
+              <p>
+                把 Claude Code、Codex、OpenCode 等工具的 Provider、模型、API
+                Key、Skill 与 MCP
+                配置放到一个界面管理。切换账号、模型或恢复配置时，不用反复手动改配置文件，适合团队共享同一份配置模板。
+              </p>
+              <div class="dual-install">
+                <div>
+                  <strong>macOS</strong><code>从 Releases 下载 .dmg</code>
+                </div>
+                <div>
+                  <strong>Windows</strong><code>从 Releases 下载 .exe</code>
+                </div>
+              </div>
+              <div class="mini-links">
+                <a
+                  href="https://ccswitch.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >官方网站 ↗</a
+                >
+                <a
+                  href="https://github.com/farion1231/cc-switch/releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >下载安装 ↗</a
+                >
+              </div>
+            </div>
+            <figure
+              class="tool-screenshot tool-screenshot-switcher"
+              style="margin: 0"
+            >
+              <div class="screenshot-browser-bar" aria-hidden="true">
+                <i></i><i></i><i></i
+                ><span>CC Switch · 管理 Coding Agent 公共配置</span>
+              </div>
+              <img
+                src="source/coding-agent-switcher.png"
+                alt="CC Switch 中 Claude Code、Codex 与 OpenCode 三个工具入口位于页面顶部的界面截图"
+                loading="lazy"
+              /><span style="display: none">点击放大</span>
+              <figcaption>
+                <strong>用 CC Switch 统一管理：</strong> Provider、模型、API
+                Key、Skill、MCP
+                配置——团队共享同一份，减少每个人手工改配置的重复劳动。
+              </figcaption>
+            </figure>
+          </article>
+
+          <article class="added-tool-row">
+            <div class="added-tool-copy">
+              <span class="added-index">01 · MODEL FIT</span>
+              <h3>llmfit：先判断本机能跑什么</h3>
+              <p>
+                读取 CPU、RAM、GPU
+                和可用显存，按质量、速度、上下文与内存占用筛选本地模型。部署
+                Ollama 前先跑一次，能少下载很多不适合本机的模型。
+              </p>
+              <div class="dual-install">
+                <div>
+                  <strong>macOS</strong
+                  ><code>brew install AlexsJones/llmfit/llmfit</code>
+                </div>
+                <div>
+                  <strong>Windows</strong><code>scoop install llmfit</code>
+                </div>
+              </div>
+              <div class="mini-links">
+                <a
+                  href="https://github.com/AlexsJones/llmfit"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >项目与安装说明 ↗</a
+                >
+              </div>
+            </div>
+            <button
+              class="article-image-button"
+              type="button"
+              data-zoom-src="source/tool-llmfit.png"
+            >
+              <img
+                src="source/tool-llmfit.png"
+                alt="llmfit 根据本机硬件推荐本地模型的列表界面"
+                loading="lazy"
+              /><span>点击放大</span>
+            </button>
+          </article>
+
+          <article class="added-tool-row">
+            <div class="added-tool-copy">
+              <span class="added-index">02 · LOCAL MODEL</span>
+              <h3>Ollama：安装本地小模型，学习用</h3>
+              <p>
+                用一条命令下载并运行本地模型，也能给脚本、IDE 和其他 Agent
+                提供本地接口。学习时先从 1B～4B
+                小模型开始，理解模型下载、量化、上下文和本地 API。
+              </p>
+              <div class="dual-install">
+                <div>
+                  <strong>macOS</strong
+                  ><code>curl -fsSL https://ollama.com/install.sh | sh</code>
+                </div>
+                <div>
+                  <strong>Windows · PowerShell</strong
+                  ><code>irm https://ollama.com/install.ps1 | iex</code>
+                </div>
+              </div>
+              <div class="mini-links">
+                <a
+                  href="https://ollama.com/download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >官方下载 ↗</a
+                >
+              </div>
+              <div class="run-example">
+                <code>ollama run qwen3:4b</code
+                ><span>示例模型按本机配置调整</span>
+              </div>
+            </div>
+            <button
+              class="article-image-button"
+              type="button"
+              data-zoom-src="source/tool-ollama.png"
+            >
+              <img
+                src="source/tool-ollama.png"
+                alt="Ollama 本地模型聊天界面"
+                loading="lazy"
+              /><span>点击放大</span>
+            </button>
+          </article>
+
+          <article class="added-tool-row">
+            <div class="added-tool-copy">
+              <span class="added-index">03 · CONNECT</span>
+              <h3>cc-connect：从消息软件远程调用开发 Agent</h3>
+              <p>
+                把飞书、Slack、Telegram、Discord、钉钉、企业微信等消息入口连接到
+                Codex、Claude Code、Cursor、OpenCode
+                等开发工具，适合远程派发任务、查看进度和接收结果。
+              </p>
+              <div class="dual-install">
+                <div>
+                  <strong>macOS</strong><code>brew install cc-connect</code>
+                </div>
+                <div>
+                  <strong>Windows</strong><code>npm install -g cc-connect</code>
+                </div>
+              </div>
+              <div class="mini-links">
+                <a
+                  href="https://github.com/chenhg5/cc-connect"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >项目与配置教程 ↗</a
+                >
+              </div>
+              <p class="added-security">
+                机器人凭证只放环境变量或受控配置文件；不要提交到仓库，也不要给默认全权限。
+              </p>
+            </div>
+            <button
+              class="article-image-button"
+              type="button"
+              data-zoom-src="source/tool-cc-connect.png"
+            >
+              <img
+                src="source/tool-cc-connect.png"
+                alt="cc-connect 连接消息平台与开发 Agent 的架构示意图"
+                loading="lazy"
+              /><span>点击放大</span>
+            </button>
+          </article>
+
+          <article class="added-tool-row">
+            <div class="added-tool-copy">
+              <span class="added-index">04 · TRACE</span>
+              <h3>claude-tap：看清请求、Token 和工具调用</h3>
+              <p>
+                在本地记录 Claude Code、Codex CLI、Gemini CLI、OpenCode 等
+                Coding Agent
+                的请求与响应，集中查看轮次、Token、缓存、耗时和工具调用。适合排查“为什么慢、为什么贵、为什么没有按预期执行”。
+              </p>
+              <div class="dual-install">
+                <div>
+                  <strong>macOS</strong><code>uv tool install claude-tap</code>
+                </div>
+                <div>
+                  <strong>Windows</strong
+                  ><code>uv tool install claude-tap</code>
+                </div>
+              </div>
+              <div class="mini-links">
+                <a
+                  href="https://github.com/liaohch3/claude-tap"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >项目与使用说明 ↗</a
+                >
+              </div>
+              <div class="run-example">
+                <code>claude-tap</code
+                ><span>要求 Python 3.11+；直接代替 claude 启动</span>
+              </div>
+              <p class="added-security">
+                Trace 可能包含提示词、内部路径和代码，只保存在本机或受控内网。
+              </p>
+            </div>
+            <div class="tap-image-pair">
+              <button
+                class="article-image-button"
+                type="button"
+                data-zoom-src="source/tool-claude-tap-dashboard.png"
+              >
+                <img
+                  src="source/tool-claude-tap-dashboard.png"
+                  alt="claude-tap 请求观测面板"
+                  loading="lazy"
+                /><span>观测面板 · 点击放大</span></button
+              ><button
+                class="article-image-button"
+                type="button"
+                data-zoom-src="source/tool-claude-tap-cli.png"
+              >
+                <img
+                  src="source/tool-claude-tap-cli.png"
+                  alt="通过 claude-tap 启动 Claude Code"
+                  loading="lazy"
+                /><span>启动效果 · 点击放大</span>
+              </button>
+            </div>
+          </article>
+
+          <article class="added-tool-row">
+            <div class="added-tool-copy">
+              <span class="added-index">05 · AGENT WORKSPACE</span>
+              <h3>Vibe Island.app：多 Agent 会话统一工作台</h3>
+              <p>
+                把不同 Coding Agent
+                的任务和会话放进更接近"工作台"的统一视图，适合观察多个项目、多个终端和多个
+                Agent 的当前状态。
+              </p>
+              <div class="mini-links">
+                <a
+                  href="https://vibeisland.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >官方网站 ↗</a
+                >
+                <a
+                  href="https://vibeisland.app/claude-code/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >使用指引 ↗</a
+                >
+              </div>
+              <p class="added-security">
+                第三方服务接触代码与账号前，先确认数据流向、权限范围、日志保留和团队合规要求。
+              </p>
+            </div>
+            <figure
+              class="tool-screenshot tool-screenshot-dark tap-image-pair"
+              style="margin: 0"
+            >
+              <div
+                class="screenshot-browser-bar screenshot-browser-bar-dark"
+                aria-hidden="true"
+              >
+                <i></i><i></i><i></i><span>多 Agent 会话状态</span>
+              </div>
+              <img
+                src="source/vibe-island-sessions.png"
+                alt="Vibe Island 风格的多项目、多 Coding Agent 会话活动列表截图"
+                loading="lazy"
+              /><span style="display: none">点击放大</span>
+              <figcaption>
+                <strong>多个 Agent 并行时，状态比聊天窗口更重要。</strong>
+                谁在运行、使用哪个工具、停在哪个项目，应当一眼看清。
+              </figcaption>
+            </figure>
+          </article>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          有了工具，还得有个可靠的工作台来驾驭它们——IDE 才是真正落地的阵地。
+        </p>
+      </div>
+      <section class="chapter-section fade-in" id="workbench">
+        <div class="section-label">✦ 06 · 操作台 · IDE 与编辑器 ✦</div>
+        <p>
+          我不会因为使用 Coding Agent 就放弃 IDE。相反，Agent
+          越能批量修改代码，越需要一个可靠的工作台来查看结构、比较
+          Diff、调试程序、运行测试和完成最后判断。
+        </p>
+
+        <div class="workbench-grid">
+          <article class="workbench-card idea-card">
+            <div class="workbench-title-row">
+              <span class="workbench-icon">IJ</span>
+              <div>
+                <div class="tool-role">FULL IDE</div>
+                <h3>IntelliJ IDEA</h3>
+              </div>
+            </div>
+            <p>
+              更适合大型 Java / Kotlin
+              工程与复杂后端项目。强项是代码索引、重构、调用链导航、数据库工具、调试和成熟的工程支持。
+            </p>
+            <ul>
+              <li>审查 Agent 对大型工程的跨模块修改</li>
+              <li>利用静态分析发现类型、依赖和调用问题</li>
+              <li>断点调试、数据库检查和框架级开发</li>
+            </ul>
+            <div class="tool-actions">
+              <a
+                href="https://www.jetbrains.com/idea/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >官方网站 <span aria-hidden="true">↗</span></a
+              >
+              <a
+                href="https://www.jetbrains.com/help/idea/getting-started.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                >入门教程 <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+
+          <article class="workbench-card vscode-card">
+            <div class="workbench-title-row">
+              <span class="workbench-icon">VS</span>
+              <div>
+                <div class="tool-role">CODE EDITOR</div>
+                <h3>Visual Studio Code</h3>
+              </div>
+            </div>
+            <p>
+              轻量、灵活、扩展生态丰富，适合前端、脚本、文档、远程开发和多语言项目，也是很多
+              AI 编码插件最先支持的工作台。
+            </p>
+            <ul>
+              <li>快速查看与微调 Agent 生成的代码</li>
+              <li>前端、Python、脚本与 Markdown 混合开发</li>
+              <li>通过终端和扩展组合个性化工作流</li>
+            </ul>
+            <div class="tool-actions">
+              <a
+                href="https://code.visualstudio.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >官方网站 <span aria-hidden="true">↗</span></a
+              >
+              <a
+                href="https://code.visualstudio.com/docs/getstarted/getting-started"
+                target="_blank"
+                rel="noopener noreferrer"
+                >入门教程 <span aria-hidden="true">↗</span></a
+              >
+            </div>
+          </article>
+        </div>
+
+        <div class="editor-plugin-notes">
+          <article class="plugin-panel">
+            <div class="plugin-panel-copy">
+              <span class="added-index">IDEA · AI 插件</span>
+              <h3>CC GUI + Trae，一个主力、一个备选就够了</h3>
+              <p>
+                IDEA 主要用来写代码、重构、调试和审查 Diff。AI
+                插件保留一个主力入口即可：CC GUI 统一管理 Claude Code
+                相关配置；Trae
+                作为另一个可选入口。自从千问收费后，我不再把它放进团队默认组合。
+              </p>
+              <div class="plugin-pills">
+                <span>CC GUI · 主力</span><span>Trae · 备选</span
+                ><span>不要重复安装同类 Agent</span>
+              </div>
+            </div>
+            <button
+              class="article-image-button"
+              type="button"
+              data-zoom-src="source/tool-cc-gui.png"
+            >
+              <img
+                src="source/tool-cc-gui.png"
+                alt="IDEA 中 CC GUI 的基础配置页面"
+                loading="lazy"
+              /><span>CC GUI · 点击放大</span>
+            </button>
+          </article>
+
+          <div class="idea-plugin-gallery">
+            <div class="idea-plugin-gallery-copy">
+              <span class="added-index">MY IDEA PLUGINS · 70+</span>
+              <p>
+                安装很多不代表每天都要启用。下面只摘五个高频插件，按场景选择。
+              </p>
+            </div>
+            <button
+              class="article-image-button long-plugin-image"
+              type="button"
+              data-zoom-src="source/idea-plugins-long.png"
+            >
+              <img
+                src="source/idea-plugins-long.png"
+                alt="个人安装的七十多个 IDEA 插件长图"
+                loading="lazy"
+              /><span>点击展开完整长图</span>
+            </button>
+          </div>
+
+          <div class="added-table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>插件</th>
+                  <th>什么时候用</th>
+                  <th>价值</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GitToolBox</td>
+                  <td>查看分支、提交和某行代码的修改来源</td>
+                  <td>Agent 改完代码后快速核对变更历史</td>
+                </tr>
+                <tr>
+                  <td>SonarQube for IDE</td>
+                  <td>编码时检查潜在 Bug、坏味道和安全问题</td>
+                  <td>把静态检查放到提交之前</td>
+                </tr>
+                <tr>
+                  <td>Rainbow Brackets</td>
+                  <td>阅读多层括号、Lambda 和长表达式</td>
+                  <td>降低复杂生成代码的阅读成本</td>
+                </tr>
+                <tr>
+                  <td>MavenHelper</td>
+                  <td>排查 Maven 依赖冲突、查看依赖树</td>
+                  <td>处理 Java 项目常见的版本与传递依赖问题</td>
+                </tr>
+                <tr>
+                  <td>Java Stream Debugger</td>
+                  <td>调试 Stream 流程和中间结果</td>
+                  <td>快速定位复杂链式处理中的数据问题</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <article class="plugin-panel vscode-plugin-panel">
+            <div class="plugin-panel-copy">
+              <span class="added-index">VS CODE · AI 插件</span>
+              <h3>主力三款，备用两款</h3>
+              <p>
+                Codex、Claude、TRAE 负责日常开发；Kilo Code、Roo Code 主要在
+                Token 不够或主力服务不可用时应急。不要让五个插件同时索引项目。
+              </p>
+              <div class="plugin-pills">
+                <span>Codex</span><span>Claude</span><span>TRAE</span
+                ><span class="backup-pill">Kilo Code · 应急</span
+                ><span class="backup-pill">Roo Code · 应急</span>
+              </div>
+            </div>
+            <button
+              class="article-image-button"
+              type="button"
+              data-zoom-src="source/vscode-ai-plugins.png"
+            >
+              <img
+                src="source/vscode-ai-plugins.png"
+                alt="VS Code 中的 Kilo Code 与多个 AI 插件入口"
+                loading="lazy"
+              /><span>VS Code 插件界面 · 点击放大</span>
+            </button>
+          </article>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          工具和环境都准备好了，该进入正题了：怎么让 AI
+          真正参与一个真实项目的完整生命周期。
+        </p>
+      </div>
+      <section class="chapter-section fade-in" id="lifecycle">
+        <div class="section-label">✦ 07 · 实战操作篇 · 第一阶段 ✦</div>
+        <div class="execution-heading">
+          <div>
+            <h2>先让 AI 接管项目生命周期</h2>
+          </div>
+        </div>
+
+        <div class="lifecycle-subheading is-first">
+          <span class="lifecycle-subheading-index">01</span>
+          <div>
+            <h3>建立统一交付链路</h3>
+          </div>
+        </div>
+
+        <div class="takeover-thesis">
+          <p>
+            第一阶段不追求"全自动开发"，只解决一件事：让每个需求从提出、澄清、排期、开发、测试到交付，都进入同一条可见、可追踪、可被
+            AI 读取的流水线。
+          </p>
+          <span>先把人人协同做成统一流程</span>
+          <b>→</b>
+          <span>再把人机协同做成统一流程</span>
+        </div>
+
+        <div class="delivery-chain" aria-label="AI 项目交付链路">
+          <article>
+            <span>01 · 业务表达</span>
+            <strong>业务人员 + Working Agent</strong>
+            <p>把口头想法整理成有背景、有边界、有验收标准的需求卡。</p>
+          </article>
+          <b aria-hidden="true">→</b>
+          <article class="is-center">
+            <div class="delivery-chain-title-row">
+              <span>02 · 协作中枢</span>
+              <details class="hub-capability-help">
+                <summary
+                  aria-label="查看协作中枢的六种能力"
+                  title="查看六种能力"
+                >
+                  ?
+                </summary>
+                <div class="hub-capability-popover">
+                  <h3>协作中心不仅仅是“需求列表”，至少要有六种能力</h3>
+                  <div class="hub-capability-grid">
+                    <div class="hub-capability-card">
+                      <span>01</span>
+                      <h4>统一记录</h4>
+                      <p>
+                        每个需求只有一个编号和一个主记录。群聊、会议纪要、原型、Issue
+                        都回链到这里，避免多份文档互相冲突。
+                      </p>
+                    </div>
+                    <div class="hub-capability-card">
+                      <span>02</span>
+                      <h4>结构化表达</h4>
+                      <p>
+                        用字段和模板约束输入，不允许只留一段自由文本。业务目标、用户场景、范围、验收标准必须分开填写。
+                      </p>
+                    </div>
+                    <div class="hub-capability-card">
+                      <span>03</span>
+                      <h4>流程与责任</h4>
+                      <p>
+                        状态、当前负责人、下一动作、截止时间必须清楚。任何人打开记录，都知道“卡在哪里、该找谁”。
+                      </p>
+                    </div>
+                    <div class="hub-capability-card">
+                      <span>04</span>
+                      <h4>证据与版本</h4>
+                      <p>
+                        保留需求变更、评审结论、测试报告、发布记录和验收结果。不是只看最终描述，还能追溯为什么这样做。
+                      </p>
+                    </div>
+                    <div class="hub-capability-card">
+                      <span>05</span>
+                      <h4>AI 可读可写</h4>
+                      <p>
+                        字段命名稳定、附件可定位、内容可检索，并允许受控 API /
+                        MCP 读写，让 AI 能补全、检查、总结和回填。
+                      </p>
+                    </div>
+                    <div class="hub-capability-card">
+                      <span>06</span>
+                      <h4>权限、提醒与度量</h4>
+                      <p>
+                        按角色控制敏感字段，自动提醒超时任务，并统计一次通过率、需求周期、返工次数和阻塞原因。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </details>
+            </div>
+            <strong>钉钉多维表格 + 钉钉知识库</strong>
+            <p>统一承载需求、状态、负责人、证据、讨论结论和交付记录。</p>
+          </article>
+          <b aria-hidden="true">→</b>
+          <article>
+            <span>03 · 产研交付</span>
+            <strong>研发人员 + Coding Agent</strong>
+            <p>
+              从结构化任务生成方案、代码、测试证据和交付说明，再回写协作中心。
+            </p>
+          </article>
+        </div>
+
+        <div class="selection-decision">
+          <div>
+            <span>INITIAL DECISION</span>
+            <h3>第一版先用钉钉多维表格 + 钉钉知识库</h3>
+            <h3>不自己开发协作平台</h3>
+          </div>
+          <p>
+            它的价值不是"功能最强"，而是业务、产品、研发、测试、运维都能低成本进入同一个空间。先用表格、表单、视图、权限和自动提醒跑通流程；只有遇到明确瓶颈，才补
+            API、MCP 或自建能力。
+          </p>
+          <ul>
+            <li>
+              <strong>先定字段：</strong>字段稳定后再接 AI，避免 Agent 反复改。
+            </li>
+            <li><strong>先统一入口：</strong>所有新需求必须从需求表单进入。</li>
+            <li>
+              <strong>先跑单团队：</strong
+              >选一个真实项目试运行两周，不做全公司大推广。
+            </li>
+          </ul>
+        </div>
+
+        <div class="lifecycle-subheading">
+          <span class="lifecycle-subheading-index">02</span>
+          <div>
+            <h3>规范项目协作流程</h3>
+          </div>
+        </div>
+
+        <div class="collaboration-process" aria-label="个贷需求协作流程">
+          <div class="collaboration-process-header">
+            <div>
+              <span>DOCUMENT → RECORD → CLARIFY → SCHEDULE → ACCEPT</span>
+              <div class="collaboration-heading-row">
+                <h3 id="loanProcessHeading">个贷需求协作流程</h3>
+                <button
+                  class="collaboration-icon-button"
+                  type="button"
+                  data-collaboration-dialog="loanProcessDialog"
+                  aria-label="查看个贷需求协作流程图"
+                  title="查看流程图"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="4" width="6" height="5" rx="1" />
+                    <rect x="15" y="15" width="6" height="5" rx="1" />
+                    <path d="M9 6.5h4a3 3 0 0 1 3 3V15" />
+                    <path d="m13 12 3 3 3-3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <p>
+              <strong>知识库文档承载完整需求，项目管理表承载协作状态。</strong>
+              两边通过需求文档链接关联，确保业务描述、研发跟进和验收结果始终可追踪。
+            </p>
+          </div>
+
+          <ol class="collaboration-process-list">
+            <li>
+              <span class="collaboration-step-number">01</span>
+              <div class="collaboration-step-title">
+                <small>业务发起</small>
+                <div class="collaboration-step-title-row">
+                  <strong>新建标准需求文档</strong>
+                  <button
+                    class="collaboration-icon-button is-small"
+                    type="button"
+                    data-collaboration-dialog="loanRequirementTemplateDialog"
+                    aria-label="查看个贷需求模板1.0"
+                    title="查看需求模板"
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M6 3h8l4 4v14H6z" />
+                      <path d="M14 3v5h5M9 12h6M9 16h6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p>
+                进入<strong>滨海正信知识库 → 业务需求集 → 对应部门</strong
+                >，点击标题右侧的文档图标查看“个贷需求模板1.0”，并完整填写背景、价值、目标、规则及流程图。
+              </p>
+              <em>产物：需求文档</em>
+            </li>
+            <li>
+              <span class="collaboration-step-number">02</span>
+              <div class="collaboration-step-title">
+                <small>统一登记</small>
+                <strong>创建需求 / 缺陷记录</strong>
+              </div>
+              <p>
+                在<strong>“个贷项目管理”钉钉表格的“需求”数据表</strong>中新增记录，填写标题、需求文档链接、类型和优先级等基础信息，作为后续流转的唯一任务入口。
+              </p>
+              <em>产物：项目记录</em>
+            </li>
+            <li class="is-gate">
+              <span class="collaboration-step-number">03</span>
+              <div class="collaboration-step-title">
+                <small>研发受理</small>
+                <strong>指派跟进并完成澄清</strong>
+              </div>
+              <p>
+                研发收到任务后，根据优先级指派负责人，与业务确认范围、规则、边界和验收口径。业务需及时响应澄清问题；<strong>未完成澄清的需求不进入迭代排期</strong>。
+              </p>
+              <em>门槛：澄清完成</em>
+            </li>
+            <li>
+              <span class="collaboration-step-number">04</span>
+              <div class="collaboration-step-title">
+                <small>研发排期</small>
+                <strong>拆解任务并排入迭代</strong>
+              </div>
+              <p>
+                澄清通过后，研发评估工作量并拆解为原则上<strong
+                  >可在 1～2 周内交付</strong
+                >的任务，排入对应迭代，同时在项目记录中更新负责人、迭代和预计上线时间。
+              </p>
+              <em>产物：交付计划</em>
+            </li>
+            <li>
+              <span class="collaboration-step-number">05</span>
+              <div class="collaboration-step-title">
+                <small>上线验收</small>
+                <strong>更新状态并通知业务验收</strong>
+              </div>
+              <p>
+                功能上线后，研发更新需求状态和上线信息，通知业务同学入场验收。业务反馈验收结论；验收通过后关闭任务，未通过则记录问题并继续跟进。
+              </p>
+              <em>结果：验收闭环</em>
+            </li>
+          </ol>
+
+          <div
+            class="collaboration-process-rules"
+            aria-label="协作流程关键规则"
+          >
+            <span><strong>文档管内容</strong>：需求正文统一沉淀在知识库</span>
+            <span
+              ><strong>表格管流程</strong
+              >：状态、负责人、优先级和迭代统一维护</span
+            >
+            <span><strong>两个硬门槛</strong>：未澄清不排期，未验收不关闭</span>
+          </div>
+        </div>
+
+        <dialog
+          class="collaboration-dialog"
+          id="loanProcessDialog"
+          aria-labelledby="loanProcessDialogTitle"
+        >
+          <div class="collaboration-dialog-shell is-wide">
+            <header class="collaboration-dialog-header">
+              <div>
+                <span>FLOWCHART</span>
+                <h3 id="loanProcessDialogTitle">个贷需求协作流程</h3>
+                <p>
+                  以需求文档为内容源，以项目管理表为流程主记录，完成从发起到验收的闭环。
+                </p>
+              </div>
+              <button
+                class="collaboration-dialog-close"
+                type="button"
+                data-dialog-close
+                aria-label="关闭个贷需求协作流程图"
+              >
+                ×
+              </button>
+            </header>
+            <div class="collaboration-dialog-body">
+              <div class="loan-process-flow" aria-label="个贷需求协作流程图">
+                <article>
+                  <span>01</span>
+                  <small>业务发起</small>
+                  <strong>新建标准需求文档</strong>
+                  <p>
+                    在知识库中使用统一模板，填写背景、价值、目标、规则和流程图。
+                  </p>
+                  <em>产物：需求文档</em>
+                </article>
+                <b aria-hidden="true">→</b>
+                <article>
+                  <span>02</span>
+                  <small>统一登记</small>
+                  <strong>创建需求 / 缺陷记录</strong>
+                  <p>
+                    在“个贷项目管理”的需求表中登记链接、类型、优先级等信息。
+                  </p>
+                  <em>产物：项目记录</em>
+                </article>
+                <b aria-hidden="true">→</b>
+                <article class="is-gate">
+                  <span>03</span>
+                  <small>研发受理</small>
+                  <strong>指派跟进并完成澄清</strong>
+                  <p>
+                    业务与研发确认范围、规则、边界和验收口径，澄清完成后才能流转。
+                  </p>
+                  <em>门槛：澄清完成</em>
+                </article>
+                <b aria-hidden="true">→</b>
+                <article>
+                  <span>04</span>
+                  <small>研发排期</small>
+                  <strong>拆解任务并排入迭代</strong>
+                  <p>
+                    评估工作量、拆解任务，并回填负责人、迭代和预计上线时间。
+                  </p>
+                  <em>产物：交付计划</em>
+                </article>
+                <b aria-hidden="true">→</b>
+                <article>
+                  <span>05</span>
+                  <small>上线验收</small>
+                  <strong>更新状态并通知验收</strong>
+                  <p>研发更新上线信息，业务反馈验收结论，通过后关闭任务。</p>
+                  <em>结果：验收闭环</em>
+                </article>
+              </div>
+              <div class="loan-process-flow-rules">
+                <span
+                  ><strong>文档管内容</strong>：需求正文统一沉淀在知识库</span
+                >
+                <span
+                  ><strong>表格管流程</strong
+                  >：状态、负责人、优先级和迭代统一维护</span
+                >
+                <span><strong>硬门槛</strong>：未澄清不排期，未验收不关闭</span>
+              </div>
+            </div>
+          </div>
+        </dialog>
+
+        <dialog
+          class="collaboration-dialog"
+          id="loanRequirementTemplateDialog"
+          aria-labelledby="loanRequirementTemplateDialogTitle"
+        >
+          <div class="collaboration-dialog-shell">
+            <header class="collaboration-dialog-header">
+              <div>
+                <span>REQUIREMENT TEMPLATE</span>
+                <h3 id="loanRequirementTemplateDialogTitle">个贷需求模板1.0</h3>
+                <p>所有个贷需求统一使用此模板提交。</p>
+              </div>
+              <button
+                class="collaboration-dialog-close"
+                type="button"
+                data-dialog-close
+                aria-label="关闭个贷需求模板1.0"
+              >
+                ×
+              </button>
+            </header>
+            <div class="collaboration-dialog-body">
+              <div
+                class="requirement-document is-dialog-document"
+                aria-label="个贷需求模板1.0内容"
+              >
+                <section>
+                  <h4>1、用户故事</h4>
+                  <p>
+                    说明当前产品现状、用户痛点（解释为什么需要开发此功能 /
+                    模块）。
+                  </p>
+                </section>
+
+                <section>
+                  <h4>2、一句话价值</h4>
+                  <p>
+                    需求落地后能带来的实际价值（效率提升、成本与收益），以及适用业务场景、目标用户。
+                  </p>
+                </section>
+
+                <section>
+                  <h4>3、需求目标</h4>
+                  <p>明确功能上线后要达成的目标（可量化）。</p>
+                </section>
+
+                <section>
+                  <h4>4、需求描述</h4>
+                  <p>业务规则：如有计算公式，请列明。</p>
+
+                  <div class="requirement-document-subsection">
+                    <h5>4.1、概览</h5>
+                    <p>一眼能识别出这个需求想要做什么。</p>
+                  </div>
+                  <div class="requirement-document-subsection">
+                    <h5>4.2、需求</h5>
+                    <p class="requirement-document-placeholder">
+                      请在这里填写具体需求。
+                    </p>
+                  </div>
+                  <div class="requirement-document-subsection">
+                    <h5>4.3、核心流程图</h5>
+                    <p>输入“/”，插入一个流程图。</p>
+                  </div>
+                </section>
+
+                <section>
+                  <h4>5、名词释义</h4>
+                  <div class="requirement-document-fields">
+                    <p><strong>需求涉及到的特有名词</strong></p>
+                    <p><strong>释义说明</strong></p>
+                  </div>
+                </section>
+
+                <section>
+                  <h4>6、与已有功能相交时，如何处理</h4>
+                  <p>
+                    需求涉及到的功能操作，与产品已有功能相交使用时，需明确逻辑定义。
+                  </p>
+                </section>
+
+                <section class="requirement-document-related">
+                  <h4>📃 相关文档</h4>
+                  <p>提到的其他文档，可以插入在这里，以便查阅。</p>
+                </section>
+              </div>
+            </div>
+          </div>
+        </dialog>
+
+        <div class="lifecycle-subheading">
+          <span class="lifecycle-subheading-index">03</span>
+          <div>
+            <h3>建立统一业务入口</h3>
+          </div>
+        </div>
+
+        <div class="bridge-summary">
+          <strong>一句话理解：</strong>
+          WorkBuddy 是业务人员使用 Working Agent
+          的统一入口，钉钉记录和代码仓库是事实来源；下一步再通过公司的 Skill
+          仓库，把标准流程和业务能力持续装进这个入口。
+        </div>
+
+        <figure class="workbuddy-setting-callout">
+          <div class="workbuddy-setting-copy">
+            <span>WORKBUDDY · BUSINESS FRONT DOOR</span>
+            <h3>
+              为什么 Working Agent 要从 WorkBuddy 进入，而不是让业务直接找
+              Coding Agent
+            </h3>
+            <p>
+              业务用户需要的是“把事情办成”，不是编辑代码。WorkBuddy
+              负责承接自然语言、身份、连接器和 Skill；当需求达到 Ready
+              门槛后，研发侧 Coding Agent
+              再接管仓库、测试和交付。这样既降低用户门槛，也避免给业务终端开放代码库和生产权限。
+            </p>
+            <div class="setting-switch-off">
+              <b aria-hidden="true"></b><strong>体验优化计划：关闭</strong>
+            </div>
+            <ul>
+              <li>首次启用、重新安装或版本升级后，都重新检查隐私设置。</li>
+              <li>连接器按最小权限授权；写操作默认先预览，再由用户确认。</li>
+              <li>敏感数据不进入 Prompt，示例统一使用脱敏值和占位符。</li>
+            </ul>
+          </div>
+          <div class="workbuddy-setting-image">
+            <img
+              src="source/workbuddy-disable-experience-program.png"
+              alt="WorkBuddy 设置页面中的体验优化计划选项，使用时应将其关闭"
+              loading="lazy"
+            />
+          </div>
+          <figcaption>
+            WorkBuddy
+            初始化检查：确认“体验优化计划”保持关闭，并核对连接器授权范围。
+          </figcaption>
+        </figure>
+
+        <div class="lifecycle-subheading" id="company-skill-repository">
+          <span class="lifecycle-subheading-index">04</span>
+          <div>
+            <h3>一句话安装公司技能仓库</h3>
+          </div>
+        </div>
+
+        <div class="private-skill-principle company-skill-guide">
+          <div
+            class="skill-install-command"
+            aria-label="发送给 WorkBuddy 的自定义仓库安装指令"
+          >
+            <div class="skill-install-command-toolbar">
+              <span>安装指令</span>
+              <button
+                class="skill-copy-button skill-install-copy-button"
+                type="button"
+                data-copy-target="company-skill-install-command"
+              >
+                复制指令
+              </button>
+            </div>
+            <blockquote id="company-skill-install-command">
+              请将以下 Git 仓库添加为 WorkBuddy 的自定义 Skill 仓库：
+              <code
+                >http://dev-git.vanxlink.com/root/vxlink-workbuddy-skills.git</code
+              ><
+            </blockquote>
+          </div>
+
+          <div class="skill-install-steps">
+            <article class="skill-install-step">
+              <div class="skill-install-step-copy">
+                <span>安装后查看</span>
+                <h4>在“技能 → 套件”中找到公司套件</h4>
+                <p>
+                  进入“专家 · 技能 · 连接器”，切换到“技能 →
+                  套件”。仓库添加成功后会出现
+                  <code>chenshang</code>；点击卡片右上角的“＋”即可添加。
+                </p>
+              </div>
+              <button
+                class="article-image-button skill-install-shot"
+                type="button"
+                data-zoom-src="source/workbuddy-skill-marketplace.webp"
+              >
+                <img
+                  src="source/workbuddy-skill-marketplace.webp"
+                  alt="WorkBuddy 技能套件页面，在公司 Marketplace 的 chenshang 卡片右上角点击加号"
+                  loading="lazy"
+                />
+                <span>找到 chenshang，必要时点击加号 · 点击图片放大</span>
+              </button>
+            </article>
+
+            <article class="skill-install-step">
+              <div class="skill-install-step-copy">
+                <span>确认成功</span>
+                <h4>在“我安装的”中看到并启用，就是安装成功</h4>
+                <p>
+                  点击页面右上角“我安装的”。列表中出现
+                  <code>chenshang</code
+                  >，并且开关已经启用，就说明套件安装完成，可以直接回到
+                  WorkBuddy 对话中使用。
+                </p>
+              </div>
+              <button
+                class="article-image-button skill-install-shot"
+                type="button"
+                data-zoom-src="source/workbuddy-installed-skills.webp?v=20260818-1"
+              >
+                <img
+                  src="source/workbuddy-installed-skills.webp?v=20260818-1"
+                  alt="WorkBuddy 我的安装页面，chenshang 套件已经安装并启用"
+                  loading="lazy"
+                />
+                <span>“我安装的”中出现 chenshang · 点击图片放大</span>
+              </button>
+            </article>
+          </div>
+
+          <div class="skill-repo-rule">
+            <strong>业务用户只记住这一件事：</strong>
+            把仓库地址交给 WorkBuddy，一句话完成安装；Skill
+            的内容、版本、升级与回滚由维护者在公司私有仓库集中管理。
+          </div>
+        </div>
+
+        <div class="lifecycle-subheading">
+          <span class="lifecycle-subheading-index">05</span>
+          <div>
+            <h3>集中管理业务能力</h3>
+          </div>
+        </div>
+
+        <div class="chenshang-introduction">
+          <div>
+            <span class="added-index">WHY CHENSHANG</span>
+            <h3>通用模型懂语言， Skill 懂公司怎么做事</h3>
+            <p>
+              WorkBuddy 解决“用户在哪里使用 AI”， Skill 解决“AI
+              进入公司后按什么规则办事”。它不是替换模型，而是在模型外增加企业身份、业务术语、标准流程、权限门禁和结果格式，让相同任务无论由谁发起，都走同一套
+              SOP。
+            </p>
+          </div>
+          <ul>
+            <li><strong>先识别人：</strong>确认用户身份、部门和可访问范围。</li>
+            <li>
+              <strong>再识别事：</strong
+              >把自然语言路由到咨询、任务、需求或排障。
+            </li>
+            <li>
+              <strong>最后动手：</strong
+              >只有规则通过且用户确认后，才调用连接器写入真实系统。
+            </li>
+          </ul>
+        </div>
+
+        <div class="workbuddy-skill-tutorial">
+          <div class="workbuddy-tutorial-head">
+            <span class="added-index">CHENSHANG · PRIVATE SKILL SUITE</span>
+            <h3>从 Skill 主入口，到咨询、任务、需求与排障</h3>
+            <p>
+              当前套件采用“一个主入口 + 多个专业
+              Skill”的方式：主入口先做身份、版本、连接器和意图检查，再把任务路由给最合适的
+              Skill。命令名称与能力以 WorkBuddy 中实际安装版本显示为准。
+            </p>
+          </div>
+
+          <div class="workbuddy-tutorial-content">
+            <div class="tutorial-section">
+              <h4>仓库中的能力目录</h4>
+              <div
+                class="skill-table-scroll"
+                role="region"
+                aria-label="chenshang Skill 能力目录"
+                tabindex="0"
+              >
+                <table class="skill-table">
+                  <thead>
+                    <tr>
+                      <th>套件</th>
+                      <th>入口</th>
+                      <th>适合解决什么问题</th>
+                      <th>默认边界</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td rowspan="4"><code>chenshang</code></td>
+                      <td><code>/chenshang</code></td>
+                      <td>身份初始化、版本自检、连接器诊断与意图路由</td>
+                      <td>先诊断，不自动写业务数据</td>
+                    </tr>
+                    <tr>
+                      <td><code>/chenshang-ask</code></td>
+                      <td>查询用户有权访问的企业知识，并返回来源引用</td>
+                      <td>找不到就明确说明，不用常识补写</td>
+                    </tr>
+                    <tr>
+                      <td><code>/chenshang-task</code></td>
+                      <td>补齐内部支持任务字段，预览后写入协作中心</td>
+                      <td>创建前需要用户确认</td>
+                    </tr>
+                    <tr>
+                      <td><code>/chenshang-req</code></td>
+                      <td>需求澄清、需求文档、验收标准、原型提纲和落库</td>
+                      <td>范围与规则不由 AI 擅自决定</td>
+                    </tr>
+                    <tr>
+                      <td><code>vxlink</code></td>
+                      <td><code>/chenshang-why</code></td>
+                      <td>按 traceId、时间窗和现象进行只读日志与调用链分析</td>
+                      <td>不索要凭证，不直接操作生产</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="skill-routing-example" aria-label="chenshang 路由示例">
+              <span>ROUTING EXAMPLE</span>
+              <p><strong>“这个规则怎么理解？”</strong> → ask</p>
+              <p><strong>“帮我找人处理一下。”</strong> → task</p>
+              <p><strong>“我们想新增一个功能。”</strong> → req</p>
+              <p><strong>“为什么这次调用超时？”</strong> → why</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-example-lab" id="chenshang-examples">
+          <div class="skill-example-lab-head">
+            <span class="added-index">COPY · RUN · VERIFY</span>
+            <h3>5 个可直接复制的示例</h3>
+            <p>
+              前提：已在 WorkBuddy
+              中安装对应套件并完成必要授权。每个示例都先限制权限、再描述任务、最后规定输出；点击“复制指令”即可粘贴到
+              WorkBuddy。
+            </p>
+          </div>
+
+          <div class="skill-example-list">
+            <article class="skill-example-card">
+              <div class="skill-example-card-head">
+                <div>
+                  <span>EXAMPLE 01</span>
+                  <h4>先做环境自检</h4>
+                </div>
+                <button
+                  class="skill-copy-button"
+                  type="button"
+                  data-copy-target="skill-example-01"
+                >
+                  复制指令
+                </button>
+              </div>
+              <p class="skill-example-purpose">
+                <strong>使用：</strong><code>/chenshang</code> ·
+                <strong>你会看到：</strong>身份、版本、连接器与下一步检查表。
+              </p>
+              <pre id="skill-example-01"><code>/chenshang
+请先执行初始化检查：确认我的身份配置、chenshang Skill 版本和钉钉连接器状态。
+只做只读诊断，不创建或修改任何业务数据。
+最后用表格输出：检查项、状态、发现的问题、建议的下一步。</code></pre>
+            </article>
+
+            <article class="skill-example-card">
+              <div class="skill-example-card-head">
+                <div>
+                  <span>EXAMPLE 02</span>
+                  <h4>带引用查询企业知识</h4>
+                </div>
+                <button
+                  class="skill-copy-button"
+                  type="button"
+                  data-copy-target="skill-example-02"
+                >
+                  复制指令
+                </button>
+              </div>
+              <p class="skill-example-purpose">
+                <strong>使用：</strong><code>/chenshang-ask</code> ·
+                <strong>你会看到：</strong>有来源、可追溯的知识答复。
+              </p>
+              <pre id="skill-example-02"><code>/chenshang-ask
+请在我有权限访问的企业知识库中查找：“需求进入 Ready 前必须满足哪些条件？”
+回答必须包含：结论、适用范围、来源文档标题、对应段落或内部链接、仍需确认的问题。
+如果没有找到可靠来源，请明确说“未找到”，不要凭常识补写。</code></pre>
+            </article>
+
+            <article class="skill-example-card">
+              <div class="skill-example-card-head">
+                <div>
+                  <span>EXAMPLE 03</span>
+                  <h4>生成支持任务预览</h4>
+                </div>
+                <button
+                  class="skill-copy-button"
+                  type="button"
+                  data-copy-target="skill-example-03"
+                >
+                  复制指令
+                </button>
+              </div>
+              <p class="skill-example-purpose">
+                <strong>使用：</strong><code>/chenshang-task</code> ·
+                <strong>你会看到：</strong
+                >字段完整的待提交任务卡，不会直接落库。
+              </p>
+              <pre id="skill-example-03"><code>/chenshang-task
+我要提交一个内部支持任务：
+主题：验证 WorkBuddy 与钉钉连接器是否可用
+现象：chenshang-ask 无法返回知识库引用
+影响：仅影响我的测试账号，不影响生产
+期望：协助检查授权范围和连接器状态
+优先级建议：普通
+请先检查缺失字段并生成“待提交预览”，不要直接写入；等我回复“确认提交”后再创建任务。</code></pre>
+            </article>
+
+            <article class="skill-example-card">
+              <div class="skill-example-card-head">
+                <div>
+                  <span>EXAMPLE 04</span>
+                  <h4>把一句想法变成正式需求</h4>
+                </div>
+                <button
+                  class="skill-copy-button"
+                  type="button"
+                  data-copy-target="skill-example-04"
+                >
+                  复制指令
+                </button>
+              </div>
+              <p class="skill-example-purpose">
+                <strong>使用：</strong><code>/chenshang-req</code> ·
+                <strong>你会看到：</strong
+                >追问、需求卡、验收标准、风险与原型提纲。
+              </p>
+              <pre id="skill-example-04"><code>/chenshang-req
+请把下面的想法整理成正式需求：财务希望在退款列表按时间筛选后导出明细。
+业务目标：将每周手工对账时间从 4 小时降到 30 分钟。
+约束：最多导出 5 万行；仅财务角色可查看手机号；本期不做自动邮件。
+请按“关键追问 → 标准需求卡 → Given/When/Then 验收标准 → 风险 → HTML 原型提纲 → 待落库预览”执行。
+每轮最多问 5 个问题；我确认前不要创建需求记录。</code></pre>
+            </article>
+
+            <article class="skill-example-card">
+              <div class="skill-example-card-head">
+                <div>
+                  <span>EXAMPLE 05</span>
+                  <h4>启动只读排障采集</h4>
+                </div>
+                <button
+                  class="skill-copy-button"
+                  type="button"
+                  data-copy-target="skill-example-05"
+                >
+                  复制指令
+                </button>
+              </div>
+              <p class="skill-example-purpose">
+                <strong>使用：</strong><code>/chenshang-why</code> ·
+                <strong>你会看到：</strong>最小信息清单和可转发的脱敏采集模板。
+              </p>
+              <pre id="skill-example-05"><code>/chenshang-why
+请以只读方式帮助我排查“接口偶发超时”。
+目前没有 traceId。请先列出定位问题所需的最小信息，并生成一份可直接转给同事填写的脱敏采集模板。
+不要查询生产，不要猜测根因，不要要求密码、Token、完整手机号、身份证号或其他敏感信息。
+最后输出：采集清单、脱敏模板、拿到信息后的排查步骤、停止条件。</code></pre>
+            </article>
+          </div>
+          <p class="skill-example-footnote" role="note">
+            如果命令不存在、连接器未授权或字段名称不同，先回到示例 1
+            做自检；不要为了“跑通示例”扩大权限或填入真实敏感数据。
+          </p>
+          <div
+            class="skill-copy-status"
+            id="skillCopyStatus"
+            aria-live="polite"
+          ></div>
+        </div>
+
+        <div class="lifecycle-subheading">
+          <span class="lifecycle-subheading-index">06</span>
+          <div>
+            <h3>开展四周试点验证</h3>
+          </div>
+        </div>
+
+        <div class="pilot-plan">
+          <div class="pilot-title">
+            <span>30-DAY PILOT</span>
+            <h3>不要半年建设，先用四周跑通一个团队</h3>
+          </div>
+          <ol>
+            <li>
+              <span>第 1 周</span><strong>建表与定规则</strong>
+              <p>建立字段、表单、角色视图、状态机、Ready 门槛和三张模板。</p>
+            </li>
+            <li>
+              <span>第 2 周</span><strong>只跑人人协同</strong>
+              <p>
+                选 10
+                个真实需求，先验证信息是否完整、状态是否可信、责任是否清楚。
+              </p>
+            </li>
+            <li>
+              <span>第 3 周</span><strong>接业务侧 AI</strong>
+              <p>
+                上线统一需求
+                Skill；未达标只保存在终端草稿区，达标并确认后才允许创建钉钉记录，同时记录每次人工改写。
+              </p>
+            </li>
+            <li>
+              <span>第 4 周</span><strong>接产研 Agent</strong>
+              <p>
+                选 2～3 个低风险需求完成从 Ready 到 PR、测试、交付回写的闭环。
+              </p>
+            </li>
+          </ol>
+          <div class="pilot-metrics">
+            <span>需求一次通过率</span>
+            <span>澄清往返次数</span>
+            <span>Ready → 上线周期</span>
+            <span>AI 产物人工改写率</span>
+            <span>交付后返工率</span>
+          </div>
+          <div class="pilot-exit">
+            <strong>第一阶段完成标准</strong>
+            <span>100% 新需求从统一入口进入</span>
+            <span>所有进行中需求都有负责人和下一动作</span>
+            <span>至少 2 个需求跑完 AI 辅助交付闭环</span>
+            <span>AI 只能写白名单字段且全部留痕</span>
+            <span>连续两周不再靠群聊追问项目状态</span>
+          </div>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          当 AI 深度参与项目后，安全问题就变得更重要——能力越大，边界越要清晰。
+        </p>
+      </div>
+      <section class="chapter-section fade-in" id="ai-safety-boundaries">
+        <div class="section-label">✦ 08 · 使用 AI 的安全红线 ✦</div>
+
+        <div class="safety-hero">
+          <div class="safety-hero-copy">
+            <span>SAFETY FIRST · 先守边界，再谈效率</span>
+            <h2>有些事情即使 AI 能做，也绝不能让它做</h2>
+            <p>
+              AI
+              会放大人的能力，也会放大一次误操作的影响。真正安全的使用方式，不是记住几个"万能提示词"，而是在输入、授权、执行和发布的每一步都保留人的判断。<strong
+                >工具越强，越要坚持最小数据、最小权限、人工复核和可随时停止。</strong
+              >
+            </p>
+          </div>
+          <div class="safety-shield" aria-hidden="true">
+            <span class="safety-shield-icon">!</span>
+            <strong>HUMAN<br />IN CONTROL</strong>
+            <small>人必须拥有最终决定权</small>
+          </div>
+        </div>
+
+        <div class="safety-zero-trust">
+          <span>ZERO TRUST</span>
+          <p>
+            <strong>把 AI 当作能力很强、但可能犯错的外部协作者：</strong
+            >不给它不必要的数据，不给它不必要的权限，也不把未经验证的结果直接交给真实世界。
+          </p>
+        </div>
+
+        <h3 class="minor-heading">八条不能跨越的红线</h3>
+        <div class="safety-redline-grid">
+          <article class="safety-redline">
+            <div class="safety-redline-head">
+              <span>01</span>
+              <b>数据红线</b>
+            </div>
+            <h3>不能直接上传秘密、隐私和内部资料</h3>
+            <p>
+              密码、API
+              Key、身份证件、银行卡信息、客户数据、医疗记录、未公开财务数据、商业合同和源代码，都不应未经授权直接交给公共
+              AI 服务。
+            </p>
+            <div class="safety-safer-way">
+              <strong>安全做法</strong
+              >先脱敏、删减和替换真实字段；能用示例数据解决，就不要使用真实数据。
+            </div>
+          </article>
+
+          <article class="safety-redline">
+            <div class="safety-redline-head">
+              <span>02</span>
+              <b>权限红线</b>
+            </div>
+            <h3>不能为了方便授予全盘、长期权限</h3>
+            <p>
+              不要默认开放整个网盘、全部邮箱、生产数据库、管理员账号或无限期令牌。一次过度授权，可能让一个小任务变成大范围数据暴露。
+            </p>
+            <div class="safety-safer-way">
+              <strong>安全做法</strong
+              >使用独立账号、只读权限、限定目录和短期凭证；任务结束后立即收回授权。
+            </div>
+          </article>
+
+          <article class="safety-redline">
+            <div class="safety-redline-head">
+              <span>03</span>
+              <b>执行红线</b>
+            </div>
+            <h3>不能让 AI 无确认执行不可逆操作</h3>
+            <p>
+              删除文件、覆盖数据、转账付款、群发消息、发布内容、修改生产环境和批量变更权限，都必须在人确认影响范围后才能执行。
+            </p>
+            <div class="safety-safer-way">
+              <strong>安全做法</strong
+              >先预览、再审批、后执行；保留备份、审计记录、灰度范围和清晰的回退入口。
+            </div>
+          </article>
+
+          <article class="safety-redline">
+            <div class="safety-redline-head">
+              <span>04</span>
+              <b>判断红线</b>
+            </div>
+            <h3>不能把 AI 的回答当作确定事实</h3>
+            <p>
+              AI
+              可能编造来源、遗漏条件、混淆日期，也可能用非常自信的语气给出错误答案。医疗、法律、财务、安全和人事决定尤其不能只依赖
+              AI。
+            </p>
+            <div class="safety-safer-way">
+              <strong>安全做法</strong
+              >核对原始资料、日期和上下文；高风险事项必须交给具备责任和资质的人复核。
+            </div>
+          </article>
+
+          <article class="safety-redline">
+            <div class="safety-redline-head">
+              <span>05</span>
+              <b>行为红线</b>
+            </div>
+            <h3>不能利用 AI 欺骗、攻击或伤害他人</h3>
+            <p>
+              不要用 AI
+              制作钓鱼信息、诈骗话术、恶意程序、骚扰内容、仇恨材料，或绕过账号、设备和系统的安全控制。
+            </p>
+            <div class="safety-safer-way">
+              <strong>安全做法</strong
+              >如果一个请求需要隐藏身份、规避审计或让无辜者承担风险，就应立即停止。
+            </div>
+          </article>
+
+          <article class="safety-redline">
+            <div class="safety-redline-head">
+              <span>06</span>
+              <b>诚信红线</b>
+            </div>
+            <h3>不能伪造身份、证据、经历和来源</h3>
+            <p>
+              不能用 AI
+              冒充真实人物，伪造聊天记录、凭证、论文数据、客户评价和不存在的引用，也不能把机器生成内容包装成亲身经历误导他人。
+            </p>
+            <div class="safety-safer-way">
+              <strong>安全做法</strong>该标注时明确标注 AI
+              辅助；引用必须能回到真实、可验证的原始来源。
+            </div>
+          </article>
+
+          <article class="safety-redline">
+            <div class="safety-redline-head">
+              <span>07</span>
+              <b>权利红线</b>
+            </div>
+            <h3>不能忽视版权、保密义务和组织制度</h3>
+            <p>
+              第三方作品、付费资料、客户文件、同事信息和公司内部文档，不会因为"只是交给
+              AI 处理"就自动获得使用许可。
+            </p>
+            <div class="safety-safer-way">
+              <strong>安全做法</strong
+              >先确认授权范围、服务条款和公司政策；不确定能不能用时，默认先不上传。
+            </div>
+          </article>
+
+          <article class="safety-redline">
+            <div class="safety-redline-head">
+              <span>08</span>
+              <b>指令红线</b>
+            </div>
+            <h3>不能让网页、邮件和文档偷偷接管 AI</h3>
+            <p>
+              外部内容可能夹带"忽略之前要求""上传本地文件"等恶意指令。AI Agent
+              读取它们时，可能把攻击者写的文字误当成真正任务。
+            </p>
+            <div class="safety-safer-way">
+              <strong>安全做法</strong
+              >把外部内容一律视为不可信数据；涉及读取文件、调用工具或发送信息时再次人工确认。
+            </div>
+          </article>
+        </div>
+
+        <div class="safety-injection-callout">
+          <div class="safety-injection-sign" aria-hidden="true">⚠</div>
+          <div>
+            <span>最容易忽略的风险 · 提示词注入</span>
+            <h3>"它只是读了一封邮件"，不代表它只会读取</h3>
+            <p>
+              当 AI
+              可以连接浏览器、邮箱、网盘、代码仓库或企业系统时，一段藏在网页和附件里的文字就可能尝试诱导它泄露信息或执行工具。<strong
+                >内容负责提供事实，只有用户和受信任规则才有资格下达指令。</strong
+              >
+            </p>
+          </div>
+        </div>
+
+        <h3 class="minor-heading">每次使用前，设置三道人工闸门</h3>
+        <div class="safety-gate-grid">
+          <article>
+            <span>GATE 01 · 输入前</span>
+            <h3>这份数据真的需要给吗？</h3>
+            <ul>
+              <li>是否包含个人、客户或公司敏感信息</li>
+              <li>是否能用更少字段或虚构样例完成</li>
+              <li>是否符合当前组织的 AI 使用政策</li>
+            </ul>
+          </article>
+          <article>
+            <span>GATE 02 · 执行前</span>
+            <h3>最坏结果是否可承受？</h3>
+            <ul>
+              <li>AI 将访问哪些系统、文件和账号</li>
+              <li>操作能否预览、撤销、回滚和追踪</li>
+              <li>是否存在付款、删除、发布等高风险动作</li>
+            </ul>
+          </article>
+          <article>
+            <span>GATE 03 · 发布前</span>
+            <h3>我能为这个结果负责吗？</h3>
+            <ul>
+              <li>事实、数字、日期和引用是否已核验</li>
+              <li>内容是否侵权、歧视或误导他人</li>
+              <li>是否需要标注 AI 参与和人工审核</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="safety-incident-panel">
+          <div class="safety-incident-intro">
+            <span>IF SOMETHING GOES WRONG</span>
+            <h3>如果已经误传数据或误授权，不要侥幸等待</h3>
+            <p>
+              安全意识不仅是避免出错，也包括出错后快速缩小影响。越早停止、撤权和上报，越有机会控制风险。
+            </p>
+          </div>
+          <ol class="safety-response-steps">
+            <li>
+              <span>01</span><strong>立即停止</strong>
+              <p>终止会话、自动任务和正在进行的外部连接。</p>
+            </li>
+            <li>
+              <span>02</span><strong>撤销权限</strong>
+              <p>吊销令牌、退出会话，轮换已暴露的密码和密钥。</p>
+            </li>
+            <li>
+              <span>03</span><strong>减少暴露</strong>
+              <p>按平台能力删除内容，并停止继续复制或转发。</p>
+            </li>
+            <li>
+              <span>04</span><strong>保留事实</strong>
+              <p>记录时间、数据范围、涉及系统和已经执行的动作。</p>
+            </li>
+            <li>
+              <span>05</span><strong>及时上报</strong>
+              <p>联系负责人或安全团队，按组织流程评估和处置。</p>
+            </li>
+          </ol>
+        </div>
+
+        <div class="safety-final-note">
+          <span>安全不是"少用 AI"</span>
+          <p>
+            而是<strong>清楚地知道什么能交给 AI、什么必须留在人手里</strong
+            >。真正成熟的 AI
+            使用者，不只是会提问和自动化，更懂得保护数据、限制权限、验证结果，并为最终决定负责。
+          </p>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          安全规则定好了，但随着使用时间增长，工具也会积累更多。定期清理，才能让这套体系持续保持锋利。
+        </p>
+      </div>
+      <section class="chapter-section fade-in" id="maintenance">
+        <div class="section-label">✦ 09 · 定期清理 · 保持工具箱锋利 ✦</div>
+        <h2>连接越多，越要定期瘦身</h2>
+        <p class="lead-paragraph">
+          Skill 和 MCP
+          会随着项目推进不断累积，但"装了不用"比"没装"更危险——它会拖慢
+          Agent、制造冲突、让回答越来越不准。每隔一段时间，做一次系统性清理。
+        </p>
+
+        <div class="maintenance-grid">
+          <article class="maintenance-card maintenance-upgrade">
+            <div class="maintenance-icon">↑</div>
+            <div class="maintenance-body">
+              <h3>升级过时的 Skill / MCP</h3>
+              <p>
+                检查每个 Skill 和 MCP Server
+                的版本，确认是否有新版修复或能力升级。过时的工具可能不兼容最新模型或平台接口。
+              </p>
+              <div class="maintenance-action">
+                <code>codex mcp list</code>
+                <span>查看已安装的 MCP，逐个检查更新日志</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="maintenance-card maintenance-conflict">
+            <div class="maintenance-icon">⊗</div>
+            <div class="maintenance-body">
+              <h3>移除相互冲突的 Skill / MCP</h3>
+              <p>
+                多个工具如果功能重叠或规则矛盾，Agent 会困惑——例如两个 Skill
+                定义了不同的代码风格，或两个 MCP
+                都能操作同一张表。保留一个最合适的，其余移除。
+              </p>
+              <div class="maintenance-action">
+                <code>codex mcp remove &lt;name&gt;</code>
+                <span>移除冲突或冗余的 MCP Server</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="maintenance-card maintenance-disable">
+            <div class="maintenance-icon">⏸</div>
+            <div class="maintenance-body">
+              <h3>关闭不常用的 Skill / MCP</h3>
+              <p>
+                每多加载一个工具，Agent 的上下文就多一分噪声。长期不用的 Skill
+                和 MCP 建议禁用而不是删除——下次需要时可以快速恢复。
+              </p>
+              <div class="maintenance-action">
+                <code>注释掉 ~/.codex/config.toml 中对应段</code>
+                <span>不删除配置，只是临时禁用</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="maintenance-card maintenance-code">
+            <div class="maintenance-icon">⌫</div>
+            <div class="maintenance-body">
+              <h3>清理代码中已废弃的逻辑</h3>
+              <p>
+                新功能上线后，旧入口、旧接口、旧配置可能还留在仓库里。定期让 AI
+                做一次只读审计，找出无生产引用的页面、组件、API
+                和配置，分批清理。
+              </p>
+              <div class="maintenance-action">
+                <span>参考：</span>
+                <a href="part12.html#code-self-audit"
+                  >AI Coding · 代码定期自检</a
+                >
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="maintenance-principle">
+          <strong>核心原则：</strong>
+          <span>工具不是越多越好</span>
+          <span>每个工具都应有明确场景</span>
+          <span>不用的就关，冲突的就留一个</span>
+          <span>定期清理是保持 Agent 精准度的关键</span>
+        </div>
+      </section>
+      <div class="transition-block">
+        <p>
+          到这里，工具箱的搭建和维护已经讲完了。以下是未来打算继续补充的方向。
+        </p>
+      </div>
+
+      <nav class="article-nav" aria-label="文章翻页">
+        <a href="part8.html" class="nav-button prev">← 第8章 · Vibe Coding</a>
+        <a href="part10.html" class="nav-button">第9章 · AI越狱 →</a>
+      </nav>
+    </main>
+
+    <footer class="footer">
+      <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <div
+      class="article-lightbox"
+      id="articleLightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="图片预览"
+      hidden
+    >
+      <button
+        type="button"
+        class="article-lightbox-close"
+        aria-label="关闭预览"
+      >
+        ×
+      </button>
+      <img src="" alt="" />
+      <span>点击图片或按 Esc 关闭</span>
+    </div>
+    <script src="scripts.js"></script>
+    <script>
+      (() => {
+        const lightbox = document.getElementById("articleLightbox");
+        const image = lightbox.querySelector("img");
+        const close = () => {
+          lightbox.hidden = true;
+          image.removeAttribute("src");
+          lightbox.classList.remove("is-long-image");
+          document.body.classList.remove("article-lightbox-open");
+        };
+        document.querySelectorAll("[data-zoom-src]").forEach((button) => {
+          button.addEventListener("click", () => {
+            image.src = button.dataset.zoomSrc;
+            image.alt = button.querySelector("img")?.alt || "图片预览";
+            lightbox.classList.toggle(
+              "is-long-image",
+              button.classList.contains("long-plugin-image"),
+            );
+            lightbox.hidden = false;
+            document.body.classList.add("article-lightbox-open");
+          });
+        });
+        lightbox.addEventListener("click", (event) => {
+          if (
+            event.target === lightbox ||
+            event.target === image ||
+            event.target.classList.contains("article-lightbox-close")
+          )
+            close();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !lightbox.hidden) close();
+        });
+      })();
+
+      (() => {
+        const openButtons = document.querySelectorAll(
+          "[data-collaboration-dialog]",
+        );
+        const dialogs = document.querySelectorAll(".collaboration-dialog");
+
+        const closeDialog = (dialog) => {
+          if (dialog?.open) dialog.close();
+        };
+
+        openButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const dialog = document.getElementById(
+              button.dataset.collaborationDialog,
+            );
+            if (!dialog) return;
+            dialog.showModal();
+            document.body.classList.add("collaboration-dialog-open");
+          });
+        });
+
+        dialogs.forEach((dialog) => {
+          dialog.querySelectorAll("[data-dialog-close]").forEach((button) => {
+            button.addEventListener("click", () => closeDialog(dialog));
+          });
+          dialog.addEventListener("click", (event) => {
+            if (event.target === dialog) closeDialog(dialog);
+          });
+          dialog.addEventListener("close", () => {
+            if (![...dialogs].some((item) => item.open)) {
+              document.body.classList.remove("collaboration-dialog-open");
+            }
+          });
+        });
+      })();
+
+      (() => {
+        const status = document.getElementById("skillCopyStatus");
+
+        const fallbackCopy = (text) => {
+          const textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          const copied = document.execCommand("copy");
+          textarea.remove();
+          if (!copied) throw new Error("copy failed");
+        };
+
+        document.querySelectorAll(".skill-copy-button").forEach((button) => {
+          button.addEventListener("click", async () => {
+            const target = document.getElementById(button.dataset.copyTarget);
+            const text = target?.innerText.trim();
+            if (!text) return;
+
+            try {
+              if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+              } else {
+                fallbackCopy(text);
+              }
+              const original = button.textContent;
+              button.textContent = "已复制";
+              button.classList.add("is-copied");
+              if (status)
+                status.textContent = "指令已复制，可粘贴到 WorkBuddy。";
+              window.setTimeout(() => {
+                button.textContent = original;
+                button.classList.remove("is-copied");
+                if (status) status.textContent = "";
+              }, 1800);
+            } catch (error) {
+              if (status)
+                status.textContent = "复制失败，请手动选中代码块复制。";
+            }
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

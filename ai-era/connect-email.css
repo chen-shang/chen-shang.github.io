@@ -1,0 +1,607 @@
+/* 连接邮箱：专用样式（对齐钉钉指南 step-card 风格） */
+
+.email-guide-page {
+    --img-max: 420px;
+}
+
+.email-guide {
+    width: min(980px, calc(100% - 36px));
+}
+
+.email-hero {
+    min-height: auto;
+    padding: clamp(34px, 6vw, 58px);
+    background: linear-gradient(135deg, #25292f 0%, #303946 60%, #3a3d44 100%);
+}
+
+.email-hero::after {
+    font-size: clamp(10rem, 25vw, 17rem);
+}
+
+.email-hero h1 {
+    margin: 12px 0 10px;
+    font-size: clamp(2.5rem, 7vw, 4.6rem);
+}
+
+.email-hero p {
+    max-width: 980px;
+}
+
+.email-intro {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    margin: -17px 20px 52px;
+    padding: 18px 22px;
+    color: #604936;
+    background: #fff7e9;
+    border: 1px solid #edd3b5;
+    border-radius: 12px;
+    font-size: 0.86rem;
+}
+
+.email-intro > strong {
+    color: #963f28;
+}
+
+.tutorial-section {
+    scroll-margin-top: 140px;
+}
+
+.tutorial-heading {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    gap: 17px;
+    align-items: start;
+    margin-bottom: 22px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border-medium);
+}
+
+.tutorial-heading > span {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    color: #fff;
+    background: #ad5738;
+    border-radius: 50%;
+    font: 700 0.68rem 'JetBrains Mono', monospace;
+}
+
+.tutorial-heading h2 {
+    margin: 0;
+    font-family: 'Noto Serif SC', serif;
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+}
+
+.tutorial-heading p {
+    margin: 5px 0 0;
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+}
+
+/* ── 步骤卡片（与 dingtalk 指南一致）── */
+.step-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--img-max);
+    gap: 22px;
+    align-items: start;
+    background: #fff;
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow .2s;
+}
+
+.step-card:hover { box-shadow: var(--shadow-md); }
+.step-card.reverse { grid-template-columns: var(--img-max) minmax(0, 1fr); }
+
+.step-info { display: flex; flex-direction: column; gap: 7px; }
+
+.step-num {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #ad5738;
+    letter-spacing: 0.08em;
+}
+
+.step-num::before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    height: 2px;
+    background: #d58a68;
+    border-radius: 2px;
+}
+
+.step-info strong {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.step-info p {
+    margin: 0;
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.step-img-wrap {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
+    background: #F5F4F1;
+}
+
+.step-img-wrap img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.step-img-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 10px;
+    background: linear-gradient(transparent, rgba(0,0,0,.55));
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.step-img-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.command.multiline {
+    flex-direction: column;
+}
+
+.command.multiline button {
+    padding: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 0;
+}
+
+/* ── 方法切换标签 ── */
+.method-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.method-tab {
+    flex: 1;
+    padding: 14px 18px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.method-tab:hover {
+    border-color: #D5AA94;
+    box-shadow: var(--shadow-sm);
+}
+
+.method-tab.active {
+    border-color: #C96742;
+    background: linear-gradient(135deg, #FFF7F0 0%, #FFFDF9 100%);
+    box-shadow: 0 0 0 3px rgba(201,103,66,.12);
+}
+
+.method-tab-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.method-tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.method-tag.easy { background: #EAF6EF; color: #306C4A; }
+.method-tag.flex { background: #FFF3DE; color: #8A5428; }
+
+.method-tab h3 {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.method-tab p {
+    margin: 0;
+    font-size: 0.84rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.method-body { display: none; }
+.method-body.open { display: block; }
+
+/* ── 提供商列表（保留原有，优化样式）── */
+.provider-list {
+    border-top: 1px solid var(--border-subtle);
+}
+
+.provider-item {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    column-gap: 28px;
+    padding: 28px 4px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.provider-name {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    align-self: start;
+}
+
+.provider-name b {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    width: 42px;
+    height: 42px;
+    color: #fff;
+    background: #25292f;
+    border-radius: 10px;
+    font: 700 0.72rem 'JetBrains Mono', monospace;
+}
+
+.provider-name h3 {
+    margin: 0;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+}
+
+.provider-item ol {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: #5f5954;
+    font-size: 0.84rem;
+}
+
+.provider-item li {
+    margin-bottom: 7px;
+    padding-left: 3px;
+}
+
+.server-line {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0 0;
+}
+
+.server-line code {
+    padding: 6px 9px;
+    color: #415478;
+    background: #f2f4f8;
+    border-radius: 6px;
+    font-size: 0.68rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ── 折叠其他邮箱 ── */
+.other-providers {
+    margin-top: 18px;
+    border: 1px solid var(--border-medium);
+    border-radius: 10px;
+}
+
+.other-providers summary {
+    padding: 15px 18px;
+    cursor: pointer;
+    color: #4f4945;
+    font-weight: 700;
+}
+
+.other-providers[open] summary {
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.provider-table-wrap {
+    overflow-x: auto;
+}
+
+.other-providers table {
+    width: 100%;
+    min-width: 760px;
+    border-collapse: collapse;
+}
+
+.other-providers th,
+.other-providers td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.74rem;
+}
+
+.other-providers th {
+    color: #706963;
+    background: #faf8f5;
+}
+
+.other-providers code {
+    color: #465f91;
+    font-size: 0.67rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.other-providers > p {
+    margin: 0;
+    padding: 13px 16px;
+    color: #8a6351;
+    background: #fff9f2;
+    font-size: 0.75rem;
+}
+
+/* ── 命令框 ── */
+.command {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 10px;
+    overflow: hidden;
+    color: #e9edf3;
+    background: #25292f;
+    border-radius: 8px;
+}
+
+.command code {
+    display: block;
+    padding: 13px 16px;
+    overflow-x: auto;
+    font-size: 0.76rem;
+    line-height: 1.9;
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.command.primary {
+    background: #293a4b;
+}
+
+.command button,
+.agent-prompt button,
+.first-prompt button {
+    flex: 0 0 auto;
+    padding: 0 15px;
+    color: #dfe5ed;
+    background: rgba(255, 255, 255, 0.1);
+    border: 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    font: 700 0.7rem 'Noto Sans SC', sans-serif;
+}
+
+.command button:hover,
+.agent-prompt button:hover,
+.first-prompt button:hover {
+    background: rgba(255, 255, 255, 0.18);
+    outline: none;
+}
+
+.command button.copied,
+.agent-prompt button.copied,
+.first-prompt button.copied {
+    background: #43835d;
+}
+
+/* ── Agent 提示框 ── */
+.agent-prompt {
+    overflow: hidden;
+    color: #e5eaf0;
+    background: linear-gradient(135deg, #27303a, #20252b);
+    border-radius: 12px;
+}
+
+.agent-prompt p {
+    margin: 0;
+    padding: clamp(22px, 4vw, 32px);
+    line-height: 2;
+    font-size: 0.9rem;
+}
+
+.agent-prompt button {
+    width: 100%;
+    padding: 13px;
+    color: #fff;
+    background: #4d76d2;
+    border: 0;
+}
+
+.agent-prompt button:hover {
+    background: #5d84dc;
+}
+
+/* ── 安全提示 ── */
+.security-note {
+    margin: 14px 0 0;
+    padding: 14px 16px;
+    color: #755442;
+    background: #fff8ef;
+    border-left: 3px solid #d3895d;
+    font-size: 0.8rem;
+}
+
+/* ── 验收列表 ── */
+.check-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.check-list li {
+    position: relative;
+    padding-left: 29px;
+    color: #57514c;
+    font-size: 0.86rem;
+}
+
+.check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    display: grid;
+    place-items: center;
+    width: 19px;
+    height: 19px;
+    color: #fff;
+    background: #43835d;
+    border-radius: 50%;
+    font-size: 0.65rem;
+}
+
+.check-list code {
+    color: #435e91;
+    font-size: 0.76rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.first-prompt {
+    margin-top: 24px;
+    padding: 20px;
+    background: #f4f6f9;
+    border-left: 3px solid #5f79b7;
+}
+
+.first-prompt span {
+    color: #526da7;
+    font: 700 0.66rem 'JetBrains Mono', monospace;
+    letter-spacing: 0.06em;
+}
+
+.first-prompt p {
+    margin: 8px 0 13px;
+    color: #4d5561;
+    font-size: 0.84rem;
+}
+
+.first-prompt button {
+    padding: 7px 11px;
+    color: #fff;
+    background: #5b70a1;
+    border: 0;
+    border-radius: 5px;
+}
+
+/* ── 链接区 ── */
+.doc-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin: 24px 0 0;
+    padding-top: 18px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-subtle);
+    font-size: 0.75rem;
+}
+
+.doc-links a {
+    color: #9c4d31;
+    text-decoration: none;
+}
+
+.doc-links a:hover {
+    text-decoration: underline;
+}
+
+.content-date {
+    margin: 10px 0 0;
+    color: var(--text-muted);
+    font-size: 0.7rem;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+    .step-card,
+    .step-card.reverse {
+        grid-template-columns: 1fr !important;
+    }
+    .step-card.reverse .step-img-wrap { order: -1; }
+
+    .method-tabs { flex-direction: column; }
+
+    .provider-item {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 24px 2px;
+    }
+
+    .server-line { grid-column: 1; }
+
+    .email-guide {
+        width: min(100% - 24px, 980px);
+    }
+
+    .email-hero {
+        padding: 30px 22px;
+        border-radius: 20px;
+    }
+
+    .email-intro {
+        grid-template-columns: 1fr;
+        gap: 5px;
+        margin: -12px 10px 42px;
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tutorial-heading {
+        grid-template-columns: 36px 1fr;
+        gap: 11px;
+    }
+    .tutorial-heading > span {
+        width: 34px;
+        height: 34px;
+        font-size: 0.6rem;
+    }
+    .command.multiline {
+        flex-direction: column;
+    }
+    .command.multiline button {
+        padding: 10px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        border-left: 0;
+    }
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI机械臂连接教程：连接文档与知识库。包含接入路线、最小权限、配置示例、验收清单和官方文档。">
+    <title>连接文档与知识库 — AI机械臂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="connection-guides.css?v=20260723">
+</head>
+
+<body class="connection-page">
+    <nav class="connection-nav" aria-label="教程导航">
+        <a href="part9.html#ecosystem">← AI机械臂 · 连接总览</a>
+        <span>CONNECTION GUIDE · 10 / 10</span>
+    </nav>
+
+    <main class="connection-guide">
+        <header class="guide-hero" data-number="10">
+            <div class="guide-kicker">REAL WORKSPACE · CONNECTION 10</div>
+            <h1>连接文档与知识库</h1>
+            <p>让 Agent 读取需求、规范和决策，同时保留页面权限、来源链接、版本和更新时间。</p>
+            <div class="guide-pills"><span>Notion</span><span>Confluence</span><span>来源引用</span><span>权限继承</span></div>
+        </header>
+
+        <nav class="guide-local-nav" aria-label="页内目录">
+            <a href="#route">选择路线</a>
+            <a href="#setup">接入步骤</a>
+            <a href="#config">配置示例</a>
+            <a href="#permission">最小权限</a>
+            <a href="#verify">验收</a>
+            <a href="#docs">官方文档</a>
+        </nav>
+
+        <section class="guide-section" id="route">
+            <div class="guide-section-head">
+                <span class="guide-section-number">01</span>
+                <div><h2>先选一条正确的连接路线</h2><p>不要一次开放所有能力。先选择最小可用入口，验证价值后再升级。</p></div>
+            </div>
+            <div class="route-grid">
+                <article class="route-card recommended">
+                    <span>推荐</span>
+                    <h3>官方 Integration / OAuth</h3>
+                    <p>为 Notion 或 Confluence 创建应用，只授权指定空间、页面或站点。</p>
+                </article>
+                <article class="route-card">
+                    <span>企业</span>
+                    <h3>内部知识网关</h3>
+                    <p>把多个平台统一成检索服务，集中做身份映射、脱敏、审计和缓存。</p>
+                </article>
+                <article class="route-card">
+                    <span>离线</span>
+                    <h3>受控导出与索引</h3>
+                    <p>适合无法实时接 API 的环境；必须记录导出时间、来源 URL 和重新同步策略。</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="guide-section" id="setup">
+            <div class="guide-section-head">
+                <span class="guide-section-number">02</span>
+                <div><h2>按这六步完成第一次接入</h2><p>把身份、权限、工具边界和验收一起配置，而不是只追求“接口能通”。</p></div>
+            </div>
+            <ol class="step-list">
+                <li>
+                    <span>01</span>
+                    <div><strong>盘点知识源</strong><p>列出需求、规范、设计、会议纪要和 FAQ，明确哪个平台是每类内容的最终事实来源。</p></div>
+                </li>
+                <li>
+                    <span>02</span>
+                    <div><strong>创建集成身份</strong><p>使用 Notion Integration、Atlassian OAuth 或企业应用，不共享个人 Cookie。</p></div>
+                </li>
+                <li>
+                    <span>03</span>
+                    <div><strong>按空间授权</strong><p>只连接测试 Space、Database 或页面；集成账号应继承真实用户可见范围。</p></div>
+                </li>
+                <li>
+                    <span>04</span>
+                    <div><strong>设计返回结构</strong><p>每条内容至少返回标题、正文片段、页面 URL、更新时间、作者和版本。</p></div>
+                </li>
+                <li>
+                    <span>05</span>
+                    <div><strong>处理同步与冲突</strong><p>显示索引时间；写回时先比较版本，避免覆盖他人刚完成的编辑。</p></div>
+                </li>
+                <li>
+                    <span>06</span>
+                    <div><strong>建立答案基准</strong><p>准备跨页面、权限受限和已过期资料，验证引用准确、拒答和更新机制。</p></div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="guide-section" id="config">
+            <div class="guide-section-head">
+                <span class="guide-section-number">03</span>
+                <div><h2>配置示例</h2><p>字段和值都是示例占位符，请按你使用的 Agent、平台和密钥管理方式调整。</p></div>
+            </div>
+            <div class="config-panel">
+                <div class="config-panel-head"><span>.env.local · 知识库连接</span><span>示例 · 不含真实密钥</span></div>
+                <pre><code>KNOWLEDGE_PROVIDER=notion
+NOTION_TOKEN=stored-in-secret-manager
+NOTION_ALLOWED_PAGE_IDS=page_a,page_b
+
+CONFLUENCE_BASE_URL=https://company.atlassian.net
+CONFLUENCE_ALLOWED_SPACES=ENG,PRODUCT
+KNOWLEDGE_WRITE_ENABLED=false</code></pre>
+                <p class="config-note">不要用个人浏览器 Cookie 抓取知识库。官方 Integration 或 OAuth 更容易限制页面范围、撤销权限并保留审计。</p>
+            </div>
+        </section>
+
+        <section class="guide-section" id="permission">
+            <div class="guide-section-head">
+                <span class="guide-section-number">04</span>
+                <div><h2>最小权限建议</h2><p>把读取、草稿和高影响动作分开，避免一个 Token 同时拥有全部能力。</p></div>
+            </div>
+            <table class="permission-table">
+                <thead><tr><th>动作</th><th>默认等级</th><th>建议边界</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>搜索标题与元数据</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>返回来源、更新时间和权限状态。</td>
+                    </tr>
+                    <tr>
+                        <td>读取页面正文</td>
+                        <td><span class="permission-level">只读</span></td>
+                        <td>仅命中任务后读取，并过滤未授权子页面。</td>
+                    </tr>
+                    <tr>
+                        <td>创建新草稿页面</td>
+                        <td><span class="permission-level">草稿</span></td>
+                        <td>写入专用草稿区，附原始来源与生成者。</td>
+                    </tr>
+                    <tr>
+                        <td>修改正式规范 / 删除</td>
+                        <td><span class="permission-level confirm">确认</span></td>
+                        <td>比较版本、展示 Diff，并由页面负责人确认。</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="guide-section" id="verify">
+            <div class="guide-section-head">
+                <span class="guide-section-number">05</span>
+                <div><h2>上线前验收</h2><p>不要只测成功路径；撤销权限、重复执行和失败回退同样重要。</p></div>
+            </div>
+            <div class="verify-panel">
+                <ul class="verify-list">
+                    <li>Agent 无法读取未共享给集成账号的页面。</li>
+                    <li>每个答案都带可点击来源和更新时间。</li>
+                    <li>过期资料会标注状态，不与现行规范混用。</li>
+                    <li>写回只发生在草稿区，正式页面修改需要确认。</li>
+                </ul>
+                <div class="verify-command">
+                    <small>FIRST SAFE PROMPT</small>
+                    <code>根据测试知识库总结“发布流程”，逐条附来源页面和更新时间；若页面冲突，列出冲突而不要自行选择。</code>
+                </div>
+            </div>
+            <div class="guide-warning">
+                <span>!</span>
+                <div><strong>知识库权限不能被索引绕过</strong><p>把页面复制进统一向量库后，原平台权限仍然必须生效。索引、缓存和导出文件都应按用户或空间过滤，并支持撤销后的及时删除。</p></div>
+            </div>
+        </section>
+
+        <section class="guide-section" id="docs">
+            <div class="guide-section-head">
+                <span class="guide-section-number">06</span>
+                <div><h2>继续查看官方文档</h2><p>平台界面和权限名称会更新，实际接入时以官方文档和企业管理员策略为准。</p></div>
+            </div>
+            <div class="official-grid">
+                <a class="official-card" href="https://developers.notion.com/docs/create-a-notion-integration" target="_blank" rel="noopener noreferrer">
+                    <small>NOTION</small>
+                    <strong>Create a Notion integration</strong>
+                    <p>创建集成并配置页面访问能力。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://developers.notion.com/reference/authorization" target="_blank" rel="noopener noreferrer">
+                    <small>NOTION</small>
+                    <strong>Authorization</strong>
+                    <p>了解内部集成与 OAuth 授权方式。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+                <a class="official-card" href="https://developer.atlassian.com/cloud/confluence/rest/v2/intro/" target="_blank" rel="noopener noreferrer">
+                    <small>ATLASSIAN</small>
+                    <strong>Confluence REST API v2</strong>
+                    <p>使用官方 API 读取页面、空间和内容。</p>
+                    <b>打开官方文档 ↗</b>
+                </a>
+            </div>
+        </section>
+
+        <nav class="guide-pager" aria-label="切换连接教程">
+            <a href="connect-local-tools.html">
+                <small>上一个连接</small>
+                <strong>← 连接本地文件、命令与浏览器</strong>
+            </a>
+            <a href="part9.html#ecosystem">
+                <small>返回总览</small>
+                <strong>← 10 个连接教程</strong>
+            </a>
+        </nav>
+    </main>
+
+    <footer class="guide-footer">© 2026 AI纪元 · AI机械臂连接教程 · 先最小权限，再逐步扩展</footer>
+</body>
+
+</html>

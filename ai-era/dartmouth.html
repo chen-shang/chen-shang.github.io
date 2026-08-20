@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1956 达特茅斯会议 — AI 正式启航</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dartmouth.css">
+</head>
+
+<body>
+    <!-- Canvas Particle Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- 导航栏 -->
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html" class="active" aria-current="page">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI开发体系</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#background" data-section="background"><span class="toc-num">01</span><span class="toc-label">一个改变世界的提案</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#people" data-section="people"><span class="toc-num">02</span><span class="toc-label">主角人物</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#topics" data-section="topics"><span class="toc-num">03</span><span class="toc-label">达特茅斯提案 · 七个议题</span></a></li>
+        </ul>
+      </aside>
+
+
+        <!-- 返回链接 -->
+        <a href="part2.html#ai-timeline" class="back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 12H5" />
+                <path d="M12 19l-7-7 7-7" />
+            </svg>
+            返回前世今生 · AI 时间轴
+        </a>
+
+        <!-- ============================
+             Hero
+             ============================ -->
+        <section class="detail-hero fade-in" id="hero">
+            <div class="detail-hero-content">
+                <div class="detail-hero-badge">✦ 改变世界的夏天 ✦</div>
+                <div class="detail-hero-year">1956</div>
+                <h1 class="detail-hero-title">达特茅斯会议</h1>
+                <p class="detail-hero-subtitle">AI 正式启航</p>
+                <div class="detail-hero-meta">
+                    <div class="hero-meta-row">
+                        <div class="meta-pair">
+                            <span class="meta-key">地点</span>
+                            <span class="meta-val">达特茅斯学院 · 汉诺威 · 新罕布什尔州</span>
+                        </div>
+                        <div class="meta-pair">
+                            <span class="meta-key">时长</span>
+                            <span class="meta-val">约 6—8 周</span>
+                        </div>
+                        <div class="meta-pair">
+                            <span class="meta-key">发起人</span>
+                            <span class="meta-val">McCarthy · Minsky · Shannon · Rochester</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin-top: var(--space-lg); font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.2em; animation: bounce 2s ease-in-out infinite;">↓ 向下滚动探索 ↓</div>
+            </div>
+        </section>
+
+        <!-- ============================
+             背景与起因
+             ============================ -->
+        <section class="detail-section fade-in" id="background">
+            <div class="detail-inner">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <span class="section-label">✦ 背景与起因 ✦</span>
+                </div>
+                <h2 class="detail-section-title" style="text-align: center;">一个改变世界的提案</h2>
+                <div style="max-width: 760px; margin: 0 auto;">
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 2; text-align: center; margin-bottom: 1.5rem;">
+                        1955年，四位年轻的科学家向洛克菲勒基金会提交了一份前所未有的研究提案——
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 2; margin-bottom: 1.5rem;">
+                        约翰·麦卡锡（达特茅斯大学数学系助理教授）、马文·明斯基（哈佛大学初级研究员）、
+                        克劳德·香农（贝尔实验室）、纳撒尼尔·罗切斯特（IBM）联名向洛克菲勒基金会提交了
+                        <strong>《关于举办达特茅斯人工智能夏季研讨会的提议》</strong>。提案中写道：
+                    </p>
+                    <div class="detail-quote" style="margin: 1.5rem 0;">
+                        "学习或智能的任何其他原则上可以被精确描述的特征，从而可以被机器来模拟。"
+                        <cite>— 达特茅斯提案原文</cite>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 2; margin-bottom: 1.5rem;">
+                        1950年代中期，多个领域同时出现了突破性进展：<strong>图灵</strong>提出了"机器能思考吗"的哲学命题（1950）；
+                        <strong>香农</strong>创立了信息论（1948），证明了所有信息都可以用0和1编码；
+                        <strong>McCulloch 和 Pitts</strong>提出了数学神经元模型（1943）；
+                        <strong>冯·诺依曼</strong>架构让通用计算机成为现实（1945）；
+                        <strong>晶体管</strong>的发明正在引发半导体革命（1947）。
+                        这些突破汇聚在一起，让一小群科学家隐约感觉到：<strong>用机器模拟智能，或许真的可行。</strong>
+                    </p>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 2; margin-bottom: 1.5rem;">
+                        麦卡锡后来回忆，他的核心想法是：<strong>把"智能"这个模糊概念变成一个可以精确研究的科学问题。</strong>
+                        他提议用一个暑假的时间，召集10位最聪明的头脑，在新罕布什尔州达特茅斯学院的校园中闭门研讨，
+                        看看能不能取得"重大进展"。这个目标在今天看来近乎傲慢——但正是这种傲慢，点燃了一个时代。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             与会者与照片
+             ============================ -->
+        <section class="detail-section fade-in" id="people">
+            <div class="detail-inner">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <span class="section-label" style="font-size: 1.1rem;">✦ 与会者 ✦</span>
+                </div>
+                <p class="detail-section-subtitle" style="text-align: center; margin-left: auto; margin-right: auto;">
+                    达特茅斯会议最著名的合影。但照片中的人远不止四位发起人——那个夏天，
+                    一批将塑造未来半个世纪AI走向的头脑汇聚在了新罕布什尔州的校园里。
+                </p>
+
+                <!-- 经典照片 -->
+                <div class="photo-section fade-in">
+                    <div class="photo-frame">
+                        <img src="source/达特会议.webp" alt="达特茅斯会议经典合影（1956年夏）" class="photo-image">
+                        <!-- 悬浮热点：基于 1080×855 原图百分比定位 -->
+                        <div class="photo-hotspots">
+                            <!-- 后排从左到右：Solomonoff、McCarthy、Minsky、Selfridge、Newell -->
+                            <div class="photo-hotspot" style="left: 8%; top: 18%; width: 14%; height: 45%;">
+                                <div class="photo-tooltip">
+                                    <div class="tooltip-name">雷·索洛蒙诺夫</div>
+                                    <div class="tooltip-name-en">Ray Solomonoff</div>
+                                    <span class="tooltip-badge badge-participant">核心参与者</span>
+                                    <div class="tooltip-desc">算法信息论先驱，提出归纳推理的概率框架</div>
+                                </div>
+                            </div>
+                            <div class="photo-hotspot" style="left: 25%; top: 12%; width: 14%; height: 50%;">
+                                <div class="photo-tooltip">
+                                    <div class="tooltip-name">约翰·麦卡锡</div>
+                                    <div class="tooltip-name-en">John McCarthy</div>
+                                    <span class="tooltip-badge badge-founder">发起人</span>
+                                    <div class="tooltip-desc">"人工智能"一词命名者，Lisp语言发明人，图灵奖得主</div>
+                                </div>
+                            </div>
+                            <div class="photo-hotspot" style="left: 42%; top: 10%; width: 14%; height: 52%;">
+                                <div class="photo-tooltip">
+                                    <div class="tooltip-name">马文·明斯基</div>
+                                    <div class="tooltip-name-en">Marvin Minsky</div>
+                                    <span class="tooltip-badge badge-founder">发起人</span>
+                                    <div class="tooltip-desc">MIT AI实验室联合创始人，框架理论提出者，图灵奖得主</div>
+                                </div>
+                            </div>
+                            <div class="photo-hotspot" style="left: 58%; top: 14%; width: 14%; height: 48%;">
+                                <div class="photo-tooltip">
+                                    <div class="tooltip-name">奥利弗·塞尔弗里奇</div>
+                                    <div class="tooltip-name-en">Oliver Selfridge</div>
+                                    <span class="tooltip-badge badge-participant">核心参与者</span>
+                                    <div class="tooltip-desc">机器学习之父，提出"泛魔"模式识别模型</div>
+                                </div>
+                            </div>
+                            <div class="photo-hotspot" style="left: 75%; top: 18%; width: 16%; height: 45%;">
+                                <div class="photo-tooltip">
+                                    <div class="tooltip-name">艾伦·纽厄尔</div>
+                                    <div class="tooltip-name-en">Allen Newell</div>
+                                    <span class="tooltip-badge badge-participant">核心参与者</span>
+                                    <div class="tooltip-desc">逻辑理论家开发者，物理符号系统假设提出者，图灵奖得主</div>
+                                </div>
+                            </div>
+                            <!-- 前排从左到右：Simon、Shannon、Rochester -->
+                            <div class="photo-hotspot" style="left: 20%; top: 62%; width: 16%; height: 32%;">
+                                <div class="photo-tooltip">
+                                    <div class="tooltip-name">赫伯特·西蒙</div>
+                                    <div class="tooltip-name-en">Herbert A. Simon</div>
+                                    <span class="tooltip-badge badge-participant">核心参与者</span>
+                                    <div class="tooltip-desc">诺贝尔经济学奖得主，通用问题求解器（GPS）提出者</div>
+                                </div>
+                            </div>
+                            <div class="photo-hotspot" style="left: 44%; top: 58%; width: 16%; height: 36%;">
+                                <div class="photo-tooltip">
+                                    <div class="tooltip-name">克劳德·香农</div>
+                                    <div class="tooltip-name-en">Claude Shannon</div>
+                                    <span class="tooltip-badge badge-founder">发起人</span>
+                                    <div class="tooltip-desc">信息论之父，证明所有信息可用0和1编码</div>
+                                </div>
+                            </div>
+                            <div class="photo-hotspot" style="left: 68%; top: 62%; width: 16%; height: 32%;">
+                                <div class="photo-tooltip">
+                                    <div class="tooltip-name">纳撒尼尔·罗切斯特</div>
+                                    <div class="tooltip-name-en">Nathaniel Rochester</div>
+                                    <span class="tooltip-badge badge-founder">发起人</span>
+                                    <div class="tooltip-desc">IBM 701首席设计师，编写首个汇编程序</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="photo-caption">
+                            从左到后排：<strong>Solomonoff</strong> · <strong>McCarthy</strong> · <strong>Minsky</strong> · <strong>Selfridge</strong> · <strong>Newell</strong><br>
+                            前排（从左）：<strong>Simon</strong> · <strong>Shannon</strong> · <strong>Rochester</strong><br>
+                            <em style="color: var(--text-muted); font-size: 0.75rem;">注：还有 More、Rosenblatt 等人也参与了会议的不同阶段 · 鼠标悬浮照片可查看人物介绍</em>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 图例 -->
+                <div class="attendee-legend">
+                    <div class="legend-item">
+                        <div class="legend-line" style="background: linear-gradient(90deg, hsl(var(--accent-hue) 80% 55%), hsl(var(--primary-hue) 65% 58%));"></div>
+                        <span>会议发起人（全程参与）</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-line" style="background: #06B6D4;"></div>
+                        <span>核心参与者</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-line" style="background: #F59E0B;"></div>
+                        <span>阶段参与者 / 嘉宾</span>
+                    </div>
+                </div>
+
+                <!-- 完整与会者名单 -->
+                <div class="attendees-grid" style="margin-top: var(--space-xl);">
+                    <!-- 发起人 1: McCarthy -->
+                    <div class="attendee-card founder">
+                        <div class="attendee-avatar">
+                            <img src="source/约翰·麦卡锡.webp" alt="约翰·麦卡锡">
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">约翰·麦卡锡</div>
+                            <div class="attendee-affiliation">Dartmouth College · 数学系</div>
+                            <span class="attendee-badge badge-founder">发起人</span>
+                        </div>
+                    </div>
+                    <!-- 发起人 2: Minsky -->
+                    <div class="attendee-card founder">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #a855f7, #d946ef);">MM</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">马文·明斯基</div>
+                            <div class="attendee-affiliation">Harvard University · Junior Fellow</div>
+                            <span class="attendee-badge badge-founder">发起人</span>
+                        </div>
+                    </div>
+                    <!-- 发起人 3: Shannon -->
+                    <div class="attendee-card founder">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">CS</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">克劳德·香农</div>
+                            <div class="attendee-affiliation">Bell Labs</div>
+                            <span class="attendee-badge badge-founder">发起人</span>
+                        </div>
+                    </div>
+                    <!-- 发起人 4: Rochester -->
+                    <div class="attendee-card founder">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #22c55e, #10b981);">NR</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">纳撒尼尔·罗切斯特</div>
+                            <div class="attendee-affiliation">IBM · 首席设计师</div>
+                            <span class="attendee-badge badge-founder">发起人</span>
+                        </div>
+                    </div>
+                    <!-- Newell -->
+                    <div class="attendee-card participant">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #06b6d4, #3b82f6);">AN</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">艾伦·纽厄尔</div>
+                            <div class="attendee-affiliation">RAND Corporation · Carnegie Tech</div>
+                            <span class="attendee-badge badge-participant">核心参与者</span>
+                        </div>
+                    </div>
+                    <!-- Simon -->
+                    <div class="attendee-card participant">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #f43f5e, #ec4899);">HS</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">赫伯特·西蒙</div>
+                            <div class="attendee-affiliation">Carnegie Tech · 工业管理系</div>
+                            <span class="attendee-badge badge-participant">核心参与者</span>
+                        </div>
+                    </div>
+                    <!-- Solomonoff -->
+                    <div class="attendee-card participant">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #8b5cf6, #6366f1);">RS</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">雷·索洛蒙诺夫</div>
+                            <div class="attendee-affiliation">MIT · 电子研究实验室</div>
+                            <span class="attendee-badge badge-participant">核心参与者</span>
+                        </div>
+                    </div>
+                    <!-- Selfridge -->
+                    <div class="attendee-card participant">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #ec4899, #f43f5e);">OS</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">奥利弗·塞尔弗里奇</div>
+                            <div class="attendee-affiliation">MIT · Lincoln Laboratory</div>
+                            <span class="attendee-badge badge-participant">核心参与者</span>
+                        </div>
+                    </div>
+                    <!-- More -->
+                    <div class="attendee-card guest">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #14b8a6, #06b6d4);">TM</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">特伦查德·莫尔</div>
+                            <div class="attendee-affiliation">IBM</div>
+                            <span class="attendee-badge badge-guest">阶段参与者</span>
+                        </div>
+                    </div>
+                    <!-- Rosenblatt -->
+                    <div class="attendee-card guest">
+                        <div class="attendee-avatar">
+                            <div class="attendee-avatar-placeholder" style="background: linear-gradient(135deg, #eab308, #f59e0b);">FR</div>
+                        </div>
+                        <div class="attendee-info">
+                            <div class="attendee-name">弗兰克·罗森布拉特</div>
+                            <div class="attendee-affiliation">Cornell University · 心理学系</div>
+                            <span class="attendee-badge badge-guest">阶段参与者</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 人物贡献说明 -->
+                <div class="detail-quote" style="margin-top: var(--space-xl);">
+                    纽厄尔和西蒙带来了<strong>逻辑理论家</strong>（Logic Theoret）——会议上最令人印象深刻的实际成果；<br>
+                    索洛蒙诺夫提出了<strong>归纳推理</strong>的概率框架，开创了算法信息论的先河；<br>
+                    罗森布拉特带来了<strong>感知机</strong>的早期构想，为连接主义埋下了种子；<br>
+                    塞尔弗里奇展示了<strong>泛魔</strong>（Pandemonium）模式识别模型——一种并行处理的全新范式。
+                    <cite>— 达特茅斯会议的学术遗产</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             七个议题
+             ============================ -->
+        <section class="detail-section fade-in" id="topics">
+            <div class="detail-inner">
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <span class="section-label" style="font-size: 1.1rem;">✦ 七个议题 ✦</span>
+                </div>
+                <h2 class="detail-section-title" style="text-align: center;">达特茅斯提案 · 七个议题</h2>
+                <p class="detail-section-subtitle" style="text-align: center; margin-left: auto; margin-right: auto; margin-bottom: 2rem;">
+                    从七条议题到参天大树 — 每一个议题都在此后70年里生长为独立的学科分支
+                </p>
+
+                <!-- 议题大树 (CSS 树形卡片可视化) -->
+                <div class="topics-tree fade-in">
+                    <!-- 根节点 -->
+                    <div class="tree-root">
+                        <div class="root-year">1956</div>
+                        <div class="root-title">达特茅斯夏季研讨会</div>
+                        <div class="root-subtitle">Dartmouth AI Summer Proposal</div>
+                    </div>
+
+                    <!-- 第一排：5个核心议题 -->
+                    <div class="tree-branch connector-row">
+                        <div class="branch-line"></div>
+                    </div>
+                    <div class="tree-row row-1">
+                        <!-- 议题 1 -->
+                        <div class="topic-card" data-topic="1">
+                            <div class="card-number">01</div>
+                            <div class="card-title">自动计算机</div>
+                            <div class="card-en">Automatic Computers</div>
+                            <div class="card-question">如何设计能自动计算的机器？</div>
+                            <div class="card-evolve">
+                                <span class="evolve-label">→ 算力基础设施</span>
+                                <span class="evolve-tag">AI芯片</span>
+                            </div>
+                        </div>
+                        <!-- 议题 2 -->
+                        <div class="topic-card" data-topic="2">
+                            <div class="card-number">02</div>
+                            <div class="card-title">语言编程</div>
+                            <div class="card-en">Program a Language</div>
+                            <div class="card-question">如何让计算机理解自然语言？</div>
+                            <div class="card-evolve">
+                                <span class="evolve-label">→ NLP</span>
+                                <span class="evolve-tag">大语言模型</span>
+                            </div>
+                        </div>
+                        <!-- 议题 3 -->
+                        <div class="topic-card featured" data-topic="3">
+                            <div class="card-number">03</div>
+                            <div class="card-title">神经网络</div>
+                            <div class="card-en">Neural Networks</div>
+                            <div class="card-question">如何建造模拟大脑的神经网络？</div>
+                            <div class="card-evolve">
+                                <span class="evolve-label">→ 深度学习</span>
+                                <span class="evolve-tag">Transformer</span>
+                            </div>
+                        </div>
+                        <!-- 议题 4 -->
+                        <div class="topic-card" data-topic="4">
+                            <div class="card-number">04</div>
+                            <div class="card-title">计算规模</div>
+                            <div class="card-en">Size of a Calculation</div>
+                            <div class="card-question">计算资源如何随问题增长？</div>
+                            <div class="card-evolve">
+                                <span class="evolve-label">→ 复杂性理论</span>
+                                <span class="evolve-tag">Scaling Law</span>
+                            </div>
+                        </div>
+                        <!-- 议题 5 -->
+                        <div class="topic-card" data-topic="5">
+                            <div class="card-number">05</div>
+                            <div class="card-title">自我改进</div>
+                            <div class="card-en">Self-improvement</div>
+                            <div class="card-question">机器能否学习改进自身？</div>
+                            <div class="card-evolve">
+                                <span class="evolve-label">→ 强化学习</span>
+                                <span class="evolve-tag">AI4Science</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 第二排：2个延伸议题 -->
+                    <div class="tree-branch connector-row connector-row-2">
+                        <div class="branch-line"></div>
+                    </div>
+                    <div class="tree-row row-2">
+                        <!-- 议题 6 -->
+                        <div class="topic-card" data-topic="6">
+                            <div class="card-number">06</div>
+                            <div class="card-title">抽象</div>
+                            <div class="card-en">Abstractions</div>
+                            <div class="card-question">机器能否推理"抽象"概念？</div>
+                            <div class="card-evolve">
+                                <span class="evolve-label">→ 知识图谱</span>
+                                <span class="evolve-tag">表征学习</span>
+                            </div>
+                        </div>
+                        <!-- 议题 7 -->
+                        <div class="topic-card" data-topic="7">
+                            <div class="card-number">07</div>
+                            <div class="card-title">随机性与创造性</div>
+                            <div class="card-en">Randomness & Creativity</div>
+                            <div class="card-question">机器能否创造性思考？</div>
+                            <div class="card-evolve">
+                                <span class="evolve-label">→ 生成式 AI</span>
+                                <span class="evolve-tag">AIGC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 底部说明 -->
+                <div class="tree-footer fade-in">
+                    <div class="tree-note">
+                        <span class="note-dot"></span>
+                        每一片树叶都在此后70年里持续生长
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             返回
+             ============================ -->
+        <div class="detail-footer">
+            <a href="part2.html#ai-timeline" class="back-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5" />
+                    <path d="M12 19l-7-7 7-7" />
+                </svg>
+                返回 AI 时间轴
+            </a>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <!-- 粒子背景脚本 -->
+    <script>
+        (function () {
+            const canvas = document.getElementById('particles');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animId;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createParticles() {
+                particles = [];
+                const count = Math.min(60, Math.floor(window.innerWidth / 20));
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        vx: (Math.random() - 0.5) * 0.3,
+                        vy: (Math.random() - 0.5) * 0.3,
+                        r: Math.random() * 1.5 + 0.5,
+                        a: Math.random() * 0.3 + 0.1
+                    });
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (const p of particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(192, 132, 252, ' + p.a + ')';
+                    ctx.fill();
+                }
+
+                // 连线
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = 'rgba(192, 132, 252, ' + (0.08 * (1 - dist / 120)) + ')';
+                            ctx.lineWidth = 0.5;
+                            ctx.stroke();
+                        }
+                    }
+                }
+                animId = requestAnimationFrame(draw);
+            }
+
+            resize();
+            createParticles();
+            draw();
+
+            window.addEventListener('resize', function () {
+                resize();
+                createParticles();
+            });
+        })();
+    </script>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="760" viewBox="0 0 1400 760">
+  <defs><linearGradient id="bg4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15181d"/><stop offset="1" stop-color="#22262d"/></linearGradient><filter id="s4"><feDropShadow dx="0" dy="25" stdDeviation="24" flood-opacity=".24"/></filter></defs>
+  <rect width="1400" height="760" fill="#efe9df"/>
+  <circle cx="80" cy="110" r="210" fill="#dfeaec" opacity=".8"/><circle cx="1300" cy="680" r="220" fill="#ead7cb" opacity=".7"/>
+  <rect x="102" y="74" width="1196" height="610" rx="25" fill="url(#bg4)" filter="url(#s4)"/>
+  <rect x="102" y="74" width="1196" height="66" rx="25" fill="#292d34"/><rect x="102" y="114" width="1196" height="26" fill="#292d34"/>
+  <circle cx="145" cy="107" r="9" fill="#e16c5d"/><circle cx="175" cy="107" r="9" fill="#e4b65e"/><circle cx="205" cy="107" r="9" fill="#68b783"/>
+  <text x="700" y="114" text-anchor="middle" fill="#a5abb4" font-family="Menlo, monospace" font-size="19">Terminal — codex mcp list</text>
+  <text x="155" y="203" fill="#7fcaa2" font-family="Menlo, monospace" font-size="23">$</text><text x="190" y="203" fill="#eef1f5" font-family="Menlo, monospace" font-size="23">codex mcp list</text>
+  <text x="155" y="267" fill="#8d949e" font-family="Menlo, monospace" font-size="19">Name</text><text x="390" y="267" fill="#8d949e" font-family="Menlo, monospace" font-size="19">Command</text><text x="1078" y="267" fill="#8d949e" font-family="Menlo, monospace" font-size="19">Status</text>
+  <line x1="155" y1="286" x2="1243" y2="286" stroke="#373c45"/>
+  <rect x="145" y="307" width="1108" height="92" rx="14" fill="#202c2a" stroke="#385b50"/>
+  <circle cx="177" cy="353" r="8" fill="#66bd8e"/><text x="205" y="361" fill="#eaf0ed" font-family="Menlo, monospace" font-size="22">dbhub</text><text x="390" y="361" fill="#aab1bb" font-family="Menlo, monospace" font-size="18">npx -y @bytebase/dbhub@latest …</text><text x="1078" y="361" fill="#82d3a4" font-family="Menlo, monospace" font-size="19">enabled</text>
+  <rect x="145" y="419" width="1108" height="92" rx="14" fill="#2e2726" stroke="#5e443a"/>
+  <circle cx="177" cy="465" r="8" fill="#e7906f"/><text x="205" y="473" fill="#eaf0ed" font-family="Menlo, monospace" font-size="22">email</text><text x="390" y="473" fill="#aab1bb" font-family="Menlo, monospace" font-size="18">npx -y @codefuturist/email-mcp@latest stdio</text><text x="1078" y="473" fill="#82d3a4" font-family="Menlo, monospace" font-size="19">enabled</text>
+  <rect x="145" y="548" width="1108" height="82" rx="14" fill="#27332e"/>
+  <circle cx="186" cy="589" r="19" fill="#62b88a"/><path d="M177 589l7 7 13-16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="222" y="596" fill="#d8efe3" font-family="PingFang SC, sans-serif" font-size="21" font-weight="600">两个 MCP 都已注册，重启 Codex 后开始只读测试</text>
+  <text x="103" y="724" fill="#857c73" font-family="PingFang SC, sans-serif" font-size="18">示意截图 · 命令列会根据实际安装路径略有不同</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="900" viewBox="0 0 1400 900">
+  <defs><linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15181d"/><stop offset="1" stop-color="#22262d"/></linearGradient><filter id="s3"><feDropShadow dx="0" dy="26" stdDeviation="24" flood-opacity=".24"/></filter></defs>
+  <rect width="1400" height="900" fill="#efe9df"/>
+  <circle cx="1240" cy="120" r="230" fill="#ead5ca" opacity=".8"/>
+  <rect x="78" y="54" width="1244" height="786" rx="25" fill="url(#bg3)" filter="url(#s3)"/>
+  <rect x="78" y="54" width="1244" height="66" rx="25" fill="#292d34"/><rect x="78" y="94" width="1244" height="26" fill="#292d34"/>
+  <circle cx="122" cy="87" r="9" fill="#e16c5d"/><circle cx="152" cy="87" r="9" fill="#e4b65e"/><circle cx="182" cy="87" r="9" fill="#68b783"/>
+  <text x="700" y="94" text-anchor="middle" fill="#a5abb4" font-family="Menlo, monospace" font-size="19">email-mcp › Add Account</text>
+  <g font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="19">
+    <text x="132" y="172" fill="#8f96a0">Account name</text><text x="530" y="172" fill="#e9edf1">qq</text>
+    <text x="132" y="221" fill="#8f96a0">Email address</text><text x="530" y="221" fill="#e9edf1">your-name@qq.com</text>
+    <text x="132" y="270" fill="#8f96a0">Full name</text><text x="530" y="270" fill="#e9edf1">你的昵称</text>
+    <line x1="132" y1="301" x2="1265" y2="301" stroke="#343943"/>
+    <text x="132" y="350" fill="#e6b268">Provider not auto-detected — 请手动填写</text>
+    <text x="132" y="405" fill="#8f96a0">IMAP host</text><text x="530" y="405" fill="#a9d7b8">imap.qq.com</text>
+    <text x="132" y="454" fill="#8f96a0">IMAP port / TLS</text><text x="530" y="454" fill="#a9d7b8">993 / Yes</text>
+    <text x="132" y="503" fill="#8f96a0">SMTP host</text><text x="530" y="503" fill="#a9d7b8">smtp.qq.com</text>
+    <text x="132" y="552" fill="#8f96a0">SMTP port / Security</text><text x="530" y="552" fill="#a9d7b8">465 / TLS</text>
+    <text x="132" y="601" fill="#8f96a0">Connection pooling</text><text x="530" y="601" fill="#e9edf1">Yes / 3 / 100</text>
+    <text x="132" y="650" fill="#8f96a0">Username</text><text x="530" y="650" fill="#e9edf1">完整 QQ 邮箱地址</text>
+  </g>
+  <rect x="118" y="689" width="1164" height="103" rx="16" fill="#432d27" stroke="#754a3b"/>
+  <text x="151" y="730" fill="#f1b99f" font-family="PingFang SC, sans-serif" font-size="20">Password / App Password</text>
+  <text x="151" y="765" fill="#f5dfd3" font-family="PingFang SC, sans-serif" font-size="22" font-weight="600">填 QQ 客户端授权码，不是 QQ 登录密码</text>
+  <text x="79" y="878" fill="#857c73" font-family="PingFang SC, sans-serif" font-size="18">示意截图 · 邮箱地址为占位符，不包含真实账号</text>
+</svg>

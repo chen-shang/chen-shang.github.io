@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibe Coding（氛围编程）实战指南 - AI纪元</title>
+    <meta name="description" content="Vibe Coding 完整指导手册：从理解理念、选择工具、上手实操，到避坑清单与 Prompt 模板，一份带你从零到熟练的氛围编程指南。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part8.css">
+</head>
+
+<body>
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html" class="active" aria-current="page">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+      <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false" aria-controls="tocSidebar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/>
+          <polyline points="15 15 18 12 15 9"/>
+        </svg>
+      </button>
+
+      <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+      <aside class="toc-sidebar" id="tocSidebar" role="navigation" aria-label="文章目录">
+        <div class="toc-sidebar-header">
+          <span class="toc-sidebar-title">文章目录</span>
+          <button class="toc-sidebar-close" type="button" aria-label="关闭目录" onclick="window.closeTocSidebar && window.closeTocSidebar()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <ul class="toc-sidebar-list">
+          <li class="toc-sidebar-item"><a class="toc-link" href="#part0" data-section="part0"><span class="toc-num">01</span><span class="toc-label">Part 0 · 先懂它</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#part1" data-section="part1"><span class="toc-num">02</span><span class="toc-label">Part 1 · 开始用</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#part2" data-section="part2"><span class="toc-num">03</span><span class="toc-label">Part 2 · 用得好</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#part3" data-section="part3"><span class="toc-num">04</span><span class="toc-label">Part 3 · 别踩坑</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#part4" data-section="part4"><span class="toc-num">05</span><span class="toc-label">Part 4 · AI 的边界</span></a></li>
+        </ul>
+      </aside>
+
+
+        <!-- ============================
+             Hero Section
+             ============================ -->
+        <header class="article-header">
+            <h1 class="article-title">Vibe Coding</h1>
+            <div class="article-subtitle">氛围编程 · 一份从理解到熟练的实战指南</div>
+            <div class="article-meta">
+                <span>📖 全 11 章 · 第 8 章</span>
+                <span>⏱ 约 30 分钟阅读</span>
+            </div>
+        </header>
+
+        <!-- 移动端横向目录条（小屏显示，桌面端隐藏） -->
+        <nav class="toc-bar" aria-label="本文目录">
+            <a href="#part0">先懂它</a>
+            <a href="#part1">开始用</a>
+            <a href="#part2">用得好</a>
+            <a href="#part3">别踩坑</a>
+            <a href="#part4">AI 边界</a>
+        </nav>
+
+        <!-- ============================
+             引子
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <p class="lead-paragraph">
+                2025 年 2 月，AI 领域知名学者、前 OpenAI 研究员 <strong>Andrej Karpathy</strong> 在社交媒体上随手写下一段话，给一种新兴的编程方式起了个名字——<strong style="color: var(--primary);">Vibe Coding</strong>（氛围编程）。一年多过去，它已经从小圈层的新潮实验，变成许多开发者日常工作流中的一部分。
+            </p>
+            <p style="color: var(--text-secondary); font-size: 1rem; line-height: 1.8; margin-bottom: var(--space-xl);">
+                Vibe Coding 不是某一款 IDE 或编辑器，而是一种<strong>根本性的思维转变</strong>：从"逐行敲代码"到"用自然语言描述意图"，从"程序员"到"产品设计师"。在这个范式里，<strong>AI 是工程师，你是指挥官</strong>。这篇指南会带你走完从理解到熟练的完整路径。
+            </p>
+
+            <!-- 为什么现在就该掌握：三个锚点 -->
+            <div class="hero-stats">
+                <div class="stat-pill">
+                    <div class="stat-icon">🌊</div>
+                    <div class="stat-text">
+                        <strong>范式快速扩散</strong>
+                        <span>从一句口号，进入越来越多开发者的日常工作流</span>
+                    </div>
+                </div>
+                <div class="stat-pill">
+                    <div class="stat-icon">⚡</div>
+                    <div class="stat-text">
+                        <strong>原型提速</strong>
+                        <span>小功能和可运行原型，常能从"按天计"压缩到"按小时计"</span>
+                    </div>
+                </div>
+                <div class="stat-pill">
+                    <div class="stat-icon">🧭</div>
+                    <div class="stat-text">
+                        <strong>能力被重定义</strong>
+                        <span>最值钱的不再是语法记忆，而是判断与表达</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             Part 0 · 先懂它
+             ============================ -->
+        <section class="chapter-section fade-in" id="part0">
+            <div class="section-label">✦ Part 0 · 先懂它 ✦</div>
+            <p class="part-intro">在动手之前，先搞清楚三件事：它从哪来、它改变了什么、它需要你具备什么能力。</p>
+
+            <!-- 0.1 概念起源 -->
+            <h3>它从何而来</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                "Vibe Coding"一词由 <strong>Andrej Karpathy</strong>（Stanford 博士、前 OpenAI 研究员、前 Tesla AI 负责人）在 2025 年 2 月推广。他在社交媒体上用这个词描述了一种高度依赖 AI 大模型、以自然语言和快速迭代为主的编程体验：
+            </p>
+
+            <div class="quote-block">
+                <p>Karpathy 大意是：这种新编程方式让人更多沉浸在意图、反馈和迭代里，甚至会暂时"忘记代码本身"；它特别适合周末项目、原型和快速探索，但并不等于可以在严肃工程里跳过审查。</p>
+                <cite>—— 根据 Andrej Karpathy 2025 年 2 月相关表述整理</cite>
+            </div>
+
+            <!-- 编程范式演进对比 -->
+            <h3 style="margin-top: var(--space-xl);">它改变了什么：编程范式的三次演进</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                要理解 Vibe Coding 的位置，把它放进编程方式的三次跃迁里看最清楚：
+            </p>
+
+            <div class="paradigm-comparison">
+                <div class="paradigm-card traditional">
+                    <h3>🖥️ 传统编程</h3>
+                    <div class="paradigm-era">1950s — 2020s</div>
+                    <div class="paradigm-body">
+                        程序员用编程语言逐行编写代码，是<strong>唯一的实现者</strong>。
+                        <ul>
+                            <li>人类编写每一条语句</li>
+                            <li>编译 → 运行 → 调试</li>
+                            <li>开发效率受限于人类速度</li>
+                            <li>学习曲线陡峭</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="paradigm-card copilot">
+                    <h3>🤖 AI 辅助编程</h3>
+                    <div class="paradigm-era">2021 — 2024</div>
+                    <div class="paradigm-body">
+                        AI 作为<strong>助手</strong>，提供代码补全和片段生成。
+                        <ul>
+                            <li>AI 建议代码片段（如 Copilot）</li>
+                            <li>程序员仍是主要编写者</li>
+                            <li>在部分受控任务中能明显提速</li>
+                            <li>仍需理解并管理全部代码</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="paradigm-card vibe">
+                    <h3>🌊 Vibe Coding</h3>
+                    <div class="paradigm-era">2025 — 至今</div>
+                    <div class="paradigm-body">
+                        程序员用自然语言描述意图，AI 是<strong>主要实现者</strong>。
+                        <ul>
+                            <li>AI 生成完整功能乃至整个项目</li>
+                            <li>人类扮演"产品经理 + 评审者"</li>
+                            <li>在原型、样板代码和小功能场景中提速明显</li>
+                            <li>人人皆可构建软件</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 0.2 核心理念 -->
+            <h3 style="margin-top: var(--space-xl);">核心理念</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                Vibe Coding 用一句话概括：<strong>用自然语言编程，让 AI 写代码。</strong>它的核心主张是——开发者最重要的能力不再是记忆语法，而是<strong>理解问题、分解需求、判断方案质量</strong>。这些"软能力"，在 Vibe Coding 时代反而变得更重要了。
+            </p>
+
+            <div class="element-grid">
+                <div class="element-card">
+                    <div class="element-icon">💬</div>
+                    <h3>自然语言优先</h3>
+                    <div class="element-body">
+                        用日常语言描述你想要什么，而不是先学一门编程语言的语法。需求描述越清晰，AI 产出质量越高。
+                    </div>
+                </div>
+                <div class="element-card">
+                    <div class="element-icon">⚡</div>
+                    <h3>AI 驱动实现</h3>
+                    <div class="element-body">
+                        由大模型（Claude、GPT、Gemini 等）负责理解意图、生成代码、调试修复——它是实际的"编码引擎"。
+                    </div>
+                </div>
+                <div class="element-card">
+                    <div class="element-icon">🔄</div>
+                    <h3>快速迭代</h3>
+                    <div class="element-body">
+                        通过"描述 → 生成 → 运行 → 反馈"的超短循环，几分钟内完成传统开发要数天才能做完的事。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 0.3 三大核心能力 -->
+            <h3 style="margin-top: var(--space-xl);">你需要的三种核心能力</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                范式变了，值钱的能力也变了。在 Vibe Coding 时代，真正拉开差距的是下面这三种能力：
+            </p>
+
+            <div class="element-grid">
+                <div class="element-card">
+                    <div class="element-icon">🧩</div>
+                    <h3>问题拆解</h3>
+                    <div class="element-body">
+                        把复杂需求分解成 AI 能理解的小步骤——这是 Vibe Coding 最核心的能力，决定一切。
+                    </div>
+                </div>
+                <div class="element-card">
+                    <div class="element-icon">🔍</div>
+                    <h3>结果判断</h3>
+                    <div class="element-body">
+                        理解并审查 AI 生成的代码，判断它的正确性、安全性与性能——你得能看出好坏。
+                    </div>
+                </div>
+                <div class="element-card">
+                    <div class="element-icon">🎯</div>
+                    <h3>精确表达</h3>
+                    <div class="element-body">
+                        用清晰、具体、无歧义的语言描述需求，减少来回沟通的损耗——Prompt 就是你的新编程语言。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             Part 1 · 开始用
+             ============================ -->
+        <section class="chapter-section fade-in" id="part1">
+            <div class="section-label">✦ Part 1 · 开始用 ✦</div>
+            <p class="part-intro">理解了概念，接下来就动手。先找到适合你的起步路径，选对工具，跑通第一个标准工作流。</p>
+
+            <!-- 1.1 新手快速上手路径 -->
+            <h3>🚀 新手快速上手路径：你的第一天</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                不同背景的人，最顺的起步方式不同。对号入座，照着走你就能在<strong>一个下午</strong>内做出第一个能跑的东西：
+            </p>
+
+            <div class="quickstart-grid">
+                <div class="quickstart-card">
+                    <div class="qs-head">
+                        <span class="qs-role-icon">🌱</span>
+                        <div>
+                            <div class="qs-role">零基础 · 完全不会编程</div>
+                            <div class="qs-tag">目标：先体验"说话就能造东西"</div>
+                        </div>
+                    </div>
+                    <ol class="qs-steps">
+                        <li><strong>装什么</strong>：打开 <em>Bolt.new</em> 或 <em>Lovable</em>，浏览器里直接用，零安装、零配置。</li>
+                        <li><strong>第一个练习</strong>：用一句话生成一个"个人介绍页"，再让它改配色、加按钮、换布局，感受迭代。</li>
+                        <li><strong>进阶</strong>：用 <em>v0.dev</em> 生成 UI 组件，逐步过渡到 <em>Cursor</em>，开始接触真实代码。</li>
+                    </ol>
+                </div>
+
+                <div class="quickstart-card">
+                    <div class="qs-head">
+                        <span class="qs-role-icon">💻</span>
+                        <div>
+                            <div class="qs-role">有编程经验 · 想提效</div>
+                            <div class="qs-tag">目标：把 AI 嵌入你现有工作流</div>
+                        </div>
+                    </div>
+                    <ol class="qs-steps">
+                        <li><strong>装什么</strong>：<em>Cursor</em>（AI 原生编辑器）或 <em>Claude Code</em>（终端 Agent）。</li>
+                        <li><strong>第一个练习</strong>：挑一个你熟悉的小功能（如待办列表），用自然语言重写一遍，对比手写效率。</li>
+                        <li><strong>进阶</strong>：用 Cursor Agent / Claude Code 做多文件重构，建立项目级规范（如 <code>.cursorrules</code> 或项目说明文件）。</li>
+                    </ol>
+                </div>
+
+                <div class="quickstart-card">
+                    <div class="qs-head">
+                        <span class="qs-role-icon">🎨</span>
+                        <div>
+                            <div class="qs-role">产品 / 设计同学</div>
+                            <div class="qs-tag">目标：把想法变成可验证的成品</div>
+                        </div>
+                    </div>
+                    <ol class="qs-steps">
+                        <li><strong>装什么</strong>：<em>v0.dev</em>（出 UI 原型）+ <em>Lovable</em>（搭可交互应用）。</li>
+                        <li><strong>第一个练习</strong>：把一张设计稿或 Figma 截图，用文字描述给 v0，生成可复用的 React 组件。</li>
+                        <li><strong>进阶</strong>：用 Lovable 搭一个能真实运行的 MVP，直接拿给用户验证想法。</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- 1.2 工具生态 -->
+            <h3 style="margin-top: var(--space-xl);">工具生态（2026 版）</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                过去两年，AI 编程工具从"代码补全插件"进化到了"能自主完成多步任务的 Agent"。下面按使用入口把常见工具分成两类：
+            </p>
+
+            <h4>IDE 类工具</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h3>Cursor <span class="tool-badge popular">常用</span></h3>
+                    <div class="tool-desc">基于 VS Code 打造的 AI 原生编辑器，是 Vibe Coding 代表性工具之一。</div>
+                    <ul class="tool-features">
+                        <li><strong>Tab 补全</strong>：预测性多行补全，按 Tab 接受</li>
+                        <li><strong>Cmd+K</strong>：选中代码或空白处输入提示，即时生成/修改</li>
+                        <li><strong>Agent</strong>：跨文件编辑，按任务规划并修改项目</li>
+                        <li><strong>Chat</strong>：内置 AI 对话，可引用文件与代码</li>
+                        <li>支持 Claude、GPT 等多种后端模型</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>Claude Code <span class="tool-badge popular">常用</span></h3>
+                    <div class="tool-desc">Anthropic 推出的 AI 编程 Agent，最初以命令行体验为核心，现已扩展至桌面应用 (Mac/Windows)、网页端、以及 VS Code 和 JetBrains 等 IDE 插件入口。</div>
+                    <ul class="tool-features">
+                        <li><strong>多入口</strong>：CLI / 桌面应用 / 网页 / IDE 插件全覆盖</li>
+                        <li><strong>自主执行</strong>：能读、改、运行代码并查看结果</li>
+                        <li><strong>多文件编辑</strong>：理解整个项目结构，跨文件修改</li>
+                        <li><strong>内置调试</strong>：运行测试、定位 bug、自动修复</li>
+                        <li>深度集成 git 工作流，可直接提交代码</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>GitHub Copilot</h3>
+                    <div class="tool-desc">微软 / GitHub 推出的 AI 编程助手，是最早大规模普及的 AI 代码助手之一，用户基数最大。</div>
+                    <ul class="tool-features">
+                        <li><strong>行内补全</strong>：实时代码建议，多语言支持</li>
+                        <li><strong>Copilot Chat</strong>：IDE 内 AI 对话</li>
+                        <li><strong>Copilot Agents</strong>：自主执行多步编码任务</li>
+                        <li>深度集成 VS Code、JetBrains 等主流 IDE</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>Windsurf</h3>
+                    <div class="tool-desc">主打"深度上下文感知"的 AI IDE，后被 Cognition 收购并与 Devin 生态整合，代表了一类 Agent IDE 思路。</div>
+                    <ul class="tool-features">
+                        <li><strong>Deep Context</strong>：理解整个项目文件与结构</li>
+                        <li><strong>Flow 模式</strong>：多文件协同编辑</li>
+                        <li><strong>智能推荐</strong>：基于上下文的代码建议</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>Zed</h3>
+                    <div class="tool-desc">Sublime 创始人打造的高性能编辑器，内置 AI 集成，追求极致速度。</div>
+                    <ul class="tool-features">
+                        <li><strong>超高性能</strong>：Rust 编写，毫秒级响应</li>
+                        <li><strong>内置 AI</strong>：直接接入大模型</li>
+                        <li><strong>协作优先</strong>：实时多人编辑</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>Cline <span class="tool-badge opensource">开源</span></h3>
+                    <div class="tool-desc">开源自主编程 Agent，以 VS Code 插件形式存在，可连接任意 OpenAI 或 Anthropic 模型，支持文件编辑、终端命令执行、浏览器操作。</div>
+                    <ul class="tool-features">
+                        <li><strong>完全开源</strong>：社区驱动，自由定制</li>
+                        <li><strong>MCP 集成</strong>：通过 MCP 协议连接外部工具与服务</li>
+                        <li><strong>跨模型</strong>：支持 Claude、GPT 等多种后端</li>
+                        <li><strong>自主执行</strong>：可在 IDE 内独立完成多步任务</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin-top: var(--space-xl);">国产 AI 编程工具</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h3>通义灵码 <span class="tool-badge domestic">国内常用</span></h3>
+                    <div class="tool-desc">阿里巴巴旗下 AI 编程助手，基于通义千问代码大模型，是国内用户量最大的 AI 编程工具之一。</div>
+                    <ul class="tool-features">
+                        <li><strong>智能补全</strong>：行级 / 函数级代码自动生成与补全</li>
+                        <li><strong>代码解释</strong>：自然语言解释复杂代码逻辑</li>
+                        <li><strong>单元测试</strong>：一键生成单元测试用例</li>
+                        <li><strong>多 IDE</strong>：支持 VS Code、JetBrains 全家桶</li>
+                        <li><strong>团队协作</strong>：2025 年新增团队项目管理与跨平台协作功能</li>
+                        <li><strong>中文友好</strong>：对中文语境和国内技术栈支持出色</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>智谱清码 (CodeGeeX) <span class="tool-badge opensource">开源</span></h3>
+                    <div class="tool-desc">智谱 AI 推出的 AI 编程助手，底层基于 CodeGeeX 4 代码大模型，支持超过 100 种编程语言。</div>
+                    <ul class="tool-features">
+                        <li><strong>多语言</strong>：支持 100+ 编程语言代码生成与理解</li>
+                        <li><strong>代码修复</strong>：自动检测并修复代码中的错误</li>
+                        <li><strong>插件化</strong>：VS Code / JetBrains 插件 + 独立网页版</li>
+                        <li><strong>开源模型</strong>：CodeGeeX 系列模型开源，可私有化部署</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>百度 Comate</h3>
+                    <div class="tool-desc">百度推出的 AI 编程助手，基于文心快码大模型，深度集成百度智能云生态。</div>
+                    <ul class="tool-features">
+                        <li><strong>全栈生成</strong>：支持前后端代码生成与补全</li>
+                        <li><strong>智能对话</strong>：自然语言问答与代码解释</li>
+                        <li><strong>代码迁移</strong>：辅助不同语言/框架间的代码转换</li>
+                        <li><strong>企业版</strong>：支持私有化部署与知识库增强</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>Amazon Q Developer</h3>
+                    <div class="tool-desc">亚马逊推出的 AI 编程助手（原 CodeWhisperer 升级），深度集成 AWS 云生态，2025 年新增 Agentic 模式。</div>
+                    <ul class="tool-features">
+                        <li><strong>Agentic 模式</strong>：自主分解任务、跨文件编辑、自动调试</li>
+                        <li><strong>CI/CD 集成</strong>：直接嵌入持续集成与部署流程</li>
+                        <li><strong>AWS 生态</strong>：与 Lambda、DynamoDB 等 AWS 服务深度联动</li>
+                        <li><strong>20+ 语言</strong>：支持主流编程语言</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin-top: var(--space-xl);">命令行 Agent</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h3>Gemini CLI <span class="tool-badge opensource">开源</span></h3>
+                    <div class="tool-desc">Google 于 2025 年 3 月发布的开源命令行编程 Agent，轻量快速，直接在终端中与 Gemini 模型交互。</div>
+                    <ul class="tool-features">
+                        <li><strong>命令行优先</strong>：终端内完成代码生成、调试、重构</li>
+                        <li><strong>开源</strong>：GitHub 公开源码</li>
+                        <li><strong>多模型</strong>：支持多种 Gemini 模型切换</li>
+                        <li><strong>多文件编辑</strong>：理解项目上下文，跨文件修改</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>OpenClaw <span class="tool-badge new">开源</span></h3>
+                    <div class="tool-desc">开源 AI 编程 Agent，集成于主流 IDE，支持代码生成、调试、优化，强调开放生态与多模型接入。</div>
+                    <ul class="tool-features">
+                        <li><strong>开源核心</strong>：社区驱动，透明可审计</li>
+                        <li><strong>多语言</strong>：支持多种编程语言</li>
+                        <li><strong>IDE 集成</strong>：VS Code、JetBrains 等</li>
+                        <li><strong>多模型</strong>：灵活切换后端 AI 模型</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin-top: var(--space-xl);">Web 应用生成平台</h4>
+            <div class="tool-grid">
+                <div class="tool-card">
+                    <h3>Bolt.new <span class="tool-badge new">新锐</span></h3>
+                    <div class="tool-desc">StackBlitz 推出的浏览器内全栈 AI 开发平台，直接构建、运行、部署完整 Web 应用。</div>
+                    <ul class="tool-features">
+                        <li><strong>零配置</strong>：打开浏览器即可编程</li>
+                        <li><strong>即时预览</strong>：实时热更新</li>
+                        <li><strong>一键部署</strong>：直接发布到 Netlify / Vercel</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>Lovable <span class="tool-badge new">新锐</span></h3>
+                    <div class="tool-desc">AI 驱动的 Web 应用构建平台，擅长生成现代化的 UI 界面和全栈功能。</div>
+                    <ul class="tool-features">
+                        <li><strong>UI 优先</strong>：生成美观的 React + Tailwind 界面</li>
+                        <li><strong>后端集成</strong>：一键接入 Supabase 数据库</li>
+                        <li><strong>自然语言到应用</strong>：描述需求即生成完整应用</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>v0.dev</h3>
+                    <div class="tool-desc">Vercel 推出的生成式开发工具，早期以 UI 组件生成著称，现在也覆盖全栈应用、部署和协作流程。</div>
+                    <ul class="tool-features">
+                        <li><strong>文字到应用</strong>：描述界面或功能即可生成代码</li>
+                        <li><strong>Tailwind CSS</strong>：生成的代码直接用 Tailwind</li>
+                        <li><strong>协作交付</strong>：生成结果可继续迭代、接入项目或部署</li>
+                    </ul>
+                </div>
+                <div class="tool-card">
+                    <h3>Replit Agent</h3>
+                    <div class="tool-desc">Replit 推出的 AI Agent，能从自然语言描述直接构建、部署并迭代完整的全栈应用，覆盖从编码到上线的全生命周期。</div>
+                    <ul class="tool-features">
+                        <li><strong>端到端</strong>：编码 → 测试 → 部署一条龙</li>
+                        <li><strong>零环境</strong>：云端运行，无需本地配置</li>
+                        <li><strong>全栈</strong>：前后端 + 数据库 + 部署一体</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h4 style="margin-top: var(--space-xl);">如何选择？</h4>
+            <div class="convergence-box">
+                <p>
+                    <strong>如果你是开发者</strong>：从 <strong>Cursor</strong> 或 <strong>Claude Code</strong> 开始，它们提供较完整的 Agent 编程体验。<br>
+                    <strong>如果你偏好开源</strong>：试试 <strong>Cline</strong> 或 <strong>OpenClaw</strong>，社区活跃且灵活可定制。<br>
+                    <strong>如果你在国内</strong>：<strong>通义灵码</strong> 对中文和国内生态支持最好，<strong>智谱清码</strong> 模型开源可私有部署。<br>
+                    <strong>如果你是产品 / 非开发者</strong>：从 <strong>Bolt.new</strong>、<strong>Lovable</strong> 或 <strong>Replit Agent</strong> 开始，零代码基础也能构建应用。<br>
+                    <strong>如果你需要快速 UI / Web 原型</strong>：<strong>v0.dev</strong> 很适合描述即生成并继续迭代。<br>
+                    <strong>如果你喜欢命令行</strong>：<strong>Gemini CLI</strong> 或 <strong>Claude Code CLI</strong> 都是不错的选择。
+                </p>
+            </div>
+
+            <!-- 1.3 标准工作流 -->
+            <h3 style="margin-top: var(--space-xl);">Vibe Coding 标准工作流</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                不管用哪个工具，一次典型的 Vibe Coding 过程都包含这四个核心步骤，循环往复：
+            </p>
+
+            <div class="flow-steps">
+                <div class="flow-step">
+                    <div class="flow-num">1</div>
+                    <h4>描述需求</h4>
+                    <p>用自然语言清晰描述你想构建的功能或应用</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">2</div>
+                    <h4>AI 生成</h4>
+                    <p>AI 理解意图，生成代码文件或完整项目</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">3</div>
+                    <h4>运行验证</h4>
+                    <p>运行代码，观察输出是否符合预期</p>
+                </div>
+                <div class="flow-step">
+                    <div class="flow-num">4</div>
+                    <h4>迭代反馈</h4>
+                    <p>告诉 AI 哪里要改，进入下一轮迭代</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             Part 2 · 用得好
+             ============================ -->
+        <section class="chapter-section fade-in" id="part2">
+            <div class="section-label">✦ Part 2 · 用得好 ✦</div>
+            <p class="part-intro">能跑起来只是开始。想真正"用得好"，需要看懂一个完整案例、掌握 Prompt 写法、并养成工程化的最佳实践。</p>
+
+            <!-- 2.1 完整实战案例演示 -->
+            <h3>🛠️ 完整实战案例：做一个番茄钟</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                用一个真实的小项目——<strong>"番茄钟网页"</strong>，把整个流程走一遍。重点不是成品多炫，而是<strong>每一步人脑该做什么</strong>：
+            </p>
+
+            <div class="case-flow">
+                <div class="case-step">
+                    <div class="case-num">1</div>
+                    <div class="case-body">
+                        <div class="case-title">一句话需求</div>
+                        <div class="case-text">"做一个番茄钟。" —— 这是起点，但远远不够。模糊的需求只会换来模糊的产出。</div>
+                    </div>
+                </div>
+
+                <div class="case-step">
+                    <div class="case-num">2</div>
+                    <div class="case-body">
+                        <div class="case-title">人脑拆解（最关键的一步）</div>
+                        <div class="case-text">先想清楚三件事：<strong>技术栈</strong>（单页 HTML+JS 就够）、<strong>核心功能</strong>（25 分钟倒计时、开始/暂停/重置、结束时提示）、<strong>UI 风格</strong>（简洁、居中大数字、暖色调）。</div>
+                    </div>
+                </div>
+
+                <div class="case-step">
+                    <div class="case-num">3</div>
+                    <div class="case-body">
+                        <div class="case-title">写一个具体的 Prompt</div>
+                        <div class="code-example" style="margin-top: var(--space-sm); margin-bottom: 0;">
+                            <div class="code-example-prompt">
+                                <span class="comment">// 具体描述技术栈、功能、交互、风格</span><br>
+                                <span class="keyword">用</span> <span class="string">单个 HTML 文件（内联 CSS + JS）</span> <span class="func">做一个番茄钟</span>。<br>
+                                <span class="func">功能：</span><br>
+                                <span class="string">- 25:00 倒计时，居中大号数字显示</span><br>
+                                <span class="string">- 三个按钮：开始 / 暂停 / 重置</span><br>
+                                <span class="string">- 倒计时归零时弹窗提示"休息一下"</span><br>
+                                <span class="func">风格：</span>简洁、居中、暖色背景、大圆角按钮。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-step">
+                    <div class="case-num">4</div>
+                    <div class="case-body">
+                        <div class="case-title">AI 生成第一版</div>
+                        <div class="case-text">AI 一次给出可运行的 HTML。打开浏览器，番茄钟基本能用——但你会发现：暂停后再点"开始"会重置时间，而不是接着走。</div>
+                    </div>
+                </div>
+
+                <div class="case-step">
+                    <div class="case-num">5</div>
+                    <div class="case-body">
+                        <div class="case-title">迭代反馈（Vibe Coding 的常态）</div>
+                        <div class="code-example" style="margin-top: var(--space-sm); margin-bottom: 0;">
+                            <div class="code-example-prompt">
+                                <span class="comment">// 指出问题，给出预期行为</span><br>
+                                <span class="keyword">暂停后再点"开始"</span>会重置成 25:00，<span class="func">请改成</span><br>
+                                <span class="string">从暂停的那一刻继续倒计时</span>，不要重置。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-step">
+                    <div class="case-num">6</div>
+                    <div class="case-body">
+                        <div class="case-title">成品与反思</div>
+                        <div class="case-text">两三轮迭代后，番茄钟完整可用。<strong>复盘</strong>：真正花时间的不是写 Prompt，而是<strong>第 2 步的拆解</strong>和<strong>第 5 步的精准反馈</strong>——这正是 Vibe Coding 的核心能力。</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.2 Prompt 写作 -->
+            <h3 style="margin-top: var(--space-xl);">Prompt 写作技巧</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                在 Vibe Coding 中，Prompt 就是你的"新编程语言"。写好它，直接决定产出质量：
+            </p>
+
+            <div class="code-example">
+                <div class="code-example-header">
+                    <span class="code-example-title">❌ 差的 Prompt</span>
+                </div>
+                <div class="code-example-prompt">
+                    <span class="comment">// 太模糊，AI 无法给出精确实现</span><br>
+                    <span class="keyword">做一个</span> <span class="string">"网站"</span>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-header">
+                    <span class="code-example-title">✅ 好的 Prompt</span>
+                </div>
+                <div class="code-example-prompt">
+                    <span class="comment">// 具体描述技术栈、功能、UI 风格</span><br><br>
+                    <span class="keyword">用</span> <span class="string">React + Tailwind CSS</span> <span class="func">构建</span>一个个人博客主页。<br>
+                    <span class="func">要求：</span><br>
+                    <span class="string">- 顶部导航栏：Logo + 三个链接（关于、文章、联系）</span><br>
+                    <span class="string">- 英雄区域：大标题 + 一句话简介 + CTA 按钮</span><br>
+                    <span class="string">- 文章列表：展示最近 5 篇文章，含标题、摘要、日期</span><br>
+                    <span class="string">- 底部：版权信息和社交媒体链接</span><br>
+                    <span class="string">- 风格：简洁、现代、暗色主题</span>
+                </div>
+            </div>
+
+            <!-- Prompt 六大原则 -->
+            <h3 style="margin-top: var(--space-xl);">Prompt 六大原则</h3>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <h3>🎯 具体明确</h3>
+                    <div class="tech-desc">不要说"做一个好看的页面"，要说"用 Tailwind 构建一个暗色主题的个人主页，包含导航、英雄区域和页脚"。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>📦 分步拆解</h3>
+                    <div class="tech-desc">复杂项目拆成多个小任务。先搭骨架，再逐步加功能，每次聚焦一个模块。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🛠️ 指定技术栈</h3>
+                    <div class="tech-desc">明确框架、库和样式方案（如"用 React + TypeScript + Tailwind"），避免 AI 随机选择。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>📐 提供参考</h3>
+                    <div class="tech-desc">给 AI 看参考截图、描述已有代码结构、提供设计稿，能大幅提升生成质量。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🔄 迭代优化</h3>
+                    <div class="tech-desc">别期待一次成功。运行结果后告诉 AI 哪里要调——这是 Vibe Coding 的正常流程。</div>
+                </div>
+                <div class="tech-card">
+                    <h3>🧪 边界情况</h3>
+                    <div class="tech-desc">明确异常处理、错误页面、响应式适配等边界，让生成的代码更健壮。</div>
+                </div>
+            </div>
+
+            <!-- 2.3 Prompt 模板库 -->
+            <h3 style="margin-top: var(--space-xl);">📚 Prompt 模板库（可直接复用）</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                下面三个模板覆盖最常见的三类任务，把方括号里的内容换成你的实际情况即可。它们的共同骨架是：<strong>角色 + 技术栈 + 需求 + 约束 + 输出格式</strong>。
+            </p>
+
+            <div class="code-example">
+                <div class="code-example-header">
+                    <span class="code-example-title">🧩 模板一 · 新功能开发</span>
+                </div>
+                <div class="code-example-prompt">
+                    <span class="comment">// 角色 + 技术栈 + 需求 + 约束 + 输出</span><br>
+                    <span class="keyword">你是一位资深前端工程师</span>。请用 <span class="string">[React + TypeScript + Tailwind]</span><br>
+                    <span class="func">实现一个</span> <span class="string">[带搜索和分页的用户列表]</span>。<br>
+                    <span class="func">要求：</span><br>
+                    <span class="string">- [数据用 mock，字段：姓名、邮箱、角色、注册时间]</span><br>
+                    <span class="string">- [支持按姓名模糊搜索，每页 10 条]</span><br>
+                    <span class="string">- [响应式，移动端单列]</span><br>
+                    <span class="func">输出</span>：可直接运行的完整代码 + 关键设计说明。
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-header">
+                    <span class="code-example-title">🐞 模板二 · Bug 修复</span>
+                </div>
+                <div class="code-example-prompt">
+                    <span class="comment">// 现象 + 复现步骤 + 相关代码 + 预期</span><br>
+                    <span class="keyword">这段代码有个 bug</span>：<span class="string">[暂停后再点开始，倒计时被重置]</span>。<br>
+                    <span class="func">复现步骤</span>：<span class="string">[点开始 → 等 5 秒 → 点暂停 → 再点开始]</span><br>
+                    <span class="func">相关代码</span>：<br>
+                    <span class="string">[粘贴 startTimer / pauseTimer 函数]</span><br>
+                    <span class="func">预期</span>：<span class="string">[从暂停处继续，而非重置成 25:00]</span>。<br>
+                    <span class="func">请</span>定位原因并给出最小改动。
+                </div>
+            </div>
+
+            <div class="code-example">
+                <div class="code-example-header">
+                    <span class="code-example-title">♻️ 模板三 · 重构优化</span>
+                </div>
+                <div class="code-example-prompt">
+                    <span class="comment">// 现状 + 痛点 + 目标 + 不变约束</span><br>
+                    <span class="keyword">请重构以下代码</span>。<br>
+                    <span class="func">现状</span>：<span class="string">[一个 300 行的提交订单函数，职责混杂]</span><br>
+                    <span class="func">痛点</span>：<span class="string">[校验、计价、库存、持久化全堆在一起，难测试]</span><br>
+                    <span class="func">目标</span>：<span class="string">[拆成单一职责的小函数，便于单测]</span><br>
+                    <span class="func">不变约束</span>：<span class="string">[对外行为和返回值保持一致]</span>。<br>
+                    <span class="func">输出</span>：重构后代码 + 拆分思路。
+                </div>
+            </div>
+
+            <!-- 2.4 最佳实践 -->
+            <h3 style="margin-top: var(--space-xl);">最佳实践</h3>
+            <div class="eval-grid">
+                <div class="eval-card">
+                    <h4>🔐 安全审查</h4>
+                    <p>永远不要把 API Key、密码等敏感信息交给 AI。审查生成代码是否含硬编码密钥或 SQL 注入等漏洞。</p>
+                </div>
+                <div class="eval-card">
+                    <h4>📝 理解代码</h4>
+                    <p>虽然 AI 生成代码，但你仍需理解其基本逻辑。完全看不懂，就很难有效调试和维护。</p>
+                </div>
+                <div class="eval-card">
+                    <h4>🧭 保持架构感</h4>
+                    <p>即使是 Vibe Coding，也要有架构意识：文件组织、模块划分、依赖管理，定期重构 AI 生成的代码。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             Part 3 · 别踩坑
+             ============================ -->
+        <section class="chapter-section fade-in" id="part3">
+            <div class="section-label">✦ Part 3 · 别踩坑 ✦</div>
+            <p class="part-intro">这一部分帮你少走弯路：先看清最容易踩的坑，再判断 Vibe Coding 适合哪些场景。</p>
+
+            <!-- 3.1 避坑清单 -->
+            <h3>⚠️ 常见误区 / 避坑清单</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                这些坑，几乎每个 Vibe Coding 新手都会踩。提前知道，就能省下大量返工时间：
+            </p>
+
+            <div class="pitfall-grid">
+                <div class="pitfall-card">
+                    <div class="pitfall-num">01</div>
+                    <h4>期望一次成型</h4>
+                    <p class="pitfall-wrong"><span>误区</span>指望一句 Prompt 就得到完美成品。</p>
+                    <p class="pitfall-right"><span>正解</span>分步迭代才是常态，每轮聚焦一个小目标。</p>
+                </div>
+                <div class="pitfall-card">
+                    <div class="pitfall-num">02</div>
+                    <h4>完全不读生成的代码</h4>
+                    <p class="pitfall-wrong"><span>误区</span>能跑就万事大吉，从不打开看。</p>
+                    <p class="pitfall-right"><span>正解</span>至少读懂主流程，否则出 bug 时束手无策。</p>
+                </div>
+                <div class="pitfall-card">
+                    <div class="pitfall-num">03</div>
+                    <h4>把密钥贴给 AI</h4>
+                    <p class="pitfall-wrong"><span>误区</span>直接把 API Key、数据库密码写进 Prompt。</p>
+                    <p class="pitfall-right"><span>正解</span>敏感信息脱敏，用环境变量管理，绝不入库。</p>
+                </div>
+                <div class="pitfall-card">
+                    <div class="pitfall-num">04</div>
+                    <h4>一次塞太多需求</h4>
+                    <p class="pitfall-wrong"><span>误区</span>把整个复杂系统一次性甩给 AI。</p>
+                    <p class="pitfall-right"><span>正解</span>拆成单一模块逐个实现，质量与可控性都更高。</p>
+                </div>
+                <div class="pitfall-card">
+                    <div class="pitfall-num">05</div>
+                    <h4>不做版本管理</h4>
+                    <p class="pitfall-wrong"><span>误区</span>一路生成、一路覆盖，改崩了无法回退。</p>
+                    <p class="pitfall-right"><span>正解</span>每轮迭代用 git commit 留快照，随时可回滚。</p>
+                </div>
+                <div class="pitfall-card">
+                    <div class="pitfall-num">06</div>
+                    <h4>盲目信任 AI 输出</h4>
+                    <p class="pitfall-wrong"><span>误区</span>AI 说什么就信什么，不验证。</p>
+                    <p class="pitfall-right"><span>正解</span>关键逻辑跑测试、压边界，AI 也会"一本正经地胡说"。</p>
+                </div>
+            </div>
+
+            <!-- 3.2 理念之争 -->
+            <h3 style="margin-top: var(--space-xl);">理念之争：该不该全面拥抱？</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                Vibe Coding 的兴起一直伴随着争议。了解正反两面的观点，能帮你判断它的真实边界：
+            </p>
+
+            <div class="debate-grid">
+                <div class="debate-card for">
+                    <h4>👍 支持方：开发民主化</h4>
+                    <p>Vibe Coding 的核心价值在于降低创造门槛：</p>
+                    <ul>
+                        <li><strong>人人皆可编程</strong>：非技术背景的人也能构建应用、实现创意</li>
+                        <li><strong>极大提升效率</strong>：开发者可以更快完成原型验证和重复性实现</li>
+                        <li><strong>释放创造力</strong>：从繁琐语法中解放，专注于产品创新</li>
+                        <li><strong>教育变革</strong>：编程教育从"学语法"转向"学思维"</li>
+                    </ul>
+                    <p style="margin-top: var(--space-sm); font-style: italic; color: var(--text-muted); font-size: 0.8rem;">
+                        "Vibe Coding 不是让程序员失业，而是让程序员升值。"
+                    </p>
+                </div>
+                <div class="debate-card against">
+                    <h4>👎 反对方：技术根基流失</h4>
+                    <p>Vibe Coding 也带来值得警惕的风险：</p>
+                    <ul>
+                        <li><strong>代码质量不可控</strong>：生成的代码可能存在性能问题与安全漏洞</li>
+                        <li><strong>理解能力退化</strong>：过度依赖 AI 可能削弱独立编码能力</li>
+                        <li><strong>调试困境</strong>：不理解代码，遇复杂 bug 时束手无策</li>
+                        <li><strong>大型项目瓶颈</strong>：目前更适合中小项目，大型系统仍需深厚功底</li>
+                    </ul>
+                    <p style="margin-top: var(--space-sm); font-style: italic; color: var(--text-muted); font-size: 0.8rem;">
+                        "如果不懂代码原理，你甚至不知道 AI 在胡说八道。"
+                    </p>
+                </div>
+            </div>
+
+            <!-- 3.3 适用场景 -->
+            <h3 style="margin-top: var(--space-xl);">它最适合做什么</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                了解了争议，你就能明智地选择战场。下面是 Vibe Coding 当前最如鱼得水的场景：
+            </p>
+            <div class="scene-grid">
+                <div class="scene-card">
+                    <div class="scene-icon">🚀</div>
+                    <h3>原型开发</h3>
+                    <div class="scene-desc">快速验证产品想法，一天内完成传统开发要一周的 MVP。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">👤</div>
+                    <h3>个人项目</h3>
+                    <div class="scene-desc">独立开发者快速构建工具、网站、自动化脚本。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">📊</div>
+                    <h3>数据分析</h3>
+                    <div class="scene-desc">快速进行数据探索、可视化、生成分析报告。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">📝</div>
+                    <h3>文档与教程</h3>
+                    <div class="scene-desc">自动生成 API 文档、代码注释、技术教程。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">🧪</div>
+                    <h3>学习工具</h3>
+                    <div class="scene-desc">初学者通过 AI 生成的代码学习编程概念与模式。</div>
+                </div>
+                <div class="scene-card">
+                    <div class="scene-icon">🔧</div>
+                    <h3>内部工具</h3>
+                    <div class="scene-desc">快速搭建 CRM、仪表盘、管理等企业内部工具。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================
+             Part 4 · AI 的边界
+             ============================ -->
+        <section class="chapter-section fade-in" id="part4">
+            <div class="section-label">✦ Part 4 · AI 的边界 ✦</div>
+            <p class="part-intro">了解 Vibe Coding 的边界，比掌握它的使用方式更重要。知道 AI 不能做什么，才能避免踩进那些看似合理却致命的陷阱。</p>
+
+            <!-- 4.1 能力雷达图 -->
+            <h3>AI 编程能力的六维雷达</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                为了直观理解 Vibe Coding 的能力边界，我们从六个维度对当前 AI 编程 Agent（以 Claude Code、Cursor Agent 为代表）进行主观评估：
+            </p>
+
+            <div class="viz-card">
+                <h3>🕸️ 当前 AI 编程能力雷达图</h3>
+                <p>满分 5 星。这个雷达图是经验性示意，用来展示 AI 在不同编程任务维度上的相对强弱，而不是严格 benchmark。</p>
+                <div class="viz-svg-container">
+                    <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 背景 -->
+                        <defs>
+                            <linearGradient id="radarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#6366F1;stop-opacity:0.3"/>
+                                <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.1"/>
+                            </linearGradient>
+                        </defs>
+
+                        <!-- 雷达中心 -->
+                        <g transform="translate(250, 200)">
+                            <!-- 五边形网格 -->
+                            <g opacity="0.3">
+                                <!-- 1x -->
+                                <polygon points="0,-160 152,-49 94,130 -94,130 -152,-49" fill="none" stroke="#D1D5DB" stroke-width="1"/>
+                                <!-- 2x -->
+                                <polygon points="0,-120 114,-37 71,97 -71,97 -114,-37" fill="none" stroke="#D1D5DB" stroke-width="1"/>
+                                <!-- 3x -->
+                                <polygon points="0,-80 76,-25 47,65 -47,65 -76,-25" fill="none" stroke="#D1D5DB" stroke-width="1"/>
+                                <!-- 4x -->
+                                <polygon points="0,-40 38,-12 24,32 -24,32 -38,-12" fill="none" stroke="#D1D5DB" stroke-width="1"/>
+                            </g>
+
+                            <!-- 六条轴线 -->
+                            <g opacity="0.5">
+                                <line x1="0" y1="0" x2="0" y2="-160" stroke="#9CA3AF" stroke-width="1"/>
+                                <line x1="0" y1="0" x2="138.6" y2="-80" stroke="#9CA3AF" stroke-width="1"/>
+                                <line x1="0" y1="0" x2="138.6" y2="80" stroke="#9CA3AF" stroke-width="1"/>
+                                <line x1="0" y1="0" x2="0" y2="160" stroke="#9CA3AF" stroke-width="1"/>
+                                <line x1="0" y1="0" x2="-138.6" y2="80" stroke="#9CA3AF" stroke-width="1"/>
+                                <line x1="0" y1="0" x2="-138.6" y2="-80" stroke="#9CA3AF" stroke-width="1"/>
+                            </g>
+
+                            <!-- 数据多边形 -->
+                            <polygon points="0,-144 110.9,-64 99.2,57.6 0,96 -124.1,71.7 -110.9,-48"
+                                     fill="url(#radarGrad)" stroke="#6366F1" stroke-width="2.5" stroke-linejoin="round"/>
+
+                            <!-- 数据点 -->
+                            <circle cx="0" cy="-144" r="5" fill="#6366F1" stroke="#fff" stroke-width="2"/>
+                            <circle cx="110.9" cy="-64" r="5" fill="#6366F1" stroke="#fff" stroke-width="2"/>
+                            <circle cx="99.2" cy="57.6" r="5" fill="#6366F1" stroke="#fff" stroke-width="2"/>
+                            <circle cx="0" cy="96" r="5" fill="#6366F1" stroke="#fff" stroke-width="2"/>
+                            <circle cx="-124.1" cy="71.7" r="5" fill="#6366F1" stroke="#fff" stroke-width="2"/>
+                            <circle cx="-110.9" cy="-48" r="5" fill="#6366F1" stroke="#fff" stroke-width="2"/>
+
+                            <!-- 轴标签 -->
+                            <text x="0" y="-175" text-anchor="middle" font-size="12" font-weight="600" fill="#374151">代码生成</text>
+                            <text x="155" y="-85" text-anchor="start" font-size="12" font-weight="600" fill="#374151">原型构建</text>
+                            <text x="155" y="95" text-anchor="start" font-size="12" font-weight="600" fill="#374151">单元测试</text>
+                            <text x="0" y="185" text-anchor="middle" font-size="12" font-weight="600" fill="#374151">文档编写</text>
+                            <text x="-155" y="95" text-anchor="end" font-size="12" font-weight="600" fill="#374151">架构设计</text>
+                            <text x="-155" y="-85" text-anchor="end" font-size="12" font-weight="600" fill="#374151">安全审查</text>
+
+                            <!-- 数值标注 -->
+                            <text x="0" y="-155" text-anchor="middle" font-size="10" font-weight="700" fill="#6366F1">4.5</text>
+                            <text x="125" y="-72" text-anchor="start" font-size="10" font-weight="700" fill="#6366F1">4.8</text>
+                            <text x="114" y="66" text-anchor="start" font-size="10" font-weight="700" fill="#6366F1">3.5</text>
+                            <text x="0" y="110" text-anchor="middle" font-size="10" font-weight="700" fill="#6366F1">3.0</text>
+                            <text x="-138" y="80" text-anchor="end" font-size="10" font-weight="700" fill="#6366F1">2.5</text>
+                            <text x="-125" y="-56" text-anchor="end" font-size="10" font-weight="700" fill="#6366F1">2.0</text>
+                        </g>
+
+                        <!-- 图例 -->
+                        <g transform="translate(340, 320)">
+                            <rect x="0" y="0" width="140" height="65" rx="8" fill="#FAFBFC" stroke="#E5E7EB" stroke-width="1"/>
+                            <text x="70" y="18" text-anchor="middle" font-size="10" font-weight="600" fill="#374151">能力评分（满分 5）</text>
+                            <circle cx="20" cy="35" r="4" fill="#6366F1"/>
+                            <text x="32" y="39" font-size="9" fill="#6B7280">擅长领域</text>
+                            <circle cx="20" cy="50" r="4" fill="#F59E0B"/>
+                            <text x="32" y="54" font-size="9" fill="#6B7280">中等水平</text>
+                            <circle cx="20" cy="65" r="4" fill="#EF4444"/>
+                            <text x="32" y="69" font-size="9" fill="#6B7280">薄弱领域</text>
+                        </g>
+                    </svg>
+                </div>
+                <p class="viz-caption">▲ 当前 AI 编程 Agent 的六维能力主观评估。原型构建和代码生成通常较强，但安全审查和架构设计仍需要人工主导。</p>
+            </div>
+
+            <!-- 4.2 AI 能做什么 -->
+            <h3>AI 擅长的事</h3>
+            <div class="boundary-grid">
+                <div class="boundary-card can">
+                    <h4>✅ 快速生成样板代码</h4>
+                    <p>CRUD 接口、表单组件、数据模型等重复性高、模式固定的代码，AI 可以秒级生成，准确率极高。</p>
+                </div>
+                <div class="boundary-card can">
+                    <h4>✅ 解释和理解已有代码</h4>
+                    <p>把一段复杂的代码丢给 AI，它能用通俗语言解释它在做什么——这对接手他人项目尤其有帮助。</p>
+                </div>
+                <div class="boundary-card can">
+                    <h4>✅ 编写单元测试</h4>
+                    <p>给定一个函数，AI 可以快速生成覆盖正常路径和常见边界情况的初版测试用例，但覆盖率和断言质量仍需要人工检查。</p>
+                </div>
+                <div class="boundary-card can">
+                    <h4>✅ 翻译和转换代码</h4>
+                    <p>Python 转 JavaScript、React 转 Vue、旧版 API 迁移到新 SDK——AI 在语言/框架间迁移代码方面表现出色。</p>
+                </div>
+                <div class="boundary-card can">
+                    <h4>✅ 调试常见错误</h4>
+                    <p>把报错信息贴给 AI，它通常能准确定位到问题所在，并给出修复方案——尤其是语法错误、类型错误等常见问题。</p>
+                </div>
+                <div class="boundary-card can">
+                    <h4>✅ 生成文档和注释</h4>
+                    <p>函数签名 + 简要描述 → 完整的 API 文档。虽然需要人工润色，但能节省大量时间。</p>
+                </div>
+            </div>
+
+            <!-- 4.3 AI 不擅长的事 -->
+            <h3 style="margin-top: var(--space-xl);">AI 不擅长的事</h3>
+            <div class="boundary-grid">
+                <div class="boundary-card cant">
+                    <h4>🚫 安全审计</h4>
+                    <p>AI 生成的代码可能包含 SQL 注入、XSS、硬编码密钥等安全隐患。它不了解你的业务安全上下文，也无法保证没有后门。</p>
+                </div>
+                <div class="boundary-card cant">
+                    <h4>🚫 复杂架构设计</h4>
+                    <p>微服务拆分、分布式事务、容灾方案——这些需要深刻理解业务约束和技术权衡，AI 缺乏全局视野。</p>
+                </div>
+                <div class="boundary-card cant">
+                    <h4>🚫 性能优化</h4>
+                    <p>AI 可能写出"能跑"的代码，但很难保证在高并发、大数据量下的性能表现。瓶颈分析和调优需要专业经验。</p>
+                </div>
+                <div class="boundary-card cant">
+                    <h4>🚫 业务逻辑判断</h4>
+                    <p>"这个字段要不要做空值处理？""这个状态流转是否覆盖所有场景？"——这些问题需要理解业务上下文，AI 只能猜测。</p>
+                </div>
+            </div>
+
+            <!-- 4.4 灰色地带 -->
+            <h3 style="margin-top: var(--space-xl);">灰色地带：AI 正在进步但仍有局限</h3>
+            <div class="boundary-grid">
+                <div class="boundary-card maybe">
+                    <h4>⚠️ 大型多文件重构</h4>
+                    <p>AI 可以处理几百行的单文件重构，但当涉及几十个文件的跨模块变更时，容易出现遗漏或不一致的修改。需要人工逐文件审查。</p>
+                </div>
+                <div class="boundary-card maybe">
+                    <h4>⚠️ 复杂业务需求理解</h4>
+                    <p>对于"用户注册后发送欢迎邮件并创建默认团队"这类需求，AI 能生成代码，但可能遗漏边界条件（如邮件发送失败怎么办？团队已存在怎么办？）。</p>
+                </div>
+                <div class="boundary-card maybe">
+                    <h4>⚠️ 第三方 API 集成</h4>
+                    <p>AI 可能生成看起来合理的 API 调用代码，但如果 API 文档更新了、有速率限制、或需要特殊认证，AI 可能给出过时或错误的信息。</p>
+                </div>
+                <div class="boundary-card maybe">
+                    <h4>⚠️ 代码审查的深度</h4>
+                    <p>AI 可以发现明显的 bug 和风格问题，但对于"这个设计是否违反了领域驱动设计原则"这类深层次的设计审查，AI 的判断力有限。</p>
+                </div>
+            </div>
+
+            <!-- 4.5 人机分工矩阵 -->
+            <h3 style="margin-top: var(--space-xl);">人机分工矩阵：谁该做什么？</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-md);">
+                最理想的 Vibe Coding 不是"让 AI 替我做一切"，而是明确分工——让 AI 做它擅长的，人做它该做的：
+            </p>
+
+            <div class="two-col">
+                <div class="algo-section-card" style="border-top: 3px solid #10B981;">
+                    <h4>🤖 AI 负责</h4>
+                    <ul class="topic-list" style="margin-top: var(--space-sm);">
+                        <li>✓ 生成样板代码和脚手架</li>
+                        <li>✓ 提供多种实现方案供选择</li>
+                        <li>✓ 编写单元测试和文档</li>
+                        <li>✓ 解释复杂代码的逻辑</li>
+                        <li>✓ 查找和修复已知类型的 bug</li>
+                        <li>✓ 代码格式化和风格统一</li>
+                    </ul>
+                </div>
+                <div class="algo-section-card" style="border-top: 3px solid #6366F1;">
+                    <h4>🧑‍💻 人负责</h4>
+                    <ul class="topic-list" style="margin-top: var(--space-sm);">
+                        <li>✓ 需求拆解和问题建模</li>
+                        <li>✓ 技术方案选型和架构决策</li>
+                        <li>✓ 安全审查和风险评估</li>
+                        <li>✓ 业务逻辑的正确性判断</li>
+                        <li>✓ 最终代码审查和质量把关</li>
+                        <li>✓ 性能分析和优化策略</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="conclusion-box" style="margin-top: var(--space-xl);">
+                <p>
+                    <strong>核心原则：AI 是副驾驶（Co-pilot），你是机长（Captain）。</strong><br>
+                    它可以帮助你飞得更快，但航线、目的地和最终决策——必须由你来做出。理解 Vibe Coding 的边界，不是为了限制它的使用，而是为了更安全、更有效地使用它。
+                </p>
+            </div>
+        </section>
+
+        <!-- ============================
+             结尾过渡
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>理解了 Vibe Coding 的方法之后，<br>下一篇先打开我的工具箱，看看 Coding Agent 如何接上命令行、IDE、MCP 与 Skill，<br>逐步变成一条真正能进入工作现场的<strong>AI机械臂</strong>。</p>
+            </div>
+        </section>
+
+        <!-- 上下篇导航 -->
+        <nav class="article-nav">
+            <a href="part7.html" class="nav-button prev">← 第 6–7 章 · AI Agent</a>
+            <a href="part9.html" class="nav-button">工具篇 · AI机械臂 →</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

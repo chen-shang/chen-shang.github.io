@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 分享系列 · AI纪元</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <style>
+    /* ==========================================
+       AI 分享系列 · 深色「AI纪元」同款
+       沿用暖珊瑚(hue16) + 金色(hue38) + Noto 字体 + 卡片语言
+       ========================================== */
+    :root {
+      --primary-hue: 16;
+      --accent-hue: 38;
+      --primary: hsl(var(--primary-hue) 78% 62%);
+      --primary-light: hsl(var(--primary-hue) 72% 70%);
+      --primary-dark: hsl(var(--primary-hue) 74% 52%);
+      --accent: hsl(var(--accent-hue) 90% 60%);
+      --accent-light: hsl(var(--accent-hue) 85% 68%);
+
+      --bg-base: #14110D;
+      --bg-elevated: #1C1813;
+      --bg-card: #221C16;
+      --bg-card-hover: #2A231B;
+
+      --text-primary: #F4EFE9;
+      --text-secondary: #B6ADA1;
+      --text-muted: #867C70;
+
+      --border-subtle: rgba(244, 239, 233, 0.08);
+      --border-medium: rgba(244, 239, 233, 0.14);
+      --border-accent: hsl(var(--primary-hue) 60% 50% / 0.45);
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
+      --shadow-hover: 0 20px 48px rgba(0, 0, 0, 0.6);
+
+      --radius-sm: 6px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 22px;
+
+      --space-xs: 0.5rem;
+      --space-sm: 0.75rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2rem;
+      --space-2xl: 3rem;
+      --space-3xl: 4.5rem;
+
+      --transition-fast: 150ms ease;
+      --transition-base: 250ms ease;
+      --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-base);
+      color: var(--text-primary);
+      line-height: 1.75;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(circle at 18% -10%, hsl(var(--primary-hue) 60% 20% / 0.35), transparent 42%),
+        radial-gradient(circle at 88% 8%, hsl(var(--accent-hue) 70% 22% / 0.28), transparent 40%),
+        radial-gradient(circle at 1px 1px, rgba(244, 239, 233, 0.04) 1px, transparent 1px);
+      background-size: auto, auto, 26px 26px;
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: hsl(var(--primary-hue) 60% 45% / 0.6);
+      color: #fff;
+    }
+
+    /* 滚动进度条 */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      z-index: 300;
+      transition: width 120ms linear;
+    }
+
+    /* 导航栏 */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: var(--space-lg);
+      padding: var(--space-sm) var(--space-2xl);
+      background: rgba(20, 17, 13, 0.82);
+      backdrop-filter: blur(16px) saturate(130%);
+      -webkit-backdrop-filter: blur(16px) saturate(130%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .logo {
+      flex: 0 0 auto;
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      transition: all var(--transition-base);
+    }
+
+    .logo:hover {
+      color: var(--primary-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-xs);
+      list-style: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 7px 14px;
+      color: var(--text-secondary);
+      background: rgba(244, 239, 233, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: all var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      border-color: var(--border-accent);
+      background: rgba(244, 239, 233, 0.07);
+    }
+
+    .main-content {
+      width: min(1080px, 92%);
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-md) var(--space-3xl);
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      border-radius: 2px;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.28em;
+      color: var(--accent);
+      padding: var(--space-xs) var(--space-md);
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-xl);
+      margin-bottom: var(--space-lg);
+    }
+
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(2.4rem, 6vw, 3.6rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: var(--space-md);
+      background: linear-gradient(135deg, #fff 0%, var(--primary-light) 55%, var(--accent-light) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 640px;
+      margin: 0 auto var(--space-xl);
+    }
+
+    .hero-chips {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .hero-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .hero-chip b {
+      color: var(--primary);
+    }
+
+    /* 段标题 */
+    .section-eyebrow {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.26em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 600;
+      margin-bottom: var(--space-2xl);
+      color: #fff;
+    }
+
+    .section-title span {
+      color: var(--primary);
+    }
+
+    /* 大场次卡片 */
+    .episode-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-xl);
+      margin-bottom: var(--space-3xl);
+    }
+
+    .episode {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(160deg, var(--bg-card) 0%, var(--bg-elevated) 100%);
+      border: 1px solid var(--border-medium);
+      border-radius: var(--radius-xl);
+      padding: var(--space-xl);
+      overflow: hidden;
+      transition: all var(--transition-slow);
+      box-shadow: var(--shadow-md);
+    }
+
+    .episode::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-xl);
+      padding: 1px;
+      background: linear-gradient(135deg, var(--primary), transparent 45%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity var(--transition-base);
+    }
+
+    .episode:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--border-accent);
+    }
+
+    .episode:hover::before {
+      opacity: 1;
+    }
+
+    .episode-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: var(--space-sm);
+    }
+
+    .episode-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: var(--space-xs);
+    }
+
+    .episode-sub {
+      color: var(--primary-light);
+      font-size: 0.9rem;
+      margin-bottom: var(--space-md);
+    }
+
+    .episode-desc {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: var(--space-lg);
+    }
+
+    .episode-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .tag {
+      font-size: 0.76rem;
+      padding: 4px 11px;
+      background: rgba(244, 239, 233, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      color: var(--text-secondary);
+    }
+
+    .episode-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .src-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 16px;
+      background: var(--primary);
+      color: #1a1410;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: all var(--transition-base);
+    }
+
+    .src-link.secondary {
+      background: transparent;
+      color: var(--primary-light);
+      border: 1px solid var(--border-accent);
+    }
+
+    .src-link:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px hsl(var(--primary-hue) 70% 50% / 0.35);
+    }
+
+    .src-link.secondary:hover {
+      background: rgba(244, 239, 233, 0.06);
+      color: #fff;
+    }
+
+    /* 内容详情块 */
+    .session {
+      margin-bottom: var(--space-3xl);
+      scroll-margin-top: 90px;
+    }
+
+    .session-head {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-md);
+      border-bottom: 2px solid var(--border-subtle);
+      position: relative;
+    }
+
+    .session-head::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 56px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    .session-head .idx {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+
+    .session-head h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-xl);
+      margin-bottom: var(--space-lg);
+      transition: all var(--transition-base);
+    }
+
+    .block:hover {
+      border-color: var(--border-medium);
+      background: var(--bg-card-hover);
+    }
+
+    .block h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.12rem;
+      color: var(--text-primary);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .block h3 .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      flex: 0 0 auto;
+    }
+
+    .block p {
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+
+    .block strong {
+      color: var(--primary-light);
+      font-weight: 600;
+    }
+
+    /* 三列 / 两列 小卡 */
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    .mini {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-top: 3px solid var(--primary);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      transition: all var(--transition-base);
+    }
+
+    .mini:nth-child(2) {
+      border-top-color: var(--accent);
+    }
+
+    .mini:nth-child(3) {
+      border-top-color: hsl(200 70% 60%);
+    }
+
+    .mini:nth-child(4) {
+      border-top-color: hsl(150 60% 55%);
+    }
+
+    .mini:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .mini h4 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .mini .en {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-xs);
+    }
+
+    .mini p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* 时间轴 */
+    .timeline {
+      display: grid;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 84px 1fr;
+      gap: var(--space-md);
+      align-items: start;
+      padding: var(--space-sm) var(--space-md);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius-md);
+    }
+
+    .tl-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 600;
+      padding-top: 2px;
+    }
+
+    .tl-body h4 {
+      font-size: 0.96rem;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+
+    .tl-body p {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .tl-item.milestone {
+      border-left-color: var(--primary);
+      background: hsl(var(--primary-hue) 50% 50% / 0.1);
+    }
+
+    .tl-item.milestone .tl-year {
+      color: var(--primary);
+    }
+
+    /* 红线列表 */
+    .redline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+
+    .redline {
+      background: var(--bg-elevated);
+      border: 1px solid rgba(239, 68, 68, 0.22);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .redline-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--space-xs);
+    }
+
+    .redline-head span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #f87171;
+      font-weight: 600;
+    }
+
+    .redline-head b {
+      font-size: 0.9rem;
+      color: #fca5a5;
+    }
+
+    .redline h5 {
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .redline p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .gate-note {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .gate {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+
+    .gate span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+    }
+
+    .gate h5 {
+      font-size: 0.94rem;
+      color: #fff;
+      margin: 4px 0 6px;
+    }
+
+    .gate ul {
+      list-style: none;
+    }
+
+    .gate li {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 3px;
+    }
+
+    .gate li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+    }
+
+    /* 收尾 */
+    .closing {
+      background: linear-gradient(135deg, hsl(var(--primary-hue) 50% 50% / 0.12), hsl(var(--accent-hue) 70% 50% / 0.1));
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-xl);
+      padding: var(--space-2xl);
+      text-align: center;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .closing h2 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: var(--space-lg);
+    }
+
+    .closing-points {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+    }
+
+    .closing-points p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      max-width: 300px;
+    }
+
+    .closing-points b {
+      color: var(--primary-light);
+    }
+
+    .closing-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .footer {
+      text-align: center;
+      padding: var(--space-xl);
+      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* 滚动浮现 */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 600ms ease, transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: var(--space-sm);
+        gap: var(--space-sm);
+      }
+
+      .main-content {
+        width: 94%;
+      }
+
+      .episode-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tl-item {
+        grid-template-columns: 70px 1fr;
+      }
+    }
+
+    @media print {
+
+      .navbar,
+      .scroll-progress,
+      .footer {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+        color: #111;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="scroll-progress" id="progress"></div>
+
+  <nav class="navbar" aria-label="系列导航">
+    <a href="#top" class="logo">AI 分享系列</a>
+    <ul class="nav-links" aria-label="切换场次">
+      <li><a href="#session-1">01 · 基础知识科普</a></li>
+      <li><a href="#session-2">02 · Agent 实战</a></li>
+      <li><a href="part1.html" target="_blank" rel="noopener">序章原文</a></li>
+      <li><a href="part2.html" target="_blank" rel="noopener">前世今生原文</a></li>
+      <li><a href="part9.html" target="_blank" rel="noopener">AI机械臂原文</a></li>
+    </ul>
+  </nav>
+
+  <main class="main-content" id="top">
+    <!-- Hero -->
+    <header class="hero fade-in">
+      <span class="hero-kicker">AI SHARING SERIES · 内部科普</span>
+      <h1 class="hero-title">AI 分享系列</h1>
+      <p class="hero-sub">两场分享，从 <strong style="color:var(--primary-light)">「AI 是什么」</strong> 到
+        <strong style="color:var(--accent-light)">「AI 怎么用」</strong>——基础科普打底，Agent 实战落地。</p>
+      <div class="hero-chips">
+        <span class="hero-chip">📘 第 1 场 · <b>AI 基础知识科普</b></span>
+        <span class="hero-chip">🤖 第 2 场 · <b>Agent 使用实战</b></span>
+      </div>
+    </header>
+
+    <!-- 大场次卡片 -->
+    <section class="episode-grid fade-in">
+      <article class="episode">
+        <div class="episode-num">SESSION 01</div>
+        <h2 class="episode-title">AI 基础知识科普</h2>
+        <div class="episode-sub">智能 · 分类 · 流派 · 一部 AI 简史</div>
+        <p class="episode-desc">先回到一个根本问题：智能到底是什么？再讲清 AI 的三级台阶、实现智能的三种思路，以及贯穿历史的连接主义、符号主义、行为主义三大流派，最后用一条时间轴串起从图灵机到今天的 AI 前世今生。</p>
+        <div class="episode-tags">
+          <span class="tag">智能的本质</span>
+          <span class="tag">ANI / AGI / ASI</span>
+          <span class="tag">三大流派</span>
+          <span class="tag">AI 时间轴</span>
+        </div>
+        <div class="episode-links">
+          <a class="src-link" href="part1.html" target="_blank" rel="noopener">序章 · 智能与流派 ↗</a>
+          <a class="src-link secondary" href="part2.html" target="_blank" rel="noopener">前世今生 ↗</a>
+        </div>
+      </article>
+
+      <article class="episode">
+        <div class="episode-num">SESSION 02</div>
+        <h2 class="episode-title">Agent 使用实战</h2>
+        <div class="episode-sub">从会回答，到会行动的工具箱</div>
+        <p class="episode-desc">LLM 像军师、Agent 像士兵、你是指挥官。这一场讲清 Agent 的四种类型、一套顺手的工具箱组合，以及 MCP / A2A / Skill 等协议如何分工；最后落到使用 AI 的八条安全红线与三道人工闸门。</p>
+        <div class="episode-tags">
+          <span class="tag">LLM 选型</span>
+          <span class="tag">四类 Agent</span>
+          <span class="tag">MCP / A2A / Skill</span>
+          <span class="tag">安全红线</span>
+        </div>
+        <div class="episode-links">
+          <a class="src-link" href="part9.html" target="_blank" rel="noopener">AI机械臂 · 工具箱 ↗</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 场次 1 详情 ============ -->
+    <section class="session fade-in" id="session-1">
+      <div class="session-head">
+        <span class="idx">01</span>
+        <h2>AI 基础知识科普</h2>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>智能的本质：东西方的两条路</h3>
+        <p>古人把"智能"拆成两个字——<strong>智</strong>（知 + 日，认知的积累与升华）与 <strong>能</strong>（甲骨文像熊，天赋力量经磨砺成才能）。东方讲<strong>知行合一</strong>（知人者智、自知者明），西方讲<strong>推理 + 目标</strong>（亚里士多德、笛卡尔、图灵测试）。<strong>真正的智能不只是知道，而是做到。</strong></p>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>AI 的三级台阶：从专用到超越</h3>
+        <div class="mini-grid">
+          <div class="mini">
+            <div class="en">ANI</div>
+            <h4>弱人工智能</h4>
+            <p>专精特定任务（Siri、图像识别、AlphaGo、GPT）。今天绝大多数 AI 仍在此层，无法跨领域迁移。</p>
+          </div>
+          <div class="mini">
+            <div class="en">AGI</div>
+            <h4>通用人工智能</h4>
+            <p>达到人类级别的全面认知，能跨领域推理、自主学习、制定计划。尚未有公认实现，是核心目标。</p>
+          </div>
+          <div class="mini">
+            <div class="en">ASI</div>
+            <h4>超人工智能</h4>
+            <p>几乎所有领域超越人类（Bostrom《Superintelligence》）。时间线未知，争议极大。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>实现智能的三种角度 → 三大流派</h3>
+        <p>工程上不等问题完全想明白才开始——飞机也是先飞起来的。三种思路演进成交替领先又彼此融合的三大流派：</p>
+        <div class="mini-grid">
+          <div class="mini">
+            <div class="en">Connectionism</div>
+            <h4>连接主义</h4>
+            <p>从"大脑"出发，模仿神经元连接与学习。黄金时代是 2010 年代至今的深度学习与大语言模型。</p>
+          </div>
+          <div class="mini">
+            <div class="en">Symbolic AI</div>
+            <h4>符号主义</h4>
+            <p>从"行为"出发，把知识编码成符号与规则做逻辑推理。代表：DENDRAL、MYCIN、知识图谱。</p>
+          </div>
+          <div class="mini">
+            <div class="en">Behaviorism</div>
+            <h4>行为主义</h4>
+            <p>从"交互"出发，让智能在感知-行动闭环中涌现。代表：AlphaGo、具身智能、机器人学。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>AI 前世今生：一条时间轴</h3>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-year">1936</div>
+            <div class="tl-body">
+              <h4>图灵机 — 可计算性的基石</h4>
+              <p>24 岁的图灵严格定义"什么是可计算"，为一切计算装置划定理论边界；但"计算"不等于"智能"。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1943</div>
+            <div class="tl-body">
+              <h4>MP 模型 — 数学神经元的诞生</h4>
+              <p>McCulloch & Pitts 用数学公式模拟生物神经元，证明网络可执行基本逻辑运算（权重仍需手动设置）。</p>
+            </div>
+          </div>
+          <div class="tl-item milestone">
+            <div class="tl-year">1956</div>
+            <div class="tl-body">
+              <h4>达特茅斯会议 — AI 正式启航 ★</h4>
+              <p>McCarthy、Minsky、Shannon、Rochester 召开研讨会，正式提出"人工智能（AI）"这一术语——AI 作为独立领域诞生。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">1980s</div>
+            <div class="tl-body">
+              <h4>寒冬与复兴</h4>
+              <p>符号主义因常识无法写成规则而碰壁，AI 寒冬降临；随后连接主义与行为主义先后重新夺回中心。</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">2010s+</div>
+            <div class="tl-body">
+              <h4>深度学习与 LLM 时代</h4>
+              <p>算力、数据与神经网络共振，深度学习爆发；大语言模型把 AI 推向大众与真实工作流。</p>
+            </div>
+          </div>
+        </div>
+        <div class="episode-links" style="margin-top:var(--space-md)">
+          <a class="src-link secondary" href="part1.html" target="_blank" rel="noopener">序章全文 · 智能与流派 ↗</a>
+          <a class="src-link secondary" href="part2.html" target="_blank" rel="noopener">前世今生全文 · 完整时间轴 ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 场次 2 详情 ============ -->
+    <section class="session fade-in" id="session-2">
+      <div class="session-head">
+        <span class="idx">02</span>
+        <h2>Agent 使用实战</h2>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>LLM 像军师，Agent 像士兵，你是指挥官</h3>
+        <p><strong>LLM</strong> 负责分析、推理、生成内容，但默认进不了仓库、执行不了命令；给它加上<strong>工具 / 权限 / 循环</strong>，它就变成 <strong>Agent</strong>——观察、行动、验证、继续，直到完成任务或触发人工确认。<strong>Agent 再强，方向错了也要你纠偏。</strong></p>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>Agent 不是一种，而是四类</h3>
+        <div class="mini-grid">
+          <div class="mini">
+            <div class="en">CHATTING</div>
+            <h4>Chatting Agent</h4>
+            <p>豆包、Kimi 等对话助手，适合问答、检索、知识解释，当更聪明的搜索引擎。</p>
+          </div>
+          <div class="mini">
+            <div class="en">CODING</div>
+            <h4>Coding Agent</h4>
+            <p>读仓库、改代码、跑测试，把研发任务推进到可验证、可交付的结果。</p>
+          </div>
+          <div class="mini">
+            <div class="en">WORKING</div>
+            <h4>Working Agent</h4>
+            <p>处理文档、邮件、表格、会议、审批与跨系统协作，完成真实工作流。</p>
+          </div>
+          <div class="mini">
+            <div class="en">OTHER</div>
+            <h4>Other Agent</h4>
+            <p>研究、数据分析、客服、电脑操作、多 Agent 协作等专业场景。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>一套顺手的工具箱（不追求"一个最强"）</h3>
+        <p><strong>程序员</strong>用 Coding Agent 组合：<strong>Codex CLI</strong>（仓库开发主力）+ <strong>ChatGPT</strong>（图形化协作）+ <strong>Claude Code / OpenCode</strong>（复杂任务与多模型补位）。<strong>业务员</strong>优先选与办公生态一致的产品：<strong>WorkBuddy + 微信/企业微信</strong>、<strong>TRAE Work + 豆包</strong>、<strong>QoderWork + 悟空</strong>。真正值得沉淀的是：清楚每个工具的强项与边界，知道什么时候切、为什么切。</p>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>MCP / A2A / Skill：不在同一层</h3>
+        <div class="mini-grid">
+          <div class="mini">
+            <div class="en">TOOL</div>
+            <h4>一个原子动作</h4>
+            <p>读文件、执行 SQL、建 Issue——关心"这一步能做什么"。</p>
+          </div>
+          <div class="mini">
+            <div class="en">MCP</div>
+            <h4>连接工具与上下文</h4>
+            <p>用统一方式发现并调用外部能力，减少每接一个系统都重写私有集成。</p>
+          </div>
+          <div class="mini">
+            <div class="en">A2A</div>
+            <h4>Agent 之间协作</h4>
+            <p>面向 Agent 间通信：发现能力、委派任务、交换消息、交付结果。</p>
+          </div>
+          <div class="mini">
+            <div class="en">SKILL</div>
+            <h4>可复用的做事方法</h4>
+            <p>用入口文件描述触发条件、步骤与约束，沉淀"这类事该怎么做"。</p>
+          </div>
+        </div>
+        <p style="margin-top:var(--space-sm)">一句话：<strong>团队规则约束 → Skill 组织 → Agent 通过 MCP 调用 Tools/Data → 必要时经 A2A 连其他 Agent。</strong>不装 Skills 和 MCP 的 Agent，难以完成长链路任务。</p>
+      </div>
+
+      <div class="block">
+        <h3><span class="dot"></span>使用 AI 的八条安全红线</h3>
+        <div class="redline-grid">
+          <div class="redline">
+            <div class="redline-head"><span>01</span><b>数据红线</b></div>
+            <h5>不直传秘密、隐私与内部资料</h5>
+            <p>密码、API Key、证件、客户数据、源代码——先用示例数据，能脱敏就脱敏。</p>
+          </div>
+          <div class="redline">
+            <div class="redline-head"><span>02</span><b>权限红线</b></div>
+            <h5>不授予全盘、长期权限</h5>
+            <p>用独立账号、只读、限定目录、短期凭证；任务结束立即收回。</p>
+          </div>
+          <div class="redline">
+            <div class="redline-head"><span>03</span><b>执行红线</b></div>
+            <h5>不无确认执行不可逆操作</h5>
+            <p>删除、转账、发布、批量改权限——先预览、再审批、后执行、可回滚。</p>
+          </div>
+          <div class="redline">
+            <div class="redline-head"><span>04</span><b>判断红线</b></div>
+            <h5>不把 AI 回答当确定事实</h5>
+            <p>医学、法律、财务、人事决定尤其不能只依赖 AI，需有资质者复核。</p>
+          </div>
+          <div class="redline">
+            <div class="redline-head"><span>05</span><b>行为红线</b></div>
+            <h5>不利用 AI 欺骗、攻击、伤害</h5>
+            <p>不制作钓鱼、诈骗、恶意程序或绕过安全控制。</p>
+          </div>
+          <div class="redline">
+            <div class="redline-head"><span>06</span><b>诚信红线</b></div>
+            <h5>不伪造身份、证据、来源</h5>
+            <p>该标注 AI 辅助就标注；引用必须能回到真实可验证来源。</p>
+          </div>
+          <div class="redline">
+            <div class="redline-head"><span>07</span><b>权利红线</b></div>
+            <h5>不忽视版权与保密义务</h5>
+            <p>第三方作品、客户文件、内部文档不会因"交给 AI"就自动获授权。</p>
+          </div>
+          <div class="redline">
+            <div class="redline-head"><span>08</span><b>指令红线</b></div>
+            <h5>不让网页/邮件偷偷接管 AI</h5>
+            <p>外部内容可能有恶意指令（提示词注入），一律视为不可信数据。</p>
+          </div>
+        </div>
+        <div class="gate-note">
+          <div class="gate">
+            <span>GATE 01 · 输入前</span>
+            <h5>这份数据真的需要给吗？</h5>
+            <ul>
+              <li>是否含个人/客户/公司敏感信息</li>
+              <li>能否用更少字段或样例完成</li>
+              <li>是否符合 AI 使用政策</li>
+            </ul>
+          </div>
+          <div class="gate">
+            <span>GATE 02 · 执行前</span>
+            <h5>最坏结果是否可承受？</h5>
+            <ul>
+              <li>AI 将访问哪些系统/账号</li>
+              <li>能否预览、撤销、回滚、追踪</li>
+              <li>是否有付款/删除/发布等高风险</li>
+            </ul>
+          </div>
+          <div class="gate">
+            <span>GATE 03 · 发布前</span>
+            <h5>我能为这个结果负责吗？</h5>
+            <ul>
+              <li>事实、数字、引用是否已核验</li>
+              <li>是否侵权、歧视或误导</li>
+              <li>是否需要标注 AI 与人工审核</li>
+            </ul>
+          </div>
+        </div>
+        <div class="episode-links" style="margin-top:var(--space-md)">
+          <a class="src-link secondary" href="part9.html" target="_blank" rel="noopener">AI机械臂全文 · 工具箱与安全 ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 收尾 -->
+    <section class="closing fade-in">
+      <h2>三句话带走这场分享</h2>
+      <div class="closing-points">
+        <p>🧭 <b>先理解，再使用</b>：知道 AI 的三级台阶与三大流派，才不会被名词带跑。</p>
+        <p>🛠 <b>工具不求最多，求最顺手</b>：清楚每个 Agent 的强项与边界，比囤一堆更管用。</p>
+        <p>🛡 <b>能力越大，边界越清</b>：最小数据、最小权限、人工复核、可随时停止。</p>
+      </div>
+      <div class="closing-actions">
+        <a class="src-link" href="part1.html" target="_blank" rel="noopener">序章 · 智能与流派 ↗</a>
+        <a class="src-link" href="part2.html" target="_blank" rel="noopener">前世今生 ↗</a>
+        <a class="src-link" href="part9.html" target="_blank" rel="noopener">AI机械臂 · Agent 实战 ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 AI纪元 · AI 分享系列 — 从智能的定义到 Agent 的实战</p>
+  </footer>
+
+  <script>
+    // 滚动进度条
+    const progress = document.getElementById('progress');
+    const onScroll = () => {
+      const h = document.documentElement;
+      const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight);
+      progress.style.width = (scrolled * 100) + '%';
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // 滚动浮现
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach((el) => io.observe(el));
+  </script>
+</body>
+
+</html>
