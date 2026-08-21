@@ -8757,3 +8757,266 @@ body.collaboration-dialog-open {
 .safety-shield small {
     color: var(--part9-muted);
 }
+
+/* 建立统一业务入口：WorkBuddy 添加钉钉连接器 */
+.workbuddy-connector-guide {
+    margin: var(--space-xl) 0 var(--space-2xl);
+    padding: var(--space-xl);
+    background: linear-gradient(145deg, #F2F7FC 0%, #FBFDFE 58%, #F7F3F0 100%);
+    border: 1px solid #CBD9E7;
+    border-left: 6px solid #3D78B8;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.connector-guide-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+.connector-guide-head > div:first-child > span,
+.connector-test-copy > span {
+    display: block;
+    margin-bottom: 7px;
+    color: #3D6F9F;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+}
+
+.connector-guide-head h3 {
+    margin: 0 0 var(--space-sm);
+    color: #294E73;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+.connector-guide-head p,
+.connector-test-copy p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.84rem;
+    line-height: 1.82;
+}
+
+.connector-ready-chip {
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 12px;
+    color: #236447;
+    background: #EFFAF4;
+    border: 1px solid #BFDCCB;
+    border-radius: 999px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.connector-ready-chip b {
+    width: 9px;
+    height: 9px;
+    background: #18B665;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(24, 182, 101, 0.13);
+}
+
+.connector-path-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+}
+
+.connector-path-grid article {
+    position: relative;
+    min-width: 0;
+    padding: var(--space-lg);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid #D4E0EC;
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 22px rgba(50, 89, 126, 0.06);
+}
+
+.connector-path-grid article:not(:last-child)::after {
+    position: absolute;
+    top: 22px;
+    right: -13px;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    color: #507AA4;
+    background: #FFFFFF;
+    border: 1px solid #CAD8E6;
+    border-radius: 50%;
+    content: "→";
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.connector-path-grid article > span {
+    display: inline-grid;
+    place-items: center;
+    width: 32px;
+    height: 22px;
+    color: #FFFFFF;
+    background: #437DB8;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-weight: 800;
+}
+
+.connector-path-grid h4 {
+    margin: 10px 0 6px;
+    color: var(--text-primary);
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1rem;
+}
+
+.connector-path-grid p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.75;
+}
+
+.connector-guide-shot {
+    margin: var(--space-lg) 0 0;
+}
+
+.connector-guide-shot .article-image-button {
+    background: #FFFFFF;
+    border-color: #C9D7E5;
+}
+
+.connector-guide-shot figcaption {
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 0.68rem;
+    text-align: right;
+}
+
+.connector-test-box {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.35fr);
+    gap: var(--space-xl);
+    align-items: center;
+    margin-top: var(--space-xl);
+    padding: var(--space-lg);
+    color: #FFFFFF;
+    background: linear-gradient(135deg, #27313B, #303E4B);
+    border-radius: var(--radius-lg);
+}
+
+.connector-test-copy h4 {
+    margin: 0 0 7px;
+    color: #FFFFFF;
+    font-family: 'Noto Serif SC', serif;
+    font-size: 1.05rem;
+}
+
+.connector-test-copy p {
+    color: #CAD4DE;
+    font-size: 0.78rem;
+}
+
+.connector-test-copy > span {
+    color: #8FC1EF;
+}
+
+.connector-test-command {
+    position: relative;
+    min-width: 0;
+}
+
+.connector-test-command .skill-copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 2;
+    color: #DCEEFF;
+    background: rgba(77, 139, 197, 0.2);
+    border-color: rgba(143, 193, 239, 0.48);
+}
+
+.connector-test-command pre {
+    margin: 0;
+    padding: 46px var(--space-md) var(--space-md);
+    overflow-x: auto;
+    color: #EAF4FD;
+    background: #1E252C;
+    border: 1px solid #475767;
+    border-radius: var(--radius-md);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.75;
+    white-space: pre-wrap;
+}
+
+.connector-test-command code {
+    font: inherit;
+}
+
+.connector-guardrails {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-sm);
+    margin: var(--space-lg) 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.connector-guardrails li {
+    padding: var(--space-md);
+    color: #53606D;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid #D7E0E9;
+    border-radius: var(--radius-md);
+    font-size: 0.74rem;
+    line-height: 1.7;
+}
+
+.connector-guardrails strong {
+    color: #315F89;
+}
+
+@media (max-width: 860px) {
+    .connector-guide-head,
+    .connector-test-box {
+        grid-template-columns: 1fr;
+    }
+
+    .connector-ready-chip {
+        justify-self: start;
+    }
+}
+
+@media (max-width: 700px) {
+    .workbuddy-connector-guide {
+        padding: var(--space-lg);
+    }
+
+    .connector-path-grid,
+    .connector-guardrails {
+        grid-template-columns: 1fr;
+    }
+
+    .connector-path-grid article:not(:last-child)::after {
+        top: auto;
+        right: 50%;
+        bottom: -13px;
+        transform: translateX(50%) rotate(90deg);
+    }
+
+    .connector-guide-shot figcaption {
+        text-align: left;
+    }
+}

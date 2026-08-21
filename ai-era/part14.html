@@ -115,11 +115,88 @@
         <section class="chapter-section fade-in" id="asset-classification">
             <div class="section-label">00 · 基础框架</div>
             <h2>不良资产分类体系</h2>
-            <p class="section-intro">在展开参与方和AMC角色之前，先理解个贷不良资产本身的分类框架。监管和实务中对不良资产按债务类型、担保方式、资产形态划分为不同的子类别，这直接影响定价、处置策略和合规边界。</p>
+            <p class="section-intro">先把个贷不良放回完整的资产坐标中理解：资产首先分为正常类的良资产与不良资产，不良资产再按五级分类落入次级、可疑、损失三类，并继续按债务主体分为个贷与对公。这个层级决定后续的准入、估值、资金安排与处置路径。</p>
+
+            <figure class="asset-class-diagram" aria-labelledby="asset-tree-caption">
+                <figcaption id="asset-tree-caption">
+                    <span>ASSET CLASSIFICATION</span>
+                    <strong>从全部资产定位到两类不良资产</strong>
+                    <small>先看监管分类，再看债务主体与经营口径；连接线仅辅助理解，文字层级即完整阅读顺序。</small>
+                </figcaption>
+                <ul class="asset-hierarchy">
+                    <li class="asset-root-item">
+                        <div class="hierarchy-node root-node">
+                            <span>总口径</span>
+                            <strong>资产</strong>
+                            <small>Asset</small>
+                        </div>
+                        <ul class="asset-primary-branches">
+                            <li class="healthy-branch">
+                                <div class="hierarchy-node healthy-node">
+                                    <span>正常类</span>
+                                    <strong>良资产</strong>
+                                    <small>按约履行、风险尚未显著暴露</small>
+                                </div>
+                            </li>
+                            <li class="npl-branch">
+                                <div class="hierarchy-node npl-node">
+                                    <span>次级 · 可疑 · 损失</span>
+                                    <strong>不良资产</strong>
+                                    <small>Non-performing Assets / NPL</small>
+                                </div>
+                                <ul class="npl-subject-branches">
+                                    <li class="retail-branch">
+                                        <div class="hierarchy-node subject-node retail-node">
+                                            <span>按债务主体</span>
+                                            <strong>个贷</strong>
+                                        </div>
+                                        <ul class="classification-leaves">
+                                            <li>
+                                                <div class="hierarchy-node leaf-node retail-leaf">
+                                                    <strong>零售个人不良</strong>
+                                                    <span class="hierarchy-label-en" lang="en">Retail / Personal NPL</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="corporate-branch">
+                                        <div class="hierarchy-node subject-node corporate-node">
+                                            <span>按债务主体</span>
+                                            <strong>对公</strong>
+                                        </div>
+                                        <ul class="classification-leaves">
+                                            <li>
+                                                <div class="hierarchy-node leaf-node corporate-leaf">
+                                                    <strong>对公非零售不良</strong>
+                                                    <span class="hierarchy-label-en" lang="en">Corporate / Non-retail NPL</span>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </figure>
+
+            <div class="classification-detail-heading">
+                <span>明细口径</span>
+                <div>
+                    <h3>两类资产的常见实务形态</h3>
+                    <p>以下 R-01 至 R-04、C-01 至 C-07 是经营与处置视角下的进一步拆分。</p>
+                </div>
+            </div>
 
             <div class="asset-class-tree">
                 <article class="retail">
-                    <h3><span>1</span>零售个人不良（Retail / Personal NPL）</h3>
+                    <h3>
+                        <span class="class-number">1</span>
+                        <span class="class-title">
+                            <span class="class-title-zh">零售个人不良</span>
+                            <span class="class-title-en" lang="en">Retail / Personal NPL</span>
+                        </span>
+                    </h3>
                     <div class="class-item">
                         <header>
                             <span class="class-code">R-01</span>
@@ -170,7 +247,13 @@
                     </div>
                 </article>
                 <article class="corporate">
-                    <h3><span>2</span>对公非零售不良（Corporate / Non-retail NPL）</h3>
+                    <h3>
+                        <span class="class-number">2</span>
+                        <span class="class-title">
+                            <span class="class-title-zh">对公非零售不良</span>
+                            <span class="class-title-en" lang="en">Corporate / Non-retail NPL</span>
+                        </span>
+                    </h3>
                     <div class="class-item">
                         <header>
                             <span class="class-code">C-01</span>
@@ -258,55 +341,18 @@
                 </article>
             </div>
 
-            <div class="asset-class-diagram">
-                <h3>不良资产分类体系总览</h3>
-                <div class="tree-root">
-                    <div class="tree-node-root">不良资产（NPL）</div>
-                    <div class="tree-branch"></div>
-                    <div class="tree-level">
-                        <div class="tree-level-item">
-                            <div class="tree-level-card retail">
-                                <strong>零售个人不良</strong>
-                                <small>面向个人的消费、经营、住房贷款违约</small>
-                            </div>
-                            <div class="tree-sub-items">
-                                <div class="tree-sub-item"><strong>R-01</strong>住房按揭</div>
-                                <div class="tree-sub-item"><strong>R-02</strong>消费信用</div>
-                                <div class="tree-sub-item"><strong>R-03</strong>经营贷款</div>
-                                <div class="tree-sub-item"><strong>R-04</strong>汽车消费</div>
-                            </div>
-                        </div>
-                        <div class="tree-level-item">
-                            <div class="tree-level-card corporate">
-                                <strong>对公非零售不良</strong>
-                                <small>面向企业的贷款、担保、投资及相关资产</small>
-                            </div>
-                            <div class="tree-sub-items">
-                                <div class="tree-sub-item"><strong>C-01</strong>贷款债权</div>
-                                <div class="tree-sub-item"><strong>C-02</strong>垫款债权</div>
-                                <div class="tree-sub-item"><strong>C-03</strong>租赁债权</div>
-                                <div class="tree-sub-item"><strong>C-04</strong>投资债权</div>
-                                <div class="tree-sub-item"><strong>C-05</strong>抵债实物</div>
-                                <div class="tree-sub-item"><strong>C-06</strong>抵债股权</div>
-                                <div class="tree-sub-item"><strong>C-07</strong>其他特殊</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="governance-warning">
                 <span>实务提示</span>
-                <p><strong>分类决定处置策略：</strong>零售类（R-01至R-04）以批量处置和AI智能催收为主；对公类（C-01至C-07）需要逐户尽调、差异化重组和司法路径组合。不同子类的资金成本、回收周期和风险特征差异显著，AMC必须在买入前完成分类识别和策略匹配。</p>
+                <p><strong>分类不是贴标签，而是买包决策的起点：</strong>零售类（R-01至R-04）通常采用组合级估值、批量分层与合规智能运营；对公类（C-01至C-07）更依赖逐户尽调、担保物核验、重组谈判与司法路径。AMC必须在报价前识别资产所属层级，并让资金期限、资本成本和回收策略与风险特征匹配。</p>
             </div>
         </section>
 
         <section class="chapter-section fade-in" id="ecosystem">
             <div class="section-label">01 · 生态全景</div>
-            <h2>个贷不良资产的参与方有哪些？</h2>
-            <p class="section-intro">参与者可以分成五层：治理监管、资产供给、交易承接、处置执行、债务与权益主体。下面的图只画主干关系，把专业服务机构放在支撑层，避免连线交叉成一团。</p>
+            <h2 class="ecosystem-title"><span>个贷不良资产的</span><span>参与方有哪些？</span></h2>
+            <p class="section-intro">这张图把六类角色分开：资产出让方负责形成真实出售，交易基础设施承接挂牌与交割，项目投资方和合规融资提供方只向AMC提供买包资金，AMC以持牌买方身份独立定价并履行持牌受让、消费者保护和委外治理责任，同时承担自身实际出资对应的风险；处置网络则在授权范围内执行回收。资本参与不等于资产出让，也不等于取得持牌受让资格。</p>
 
-            <div class="ecosystem-map" role="img" aria-label="个贷不良资产参与方及关系图">
+            <div class="ecosystem-map" aria-label="个贷不良资产参与方、资产流与资金流关系图">
                 <div class="map-layer-title">治理与规则层 · 定规则、做监管、护权益</div>
                 <div class="governance-row">
                     <div class="map-node gov"><span>🏛️</span><strong>国务院及地方政府</strong><small>风险化解与地方协调</small></div>
@@ -320,28 +366,57 @@
 
                 <div class="main-flow">
                     <div class="flow-stage source-stage">
-                        <div class="stage-badge">资产源</div>
+                        <div class="stage-badge">资产出让方</div>
                         <div class="map-node source"><strong>商业银行</strong><small>信用卡、消费贷、经营贷</small></div>
                         <div class="map-node source"><strong>消费金融公司</strong><small>个人消费信用资产</small></div>
                         <div class="map-node source"><strong>汽车金融 / 信托等</strong><small>按现行资格与试点范围参与</small></div>
                     </div>
-                    <div class="flow-arrow" aria-hidden="true"><span>真实出售</span>→</div>
+                    <div class="flow-arrow"><span>资产包真实出售</span><b aria-hidden="true">→</b></div>
                     <div class="flow-stage infra-stage">
                         <div class="stage-badge">交易基础设施</div>
                         <div class="map-node infra"><strong>银行业信贷资产登记流转中心</strong><small>挂牌、登记、信息披露与交易服务</small></div>
                         <div class="map-node infra"><strong>尽调 / 估值 / 审计</strong><small>验证数据、合同与现金流</small></div>
                     </div>
-                    <div class="flow-arrow" aria-hidden="true"><span>竞价交割</span>→</div>
+                    <div class="flow-arrow"><span>挂牌竞价与交割</span><b aria-hidden="true">→</b></div>
                     <div class="flow-stage amc-stage">
-                        <div class="stage-badge">风险承接中枢</div>
+                        <div class="stage-badge">持牌买方 · 风险承接中枢</div>
+                        <div class="capital-panel" aria-label="AMC资产包购买资金来源">
+                            <div class="capital-panel-heading">
+                                <span>买包资金进入 AMC</span>
+                                <small>资本角色不出售资产，也不因出资取得持牌受让资格</small>
+                            </div>
+                            <div class="capital-sources">
+                                <div class="capital-node investor-node">
+                                    <span>项目资本</span>
+                                    <strong>项目投资方 / 共同投资人</strong>
+                                    <small>按实际投入资本和项目约定分享收益、承担项目损失</small>
+                                </div>
+                                <div class="capital-node finance-node">
+                                    <span>合规融资</span>
+                                    <strong>配资方 / 融资提供方</strong>
+                                    <small>依法提供融资并承担AMC信用风险，按约收回本金并取得利息</small>
+                                </div>
+                            </div>
+                            <div class="funding-flow-labels" aria-label="资金流向">
+                                <span>项目投资</span>
+                                <b>资金注入 AMC</b>
+                                <span>融资放款</span>
+                            </div>
+                        </div>
                         <div class="map-node amc-core">
                             <span class="amc-mark">AMC</span>
-                            <strong>全国性金融 AMC</strong>
-                            <strong>地方 AMC</strong>
-                            <small>持牌受让、真实出资、全周期担责</small>
+                            <strong>全国性金融 AMC / 地方 AMC</strong>
+                            <div class="amc-accountability">
+                                <span>持牌受让责任</span>
+                                <span>定价与处置决策</span>
+                                <span>消费者保护</span>
+                                <span>委外机构管理</span>
+                                <span>自有出资风险</span>
+                            </div>
+                            <small>AMC以自身名义完成受让、定价和处置决策，履行消费者保护与委外管理责任，并承担自身实际投入资本对应的风险</small>
                         </div>
                     </div>
-                    <div class="flow-arrow" aria-hidden="true"><span>授权管理</span>→</div>
+                    <div class="flow-arrow"><span>AMC授权并监督</span><b aria-hidden="true">→</b></div>
                     <div class="flow-stage recovery-stage">
                         <div class="stage-badge">处置网络</div>
                         <div class="map-node recovery"><strong>自营 / 受托催收</strong><small>触达、协商、分层运营</small></div>
@@ -383,12 +458,13 @@
 
                 <div class="support-rail">
                     <span class="support-title">贯穿全程的其他支撑机构</span>
-                    <span>公证与仲裁</span><span>律师与司法鉴定</span><span>评估与拍卖</span><span>科技与模型服务</span><span>行业协会</span><span>资金提供方</span>
+                    <span>公证与仲裁</span><span>律师与司法鉴定</span><span>评估与拍卖</span><span>科技与模型服务</span><span>行业协会</span>
                 </div>
             </div>
 
             <div class="map-legend">
                 <span><i class="legend-dot asset"></i>资产与债权流</span>
+                <span><i class="legend-dot capital"></i>投资与融资资金流</span>
                 <span><i class="legend-dot control"></i>监管与责任流</span>
                 <span><i class="legend-dot service"></i>授权服务关系</span>
             </div>
@@ -401,16 +477,21 @@
                 </article>
                 <article class="stakeholder-card">
                     <span class="card-index">B</span>
-                    <h3>持牌承接方</h3>
-                    <p>AMC不是过一道手，而是以自有判断完成定价、出资和处置，承担债权人及委外管理责任。</p>
+                    <h3>资本合作方</h3>
+                    <p>项目投资方与共同投资人按实际出资和项目约定分享损益；配资方与融资提供方承担AMC信用风险，按约收回本金和利息。两类资本都不替代AMC的牌照与核心决策责任。</p>
                 </article>
                 <article class="stakeholder-card">
                     <span class="card-index">C</span>
+                    <h3>持牌承接方</h3>
+                    <p>AMC不是过一道手，而是持牌受让方和定价、处置决策人；它负责消费者保护与委外机构管理，并承担自身实际投入资本对应的风险。</p>
+                </article>
+                <article class="stakeholder-card">
+                    <span class="card-index">D</span>
                     <h3>执行协同方</h3>
                     <p>催收、调解、律所与法院解决的是不同强度、不同争议程度的案件，不能用单一动作覆盖全部账户。</p>
                 </article>
                 <article class="stakeholder-card">
-                    <span class="card-index">D</span>
+                    <span class="card-index">E</span>
                     <h3>债务与权益主体</h3>
                     <p>借款人不是“处置对象编号”。身份、债务、联系信息、减免方案与投诉记录都要可验证、可解释、可纠错。</p>
                 </article>

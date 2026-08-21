@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="part9.css?v=20260817-3" />
+    <link rel="stylesheet" href="part9.css?v=20260820-1" />
   </head>
 
   <body>
@@ -1918,6 +1918,97 @@
           仓库，把标准流程和业务能力持续装进这个入口。
         </div>
 
+        <section
+          class="workbuddy-connector-guide"
+          aria-labelledby="workbuddy-dingtalk-title"
+        >
+          <div class="connector-guide-head">
+            <div>
+              <span>WORKBUDDY · DINGTALK CONNECTOR</span>
+              <h3 id="workbuddy-dingtalk-title">先把钉钉连接到 WorkBuddy</h3>
+              <p>
+                连接器负责把 WorkBuddy 的自然语言任务转换为钉钉中的只读查询或受控操作。
+                首次使用先完成连接，再安装公司 Skill，后续查询知识、整理需求和创建任务才有真实的数据入口。
+              </p>
+            </div>
+            <div class="connector-ready-chip">
+              <b aria-hidden="true"></b>绿色状态点 = 已连接
+            </div>
+          </div>
+
+          <div class="connector-path-grid" aria-label="添加钉钉连接器步骤">
+            <article>
+              <span>01</span>
+              <h4>进入连接器</h4>
+              <p>
+                在 WorkBuddy 左侧打开“专家 · 技能 · 连接器”，再切换到顶部的“连接器”页签。
+              </p>
+            </article>
+            <article>
+              <span>02</span>
+              <h4>搜索并添加钉钉</h4>
+              <p>
+                在右上角搜索框输入“钉钉”，找到钉钉卡片后点击卡片或其连接入口，开始配置。
+              </p>
+            </article>
+            <article>
+              <span>03</span>
+              <h4>登录、授权并确认</h4>
+              <p>
+                按页面引导完成账号登录和授权；返回列表后，钉钉名称旁出现绿色状态点，说明连接器已经启用。
+              </p>
+            </article>
+          </div>
+
+          <figure class="connector-guide-shot">
+            <button
+              class="article-image-button"
+              type="button"
+              data-zoom-src="source/workbuddy-dingtalk-connector.png"
+            >
+              <img
+                src="source/workbuddy-dingtalk-connector_web.png"
+                alt="WorkBuddy 连接器页面搜索钉钉并显示已连接状态"
+                loading="lazy"
+                width="1600"
+                height="328"
+              />
+              <span>搜索“钉钉”，确认绿色状态点 · 点击图片放大</span>
+            </button>
+            <figcaption>
+              菜单位置和按钮名称可能随版本调整，以当前 WorkBuddy 界面为准。
+            </figcaption>
+          </figure>
+
+          <div class="connector-test-box">
+            <div class="connector-test-copy">
+              <span>READ-ONLY CHECK</span>
+              <h4>连接后先做一次只读验证</h4>
+              <p>
+                新建任务，将下面的指令发给 WorkBuddy。能返回你有权限访问的文档标题，且没有发生写操作，就说明基础连接可用。
+              </p>
+            </div>
+            <div class="connector-test-command">
+              <button
+                class="skill-copy-button"
+                type="button"
+                data-copy-target="workbuddy-dingtalk-check"
+              >
+                复制指令
+              </button>
+              <pre id="workbuddy-dingtalk-check"><code>请检查钉钉连接器是否可用。
+只做只读测试：列出我最近可访问的 3 个钉钉文档标题。
+不要创建、修改、移动或删除任何内容；如果权限不足，请说明缺少哪项授权。</code></pre>
+            </div>
+          </div>
+
+          <ul class="connector-guardrails">
+            <li><strong>最小授权：</strong>只开放当前业务确实需要的文档、表格或日历能力。</li>
+            <li><strong>先读后写：</strong>首次验证只做查询；创建、更新、删除前必须先给出预览。</li>
+            <li><strong>遇到失败：</strong>先检查绿色状态点、账号权限和组织范围，再重新连接。</li>
+          </ul>
+        </section>
+
         <figure class="workbuddy-setting-callout">
           <div class="workbuddy-setting-copy">
             <span>WORKBUDDY · BUSINESS FRONT DOOR</span>
@@ -2263,7 +2354,7 @@
               <div class="skill-example-card-head">
                 <div>
                   <span>EXAMPLE 05</span>
-                  <h4>启动只读排障采集</h4>
+                  <h4>排查自动入账异常</h4>
                 </div>
                 <button
                   class="skill-copy-button"
@@ -2275,13 +2366,16 @@
               </div>
               <p class="skill-example-purpose">
                 <strong>使用：</strong><code>/chenshang-why</code> ·
-                <strong>你会看到：</strong>最小信息清单和可转发的脱敏采集模板。
+                <strong>你会看到：</strong>基于时间窗、批次号和日志证据的只读排查结论。
               </p>
               <pre id="skill-example-05"><code>/chenshang-why
-请以只读方式帮助我排查“接口偶发超时”。
-目前没有 traceId。请先列出定位问题所需的最小信息，并生成一份可直接转给同事填写的脱敏采集模板。
-不要查询生产，不要猜测根因，不要要求密码、Token、完整手机号、身份证号或其他敏感信息。
-最后输出：采集清单、脱敏模板、拿到信息后的排查步骤、停止条件。</code></pre>
+为什么 2026 年 8 月 20 日前后出现以下异常？
+服务异常：执行工单自动入账异常，请检查数据一致性。批次号：20260817164645475
+
+请仅查询我有权限访问的日志和业务记录，围绕 2026 年 8 月 20 日前后的时间窗及该批次号，核对工单执行状态、自动入账记录、数据一致性校验结果和相关调用链。
+注意批次号中包含“20260817”，请判断它与异常出现时间是否存在延迟处理、重试或跨日执行关系，不要直接假定两者发生在同一天。
+不要修改、补录、重跑或删除任何数据，不要猜测根因，也不要要求密码、Token 或其他敏感信息。
+最后输出：结论摘要、证据与来源、事件时间线、可能原因及置信度、影响范围、建议的下一步；如果证据不足，请明确列出仍缺少的信息。</code></pre>
             </article>
           </div>
           <p class="skill-example-footnote" role="note">

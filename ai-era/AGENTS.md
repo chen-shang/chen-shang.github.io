@@ -1,123 +1,38 @@
-# CLAUDE.md
+# Repository Guidelines
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Project Structure & Module Organization
 
-## Project Overview
+本仓库是“AI 纪元”中文静态站点，不使用框架、包管理器或服务端。`index-all.html` 是内容入口；主文章位于根目录，按 `partN.html` 命名，专题及工具连接教程使用 `dartmouth.html`、`connect-*.html`、`mcp-db-email.html` 等描述性名称。公共样式和交互分别维护在 `styles.css`、`scripts.js`；页面特有样式使用对应文件，如 `part8.html` 搭配 `part8.css`。图片、截图统一放入 `source/`。`css/learning-map.css` 和 `js/learning-map.js` 属于旧版资源，除修复遗留页面外不要继续扩展。
 
-"AI纪元" (AI Era) is a static, single-page educational website consisting of 12 HTML articles that form a comprehensive Chinese-language series about Artificial Intelligence. The content spans from AI fundamentals (definitions, history, machine learning) to advanced topics (LLMs, AI Agents, Vibe Coding, AI Jailbreaking), plus a special article on the 1956 Dartmouth Conference. There is no build system, no framework, no tests — it's a collection of hand-crafted HTML files with inline CSS and JavaScript.
+## Build, Test, and Development Commands
 
-## Directory Structure
+项目无需构建或安装依赖。可直接打开 HTML；涉及跨页面链接或浏览器调试时，在仓库根目录运行：
 
-```
-AI/
-├── index-all.html          # Table of contents / landing page (12 cards linking to all articles)
-├── index-all.css           # Landing page styles
-├── styles.css              # Global/shared styles for all article pages (1270 lines, CSS variables, card components, typography)
-├── scripts.js              # Shared JavaScript: scroll animations, nav highlight, smooth anchor scrolling
-├── part1.html              # 序章: AI的定义与三大流派 (symbolic/connectionist/behaviorist)
-├── part2.html              # 第1章: AI的前世今生 (interactive timeline 1936-2026, echarts waveform chart, particle canvas)
-├── part3.html              # 第2章: 机器学习扫盲
-├── part4.html              # 第3章: 深度学习扫盲
-├── part4-llm.html          # 第4章: 大语言模型 (LLM deep-dive)
-├── part5.html              # 第5章: 脉冲神经网络 SNN
-├── part6.html              # 第6章: AI Agent扫盲
-├── part7.html              # 第7章: AI Agent开发 (MCP, LangChain)
-├── part8.html              # 第8章: Vibe Coding
-├── part9.html              # 第9章: Harness
-├── part10.html             # 第10章: AI越狱
-├── dartmouth.html          # 特别篇: 1956达特茅斯会议
-├── css/
-│   └── learning-map.css    # (deprecated) old learning map styles
-├── js/
-│   └── learning-map.js     # (deprecated) old learning map script
-└── source/                  # Images (images, icons)
+```bash
+python3 -m http.server 8011
 ```
 
-## Architecture & Patterns
+访问 `http://localhost:8011/index-all.html`，不要占用 8080 端口。提交前运行：
 
-### Page Structure (every article page follows the same skeleton)
+```bash
+git diff --check
+git status --short
+```
 
-1. **`<head>`** — Chinese meta tags, Google Fonts (Noto Serif SC + Noto Sans SC + JetBrains Mono), `styles.css` (shared), then an optional page-specific `.css` file
-2. **`<nav class="navbar">`** — Sticky top nav bar with logo link to `index-all.html` + 11 article links. Each page marks its own link with `class="active"`
-3. **`<main class="main-content">`** — Article body
-   - **Hero header**: `<header class="article-header">` with article number badge, title, meta info
-   - **Sections**: `<section class="chapter-section fade-in">` containing content
-4. **`<footer class="footer">`** — Simple copyright + prev/next links
+前者检查空白和冲突标记问题，后者确认没有提交日志、临时截图或无关文件。
 
-### Shared CSS Components (defined in `styles.css`)
+## Coding Style & Naming Conventions
 
-- `.word-card`, `.etymology-grid`, `.etymology-card` — for language/etymology content
-- `.compare-container` / `.compare-column` — East vs West comparison layouts
-- `.argument-card` — argument/explanation cards with colored top borders
-- `.type-cards` / `.type-card` — AI type cards (ANI/AGI/ASI)
-- `.routes-container` / `.route-card` — route/explanation cards
-- `.streams-container` / `.stream-card` — AI school cards (symbolic/connectionist/behaviorist)
-- `.summary-box` — highlighted summary callout
-- `.conclusion-box` — centered conclusion text
-- `.quote-block` — styled blockquote
-- `.convergence-box` — convergence insight callout
-- `.article-nav` — prev/next navigation buttons
-- `.section-label` — decorative section headers
+沿用现有四空格缩进和语义化 HTML5，页面保留 `lang="zh-CN"`、viewport、图片 `alt` 与交互元素的 ARIA 属性。CSS 类名使用 kebab-case，优先复用 `styles.css` 的变量和组件；仅页面专用规则放入 `partN.css` 或同名样式文件。共享 JavaScript 写入 `scripts.js`，单页交互才使用内联脚本。正文、注释和导航文案以中文为主。
 
-### Page-Specific CSS Files
+## Testing Guidelines
 
-Each article that has extra interactive elements or specialized layouts loads an additional `.css` file (naming convention: `partN.css` or `part4-llm.css`). These are **not** shared — they're tightly coupled to their page. Key unique features:
+仓库暂无自动化测试，所有修改都需浏览器人工验证。至少检查目标页面与 `index-all.html`，并覆盖桌面和小于 768px 的窄屏。确认导航高亮、目录、锚点、前后篇链接、图片路径、滚动动画及控制台无报错。视觉调整应保留修改前后截图供评审。
 
-- **part2.css**: Timeline layout with alternating left/right nodes, phase separators, dartmouth expansion cards, echarts chart container, particle canvas styles, AI winter chart styles, scientist cards
-- **part4-llm.css**: Dense vs MoE comparison cards, SVG visualizations, inference flow steps, tech grids, topic lists, term grids, definition grids, scene grids, formula boxes, algo section cards, code styling
+## Commit & Pull Request Guidelines
 
-### Interactivity
+历史提交多为简短的 `fix`，尚无强制规范。新提交建议使用简洁、祈使式且带范围的格式，例如 `fix(part7): correct MCP terminology`。PR 应列出受影响文件、修改目的、人工验证步骤和关联 issue；视觉变更附截图，事实性内容修订附权威来源与核对日期，避免夹带无关改动。
 
-- **`scripts.js`**: IntersectionObserver scroll animations, active nav highlighting, smooth anchor scrolling
-- **part2.html**: Embedded inline JS for particle canvas background + ECharts heatmap waveform chart (AI popularity over time). No external dependencies besides ECharts CDN.
-- Each page-specific CSS file may have associated inline `<script>` blocks
+## Content, Navigation & Security
 
-### Design System
-
-- **Color palette**: Warm coral (`--primary-hue: 16`), warm gold accent, warm beige backgrounds, muted text tones
-- **Typography**: Noto Serif SC for headings, Noto Sans SC for body, JetBrains Mono for code/technical
-- **Responsive**: Single `@media (max-width: 768px)` breakpoint in `styles.css` that collapses grids to single column
-- **Print styles**: Navigation, article nav, and footer hidden when printing
-
-## Working With This Project
-
-### Viewing pages
-
-Open any `.html` file directly in a browser (no server required). For best results, open `index-all.html` as the entry point.
-
-### Adding a new article or modifying content
-
-1. Copy an existing article's structure (head/nav/main/footer skeleton)
-2. Update the `<title>`, article number, and content
-3. Ensure the nav bar has the correct `class="active"` on the new page
-4. Add a card entry to `index-all.html`'s `<div class="grid">`
-5. If the page needs specialized styles, create `partN.css` and reference it in `<head>`
-
-### Creating page-specific CSS
-
-- If the page uses only shared components from `styles.css`, no additional CSS needed
-- If you need custom layouts/components, create a `partN.css` file and follow the pattern: define scoped overrides without breaking `styles.css` variables
-- The part4-llm.css shows the pattern for complex technical content: `algo-section-card`, `tech-grid`, `tech-card`, `def-grid`, `def-card`, `viz-card`, `viz-svg-container`, `scene-grid`, `scene-card`, `inference-flow`, `flow-steps`, `stage-timeline`, `stage-item`, `topic-list`, `term-grid`, `term-item`, `two-col`
-
-### Navigation updates
-
-When adding/removing pages, remember to update:
-
-1. The nav bar (`<nav class="navbar">` in all articles)
-2. The card grid in `index-all.html`
-3. The footer prev/next links in adjacent articles
-
-### Images
-
-All images are in the `source/` directory. References to images appear as inline `<img>` tags with paths like `source/达特会议.webp`.
-
-## Key Conventions
-
-- All content is in Chinese (zh-CN)
-- No build tools, no package managers, no test framework
-- CSS is written inline in stylesheets — no CSS-in-JS, no preprocessors
-- JavaScript is minimal and embedded either in `scripts.js` or inline `<script>` blocks
-- All files are standalone — no templating engine or server-side processing needed
-- The site is designed to be deployed as static files (e.g., via GitHub Pages, Netlify drop, or any static host)
-
-如果你要启动服务，请不要占用8080端口，可以使用8011端口
+新增、删除或重排文章时，同步更新入口卡片、各页顶部导航及相邻文章的前后篇链接。不要提交密钥、账号、真实个人信息、本地配置或调试产物；外部产品界面与时效性信息应注明核对日期。

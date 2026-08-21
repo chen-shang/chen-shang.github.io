@@ -68,11 +68,14 @@
             background-clip: text;
             margin-bottom: 0.75rem;
         }
-        .hero p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            max-width: 500px;
-            margin: 0 auto;
+         .hero p {
+             color: var(--text-secondary);
+             font-size: 1.05rem;
+             max-width: 500px;
+             margin: 0 auto;
+             word-break: keep-all;
+             overflow-wrap: normal;
+             text-wrap: pretty;
         }
         /* Grid */
         .container {
@@ -130,12 +133,15 @@
             margin-bottom: 0.5rem;
             line-height: 1.4;
         }
-        .card p {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-            flex: 1;
-        }
+         .card p {
+             font-size: 0.85rem;
+             color: var(--text-secondary);
+             line-height: 1.6;
+             flex: 1;
+             word-break: keep-all;
+             overflow-wrap: normal;
+             text-wrap: pretty;
+         }
         .card-meta {
             margin-top: 0.75rem;
             font-size: 0.75rem;
