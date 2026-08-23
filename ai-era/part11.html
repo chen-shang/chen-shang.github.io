@@ -12,9 +12,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="part11.css">
+    <link rel="stylesheet" href="article-theme.css?v=20260823">
 </head>
 
-<body>
+<body class="article-page" data-hero-tone="cobalt">
     <!-- 导航栏 -->
     <nav class="navbar" aria-label="文章导航">
         <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
@@ -66,7 +67,7 @@
 
 
         <!-- Hero Section -->
-        <section class="hero-section">
+        <header class="hero-section article-hero">
             <span class="hero-badge">🛠️ 工程演进 · 实战理念</span>
             <h1 class="hero-title">AI 工程：从提示词到循环工程的五次跃迁</h1>
             <p class="hero-desc">
@@ -74,7 +75,7 @@
                 而是一条清晰的进化链：模型越强、任务越长，"驾驭 AI"的工程抽象层级就越往上抬。<br>
                 本文拆解 2025–2026 年业界最新实战理念，看懂每一次跃迁为何必然发生。
             </p>
-        </section>
+        </header>
 
         <!-- 核心命题横幅 -->
         <div class="concept-banner">
@@ -1129,6 +1130,15 @@
             </div>
         </div>
 
+        <!-- ============================
+             结尾过渡
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>从提示词到循环工程，五次跃迁打通了 AI 工程化的脉络。<br>理解了这套方法论之后，下一章我们将探讨如何在核心系统中落地 AI Coding 全流程。</p>
+            </div>
+        </section>
+
         <!-- 上下篇导航 -->
         <nav class="article-nav">
             <a href="part10.html" class="nav-button prev">← 第9章 · AI越狱</a>
@@ -1137,7 +1147,7 @@
     </main>
 
     <footer class="footer">
-        <p class="footer-text">© 2026 AI 纪元 - 探索智能的无限可能</p>
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
     </footer>
 
     <script src="scripts.js"></script>

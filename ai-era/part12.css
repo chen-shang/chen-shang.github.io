@@ -10,39 +10,6 @@
     line-height: 1.75;
 }
 
-.toc-bar {
-    position: sticky;
-    top: 72px;
-    z-index: 80;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    max-width: 940px;
-    padding: var(--space-sm);
-    margin: 0 auto var(--space-xl);
-    background: rgba(254, 253, 251, 0.92);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-sm);
-    backdrop-filter: blur(12px);
-}
-
-.toc-bar a {
-    padding: 6px 12px;
-    color: var(--text-secondary);
-    border-radius: var(--radius-xl);
-    font-size: 0.82rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all var(--transition-base);
-}
-
-.toc-bar a:hover {
-    color: var(--primary);
-    background: hsl(var(--primary-hue) 60% 95%);
-}
-
 .chapter-section[id] {
     scroll-margin-top: 140px;
 }
@@ -816,23 +783,6 @@
 }
 
 @media (max-width: 760px) {
-    .toc-bar {
-        position: static;
-        justify-content: flex-start;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        border-radius: var(--radius-md);
-        scrollbar-width: none;
-    }
-
-    .toc-bar::-webkit-scrollbar {
-        display: none;
-    }
-
-    .toc-bar a {
-        flex: 0 0 auto;
-    }
-
     .principle-grid,
     .barrier-grid,
     .risk-grid,

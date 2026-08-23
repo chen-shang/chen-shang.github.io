@@ -221,6 +221,28 @@ body {
     letter-spacing: 0.02em;
 }
 
+.article-number {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--primary);
+    background: hsl(var(--primary-hue) 60% 95%);
+    border: 1px solid var(--border-accent);
+    padding: 4px 16px;
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.08em;
+}
+
+.article-desc {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto var(--space-md);
+}
+
 .article-meta {
     display: flex;
     justify-content: center;

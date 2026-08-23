@@ -109,37 +109,6 @@
     font-size: 0.92rem;
 }
 
-.amc-toc {
-    position: sticky;
-    top: 67px;
-    z-index: 80;
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    margin-bottom: var(--space-2xl);
-    padding: 7px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid #DDE9E9;
-    border-radius: 999px;
-    box-shadow: 0 8px 24px rgba(18, 50, 74, 0.08);
-    backdrop-filter: blur(12px);
-    overflow-x: auto;
-}
-
-.amc-toc a {
-    flex: 0 0 auto;
-    padding: 7px 13px;
-    color: #4F6670;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    text-decoration: none;
-}
-
-.amc-toc a:hover {
-    color: var(--amc-teal);
-    background: var(--amc-teal-soft);
-}
-
 .amc-article .chapter-section {
     scroll-margin-top: 140px;
     margin-bottom: 4.5rem;
@@ -2393,12 +2362,6 @@
 }
 
 @media (max-width: 900px) {
-    .amc-toc {
-        position: static;
-        top: auto;
-        justify-content: flex-start;
-        border-radius: var(--radius-md);
-    }
     .governance-row { grid-template-columns: repeat(3, 1fr); }
     .governance-row .map-node:last-child { grid-column: 2; }
     .stakeholder-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2536,12 +2499,6 @@
     .profit-formula,
     .private-amc-section,
     .org-chart { padding: var(--space-lg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .amc-toc {
-        scroll-behavior: auto;
-    }
 }
 
 /* ==========================================

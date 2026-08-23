@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
     <link rel="stylesheet" href="part2.css">
+    <link rel="stylesheet" href="article-theme.css?v=20260823">
 </head>
 
-<body>
+<body class="article-page" data-hero-tone="amber">
     <!-- Canvas Particle Background -->
     <canvas id="particles"></canvas>
 
@@ -71,15 +72,19 @@
         <section id="ai-timeline">
             <div class="era-inner fade-in-group">
 
-                <div class="era-header fade-in">
-                    <span class="era-year">1936 — 2026+</span>
-                    <h2 class="era-title">AI：从梦想到现实</h2>
-                    <p class="era-desc">
+                <header class="article-header fade-in">
+                    <span class="article-number">第 1 章</span>
+                    <h1 class="article-title">AI：从梦想到现实</h1>
+                    <p class="article-desc">
                         从数学神经元的诞生到 DeepSeek 震撼全球<br>
                         从华为韬定律重新定义半导体演进到中国大模型登顶全球<br>
                         穿越寒冬的火焰，从被质疑到被仰望。
                     </p>
-                </div>
+                    <div class="article-meta">
+                        <span>⏳ 1936 — 2026+</span>
+                        <span>⏱ 交互式时间线</span>
+                    </div>
+                </header>
 
                 <div class="ai-timeline">
 
@@ -1016,9 +1021,20 @@
             </div>
         </section>
 
+        <!-- 结尾过渡 -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>AI 的历史仍在继续。当我们理解了历史的脉络之后，<br>下一章让我们回到基础——理解机器学习是如何让机器从数据中学习的。</p>
+            </div>
+        </section>
+
+        <!-- 上下篇导航 -->
+        <nav class="article-nav">
+            <a href="part1.html" class="nav-button prev">← 序章 · 人工智能</a>
+            <a href="part3.html" class="nav-button">第 2 章 · 机器学习 →</a>
+        </nav>
     </main>
 
-    <!-- 页脚 -->
     <footer class="footer">
         <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
         <div class="footer-links">
@@ -1107,7 +1123,13 @@
         (function () {
             var chartDom = document.getElementById('winter-wave-chart');
             if (!chartDom) return;
-            var chart = echarts.init(chartDom);
+            if (typeof window.echarts === 'undefined') {
+                chartDom.setAttribute('role', 'img');
+                chartDom.setAttribute('aria-label', 'AI 发展热度波形图暂时无法加载');
+                chartDom.textContent = '图表资源暂时无法加载，请稍后刷新页面。';
+                return;
+            }
+            var chart = window.echarts.init(chartDom);
 
             var data = [
                 { year: '1943', label: 'MP模型', heat: 0.3, period: '繁荣' },

@@ -864,6 +864,9 @@
             border-radius: var(--radius-sm);
             margin: var(--space-xs) 0;
             display: inline-block;
+            max-width: 100%;
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
         }
 
         .metric-desc {
@@ -1859,6 +1862,8 @@
             padding: var(--space-lg);
             margin-bottom: var(--space-xl);
             box-shadow: var(--shadow-sm);
+            overflow-x: auto;
+            overscroll-behavior-inline: contain;
         }
 
         .term-demo-title {

@@ -12,9 +12,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="part10.css">
+    <link rel="stylesheet" href="article-theme.css?v=20260823">
 </head>
 
-<body>
+<body class="article-page" data-hero-tone="crimson">
     <!-- 导航栏 -->
     <nav class="navbar" aria-label="文章导航">
         <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
@@ -70,7 +71,7 @@
 
 
         <!-- Hero Section -->
-        <section class="hero-section">
+        <header class="hero-section article-hero">
             <span class="hero-badge">⚔️ 实战安全分析</span>
             <h1 class="hero-title">AI越狱：从理论到实战</h1>
             <p class="hero-desc">
@@ -78,7 +79,7 @@
                 真正的越狱攻击已经转向 Agent 系统、MCP 协议、多模态注入。<br>
                 本文从攻击者视角拆解当前真实有效的越狱手段。
             </p>
-        </section>
+        </header>
 
         <!-- 警示横幅 -->
         <div class="warning-banner">
@@ -1038,13 +1039,21 @@ def handle_request(query):
             </div>
         </div>
 
-    </main>
+        <!-- ============================
+             结尾过渡
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>理解了越狱的原理与防守策略之后，<br>让我们把视角从安全防御转向工程实践——<br>看看当任务变长之后，AI 工程关注点如何逐层上移。</p>
+            </div>
+        </section>
 
-    <!-- 上下篇导航 -->
-    <nav class="article-nav">
-        <a href="part9.html" class="nav-button prev">← 工具篇 · AI机械臂</a>
-        <a href="part11.html" class="nav-button">第10章 · AI工程 →</a>
-    </nav>
+        <!-- 上下篇导航 -->
+        <nav class="article-nav">
+            <a href="part9.html" class="nav-button prev">← 工具篇 · AI机械臂</a>
+            <a href="part11.html" class="nav-button">第10章 · AI工程 →</a>
+        </nav>
+    </main>
 
     <footer class="footer">
         <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>

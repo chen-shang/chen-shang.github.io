@@ -108,11 +108,11 @@
     
     
     <entry>
-      <title>AI Coding Rules</title>
+      <title>AI Skill</title>
       <link href="/2026/04/20/56faf0cc/"/>
       <url>/2026/04/20/56faf0cc/</url>
       
-        <content type="html"><![CDATA[<p><strong>由于 AI Coding Agent 不擅长理解你公司特有的业务逻辑、隐性规则、历史债务和领域术语</strong>，所以至少需要以下规约 <code>business_glossary.md</code>（业务术语表）、<code>domain_rules.md</code>（核心业务规则）。业务术语最好放到扩展记忆中，而规则则写到 md 中，每次请求必须带上。以下是我总结的 Rule 的一些心得。</p><blockquote><p>业务逻辑：比如还款必须按照本关息费的顺序按户冲抵<br>隐性规则：还款预报的匹配必须等值匹配<br>历史债务：账单服务为了财务特意冗余了费率数据，属于不合理的设计。有一些字段已经废弃，但还没有来得及删除清理<br>领域术语：比如事务项-委外还款、退费还款、往来退费还款等</p></blockquote><blockquote><p><strong>【强制】分类书写</strong></p></blockquote><blockquote><p><strong>【强制】分类书写虽是好的，但分类数量不宜过多，否则难以维护。</strong></p></blockquote><p>比如4-5个基本就够用了，如下是我给团队规定的几个文件：</p><pre><code class="hljs bash">.├── 数据库规约.md├── 代码质量规则.md├── 通用开发规则.md├── git协作规则.md└── MEMORY.md</code></pre><hr><blockquote><p><strong>【强制】内容不宜太多，100行以内，否则会导致阅读困难。</strong></p></blockquote><hr><blockquote><p><strong>【强制】只写必要的统一规范，避免重复内容。</strong></p></blockquote><p>现在的AI(基座大模型)已经比较智能了，很多知识已经固化，不必强行约定。</p><p><strong>【反例】</strong> 请不要使用拼音命名。这种规约写了跟没写一样。<br><strong>【正例】</strong> 创建的分支必须包含 <code>ai-</code> 前缀标识。这种你不写 AI 肯定不知道。<br><strong>【正例】</strong> 强调，禁令</p><ul><li>强调型</li></ul><pre><code class="hljs plaintext">严格遵循阿里巴巴 Java 开发手册</code></pre><p>这种属于强调，AI 肯定学习过，但是你不强调，它是不会主动遵守的，但是你不用把 Java 开发手册的内容都一一列出来，只用激活记忆即可。</p><ul><li>禁令型</li></ul><pre><code class="hljs text">- 禁止执行无 WHERE 条件的 UPDATE/DELETE- 禁止在生产环境直接修改数据- 禁止批量操作未先测试单条数据</code></pre><p>这种属于禁令，AI 肯定学习过，但是你不禁用，它是不会主动遵守的。</p><blockquote><p><strong>【强制】不要写无意义的规约。</strong></p></blockquote><hr><blockquote><p><strong>【反例】</strong> 以下是我曾经写过的不合理规约：</p></blockquote><pre><code class="hljs plaintext"># 通用开发规则## 工作态度- 每次工作都要用严谨的工作态度，保证完美的质量标准## 沟通风格- 直接输出代码或方案，禁止客套话（&quot;抱歉&quot;、&quot;我明白了&quot;等）- 除非明确要求，否则不提供代码摘要## 求真原则（禁止瞎猜）- 不确定/信息不足时先查证或提问澄清- 对环境/配置/源码/行为的结论必须有证据- 回答里把&quot;事实&quot;和&quot;推测/假设&quot;分开写即可</code></pre><p>这个规则的问题在于&quot;严谨&quot;、&quot;完美&quot;是无效指令，LLM 无法量化，实际行为不变。</p><blockquote><p>【强制】不要写带有冲突的规约。</p></blockquote><p>需要定期检查，一段时间后固化下来</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="ai-skills-md"><a href="http://ai-skills.md">ai-skills.md</a></h2><p>title: AI skills<br>summary: 首先LLM其实只是个函数，函数嘛，给个输入，就给个输出而已。函数是数学中的概念，数学中的函数就是一个值域到作用域的映射而已。这个函数在加上一点概率论的知识，让输出变得活跃一点、随机一点，输出的概率值严格按照人类给这个函数定义好的格式或范围输出，结果反而涌现出了一定的规律，恰似人类了。<br>author: 陈尚<br>top: false<br>cover: false<br>toc: false<br>mathjax: false<br>tags:</p><ul><li>原创</li><li>未完待续<br>abbrlink: b27c5463<br>date: 2026-06-10 23:26:25<br>img:</li></ul><hr><h1>skills 是怎么一步步发展来的。</h1><p>首先LLM其实只是个函数，函数嘛，给个输入，就给个输出而已。函数是数学中的概念，数学中的函数就是一个值域到作用域的映射而已。这个函数在加上一点概率论的知识，让输出变得活跃一点、随机一点，输出的概率值严格按照人类给这个函数定义好的格式或范围输出，结果反而涌现出了一定的规律，恰似人类了。</p><p><img src="/2026/04/20/56faf0cc/image1.png" alt></p><p>所以LLM仅仅是个函数，啥也干不了。为了能让他帮助我们做事儿，就必须给他赋予一些能力，一些可以使用外部资源的能力。于是我们就给他套一个壳子，这个壳子代理你和LLM对话以及帮LLM根据LLM输出的步骤使用外部资源。这个壳子就叫代理，英文名字就叫 Agent。我们用的cursor 、claude code、opencode、豆包、deepseek 、chatGPT 都是，只要用了LLM的个能够调用外部资源的就是Agent。这种调用外部资源的能力，起了牛逼的名字，就叫 tool call，工具调用。于是我们把外部资源都称之为工具了。</p><p>工具调用有两种，最开始叫函数调用，因为我们总是写一个脚本或者写一个接口，然后告诉LLM我有哪些那脚本、工具 好你去调用吧。于是有了 Functiong Calling。 然后人们发现我写一个工具要给 cursor 写一套 、要给 opencode 在写一套、要给 chatGPT 在写一套，那有没有办法 to write one tool, and use it everywhere?于是人们又起了一个牛逼的名字叫MCP，至此Agent的统一标准出现了。</p><p>但是，可是可但是，MCP 这玩意要求 1. 必须写的够详细，接口参数必须明明白白的写清楚 2. 必须每次都把这些说明书在每一轮对话中都传递给LLM 。 于是一大堆的MCP说明就被带上了，占用了LLM的上下文空间。 我们知道 LLM 的入参是有大小限制呀，你动不动就占我5%的空间了，再加上Agent的系统提示词，留给我用的就少了啊，对于这寸土寸金的上下文空间啊！而且我可能并不是每一次都需要所有的MCP接口啊。我就让你帮我创建一个文件而已，你愣是把怎么发邮件的mcp功能都带上去了，你们知道一个github的mcp有多大么，装了你的上下文很快就会被打满了。</p><p>于是，按需加载的要求就来了。skill 来了，他跟MCP 不属于一个赛道，两者没有可比性，但就是因为她这个按需加载，极大的给了用户更多的上下文空间。它会先把一个目录给到你，告诉你什么地方能做什么，你需要什么的时候才把skill的内容通过Agent给到LLM。其实skill = promt + tool call，大部分情况我们其实写skill 其实实在些首先、其次、最后 或者 if xxx then yyy，像不像一个流程描述，没错你就是在写流程说明书。因此skill其实对标和取代的是 agent flow ,类似想 dify ，n8n 这类基于llm 做 工作流 那部分的功能.你可以看到 skill出来后，dify 这类写工作流的功能，反正我是很少写了，skill写的稍微规范一点，也能达到一样的效果。但不是说 工作流一点用也没有了啊，对于哪些及其固定流程的需求，用工作流也是不错的，以为工作流比skill要稳的。</p><h1>skills 能干啥？ 或者说skill 适合干啥？</h1><p>我自己总结下来：skill 适合那些步骤有一点点固定，流程有一点点复杂，我们有时候还有灵活的人工介入，需要LLM帮你根据你有限的提示词去尽可能的脑补流程的场景。</p><p>比如：我们发布测试环境的步骤 ，前提是这个代码分支已经创建好了。<br>把这个代码分支合并到test分支，然后还得看看有没有漏合并的其他分支（有时候一个项目可能并行开发好几个功能）<br>登录我们的开发平台 -&gt;  找到对应的应用，点击进入应用设计器-&gt;找到发布按钮-&gt;选择test分支（有些人偷懒就不发test分支，有时候忘记了就发了master分支）-&gt;点击发布-&gt;然后就是等，时不时的过去看一下是不发布完成了 -&gt; 然后登录发布平台，看看编译是不是过了（有时候发布失败，得看一下失败原因吧）有时候登上代码仓库，看看这个分支是不是改提交MR了又或者登录开发环境开始测试</p><p>这个步骤是不是很繁琐，但稍稍有点固定呢。这种就可以抽取出一个skills来</p><h1>skills 的好处</h1><ol><li>灵活一点，你常用的操作，那就固化下来吧，以后一个命令或者打字甚至语音就可以了。</li><li>skills 市场不少，通用的你想要的基本都有大神写好了，安装就行了</li></ol><h1>skills 的不好</h1><ol><li>要想写出一个完美可用的skill,并不容易。（说容易的肯定没有自己实际写过，你不知道到要想让skill满足你的所有习惯有多难,想要让它稳定输出有多难）</li><li>自己工作中的skill，因为得贴合你的使用习惯，所以得自己写</li><li>skills 虽多，但是淘到合适的很难，你知道光code-review有多少么？</li></ol><h1>写通用skills的技巧</h1><p>写一个skill不难，难的是这个skill能够稳定的输出，难点是这个skill要能有很好的移植性。不能仅在你电脑上能用，到了别人电脑上就不能用了。</p><ol><li>第一步 你要明白 command 、 skills  的区别 这样你在知道在哪儿写，command 可以控制是否自动发现，是否必须手动触发。你要知道 在 claude code 中 command 、skill<br>、mcp 全属于 plugin，你要知道opencode 中的command默认是不会自动发现，需要使用 斜杠命令 显式调用。但是 clausde code 不管这些，只要是skill我就自动发现，也就是说command默认就会自动加载。</li><li>skill 要尽量不要用绝对路径，不然移植到别人电脑上可能用不了。用相对路径，或者 ~/ ,/tmp 这样的路径</li><li>script下尽量写 脚本，不要放其他</li><li>commond 下可以再分，<a href="http://xn--vx-flow-i22ms57k.md">比如vx-flow.md</a> 里面可能依赖三种md ,就可以放一个文件夹，这样更清晰，而不是吧一坨md都放一起，这个是也要治理的</li><li>还要不听的测试</li></ol><p>coding agent 安装skill 说明</p><ol><li>skill 仓库  和 网站</li></ol><p>千万小心skill 注入</p>]]></content>
       
       
       <categories>
@@ -139,11 +139,11 @@
     
     
     <entry>
-      <title>AI Skill</title>
+      <title>AI Coding Rules</title>
       <link href="/2026/04/20/56faf0cc/"/>
       <url>/2026/04/20/56faf0cc/</url>
       
-        <content type="html"><![CDATA[<h2 id="ai-skills-md"><a href="http://ai-skills.md">ai-skills.md</a></h2><p>title: AI skills<br>summary: 首先LLM其实只是个函数，函数嘛，给个输入，就给个输出而已。函数是数学中的概念，数学中的函数就是一个值域到作用域的映射而已。这个函数在加上一点概率论的知识，让输出变得活跃一点、随机一点，输出的概率值严格按照人类给这个函数定义好的格式或范围输出，结果反而涌现出了一定的规律，恰似人类了。<br>author: 陈尚<br>top: false<br>cover: false<br>toc: false<br>mathjax: false<br>tags:</p><ul><li>原创</li><li>未完待续<br>abbrlink: b27c5463<br>date: 2026-06-10 23:26:25<br>img:</li></ul><hr><h1>skills 是怎么一步步发展来的。</h1><p>首先LLM其实只是个函数，函数嘛，给个输入，就给个输出而已。函数是数学中的概念，数学中的函数就是一个值域到作用域的映射而已。这个函数在加上一点概率论的知识，让输出变得活跃一点、随机一点，输出的概率值严格按照人类给这个函数定义好的格式或范围输出，结果反而涌现出了一定的规律，恰似人类了。</p><p><img src="/2026/04/20/56faf0cc/image1.png" alt></p><p>所以LLM仅仅是个函数，啥也干不了。为了能让他帮助我们做事儿，就必须给他赋予一些能力，一些可以使用外部资源的能力。于是我们就给他套一个壳子，这个壳子代理你和LLM对话以及帮LLM根据LLM输出的步骤使用外部资源。这个壳子就叫代理，英文名字就叫 Agent。我们用的cursor 、claude code、opencode、豆包、deepseek 、chatGPT 都是，只要用了LLM的个能够调用外部资源的就是Agent。这种调用外部资源的能力，起了牛逼的名字，就叫 tool call，工具调用。于是我们把外部资源都称之为工具了。</p><p>工具调用有两种，最开始叫函数调用，因为我们总是写一个脚本或者写一个接口，然后告诉LLM我有哪些那脚本、工具 好你去调用吧。于是有了 Functiong Calling。 然后人们发现我写一个工具要给 cursor 写一套 、要给 opencode 在写一套、要给 chatGPT 在写一套，那有没有办法 to write one tool, and use it everywhere?于是人们又起了一个牛逼的名字叫MCP，至此Agent的统一标准出现了。</p><p>但是，可是可但是，MCP 这玩意要求 1. 必须写的够详细，接口参数必须明明白白的写清楚 2. 必须每次都把这些说明书在每一轮对话中都传递给LLM 。 于是一大堆的MCP说明就被带上了，占用了LLM的上下文空间。 我们知道 LLM 的入参是有大小限制呀，你动不动就占我5%的空间了，再加上Agent的系统提示词，留给我用的就少了啊，对于这寸土寸金的上下文空间啊！而且我可能并不是每一次都需要所有的MCP接口啊。我就让你帮我创建一个文件而已，你愣是把怎么发邮件的mcp功能都带上去了，你们知道一个github的mcp有多大么，装了你的上下文很快就会被打满了。</p><p>于是，按需加载的要求就来了。skill 来了，他跟MCP 不属于一个赛道，两者没有可比性，但就是因为她这个按需加载，极大的给了用户更多的上下文空间。它会先把一个目录给到你，告诉你什么地方能做什么，你需要什么的时候才把skill的内容通过Agent给到LLM。其实skill = promt + tool call，大部分情况我们其实写skill 其实实在些首先、其次、最后 或者 if xxx then yyy，像不像一个流程描述，没错你就是在写流程说明书。因此skill其实对标和取代的是 agent flow ,类似想 dify ，n8n 这类基于llm 做 工作流 那部分的功能.你可以看到 skill出来后，dify 这类写工作流的功能，反正我是很少写了，skill写的稍微规范一点，也能达到一样的效果。但不是说 工作流一点用也没有了啊，对于哪些及其固定流程的需求，用工作流也是不错的，以为工作流比skill要稳的。</p><h1>skills 能干啥？ 或者说skill 适合干啥？</h1><p>我自己总结下来：skill 适合那些步骤有一点点固定，流程有一点点复杂，我们有时候还有灵活的人工介入，需要LLM帮你根据你有限的提示词去尽可能的脑补流程的场景。</p><p>比如：我们发布测试环境的步骤 ，前提是这个代码分支已经创建好了。<br>把这个代码分支合并到test分支，然后还得看看有没有漏合并的其他分支（有时候一个项目可能并行开发好几个功能）<br>登录我们的开发平台 -&gt;  找到对应的应用，点击进入应用设计器-&gt;找到发布按钮-&gt;选择test分支（有些人偷懒就不发test分支，有时候忘记了就发了master分支）-&gt;点击发布-&gt;然后就是等，时不时的过去看一下是不发布完成了 -&gt; 然后登录发布平台，看看编译是不是过了（有时候发布失败，得看一下失败原因吧）有时候登上代码仓库，看看这个分支是不是改提交MR了又或者登录开发环境开始测试</p><p>这个步骤是不是很繁琐，但稍稍有点固定呢。这种就可以抽取出一个skills来</p><h1>skills 的好处</h1><ol><li>灵活一点，你常用的操作，那就固化下来吧，以后一个命令或者打字甚至语音就可以了。</li><li>skills 市场不少，通用的你想要的基本都有大神写好了，安装就行了</li></ol><h1>skills 的不好</h1><ol><li>要想写出一个完美可用的skill,并不容易。（说容易的肯定没有自己实际写过，你不知道到要想让skill满足你的所有习惯有多难,想要让它稳定输出有多难）</li><li>自己工作中的skill，因为得贴合你的使用习惯，所以得自己写</li><li>skills 虽多，但是淘到合适的很难，你知道光code-review有多少么？</li></ol><h1>写通用skills的技巧</h1><p>写一个skill不难，难的是这个skill能够稳定的输出，难点是这个skill要能有很好的移植性。不能仅在你电脑上能用，到了别人电脑上就不能用了。</p><ol><li>第一步 你要明白 command 、 skills  的区别 这样你在知道在哪儿写，command 可以控制是否自动发现，是否必须手动触发。你要知道 在 claude code 中 command 、skill<br>、mcp 全属于 plugin，你要知道opencode 中的command默认是不会自动发现，需要使用 斜杠命令 显式调用。但是 clausde code 不管这些，只要是skill我就自动发现，也就是说command默认就会自动加载。</li><li>skill 要尽量不要用绝对路径，不然移植到别人电脑上可能用不了。用相对路径，或者 ~/ ,/tmp 这样的路径</li><li>script下尽量写 脚本，不要放其他</li><li>commond 下可以再分，<a href="http://xn--vx-flow-i22ms57k.md">比如vx-flow.md</a> 里面可能依赖三种md ,就可以放一个文件夹，这样更清晰，而不是吧一坨md都放一起，这个是也要治理的</li><li>还要不听的测试</li></ol><p>coding agent 安装skill 说明</p><ol><li>skill 仓库  和 网站</li></ol><p>千万小心skill 注入</p>]]></content>
+        <content type="html"><![CDATA[<p><strong>由于 AI Coding Agent 不擅长理解你公司特有的业务逻辑、隐性规则、历史债务和领域术语</strong>，所以至少需要以下规约 <code>business_glossary.md</code>（业务术语表）、<code>domain_rules.md</code>（核心业务规则）。业务术语最好放到扩展记忆中，而规则则写到 md 中，每次请求必须带上。以下是我总结的 Rule 的一些心得。</p><blockquote><p>业务逻辑：比如还款必须按照本关息费的顺序按户冲抵<br>隐性规则：还款预报的匹配必须等值匹配<br>历史债务：账单服务为了财务特意冗余了费率数据，属于不合理的设计。有一些字段已经废弃，但还没有来得及删除清理<br>领域术语：比如事务项-委外还款、退费还款、往来退费还款等</p></blockquote><blockquote><p><strong>【强制】分类书写</strong></p></blockquote><blockquote><p><strong>【强制】分类书写虽是好的，但分类数量不宜过多，否则难以维护。</strong></p></blockquote><p>比如4-5个基本就够用了，如下是我给团队规定的几个文件：</p><pre><code class="hljs bash">.├── 数据库规约.md├── 代码质量规则.md├── 通用开发规则.md├── git协作规则.md└── MEMORY.md</code></pre><hr><blockquote><p><strong>【强制】内容不宜太多，100行以内，否则会导致阅读困难。</strong></p></blockquote><hr><blockquote><p><strong>【强制】只写必要的统一规范，避免重复内容。</strong></p></blockquote><p>现在的AI(基座大模型)已经比较智能了，很多知识已经固化，不必强行约定。</p><p><strong>【反例】</strong> 请不要使用拼音命名。这种规约写了跟没写一样。<br><strong>【正例】</strong> 创建的分支必须包含 <code>ai-</code> 前缀标识。这种你不写 AI 肯定不知道。<br><strong>【正例】</strong> 强调，禁令</p><ul><li>强调型</li></ul><pre><code class="hljs plaintext">严格遵循阿里巴巴 Java 开发手册</code></pre><p>这种属于强调，AI 肯定学习过，但是你不强调，它是不会主动遵守的，但是你不用把 Java 开发手册的内容都一一列出来，只用激活记忆即可。</p><ul><li>禁令型</li></ul><pre><code class="hljs text">- 禁止执行无 WHERE 条件的 UPDATE/DELETE- 禁止在生产环境直接修改数据- 禁止批量操作未先测试单条数据</code></pre><p>这种属于禁令，AI 肯定学习过，但是你不禁用，它是不会主动遵守的。</p><blockquote><p><strong>【强制】不要写无意义的规约。</strong></p></blockquote><hr><blockquote><p><strong>【反例】</strong> 以下是我曾经写过的不合理规约：</p></blockquote><pre><code class="hljs plaintext"># 通用开发规则## 工作态度- 每次工作都要用严谨的工作态度，保证完美的质量标准## 沟通风格- 直接输出代码或方案，禁止客套话（&quot;抱歉&quot;、&quot;我明白了&quot;等）- 除非明确要求，否则不提供代码摘要## 求真原则（禁止瞎猜）- 不确定/信息不足时先查证或提问澄清- 对环境/配置/源码/行为的结论必须有证据- 回答里把&quot;事实&quot;和&quot;推测/假设&quot;分开写即可</code></pre><p>这个规则的问题在于&quot;严谨&quot;、&quot;完美&quot;是无效指令，LLM 无法量化，实际行为不变。</p><blockquote><p>【强制】不要写带有冲突的规约。</p></blockquote><p>需要定期检查，一段时间后固化下来</p>]]></content>
       
       
       <categories>
@@ -1640,9 +1640,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> AI </tag>
-            
             <tag> 未完待续 </tag>
+            
+            <tag> AI </tag>
             
         </tags>
       
@@ -2865,9 +2865,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 工具控 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 工具控 </tag>
             
         </tags>
       
@@ -4070,9 +4070,9 @@
       
         <tags>
             
-            <tag> 工具控 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 工具控 </tag>
             
         </tags>
       
@@ -5150,9 +5150,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 工具控 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 工具控 </tag>
             
         </tags>
       
@@ -6597,9 +6597,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 工具控 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 工具控 </tag>
             
         </tags>
       
@@ -6688,9 +6688,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 工具控 </tag>
-            
             <tag> Git </tag>
+            
+            <tag> 工具控 </tag>
             
         </tags>
       
@@ -7133,11 +7133,11 @@
     
     
     <entry>
-      <title>用shell教你搞定各种排序算法-冒泡排序</title>
-      <link href="/2020/04/15/1ae682e6/"/>
-      <url>/2020/04/15/1ae682e6/</url>
+      <title>用shell教你搞定各种排序算法-快速排序</title>
+      <link href="/2020/04/15/f1801bcd/"/>
+      <url>/2020/04/15/f1801bcd/</url>
       
-        <content type="html"><![CDATA[<p>最近在研究数据结构和算法,突然想用shell来实现一把,今天先来写一个冒泡排序。<br>要想记住各种排序算法，只要知道其原理，用什么语言实现都易如反掌</p><h1>冒泡排序</h1><ol><li>核心操作 交换相邻两个元素的值</li></ol><pre><code class="hljs bash"><span class="hljs-comment"># 定义一个数组</span>nums=(1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56)<span class="hljs-comment"># 核心操作</span><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">swap</span></span>()&#123;  <span class="hljs-comment"># i 和 j 分别代表要交换的两个元素的在数组中的下标</span>  <span class="hljs-built_in">local</span> i=<span class="hljs-variable">$1</span>;<span class="hljs-built_in">local</span> j=<span class="hljs-variable">$2</span>  <span class="hljs-built_in">local</span> tmp=<span class="hljs-variable">$&#123;nums[i]&#125;</span> <span class="hljs-comment"># 注意这里用 $&#123;nums[x]&#125; 的形式才能取出数组对应下标的元素的值</span>  nums[i]=<span class="hljs-variable">$&#123;nums[j]&#125;</span> <span class="hljs-comment"># 注意这里 $&#123;nums[x]&#125; 中的x 支持数学表达式，没必要 使用 $(()) 来计算</span>  nums[j]=<span class="hljs-variable">$&#123;tmp&#125;</span>     <span class="hljs-comment"># 注意这里 $&#123;  &#125; 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 $&#123;&#125; 包裹</span>&#125;<span class="hljs-comment"># 数组的元素个数</span><span class="hljs-built_in">local</span> size=<span class="hljs-variable">$&#123;#nums[@]&#125;</span> <span class="hljs-comment"># 注意这里使用$&#123;@xxx[@]&#125;的形式取出shell中数组元素的个数</span><span class="hljs-comment"># 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位</span><span class="hljs-keyword">for</span>((i=size-<span class="hljs-number">1</span>;i&gt;<span class="hljs-number">0</span>;i--))&#123; <span class="hljs-comment"># 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的</span>  <span class="hljs-comment"># 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的</span>  <span class="hljs-keyword">for</span>((j=<span class="hljs-number">0</span>;j&lt;i;j++));<span class="hljs-keyword">do</span> <span class="hljs-comment"># 这个地方是&lt;i</span>    <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;nums[j]&#125;</span> -gt <span class="hljs-variable">$&#123;nums[j+1]&#125;</span> ]];<span class="hljs-keyword">then</span> <span class="hljs-comment"># 注意这个地方的比较[1]</span>      swap <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;j&#125;</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-subst">$((j+1)</span>)&quot;</span>    <span class="hljs-keyword">fi</span>  <span class="hljs-keyword">done</span>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第<span class="hljs-subst">$((size-i)</span>)轮冒泡后:<span class="hljs-variable">$&#123;nums[*]&#125;</span>&quot;</span>&#125;</code></pre><p>我们执行一把</p><pre><code class="hljs text">第1轮冒泡后:1 3 5 2 3 6 7 8 11 22 22 11 1 33 34 a b c 56第2轮冒泡后:1 3 2 3 5 6 7 8 11 22 11 1 22 33 a b c 34 56第3轮冒泡后:1 2 3 3 5 6 7 8 11 11 1 22 22 a b c 33 34 56第4轮冒泡后:1 2 3 3 5 6 7 8 11 1 11 22 a b c 22 33 34 56第5轮冒泡后:1 2 3 3 5 6 7 8 1 11 11 a b c 22 22 33 34 56第6轮冒泡后:1 2 3 3 5 6 7 1 8 11 a b c 11 22 22 33 34 56第7轮冒泡后:1 2 3 3 5 6 1 7 8 a b c 11 11 22 22 33 34 56第8轮冒泡后:1 2 3 3 5 1 6 7 a b c 8 11 11 22 22 33 34 56第9轮冒泡后:1 2 3 3 1 5 6 a b c 7 8 11 11 22 22 33 34 56第10轮冒泡后:1 2 3 1 3 5 a b c 6 7 8 11 11 22 22 33 34 56第11轮冒泡后:1 2 1 3 3 a b c 5 6 7 8 11 11 22 22 33 34 56第12轮冒泡后:1 1 2 3 a b c 3 5 6 7 8 11 11 22 22 33 34 56第13轮冒泡后:1 1 2 a b c 3 3 5 6 7 8 11 11 22 22 33 34 56第14轮冒泡后:1 1 a b c 2 3 3 5 6 7 8 11 11 22 22 33 34 56第15轮冒泡后:1 a b c 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第16轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第17轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56</code></pre><p>注意上面的[1],因为这里我们只能比较数字,也就是只能比较整型数组,小数和字符串的冒泡排序我们的代码是不支持的。搞鬼的地方就在 我代码注释里面标[1]的地方.</p><p>我们用的判断相邻两个元素大小的表达是 <code>if [[ a -gt b ]]</code> 这种形式，这种用 [[]] 包裹的if判定表达式只能针对 整数。这个是shell语法决定的</p><p>如果nums数组中出现小数，运行程序立马报错，因为shell中没有浮点类型，带点号的shell默认为字符串<br>line 34: [[: 3.3: syntax error: invalid arithmetic operator (error token is “.3”)</p><p>如果要按照字符串比较，应该吧if表达式换成这样 <code>if [ ${nums[j]} \&gt; ${nums[j+1]} ]</code> 但同样，这种形式的比较会使数字的比较出现紊乱，例如<br>21 和 12 用上面这种比较，shell会认为 12 &gt; 21 因为12的第一个字符1出现在21的第一个字符2之前。</p>]]></content>
+        <content type="html"><![CDATA[<p>排序算法中,没有一种算法在任意一种情况下都是最好的。我们总是能构造出一种最坏的情况。快速排序并不总是最快的。</p><p>快速排序是由东尼·霍尔提出的一种高效的排序算法，简称快排。它的算法思想并不复杂，可以用3个步骤6个字来概括：选基、分割、递归。</p><p>扩充成一句话就是：首先挑选基准值；然后分割数组，把小于基准值的元素放到基准值前面，大于基准值的元素放到基准值后面；最后递归地对小于基准值的子序列和大于基准值的子序列进行排序。主要使用了所谓的分治的思想</p><p>快速排序的写法有很多中,可以优化的点也有很多。但终归逃过不过一个分一个治，也就是递归。</p><p>光第一步选基就有很多方法和优化的空间<br>第一种方式,我们每次选待排数组的最左边一个元素为主<br>第二种方式,我们随机选待排数组的一个元素为主<br>第三种方式,我们组左,中,右三个数的中位数为主。或者5个数中的中位数<br>如果我们每次选的元素总是能将数组刚好左右分割，使得所选元素左边都比该元素小，右边的元素都比该元素大，那么我们的算法就是最优的。</p><p>下面我没来挑战一下这个看似简单实则超级难理解的算法。</p><pre><code class="hljs shell">main()&#123;                                   #我们还是先来定义一个main方法  array=(1 3 5 7 9 2 4 6 8 10 1 2 8 5 31) #我们再来定义一个待排数组,注意这里是个全局的变量  quick_sort                              #我们调用我们即将书写的快速排序  echo &quot;$&#123;array[*]&#125;&quot;                      #打印数组,看看是不是按照从小到的的顺序排序了呢&#125;function quick_sort()&#123;<span class="hljs-meta prompt_">  #</span><span class="language-bash">注意array是全局变量,我们可以在这里访问到它</span><span class="hljs-meta prompt_"></span><span class="hljs-meta prompt_">  #</span><span class="language-bash">快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标</span>  function sort()&#123;    local left=$1;local right=$2    local i=$&#123;left&#125;;local j=$&#123;right&#125; #这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。    #1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件    if [[ $&#123;left&#125; -ge $&#123;right&#125; ]];then return; fi    #2. 选主元    local base=$&#123;array[left]&#125; #每次都已最左边的为基    while [[ $&#123;i&#125; -ne $&#123;j&#125; ]]; do      #3. 分隔      #3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知      while [[ $&#123;array[j]&#125; -ge $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do #注意等号        ((j--))      done      while [[ $&#123;array[i]&#125; -le $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do        ((i++))      done      if [[ $&#123;i&#125; -lt $&#123;j&#125; ]];then         local tmp=$&#123;array[j]&#125;         array[j]=$&#123;array[i]&#125;         array[i]=$&#123;tmp&#125;      fi    done    array[left]=$&#123;array[i]&#125;    array[i]=$&#123;base&#125;    sort &quot;$&#123;left&#125;&quot; &quot;$((i-1))&quot;    sort &quot;$((i+1))&quot; &quot;$&#123;right&#125;&quot;  &#125;  sort&#125;main</code></pre>]]></content>
       
       
       <categories>
@@ -7168,11 +7168,11 @@
     
     
     <entry>
-      <title>用shell教你搞定各种排序算法-快速排序</title>
-      <link href="/2020/04/15/f1801bcd/"/>
-      <url>/2020/04/15/f1801bcd/</url>
+      <title>用shell教你搞定各种排序算法-冒泡排序</title>
+      <link href="/2020/04/15/1ae682e6/"/>
+      <url>/2020/04/15/1ae682e6/</url>
       
-        <content type="html"><![CDATA[<p>排序算法中,没有一种算法在任意一种情况下都是最好的。我们总是能构造出一种最坏的情况。快速排序并不总是最快的。</p><p>快速排序是由东尼·霍尔提出的一种高效的排序算法，简称快排。它的算法思想并不复杂，可以用3个步骤6个字来概括：选基、分割、递归。</p><p>扩充成一句话就是：首先挑选基准值；然后分割数组，把小于基准值的元素放到基准值前面，大于基准值的元素放到基准值后面；最后递归地对小于基准值的子序列和大于基准值的子序列进行排序。主要使用了所谓的分治的思想</p><p>快速排序的写法有很多中,可以优化的点也有很多。但终归逃过不过一个分一个治，也就是递归。</p><p>光第一步选基就有很多方法和优化的空间<br>第一种方式,我们每次选待排数组的最左边一个元素为主<br>第二种方式,我们随机选待排数组的一个元素为主<br>第三种方式,我们组左,中,右三个数的中位数为主。或者5个数中的中位数<br>如果我们每次选的元素总是能将数组刚好左右分割，使得所选元素左边都比该元素小，右边的元素都比该元素大，那么我们的算法就是最优的。</p><p>下面我没来挑战一下这个看似简单实则超级难理解的算法。</p><pre><code class="hljs shell">main()&#123;                                   #我们还是先来定义一个main方法  array=(1 3 5 7 9 2 4 6 8 10 1 2 8 5 31) #我们再来定义一个待排数组,注意这里是个全局的变量  quick_sort                              #我们调用我们即将书写的快速排序  echo &quot;$&#123;array[*]&#125;&quot;                      #打印数组,看看是不是按照从小到的的顺序排序了呢&#125;function quick_sort()&#123;<span class="hljs-meta prompt_">  #</span><span class="language-bash">注意array是全局变量,我们可以在这里访问到它</span><span class="hljs-meta prompt_"></span><span class="hljs-meta prompt_">  #</span><span class="language-bash">快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标</span>  function sort()&#123;    local left=$1;local right=$2    local i=$&#123;left&#125;;local j=$&#123;right&#125; #这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。    #1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件    if [[ $&#123;left&#125; -ge $&#123;right&#125; ]];then return; fi    #2. 选主元    local base=$&#123;array[left]&#125; #每次都已最左边的为基    while [[ $&#123;i&#125; -ne $&#123;j&#125; ]]; do      #3. 分隔      #3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知      while [[ $&#123;array[j]&#125; -ge $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do #注意等号        ((j--))      done      while [[ $&#123;array[i]&#125; -le $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do        ((i++))      done      if [[ $&#123;i&#125; -lt $&#123;j&#125; ]];then         local tmp=$&#123;array[j]&#125;         array[j]=$&#123;array[i]&#125;         array[i]=$&#123;tmp&#125;      fi    done    array[left]=$&#123;array[i]&#125;    array[i]=$&#123;base&#125;    sort &quot;$&#123;left&#125;&quot; &quot;$((i-1))&quot;    sort &quot;$((i+1))&quot; &quot;$&#123;right&#125;&quot;  &#125;  sort&#125;main</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>最近在研究数据结构和算法,突然想用shell来实现一把,今天先来写一个冒泡排序。<br>要想记住各种排序算法，只要知道其原理，用什么语言实现都易如反掌</p><h1>冒泡排序</h1><ol><li>核心操作 交换相邻两个元素的值</li></ol><pre><code class="hljs bash"><span class="hljs-comment"># 定义一个数组</span>nums=(1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56)<span class="hljs-comment"># 核心操作</span><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">swap</span></span>()&#123;  <span class="hljs-comment"># i 和 j 分别代表要交换的两个元素的在数组中的下标</span>  <span class="hljs-built_in">local</span> i=<span class="hljs-variable">$1</span>;<span class="hljs-built_in">local</span> j=<span class="hljs-variable">$2</span>  <span class="hljs-built_in">local</span> tmp=<span class="hljs-variable">$&#123;nums[i]&#125;</span> <span class="hljs-comment"># 注意这里用 $&#123;nums[x]&#125; 的形式才能取出数组对应下标的元素的值</span>  nums[i]=<span class="hljs-variable">$&#123;nums[j]&#125;</span> <span class="hljs-comment"># 注意这里 $&#123;nums[x]&#125; 中的x 支持数学表达式，没必要 使用 $(()) 来计算</span>  nums[j]=<span class="hljs-variable">$&#123;tmp&#125;</span>     <span class="hljs-comment"># 注意这里 $&#123;  &#125; 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 $&#123;&#125; 包裹</span>&#125;<span class="hljs-comment"># 数组的元素个数</span><span class="hljs-built_in">local</span> size=<span class="hljs-variable">$&#123;#nums[@]&#125;</span> <span class="hljs-comment"># 注意这里使用$&#123;@xxx[@]&#125;的形式取出shell中数组元素的个数</span><span class="hljs-comment"># 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位</span><span class="hljs-keyword">for</span>((i=size-<span class="hljs-number">1</span>;i&gt;<span class="hljs-number">0</span>;i--))&#123; <span class="hljs-comment"># 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的</span>  <span class="hljs-comment"># 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的</span>  <span class="hljs-keyword">for</span>((j=<span class="hljs-number">0</span>;j&lt;i;j++));<span class="hljs-keyword">do</span> <span class="hljs-comment"># 这个地方是&lt;i</span>    <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;nums[j]&#125;</span> -gt <span class="hljs-variable">$&#123;nums[j+1]&#125;</span> ]];<span class="hljs-keyword">then</span> <span class="hljs-comment"># 注意这个地方的比较[1]</span>      swap <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;j&#125;</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-subst">$((j+1)</span>)&quot;</span>    <span class="hljs-keyword">fi</span>  <span class="hljs-keyword">done</span>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第<span class="hljs-subst">$((size-i)</span>)轮冒泡后:<span class="hljs-variable">$&#123;nums[*]&#125;</span>&quot;</span>&#125;</code></pre><p>我们执行一把</p><pre><code class="hljs text">第1轮冒泡后:1 3 5 2 3 6 7 8 11 22 22 11 1 33 34 a b c 56第2轮冒泡后:1 3 2 3 5 6 7 8 11 22 11 1 22 33 a b c 34 56第3轮冒泡后:1 2 3 3 5 6 7 8 11 11 1 22 22 a b c 33 34 56第4轮冒泡后:1 2 3 3 5 6 7 8 11 1 11 22 a b c 22 33 34 56第5轮冒泡后:1 2 3 3 5 6 7 8 1 11 11 a b c 22 22 33 34 56第6轮冒泡后:1 2 3 3 5 6 7 1 8 11 a b c 11 22 22 33 34 56第7轮冒泡后:1 2 3 3 5 6 1 7 8 a b c 11 11 22 22 33 34 56第8轮冒泡后:1 2 3 3 5 1 6 7 a b c 8 11 11 22 22 33 34 56第9轮冒泡后:1 2 3 3 1 5 6 a b c 7 8 11 11 22 22 33 34 56第10轮冒泡后:1 2 3 1 3 5 a b c 6 7 8 11 11 22 22 33 34 56第11轮冒泡后:1 2 1 3 3 a b c 5 6 7 8 11 11 22 22 33 34 56第12轮冒泡后:1 1 2 3 a b c 3 5 6 7 8 11 11 22 22 33 34 56第13轮冒泡后:1 1 2 a b c 3 3 5 6 7 8 11 11 22 22 33 34 56第14轮冒泡后:1 1 a b c 2 3 3 5 6 7 8 11 11 22 22 33 34 56第15轮冒泡后:1 a b c 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第16轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第17轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56</code></pre><p>注意上面的[1],因为这里我们只能比较数字,也就是只能比较整型数组,小数和字符串的冒泡排序我们的代码是不支持的。搞鬼的地方就在 我代码注释里面标[1]的地方.</p><p>我们用的判断相邻两个元素大小的表达是 <code>if [[ a -gt b ]]</code> 这种形式，这种用 [[]] 包裹的if判定表达式只能针对 整数。这个是shell语法决定的</p><p>如果nums数组中出现小数，运行程序立马报错，因为shell中没有浮点类型，带点号的shell默认为字符串<br>line 34: [[: 3.3: syntax error: invalid arithmetic operator (error token is “.3”)</p><p>如果要按照字符串比较，应该吧if表达式换成这样 <code>if [ ${nums[j]} \&gt; ${nums[j+1]} ]</code> 但同样，这种形式的比较会使数字的比较出现紊乱，例如<br>21 和 12 用上面这种比较，shell会认为 12 &gt; 21 因为12的第一个字符1出现在21的第一个字符2之前。</p>]]></content>
       
       
       <categories>
@@ -7387,6 +7387,37 @@
     
     
     <entry>
+      <title>秒懂 QPS、TPS、PV、UV、GMV、IP、RPS！</title>
+      <link href="/2020/03/18/4a57aeba/"/>
+      <url>/2020/03/18/4a57aeba/</url>
+      
+        <content type="html"><![CDATA[<p>QPS、TPS、PV、UV、GMV、IP、RPS等各种名词，外行看起来很牛X，实际上对程序员来说都是必懂知识点。下面我来一一解释一下。</p><p>QPS</p><blockquote><p>Queries Per Second，每秒查询数。每秒能够响应的查询次数。QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。每秒的响应请求数，也即是最大吞吐能力。</p></blockquote><p>TPS</p><blockquote><p>Transactions Per Second 的缩写，每秒处理的事务数目。一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机在发送请求时开始计时，收到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数，最终利用这些信息作出的评估分。<br>TPS 的过程包括：客户端请求服务端、服务端内部处理、服务端返回客户端。例如，访问一个 Index 页面会请求服务器 3 次，包括一次 html，一次 css，一次 js，那么访问这一个页面就会产生一个“T”，产生三个“Q”。</p></blockquote><p>PV（page view）</p><blockquote><p>即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。PV 即 page view，页面浏览量。用户每一次对网站中的每个页面访问均被记录 1 次。用户对同一页面的多次刷新，访问量累计。<br>根据这个特性，刷网站的 PV 就很好刷了。</p></blockquote><p>与 PV 相关的还有 RV，即重复访问者数量（repeat visitors）。</p><blockquote><p>UV 访问数（Unique Visitor）<br>指独立访客访问数，统计1天内访问某站点的用户数(以 cookie 为依据)，一台电脑终端为一个访客。</p></blockquote><p>IP（Internet Protocol）</p><blockquote><p>独立 IP 数，是指 1 天内多少个独立的 IP 浏览了页面，即统计不同的 IP 浏览用户数量。同一 IP 不管访问了几个页面，独立 IP 数均为 1；不同的 IP 浏览页面，计数会加 1。IP 是基于用户广域网 IP 地址来区分不同的访问者的，所以，多个用户（多个局域网 IP）在同一个路由器（同一个广域网 IP）内上网，可能被记录为一个独立 IP 访问者。如果用户不断更换 IP，则有可能被多次统计。</p></blockquote><p>GMV，是 Gross Merchandise Volume 的简称。</p><blockquote><p>只要是订单，不管消费者是否付款、卖家是否发货、是否退货，都可放进 GMV 。</p></blockquote><p>RPS 代表吞吐率，即 Requests Per Second 的缩写。</p><blockquote><p>吞吐率是服务器并发处理能力的量化描述，单位是 reqs/s，指的是某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大的请求数，称之为最大吞吐率。<br>有人把 RPS 说等效于 QPS。其实可以看作同一个统计方式，只是叫法不同而已。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 计算机 </category>
+          
+          <category> 计算机基础 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 引用 </tag>
+            
+            <tag> 计算机 </tag>
+            
+            <tag> 计算机基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>专有名词缩写</title>
       <link href="/2020/03/18/b149b63f/"/>
       <url>/2020/03/18/b149b63f/</url>
@@ -7408,37 +7439,6 @@
             <tag> 原创 </tag>
             
             <tag> 未完待续 </tag>
-            
-            <tag> 计算机 </tag>
-            
-            <tag> 计算机基础 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>秒懂 QPS、TPS、PV、UV、GMV、IP、RPS！</title>
-      <link href="/2020/03/18/4a57aeba/"/>
-      <url>/2020/03/18/4a57aeba/</url>
-      
-        <content type="html"><![CDATA[<p>QPS、TPS、PV、UV、GMV、IP、RPS等各种名词，外行看起来很牛X，实际上对程序员来说都是必懂知识点。下面我来一一解释一下。</p><p>QPS</p><blockquote><p>Queries Per Second，每秒查询数。每秒能够响应的查询次数。QPS是对一个特定的查询服务器在规定时间内所处理流量多少的衡量标准，在因特网上，作为域名系统服务器的机器的性能经常用每秒查询率来衡量。每秒的响应请求数，也即是最大吞吐能力。</p></blockquote><p>TPS</p><blockquote><p>Transactions Per Second 的缩写，每秒处理的事务数目。一个事务是指一个客户机向服务器发送请求然后服务器做出反应的过程。客户机在发送请求时开始计时，收到服务器响应后结束计时，以此来计算使用的时间和完成的事务个数，最终利用这些信息作出的评估分。<br>TPS 的过程包括：客户端请求服务端、服务端内部处理、服务端返回客户端。例如，访问一个 Index 页面会请求服务器 3 次，包括一次 html，一次 css，一次 js，那么访问这一个页面就会产生一个“T”，产生三个“Q”。</p></blockquote><p>PV（page view）</p><blockquote><p>即页面浏览量，通常是衡量一个网络新闻频道或网站甚至一条网络新闻的主要指标。PV 即 page view，页面浏览量。用户每一次对网站中的每个页面访问均被记录 1 次。用户对同一页面的多次刷新，访问量累计。<br>根据这个特性，刷网站的 PV 就很好刷了。</p></blockquote><p>与 PV 相关的还有 RV，即重复访问者数量（repeat visitors）。</p><blockquote><p>UV 访问数（Unique Visitor）<br>指独立访客访问数，统计1天内访问某站点的用户数(以 cookie 为依据)，一台电脑终端为一个访客。</p></blockquote><p>IP（Internet Protocol）</p><blockquote><p>独立 IP 数，是指 1 天内多少个独立的 IP 浏览了页面，即统计不同的 IP 浏览用户数量。同一 IP 不管访问了几个页面，独立 IP 数均为 1；不同的 IP 浏览页面，计数会加 1。IP 是基于用户广域网 IP 地址来区分不同的访问者的，所以，多个用户（多个局域网 IP）在同一个路由器（同一个广域网 IP）内上网，可能被记录为一个独立 IP 访问者。如果用户不断更换 IP，则有可能被多次统计。</p></blockquote><p>GMV，是 Gross Merchandise Volume 的简称。</p><blockquote><p>只要是订单，不管消费者是否付款、卖家是否发货、是否退货，都可放进 GMV 。</p></blockquote><p>RPS 代表吞吐率，即 Requests Per Second 的缩写。</p><blockquote><p>吞吐率是服务器并发处理能力的量化描述，单位是 reqs/s，指的是某个并发用户数下单位时间内处理的请求数。某个并发用户数下单位时间内能处理的最大的请求数，称之为最大吞吐率。<br>有人把 RPS 说等效于 QPS。其实可以看作同一个统计方式，只是叫法不同而已。</p></blockquote>]]></content>
-      
-      
-      <categories>
-          
-          <category> 计算机 </category>
-          
-          <category> 计算机基础 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 引用 </tag>
             
             <tag> 计算机 </tag>
             
@@ -7478,18 +7478,18 @@
     
     
     <entry>
-      <title></title>
-      <link href="/2020/02/11/0/"/>
-      <url>/2020/02/11/0/</url>
+      <title>Java配置文件变量替换</title>
+      <link href="/2020/02/11/5ab7b635/"/>
+      <url>/2020/02/11/5ab7b635/</url>
       
-        <content type="html"><![CDATA[<h1>为什么需要锁</h1><p>我们把多个线程竞争处理的资源称为临界资源（代码块、方法体等），当一个线程获得了临界资源的使用权以后，为了保证临界资源在同一时间只能由一个线程获得，其它线程必须等这个线程处理完以后才能通过竞争再次尝试获得临界资源的使用权。</p><p>追问：为什么要保证临界资源在同一时间只能由一个线程使用?<br>首先肯定是有这样的场景存在，多个线程同时操作临界资源会导致数据的不一致。</p><p>追问：什么叫数据的不一致?<br>就是你本来期望是一个结果，但是偏偏变成了另一个结果，本来不应该出现的情况，但是偏偏出现了，就叫数据不一致了。</p><p>追问：所以归根结底是为了解决临界资源在并发使用过程中可能出现的数据不一致性问题才必须保证临界资源在同一时间只能由一个线程获得?<br>是的。因为并发会导致数据不一致，那干脆在使用临界资源的时候不要并发了，多么简单暴力啊。</p><p>追问：说了半天还是没有说到锁啊?<br>那我们如何实现上面说的 必须保证临界资源在同一时间只能由一个线程获得呢？答案就是大家对向某个人提出申请，这个人必须足够公正，能保证在同一时间只能有一个人获得申请，而且要保证获得申请的人不撤销申请其他人即使再申请也不会获得申请，这个人就是锁，要知道这个人一旦被看作锁，那么他也将变成临界资源，申请锁的这个动作在多线程里必须也得能保证数据一致，也就是线程安全，貌似陷入死循环了。但这个保证是操作系统保证的，更确切的说是操作系统的内核保证的，操作系统毕竟还是一个软件，内核要保证线程安全本质上是通过硬件完成的，其实就是锁总线。</p><p>锁的分类<br>锁并不是某个语言特有的，c语言也有锁，c++也是，包括一些后现代的编程语言例如scala、groovy等都有锁，操作系统更需要锁，redis有锁，数据库有锁，分布式系统有分布式锁。锁你可以理解为一个工具类，使用这个工具类可以保证临界资源在同一时间只能由一个线程获得。锁的种类有很多，真的很多，有悲观锁、乐观锁，有互斥锁、共享锁，有可重入锁、不可重入锁，数据库有行锁、表锁、页锁，分布式有分布式锁，可以用redis实现可以用zookeeper实现。按照我的理解和记忆方案，不见得是对的，但在这里提出来，大家一起讨论一下。</p><p>我认为只要是锁一定都是悲观锁，因为乐观锁虽然叫锁，但是其实并不是锁，只是后人为了区分而强加的概念。乐观锁的实现原理逃不出CAS，悲观锁的原理逃不出互斥量。所以Java中所有叫锁的都是悲观锁包括 synchornized。</p><p>然后就是锁的几个特性，比如 公平不公平啊、可重入不可重入啊、独享啊还是共享啊。每个锁必然有这三个特性。</p><p>锁分类<br>悲观锁/乐观锁<br>重点讲两类锁的思想区别 和 cas</p><p>锁特性<br>公平性/非公平性、公平锁/非公平锁<br>公平锁是指多个线程按照申请锁的顺序来获取锁。</p><p>非公平锁不按照申请顺序，后申请的可能会先获得锁。</p><p>对于Java的ReentranLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。</p><p>ReentranLock中有一个内部类：Sync。FairSync、NonFairSync继承了Sync，公平与不公平在源码体现在【!hasQueuedPredecessors()】这句代码，公平的话：如果前面有等待节点，那就不去获得锁；不公平就是抢占；具体看：<a href="https://blog.csdn.net/lsgqjh/article/details/63685058">https://blog.csdn.net/lsgqjh/article/details/63685058</a></p><p>对于 Synchonized而言，也是一种非公平锁，由于其不像 ReentrantLock是通过AQS实现的，所以没办法变成公平锁。</p><p>可重入性/不可重入性、可重入锁/不可重入锁<br>可重入锁又名递归锁，是指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁，不会因为之前已经获取过还没释放而阻塞。</p><p>Java中ReentrantLock和synchronized都是可重入锁，可重入锁的一个优点是可一定程度避免死锁。</p><p>到目前为止我还没有遇到过不可重入的锁，也想象不到不可重入锁的使用场景，因为不可重入锁大概率会出现死锁情况，所以貌似没有人会去实现不可重入锁。</p><p>独占性/共享性、互斥锁/读写锁<br>独享锁是指该锁一次只能被一个线程所持有。共享锁是指该锁可被多个线程所持有。这里主要是为了把一个操作掰成两个操作，一个读一个写，分别加不同粒度的锁，目的是实现在只有读的场景下的最大并发。</p><p>独享锁也叫互斥锁，读写锁等同于一个独享锁+一个共享锁，也叫一个写锁+读锁。读锁的共享锁可保证并发读是非常高效的，读写，写读，写写的过程是互斥的。</p><p>对于Java ReentrantLock而言，其是独享锁。但是对于Lock的另一个实现类ReadWriteLock，其读锁是共享锁，其写锁是独享锁。</p><p>对于Synchronized而言，当然是独享锁。</p><p>另外在synchronizd关键字的优化相关知识里面，会碰到 诸如 偏向锁/轻量级锁/自旋锁/适应性自旋锁/重量级锁 的概念，这些都是锁升级中的某些状态，除了重量级锁是锁外，其它要么不是锁，要么就是在成为锁的路上，这里不过多讨论，只需要记住只要是锁一定有上面三个特性就好。所以synchronized的全称应该叫 非公平的可重入的互斥悲观锁。同理，ReentrantLock 默认也是非公平的可重入的互斥悲观锁，当然ReentrantLock也可以实现 公平的可重入的互斥悲观锁。</p>]]></content>
+        <content type="html"><![CDATA[<p>由于${}方式会被maven处理。如果你pom继承了spring-boot-starter-parent，Spring Boot已经将maven-resources-plugins默认的${}方式改为了@@方式，如@version@</p><center>  <img src="/2020/02/11/5ab7b635/show.jpg"></center>]]></content>
       
       
       <categories>
           
           <category> JAVA </category>
           
-          <category> Java基础常识 </category>
+          <category> Java挖坑填坑 </category>
           
       </categories>
       
@@ -7507,18 +7507,18 @@
     
     
     <entry>
-      <title>Java配置文件变量替换</title>
-      <link href="/2020/02/11/5ab7b635/"/>
-      <url>/2020/02/11/5ab7b635/</url>
+      <title></title>
+      <link href="/2020/02/11/0/"/>
+      <url>/2020/02/11/0/</url>
       
-        <content type="html"><![CDATA[<p>由于${}方式会被maven处理。如果你pom继承了spring-boot-starter-parent，Spring Boot已经将maven-resources-plugins默认的${}方式改为了@@方式，如@version@</p><center>  <img src="/2020/02/11/5ab7b635/show.jpg"></center>]]></content>
+        <content type="html"><![CDATA[<h1>为什么需要锁</h1><p>我们把多个线程竞争处理的资源称为临界资源（代码块、方法体等），当一个线程获得了临界资源的使用权以后，为了保证临界资源在同一时间只能由一个线程获得，其它线程必须等这个线程处理完以后才能通过竞争再次尝试获得临界资源的使用权。</p><p>追问：为什么要保证临界资源在同一时间只能由一个线程使用?<br>首先肯定是有这样的场景存在，多个线程同时操作临界资源会导致数据的不一致。</p><p>追问：什么叫数据的不一致?<br>就是你本来期望是一个结果，但是偏偏变成了另一个结果，本来不应该出现的情况，但是偏偏出现了，就叫数据不一致了。</p><p>追问：所以归根结底是为了解决临界资源在并发使用过程中可能出现的数据不一致性问题才必须保证临界资源在同一时间只能由一个线程获得?<br>是的。因为并发会导致数据不一致，那干脆在使用临界资源的时候不要并发了，多么简单暴力啊。</p><p>追问：说了半天还是没有说到锁啊?<br>那我们如何实现上面说的 必须保证临界资源在同一时间只能由一个线程获得呢？答案就是大家对向某个人提出申请，这个人必须足够公正，能保证在同一时间只能有一个人获得申请，而且要保证获得申请的人不撤销申请其他人即使再申请也不会获得申请，这个人就是锁，要知道这个人一旦被看作锁，那么他也将变成临界资源，申请锁的这个动作在多线程里必须也得能保证数据一致，也就是线程安全，貌似陷入死循环了。但这个保证是操作系统保证的，更确切的说是操作系统的内核保证的，操作系统毕竟还是一个软件，内核要保证线程安全本质上是通过硬件完成的，其实就是锁总线。</p><p>锁的分类<br>锁并不是某个语言特有的，c语言也有锁，c++也是，包括一些后现代的编程语言例如scala、groovy等都有锁，操作系统更需要锁，redis有锁，数据库有锁，分布式系统有分布式锁。锁你可以理解为一个工具类，使用这个工具类可以保证临界资源在同一时间只能由一个线程获得。锁的种类有很多，真的很多，有悲观锁、乐观锁，有互斥锁、共享锁，有可重入锁、不可重入锁，数据库有行锁、表锁、页锁，分布式有分布式锁，可以用redis实现可以用zookeeper实现。按照我的理解和记忆方案，不见得是对的，但在这里提出来，大家一起讨论一下。</p><p>我认为只要是锁一定都是悲观锁，因为乐观锁虽然叫锁，但是其实并不是锁，只是后人为了区分而强加的概念。乐观锁的实现原理逃不出CAS，悲观锁的原理逃不出互斥量。所以Java中所有叫锁的都是悲观锁包括 synchornized。</p><p>然后就是锁的几个特性，比如 公平不公平啊、可重入不可重入啊、独享啊还是共享啊。每个锁必然有这三个特性。</p><p>锁分类<br>悲观锁/乐观锁<br>重点讲两类锁的思想区别 和 cas</p><p>锁特性<br>公平性/非公平性、公平锁/非公平锁<br>公平锁是指多个线程按照申请锁的顺序来获取锁。</p><p>非公平锁不按照申请顺序，后申请的可能会先获得锁。</p><p>对于Java的ReentranLock而言，通过构造函数指定该锁是否是公平锁，默认是非公平锁。非公平锁的优点在于吞吐量比公平锁大。</p><p>ReentranLock中有一个内部类：Sync。FairSync、NonFairSync继承了Sync，公平与不公平在源码体现在【!hasQueuedPredecessors()】这句代码，公平的话：如果前面有等待节点，那就不去获得锁；不公平就是抢占；具体看：<a href="https://blog.csdn.net/lsgqjh/article/details/63685058">https://blog.csdn.net/lsgqjh/article/details/63685058</a></p><p>对于 Synchonized而言，也是一种非公平锁，由于其不像 ReentrantLock是通过AQS实现的，所以没办法变成公平锁。</p><p>可重入性/不可重入性、可重入锁/不可重入锁<br>可重入锁又名递归锁，是指在同一个线程在外层方法获取锁的时候，再进入该线程的内层方法会自动获取锁，不会因为之前已经获取过还没释放而阻塞。</p><p>Java中ReentrantLock和synchronized都是可重入锁，可重入锁的一个优点是可一定程度避免死锁。</p><p>到目前为止我还没有遇到过不可重入的锁，也想象不到不可重入锁的使用场景，因为不可重入锁大概率会出现死锁情况，所以貌似没有人会去实现不可重入锁。</p><p>独占性/共享性、互斥锁/读写锁<br>独享锁是指该锁一次只能被一个线程所持有。共享锁是指该锁可被多个线程所持有。这里主要是为了把一个操作掰成两个操作，一个读一个写，分别加不同粒度的锁，目的是实现在只有读的场景下的最大并发。</p><p>独享锁也叫互斥锁，读写锁等同于一个独享锁+一个共享锁，也叫一个写锁+读锁。读锁的共享锁可保证并发读是非常高效的，读写，写读，写写的过程是互斥的。</p><p>对于Java ReentrantLock而言，其是独享锁。但是对于Lock的另一个实现类ReadWriteLock，其读锁是共享锁，其写锁是独享锁。</p><p>对于Synchronized而言，当然是独享锁。</p><p>另外在synchronizd关键字的优化相关知识里面，会碰到 诸如 偏向锁/轻量级锁/自旋锁/适应性自旋锁/重量级锁 的概念，这些都是锁升级中的某些状态，除了重量级锁是锁外，其它要么不是锁，要么就是在成为锁的路上，这里不过多讨论，只需要记住只要是锁一定有上面三个特性就好。所以synchronized的全称应该叫 非公平的可重入的互斥悲观锁。同理，ReentrantLock 默认也是非公平的可重入的互斥悲观锁，当然ReentrantLock也可以实现 公平的可重入的互斥悲观锁。</p>]]></content>
       
       
       <categories>
           
           <category> JAVA </category>
           
-          <category> Java挖坑填坑 </category>
+          <category> Java基础常识 </category>
           
       </categories>
       
@@ -8553,40 +8553,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 工具控 </tag>
-            
             <tag> Git </tag>
             
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Git忽略已经commit的文件</title>
-      <link href="/2016/09/11/1de3659a/"/>
-      <url>/2016/09/11/1de3659a/</url>
-      
-        <content type="html"><![CDATA[<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p><h1>方式一</h1><ol><li><code>git rm --cached logs/xx.log</code></li><li>然后更新 .gitignore 忽略掉目标文件，</li><li><code>git commit -m &quot;We really don't want Git to track this anymore!&quot;</code></li></ol><h1>方式二</h1><p>每个clone下来的仓库中手动设置不要检查特定文件的更改情况。<br><code>git update-index --assume-unchanged PATH    #在PATH处输入要忽略的文件。</code></p><h1>方式三</h1><p>另外 git 还提供了另一种 exclude 的方式来做同样的事情，不同的是 .gitignore 这个文件本身会提交到版本库中去。用来保存的是公共的需要排除的文件。而 .git/info/exclude 这里设置的则是你自己本地需要排除的文件。 他不会影响到其他人。也不会提交到版本库中去。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 工具控 </category>
-          
-          <category> Git </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 原创 </tag>
-            
             <tag> 工具控 </tag>
-            
-            <tag> Git </tag>
             
         </tags>
       
@@ -8615,9 +8584,40 @@
             
             <tag> 原创 </tag>
             
+            <tag> Git </tag>
+            
             <tag> 工具控 </tag>
             
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Git忽略已经commit的文件</title>
+      <link href="/2016/09/11/1de3659a/"/>
+      <url>/2016/09/11/1de3659a/</url>
+      
+        <content type="html"><![CDATA[<p>.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。</p><h1>方式一</h1><ol><li><code>git rm --cached logs/xx.log</code></li><li>然后更新 .gitignore 忽略掉目标文件，</li><li><code>git commit -m &quot;We really don't want Git to track this anymore!&quot;</code></li></ol><h1>方式二</h1><p>每个clone下来的仓库中手动设置不要检查特定文件的更改情况。<br><code>git update-index --assume-unchanged PATH    #在PATH处输入要忽略的文件。</code></p><h1>方式三</h1><p>另外 git 还提供了另一种 exclude 的方式来做同样的事情，不同的是 .gitignore 这个文件本身会提交到版本库中去。用来保存的是公共的需要排除的文件。而 .git/info/exclude 这里设置的则是你自己本地需要排除的文件。 他不会影响到其他人。也不会提交到版本库中去。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 工具控 </category>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 原创 </tag>
+            
             <tag> Git </tag>
+            
+            <tag> 工具控 </tag>
             
         </tags>
       

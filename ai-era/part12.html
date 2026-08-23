@@ -13,9 +13,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="part12.css">
+    <link rel="stylesheet" href="article-theme.css?v=20260823">
 </head>
 
-<body>
+<body class="article-page" data-hero-tone="cyan">
     <nav class="navbar" aria-label="文章导航">
         <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
         <ul class="nav-links" aria-label="切换文章">
@@ -70,6 +71,7 @@
       </aside>
 
         <header class="article-header">
+            <span class="article-number">第 11 章</span>
             <h1 class="article-title">核心系统如何全面使用 AI Coding</h1>
             <div class="article-subtitle">从个人工具升级为团队能力：贯通需求、设计、开发、测试、发布与运维</div>
             <div class="article-meta">
@@ -77,20 +79,6 @@
                 <span>⏱ 约 30 分钟阅读</span>
             </div>
         </header>
-
-        <nav class="toc-bar" aria-label="本文目录">
-            <a href="#principle">核心原则</a>
-            <a href="#current-state">现状阻力</a>
-            <a href="#workflow">全流程</a>
-            <a href="#quality">质量门禁</a>
-            <a href="#test-data">测试数据</a>
-            <a href="#foundation">工程底座</a>
-            <a href="#architecture">架构演进</a>
-            <a href="#roadmap">落地路线</a>
-            <a href="#core-transformation">系统改造</a>
-            <a href="#platform-decoupling">平台解耦</a>
-            <a href="#code-self-audit">代码自检</a>
-        </nav>
 
         <section class="chapter-section fade-in" id="principle">
             <div class="section-label">✦ 先给结论 ✦</div>
@@ -1161,14 +1149,23 @@
             </div>
         </section>
 
+        <!-- ============================
+             结尾过渡
+             ============================ -->
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>理解了 AI 开发的核心逻辑之后，让我们换一个领域——<br>看看 AI 如何应用于具体的金融场景，解决个贷不良资产的处置难题。</p>
+            </div>
+        </section>
+
         <nav class="article-nav">
             <a href="part11.html" class="nav-button prev">← 第 10 章 · AI 工程演进</a>
-            <a href="index-all.html" class="nav-button">返回目录 ↑</a>
+            <a href="part14.html" class="nav-button">行业专题 · 个贷不良资产 →</a>
         </nav>
     </main>
 
     <footer class="footer">
-        <p class="footer-text">© 2026 AI 纪元 - 探索智能的无限可能</p>
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
     </footer>
 
     <script src="scripts.js"></script>
