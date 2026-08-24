@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 水印：给生成内容留下可验证的来路 — AI纪元</title>
+    <meta name="description" content="分清 AI 水印、AI 检测器与内容凭证，理解文本概率水印、图像不可见信号和 C2PA 来源链，并用互动实验认识困惑度、句长方差、功能词频率与词汇多样性。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="part16.css">
+    <link rel="stylesheet" href="article-theme.css?v=20260823">
+</head>
+
+<body class="article-page" data-hero-tone="watermark">
+    <nav class="navbar" aria-label="文章导航">
+        <a href="index-all.html" class="logo" title="返回文章目录">AI纪元</a>
+        <ul class="nav-links" aria-label="切换文章">
+            <li><a href="part1.html">序章</a></li>
+            <li><a href="part2.html">前世今生</a></li>
+            <li><a href="part3.html">机器学习</a></li>
+            <li><a href="part4.html">深度学习</a></li>
+            <li><a href="part4-llm.html">大语言模型</a></li>
+            <li><a href="part5.html">脉冲神经网络</a></li>
+            <li><a href="part7.html">AI Agent</a></li>
+            <li><a href="part8.html">Vibe Coding</a></li>
+            <li><a href="part9.html">AI机械臂</a></li>
+            <li><a href="part10.html">AI越狱</a></li>
+            <li><a href="part11.html">AI工程</a></li>
+            <li><a href="part12.html">AI Coding</a></li>
+            <li><a href="part14.html">个贷不良资产</a></li>
+            <li><a href="part15.html">密码学</a></li>
+            <li><a href="part16.html" class="active" aria-current="page">AI水印</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content watermark-article">
+        <button class="toc-toggle-btn" type="button" aria-label="打开目录导航" aria-expanded="false"
+            aria-controls="tocSidebar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="15" y2="12" />
+                <line x1="3" y1="18" x2="18" y2="18" />
+                <polyline points="15 15 18 12 15 9" />
+            </svg>
+        </button>
+
+        <div class="toc-sidebar-overlay" id="tocOverlay" aria-hidden="true"></div>
+        <nav class="toc-sidebar" id="tocSidebar" aria-label="文章目录">
+            <div class="toc-sidebar-header">
+                <span class="toc-sidebar-title">文章目录</span>
+                <button class="toc-sidebar-close" type="button" aria-label="关闭目录"
+                    onclick="window.closeTocSidebar && window.closeTocSidebar()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <ul class="toc-sidebar-list">
+                <li class="toc-sidebar-item"><a class="toc-link" href="#introduction" data-section="introduction"><span
+                            class="toc-num">01</span><span class="toc-label">先问“从哪来”</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#three-things" data-section="three-things"><span
+                            class="toc-num">02</span><span class="toc-label">三件事别混淆</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#media-watermark" data-section="media-watermark"><span
+                            class="toc-num">03</span><span class="toc-label">多媒体水印</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#text-watermark" data-section="text-watermark"><span
+                            class="toc-num">04</span><span class="toc-label">文本概率水印</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#style-signals" data-section="style-signals"><span
+                            class="toc-num">05</span><span class="toc-label">四项风格指标</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#style-lab" data-section="style-lab"><span
+                            class="toc-num">06</span><span class="toc-label">文本风格体检</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#limits" data-section="limits"><span
+                            class="toc-num">07</span><span class="toc-label">为何会失效</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#workflow" data-section="workflow"><span
+                            class="toc-num">08</span><span class="toc-label">可信验证流程</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#governance" data-section="governance"><span
+                            class="toc-num">09</span><span class="toc-label">制度边界</span></a></li>
+                <li class="toc-sidebar-item"><a class="toc-link" href="#references" data-section="references"><span
+                            class="toc-num">10</span><span class="toc-label">参考资料</span></a></li>
+            </ul>
+        </nav>
+
+        <header class="article-header watermark-hero">
+            <div class="signal-field" aria-hidden="true">
+                <span>token · token · token</span>
+                <span>provenance / signature</span>
+                <span>101101 · 011010</span>
+                <span>verify → not guess</span>
+            </div>
+            <div class="hero-kicker">AI CONTENT · PROVENANCE · WATERMARK</div>
+            <h1 class="article-title">AI 水印：<span>给生成内容留下可验证的来路</span></h1>
+            <p class="article-subtitle">真正的水印不是事后“闻一闻 AI 味”，而是在生成过程或来源链中预先埋入可验证信号。它能增加追溯线索，却不是永不磨损的数字 DNA。</p>
+            <div class="article-meta">
+                <span>⏱ 约 25 分钟</span>
+                <span>🧪 2 个互动实验</span>
+                <span>📅 资料核对：2026-08-23</span>
+            </div>
+            <div class="hero-proof" role="group" aria-label="AI 内容验证的三个层次">
+                <span class="proof-chip embedded">隐藏信号</span>
+                <i>+</i>
+                <span class="proof-chip credential">来源凭证</span>
+                <i>+</i>
+                <span class="proof-chip context">上下文证据</span>
+                <b>≠ 单凭文风定罪</b>
+            </div>
+        </header>
+
+        <section class="chapter-section fade-in" id="introduction">
+            <div class="opening-grid">
+                <div class="opening-copy">
+                    <div class="section-label">00 · 引言</div>
+                    <h2 class="section-title">别只问“像不像 AI”，先问“能否证明从哪来”</h2>
+                    <p class="section-intro">一张图片可以被重绘，一段录音可以被转码，一篇文章可以被润色。内容越容易复制和改写，仅凭肉眼或文风猜测来源就越不可靠。</p>
+                    <p>“AI 水印”想解决的不是审美问题，而是<strong>来源与责任</strong>问题：某段内容是否由支持水印的模型生成？它在传播中经历过哪些编辑？验证者拿到的信号有多强，又有哪些部分已经丢失？</p>
+                </div>
+                <div class="origin-card" role="group" aria-label="内容来源线索示意">
+                    <div class="origin-source">
+                        <span class="origin-icon">✦</span>
+                        <strong>生成工具</strong>
+                        <small>产生内容与来源信号</small>
+                    </div>
+                    <div class="origin-path"><span></span><span></span><span></span></div>
+                    <div class="origin-output">
+                        <div class="output-preview">
+                            <i></i><i></i><i></i><i></i><i></i>
+                        </div>
+                        <strong>传播中的内容</strong>
+                        <small>水印、凭证、元数据可能分别保留或丢失</small>
+                    </div>
+                </div>
+            </div>
+            <div class="core-thesis">
+                <span>本文的核心区分</span>
+                <p><strong>水印</strong>是预先嵌入的信号，<strong>检测器</strong>是事后做出的概率判断，<strong>内容凭证</strong>是带签名的来源履历。三者可以互补，但不能互相冒充。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="three-things">
+            <div class="section-label">01 · 概念拆分</div>
+            <h2 class="section-title">先分清三件经常被叫作“AI 水印”的东西</h2>
+            <p class="section-intro">媒体报道和产品界面常把不同技术混称为“AI 检测”。判断一项能力是否可靠，第一步是看它到底在验证什么。</p>
+
+            <div class="concept-grid">
+                <article class="concept-card watermark-kind">
+                    <div class="concept-top"><span>01</span><i>≈</i></div>
+                    <h3>生成式水印</h3>
+                    <p>生成时主动改变像素、声谱、视频帧或词语选择，让内容携带统计上可识别的隐藏信号。</p>
+                    <dl>
+                        <div><dt>验证依据</dt><dd>嵌入规则或密钥</dd></div>
+                        <div><dt>典型问题</dt><dd>信号是否仍然存在</dd></div>
+                    </dl>
+                </article>
+                <article class="concept-card detector-kind">
+                    <div class="concept-top"><span>02</span><i>?</i></div>
+                    <h3>AI 检测器</h3>
+                    <p>事后观察困惑度、句式、词汇分布或分类模型输出，估计文本“像不像”某类生成内容。</p>
+                    <dl>
+                        <div><dt>验证依据</dt><dd>风格与分布特征</dd></div>
+                        <div><dt>典型问题</dt><dd>它有多像训练样本</dd></div>
+                    </dl>
+                </article>
+                <article class="concept-card credential-kind">
+                    <div class="concept-top"><span>03</span><i>✓</i></div>
+                    <h3>内容凭证</h3>
+                    <p>把创作工具、编辑动作、时间和签名写入可验证清单。C2PA 等规范属于这一来源证明路线。</p>
+                    <dl>
+                        <div><dt>验证依据</dt><dd>数字签名与声明链</dd></div>
+                        <div><dt>典型问题</dt><dd>谁声明了哪些过程</dd></div>
+                    </dl>
+                </article>
+            </div>
+
+            <div class="comparison-wrap" role="region" aria-label="三类技术对比" tabindex="0">
+                <table class="watermark-table">
+                    <thead>
+                        <tr><th>方法</th><th>需要生成方配合</th><th>能否直接证明来源</th><th>常见弱点</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><th>生成式水印</th><td>需要</td><td>证明“匹配某嵌入规则”</td><td>改写、裁剪、转码会削弱信号</td></tr>
+                        <tr><th>AI 检测器</th><td>不需要</td><td>不能，只给出推断</td><td>分布漂移、短文本与误判</td></tr>
+                        <tr><th>内容凭证</th><td>需要工具或流程签名</td><td>可验证签名声明</td><td>凭证可被移除，签名者也可能声明错误</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="media-watermark">
+            <div class="section-label">02 · 图像、音频与视频</div>
+            <h2 class="section-title">把信号藏进“人不敏感、机器可统计”的位置</h2>
+            <p class="section-intro">多媒体内容有大量连续数值：像素亮度、颜色通道、频率成分、时间序列。水印系统可以在不明显影响观看和聆听的前提下，对这些数值做微小、分散的调整。</p>
+
+            <div class="media-grid">
+                <article>
+                    <div class="media-icon image-icon" aria-hidden="true"><span></span></div>
+                    <h3>图像</h3>
+                    <p>在像素空间或频域中分散嵌入信号。好的设计会同时考虑压缩、缩放、裁剪、截图和滤镜后的可检测性。</p>
+                </article>
+                <article>
+                    <div class="media-icon audio-icon" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+                    <h3>音频</h3>
+                    <p>利用人耳掩蔽效应或频谱结构嵌入模式，但降噪、重采样、变速和背景音乐都可能改变信号。</p>
+                </article>
+                <article>
+                    <div class="media-icon video-icon" aria-hidden="true"><span>▶</span></div>
+                    <h3>视频</h3>
+                    <p>需要在空间与时间两个维度维持一致性，还要面对转码、抽帧、局部剪辑和录屏等传播操作。</p>
+                </article>
+                <article>
+                    <div class="media-icon credential-icon" aria-hidden="true"><span>✓</span></div>
+                    <h3>来源凭证</h3>
+                    <p>不必把全部证据藏进内容本身，而是用签名清单记录创作与编辑链。它更像“数字履历”，不是内容分类器。</p>
+                </article>
+            </div>
+
+            <div class="tradeoff-band">
+                <div><strong>不可感知性</strong><span>尽量不影响原内容</span></div>
+                <i>↔</i>
+                <div><strong>可检测性</strong><span>验证时信号足够明显</span></div>
+                <i>↔</i>
+                <div><strong>鲁棒性</strong><span>常见编辑后仍能保留</span></div>
+            </div>
+            <p class="band-note">三者通常需要权衡：信号太弱容易丢失，太强又可能影响质量；对所有变换都鲁棒，也可能增加误识别或被攻击者定位的风险。</p>
+        </section>
+
+        <section class="chapter-section fade-in" id="text-watermark">
+            <div class="section-label">03 · 文本概率水印</div>
+            <h2 class="section-title">文字没有像素，水印就藏在“下一个词怎么选”里</h2>
+            <p class="section-intro">语言模型每一步都会给候选 token 分配概率。经典文本水印方案根据前文和秘密规则，把候选词表伪随机分成“绿色集合”和其他集合，再给绿色候选增加很小的概率偏置。</p>
+
+            <div class="token-process" role="group" aria-label="文本水印四步流程">
+                <article><span>1</span><h3>读取上下文</h3><p>模型根据已经生成的 token 预测下一步。</p></article>
+                <article><span>2</span><h3>划分候选</h3><p>验证规则把一部分候选标成“绿色”。</p></article>
+                <article><span>3</span><h3>轻微偏置</h3><p>不是强制选词，只是稍微提高绿色候选概率。</p></article>
+                <article><span>4</span><h3>统计验证</h3><p>长文本中绿色 token 若显著偏多，就形成检测信号。</p></article>
+            </div>
+
+            <div class="watermark-lab" role="region" aria-labelledby="watermark-lab-title">
+                <div class="lab-copy">
+                    <span class="lab-index">实验 01 · 教学模拟</span>
+                    <h3 id="watermark-lab-title">观察微小偏置如何累积成统计信号</h3>
+                    <p>下面假设候选中一半被标绿。普通生成随机命中；带水印生成更偏向绿色。真实系统会使用更复杂的上下文规则、采样策略和阈值。</p>
+                    <div class="lab-controls" role="group" aria-label="选择模拟模式">
+                        <button type="button" class="mode-button active" data-mode="plain" aria-pressed="true">普通生成</button>
+                        <button type="button" class="mode-button" data-mode="marked" aria-pressed="false">带水印生成</button>
+                        <button type="button" class="refresh-button" id="refreshTokens">换一组 ↻</button>
+                    </div>
+                </div>
+                <div class="token-stage">
+                    <div class="token-stream" id="tokenStream" aria-live="polite"></div>
+                    <div class="token-stats">
+                        <div><span>绿色 token</span><strong id="greenCount">0 / 24</strong></div>
+                        <div><span>示意 z-score</span><strong id="zScore">0.00</strong></div>
+                        <div class="signal-meter"><i id="signalBar"></i></div>
+                    </div>
+                </div>
+                <p class="lab-disclaimer"><strong>注意：</strong>这只是概率教学动画，不是任何真实产品的检测器；“绿色”也不会在真实文本中显示出来。</p>
+            </div>
+
+            <div class="formula-card">
+                <div>
+                    <span>简化统计量</span>
+                    <code>z =（观察到的绿色数 − 随机期望数）÷ 标准差</code>
+                </div>
+                <p>z 值越大，只表示“这段 token 序列与某套水印规则越匹配”。它不自动证明作者身份，也不适用于未采用该规则的模型。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="style-signals">
+            <div class="section-label">04 · 风格检测</div>
+            <h2 class="section-title">检测器常看的四项指标，到底在量什么</h2>
+            <p class="section-intro">这些指标描述的是文本风格和统计规律。它们可以帮助研究者比较文本，却都不是 AI 的专属指纹。规范公文、教材、语言学习者作文或经过编辑的文章，都可能呈现相似特征。</p>
+
+            <div class="metric-grid">
+                <article class="metric-card perplexity-card">
+                    <div class="metric-heading"><span>01</span><h3>困惑度</h3><i>predictability</i></div>
+                    <p>衡量一段文字对<strong>某个语言模型</strong>来说有多难预测。下一个词越符合模型预期，困惑度越低；罕见转折、专有表达或不常见组合通常会让它升高。</p>
+                    <code>困惑度 ≈ exp（平均“猜错程度”）</code>
+                    <small>依赖具体计算模型；同一段文字换一个模型，结果可能不同。低困惑度不等于 AI 生成。</small>
+                </article>
+                <article class="metric-card variance-card">
+                    <div class="metric-heading"><span>02</span><h3>句长方差</h3><i>rhythm</i></div>
+                    <p>先统计每句话有多少词或字，再观察这些长度围绕平均值波动多大。长短句交替时方差较高，句子整齐时方差较低。</p>
+                    <code>方差 = 各句长度与平均值之差的平方，再取平均</code>
+                    <small>它只刻画节奏的一部分。更广义的“突发性”还包括信息密度、段落结构和表达变化。</small>
+                </article>
+                <article class="metric-card function-card">
+                    <div class="metric-heading"><span>03</span><h3>功能词频率</h3><i>style markers</i></div>
+                    <p>“的、了、在、和、但、因为、如果、这、那”等词主要承担语法和连接作用。主题含义不强，却会暴露作者或文体的使用习惯。</p>
+                    <code>功能词频率 = 功能词数量 ÷ 总词数</code>
+                    <small>文体计量会利用这类稳定习惯，但编辑、领域、语言水平和写作任务都会改变它们。</small>
+                </article>
+                <article class="metric-card diversity-card">
+                    <div class="metric-heading"><span>04</span><h3>词汇多样性</h3><i>vocabulary</i></div>
+                    <p>描述一段文字用了多少不同的词。最直观的是类型—词次比：不同词数除以总词数，越接近 1，表面上重复越少。</p>
+                    <code>TTR = 不同词数 ÷ 总词数</code>
+                    <small>简单 TTR 会随文本变长而自然下降。正式分析常用 MATTR、MTLD 等对长度更稳健的指标。</small>
+                </article>
+            </div>
+
+            <div class="not-proof">
+                <span>统计特征 ≠ 来源证明</span>
+                <p>这些指标适合回答“文本在某个维度上是什么风格”，不适合单独回答“究竟是谁写的”。如果把指标当成目标，作者还会主动改句长、替换词语来“刷分”，这正是古德哈特定律常见的陷阱。</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="style-lab">
+            <div class="section-label">05 · 互动实验</div>
+            <h2 class="section-title">给一段文字做“风格体检”</h2>
+            <p class="section-intro">修改下方文字，观察句子数、句长方差、功能词频率和简单 TTR 如何变化。实验在浏览器本地运行，不会上传输入内容。</p>
+
+            <div class="style-lab" role="region" aria-labelledby="style-lab-title">
+                <div class="style-input-panel">
+                    <div class="lab-title-row">
+                        <div>
+                            <span class="lab-index">实验 02 · 本地计算</span>
+                            <h3 id="style-lab-title">文本风格体检</h3>
+                        </div>
+                        <div class="sample-buttons" role="group" aria-label="载入示例文本">
+                            <button type="button" data-sample="steady">整齐示例</button>
+                            <button type="button" data-sample="varied">变化示例</button>
+                        </div>
+                    </div>
+                    <label for="styleInput">输入或粘贴一段中文文本</label>
+                    <textarea id="styleInput" rows="9">清晨，城市还没有完全醒来。送奶车沿着窄路慢慢经过，轮胎压过昨夜留下的水洼。有人推开窗，先听见鸟叫，过了几秒，才意识到今天不用赶早班。于是他重新烧了一壶水，坐下来，看蒸汽一点点爬上玻璃。</textarea>
+                    <p class="privacy-note">🔒 计算仅在当前页面完成。中文分词优先使用浏览器的 <code>Intl.Segmenter</code>，不同浏览器结果可能略有差异。</p>
+                </div>
+
+                <div class="metric-results" aria-live="polite">
+                    <article>
+                        <span>句子数</span><strong id="sentenceCount">0</strong><small>按句号、问号、感叹号、分号和换行切分</small>
+                    </article>
+                    <article>
+                        <span>平均句长</span><strong id="averageLength">0</strong><small>按当前浏览器分词结果计算</small>
+                    </article>
+                    <article>
+                        <span>句长方差</span><strong id="lengthVariance">0</strong><div class="result-bar"><i id="varianceBar"></i></div>
+                    </article>
+                    <article>
+                        <span>功能词频率</span><strong id="functionFrequency">0%</strong><div class="result-bar amber"><i id="functionBar"></i></div>
+                    </article>
+                    <article>
+                        <span>简单 TTR</span><strong id="ttrValue">0</strong><div class="result-bar blue"><i id="ttrBar"></i></div>
+                    </article>
+                    <article class="perplexity-result">
+                        <span>困惑度</span><strong>需指定模型</strong><small>浏览器不能凭空给出可靠困惑度，因此这里不伪造数值</small>
+                    </article>
+                </div>
+            </div>
+            <div class="lab-verdict" id="labVerdict">这里展示的是描述性统计，不会给出“人类 / AI”结论。</div>
+        </section>
+
+        <section class="chapter-section fade-in" id="limits">
+            <div class="section-label">06 · 能力边界</div>
+            <h2 class="section-title">水印为什么会变弱，检测器为什么会误判</h2>
+            <p class="section-intro">任何验证信号都存在威胁模型：它假设攻击者能做什么、内容会经历什么处理、验证端掌握什么信息。脱离这些前提谈“准确率”，意义很有限。</p>
+
+            <div class="failure-map">
+                <article><span>改写</span><h3>同义替换与重写</h3><p>文本 token 被大量替换后，概率水印的统计偏置可能下降；风格检测分数也会随编辑策略改变。</p></article>
+                <article><span>翻译</span><h3>跨语言重建</h3><p>翻译通常重新选择词语与句法，原语言中的 token 水印难以原样保留。</p></article>
+                <article><span>裁剪</span><h3>证据长度不足</h3><p>删去大量段落会减少统计样本；短文本本来就更难区分随机波动与真实信号。</p></article>
+                <article><span>混合</span><h3>多人、多模型拼接</h3><p>一部分由模型生成、一部分人工编辑时，单一标签无法描述整篇内容的复杂来源。</p></article>
+                <article><span>转码</span><h3>截图、压缩与录屏</h3><p>多媒体传播会改变底层数值。鲁棒水印可能保留，但普通元数据和脆弱信号容易丢失。</p></article>
+                <article><span>剥离</span><h3>凭证不再随文件传播</h3><p>内容凭证可能在平台转存时被移除；没有凭证只能说明“未发现凭证”，不能反推内容一定虚假。</p></article>
+            </div>
+
+            <div class="evidence-ladder">
+                <div class="ladder-label">从弱到强的来源证据</div>
+                <ol>
+                    <li><span>弱</span><strong>“读起来很像 AI”</strong><small>主观印象，容易受偏见影响</small></li>
+                    <li><span></span><strong>风格检测器分数</strong><small>依赖模型、语言、领域与长度</small></li>
+                    <li><span></span><strong>与已知水印规则匹配</strong><small>需要生成方采用并保留信号</small></li>
+                    <li><span>强</span><strong>签名凭证 + 平台记录 + 上下文核验</strong><small>多条独立证据相互印证</small></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="workflow">
+            <div class="section-label">07 · 实际工作流</div>
+            <h2 class="section-title">需要判断来源时，按证据强弱逐层核验</h2>
+            <p class="section-intro">一套稳健流程不从检测器分数开始，而从可验证来源开始，并把“没有发现证据”和“证明不存在”严格区分。</p>
+
+            <div class="workflow-list">
+                <article><span>01</span><div><h3>先检查来源凭证</h3><p>查看文件是否携带可验证的 Content Credentials / C2PA 声明，确认签名主体、编辑链和凭证状态。</p></div></article>
+                <article><span>02</span><div><h3>再使用对应平台的水印验证</h3><p>只有验证器与生成时的嵌入方案匹配，结果才有意义。不要拿 A 平台的检测规则判断 B 平台内容。</p></div></article>
+                <article><span>03</span><div><h3>核对原始文件与传播上下文</h3><p>保存原文件、上传记录、版本历史、发布时间和作者说明。截图与转发件往往已经丢掉关键元数据。</p></div></article>
+                <article><span>04</span><div><h3>把通用检测器当弱信号</h3><p>记录工具名称、版本、语言、文本长度和阈值。多个相似工具并不一定是独立证据，它们可能共享训练偏差。</p></div></article>
+                <article><span>05</span><div><h3>重大结论必须人工复核</h3><p>涉及学术诚信、招聘、司法、版权或纪律处分时，应允许申诉，并结合草稿、引用、过程记录等证据。</p></div></article>
+            </div>
+
+            <div class="decision-card">
+                <span>推荐结论写法</span>
+                <p>“在当前文件中发现了与某方案匹配的来源信号，置信程度为……”</p>
+                <div>而不是</div>
+                <p>“系统判定这一定是 AI 写的。”</p>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in" id="governance">
+            <div class="section-label">08 · 负责任使用</div>
+            <h2 class="section-title">水印是治理基础设施，不是自动裁判</h2>
+            <div class="governance-grid">
+                <article><span>透明</span><h3>说明验证的对象</h3><p>清楚写明验证的是签名、特定水印，还是风格概率，不用模糊的“AI 率”掩盖差异。</p></article>
+                <article><span>比例</span><h3>风险越高，证据越强</h3><p>内容推荐可以使用弱信号辅助排序；处分个人则需要更高证据门槛和独立复核。</p></article>
+                <article><span>申诉</span><h3>允许补充过程证据</h3><p>保留草稿、版本历史、引用来源和编辑记录，让被判断者有机会解释异常分数。</p></article>
+                <article><span>最小化</span><h3>别把追溯变成监控</h3><p>来源系统应尽量少收集个人信息，明确保存期限、访问权限和滥用防护。</p></article>
+            </div>
+            <blockquote class="closing-quote">可信的目标不是让每段内容都带着无法擦除的标签，而是让重要场景拥有足够、可解释、可复核的来源证据。</blockquote>
+        </section>
+
+        <section class="chapter-section fade-in" id="references">
+            <div class="section-label">09 · 参考资料</div>
+            <h2 class="section-title">继续阅读</h2>
+            <p class="section-intro">以下资料用于核对本文的技术框架与边界。外部规范和产品能力会更新，使用前应再次确认其当前说明。</p>
+            <div class="reference-list">
+                <a href="https://waytoagi.feishu.cn/wiki/RHH9wJvTqiKuN8kTgRHcsUIQnJf" target="_blank" rel="noopener noreferrer">
+                    <span>参考文章</span><strong>什么他妈的叫他妈的人味</strong><small>关于困惑度、突发性、词汇分布与检测边界的中文摘要</small>
+                </a>
+                <a href="https://arxiv.org/abs/2301.10226" target="_blank" rel="noopener noreferrer">
+                    <span>论文</span><strong>A Watermark for Large Language Models</strong><small>Kirchenbauer 等，文本概率水印的代表性方案</small>
+                </a>
+                <a href="https://www.nature.com/articles/s41586-024-08025-4" target="_blank" rel="noopener noreferrer">
+                    <span>论文</span><strong>Scalable watermarking for identifying large language model outputs</strong><small>SynthID-Text 的大规模部署与评估</small>
+                </a>
+                <a href="https://deepmind.google/discover/blog/watermarking-ai-generated-text-and-video-with-synthid/" target="_blank" rel="noopener noreferrer">
+                    <span>官方介绍</span><strong>Google DeepMind · SynthID</strong><small>文本与视频水印的产品化思路</small>
+                </a>
+                <a href="https://c2pa.org/specifications/specifications/" target="_blank" rel="noopener noreferrer">
+                    <span>开放规范</span><strong>C2PA Specifications</strong><small>内容来源与真实性基础设施</small>
+                </a>
+                <a href="https://contentcredentials.org/" target="_blank" rel="noopener noreferrer">
+                    <span>公共项目</span><strong>Content Credentials</strong><small>查看内容凭证如何向普通用户呈现</small>
+                </a>
+            </div>
+        </section>
+
+        <section class="chapter-section fade-in">
+            <div class="transition-block">
+                <p>AI 水印真正改变的，不是我们猜测内容的方式，而是我们保存证据的方式。<br>从“看起来像”走向“能够验证”，才是可信内容基础设施的起点。</p>
+            </div>
+        </section>
+
+        <nav class="article-nav">
+            <a href="part15.html" class="nav-button prev">← 基础专题 · 密码学</a>
+            <a href="index-all.html" class="nav-button">返回目录 ↑</a>
+        </nav>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">© 2026 AI纪元 - 探索智能的无限可能</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        (() => {
+            const tokenWords = ['来源', '需要', '证据', '而且', '内容', '经过', '验证', '之后', '才能', '形成', '较为', '可靠', '判断', '我们', '仍要', '保留', '原始', '文件', '以及', '完整', '编辑', '记录', '避免', '误判'];
+            const stream = document.getElementById('tokenStream');
+            const greenCount = document.getElementById('greenCount');
+            const zScore = document.getElementById('zScore');
+            const signalBar = document.getElementById('signalBar');
+            const modeButtons = [...document.querySelectorAll('.mode-button')];
+            let mode = 'plain';
+            let seed = 17;
+
+            function random() {
+                seed = (seed * 1664525 + 1013904223) >>> 0;
+                return seed / 4294967296;
+            }
+
+            function renderTokens() {
+                let greens = 0;
+                const greenChance = mode === 'marked' ? 0.72 : 0.5;
+                stream.innerHTML = '';
+                tokenWords.forEach((word, index) => {
+                    const isGreen = random() < greenChance;
+                    if (isGreen) greens += 1;
+                    const token = document.createElement('span');
+                    token.textContent = word;
+                    token.className = isGreen ? 'green-token' : 'plain-token';
+                    token.style.setProperty('--delay', `${index * 18}ms`);
+                    stream.appendChild(token);
+                });
+                const total = tokenWords.length;
+                const z = (greens - total * 0.5) / Math.sqrt(total * 0.25);
+                greenCount.textContent = `${greens} / ${total}`;
+                zScore.textContent = z.toFixed(2);
+                signalBar.style.width = `${Math.max(4, Math.min(100, (z + 2) * 22))}%`;
+            }
+
+            modeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    mode = button.dataset.mode;
+                    modeButtons.forEach(item => {
+                        const active = item === button;
+                        item.classList.toggle('active', active);
+                        item.setAttribute('aria-pressed', String(active));
+                    });
+                    seed += mode === 'marked' ? 31 : 19;
+                    renderTokens();
+                });
+            });
+
+            document.getElementById('refreshTokens').addEventListener('click', () => {
+                seed += 97;
+                renderTokens();
+            });
+
+            const styleInput = document.getElementById('styleInput');
+            const functionWords = new Set([
+                '的', '了', '在', '是', '和', '与', '及', '而', '但', '却', '因为', '所以', '因此', '如果', '那么',
+                '这', '那', '一个', '一种', '也', '都', '就', '还', '又', '被', '把', '对', '从', '到', '为', '或',
+                'the', 'a', 'an', 'and', 'or', 'but', 'if', 'because', 'so', 'of', 'to', 'in', 'on', 'for', 'is', 'are'
+            ]);
+            const samples = {
+                steady: '我们需要核对来源。我们需要检查水印。我们需要保存记录。我们需要人工复核。我们需要谨慎判断。',
+                varied: '先别急着下结论。打开原文件，看看它是否携带可信的签名凭证；如果没有，再去查平台记录、水印信号和编辑历史。最后呢？把所有证据摆在一起，由人作出能够解释、也允许申诉的判断。'
+            };
+
+            function tokenize(text) {
+                if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+                    const segmenter = new Intl.Segmenter('zh-CN', { granularity: 'word' });
+                    return [...segmenter.segment(text)]
+                        .filter(item => item.isWordLike)
+                        .map(item => item.segment.toLowerCase());
+                }
+                return text.match(/[\u3400-\u9fff]|[A-Za-z0-9]+(?:['’-][A-Za-z0-9]+)*/g)?.map(item => item.toLowerCase()) || [];
+            }
+
+            function fixed(value, digits = 1) {
+                return Number.isFinite(value) ? value.toFixed(digits) : '0.0';
+            }
+
+            function analyzeStyle() {
+                const text = styleInput.value.trim();
+                const sentences = text.split(/[。！？!?；;\n]+/).map(item => item.trim()).filter(Boolean);
+                const sentenceLengths = sentences.map(sentence => tokenize(sentence).length).filter(length => length > 0);
+                const tokens = tokenize(text);
+                const average = sentenceLengths.length
+                    ? sentenceLengths.reduce((sum, value) => sum + value, 0) / sentenceLengths.length
+                    : 0;
+                const variance = sentenceLengths.length
+                    ? sentenceLengths.reduce((sum, value) => sum + Math.pow(value - average, 2), 0) / sentenceLengths.length
+                    : 0;
+                const functionCount = tokens.filter(token => functionWords.has(token)).length;
+                const functionFrequency = tokens.length ? functionCount / tokens.length : 0;
+                const ttr = tokens.length ? new Set(tokens).size / tokens.length : 0;
+
+                document.getElementById('sentenceCount').textContent = sentenceLengths.length;
+                document.getElementById('averageLength').textContent = fixed(average);
+                document.getElementById('lengthVariance').textContent = fixed(variance);
+                document.getElementById('functionFrequency').textContent = `${fixed(functionFrequency * 100)}%`;
+                document.getElementById('ttrValue').textContent = fixed(ttr, 2);
+                document.getElementById('varianceBar').style.width = `${Math.min(100, Math.sqrt(variance) * 8)}%`;
+                document.getElementById('functionBar').style.width = `${Math.min(100, functionFrequency * 280)}%`;
+                document.getElementById('ttrBar').style.width = `${Math.min(100, ttr * 100)}%`;
+
+                const verdict = document.getElementById('labVerdict');
+                if (!tokens.length) {
+                    verdict.textContent = '输入文字后，这里会显示描述性统计；实验不会给出“人类 / AI”结论。';
+                } else if (tokens.length < 30) {
+                    verdict.textContent = `当前约 ${tokens.length} 个词元，样本很短，任何风格结论都容易受偶然波动影响。`;
+                } else {
+                    verdict.textContent = `当前约 ${tokens.length} 个词元。这些数字只描述节奏与用词，不能证明作者身份或生成工具。`;
+                }
+            }
+
+            styleInput.addEventListener('input', analyzeStyle);
+            document.querySelectorAll('[data-sample]').forEach(button => {
+                button.addEventListener('click', () => {
+                    styleInput.value = samples[button.dataset.sample];
+                    analyzeStyle();
+                    styleInput.focus();
+                });
+            });
+
+            renderTokens();
+            analyzeStyle();
+        })();
+    </script>
+</body>
+
+</html>
