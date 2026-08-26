@@ -1089,9 +1089,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 解决方案 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 解决方案 </tag>
             
         </tags>
       
@@ -1758,9 +1758,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 解决方案 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 解决方案 </tag>
             
         </tags>
       
@@ -2631,9 +2631,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> 解决方案 </tag>
-            
             <tag> JAVA </tag>
+            
+            <tag> 解决方案 </tag>
             
         </tags>
       
@@ -2834,9 +2834,9 @@
       
         <tags>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3093,9 +3093,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3412,9 +3412,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3673,9 +3673,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3704,9 +3704,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3735,9 +3735,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3766,9 +3766,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3857,9 +3857,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -3919,9 +3919,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -5119,9 +5119,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -5639,11 +5639,11 @@
             
             <tag> 原创 </tag>
             
-            <tag> JavaScript </tag>
-            
             <tag> HTML </tag>
             
             <tag> CSS </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -6059,9 +6059,9 @@
             
             <tag> 思考 </tag>
             
-            <tag> 不良资产 </tag>
-            
             <tag> 经济学 </tag>
+            
+            <tag> 不良资产 </tag>
             
         </tags>
       
@@ -6721,9 +6721,9 @@
             
             <tag> 未完待续 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -7133,11 +7133,11 @@
     
     
     <entry>
-      <title>用shell教你搞定各种排序算法-快速排序</title>
-      <link href="/2020/04/15/f1801bcd/"/>
-      <url>/2020/04/15/f1801bcd/</url>
+      <title>用shell教你搞定各种排序算法-冒泡排序</title>
+      <link href="/2020/04/15/1ae682e6/"/>
+      <url>/2020/04/15/1ae682e6/</url>
       
-        <content type="html"><![CDATA[<p>排序算法中,没有一种算法在任意一种情况下都是最好的。我们总是能构造出一种最坏的情况。快速排序并不总是最快的。</p><p>快速排序是由东尼·霍尔提出的一种高效的排序算法，简称快排。它的算法思想并不复杂，可以用3个步骤6个字来概括：选基、分割、递归。</p><p>扩充成一句话就是：首先挑选基准值；然后分割数组，把小于基准值的元素放到基准值前面，大于基准值的元素放到基准值后面；最后递归地对小于基准值的子序列和大于基准值的子序列进行排序。主要使用了所谓的分治的思想</p><p>快速排序的写法有很多中,可以优化的点也有很多。但终归逃过不过一个分一个治，也就是递归。</p><p>光第一步选基就有很多方法和优化的空间<br>第一种方式,我们每次选待排数组的最左边一个元素为主<br>第二种方式,我们随机选待排数组的一个元素为主<br>第三种方式,我们组左,中,右三个数的中位数为主。或者5个数中的中位数<br>如果我们每次选的元素总是能将数组刚好左右分割，使得所选元素左边都比该元素小，右边的元素都比该元素大，那么我们的算法就是最优的。</p><p>下面我没来挑战一下这个看似简单实则超级难理解的算法。</p><pre><code class="hljs shell">main()&#123;                                   #我们还是先来定义一个main方法  array=(1 3 5 7 9 2 4 6 8 10 1 2 8 5 31) #我们再来定义一个待排数组,注意这里是个全局的变量  quick_sort                              #我们调用我们即将书写的快速排序  echo &quot;$&#123;array[*]&#125;&quot;                      #打印数组,看看是不是按照从小到的的顺序排序了呢&#125;function quick_sort()&#123;<span class="hljs-meta prompt_">  #</span><span class="language-bash">注意array是全局变量,我们可以在这里访问到它</span><span class="hljs-meta prompt_"></span><span class="hljs-meta prompt_">  #</span><span class="language-bash">快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标</span>  function sort()&#123;    local left=$1;local right=$2    local i=$&#123;left&#125;;local j=$&#123;right&#125; #这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。    #1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件    if [[ $&#123;left&#125; -ge $&#123;right&#125; ]];then return; fi    #2. 选主元    local base=$&#123;array[left]&#125; #每次都已最左边的为基    while [[ $&#123;i&#125; -ne $&#123;j&#125; ]]; do      #3. 分隔      #3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知      while [[ $&#123;array[j]&#125; -ge $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do #注意等号        ((j--))      done      while [[ $&#123;array[i]&#125; -le $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do        ((i++))      done      if [[ $&#123;i&#125; -lt $&#123;j&#125; ]];then         local tmp=$&#123;array[j]&#125;         array[j]=$&#123;array[i]&#125;         array[i]=$&#123;tmp&#125;      fi    done    array[left]=$&#123;array[i]&#125;    array[i]=$&#123;base&#125;    sort &quot;$&#123;left&#125;&quot; &quot;$((i-1))&quot;    sort &quot;$((i+1))&quot; &quot;$&#123;right&#125;&quot;  &#125;  sort&#125;main</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>最近在研究数据结构和算法,突然想用shell来实现一把,今天先来写一个冒泡排序。<br>要想记住各种排序算法，只要知道其原理，用什么语言实现都易如反掌</p><h1>冒泡排序</h1><ol><li>核心操作 交换相邻两个元素的值</li></ol><pre><code class="hljs bash"><span class="hljs-comment"># 定义一个数组</span>nums=(1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56)<span class="hljs-comment"># 核心操作</span><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">swap</span></span>()&#123;  <span class="hljs-comment"># i 和 j 分别代表要交换的两个元素的在数组中的下标</span>  <span class="hljs-built_in">local</span> i=<span class="hljs-variable">$1</span>;<span class="hljs-built_in">local</span> j=<span class="hljs-variable">$2</span>  <span class="hljs-built_in">local</span> tmp=<span class="hljs-variable">$&#123;nums[i]&#125;</span> <span class="hljs-comment"># 注意这里用 $&#123;nums[x]&#125; 的形式才能取出数组对应下标的元素的值</span>  nums[i]=<span class="hljs-variable">$&#123;nums[j]&#125;</span> <span class="hljs-comment"># 注意这里 $&#123;nums[x]&#125; 中的x 支持数学表达式，没必要 使用 $(()) 来计算</span>  nums[j]=<span class="hljs-variable">$&#123;tmp&#125;</span>     <span class="hljs-comment"># 注意这里 $&#123;  &#125; 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 $&#123;&#125; 包裹</span>&#125;<span class="hljs-comment"># 数组的元素个数</span><span class="hljs-built_in">local</span> size=<span class="hljs-variable">$&#123;#nums[@]&#125;</span> <span class="hljs-comment"># 注意这里使用$&#123;@xxx[@]&#125;的形式取出shell中数组元素的个数</span><span class="hljs-comment"># 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位</span><span class="hljs-keyword">for</span>((i=size-<span class="hljs-number">1</span>;i&gt;<span class="hljs-number">0</span>;i--))&#123; <span class="hljs-comment"># 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的</span>  <span class="hljs-comment"># 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的</span>  <span class="hljs-keyword">for</span>((j=<span class="hljs-number">0</span>;j&lt;i;j++));<span class="hljs-keyword">do</span> <span class="hljs-comment"># 这个地方是&lt;i</span>    <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;nums[j]&#125;</span> -gt <span class="hljs-variable">$&#123;nums[j+1]&#125;</span> ]];<span class="hljs-keyword">then</span> <span class="hljs-comment"># 注意这个地方的比较[1]</span>      swap <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;j&#125;</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-subst">$((j+1)</span>)&quot;</span>    <span class="hljs-keyword">fi</span>  <span class="hljs-keyword">done</span>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第<span class="hljs-subst">$((size-i)</span>)轮冒泡后:<span class="hljs-variable">$&#123;nums[*]&#125;</span>&quot;</span>&#125;</code></pre><p>我们执行一把</p><pre><code class="hljs text">第1轮冒泡后:1 3 5 2 3 6 7 8 11 22 22 11 1 33 34 a b c 56第2轮冒泡后:1 3 2 3 5 6 7 8 11 22 11 1 22 33 a b c 34 56第3轮冒泡后:1 2 3 3 5 6 7 8 11 11 1 22 22 a b c 33 34 56第4轮冒泡后:1 2 3 3 5 6 7 8 11 1 11 22 a b c 22 33 34 56第5轮冒泡后:1 2 3 3 5 6 7 8 1 11 11 a b c 22 22 33 34 56第6轮冒泡后:1 2 3 3 5 6 7 1 8 11 a b c 11 22 22 33 34 56第7轮冒泡后:1 2 3 3 5 6 1 7 8 a b c 11 11 22 22 33 34 56第8轮冒泡后:1 2 3 3 5 1 6 7 a b c 8 11 11 22 22 33 34 56第9轮冒泡后:1 2 3 3 1 5 6 a b c 7 8 11 11 22 22 33 34 56第10轮冒泡后:1 2 3 1 3 5 a b c 6 7 8 11 11 22 22 33 34 56第11轮冒泡后:1 2 1 3 3 a b c 5 6 7 8 11 11 22 22 33 34 56第12轮冒泡后:1 1 2 3 a b c 3 5 6 7 8 11 11 22 22 33 34 56第13轮冒泡后:1 1 2 a b c 3 3 5 6 7 8 11 11 22 22 33 34 56第14轮冒泡后:1 1 a b c 2 3 3 5 6 7 8 11 11 22 22 33 34 56第15轮冒泡后:1 a b c 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第16轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第17轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56</code></pre><p>注意上面的[1],因为这里我们只能比较数字,也就是只能比较整型数组,小数和字符串的冒泡排序我们的代码是不支持的。搞鬼的地方就在 我代码注释里面标[1]的地方.</p><p>我们用的判断相邻两个元素大小的表达是 <code>if [[ a -gt b ]]</code> 这种形式，这种用 [[]] 包裹的if判定表达式只能针对 整数。这个是shell语法决定的</p><p>如果nums数组中出现小数，运行程序立马报错，因为shell中没有浮点类型，带点号的shell默认为字符串<br>line 34: [[: 3.3: syntax error: invalid arithmetic operator (error token is “.3”)</p><p>如果要按照字符串比较，应该吧if表达式换成这样 <code>if [ ${nums[j]} \&gt; ${nums[j+1]} ]</code> 但同样，这种形式的比较会使数字的比较出现紊乱，例如<br>21 和 12 用上面这种比较，shell会认为 12 &gt; 21 因为12的第一个字符1出现在21的第一个字符2之前。</p>]]></content>
       
       
       <categories>
@@ -7168,11 +7168,11 @@
     
     
     <entry>
-      <title>用shell教你搞定各种排序算法-冒泡排序</title>
-      <link href="/2020/04/15/1ae682e6/"/>
-      <url>/2020/04/15/1ae682e6/</url>
+      <title>用shell教你搞定各种排序算法-快速排序</title>
+      <link href="/2020/04/15/f1801bcd/"/>
+      <url>/2020/04/15/f1801bcd/</url>
       
-        <content type="html"><![CDATA[<p>最近在研究数据结构和算法,突然想用shell来实现一把,今天先来写一个冒泡排序。<br>要想记住各种排序算法，只要知道其原理，用什么语言实现都易如反掌</p><h1>冒泡排序</h1><ol><li>核心操作 交换相邻两个元素的值</li></ol><pre><code class="hljs bash"><span class="hljs-comment"># 定义一个数组</span>nums=(1 3 5 7 2 3 6 8 22 11 33 22 11 1 34 56)<span class="hljs-comment"># 核心操作</span><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">swap</span></span>()&#123;  <span class="hljs-comment"># i 和 j 分别代表要交换的两个元素的在数组中的下标</span>  <span class="hljs-built_in">local</span> i=<span class="hljs-variable">$1</span>;<span class="hljs-built_in">local</span> j=<span class="hljs-variable">$2</span>  <span class="hljs-built_in">local</span> tmp=<span class="hljs-variable">$&#123;nums[i]&#125;</span> <span class="hljs-comment"># 注意这里用 $&#123;nums[x]&#125; 的形式才能取出数组对应下标的元素的值</span>  nums[i]=<span class="hljs-variable">$&#123;nums[j]&#125;</span> <span class="hljs-comment"># 注意这里 $&#123;nums[x]&#125; 中的x 支持数学表达式，没必要 使用 $(()) 来计算</span>  nums[j]=<span class="hljs-variable">$&#123;tmp&#125;</span>     <span class="hljs-comment"># 注意这里 $&#123;  &#125; 包裹 tmp,因为shell中没有显示的指针，也没有引用类型，取值一定要用 $&#123;&#125; 包裹</span>&#125;<span class="hljs-comment"># 数组的元素个数</span><span class="hljs-built_in">local</span> size=<span class="hljs-variable">$&#123;#nums[@]&#125;</span> <span class="hljs-comment"># 注意这里使用$&#123;@xxx[@]&#125;的形式取出shell中数组元素的个数</span><span class="hljs-comment"># 用一个下标标识数组最右侧一个元素,相当于一个指针指向了最右侧一个元素,每执行完一轮后指针左移一位</span><span class="hljs-keyword">for</span>((i=size-<span class="hljs-number">1</span>;i&gt;<span class="hljs-number">0</span>;i--))&#123; <span class="hljs-comment"># 注意这个地方是size-1因为有size个元素,那最有一个元素的下标一定是size-1因为数组的下标是从零开始的</span>  <span class="hljs-comment"># 用一个下标标识数组最左侧一个元素, 每次与相邻的下一个元素进行比较,如果当前元素比下一个元素大,则交换两个位置的元素,比较完成后下标右移一位,直到遇到下标i,因为经过几轮排序后i后面的元素都是排好序的</span>  <span class="hljs-keyword">for</span>((j=<span class="hljs-number">0</span>;j&lt;i;j++));<span class="hljs-keyword">do</span> <span class="hljs-comment"># 这个地方是&lt;i</span>    <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$&#123;nums[j]&#125;</span> -gt <span class="hljs-variable">$&#123;nums[j+1]&#125;</span> ]];<span class="hljs-keyword">then</span> <span class="hljs-comment"># 注意这个地方的比较[1]</span>      swap <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;j&#125;</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-subst">$((j+1)</span>)&quot;</span>    <span class="hljs-keyword">fi</span>  <span class="hljs-keyword">done</span>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第<span class="hljs-subst">$((size-i)</span>)轮冒泡后:<span class="hljs-variable">$&#123;nums[*]&#125;</span>&quot;</span>&#125;</code></pre><p>我们执行一把</p><pre><code class="hljs text">第1轮冒泡后:1 3 5 2 3 6 7 8 11 22 22 11 1 33 34 a b c 56第2轮冒泡后:1 3 2 3 5 6 7 8 11 22 11 1 22 33 a b c 34 56第3轮冒泡后:1 2 3 3 5 6 7 8 11 11 1 22 22 a b c 33 34 56第4轮冒泡后:1 2 3 3 5 6 7 8 11 1 11 22 a b c 22 33 34 56第5轮冒泡后:1 2 3 3 5 6 7 8 1 11 11 a b c 22 22 33 34 56第6轮冒泡后:1 2 3 3 5 6 7 1 8 11 a b c 11 22 22 33 34 56第7轮冒泡后:1 2 3 3 5 6 1 7 8 a b c 11 11 22 22 33 34 56第8轮冒泡后:1 2 3 3 5 1 6 7 a b c 8 11 11 22 22 33 34 56第9轮冒泡后:1 2 3 3 1 5 6 a b c 7 8 11 11 22 22 33 34 56第10轮冒泡后:1 2 3 1 3 5 a b c 6 7 8 11 11 22 22 33 34 56第11轮冒泡后:1 2 1 3 3 a b c 5 6 7 8 11 11 22 22 33 34 56第12轮冒泡后:1 1 2 3 a b c 3 5 6 7 8 11 11 22 22 33 34 56第13轮冒泡后:1 1 2 a b c 3 3 5 6 7 8 11 11 22 22 33 34 56第14轮冒泡后:1 1 a b c 2 3 3 5 6 7 8 11 11 22 22 33 34 56第15轮冒泡后:1 a b c 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第16轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第17轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56第18轮冒泡后:a b c 1 1 2 3 3 5 6 7 8 11 11 22 22 33 34 56</code></pre><p>注意上面的[1],因为这里我们只能比较数字,也就是只能比较整型数组,小数和字符串的冒泡排序我们的代码是不支持的。搞鬼的地方就在 我代码注释里面标[1]的地方.</p><p>我们用的判断相邻两个元素大小的表达是 <code>if [[ a -gt b ]]</code> 这种形式，这种用 [[]] 包裹的if判定表达式只能针对 整数。这个是shell语法决定的</p><p>如果nums数组中出现小数，运行程序立马报错，因为shell中没有浮点类型，带点号的shell默认为字符串<br>line 34: [[: 3.3: syntax error: invalid arithmetic operator (error token is “.3”)</p><p>如果要按照字符串比较，应该吧if表达式换成这样 <code>if [ ${nums[j]} \&gt; ${nums[j+1]} ]</code> 但同样，这种形式的比较会使数字的比较出现紊乱，例如<br>21 和 12 用上面这种比较，shell会认为 12 &gt; 21 因为12的第一个字符1出现在21的第一个字符2之前。</p>]]></content>
+        <content type="html"><![CDATA[<p>排序算法中,没有一种算法在任意一种情况下都是最好的。我们总是能构造出一种最坏的情况。快速排序并不总是最快的。</p><p>快速排序是由东尼·霍尔提出的一种高效的排序算法，简称快排。它的算法思想并不复杂，可以用3个步骤6个字来概括：选基、分割、递归。</p><p>扩充成一句话就是：首先挑选基准值；然后分割数组，把小于基准值的元素放到基准值前面，大于基准值的元素放到基准值后面；最后递归地对小于基准值的子序列和大于基准值的子序列进行排序。主要使用了所谓的分治的思想</p><p>快速排序的写法有很多中,可以优化的点也有很多。但终归逃过不过一个分一个治，也就是递归。</p><p>光第一步选基就有很多方法和优化的空间<br>第一种方式,我们每次选待排数组的最左边一个元素为主<br>第二种方式,我们随机选待排数组的一个元素为主<br>第三种方式,我们组左,中,右三个数的中位数为主。或者5个数中的中位数<br>如果我们每次选的元素总是能将数组刚好左右分割，使得所选元素左边都比该元素小，右边的元素都比该元素大，那么我们的算法就是最优的。</p><p>下面我没来挑战一下这个看似简单实则超级难理解的算法。</p><pre><code class="hljs shell">main()&#123;                                   #我们还是先来定义一个main方法  array=(1 3 5 7 9 2 4 6 8 10 1 2 8 5 31) #我们再来定义一个待排数组,注意这里是个全局的变量  quick_sort                              #我们调用我们即将书写的快速排序  echo &quot;$&#123;array[*]&#125;&quot;                      #打印数组,看看是不是按照从小到的的顺序排序了呢&#125;function quick_sort()&#123;<span class="hljs-meta prompt_">  #</span><span class="language-bash">注意array是全局变量,我们可以在这里访问到它</span><span class="hljs-meta prompt_"></span><span class="hljs-meta prompt_">  #</span><span class="language-bash">快排一定有一个递归调用,这个递归调用一般需要左右两个数组下标</span>  function sort()&#123;    local left=$1;local right=$2    local i=$&#123;left&#125;;local j=$&#123;right&#125; #这里为什么要重新让j=right,i=left呢,我们直接用 left,right不行么?答案是不行,因为要记住数组进来的时候,处理的左右边界是什么。    #1. 首先这个方法是一个递归，递归三要素之一就是要有退出条件    if [[ $&#123;left&#125; -ge $&#123;right&#125; ]];then return; fi    #2. 选主元    local base=$&#123;array[left]&#125; #每次都已最左边的为基    while [[ $&#123;i&#125; -ne $&#123;j&#125; ]]; do      #3. 分隔      #3.1 从右边j想左找第一个比base小的元素的数组的下标,如果右边的元素一直比base大，就一直找，直到 j=i 了未知      while [[ $&#123;array[j]&#125; -ge $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do #注意等号        ((j--))      done      while [[ $&#123;array[i]&#125; -le $&#123;base&#125; ]] &amp;&amp; [[ $&#123;j&#125; -gt $&#123;i&#125;  ]];do        ((i++))      done      if [[ $&#123;i&#125; -lt $&#123;j&#125; ]];then         local tmp=$&#123;array[j]&#125;         array[j]=$&#123;array[i]&#125;         array[i]=$&#123;tmp&#125;      fi    done    array[left]=$&#123;array[i]&#125;    array[i]=$&#123;base&#125;    sort &quot;$&#123;left&#125;&quot; &quot;$((i-1))&quot;    sort &quot;$((i+1))&quot; &quot;$&#123;right&#125;&quot;  &#125;  sort&#125;main</code></pre>]]></content>
       
       
       <categories>
@@ -7316,9 +7316,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -8247,9 +8247,9 @@
             
             <tag> 原创 </tag>
             
-            <tag> Linux </tag>
-            
             <tag> 解决方案 </tag>
+            
+            <tag> Linux </tag>
             
         </tags>
       

@@ -12,8 +12,8 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="part8.css">
     <link rel="stylesheet" href="article-theme.css?v=20260823">
+    <link rel="stylesheet" href="part8.css?v=20260825">
 </head>
 
 <body class="article-page" data-hero-tone="magenta">
@@ -62,6 +62,8 @@
           <li class="toc-sidebar-item"><a class="toc-link" href="#part2" data-section="part2"><span class="toc-num">03</span><span class="toc-label">Part 2 · 用得好</span></a></li>
           <li class="toc-sidebar-item"><a class="toc-link" href="#part3" data-section="part3"><span class="toc-num">04</span><span class="toc-label">Part 3 · 别踩坑</span></a></li>
           <li class="toc-sidebar-item"><a class="toc-link" href="#part4" data-section="part4"><span class="toc-num">05</span><span class="toc-label">Part 4 · AI 的边界</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#part5" data-section="part5"><span class="toc-num">06</span><span class="toc-label">Part 5 · 对话四象限</span></a></li>
+          <li class="toc-sidebar-item"><a class="toc-link" href="#part6" data-section="part6"><span class="toc-num">07</span><span class="toc-label">Part 6 · 我的实战复盘</span></a></li>
         </ul>
       </aside>
 
@@ -75,7 +77,7 @@
             <div class="article-subtitle">氛围编程 · 一份从理解到熟练的实战指南</div>
             <div class="article-meta">
                 <span>📖 全 11 章 · 第 8 章</span>
-                <span>⏱ 约 30 分钟阅读</span>
+                <span>⏱ 约 40 分钟阅读</span>
             </div>
         </header>
 
@@ -86,6 +88,8 @@
             <a href="#part2">用得好</a>
             <a href="#part3">别踩坑</a>
             <a href="#part4">AI 边界</a>
+            <a href="#part5">对话四象限</a>
+            <a href="#part6">实战复盘</a>
         </nav>
 
         <!-- ============================
@@ -730,16 +734,154 @@
             <h3 style="margin-top: var(--space-xl);">最佳实践</h3>
             <div class="eval-grid">
                 <div class="eval-card">
-                    <h4>🔐 安全审查</h4>
-                    <p>永远不要把 API Key、密码等敏感信息交给 AI。审查生成代码是否含硬编码密钥或 SQL 注入等漏洞。</p>
+                    <h4>🔐 守住高风险边界</h4>
+                    <p>永远不要把 API Key、密码等敏感信息交给 AI。涉及权限、资金、隐私或不可逆操作时，只确认关键边界，不把责任交给流程。</p>
                 </div>
                 <div class="eval-card">
-                    <h4>📝 理解代码</h4>
-                    <p>虽然 AI 生成代码，但你仍需理解其基本逻辑。完全看不懂，就很难有效调试和维护。</p>
+                    <h4>🧭 关注关键路径</h4>
+                    <p>不必逐行审查 AI 的每个实现，但要知道目标、入口、关键数据流和验收结果，遇到异常时能准确描述问题。</p>
                 </div>
                 <div class="eval-card">
                     <h4>🧭 保持架构感</h4>
                     <p>即使是 Vibe Coding，也要有架构意识：文件组织、模块划分、依赖管理，定期重构 AI 生成的代码。</p>
+                </div>
+            </div>
+
+            <!-- 2.5 经验如何重新分配价值 -->
+            <h3 class="experience-heading">经验还重要吗？重要，但越来越不重要</h3>
+            <p class="experience-intro">在同样的 AI 工具面前，初级程序员、非程序员和有经验的程序员都能更快做出第一版。差距并没有消失，只是从“谁写代码更快”，逐渐转向“谁能把问题定义得更准、把风险看得更早”。</p>
+
+            <div class="experience-compare">
+                <div class="experience-grid">
+                    <article class="experience-card experience-beginner">
+                        <div class="experience-card-head">
+                            <span class="experience-icon">✦</span>
+                            <div>
+                                <span class="experience-tag">BEGINNER / NON-CODER</span>
+                                <h4>初级程序员 / 非程序员</h4>
+                            </div>
+                        </div>
+                        <div class="experience-row">
+                            <strong>优势</strong>
+                            <p>目标通常更贴近真实需求，少受旧技术路径束缚；愿意快速尝试，也更容易把 AI 当成真正的实现伙伴。</p>
+                        </div>
+                        <div class="experience-row is-risk">
+                            <strong>短板</strong>
+                            <p>容易低估复杂度，难以识别隐藏风险；需求、边界和验收标准模糊时，容易得到“能跑但不可靠”的结果。</p>
+                        </div>
+                        <div class="experience-fit"><strong>更适合</strong><span>原型、页面、自动化、小工具、业务流程验证</span></div>
+                    </article>
+                    <article class="experience-card experience-senior">
+                        <div class="experience-card-head">
+                            <span class="experience-icon">◈</span>
+                            <div>
+                                <span class="experience-tag">EXPERIENCED ENGINEER</span>
+                                <h4>有经验的程序员</h4>
+                            </div>
+                        </div>
+                        <div class="experience-row">
+                            <strong>优势</strong>
+                            <p>能拆解任务、识别系统边界，提前想到异常路径、数据一致性、权限和后续维护问题。</p>
+                        </div>
+                        <div class="experience-row is-risk">
+                            <strong>短板</strong>
+                            <p>可能被既有经验束缚，容易过度设计；如果仍按过去的方式亲自实现，反而会错过 AI 带来的速度。</p>
+                        </div>
+                        <div class="experience-fit"><strong>更适合</strong><span>核心架构、复杂集成、数据迁移、权限安全、长期维护</span></div>
+                    </article>
+                </div>
+
+                <div class="experience-insight">
+                    <span>THE SHIFT</span>
+                    <p><strong>经验没有消失，只是从“实现优势”迁移到了“判断优势”。</strong> AI 越来越擅长把明确的意图变成代码，所以经验在第一版实现速度上的稀缺性正在下降；但在高风险任务里，拆解、取舍和验收依然需要经验。</p>
+                </div>
+
+                <div class="task-allocation-grid">
+                    <div class="allocation-card">
+                        <span class="allocation-num">01</span>
+                        <h4>低风险 · 边界清晰</h4>
+                        <p><strong>初级成员或非程序员主导。</strong>让 AI 负责实现，通过运行结果和简单测试验收。</p>
+                    </div>
+                    <div class="allocation-card">
+                        <span class="allocation-num">02</span>
+                        <h4>原型 · 界面探索</h4>
+                        <p><strong>产品、设计、初级开发者都可主导。</strong>经验程序员提供约束、方向和必要的技术护栏。</p>
+                    </div>
+                    <div class="allocation-card">
+                        <span class="allocation-num">03</span>
+                        <h4>复杂系统 · 核心数据</h4>
+                        <p><strong>经验程序员负责拆解和最终决策。</strong>AI 承担大量实现、迁移和迭代工作。</p>
+                    </div>
+                    <div class="allocation-card">
+                        <span class="allocation-num">04</span>
+                        <h4>长期维护 · 多人协作</h4>
+                        <p><strong>经验程序员守住规范与交付边界。</strong>初级成员和非程序员负责清晰的小任务、验证和反馈。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2.6 模型选择与任务判断 -->
+            <h3 class="model-heading">模型不是越强越好：先判断任务，再选择档位</h3>
+            <div class="model-choice">
+                <div class="model-choice-top">
+                    <div class="model-choice-story">
+                        <span class="model-kicker">A SMALL BUT IMPORTANT LESSON</span>
+                        <h4>一开始我把 GPT 推理强度直接拉满</h4>
+                        <p>当时的直觉很简单：模型越强，结果应该越好。但实际用下来发现，高推理档位会思考更多、确认更多、反复追问更多；对于一些本来几分钟就能完成的小需求，等待和沟通本身反而成了主要耗时。</p>
+                        <p>后来我换成 <strong>medium</strong>，甚至 <strong>low</strong>，效果并没有明显变差，速度却快了很多。真正重要的不是永远调用最强模型，而是先判断：<strong>这个任务是否值得更长的思考时间？</strong></p>
+                    </div>
+
+                    <div class="model-choice-principle">
+                        <span class="model-kicker">THE PRINCIPLE</span>
+                        <p><strong>简单需求用速度换反馈，复杂需求用思考换确定性。</strong></p>
+                        <span>模型选择，本质上也是判断力的体现。</span>
+                    </div>
+                </div>
+                <div class="complexity-grid">
+                    <article class="complexity-card complexity-simple">
+                        <div class="complexity-card-head">
+                            <span class="complexity-mark">01</span>
+                            <h4>简单需求</h4>
+                            <span class="complexity-level">LOW / MEDIUM</span>
+                        </div>
+                        <p class="complexity-definition">目标明确、范围局部、结果容易验证，错了也容易回退。</p>
+                        <ul>
+                            <li>改一个页面样式、补一个按钮或表单</li>
+                            <li>已知技术栈中的 CRUD、格式转换、脚本和文案</li>
+                            <li>输入、输出和验收标准都能一句话说清</li>
+                            <li>几分钟内可以运行、截图或用测试确认</li>
+                        </ul>
+                        <div class="complexity-action"><strong>建议：</strong>先用 low；需要多文件协同时升到 medium。</div>
+                    </article>
+                    <article class="complexity-card complexity-complex">
+                        <div class="complexity-card-head">
+                            <span class="complexity-mark">02</span>
+                            <h4>复杂需求</h4>
+                            <span class="complexity-level">MEDIUM / HIGH</span>
+                        </div>
+                        <p class="complexity-definition">目标仍有歧义、影响多个边界，或者结果难以快速验证，错了代价较高。</p>
+                        <ul>
+                            <li>涉及架构、数据模型、跨模块协作或第三方集成</li>
+                            <li>权限、安全、隐私、资金和不可逆操作</li>
+                            <li>需要处理并发、异常、兼容性和迁移问题</li>
+                            <li>问题本身不清楚，需要先调查、拆解和建立方案</li>
+                        </ul>
+                        <div class="complexity-action"><strong>建议：</strong>先让模型澄清和规划，再用 medium 或 high 执行关键部分。</div>
+                    </article>
+                </div>
+
+                <div class="model-escalation">
+                    <div class="model-escalation-title"><span>HOW TO CHOOSE</span><strong>一个实用的升档规则</strong></div>
+                    <div class="model-escalation-steps">
+                        <div><span>01</span><p><strong>先看能否快速验收</strong>：能在几分钟内确认，就不要一开始拉满。</p></div>
+                        <div><span>02</span><p><strong>先用 low / medium 试跑</strong>：让模型先做小闭环，观察它是否真正卡住。</p></div>
+                        <div><span>03</span><p><strong>出现信号再升档</strong>：需求反复理解错、跨模块推理失败、方案取舍困难，再换更强档位。</p></div>
+                        <div><span>04</span><p><strong>升档也要带着问题升</strong>：不要只说“再想想”，而要指出冲突、约束和失败现象。</p></div>
+                    </div>
+                </div>
+
+                <div class="model-choice-conclusion">
+                    <p><strong>复杂度不等于代码行数。</strong>一个 500 行但边界清楚的页面，可能比一个 50 行却涉及权限和数据一致性的接口更简单。能否说清目标、边界、风险和验收方式，才是判断复杂度的关键。</p>
                 </div>
             </div>
         </section>
@@ -766,9 +908,9 @@
                 </div>
                 <div class="pitfall-card">
                     <div class="pitfall-num">02</div>
-                    <h4>完全不读生成的代码</h4>
-                    <p class="pitfall-wrong"><span>误区</span>能跑就万事大吉，从不打开看。</p>
-                    <p class="pitfall-right"><span>正解</span>至少读懂主流程，否则出 bug 时束手无策。</p>
+                    <h4>把 Code Review 当成必选流程</h4>
+                    <p class="pitfall-wrong"><span>误区</span>每次都逐行检查，把审查本身变成新的负担。</p>
+                    <p class="pitfall-right"><span>正解</span>小项目优先看运行结果、关键路径和真实反馈。</p>
                 </div>
                 <div class="pitfall-card">
                     <div class="pitfall-num">03</div>
@@ -790,9 +932,35 @@
                 </div>
                 <div class="pitfall-card">
                     <div class="pitfall-num">06</div>
-                    <h4>盲目信任 AI 输出</h4>
-                    <p class="pitfall-wrong"><span>误区</span>AI 说什么就信什么，不验证。</p>
-                    <p class="pitfall-right"><span>正解</span>关键逻辑跑测试、压边界，AI 也会"一本正经地胡说"。</p>
+                    <h4>把信任 AI 误解成不验收</h4>
+                    <p class="pitfall-wrong"><span>误区</span>AI 说完成了，就跳过运行、测试和真实场景。</p>
+                    <p class="pitfall-right"><span>正解</span>信任实现过程，但用结果确认它真的解决了问题。</p>
+                </div>
+            </div>
+
+            <div class="review-position">
+                <div class="review-position-main">
+                    <span class="review-kicker">MY POSITION · TRUST THE AGENT</span>
+                    <h4>我不把 Code Review 当成 Vibe Coding 的必选动作</h4>
+                    <p>如果 AI 已经理解需求、完成实现，并且结果经过运行验证，那么逐行 Review 不一定带来同等价值。Vibe Coding 的意义，正是把“实现”更多交给 AI；我倾向于相信 AI 在当前任务中的决策，不再把传统审查流程当作每次交付的门槛。</p>
+                </div>
+                <div class="review-position-points">
+                    <div>
+                        <strong>不做什么</strong>
+                        <span>不为符合个人习惯而逐行挑代码。</span>
+                    </div>
+                    <div>
+                        <strong>看什么</strong>
+                        <span>看目标是否达成、关键路径是否成立、异常是否可接受。</span>
+                    </div>
+                    <div>
+                        <strong>怎么确认</strong>
+                        <span>用运行结果、简单测试、截图和真实数据反馈替代形式化审查。</span>
+                    </div>
+                </div>
+                <div class="review-position-boundary">
+                    <strong>边界提醒</strong>
+                    <p>这不是“什么都不验证”。当任务涉及安全、权限、资金、隐私、核心数据或不可逆操作时，仍要确认这些关键边界；确认的是结果和风险，而不是把时间耗在检查每一行实现上。</p>
                 </div>
             </div>
 
@@ -1072,6 +1240,428 @@
                     <strong>核心原则：AI 是副驾驶（Co-pilot），你是机长（Captain）。</strong><br>
                     它可以帮助你飞得更快，但航线、目的地和最终决策——必须由你来做出。理解 Vibe Coding 的边界，不是为了限制它的使用，而是为了更安全、更有效地使用它。
                 </p>
+            </div>
+        </section>
+
+        <!-- ============================
+             Part 5 · AI 对话四象限
+             ============================ -->
+        <section class="chapter-section fade-in quadrant-chapter" id="part5">
+            <div class="section-label">✦ Part 5 · AI 对话四象限 ✦</div>
+            <p class="part-intro">Vibe Coding 解决的是“如何让 AI 参与实现”，这一节进一步回答：在一次具体对话里，人和 AI 各自知道什么？</p>
+
+            <div class="quadrant-intro">
+                <p>
+                    很多人把 AI 用不好，第一反应是换模型、换工具，或者继续收集 Prompt 模板。但对话效果往往首先取决于<strong>认知位置</strong>：你是否理解这个问题，AI 是否拥有完成任务所需的知识和上下文？
+                </p>
+                <p>
+                    参考“AI 对话四象限”框架，可以把人与 AI 的关系放到一张地图上。定位之后，再选择直接指令、分层提问、补充资料，还是把 AI 当作共同探索的伙伴。
+                </p>
+            </div>
+
+            <h3>一张判断人机关系的地图</h3>
+            <p>
+                四象限由两个问题切开：横向看<strong>人是否知道</strong>，纵向看<strong>AI 是否知道</strong>。这里的“知道”不是绝对全知，而是指对当前任务是否有足够的背景、事实和判断依据。
+            </p>
+
+            <figure class="quadrant-map" aria-labelledby="quadrant-map-caption">
+                <div class="quadrant-axis-label axis-ai">AI 的知识状态</div>
+                <div class="quadrant-axis-label axis-human">人的知识状态</div>
+                <div class="quadrant-y-label y-known">AI 知道</div>
+                <div class="quadrant-y-label y-unknown">AI 不知道</div>
+                <div class="quadrant-x-label x-unknown">人不知道</div>
+                <div class="quadrant-x-label x-known">人知道</div>
+
+                <div class="quadrant-cell quadrant-open">
+                    <span class="quadrant-badge">01 · OPEN</span>
+                    <h4>公开区</h4>
+                    <p>双方对目标和背景都有基本认知，适合直接沟通，追求完成速度。</p>
+                    <span class="quadrant-move">策略：简洁直给</span>
+                </div>
+                <div class="quadrant-cell quadrant-blind">
+                    <span class="quadrant-badge">02 · BLIND</span>
+                    <h4>盲区</h4>
+                    <p>AI 可能掌握相关知识，但人还不熟悉。重点是把大问题拆成学习路径。</p>
+                    <span class="quadrant-move">策略：分层提问</span>
+                </div>
+                <div class="quadrant-cell quadrant-hidden">
+                    <span class="quadrant-badge">03 · HIDDEN</span>
+                    <h4>隐藏区</h4>
+                    <p>人掌握业务或个人背景，AI 缺少上下文。重点是先补齐资料和约束。</p>
+                    <span class="quadrant-move">策略：知识投喂</span>
+                </div>
+                <div class="quadrant-cell quadrant-unknown">
+                    <span class="quadrant-badge">04 · UNKNOWN</span>
+                    <h4>未知区</h4>
+                    <p>双方都没有现成答案，需要用假设、试验和判断共同探索。</p>
+                    <span class="quadrant-move">策略：协同共创</span>
+                </div>
+                <figcaption id="quadrant-map-caption">图 1 · 先定位认知差异，再决定对话方式</figcaption>
+            </figure>
+
+            <div class="callout-box quadrant-callout">
+                <strong>使用口诀：</strong>人知、AI 也知，就直接问；人不知、AI 知，就拆开学；人知、AI 不知，就先喂资料；双方都不知，就一起做实验。
+            </div>
+
+            <h3>四种对话模式，四种“必杀技”</h3>
+            <div class="mode-grid">
+                <article class="mode-panel mode-open">
+                    <div class="mode-panel-heading"><span class="mode-symbol">O</span><div><strong>Open · 闪电战</strong><small>双方都有足够背景</small></div></div>
+                    <p>不要为了显得专业而堆砌复杂 Prompt。把目标、格式和验收标准说清楚即可。</p>
+                    <div class="prompt-example"><span>示例</span><code>把下面的会议纪要压缩成 5 条行动项，每条包含负责人、截止时间和风险。</code></div>
+                </article>
+                <article class="mode-panel mode-blind">
+                    <div class="mode-panel-heading"><span class="mode-symbol">B</span><div><strong>Blind · 寻宝战</strong><small>AI 可能知道，你还不知道</small></div></div>
+                    <p>把陌生领域拆成“是什么—为什么—怎么做—如何判断好坏”，让 AI 既讲解又检查你的理解。</p>
+                    <div class="prompt-example"><span>示例</span><code>我只有基础了解。请先画一张概念地图，再分 4 轮带我学习，每轮结束提出 2 个检查问题。</code></div>
+                </article>
+                <article class="mode-panel mode-hidden">
+                    <div class="mode-panel-heading"><span class="mode-symbol">H</span><div><strong>Hidden · 情报战</strong><small>你知道，但 AI 不知道</small></div></div>
+                    <p>业务规则、项目进展、个人偏好不会自动出现在模型上下文里。先提供背景，并让 AI 复述理解。</p>
+                    <div class="prompt-example"><span>示例</span><code>以下是背景、约束和验收标准。请先列出你的理解与缺失信息，确认后再给方案。</code></div>
+                </article>
+                <article class="mode-panel mode-unknown">
+                    <div class="mode-panel-heading"><span class="mode-symbol">U</span><div><strong>Unknown · 共创战</strong><small>双方都没有现成答案</small></div></div>
+                    <p>把 AI 输出当作创意素材而不是结论，要求它提供反例、风险和可以快速验证的小实验。</p>
+                    <div class="prompt-example"><span>示例</span><code>提出 5 个大胆假设，分别说明机制、最大风险，以及 48 小时内可完成的低成本验证。</code></div>
+                </article>
+            </div>
+
+            <div class="quadrant-table-wrap">
+                <table class="quadrant-table">
+                    <caption>表 1 · AI 对话四象限速查</caption>
+                    <thead><tr><th scope="col">象限</th><th scope="col">认知关系</th><th scope="col">主要打法</th><th scope="col">典型任务</th></tr></thead>
+                    <tbody>
+                        <tr><th scope="row"><span class="table-dot dot-open"></span>Open</th><td>人知，AI 也知</td><td>简洁直给</td><td>总结、改写、格式化</td></tr>
+                        <tr><th scope="row"><span class="table-dot dot-blind"></span>Blind</th><td>人不知，AI 知</td><td>分层拆解</td><td>学习、解释、建立知识地图</td></tr>
+                        <tr><th scope="row"><span class="table-dot dot-hidden"></span>Hidden</th><td>人知，AI 不知</td><td>补充上下文</td><td>业务分析、项目协作、个性化建议</td></tr>
+                        <tr><th scope="row"><span class="table-dot dot-unknown"></span>Unknown</th><td>双方都不知</td><td>假设共创</td><td>创新、研究、跨界探索</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>把地图变成日常工作流</h3>
+            <div class="quadrant-workflow">
+                <div><span>01</span><strong>定位</strong><p>我知道目标和背景吗？AI 是否有完成任务所需的知识？</p></div>
+                <div><span>02</span><strong>补齐</strong><p>Blind 补学习路径，Hidden 补任务情报，Unknown 补假设和评价标准。</p></div>
+                <div><span>03</span><strong>推进</strong><p>选择直接指令、递进提问、结构化投喂或发散共创。</p></div>
+                <div><span>04</span><strong>验证</strong><p>用事实、案例、测试或人工评审检查输出，形成反馈闭环。</p></div>
+            </div>
+
+            <div class="quadrant-practice-grid">
+                <div class="algo-section-card">
+                    <h4>Blind 区：把“我不懂”变成学习路线</h4>
+                    <ul class="topic-list">
+                        <li>先要一张概念地图，确认前置知识和学习顺序。</li>
+                        <li>让 AI 多举例，并主动指出类比的边界。</li>
+                        <li>每轮结束做一次小测或复述，避免“听懂了但不会用”。</li>
+                    </ul>
+                </div>
+                <div class="algo-section-card">
+                    <h4>Hidden 区：建立专属任务手册</h4>
+                    <ul class="topic-list">
+                        <li>提供目标、受众、已有资料和不可违反的约束。</li>
+                        <li>补充术语、流程、历史决策和验收标准。</li>
+                        <li>资料接入要遵守最小化、授权和隐私保护原则。</li>
+                    </ul>
+                </div>
+                <div class="algo-section-card">
+                    <h4>Unknown 区：把答案改成可验证假设</h4>
+                    <ul class="topic-list">
+                        <li>允许先提出大胆方向，再要求 AI 找反例。</li>
+                        <li>把创意压缩成低成本、短周期的小实验。</li>
+                        <li>根据结果修正假设，而不是维护第一版答案。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="quadrant-conclusion">
+                <p><strong>和 Vibe Coding 的连接：</strong>自然语言只是入口，真正决定产出的，是你能否判断当前处在哪个象限。Open 区追求效率，Blind 区追求理解，Hidden 区补齐上下文，Unknown 区共同探索。</p>
+            </div>
+
+            <div class="source-note">
+                <strong>参考来源与说明</strong>
+                <p>本节参考腾讯云开发者社区文章《AI对话四象限：你的未来十年「人机共生导航图」》整理、改写并结合 Vibe Coding 场景补充示例。原文作者：三猫；页面显示发布时间：2025-11-28，文中注明原始发表时间为 2025-06-06。本文不是原文逐字转载。<a href="https://cloud.tencent.com/developer/article/2595312" target="_blank" rel="noopener noreferrer">查看参考文章 ↗</a></p>
+            </div>
+        </section>
+
+        <!-- ============================
+             Part 6 · 我的档案系统实战复盘
+             ============================ -->
+        <section class="chapter-section fade-in field-review-chapter" id="part6">
+            <div class="section-label">✦ Part 6 · 我的实战复盘 ✦</div>
+            <p class="part-intro">前面讲的是方法，这一节讲一段真实经历：我如何从一份 PRD 出发，用 Vibe Coding 在 54 天里搭出一套智能档案管理系统，又如何在 1,000 多次提交和一轮轮返工中，重新理解“应该怎么和 AI 一起写软件”。</p>
+
+            <div class="field-review-opening">
+                <span class="field-review-kicker">A REAL VIBE CODING LOG</span>
+                <h3>从一句“按 Spec 一步步开发”，到一套真正要跑业务的系统</h3>
+                <p>2026 年 7 月 3 日，我给 AI 的起点并不是一张完整架构图，而是一段业务描述：新建任务、扫描目录、切割 PDF、OCR、识别文件归属、人工复核、按户归档，再把结果输出到本地。第一轮提示词里，产品轮廓已经很清楚，但技术边界、异常策略、数据模型和验收标准仍然模糊。</p>
+                <p>此后，项目从 FastAPI + Vue 的最小骨架，一路扩展到 PDF 处理、OCR、智能体整理、档案提取、账号权限、离线计费、打包部署、监控与审计。回头看，这段经历最有价值的不是“AI 写了多少代码”，而是它完整暴露了 Vibe Coding 的两面：<strong>它能把想法快速推成产品，也会把模糊、急躁和侥幸同步放大。</strong></p>
+            </div>
+
+            <div class="field-review-stats">
+                <div class="field-stat">
+                    <strong>54</strong>
+                    <span>天持续迭代</span>
+                    <small>2026-07-03 → 2026-08-25</small>
+                </div>
+                <div class="field-stat">
+                    <strong>1,044</strong>
+                    <span>个 master 提交</span>
+                    <small>从 Spec 到产品化与运维</small>
+                </div>
+                <div class="field-stat">
+                    <strong>465</strong>
+                    <span>个相关会话记录</span>
+                    <small>含主对话与 worker / reviewer 子任务</small>
+                </div>
+                <div class="field-stat">
+                    <strong>207</strong>
+                    <span>个测试文件</span>
+                    <small>后端 130 · 前端 77</small>
+                </div>
+            </div>
+
+            <div class="field-review-note">
+                <strong>这组数字说明了什么？</strong>
+                <p>Vibe Coding 的速度确实惊人，但“提交很多”不等于“方向一直正确”。按提交前缀粗略统计，项目有 356 个 <code>feat</code>，也有 344 个 <code>fix</code>。功能与修复几乎一比一，正好说明：早期推进越快，后期越需要靠测试、复核和真实数据把系统拉回正确轨道。</p>
+            </div>
+
+            <h3>五个阶段：我的 Vibe Coding 是怎样长出来的</h3>
+            <div class="field-timeline">
+                <article class="field-timeline-item">
+                    <div class="field-timeline-marker"><span>01</span></div>
+                    <div class="field-timeline-body">
+                        <div class="field-timeline-meta">7 月 3 日 · 从业务语言开始</div>
+                        <h4>先把 PRD 翻译成 Spec，再做最小闭环</h4>
+                        <p>最初的提示词做对了一件非常关键的事：没有直接说“帮我写个系统”，而是要求 AI 先阅读 PRD、输出 Spec，再按 Spec 逐步开发。第一阶段只做登录、任务、目录扫描、进度、文件索引和页面展示，暂时不做 OCR 与智能整理。</p>
+                        <div class="field-timeline-lesson"><strong>收获：</strong>先建立共同地图，AI 才不会一上来就替你发明需求。</div>
+                    </div>
+                </article>
+
+                <article class="field-timeline-item">
+                    <div class="field-timeline-marker"><span>02</span></div>
+                    <div class="field-timeline-body">
+                        <div class="field-timeline-meta">7 月 3—5 日 · 快速形成产品手感</div>
+                        <h4>边用边改：搜索、页数、预览、切割工作台与视觉重构</h4>
+                        <p>系统刚能跑，我就立刻用真实目录测试，并连续提出“文件索引支持搜索”“记录 PDF 页数”“页面更好看”“源文件与切割件双向追溯”等要求。截图和实际操作反馈让 AI 不再只对着代码猜，而是开始对着用户体验改。</p>
+                        <div class="field-timeline-lesson"><strong>收获：</strong>可运行原型比十页需求文档更容易暴露真正的问题。</div>
+                    </div>
+                </article>
+
+                <article class="field-timeline-item">
+                    <div class="field-timeline-marker"><span>03</span></div>
+                    <div class="field-timeline-body">
+                        <div class="field-timeline-meta">7 月 5—12 日 · 从“聊天写代码”转向工程协作</div>
+                        <h4>Spec → Plan → TDD → Worker → Reviewer → Merge</h4>
+                        <p>随着功能复杂度上升，我开始把任务拆成独立工作树和小提交：实现 worker 先写红灯测试，再完成代码；规格 reviewer 检查是否满足计划；质量 reviewer 专查竞态、边界、兼容性和回归风险。这些 reviewer 同样由 AI 承担，并不是我逐行人工审查代码。项目不再依赖“一次生成正确”，而是依赖 AI 之间的多轮交叉验证。</p>
+                        <div class="field-timeline-lesson"><strong>收获：</strong>AI 最适合进入流程，不适合成为流程本身。</div>
+                    </div>
+                </article>
+
+                <article class="field-timeline-item">
+                    <div class="field-timeline-marker"><span>04</span></div>
+                    <div class="field-timeline-body">
+                        <div class="field-timeline-meta">7 月中下旬—8 月初 · 业务复杂度反扑</div>
+                        <h4>OCR、归户、整理、提取接入后，“能跑”不再等于“能用”</h4>
+                        <p>当系统进入真实档案场景，问题从按钮和接口变成了业务语义：材料类型目录被误认成户目录、同一主体出现多个键、单一置信度掩盖身份错配、逐页切割破坏上下文。某次脱敏后的 10 户样本测试中，486 个源文件生成 820 个切割产物，最终 485 条整理结果需要复核。</p>
+                        <div class="field-timeline-lesson"><strong>收获：</strong>真实数据不是最后的验收材料，而应该从第一周就进入开发闭环。</div>
+                    </div>
+                </article>
+
+                <article class="field-timeline-item">
+                    <div class="field-timeline-marker"><span>05</span></div>
+                    <div class="field-timeline-body">
+                        <div class="field-timeline-meta">8 月 · 从功能项目走向可运营产品</div>
+                        <h4>账号、权限、计费、打包、日志、监控、删除审计</h4>
+                        <p>后期的提示词不再只是“加一个功能”，而开始关注谁能看见什么、一次处理消耗多少、如何离线部署、怎样追踪阶段耗时、删除档案柜如何二次确认和留痕。到这一步我才真正意识到：产品化的大头，往往是最初 Demo 里看不见的部分。</p>
+                        <div class="field-timeline-lesson"><strong>收获：</strong>从 Day 1 就要为权限、可观测性、数据安全和可恢复性留位置。</div>
+                    </div>
+                </article>
+            </div>
+
+            <h3>我做对了什么</h3>
+            <div class="field-score-grid">
+                <article class="field-score-card good">
+                    <span class="field-score-icon">01</span>
+                    <h4>先讲业务闭环，不先钦定代码</h4>
+                    <p>最初描述的是“扫描—切割—识别—复核—归档—输出”，这比只说技术栈更有价值。技术可以替换，业务闭环才是系统存在的理由。</p>
+                </article>
+                <article class="field-score-card good">
+                    <span class="field-score-icon">02</span>
+                    <h4>尽快拿真实目录试跑</h4>
+                    <p>真实文件路径、真实 PDF、真实页面截图，让问题快速从抽象讨论变成可复现缺陷，也逼着文件安全、路径校验和异常处理提前落地。</p>
+                </article>
+                <article class="field-score-card good">
+                    <span class="field-score-icon">03</span>
+                    <h4>把主观反馈变成持续迭代</h4>
+                    <p>“太丑”“信息看不全”虽然不够精确，但我没有停留在批评，而是持续截图、操作、对比和缩小问题范围，最终形成了更接近真实工作台的交互。</p>
+                </article>
+                <article class="field-score-card good">
+                    <span class="field-score-icon">04</span>
+                    <h4>逐渐建立 AI 工程流水线</h4>
+                    <p>工作树隔离、TDD、小步提交、规格审查、质量审查、构建验证和浏览器验收，让多个 Agent 可以协作，又不至于互相覆盖。</p>
+                </article>
+                <article class="field-score-card good">
+                    <span class="field-score-icon">05</span>
+                    <h4>愿意让数据否定第一版方案</h4>
+                    <p>当真实归档效果不好时，没有只调低复核阈值，而是继续追查目录语义、主体字典、证据分层、提示词和后端校验的共同问题。</p>
+                </article>
+                <article class="field-score-card good">
+                    <span class="field-score-icon">06</span>
+                    <h4>把过程沉淀成可追踪资产</h4>
+                    <p>Spec、设计文档、实现计划、测试、提交记录、阶段报告和日志共同组成了项目记忆。即使对话上下文丢失，新的 Agent 仍能接着工作。</p>
+                </article>
+            </div>
+
+            <h3>我踩过的坑，以及它们为什么会发生</h3>
+            <div class="field-pitfall-list">
+                <article class="field-pitfall">
+                    <div class="field-pitfall-no">坑 1</div>
+                    <div>
+                        <h4>业务语义没稳定，就过早重构界面</h4>
+                        <p>项目刚跑起来时，我很快要求“大大重构”“参考最好的档案系统”。这能提升产品手感，却也会让尚未稳定的数据结构和交互反复推倒重来。</p>
+                        <p class="field-pitfall-fix"><strong>改法：</strong>先画低保真流程，确认对象、状态、操作和异常；核心流程跑通后，再做视觉系统和大规模布局重构。</p>
+                    </div>
+                </article>
+                <article class="field-pitfall">
+                    <div class="field-pitfall-no">坑 2</div>
+                    <div>
+                        <h4>把我的第一反应，当成了最终解决方案</h4>
+                        <p>例如“全部按单页切开”“中间文件放同级 tmp 目录”，都是直觉上合理的方案。但合同跨页、证据上下文、并发任务、清理策略和权限边界出现后，早期方案就会变成约束。</p>
+                        <p class="field-pitfall-fix"><strong>改法：</strong>提示词先写问题、约束和验收，再把自己的方案标记为“候选”，要求 AI 给出替代方案与反例。</p>
+                    </div>
+                </article>
+                <article class="field-pitfall">
+                    <div class="field-pitfall-no">坑 3</div>
+                    <div>
+                        <h4>用“继续开发”代替优先级管理</h4>
+                        <p>“接下来还有什么功能”“继续完成”会让 AI 很积极，但它倾向于填满功能清单，而不是主动替产品做取舍。结果是能力迅速膨胀，依赖、页面和状态也同步膨胀。</p>
+                        <p class="field-pitfall-fix"><strong>改法：</strong>每轮只允许一个主目标，并明确“不做什么”、成功指标和停止条件；新想法进入 backlog，不插入当前闭环。</p>
+                    </div>
+                </article>
+                <article class="field-pitfall">
+                    <div class="field-pitfall-no">坑 4</div>
+                    <div>
+                        <h4>“不用测试，直接改”是在向未来借时间</h4>
+                        <p>纯文案或局部样式有时可以降低测试成本，但当这句话成为习惯，AI 很难判断改动是否真的只影响前端。快速合并看似省了十分钟，后面可能用数小时排查回归。</p>
+                        <p class="field-pitfall-fix"><strong>改法：</strong>可以不跑全量测试，但至少执行最小验证：类型检查、构建、目标页面手测、控制台检查和 diff 审查。</p>
+                    </div>
+                </article>
+                <article class="field-pitfall">
+                    <div class="field-pitfall-no">坑 5</div>
+                    <div>
+                        <h4>把模型问题误判成提示词问题</h4>
+                        <p>真实样本说明，归档不准并不只是“Prompt 写得不够好”。输入目录语义、材料类型枚举、主体主键、证据结构、后端校验和评估指标任何一层不稳，模型都会被迫猜测。</p>
+                        <p class="field-pitfall-fix"><strong>改法：</strong>先判断问题属于数据、规则、模型、代码还是交互；Prompt 只负责表达任务，不能代替领域模型和确定性约束。</p>
+                    </div>
+                </article>
+                <article class="field-pitfall">
+                    <div class="field-pitfall-no">坑 6</div>
+                    <div>
+                        <h4>提交速度很快，但部分提交信息失去上下文</h4>
+                        <p>历史里出现过不少 <code>fix</code>、<code>new</code>、<code>1</code> 之类提交。它们不影响代码运行，却会削弱回溯能力：几周后很难知道为什么改、改了什么、如何验证。</p>
+                        <p class="field-pitfall-fix"><strong>改法：</strong>让 AI 在提交前总结“问题—原因—改动—验证”，再生成可检索的提交信息；小提交不等于随意提交。</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="field-review-divider" aria-hidden="true"><span>VIBE LOOP</span></div>
+
+            <h3>现在回头看，我会怎样正确地 Vibe Coding</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: var(--space-lg);">不是追求“一句话生成整个系统”，而是让每一轮对话都成为一个可验证的小闭环。我把这套方法压缩成七步：</p>
+
+            <div class="field-loop-grid">
+                <article><span>01</span><strong>定界</strong><p>写清用户、场景、目标、约束和暂不实现的内容。</p></article>
+                <article><span>02</span><strong>固化</strong><p>把口头共识写进 Spec、数据模型、接口契约和项目规则。</p></article>
+                <article><span>03</span><strong>切片</strong><p>一次只交付一个可演示、可回滚、可测试的垂直切片。</p></article>
+                <article><span>04</span><strong>实现</strong><p>让 AI 先读代码和约束，再按最小改动原则完成任务。</p></article>
+                <article><span>05</span><strong>验证</strong><p>测试只是底线，还要用真实样本、截图、日志和人工操作验收。</p></article>
+                <article><span>06</span><strong>复盘</strong><p>区分需求错、设计错、实现错、数据错和 Prompt 错，不盲目重试。</p></article>
+                <article><span>07</span><strong>沉淀</strong><p>把结论写回文档、测试、规则和提交，让下一轮不再从零开始。</p></article>
+            </div>
+
+            <h3>一份更适合真实项目的 Prompt 模板</h3>
+            <div class="field-prompt-shell">
+                <div class="field-prompt-topbar">
+                    <span></span><span></span><span></span>
+                    <strong>feature-task.md</strong>
+                </div>
+                <pre><code>【背景】
+当前系统解决什么业务问题？相关用户、流程和历史决策是什么？
+
+【本轮唯一目标】
+完成一个可以独立验收的结果，不顺手扩展其他功能。
+
+【范围】
+允许修改哪些模块 / 文件？明确不修改什么。
+
+【必须保持的不变量】
+兼容性、权限、数据安全、现有交互、路径规则、接口契约。
+
+【验收标准】
+用 Given / When / Then 写出正常路径、失败路径和边界情况。
+
+【执行方式】
+先阅读现有实现并复述理解；复杂任务先给方案；
+先写失败测试，再实现；保持小提交，不覆盖他人改动。
+
+【验证】
+运行最小相关测试、构建和页面验证；报告命令与结果。
+
+【交付】
+列出改动文件、关键决策、风险、未完成项和下一步建议。</code></pre>
+            </div>
+
+            <div class="field-before-after">
+                <article class="field-before">
+                    <span>容易返工的说法</span>
+                    <blockquote>“这个页面太丑了，参考最好的系统，大大重构一下。”</blockquote>
+                </article>
+                <article class="field-after">
+                    <span>更可执行的说法</span>
+                    <blockquote>“保留现有功能和接口，只重构 PDF 切割工作台的信息层级。桌面端同时看见任务列表、页缩略图和预览；窄屏可顺序操作。先给布局方案，再实现，并用两种视口截图验收。”</blockquote>
+                </article>
+            </div>
+
+            <div class="field-before-after">
+                <article class="field-before">
+                    <span>容易误诊的说法</span>
+                    <blockquote>“归档结果不准，继续优化提示词。”</blockquote>
+                </article>
+                <article class="field-after">
+                    <span>更可验证的说法</span>
+                    <blockquote>“基于固定脱敏样本建立基线，分别统计主体、材料类型、路径和复核原因的准确率；先定位错误来自目录解析、OCR、规则、模型还是校验器，再决定是否修改 Prompt。”</blockquote>
+                </article>
+            </div>
+
+            <h3>我的最终结论</h3>
+            <div class="field-final-grid">
+                <article>
+                    <span>01</span>
+                    <h4>Vibe 负责速度，工程负责方向</h4>
+                    <p>自然语言让实现速度暴涨，但 Spec、架构、测试、运行验证和真实数据决定这股速度是不是朝正确方向。</p>
+                </article>
+                <article>
+                    <span>02</span>
+                    <h4>你可以不亲自写每一行，但必须亲自做判断</h4>
+                    <p>产品边界、业务规则、风险取舍和验收结论不能外包给模型。AI 可以建议，责任仍在人。</p>
+                </article>
+                <article>
+                    <span>03</span>
+                    <h4>最好的 Prompt，最终会变成项目资产</h4>
+                    <p>真正重要的约束不应该只留在聊天框里，而要进入代码、测试、文档、配置、日志和评估集。</p>
+                </article>
+            </div>
+
+            <div class="field-review-conclusion">
+                <p><strong>所以，应该怎么 Vibe Coding？</strong></p>
+                <p>先用业务语言描述方向，再用工程语言收紧边界；让 AI 快速实现，让测试和真实数据持续反驳；每次只推进一个闭环，每轮都把新认知沉淀回项目。<strong>Vibe Coding 不是“凭感觉写代码”，而是“用感觉发现方向，用证据校准结果”。</strong></p>
+            </div>
+
+            <div class="source-note">
+                <strong>复盘口径</strong>
+                <p>本节基于本地保留的项目 Spec、实现计划、测试与复盘文档、Git 历史，以及 Codex、Claude Code、OpenCode 中与该仓库相关的会话记录整理。统计快照截至 2026 年 8 月 25 日；会话数包含主对话及被拆分出的实现、审查子任务。涉及真实业务样本的名称和个人信息均已省略或脱敏。</p>
             </div>
         </section>
 
